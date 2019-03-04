@@ -18,16 +18,7 @@ namespace ExplainingEveryString.Core
 
         internal void Move(GameTime gameTime)
         {
-            Vector2 direction = new Vector2(0, 0);
-            GamePadDPad dpad = GamePad.GetState(PlayerIndex.One).DPad;
-            if (dpad.Down == ButtonState.Pressed)
-                direction += new Vector2(0, 1);
-            if (dpad.Up == ButtonState.Pressed)
-                direction += new Vector2(0, -1);
-            if (dpad.Left == ButtonState.Pressed)
-                direction += new Vector2(-1, 0);
-            if (dpad.Right == ButtonState.Pressed)
-                direction += new Vector2(1, 0);
+            Vector2 direction = Input.GetMoveDirection();
             Vector2 positionChange = direction * speed * (Single)gameTime.ElapsedGameTime.TotalSeconds;
             position += positionChange;
         }
