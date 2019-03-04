@@ -1,4 +1,5 @@
 ﻿using System;
+using ExplainingEveryString.Core;
 
 namespace ExplainingEveryString
 {   
@@ -10,7 +11,7 @@ namespace ExplainingEveryString
             using (EesGame game = new EesGame())
             {
                 game.Run();
-            } 
+            }
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
-namespace ExplainingEveryString
+namespace ExplainingEveryString.Core
 {
     public class EesGame : Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Texture2D sprite;
+        private Player player = null;
+
         
         public EesGame()
         {
@@ -36,6 +39,10 @@ namespace ExplainingEveryString
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            if (player == null)
+                player = new Player(sprite);
+            player.Move(gameTime);
+            
             base.Update(gameTime);
         }
 
@@ -43,7 +50,7 @@ namespace ExplainingEveryString
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, new Vector2(0, 0), Color.White);
+            player.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
