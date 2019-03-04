@@ -8,6 +8,7 @@ namespace ExplainingEveryString
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private Texture2D sprite;
         
         public EesGame()
         {
@@ -23,6 +24,7 @@ namespace ExplainingEveryString
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            sprite = Content.Load<Texture2D>(@"Sprites/Triangle");
         }
 
         protected override void UnloadContent()
@@ -40,6 +42,9 @@ namespace ExplainingEveryString
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
+            spriteBatch.Draw(sprite, new Vector2(0, 0), Color.White);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
