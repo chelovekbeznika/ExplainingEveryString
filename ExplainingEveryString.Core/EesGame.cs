@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ExplainingEveryString
 {
-    public class Game1 : Game
+    public class EesGame : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
         
-        public Game1()
+        public EesGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

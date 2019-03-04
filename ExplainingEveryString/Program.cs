@@ -7,8 +7,10 @@ namespace ExplainingEveryString
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (EesGame game = new EesGame())
+            {
                 game.Run();
+            } 
         }
     }
 }
