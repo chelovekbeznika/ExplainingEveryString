@@ -5,6 +5,12 @@ namespace ExplainingEveryString.Core
 {
     internal static class Input
     {
+        private static readonly Vector2 down = new Vector2(0, 1);
+        private static readonly Vector2 up = new Vector2(0, -1);
+        private static readonly Vector2 left = new Vector2(-1, 0);
+        private static readonly Vector2 right = new Vector2(1, 0);
+
+
         internal static Vector2 GetMoveDirection()
         {
             Vector2 direction = GetDpadDirection() + GetKeyboardDirection();
@@ -18,13 +24,13 @@ namespace ExplainingEveryString.Core
             Vector2 direction = new Vector2(0, 0);
             GamePadDPad dpad = GamePad.GetState(PlayerIndex.One).DPad;
             if (dpad.Down == ButtonState.Pressed)
-                direction += new Vector2(0, 1);
+                direction += down;
             if (dpad.Up == ButtonState.Pressed)
-                direction += new Vector2(0, -1);
+                direction += up;
             if (dpad.Left == ButtonState.Pressed)
-                direction += new Vector2(-1, 0);
+                direction += left;
             if (dpad.Right == ButtonState.Pressed)
-                direction += new Vector2(1, 0);
+                direction += right;
             return direction;
         }
 
@@ -33,13 +39,13 @@ namespace ExplainingEveryString.Core
             Vector2 direction = new Vector2(0, 0);
             KeyboardState keyboard = Keyboard.GetState();
             if (keyboard.IsKeyDown(Keys.S))
-                direction += new Vector2(0, 1);
+                direction += down;
             if (keyboard.IsKeyDown(Keys.W))
-                direction += new Vector2(0, -1);
+                direction += up;
             if (keyboard.IsKeyDown(Keys.A))
-                direction += new Vector2(-1, 0);
+                direction += left;
             if (keyboard.IsKeyDown(Keys.D))
-                direction += new Vector2(1, 0);
+                direction += right;
             return direction;
         }
     }
