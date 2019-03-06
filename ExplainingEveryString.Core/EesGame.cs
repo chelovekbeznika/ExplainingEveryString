@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -20,6 +21,8 @@ namespace ExplainingEveryString.Core
 
         protected override void Initialize()
         {
+            String fileName = "config.dat";
+            ConfigurationAccess.InitializeConfig(fileName);
             base.Initialize();
         }
 

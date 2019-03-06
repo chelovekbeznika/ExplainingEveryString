@@ -1,13 +1,16 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-
-namespace ExplainingEveryString.Core.Input
+﻿namespace ExplainingEveryString.Core.Input
 {
     internal static class PlayerInputFactory
     {
         internal static IPlayerInput Create()
         {
-            return new GamePadPlayerInput();
+            Configuration config = ConfigurationAccess.GetCurrentConfig();
+            switch (config.ControlDevice)
+            {
+                case ControlDevice.GamePad: return new GamePadPlayerInput();
+                case ControlDevice.Keyboard: return new KeyBoardPlayerInput();
+                default: throw new System.Exception("Badly configured input");
+            }
         }
     }
 }

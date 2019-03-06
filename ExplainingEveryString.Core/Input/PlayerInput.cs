@@ -31,14 +31,14 @@ namespace ExplainingEveryString.Core.Input
         protected override Vector2 GetAxesVectorFromDevice()
         {
             Vector2 direction = new Vector2(0, 0);
-            GamePadDPad dpad = GamePad.GetState(PlayerIndex.One).DPad;
-            if (dpad.Down == ButtonState.Pressed)
+            KeyboardState keyboard = Keyboard.GetState();
+            if (keyboard.IsKeyDown(Keys.S))
                 direction += down;
-            if (dpad.Up == ButtonState.Pressed)
+            if (keyboard.IsKeyDown(Keys.W))
                 direction += up;
-            if (dpad.Left == ButtonState.Pressed)
+            if (keyboard.IsKeyDown(Keys.A))
                 direction += left;
-            if (dpad.Right == ButtonState.Pressed)
+            if (keyboard.IsKeyDown(Keys.D))
                 direction += right;
             return direction;
         }
