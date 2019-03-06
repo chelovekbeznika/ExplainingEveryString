@@ -1,5 +1,6 @@
 ﻿using System;
 using ExplainingEveryString.Core;
+using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString
 {   
@@ -8,7 +9,7 @@ namespace ExplainingEveryString
         [STAThread]
         static void Main()
         {
-            using (EesGame game = new EesGame())
+            using (Game game = new EesGame())
             {
                 game.Run();
             }

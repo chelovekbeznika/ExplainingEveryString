@@ -11,8 +11,7 @@ namespace ExplainingEveryString.Core
         private SpriteBatch spriteBatch;
         private Texture2D sprite;
         private Player player = null;
-
-        
+       
         public EesGame()
         {
             graphics = new GraphicsDeviceManager(this);

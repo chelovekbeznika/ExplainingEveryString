@@ -43,7 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EesGame.cs" />
-    <Compile Include="Input.cs" />
+    <Compile Include="Input\PlayerInput.cs" />
+    <Compile Include="Input\PlayerInputFactory.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
