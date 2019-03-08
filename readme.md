@@ -2,7 +2,7 @@
 
 This repository belongs to youtube channel ["Explaining every string"](https://www.youtube.com/channel/UC90GNOUDTklc8gUUxRY4nGw)
 
-I'm making there videogame on "Monogame framework".
+I'm making here videogame on "Monogame framework".
 
 # How to start up?
 
@@ -10,19 +10,19 @@ First, you download assets project from [here](https://yadi.sk/d/BOZclJEuR9JhMw)
 
 Second, you recreating next folders structure:
 
-Explaining Every String
+|>Explaining Every String
 
-|>Build - Actually will be created Visual studio
+|>|>Build - Actually will be created by Visual studio
 
-|>Source
+|>|>Source
 
-|>|>ExplainingEveryString - Put github reposityry in this folder
+|>|>|>ExplainingEveryString - Put github repository in this folder
 
-|>Content
+|>|>Content
 
-|>|>Ready - Put monogame pipeline tool project with assets in this folder
+|>|>|>Ready - Put monogame pipeline tool project with assets in this folder
 
-Third, you VS studio solution and build debug or release version
+Third, open your VS studio solution and build debug or release version
 
 Fourth, in monogame pipeline tool project in project properties select "Debug" or "Release" config and build assets project.
 
