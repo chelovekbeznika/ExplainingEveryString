@@ -8,10 +8,11 @@ namespace ExplainingEveryString.Core
 {
     internal sealed class Player : GameObject
     {
-        private const String spriteName = "player";
+        internal const String CommonSpriteName = "player";
+
         private readonly Int32 speed = 100;
 
-        internal Player(EesGame game) : base(game, spriteName, new Vector2(0,0)) { }
+        internal Player() : base(CommonSpriteName, new Vector2(0,0)) { }
 
         internal void Move(GameTime gameTime)
         {

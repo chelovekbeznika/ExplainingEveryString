@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="EesGame.cs" />
     <Compile Include="GameObject.cs" />

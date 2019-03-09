@@ -5,8 +5,8 @@ namespace ExplainingEveryString.Core
 {
     internal class Mine : GameObject
     {
-        private const String spriteName = "mine";
+        internal const String CommonSpriteName = "mine";
 
-        internal Mine(EesGame game, Vector2 position) : base(game, spriteName, position) { }
+        internal Mine(Vector2 position) : base(CommonSpriteName, position) { }
     }
 }

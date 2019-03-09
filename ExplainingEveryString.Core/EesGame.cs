@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core
@@ -10,15 +9,13 @@ namespace ExplainingEveryString.Core
     public class EesGame : Game
     {
         private GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
 
         private Player player;
         private List<GameObject> gameObjects;
+        private Camera camera;
         private Dictionary<String, Texture2D> spritesStorage = new Dictionary<String, Texture2D>();
 
         private IEnumerable<GameObject> GameObjects { get => gameObjects; }
-
-        internal Dictionary<String, Texture2D> SpritesStorage { get => spritesStorage; }
        
         public EesGame()
         {
@@ -37,9 +34,9 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            spritesStorage["player"] = Content.Load<Texture2D>(@"Sprites/Rectangle");
-            spritesStorage["mine"] = Content.Load<Texture2D>(@"Sprites/Mine");
+            camera = new Camera(player, GraphicsDevice, spritesStorage);
+            spritesStorage[Player.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Rectangle");
+            spritesStorage[Mine.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Mine");
         }
 
         protected override void UnloadContent()
@@ -59,20 +56,23 @@ namespace ExplainingEveryString.Core
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
+
+            camera.Begin();
             foreach (GameObject go in GameObjects)
-                go.Draw(spriteBatch);
-            spriteBatch.End();
+                camera.Draw(go);
+            camera.End();
+
             base.Draw(gameTime);
         }
 
         private void InitializeGameObjects()
         {
-            player = new Player(this);
+            player = new Player();
             gameObjects = new List<GameObject>() {
                 player,
-                new Mine(this, new Vector2(100, 100)),
-                new Mine(this, new Vector2(200, 200))
+                new Mine(new Vector2(100, 100)),
+                new Mine(new Vector2(200, 200)),
+                new Mine(new Vector2(-300, -150))
             };
         }
     }
