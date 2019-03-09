@@ -6,28 +6,19 @@ using System;
 
 namespace ExplainingEveryString.Core
 {
-    internal class Player
+    internal sealed class Player : GameObject
     {
-        private Texture2D sprite;
-        private Vector2 position = new Vector2(0, 0);
-        private Int32 speed = 100;
+        private const String spriteName = "player";
+        private readonly Int32 speed = 100;
 
-        internal Player(Texture2D sprite)
-        {
-            this.sprite = sprite;
-        }
+        internal Player(EesGame game) : base(game, spriteName, new Vector2(0,0)) { }
 
         internal void Move(GameTime gameTime)
         {
             IPlayerInput playerInput = PlayerInputFactory.Create();
             Vector2 direction = playerInput.GetMoveDirection();
             Vector2 positionChange = direction * speed * (Single)gameTime.ElapsedGameTime.TotalSeconds;
-            position += positionChange;
-        }
-
-        internal void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(sprite, position, Color.White);
+            Position += positionChange;
         }
     }
 }

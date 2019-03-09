@@ -1,8 +1,9 @@
-﻿using ExplainingEveryString.Core.Input;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core
 {
@@ -10,8 +11,14 @@ namespace ExplainingEveryString.Core
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private Texture2D sprite;
-        private Player player = null;
+
+        private Player player;
+        private List<GameObject> gameObjects;
+        private Dictionary<String, Texture2D> spritesStorage = new Dictionary<String, Texture2D>();
+
+        private IEnumerable<GameObject> GameObjects { get => gameObjects; }
+
+        internal Dictionary<String, Texture2D> SpritesStorage { get => spritesStorage; }
        
         public EesGame()
         {
@@ -23,13 +30,16 @@ namespace ExplainingEveryString.Core
         {
             String fileName = "config.dat";
             ConfigurationAccess.InitializeConfig(fileName);
+            InitializeGameObjects();
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            sprite = Content.Load<Texture2D>(@"Sprites/Triangle");
+            spritesStorage["player"] = Content.Load<Texture2D>(@"Sprites/Rectangle");
+            spritesStorage["mine"] = Content.Load<Texture2D>(@"Sprites/Mine");
         }
 
         protected override void UnloadContent()
@@ -41,8 +51,6 @@ namespace ExplainingEveryString.Core
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (player == null)
-                player = new Player(sprite);
             player.Move(gameTime);
             
             base.Update(gameTime);
@@ -52,9 +60,20 @@ namespace ExplainingEveryString.Core
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            player.Draw(spriteBatch);
+            foreach (GameObject go in GameObjects)
+                go.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        private void InitializeGameObjects()
+        {
+            player = new Player(this);
+            gameObjects = new List<GameObject>() {
+                player,
+                new Mine(this, new Vector2(100, 100)),
+                new Mine(this, new Vector2(200, 200))
+            };
         }
     }
 }
