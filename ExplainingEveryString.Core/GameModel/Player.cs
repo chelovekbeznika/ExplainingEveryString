@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.GameModel
 {
     internal sealed class Player : GameObject
     {

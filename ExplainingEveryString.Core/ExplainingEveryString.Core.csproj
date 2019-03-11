@@ -46,12 +46,12 @@
     <Compile Include="Camera.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="EesGame.cs" />
-    <Compile Include="GameObject.cs" />
+    <Compile Include="GameModel\GameObject.cs" />
     <Compile Include="Input\ControlDevice.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />
-    <Compile Include="Mine.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="GameModel\Mine.cs" />
+    <Compile Include="GameModel\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

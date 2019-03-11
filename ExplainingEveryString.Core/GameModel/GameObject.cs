@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.GameModel
 {
     internal abstract class GameObject
     {
