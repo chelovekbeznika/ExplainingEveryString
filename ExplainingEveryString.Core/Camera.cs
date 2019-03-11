@@ -18,7 +18,6 @@ namespace ExplainingEveryString.Core
         internal Camera(Player player, GraphicsDevice graphicsDevice, Dictionary<String, Texture2D> spritesStorage,
             Single playerFramePercentageWidth, Single playerFramePercentageHeight)
         {
-            
             this.spriteBatch = new SpriteBatch(graphicsDevice);
             Viewport viewport = spriteBatch.GraphicsDevice.Viewport;
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
