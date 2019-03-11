@@ -10,7 +10,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal const String CommonSpriteName = "player";
 
-        private readonly Int32 speed = 100;
+        private readonly Int32 speed = 400;
 
         internal Player() : base(CommonSpriteName, new Vector2(0,0)) { }
 

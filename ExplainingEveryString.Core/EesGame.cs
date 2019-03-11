@@ -35,7 +35,10 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            camera = new Camera(player, GraphicsDevice, spritesStorage);
+            Configuration config = ConfigurationAccess.GetCurrentConfig();
+            camera = new Camera(player, GraphicsDevice, spritesStorage, 
+                config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
+
             spritesStorage[Player.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Rectangle");
             spritesStorage[Mine.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Mine");
         }

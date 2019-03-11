@@ -7,6 +7,8 @@ namespace ExplainingEveryString.Core
     internal class Configuration
     {
         internal ControlDevice ControlDevice { get; set; }
+        internal Int32 PlayerFramePercentageWidth { get; set; }
+        internal Int32 PlayerFramePercentageHeigth { get; set; }
     }
 
     internal static class ConfigurationAccess
@@ -25,6 +27,8 @@ namespace ExplainingEveryString.Core
                 String[] lines = File.ReadAllLines(fileName);
                 Configuration config = new Configuration();
                 config.ControlDevice = (ControlDevice)Enum.Parse(typeof(ControlDevice), lines[0]);
+                config.PlayerFramePercentageHeigth = Int32.Parse(lines[1]);
+                config.PlayerFramePercentageWidth = Int32.Parse(lines[2]);
                 configuration = config;
             }
             catch (Exception ex)
@@ -39,7 +43,12 @@ namespace ExplainingEveryString.Core
 
         private static Configuration GetDefaultConfig()
         {
-            return new Configuration() { ControlDevice = ControlDevice.Keyboard };
+            return new Configuration()
+            {
+                ControlDevice = ControlDevice.Keyboard,
+                PlayerFramePercentageWidth = 60,
+                PlayerFramePercentageHeigth = 60
+            };
         }
     }
 }

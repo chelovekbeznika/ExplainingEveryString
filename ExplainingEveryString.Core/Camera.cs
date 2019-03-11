@@ -12,19 +12,25 @@ namespace ExplainingEveryString.Core
         private SpriteBatch spriteBatch;
         private Player player;
         private Vector2 screenHalf;
+        private Vector2 cameraCenter;
+        private readonly Vector2 playerFrame;
 
-        private Vector2 CameraCenter { get => player.Position; }
-
-        internal Camera(Player player, GraphicsDevice graphicsDevice, Dictionary<String, Texture2D> spritesStorage)
+        internal Camera(Player player, GraphicsDevice graphicsDevice, Dictionary<String, Texture2D> spritesStorage,
+            Single playerFramePercentageWidth, Single playerFramePercentageHeight)
         {
+            
             this.spriteBatch = new SpriteBatch(graphicsDevice);
-            this.screenHalf = new Vector2
-            {
-                X = spriteBatch.GraphicsDevice.Viewport.Width / 2,
-                Y = spriteBatch.GraphicsDevice.Viewport.Height / 2
-            };
+            Viewport viewport = spriteBatch.GraphicsDevice.Viewport;
+            this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
+
             this.player = player;
+            this.cameraCenter = player.Position;
             this.spritesStorage = spritesStorage;
+            this.playerFrame = new Vector2()
+            {
+                X = screenHalf.X * playerFramePercentageWidth / 100,
+                Y = screenHalf.Y * playerFramePercentageHeight / 100
+            };
         }
 
         internal void Begin() => spriteBatch.Begin();
@@ -34,12 +40,32 @@ namespace ExplainingEveryString.Core
         internal void Draw(GameObject gameObject)
         {
             Texture2D sprite = spritesStorage[gameObject.SpriteName];
-
             Vector2 position = gameObject.Position;
             Vector2 worldPosition = new Vector2() { X = position.X - sprite.Width / 2, Y = position.Y - sprite.Height / 2 };
-            Vector2 cameraOffset = CameraCenter - screenHalf;
-            Vector2 drawPosition = worldPosition - cameraOffset;
+
+            Vector2 drawPosition = GetDrawPosition(worldPosition);
             spriteBatch.Draw(sprite, drawPosition, Color.White);
+        }
+
+        internal Vector2 GetDrawPosition(Vector2 worldPosition)
+        {
+            RecalculateCameraCenter();
+            Vector2 cameraOffset = cameraCenter - screenHalf;
+            Vector2 drawPosition = worldPosition - cameraOffset;
+            return drawPosition;
+        }
+
+        internal void RecalculateCameraCenter()
+        {
+            Vector2 currentDifference = player.Position - cameraCenter;
+            if (currentDifference.X > playerFrame.X)
+                cameraCenter.X += currentDifference.X - playerFrame.X;
+            if (currentDifference.X < -playerFrame.X)
+                cameraCenter.X += currentDifference.X + playerFrame.X;
+            if (currentDifference.Y > playerFrame.Y)
+                cameraCenter.Y += currentDifference.Y - playerFrame.Y;
+            if (currentDifference.Y < -playerFrame.Y)
+                cameraCenter.Y += currentDifference.Y + playerFrame.Y;
         }
     }
 }
