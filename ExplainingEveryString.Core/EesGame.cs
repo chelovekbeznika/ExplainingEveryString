@@ -11,13 +11,10 @@ namespace ExplainingEveryString.Core
     {
         private GraphicsDeviceManager graphics;
 
-        private Player player;
-        private List<GameObject> gameObjects;
         private Camera camera;
         private Dictionary<String, Texture2D> spritesStorage = new Dictionary<String, Texture2D>();
+        private Level level;
 
-        private IEnumerable<GameObject> GameObjects { get => gameObjects; }
-       
         public EesGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -28,7 +25,8 @@ namespace ExplainingEveryString.Core
         {
             String fileName = "config.dat";
             ConfigurationAccess.InitializeConfig(fileName);
-            InitializeGameObjects();
+            level = new Level();
+            level.Lost += GameLost;
 
             base.Initialize();
         }
@@ -36,7 +34,7 @@ namespace ExplainingEveryString.Core
         protected override void LoadContent()
         {
             Configuration config = ConfigurationAccess.GetCurrentConfig();
-            camera = new Camera(player, GraphicsDevice, spritesStorage, 
+            camera = new Camera(level, GraphicsDevice, spritesStorage,
                 config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
 
             spritesStorage[Player.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Rectangle");
@@ -52,32 +50,20 @@ namespace ExplainingEveryString.Core
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            player.Move(gameTime);
-            
+            level.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            camera.Begin();
-            foreach (GameObject go in GameObjects)
-                camera.Draw(go);
-            camera.End();
-
+            camera.Draw();
             base.Draw(gameTime);
         }
 
-        private void InitializeGameObjects()
+        private void GameLost(Object sender, EventArgs args)
         {
-            player = new Player();
-            gameObjects = new List<GameObject>() {
-                player,
-                new Mine(new Vector2(100, 100)),
-                new Mine(new Vector2(200, 200)),
-                new Mine(new Vector2(-300, -150))
-            };
+            Exit();
         }
     }
 }

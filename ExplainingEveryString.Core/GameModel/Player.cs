@@ -12,13 +12,16 @@ namespace ExplainingEveryString.Core.GameModel
 
         private readonly Int32 speed = 400;
 
+        protected override Single Height => 32;
+        protected override Single Width => 32;
+
         internal Player() : base(CommonSpriteName, new Vector2(0,0)) { }
 
-        internal void Move(GameTime gameTime)
+        internal void Move(Single elapsedSeconds)
         {
             IPlayerInput playerInput = PlayerInputFactory.Create();
             Vector2 direction = playerInput.GetMoveDirection();
-            Vector2 positionChange = direction * speed * (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 positionChange = direction * speed * elapsedSeconds;
             Position += positionChange;
         }
     }

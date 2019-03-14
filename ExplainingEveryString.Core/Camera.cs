@@ -10,20 +10,20 @@ namespace ExplainingEveryString.Core
     {
         private Dictionary<String, Texture2D> spritesStorage;
         private SpriteBatch spriteBatch;
-        private Player player;
+        private Level level;
         private Vector2 screenHalf;
         private Vector2 cameraCenter;
         private readonly Vector2 playerFrame;
 
-        internal Camera(Player player, GraphicsDevice graphicsDevice, Dictionary<String, Texture2D> spritesStorage,
+        internal Camera(Level level, GraphicsDevice graphicsDevice, Dictionary<String, Texture2D> spritesStorage,
             Single playerFramePercentageWidth, Single playerFramePercentageHeight)
         {
             this.spriteBatch = new SpriteBatch(graphicsDevice);
             Viewport viewport = spriteBatch.GraphicsDevice.Viewport;
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
 
-            this.player = player;
-            this.cameraCenter = player.Position;
+            this.level = level;
+            this.cameraCenter = level.PlayerPosition;
             this.spritesStorage = spritesStorage;
             this.playerFrame = new Vector2()
             {
@@ -32,11 +32,15 @@ namespace ExplainingEveryString.Core
             };
         }
 
-        internal void Begin() => spriteBatch.Begin();
+        internal void Draw()
+        {
+            spriteBatch.Begin();
+            foreach (GameObject go in level.GameObjects)
+                Draw(go);
+            spriteBatch.End();
+        }
 
-        internal void End() => spriteBatch.End();
-
-        internal void Draw(GameObject gameObject)
+        private void Draw(GameObject gameObject)
         {
             Texture2D sprite = spritesStorage[gameObject.SpriteName];
             Vector2 position = gameObject.Position;
@@ -46,7 +50,7 @@ namespace ExplainingEveryString.Core
             spriteBatch.Draw(sprite, drawPosition, Color.White);
         }
 
-        internal Vector2 GetDrawPosition(Vector2 worldPosition)
+        private Vector2 GetDrawPosition(Vector2 worldPosition)
         {
             RecalculateCameraCenter();
             Vector2 cameraOffset = cameraCenter - screenHalf;
@@ -56,9 +60,9 @@ namespace ExplainingEveryString.Core
             return drawPosition;
         }
 
-        internal void RecalculateCameraCenter()
+        private void RecalculateCameraCenter()
         {
-            Vector2 currentDifference = player.Position - cameraCenter;
+            Vector2 currentDifference = level.PlayerPosition - cameraCenter;
             if (currentDifference.X > playerFrame.X)
                 cameraCenter.X += currentDifference.X - playerFrame.X;
             if (currentDifference.X < -playerFrame.X)
