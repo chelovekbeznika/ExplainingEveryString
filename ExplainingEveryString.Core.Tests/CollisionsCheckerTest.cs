@@ -73,6 +73,14 @@ namespace ExplainingEveryString.Core.Tests
             AssertHitboxesRelations(true, first, second);
         }
 
+        [Test]
+        public void HitboxLiesAtRight()
+        {
+            Hitbox first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
+            Hitbox second = new Hitbox { Bottom = 0, Top = 20, Left = 40, Right = 60 };
+            AssertHitboxesRelations(false, first, second);
+        }
+
         private void AssertHitboxesRelations(Boolean collides, Hitbox first, Hitbox second)
         {
             AssertHitboxesCollides(collides, first, second);
@@ -86,7 +94,7 @@ namespace ExplainingEveryString.Core.Tests
 
         private Hitbox FlipAroundXAxis(Hitbox hitbox)
         {
-            return new Hitbox { Bottom = hitbox.Bottom, Top = hitbox.Top, Left = -hitbox.Right, Right = hitbox.Right };
+            return new Hitbox { Bottom = hitbox.Bottom, Top = hitbox.Top, Left = -hitbox.Right, Right = -hitbox.Left };
         }
 
         private Hitbox FlipAroundYAxis(Hitbox hitbox)

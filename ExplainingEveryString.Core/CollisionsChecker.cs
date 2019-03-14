@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Core
         internal Boolean Collides(Hitbox first, Hitbox second)
         {
             Boolean secondLiesCompletelyAtLeft = second.Right < first.Left;
-            Boolean secondLiesCompletelyAtRight = second.Left > second.Right;
+            Boolean secondLiesCompletelyAtRight = second.Left > first.Right;
             Boolean intersectsOnXAxis = !(secondLiesCompletelyAtLeft || secondLiesCompletelyAtRight);
             Boolean secondLiesCompletelyAtBottom = second.Top < first.Bottom;
             Boolean secondLiesCompletelyAtTop = second.Bottom > first.Top;
