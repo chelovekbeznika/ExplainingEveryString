@@ -49,7 +49,6 @@ namespace ExplainingEveryString.Core.Input
         protected override Vector2 GetAxesVectorFromDevice()
         {
             Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
-            direction.Y *= -1;
             return direction;
         }
     }

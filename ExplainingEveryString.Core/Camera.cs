@@ -51,6 +51,8 @@ namespace ExplainingEveryString.Core
             RecalculateCameraCenter();
             Vector2 cameraOffset = cameraCenter - screenHalf;
             Vector2 drawPosition = worldPosition - cameraOffset;
+            Single screenHeight = spriteBatch.GraphicsDevice.Viewport.Height;
+            drawPosition.Y = screenHeight - drawPosition.Y;
             return drawPosition;
         }
 
