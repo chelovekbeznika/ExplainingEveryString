@@ -47,6 +47,7 @@
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="EesGame.cs" />
+    <Compile Include="GameModel\FrictionCorrector.cs" />
     <Compile Include="GameModel\GameObject.cs" />
     <Compile Include="GameModel\Hitbox.cs" />
     <Compile Include="GameModel\Level.cs" />

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollisionsCheckerTest.cs" />
+    <Compile Include="FrictionTests.cs" />
     <Compile Include="HitboxesCreationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

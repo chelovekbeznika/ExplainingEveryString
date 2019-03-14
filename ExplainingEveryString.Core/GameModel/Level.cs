@@ -9,7 +9,7 @@ namespace ExplainingEveryString.Core.GameModel
     internal class Level
     {
         private Player player;
-        private List<GameObject> gameObjects;
+        private List<GameObject> gameObjects; 
 
         internal List<GameObject> GameObjects => gameObjects;
         internal Vector2 PlayerPosition => player.Position;
