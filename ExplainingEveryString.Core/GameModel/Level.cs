@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Blueprints;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -9,14 +11,16 @@ namespace ExplainingEveryString.Core.GameModel
     internal class Level
     {
         private Player player;
-        private List<GameObject> gameObjects; 
+        private List<Mine> mines;
+        private GameObjectsFactory factory;
 
-        internal List<GameObject> GameObjects => gameObjects;
+        internal List<IDrawable> ObjectsToDraw => new List<IDrawable> { player }.Concat(mines).ToList();
         internal Vector2 PlayerPosition => player.Position;
         internal event GameLost Lost;
 
-        internal Level()
+        internal Level(GameObjectsFactory factory)
         {
+            this.factory = factory;
             InitializeGameObjects();
         }
 
@@ -28,26 +32,21 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void InitializeGameObjects()
         {
-            player = new Player();
-            gameObjects = new List<GameObject>() {
-                player,
-                new Mine(new Vector2(100, 100)),
-                new Mine(new Vector2(200, 200)),
-                new Mine(new Vector2(-300, -150))
-            };
+            player = factory.Construct<Player, PlayerBlueprint>(new Vector2(0, 0));
+            Vector2[] minePositions = 
+                new Vector2[] { new Vector2(100, 100), new Vector2(200, 200), new Vector2(-300, -150) };
+
+            mines = factory.Construct<Mine, MineBlueprint>(minePositions);
         }
 
         private void CheckCollisions()
         {
             CollisionsChecker collisionsChecker = new CollisionsChecker();
-            foreach (GameObject gameObject in gameObjects)
+            foreach (Mine mine in mines)
             {
-                if (gameObject is Mine)
+                if (collisionsChecker.Collides(mine.GetHitbox(), player.GetHitbox()))
                 {
-                    if (collisionsChecker.Collides(gameObject.GetHitbox(), player.GetHitbox()))
-                    {
-                        Lost?.Invoke(this, EventArgs.Empty);
-                    }
+                    Lost?.Invoke(this, EventArgs.Empty);
                 }
             }
         }

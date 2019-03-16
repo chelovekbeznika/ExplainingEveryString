@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.GameModel;
+﻿using ExplainingEveryString.Core.Blueprints;
+using ExplainingEveryString.Core.GameModel;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -25,7 +26,8 @@ namespace ExplainingEveryString.Core
         {
             String fileName = "config.dat";
             ConfigurationAccess.InitializeConfig(fileName);
-            level = new Level();
+            GameObjectsFactory factory = new GameObjectsFactory(new HardCodeBlueprintsLoader());
+            level = new Level(factory);
             level.Lost += GameLost;
 
             base.Initialize();
@@ -37,8 +39,8 @@ namespace ExplainingEveryString.Core
             camera = new Camera(level, GraphicsDevice, spritesStorage,
                 config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
 
-            spritesStorage[Player.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Rectangle");
-            spritesStorage[Mine.CommonSpriteName] = Content.Load<Texture2D>(@"Sprites/Mine");
+            spritesStorage["player"] = Content.Load<Texture2D>(@"Sprites/Rectangle");
+            spritesStorage["mine"] = Content.Load<Texture2D>(@"Sprites/Mine");
         }
 
         protected override void UnloadContent()

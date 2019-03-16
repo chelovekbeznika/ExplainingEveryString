@@ -43,13 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blueprints\Blueprint.cs" />
+    <Compile Include="Blueprints\BlueprintsLoader.cs" />
+    <Compile Include="Blueprints\MineBlueprint.cs" />
+    <Compile Include="Blueprints\PlayerBlueprint.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="EesGame.cs" />
     <Compile Include="GameModel\FrictionCorrector.cs" />
     <Compile Include="GameModel\GameObject.cs" />
+    <Compile Include="GameModel\GameObjectsFactory.cs" />
     <Compile Include="GameModel\Hitbox.cs" />
+    <Compile Include="GameModel\IDrawable.cs" />
     <Compile Include="GameModel\Level.cs" />
     <Compile Include="Input\ControlDevice.cs" />
     <Compile Include="Input\PlayerInput.cs" />

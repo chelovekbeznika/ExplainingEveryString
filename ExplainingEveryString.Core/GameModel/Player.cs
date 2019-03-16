@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Input;
+﻿using ExplainingEveryString.Core.Blueprints;
+using ExplainingEveryString.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -6,18 +7,18 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal sealed class Player : GameObject
+    internal sealed class Player : GameObject<PlayerBlueprint>
     {
-        internal const String CommonSpriteName = "player";
-
         private Vector2 speed = new Vector2(0,0);
-        private readonly Single maxSpeed = 300;
-        private readonly Single maxAcceleration = 100;
-
-        protected override Single Height => 32;
-        protected override Single Width => 32;
-
-        internal Player() : base(CommonSpriteName, new Vector2(0,0)) { }
+        private Single maxSpeed;
+        private Single maxAcceleration;
+        
+        protected override void Construct(PlayerBlueprint blueprint)
+        {
+            base.Construct(blueprint);
+            maxSpeed = blueprint.MaxSpeed;
+            maxAcceleration = blueprint.MaxAcceleration;
+        }
 
         internal void Move(Single elapsedSeconds)
         {
