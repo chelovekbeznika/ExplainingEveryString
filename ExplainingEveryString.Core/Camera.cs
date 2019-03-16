@@ -44,20 +44,27 @@ namespace ExplainingEveryString.Core
         {
             Texture2D sprite = spritesStorage[gameObject.SpriteName];
             Vector2 position = gameObject.Position;
-            Vector2 worldPosition = new Vector2() { X = position.X - sprite.Width / 2, Y = position.Y - sprite.Height / 2 };
+            Vector2 drawPosition = GetDrawPosition(position, sprite);
 
-            Vector2 drawPosition = GetDrawPosition(worldPosition);
             spriteBatch.Draw(sprite, drawPosition, Color.White);
         }
 
-        private Vector2 GetDrawPosition(Vector2 worldPosition)
+        private Vector2 GetDrawPosition(Vector2 position, Texture2D sprite)
         {
             RecalculateCameraCenter();
+
             Vector2 cameraOffset = cameraCenter - screenHalf;
-            Vector2 drawPosition = worldPosition - cameraOffset;
+            Vector2 centerOfSpriteOnScreen = position - cameraOffset;
             Single screenHeight = spriteBatch.GraphicsDevice.Viewport.Height;
-            drawPosition.Y = screenHeight - drawPosition.Y;
-            return drawPosition;
+            centerOfSpriteOnScreen.Y = screenHeight - centerOfSpriteOnScreen.Y;
+
+            Vector2 leftUpperCornerPosition = new Vector2()
+            {
+                X = centerOfSpriteOnScreen.X - sprite.Width / 2,
+                Y = centerOfSpriteOnScreen.Y - sprite.Height / 2
+            };
+
+            return leftUpperCornerPosition;
         }
 
         private void RecalculateCameraCenter()
