@@ -8,30 +8,44 @@ namespace ExplainingEveryString.Core.Blueprints
 {
     internal interface IBlueprintsLoader
     {
-        List<Blueprint> Load();
+        void Load();
+        List<Blueprint> GetBlueprints();
+        List<String> GetNeccessarySprites();
     }
 
     internal class HardCodeBlueprintsLoader : IBlueprintsLoader
     {
-        public List<Blueprint> Load()
+        private List<Blueprint> blueprints;
+
+        public void Load()
         {
-            return new List<Blueprint>()
+            blueprints = new List<Blueprint>()
             {
                 new MineBlueprint()
                 {
-                    DefaultSpriteName = "mine",
+                    DefaultSpriteName = @"Sprites/Mine",
                     Height = 16,
                     Width = 16
                 },
                 new PlayerBlueprint()
                 {
-                    DefaultSpriteName = "player",
+                    DefaultSpriteName = @"Sprites/Rectangle",
                     Height = 32,
                     Width = 32,
                     MaxAcceleration = 200,
                     MaxSpeed = 200
                 }
             };
+        }
+
+        public List<Blueprint> GetBlueprints()
+        {
+            return blueprints;
+        }
+
+        public List<string> GetNeccessarySprites()
+        {
+            return blueprints.Select(blueprint => blueprint.DefaultSpriteName).ToList();
         }
     }
 }

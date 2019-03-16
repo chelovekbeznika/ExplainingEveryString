@@ -12,9 +12,10 @@ namespace ExplainingEveryString.Core
     {
         private GraphicsDeviceManager graphics;
 
-        private Camera camera;
         private Dictionary<String, Texture2D> spritesStorage = new Dictionary<String, Texture2D>();
+        private IBlueprintsLoader blueprintsLoader = new HardCodeBlueprintsLoader();
         private Level level;
+        private Camera camera;
 
         public EesGame()
         {
@@ -26,7 +27,11 @@ namespace ExplainingEveryString.Core
         {
             String fileName = "config.dat";
             ConfigurationAccess.InitializeConfig(fileName);
-            GameObjectsFactory factory = new GameObjectsFactory(new HardCodeBlueprintsLoader());
+
+            blueprintsLoader = new HardCodeBlueprintsLoader();
+            blueprintsLoader.Load();
+
+            GameObjectsFactory factory = new GameObjectsFactory(blueprintsLoader);
             level = new Level(factory);
             level.Lost += GameLost;
 
@@ -39,8 +44,15 @@ namespace ExplainingEveryString.Core
             camera = new Camera(level, GraphicsDevice, spritesStorage,
                 config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
 
-            spritesStorage["player"] = Content.Load<Texture2D>(@"Sprites/Rectangle");
-            spritesStorage["mine"] = Content.Load<Texture2D>(@"Sprites/Mine");
+            FillSpritesStorage();
+        }
+
+        private void FillSpritesStorage()
+        {
+            foreach (String spriteName in blueprintsLoader.GetNeccessarySprites())
+            {
+                spritesStorage[spriteName] = Content.Load<Texture2D>(spriteName);
+            }
         }
 
         protected override void UnloadContent()

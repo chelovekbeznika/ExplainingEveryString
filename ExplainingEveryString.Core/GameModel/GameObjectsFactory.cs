@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal GameObjectsFactory(IBlueprintsLoader blueprintsLoader)
         {
-            List<Blueprint> blueprints = blueprintsLoader.Load();
+            List<Blueprint> blueprints = blueprintsLoader.GetBlueprints();
             foreach (Blueprint blueprint in blueprints)
             {
                 blueprintsStorage.Add(blueprint.GetType(), blueprint);
