@@ -12,9 +12,9 @@ namespace ExplainingEveryString.Core.GameModel
     {
         private Player player;
         private List<Mine> mines;
+        private List<PlayerBullet> playerBullets = new List<PlayerBullet>();
         private GameObjectsFactory factory;
 
-        internal List<IDrawable> ObjectsToDraw => new List<IDrawable> { player }.Concat(mines).ToList();
         internal Vector2 PlayerPosition => player.Position;
         internal event GameLost Lost;
 
@@ -26,13 +26,24 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Update(Single elapsedSeconds)
         {
-            player.Move(elapsedSeconds);
+            player.Update(elapsedSeconds);
+            foreach (PlayerBullet playerBullet in playerBullets)
+            {
+                playerBullet.Update(elapsedSeconds);
+            }
             CheckCollisions();
+            SendDeadToHeaven();
+        }
+
+        internal IEnumerable<IDrawable> GetObjectsToDraw()
+        {
+            return new List<IDrawable> { player }.Concat(mines).Concat(playerBullets);
         }
 
         private void InitializeGameObjects()
         {
             player = factory.Construct<Player, PlayerBlueprint>(new Vector2(0, 0));
+            player.PlayerShoot += PlayerShoot;
             Vector2[] minePositions = 
                 new Vector2[] { new Vector2(100, 100), new Vector2(200, 200), new Vector2(-300, -150) };
 
@@ -49,6 +60,29 @@ namespace ExplainingEveryString.Core.GameModel
                     Lost?.Invoke(this, EventArgs.Empty);
                 }
             }
+            foreach (PlayerBullet playerBullet in playerBullets)
+            {
+                foreach (Mine mine in mines)
+                {
+                    if (collisionsChecker.Collides(mine.GetHitbox(), playerBullet.Position))
+                    {
+                        mine.TakeDamage();
+                        playerBullet.RegisterCollision();
+                    }
+                }
+            }
+        }
+
+        private void SendDeadToHeaven()
+        {
+            playerBullets = playerBullets.Where(playerBullet => playerBullet.IsAlive()).ToList();
+            mines = mines.Where(mine => mine.IsAlive()).ToList();
+        }
+
+        private void PlayerShoot(Object sender, PlayerShootEventArgs args)
+        {
+            PlayerBullet playerBullet = args.PlayerBullet;
+            playerBullets.Add(playerBullet);
         }
     }
 }

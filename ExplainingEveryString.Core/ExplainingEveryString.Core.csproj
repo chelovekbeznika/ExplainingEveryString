@@ -56,7 +56,9 @@
     <Compile Include="GameModel\GameObjectsFactory.cs" />
     <Compile Include="GameModel\Hitbox.cs" />
     <Compile Include="GameModel\IDrawable.cs" />
+    <Compile Include="GameModel\IUpdatable.cs" />
     <Compile Include="GameModel\Level.cs" />
+    <Compile Include="GameModel\PlayerBullet.cs" />
     <Compile Include="Input\ControlDevice.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />

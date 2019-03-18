@@ -10,7 +10,15 @@ namespace ExplainingEveryString.Core.Blueprints
     {
         void Load();
         List<Blueprint> GetBlueprints();
-        List<String> GetNeccessarySprites();
+    }
+
+    internal static class IBlueprintsLoaderExtenstions
+    {
+        internal static List<String> GetNeccessarySprites(this IBlueprintsLoader loader)
+        {
+            List<Blueprint> blueprints = loader.GetBlueprints();
+            return blueprints.SelectMany(blueprint => blueprint.GetSprites()).ToList();
+        }
     }
 
     internal class HardCodeBlueprintsLoader : IBlueprintsLoader
@@ -33,7 +41,11 @@ namespace ExplainingEveryString.Core.Blueprints
                     Height = 32,
                     Width = 32,
                     MaxAcceleration = 200,
-                    MaxSpeed = 200
+                    MaxSpeed = 200,
+                    BulletSpeed = 800,
+                    FireRate = 1,
+                    WeaponRange = 400,
+                    BulletSpriteName = @"Sprites/PlayerBullet"
                 }
             };
         }
@@ -41,11 +53,6 @@ namespace ExplainingEveryString.Core.Blueprints
         public List<Blueprint> GetBlueprints()
         {
             return blueprints;
-        }
-
-        public List<string> GetNeccessarySprites()
-        {
-            return blueprints.Select(blueprint => blueprint.DefaultSpriteName).ToList();
         }
     }
 }

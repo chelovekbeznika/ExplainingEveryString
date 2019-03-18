@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace ExplainingEveryString.Core.Input
 {
     internal interface IPlayerInput
     {
         Vector2 GetMoveDirection();
+        Boolean IsFiring();
     }
 
     internal abstract class PlayerInput : IPlayerInput
@@ -19,6 +21,8 @@ namespace ExplainingEveryString.Core.Input
                 direction.Normalize();
             return direction;
         }
+
+        public abstract Boolean IsFiring();
     }
 
     internal class KeyBoardPlayerInput : PlayerInput
@@ -42,6 +46,11 @@ namespace ExplainingEveryString.Core.Input
                 direction += right;
             return direction;
         }
+
+        public override bool IsFiring()
+        {
+            return Keyboard.GetState().IsKeyDown(Keys.Space);
+        }
     }
 
     internal class GamePadPlayerInput : PlayerInput
@@ -50,6 +59,11 @@ namespace ExplainingEveryString.Core.Input
         {
             Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
             return direction;
+        }
+
+        public override bool IsFiring()
+        {
+            return GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A);
         }
     }
 }

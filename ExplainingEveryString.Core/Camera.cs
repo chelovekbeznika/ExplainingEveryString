@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core
         internal void Draw()
         {
             spriteBatch.Begin();
-            foreach (GameModel.IDrawable objectToDraw in level.ObjectsToDraw)
+            foreach (GameModel.IDrawable objectToDraw in level.GetObjectsToDraw())
                 Draw(objectToDraw);
             spriteBatch.End();
         }

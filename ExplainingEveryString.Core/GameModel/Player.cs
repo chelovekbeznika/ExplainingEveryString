@@ -1,23 +1,52 @@
 ﻿using ExplainingEveryString.Core.Blueprints;
 using ExplainingEveryString.Core.Input;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
     internal sealed class Player : GameObject<PlayerBlueprint>
     {
-        private Vector2 speed = new Vector2(0,0);
+        internal event EventHandler<PlayerShootEventArgs> PlayerShoot;
+
+        private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
         private Single maxAcceleration;
-        
+        private Single shootCooldown;
+        private Single timeTillNextShoot;
+        private Single bulletSpeed;
+        private String bulletSprite;
+        private Single range;
+        private IPlayerInput playerInput;
+
         protected override void Construct(PlayerBlueprint blueprint)
         {
             base.Construct(blueprint);
+            playerInput = PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
+            shootCooldown = 1 / blueprint.FireRate;
+            timeTillNextShoot = shootCooldown;
+            bulletSpeed = blueprint.BulletSpeed;
+            bulletSprite = blueprint.BulletSpriteName;
+            range = blueprint.WeaponRange;
+        }
+
+        internal void Update(Single elapsedSeconds)
+        {
+            Shoot(elapsedSeconds);
+            Move(elapsedSeconds);
+        }
+
+        internal void Shoot(Single elapsedSeconds)
+        {
+            timeTillNextShoot -= elapsedSeconds;
+            if (timeTillNextShoot < 0 && playerInput.IsFiring())
+            {
+                PlayerBullet bullet = new PlayerBullet(bulletSprite, Position, new Vector2(bulletSpeed, 0), range);
+                PlayerShoot?.Invoke(this, new PlayerShootEventArgs { PlayerBullet = bullet });
+                timeTillNextShoot += shootCooldown;
+            }
         }
 
         internal void Move(Single elapsedSeconds)
@@ -46,9 +75,13 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Vector2 GetAcceleration()
         {
-            IPlayerInput playerInput = PlayerInputFactory.Create();
             Vector2 direction = playerInput.GetMoveDirection();
             return direction * maxAcceleration;
         }
+    }
+
+    internal class PlayerShootEventArgs : EventArgs
+    {
+        internal PlayerBullet PlayerBullet { get; set; }
     }
 }

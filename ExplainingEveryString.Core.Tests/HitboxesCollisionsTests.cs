@@ -5,7 +5,7 @@ using System;
 namespace ExplainingEveryString.Core.Tests
 {
     [TestFixture]
-    public class CollisionsCheckerTest
+    public class HitboxesCollisionsTests
     {
         private CollisionsChecker collisionsChecker;
 
