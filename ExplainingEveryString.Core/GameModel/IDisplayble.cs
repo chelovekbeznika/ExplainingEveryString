@@ -3,7 +3,7 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal interface IDrawable
+    internal interface IDisplayble
     {
         String CurrentSpriteName { get; }
         Vector2 Position { get; }
