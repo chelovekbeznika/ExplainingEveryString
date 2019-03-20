@@ -47,6 +47,7 @@
     <Compile Include="Blueprints\BlueprintsLoader.cs" />
     <Compile Include="Blueprints\MineBlueprint.cs" />
     <Compile Include="Blueprints\PlayerBlueprint.cs" />
+    <Compile Include="Blueprints\PlayerWeaponBlueprint.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="Configuration.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="GameModel\IUpdatable.cs" />
     <Compile Include="GameModel\Level.cs" />
     <Compile Include="GameModel\PlayerBullet.cs" />
+    <Compile Include="GameModel\PlayerWeapon.cs" />
     <Compile Include="Input\ControlDevice.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />

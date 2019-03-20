@@ -7,52 +7,26 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal sealed class Player : GameObject<PlayerBlueprint>
     {
-        internal event EventHandler<PlayerShootEventArgs> PlayerShoot;
-
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
         private Single maxAcceleration;
-        private Single shootCooldown;
-        private Single timeTillNextShoot;
-        private Single bulletSpeed;
-        private String bulletSprite;
-        private Single range;
-        private IPlayerInput playerInput;
+        private IPlayerInput input;
+
+        internal PlayerWeapon Weapon { get; private set; }
 
         protected override void Construct(PlayerBlueprint blueprint)
         {
             base.Construct(blueprint);
-            playerInput = PlayerInputFactory.Create();
+            input = PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
-            shootCooldown = 1 / blueprint.FireRate;
-            timeTillNextShoot = shootCooldown;
-            bulletSpeed = blueprint.BulletSpeed;
-            bulletSprite = blueprint.BulletSpriteName;
-            range = blueprint.WeaponRange;
+            Weapon = new PlayerWeapon(blueprint.Weapon, input, () => Position);
         }
 
         internal void Update(Single elapsedSeconds)
         {
-            CheckWeapon(elapsedSeconds);
+            Weapon.Check(elapsedSeconds);
             Move(elapsedSeconds);
-        }
-
-        internal void CheckWeapon(Single elapsedSeconds)
-        {
-            timeTillNextShoot -= elapsedSeconds;
-            if (timeTillNextShoot < 0 && playerInput.IsFiring())
-            {
-                Shoot();
-                timeTillNextShoot += shootCooldown;
-            }
-        }
-
-        private void Shoot()
-        {
-            Vector2 direction = playerInput.GetFireDirection();
-            PlayerBullet bullet = new PlayerBullet(bulletSprite, Position, direction * bulletSpeed, range);
-            PlayerShoot?.Invoke(this, new PlayerShootEventArgs { PlayerBullet = bullet });
         }
 
         internal void Move(Single elapsedSeconds)
@@ -81,7 +55,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Vector2 GetAcceleration()
         {
-            Vector2 direction = playerInput.GetMoveDirection();
+            Vector2 direction = input.GetMoveDirection();
             return direction * maxAcceleration;
         }
     }

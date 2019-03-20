@@ -42,10 +42,13 @@ namespace ExplainingEveryString.Core.Blueprints
                     Width = 32,
                     MaxAcceleration = 200,
                     MaxSpeed = 200,
-                    BulletSpeed = 800,
-                    FireRate = 5,
-                    WeaponRange = 2000,
-                    BulletSpriteName = @"Sprites/PlayerBullet"
+                    Weapon = new PlayerWeaponBlueprint()
+                    {
+                        BulletSpeed = 800,
+                        FireRate = 5,
+                        WeaponRange = 2000,
+                        BulletSpriteName = @"Sprites/PlayerBullet"
+                    }
                 }
             };
         }

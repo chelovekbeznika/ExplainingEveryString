@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.GameModel
         private void InitializeGameObjects()
         {
             player = factory.Construct<Player, PlayerBlueprint>(new Vector2(0, 0));
-            player.PlayerShoot += PlayerShoot;
+            player.Weapon.Shoot += PlayerShoot;
             Vector2[] minePositions = 
                 new Vector2[] { new Vector2(100, 100), new Vector2(200, 200), new Vector2(-300, -150) };
 

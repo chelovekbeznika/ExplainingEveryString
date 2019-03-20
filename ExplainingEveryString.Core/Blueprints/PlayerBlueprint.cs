@@ -10,14 +10,11 @@ namespace ExplainingEveryString.Core.Blueprints
     {
         internal Single MaxSpeed { get; set; }
         internal Single MaxAcceleration { get; set; }
-        internal Single FireRate { get; set; }
-        internal Single BulletSpeed { get; set; }
-        internal Single WeaponRange { get; set; }
-        internal String BulletSpriteName { get; set; }
+        internal PlayerWeaponBlueprint Weapon { get; set; }
 
         internal override IEnumerable<string> GetSprites()
         {
-            return new String[] { DefaultSpriteName, BulletSpriteName };
+            return new String[] { DefaultSpriteName, Weapon.BulletSpriteName };
         }
     }
 }

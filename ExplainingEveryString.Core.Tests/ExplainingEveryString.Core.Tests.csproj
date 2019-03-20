@@ -54,6 +54,7 @@
     <Compile Include="HitboxesCollisionsTests.cs" />
     <Compile Include="FrictionTests.cs" />
     <Compile Include="HitboxesCreationTests.cs" />
+    <Compile Include="PlayerWeaponTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
