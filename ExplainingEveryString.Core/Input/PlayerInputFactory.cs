@@ -8,7 +8,7 @@
             switch (config.ControlDevice)
             {
                 case ControlDevice.GamePad: return new GamePadPlayerInput();
-                case ControlDevice.Keyboard: return new KeyBoardPlayerInput();
+                case ControlDevice.Keyboard: return new KeyBoardMousePlayerInput();
                 default: throw new System.Exception("Badly configured input");
             }
         }

@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +14,11 @@ namespace ExplainingEveryString.Core
         private Level level;
         private Vector2 screenHalf;
         private Vector2 cameraCenter;
+        private Vector2 playerPositionOnScreen;
         private readonly Vector2 playerFrame;
+        private Single screenHeight;
+
+        internal Vector2 PlayerPositionOnScreen => playerPositionOnScreen;
 
         internal Camera(Level level, GraphicsDevice graphicsDevice, Dictionary<String, Texture2D> spritesStorage,
             Single playerFramePercentageWidth, Single playerFramePercentageHeight)
@@ -21,6 +26,7 @@ namespace ExplainingEveryString.Core
             this.spriteBatch = new SpriteBatch(graphicsDevice);
             Viewport viewport = spriteBatch.GraphicsDevice.Viewport;
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
+            this.screenHeight = viewport.Height;
 
             this.level = level;
             this.cameraCenter = level.PlayerPosition;
@@ -51,11 +57,8 @@ namespace ExplainingEveryString.Core
 
         private Vector2 GetDrawPosition(Vector2 position, Texture2D sprite)
         {
-            RecalculateCameraCenter();
-
             Vector2 cameraOffset = cameraCenter - screenHalf;
             Vector2 centerOfSpriteOnScreen = position - cameraOffset;
-            Single screenHeight = spriteBatch.GraphicsDevice.Viewport.Height;
             centerOfSpriteOnScreen.Y = screenHeight - centerOfSpriteOnScreen.Y;
 
             Vector2 leftUpperCornerPosition = new Vector2()
@@ -65,6 +68,12 @@ namespace ExplainingEveryString.Core
             };
 
             return leftUpperCornerPosition;
+        }
+
+        internal void Update()
+        {
+            RecalculateCameraCenter();
+            RecalculatePlayerPositionOnScreen();
         }
 
         private void RecalculateCameraCenter()
@@ -78,6 +87,12 @@ namespace ExplainingEveryString.Core
                 cameraCenter.Y += currentDifference.Y - playerFrame.Y;
             if (currentDifference.Y < -playerFrame.Y)
                 cameraCenter.Y += currentDifference.Y + playerFrame.Y;
+        }
+
+        private void RecalculatePlayerPositionOnScreen()
+        {
+            playerPositionOnScreen = level.PlayerPosition - cameraCenter + screenHalf;
+            playerPositionOnScreen.Y = screenHeight - playerPositionOnScreen.Y;
         }
     }
 }

@@ -43,8 +43,8 @@ namespace ExplainingEveryString.Core.Blueprints
                     MaxAcceleration = 200,
                     MaxSpeed = 200,
                     BulletSpeed = 800,
-                    FireRate = 1,
-                    WeaponRange = 400,
+                    FireRate = 5,
+                    WeaponRange = 2000,
                     BulletSpriteName = @"Sprites/PlayerBullet"
                 }
             };

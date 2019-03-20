@@ -55,7 +55,7 @@
     <Compile Include="GameModel\GameObject.cs" />
     <Compile Include="GameModel\GameObjectsFactory.cs" />
     <Compile Include="GameModel\Hitbox.cs" />
-    <Compile Include="GameModel\IDrawable.cs" />
+    <Compile Include="GameModel\IDisplayble.cs" />
     <Compile Include="GameModel\IUpdatable.cs" />
     <Compile Include="GameModel\Level.cs" />
     <Compile Include="GameModel\PlayerBullet.cs" />

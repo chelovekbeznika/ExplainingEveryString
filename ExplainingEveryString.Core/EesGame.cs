@@ -10,6 +10,8 @@ namespace ExplainingEveryString.Core
 {
     public class EesGame : Game
     {
+        internal static EesGame CurrentlyRunnedGame { get; private set; }
+
         private GraphicsDeviceManager graphics;
 
         private Dictionary<String, Texture2D> spritesStorage = new Dictionary<String, Texture2D>();
@@ -17,10 +19,14 @@ namespace ExplainingEveryString.Core
         private Level level;
         private Camera camera;
 
+        internal Camera Camera => camera;
+
         public EesGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            CurrentlyRunnedGame = this;
+            this.IsMouseVisible = true;
         }
 
         protected override void Initialize()
@@ -65,6 +71,7 @@ namespace ExplainingEveryString.Core
                 Exit();
 
             level.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
+            camera.Update();
             base.Update(gameTime);
         }
 

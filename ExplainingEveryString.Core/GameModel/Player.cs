@@ -34,19 +34,25 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Update(Single elapsedSeconds)
         {
-            Shoot(elapsedSeconds);
+            CheckWeapon(elapsedSeconds);
             Move(elapsedSeconds);
         }
 
-        internal void Shoot(Single elapsedSeconds)
+        internal void CheckWeapon(Single elapsedSeconds)
         {
             timeTillNextShoot -= elapsedSeconds;
             if (timeTillNextShoot < 0 && playerInput.IsFiring())
             {
-                PlayerBullet bullet = new PlayerBullet(bulletSprite, Position, new Vector2(bulletSpeed, 0), range);
-                PlayerShoot?.Invoke(this, new PlayerShootEventArgs { PlayerBullet = bullet });
+                Shoot();
                 timeTillNextShoot += shootCooldown;
             }
+        }
+
+        private void Shoot()
+        {
+            Vector2 direction = playerInput.GetFireDirection();
+            PlayerBullet bullet = new PlayerBullet(bulletSprite, Position, direction * bulletSpeed, range);
+            PlayerShoot?.Invoke(this, new PlayerShootEventArgs { PlayerBullet = bullet });
         }
 
         internal void Move(Single elapsedSeconds)
