@@ -35,12 +35,12 @@ namespace ExplainingEveryString.Core
         internal void Draw()
         {
             spriteBatch.Begin();
-            foreach (GameModel.IDrawable objectToDraw in level.GetObjectsToDraw())
+            foreach (IDisplayble objectToDraw in level.GetObjectsToDraw())
                 Draw(objectToDraw);
             spriteBatch.End();
         }
 
-        private void Draw(GameModel.IDrawable objectToDraw)
+        private void Draw(IDisplayble objectToDraw)
         {
             Texture2D sprite = spritesStorage[objectToDraw.CurrentSpriteName];
             Vector2 position = objectToDraw.Position;

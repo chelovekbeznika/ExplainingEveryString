@@ -35,9 +35,9 @@ namespace ExplainingEveryString.Core.GameModel
             SendDeadToHeaven();
         }
 
-        internal IEnumerable<IDrawable> GetObjectsToDraw()
+        internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
-            return new List<IDrawable> { player }.Concat(mines).Concat(playerBullets);
+            return new List<IDisplayble> { player }.Concat(mines).Concat(playerBullets);
         }
 
         private void InitializeGameObjects()

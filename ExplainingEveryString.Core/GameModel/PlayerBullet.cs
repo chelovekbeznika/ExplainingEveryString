@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal class PlayerBullet : IDrawable, IUpdatable
+    internal class PlayerBullet : IDisplayble, IUpdatable
     {
         private String spriteName;
         private Vector2 speed;

@@ -4,7 +4,7 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal abstract class GameObject<TBlueprint> : IDrawable where TBlueprint : Blueprint
+    internal abstract class GameObject<TBlueprint> : IDisplayble where TBlueprint : Blueprint
     {
         private String spriteName;
 
