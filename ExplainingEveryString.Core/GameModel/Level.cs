@@ -49,7 +49,7 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 foreach (Mine mine in mines)
                 {
-                    if (collisionsChecker.Collides(mine.GetHitbox(), playerBullet.Position))
+                    if (collisionsChecker.Collides(mine.GetHitbox(), playerBullet.OldPosition, playerBullet.Position))
                     {
                         mine.TakeDamage();
                         playerBullet.RegisterCollision();
