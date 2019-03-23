@@ -22,16 +22,20 @@ namespace ExplainingEveryString.Core
             if (Collides(hitbox, newPosition))
                 return true;
 
-            return TrajectoryCrossesWithVerticalFringe(hitbox, false, oldPosition, newPosition)
-                || TrajectoryCrossesWithVerticalFringe(hitbox, true, oldPosition, newPosition)
-                || TrajectoryCrossesWithHorizontalFringe(hitbox, false, oldPosition, newPosition)
-                || TrajectoryCrossesWithHorizontalFringe(hitbox, true, oldPosition, newPosition);
+            return TrajectoryCrossesWithVerticalFringe(hitbox, true, oldPosition, newPosition)
+                || TrajectoryCrossesWithVerticalFringe(hitbox, false, oldPosition, newPosition)
+                || TrajectoryCrossesWithHorizontalFringe(hitbox, true, oldPosition, newPosition)
+                || TrajectoryCrossesWithHorizontalFringe(hitbox, false, oldPosition, newPosition);
         }
 
         private Boolean TrajectoryCrossesWithVerticalFringe
             (Hitbox hitbox, Boolean left, Vector2 oldPosition, Vector2 newPosition)
         {
             Single fringeXPosition = left ? hitbox.Left : hitbox.Right;
+            if ((oldPosition.X > fringeXPosition && newPosition.X > fringeXPosition)
+                || (oldPosition.X < fringeXPosition && newPosition.X < fringeXPosition))
+                return false;
+
             Single? fringeCrossing = GetTrajectoryCrossingWithVerticalFringe
                 (fringeXPosition, newPosition, oldPosition);
 
@@ -46,6 +50,10 @@ namespace ExplainingEveryString.Core
             (Hitbox hitbox, Boolean bottom, Vector2 oldPosition, Vector2 newPosition)
         {
             Single fringeYPosition = bottom ? hitbox.Bottom : hitbox.Top;
+            if ((oldPosition.Y > fringeYPosition && newPosition.Y > fringeYPosition)
+                || (oldPosition.Y < fringeYPosition && newPosition.Y < fringeYPosition))
+                return false;
+
             Single? fringeCrossing = GetTrajectoryCrossingWithHorizontalFringe
                 (fringeYPosition, newPosition, oldPosition);
 

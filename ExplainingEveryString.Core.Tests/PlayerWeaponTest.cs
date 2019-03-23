@@ -85,6 +85,12 @@ namespace ExplainingEveryString.Core.Tests
             Assert.AreEqual(5, shots);
             Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 2.0F, 1.0F, 0.0F }));
         }
+
+        [Test]
+        public void RareShooting()
+        {
+
+        }
     }
 
     internal class TestPlayerInput : IPlayerInput

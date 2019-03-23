@@ -51,6 +51,7 @@ namespace ExplainingEveryString.Core.Tests
             AssertHitboxBulletRelations(new Vector2(0, 0), new Vector2(0, 40), false);
             AssertHitboxBulletRelations(new Vector2(10, 0), new Vector2(10, 40), true);
             AssertHitboxBulletRelations(new Vector2(20, 0), new Vector2(20, 40), true);
+            AssertHitboxBulletRelations(new Vector2(20, -20), new Vector2(20, 0), false);
             AssertHitboxBulletRelations(new Vector2(30, 0), new Vector2(30, 40), true);
             AssertHitboxBulletRelations(new Vector2(40, 0), new Vector2(40, 40), false);
         }
@@ -61,6 +62,7 @@ namespace ExplainingEveryString.Core.Tests
             AssertHitboxBulletRelations(new Vector2(0, 0), new Vector2(40, 0), false);
             AssertHitboxBulletRelations(new Vector2(0, 10), new Vector2(40, 10), true);
             AssertHitboxBulletRelations(new Vector2(0, 20), new Vector2(40, 20), true);
+            AssertHitboxBulletRelations(new Vector2(-20, 20), new Vector2(0, 20), false);
             AssertHitboxBulletRelations(new Vector2(0, 30), new Vector2(40, 30), true);
             AssertHitboxBulletRelations(new Vector2(0, 40), new Vector2(40, 40), false);
         }

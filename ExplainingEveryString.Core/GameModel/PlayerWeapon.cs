@@ -41,8 +41,6 @@ namespace ExplainingEveryString.Core.GameModel
                 timeTillNextShoot -= elapsedSeconds;
             if (input.IsFiring())
             {
-                if (nextBulletFirstUpdateTime < 0)
-                    nextBulletFirstUpdateTime = 0;
                 nextBulletFirstUpdateTime += elapsedSeconds;
                 while (timeTillNextShoot <= 0)
                 {
