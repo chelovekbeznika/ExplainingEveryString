@@ -63,5 +63,6 @@ namespace ExplainingEveryString.Core.GameModel
     internal class PlayerShootEventArgs : EventArgs
     {
         internal PlayerBullet PlayerBullet { get; set; }
+        internal Single FirstUpdateTime { get; set; }
     }
 }

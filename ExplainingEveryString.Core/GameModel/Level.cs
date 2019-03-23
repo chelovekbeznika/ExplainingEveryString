@@ -26,28 +26,13 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Update(Single elapsedSeconds)
         {
-            player.Update(elapsedSeconds);
             foreach (PlayerBullet playerBullet in playerBullets)
             {
                 playerBullet.Update(elapsedSeconds);
             }
+            player.Update(elapsedSeconds);
             CheckCollisions();
             SendDeadToHeaven();
-        }
-
-        internal IEnumerable<IDisplayble> GetObjectsToDraw()
-        {
-            return new List<IDisplayble> { player }.Concat(mines).Concat(playerBullets);
-        }
-
-        private void InitializeGameObjects()
-        {
-            player = factory.Construct<Player, PlayerBlueprint>(new Vector2(0, 0));
-            player.Weapon.Shoot += PlayerShoot;
-            Vector2[] minePositions = 
-                new Vector2[] { new Vector2(100, 100), new Vector2(200, 200), new Vector2(-300, -150) };
-
-            mines = factory.Construct<Mine, MineBlueprint>(minePositions);
         }
 
         private void CheckCollisions()
@@ -79,9 +64,25 @@ namespace ExplainingEveryString.Core.GameModel
             mines = mines.Where(mine => mine.IsAlive()).ToList();
         }
 
+        internal IEnumerable<IDisplayble> GetObjectsToDraw()
+        {
+            return new List<IDisplayble> { player }.Concat(mines).Concat(playerBullets);
+        }
+
+        private void InitializeGameObjects()
+        {
+            player = factory.Construct<Player, PlayerBlueprint>(new Vector2(0, 0));
+            player.Weapon.Shoot += PlayerShoot;
+            Vector2[] minePositions = 
+                new Vector2[] { new Vector2(100, 100), new Vector2(200, 200), new Vector2(-300, -150) };
+
+            mines = factory.Construct<Mine, MineBlueprint>(minePositions);
+        }
+
         private void PlayerShoot(Object sender, PlayerShootEventArgs args)
         {
             PlayerBullet playerBullet = args.PlayerBullet;
+            playerBullet.Update(args.FirstUpdateTime);
             playerBullets.Add(playerBullet);
         }
     }

@@ -15,9 +15,12 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Single shootCooldown;
         private Single timeTillNextShoot;
+        private Single nextBulletFirstUpdateTime = 0;
+
         private Single bulletSpeed;
         private String bulletSprite;
         private Single range;
+
         private IPlayerInput input;
         private Func<Vector2> findOutWhereIAm;
 
@@ -36,19 +39,28 @@ namespace ExplainingEveryString.Core.GameModel
         {
             if (timeTillNextShoot > 0)
                 timeTillNextShoot -= elapsedSeconds;
-            if (timeTillNextShoot <= 0 && input.IsFiring())
+            if (input.IsFiring())
             {
-                OnShoot();
-                timeTillNextShoot += shootCooldown;
+                nextBulletFirstUpdateTime += elapsedSeconds;
+                while (timeTillNextShoot <= 0)
+                {
+                    timeTillNextShoot += shootCooldown;
+                    nextBulletFirstUpdateTime -= shootCooldown;
+                    OnShoot(nextBulletFirstUpdateTime);
+                }
             }
         }
 
-        private void OnShoot()
+        private void OnShoot(Single bulletFirstFrameUpdateTime)
         {
             Vector2 direction = input.GetFireDirection();
             Vector2 position = findOutWhereIAm();
             PlayerBullet bullet = new PlayerBullet(bulletSprite, position, direction * bulletSpeed, range);
-            Shoot?.Invoke(this, new PlayerShootEventArgs { PlayerBullet = bullet });
+            PlayerShootEventArgs eventArgs = new PlayerShootEventArgs {
+                PlayerBullet = bullet,
+                FirstUpdateTime = bulletFirstFrameUpdateTime
+            };
+            Shoot?.Invoke(this, eventArgs);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Core.Blueprints
                     Weapon = new PlayerWeaponBlueprint()
                     {
                         BulletSpeed = 800,
-                        FireRate = 5,
+                        FireRate = 100,
                         WeaponRange = 2000,
                         BulletSpriteName = @"Sprites/PlayerBullet"
                     }
