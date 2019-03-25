@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.Tests
             Hitbox hitbox = mine.GetHitbox();
 
             Hitbox model = new Hitbox { Bottom = 192, Top = 208, Left = -108, Right = -92 };
-            Assert.AreEqual(hitbox, model);
+            Assert.That(model, Is.EqualTo(hitbox));
         }
     }
 }

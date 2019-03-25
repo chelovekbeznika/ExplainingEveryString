@@ -104,8 +104,8 @@ namespace ExplainingEveryString.Core.Tests
 
         private void AssertHitboxesCollides(Boolean collides, Hitbox first, Hitbox second)
         {
-            Assert.That(collisionsChecker.Collides(first, second) == collides);
-            Assert.That(collisionsChecker.Collides(second, first) == collides);
+            Assert.That(collisionsChecker.Collides(first, second), Is.EqualTo(collides));
+            Assert.That(collisionsChecker.Collides(second, first), Is.EqualTo(collides));
         }
     }
 }

@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.Tests
         private void AssertSlowing(Single before, Single after, Single elapsedTime)
         {
             Vector2 start = new Vector2(before, 0);
-            Assert.That(FrictionCorrector.Correct(start, elapsedTime) == new Vector2(after, 0));
+            Assert.That(FrictionCorrector.Correct(start, elapsedTime), Is.EqualTo(new Vector2(after, 0)));
         }
     }
 }

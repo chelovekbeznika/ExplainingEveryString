@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.Tests
             playerInput.StopFire();
             weapon.Check(20);
             playerInput.StopFire();
-            Assert.AreEqual(0, shots);
+            Assert.That(shots, Is.EqualTo(0));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace ExplainingEveryString.Core.Tests
             playerInput.StartFire();
             weapon.Check(1);
             playerInput.StopFire();
-            Assert.AreEqual(1, shots);
+            Assert.That(shots, Is.EqualTo(1));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace ExplainingEveryString.Core.Tests
             weapon.Check(0.3F);
             weapon.Check(0.3F);
             weapon.Check(0.4F);
-            Assert.AreEqual(1, shots);
+            Assert.That(shots, Is.EqualTo(1));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace ExplainingEveryString.Core.Tests
         {
             playerInput.StartFire();
             weapon.Check(5);
-            Assert.AreEqual(5, shots);
+            Assert.That(shots, Is.EqualTo(5));
             Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 4, 3, 2, 1, 0 }));
         }
 
@@ -79,11 +79,11 @@ namespace ExplainingEveryString.Core.Tests
         {
             playerInput.StartFire();
             weapon.Check(2.5F);
-            Assert.AreEqual(2, shots);
+            Assert.That(shots, Is.EqualTo(2));
             Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 1.5F, 0.5F }));
             bulletUpdateTimes.Clear();
             weapon.Check(2.5F);
-            Assert.AreEqual(5, shots);
+            Assert.That(shots, Is.EqualTo(5));
             Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 2.0F, 1.0F, 0.0F }));
         }
 
@@ -125,7 +125,7 @@ namespace ExplainingEveryString.Core.Tests
 
         public Vector2 GetMoveDirection()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public Boolean IsFiring()

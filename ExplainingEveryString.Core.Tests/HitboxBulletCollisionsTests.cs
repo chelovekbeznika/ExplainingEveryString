@@ -71,7 +71,7 @@ namespace ExplainingEveryString.Core.Tests
         {
             CollisionsChecker collisionsChecker = new CollisionsChecker();
             Hitbox hitbox = new Hitbox { Left = 10, Right = 30, Top = 30, Bottom = 10 };
-            Assert.That(collisionsChecker.Collides(hitbox, oldPosition, newPosition) == hurt);
+            Assert.That(collisionsChecker.Collides(hitbox, oldPosition, newPosition), Is.EqualTo(hurt));
         }
     }
 }
