@@ -42,7 +42,8 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 if (collisionsChecker.Collides(mine.GetHitbox(), player.GetHitbox()))
                 {
-                    Lost?.Invoke(this, EventArgs.Empty);
+                    mine.Destroy();
+                    player.TakeDamage();
                 }
             }
             foreach (PlayerBullet playerBullet in playerBullets)
@@ -60,6 +61,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void SendDeadToHeaven()
         {
+            if (!player.IsAlive())
+                Lost?.Invoke(this, EventArgs.Empty);
             playerBullets = playerBullets.Where(playerBullet => playerBullet.IsAlive()).ToList();
             mines = mines.Where(mine => mine.IsAlive()).ToList();
         }
@@ -73,8 +76,13 @@ namespace ExplainingEveryString.Core.GameModel
         {
             player = factory.Construct<Player, PlayerBlueprint>(new Vector2(0, 0));
             player.Weapon.Shoot += PlayerShoot;
-            Vector2[] minePositions = 
-                new Vector2[] { new Vector2(100, 100), new Vector2(200, 200), new Vector2(-300, -150) };
+            Vector2[] minePositions = new Vector2[] 
+            {
+                new Vector2(100, 100),
+                new Vector2(200, 200),
+                new Vector2(-300, -150),
+                new Vector2(500, 250)
+            };
 
             mines = factory.Construct<Mine, MineBlueprint>(minePositions);
         }

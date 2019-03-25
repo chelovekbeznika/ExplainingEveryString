@@ -33,19 +33,21 @@ namespace ExplainingEveryString.Core.Blueprints
                 {
                     DefaultSpriteName = @"Sprites/Mine",
                     Height = 16,
-                    Width = 16
+                    Width = 16,
+                    Hitpoints = 3
                 },
                 new PlayerBlueprint()
                 {
                     DefaultSpriteName = @"Sprites/Rectangle",
                     Height = 32,
                     Width = 32,
+                    Hitpoints = 3,
                     MaxAcceleration = 200,
                     MaxSpeed = 200,
                     Weapon = new PlayerWeaponBlueprint()
                     {
                         BulletSpeed = 800,
-                        FireRate = 10,
+                        FireRate = 1,
                         WeaponRange = 2000,
                         BulletSpriteName = @"Sprites/PlayerBullet"
                     }

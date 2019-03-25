@@ -8,6 +8,12 @@ namespace ExplainingEveryString.Core.Tests
     [TestFixture]
     public class FrictionTests
     {
+        [OneTimeSetUp]
+        public void FixtureSetup()
+        {
+            FrictionCorrector.FrictionCoefficient = 0.5F;
+        }
+
         [Test]
         public void OneSecond()
         {

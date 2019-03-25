@@ -4,13 +4,14 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal abstract class GameObject<TBlueprint> : IDisplayble where TBlueprint : Blueprint
+    internal abstract class GameObject<TBlueprint> : IDisplayble, IUpdatable where TBlueprint : Blueprint
     {
         private String spriteName;
 
         public Vector2 Position { get; protected set; }
         private Single Width { get; set; }
         private Single Height { get; set; }
+        protected Single Hitpoints { get; set; }
 
         public String CurrentSpriteName { get => spriteName; }
 
@@ -19,6 +20,8 @@ namespace ExplainingEveryString.Core.GameModel
             PlaceOnLevel(position);
             Construct(blueprint);
         }
+
+        public abstract void Update(Single elapsedSeconds);
         
         private void PlaceOnLevel(Vector2 position)
         {
@@ -30,6 +33,12 @@ namespace ExplainingEveryString.Core.GameModel
             this.spriteName = blueprint.DefaultSpriteName;
             this.Height = blueprint.Height;
             this.Width = blueprint.Width;
+            this.Hitpoints = blueprint.Hitpoints;
+        }
+
+        internal void TakeDamage()
+        {
+            Hitpoints--;
         }
 
         internal Hitbox GetHitbox()
@@ -41,6 +50,11 @@ namespace ExplainingEveryString.Core.GameModel
                 Left = Position.X - Width / 2,
                 Right = Position.X + Width / 2
             };
+        }
+
+        public bool IsAlive()
+        {
+            return Hitpoints > MathConstants.Epsilon;
         }
     }
 }

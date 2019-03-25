@@ -59,6 +59,7 @@
     <Compile Include="GameModel\IDisplayble.cs" />
     <Compile Include="GameModel\IUpdatable.cs" />
     <Compile Include="GameModel\Level.cs" />
+    <Compile Include="GameModel\MathConstants.cs" />
     <Compile Include="GameModel\PlayerBullet.cs" />
     <Compile Include="GameModel\PlayerWeapon.cs" />
     <Compile Include="Input\ControlDevice.cs" />

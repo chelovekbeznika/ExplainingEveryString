@@ -4,23 +4,15 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal class Mine : GameObject<MineBlueprint>, IUpdatable
+    internal class Mine : GameObject<MineBlueprint>
     {
-        private Boolean alive = true;
-
-        public bool IsAlive()
+        public override void Update(Single elapsedSeconds)
         {
-            return alive;
         }
 
-        public void Update(Single elapsedSeconds)
+        internal void Destroy()
         {
-            throw new NotImplementedException();
-        }
-
-        internal void TakeDamage()
-        {
-            alive = false;
+            Hitpoints = 0;
         }
     }
 }

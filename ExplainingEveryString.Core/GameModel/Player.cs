@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel
             Weapon = new PlayerWeapon(blueprint.Weapon, input, () => Position);
         }
 
-        internal void Update(Single elapsedSeconds)
+        public override void Update(Single elapsedSeconds)
         {
             Weapon.Check(elapsedSeconds);
             Move(elapsedSeconds);

@@ -11,8 +11,6 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class PlayerWeapon
     {
-        private const Single Epsilon = 0.000001F;
-
         internal event EventHandler<PlayerShootEventArgs> Shoot;
 
         private Single shootCooldown;
@@ -39,16 +37,16 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Check(Single elapsedSeconds)
         {
-            if (timeTillNextShoot > Epsilon)
+            if (timeTillNextShoot > MathConstants.Epsilon)
                 timeTillNextShoot -= elapsedSeconds;
             if (input.IsFiring())
             {
                 nextBulletFirstUpdateTime += elapsedSeconds;
-                while (timeTillNextShoot <= Epsilon)
+                while (timeTillNextShoot <= MathConstants.Epsilon)
                 {
                     timeTillNextShoot += shootCooldown;
                     nextBulletFirstUpdateTime -= shootCooldown;
-                    if (nextBulletFirstUpdateTime < -Epsilon)
+                    if (nextBulletFirstUpdateTime < -MathConstants.Epsilon)
                         nextBulletFirstUpdateTime = 0;
                     OnShoot(nextBulletFirstUpdateTime);
                 }
