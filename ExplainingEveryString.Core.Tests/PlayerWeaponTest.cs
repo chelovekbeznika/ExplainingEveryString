@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.Tests
 {
@@ -89,7 +90,17 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void RareShooting()
         {
-
+            weapon.Check(2);
+            playerInput.StartFire();
+            foreach (Int32 index in Enumerable.Range(0, 5))
+                weapon.Check(0.2F);
+            Assert.That(shots, Is.EqualTo(2));
+            Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 0, 0 }));
+            bulletUpdateTimes.Clear();
+            foreach (Int32 index in Enumerable.Range(0, 5))
+                weapon.Check(0.2F);
+            Assert.That(shots, Is.EqualTo(3));
+            Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 0 }));
         }
     }
 
