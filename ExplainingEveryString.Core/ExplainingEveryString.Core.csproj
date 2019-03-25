@@ -63,6 +63,8 @@
     <Compile Include="GameModel\PlayerBullet.cs" />
     <Compile Include="GameModel\PlayerWeapon.cs" />
     <Compile Include="Input\ControlDevice.cs" />
+    <Compile Include="Input\GamePadPlayerInput.cs" />
+    <Compile Include="Input\KeyBoardMousePlayerInput.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />
     <Compile Include="GameModel\Mine.cs" />
