@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.GameModel
                 if (collisionsChecker.Collides(mine.GetHitbox(), player.GetHitbox()))
                 {
                     mine.Destroy();
-                    player.TakeDamage();
+                    player.TakeDamage(mine.Damage);
                 }
             }
             foreach (PlayerBullet playerBullet in playerBullets)
@@ -52,7 +52,7 @@ namespace ExplainingEveryString.Core.GameModel
                 {
                     if (collisionsChecker.Collides(mine.GetHitbox(), playerBullet.OldPosition, playerBullet.Position))
                     {
-                        mine.TakeDamage();
+                        mine.TakeDamage(playerBullet.Damage);
                         playerBullet.RegisterCollision();
                     }
                 }

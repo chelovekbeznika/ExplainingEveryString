@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Core.Blueprints
     {
         internal Single FireRate { get; set; }
         internal Single BulletSpeed { get; set; }
+        internal Single Damage { get; set; }
         internal Single WeaponRange { get; set; }
         internal String BulletSpriteName { get; set; }
     }

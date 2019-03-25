@@ -36,9 +36,9 @@ namespace ExplainingEveryString.Core.GameModel
             this.Hitpoints = blueprint.Hitpoints;
         }
 
-        internal void TakeDamage()
+        internal void TakeDamage(Single damage)
         {
-            Hitpoints--;
+            Hitpoints -= damage;
         }
 
         internal Hitbox GetHitbox()

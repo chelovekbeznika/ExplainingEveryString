@@ -34,7 +34,8 @@ namespace ExplainingEveryString.Core.Blueprints
                     DefaultSpriteName = @"Sprites/Mine",
                     Height = 16,
                     Width = 16,
-                    Hitpoints = 3
+                    Hitpoints = 7,
+                    Damage = 1.5F,
                 },
                 new PlayerBlueprint()
                 {
@@ -48,6 +49,7 @@ namespace ExplainingEveryString.Core.Blueprints
                     {
                         BulletSpeed = 800,
                         FireRate = 1,
+                        Damage = 2,
                         WeaponRange = 2000,
                         BulletSpriteName = @"Sprites/PlayerBullet"
                     }

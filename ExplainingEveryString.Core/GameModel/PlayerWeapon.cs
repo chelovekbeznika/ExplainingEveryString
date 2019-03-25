@@ -18,8 +18,9 @@ namespace ExplainingEveryString.Core.GameModel
         private Single nextBulletFirstUpdateTime = 0;
 
         private Single bulletSpeed;
-        private String bulletSprite;
         private Single range;
+        private Single Damage { get; set; }
+        private String bulletSprite;
 
         private IPlayerInput input;
         private Func<Vector2> findOutWhereIAm;
@@ -31,6 +32,7 @@ namespace ExplainingEveryString.Core.GameModel
             bulletSpeed = blueprint.BulletSpeed;
             bulletSprite = blueprint.BulletSpriteName;
             range = blueprint.WeaponRange;
+            Damage = blueprint.Damage;
             this.input = input;
             this.findOutWhereIAm = findOutWhereIAm;
         }
@@ -57,7 +59,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             Vector2 direction = input.GetFireDirection();
             Vector2 position = findOutWhereIAm();
-            PlayerBullet bullet = new PlayerBullet(bulletSprite, position, direction * bulletSpeed, range);
+            PlayerBullet bullet = new PlayerBullet(bulletSprite, position, direction * bulletSpeed, Damage, range);
             PlayerShootEventArgs eventArgs = new PlayerShootEventArgs {
                 PlayerBullet = bullet,
                 FirstUpdateTime = bulletFirstFrameUpdateTime
