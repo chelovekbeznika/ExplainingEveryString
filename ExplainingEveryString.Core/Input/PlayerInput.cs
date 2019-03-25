@@ -82,7 +82,7 @@ namespace ExplainingEveryString.Core.Input
 
         public override Boolean IsFiring()
         {
-            return GamePad.GetState(PlayerIndex.One).Triggers.Right >= 0.5;
+            return GamePad.GetState(PlayerIndex.One).ThumbSticks.Right.Length() > 0;
         }
 
         public override Vector2 GetFireDirection()
