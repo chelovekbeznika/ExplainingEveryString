@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C033F4F6-87D8-406F-B2B9-855B06D1A417}</ProjectGuid>
+    <ProjectGuid>{9B320FDE-6C59-45F9-9DC1-DCAFCCCA63CE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExplainingEveryString.Core</RootNamespace>
-    <AssemblyName>ExplainingEveryString.Core</AssemblyName>
+    <RootNamespace>ExplainingEveryString.Data</RootNamespace>
+    <AssemblyName>ExplainingEveryString.Data</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,7 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,37 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blueprints\Blueprint.cs" />
-    <Compile Include="Blueprints\BlueprintsLoader.cs" />
-    <Compile Include="Blueprints\MineBlueprint.cs" />
-    <Compile Include="Blueprints\PlayerBlueprint.cs" />
-    <Compile Include="Blueprints\PlayerWeaponBlueprint.cs" />
-    <Compile Include="Camera.cs" />
-    <Compile Include="CollisionsChecker.cs" />
-    <Compile Include="EesGame.cs" />
-    <Compile Include="GameModel\FrictionCorrector.cs" />
-    <Compile Include="GameModel\GameObject.cs" />
-    <Compile Include="GameModel\GameObjectsFactory.cs" />
-    <Compile Include="GameModel\Hitbox.cs" />
-    <Compile Include="GameModel\IDisplayble.cs" />
-    <Compile Include="GameModel\IUpdatable.cs" />
-    <Compile Include="GameModel\Level.cs" />
-    <Compile Include="GameModel\MathConstants.cs" />
-    <Compile Include="GameModel\PlayerBullet.cs" />
-    <Compile Include="GameModel\PlayerWeapon.cs" />
-    <Compile Include="Input\GamePadPlayerInput.cs" />
-    <Compile Include="Input\KeyBoardMousePlayerInput.cs" />
-    <Compile Include="Input\PlayerInput.cs" />
-    <Compile Include="Input\PlayerInputFactory.cs" />
-    <Compile Include="GameModel\Mine.cs" />
-    <Compile Include="GameModel\Player.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="ControlDevice.cs" />
+    <Compile Include="JsonDataAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExplainingEveryString.Data\ExplainingEveryString.Data.csproj">
-      <Project>{9b320fde-6c59-45f9-9dc1-dcafccca63ce}</Project>
-      <Name>ExplainingEveryString.Data</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

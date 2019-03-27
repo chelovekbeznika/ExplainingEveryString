@@ -1,4 +1,6 @@
-﻿namespace ExplainingEveryString.Core.Input
+﻿using ExplainingEveryString.Data;
+
+namespace ExplainingEveryString.Core.Input
 {
     internal static class PlayerInputFactory
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.Input
+namespace ExplainingEveryString.Data
 {
-    internal enum ControlDevice
+    public enum ControlDevice
     {
         GamePad,
         Keyboard
