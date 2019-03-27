@@ -32,8 +32,7 @@ namespace ExplainingEveryString.Core
 
         protected override void Initialize()
         {
-            String fileName = "config.dat";
-            ConfigurationAccess.InitializeConfig(fileName);
+            ConfigurationAccess.InitializeConfig();
 
             blueprintsLoader = BlueprintsAccess.GetBlueprintsLoader();
             blueprintsLoader.Load();

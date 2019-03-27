@@ -12,8 +12,9 @@ namespace ExplainingEveryString.Data
             return configuration;
         }
 
-        public static void InitializeConfig(String fileName)
+        public static void InitializeConfig()
         {
+            String fileName = FileNames.Configuration;
             try
             {
                 if (File.Exists(fileName))

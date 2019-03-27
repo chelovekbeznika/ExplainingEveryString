@@ -18,7 +18,8 @@ namespace ExplainingEveryString.Data.Blueprints
 
         public void Load()
         {
-            blueprints = JsonDataAccessor.Instance.Load<List<Blueprint>>("blueprints.dat");
+            String fileName = FileNames.Blueprints;
+            blueprints = JsonDataAccessor.Instance.Load<List<Blueprint>>(fileName);
         }
     }
 }

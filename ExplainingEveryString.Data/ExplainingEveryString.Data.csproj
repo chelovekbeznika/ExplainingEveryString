@@ -54,6 +54,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="ConfigurationAccess.cs" />
     <Compile Include="ControlDevice.cs" />
+    <Compile Include="FileNames.cs" />
     <Compile Include="JsonDataAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
