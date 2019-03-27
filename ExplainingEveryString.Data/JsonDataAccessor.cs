@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 
 namespace ExplainingEveryString.Data
@@ -8,7 +9,12 @@ namespace ExplainingEveryString.Data
     {
         internal static JsonDataAccessor Instance { get; } = new JsonDataAccessor();
 
-        private JsonSerializer serializer = new JsonSerializer() { TypeNameHandling = TypeNameHandling.Auto };
+        private JsonSerializer serializer = new JsonSerializer()
+        {
+            TypeNameHandling = TypeNameHandling.Auto,
+            Culture = CultureInfo.InvariantCulture,
+            Formatting = Formatting.Indented
+        };
 
         internal T Load<T>(String fileName)
         {
