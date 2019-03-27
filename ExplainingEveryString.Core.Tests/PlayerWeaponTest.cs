@@ -1,6 +1,6 @@
-﻿using ExplainingEveryString.Core.Blueprints;
-using ExplainingEveryString.Core.GameModel;
+﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Input;
+using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System;

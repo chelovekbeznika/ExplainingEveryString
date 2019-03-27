@@ -1,4 +1,4 @@
-﻿using ExplainingEveryString.Core.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

@@ -1,11 +1,7 @@
-﻿using ExplainingEveryString.Core.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Core.Input;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel
 {

@@ -1,4 +1,4 @@
-﻿using ExplainingEveryString.Core.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Core.Input;
 using Microsoft.Xna.Framework;
 using System;

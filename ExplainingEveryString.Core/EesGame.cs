@@ -1,6 +1,6 @@
-﻿using ExplainingEveryString.Core.Blueprints;
-using ExplainingEveryString.Core.GameModel;
+﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data;
+using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core
         private GraphicsDeviceManager graphics;
 
         private Dictionary<String, Texture2D> spritesStorage = new Dictionary<String, Texture2D>();
-        private IBlueprintsLoader blueprintsLoader = new HardCodeBlueprintsLoader();
+        private IBlueprintsLoader blueprintsLoader;
         private Level level;
         private Camera camera;
 
@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core
             String fileName = "config.dat";
             ConfigurationAccess.InitializeConfig(fileName);
 
-            blueprintsLoader = new HardCodeBlueprintsLoader();
+            blueprintsLoader = BlueprintsAccess.GetBlueprintsLoader();
             blueprintsLoader.Load();
 
             GameObjectsFactory factory = new GameObjectsFactory(blueprintsLoader);

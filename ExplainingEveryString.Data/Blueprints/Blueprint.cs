@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.Blueprints
+namespace ExplainingEveryString.Data.Blueprints
 {
-    internal class Blueprint
+    public class Blueprint
     {
-        internal String DefaultSpriteName { get; set; }
-        internal Single Height { get; set; }
-        internal Single Width { get; set; }
-        internal Single Hitpoints { get; set; }
+        public String DefaultSpriteName { get; set; }
+        public Single Height { get; set; }
+        public Single Width { get; set; }
+        public Single Hitpoints { get; set; }
 
         internal virtual IEnumerable<String> GetSprites()
         {

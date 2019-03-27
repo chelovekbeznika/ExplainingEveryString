@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlueprintsTests.cs" />
+    <Compile Include="HardCodeBlueprintsLoader.cs" />
     <Compile Include="HitboxBulletCollisionsTests.cs" />
     <Compile Include="HitboxesCollisionsTests.cs" />
     <Compile Include="FrictionTests.cs" />
@@ -61,6 +62,10 @@
     <ProjectReference Include="..\ExplainingEveryString.Core\ExplainingEveryString.Core.csproj">
       <Project>{C033F4F6-87D8-406F-B2B9-855B06D1A417}</Project>
       <Name>ExplainingEveryString.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExplainingEveryString.Data\ExplainingEveryString.Data.csproj">
+      <Project>{9b320fde-6c59-45f9-9dc1-dcafccca63ce}</Project>
+      <Name>ExplainingEveryString.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

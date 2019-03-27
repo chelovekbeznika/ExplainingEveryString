@@ -1,4 +1,4 @@
-﻿using ExplainingEveryString.Core.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Core.GameModel;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;

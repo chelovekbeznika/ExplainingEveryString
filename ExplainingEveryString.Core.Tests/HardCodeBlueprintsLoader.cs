@@ -1,26 +1,8 @@
-﻿using System;
+﻿using ExplainingEveryString.Data.Blueprints;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.Blueprints
+namespace ExplainingEveryString.Core.Tests
 {
-    internal interface IBlueprintsLoader
-    {
-        void Load();
-        List<Blueprint> GetBlueprints();
-    }
-
-    internal static class IBlueprintsLoaderExtenstions
-    {
-        internal static List<String> GetNeccessarySprites(this IBlueprintsLoader loader)
-        {
-            List<Blueprint> blueprints = loader.GetBlueprints();
-            return blueprints.SelectMany(blueprint => blueprint.GetSprites()).ToList();
-        }
-    }
-
     internal class HardCodeBlueprintsLoader : IBlueprintsLoader
     {
         private List<Blueprint> blueprints;

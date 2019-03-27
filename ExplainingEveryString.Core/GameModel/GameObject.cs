@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using ExplainingEveryString.Core.Blueprints;
+using ExplainingEveryString.Data.Blueprints;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel

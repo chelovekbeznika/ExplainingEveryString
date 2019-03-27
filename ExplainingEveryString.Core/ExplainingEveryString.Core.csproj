@@ -43,11 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blueprints\Blueprint.cs" />
-    <Compile Include="Blueprints\BlueprintsLoader.cs" />
-    <Compile Include="Blueprints\MineBlueprint.cs" />
-    <Compile Include="Blueprints\PlayerBlueprint.cs" />
-    <Compile Include="Blueprints\PlayerWeaponBlueprint.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="EesGame.cs" />

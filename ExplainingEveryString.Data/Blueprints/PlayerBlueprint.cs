@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.Blueprints
+namespace ExplainingEveryString.Data.Blueprints
 {
-    internal class PlayerBlueprint : Blueprint
+    public class PlayerBlueprint : Blueprint
     {
-        internal Single MaxSpeed { get; set; }
-        internal Single MaxAcceleration { get; set; }
-        internal PlayerWeaponBlueprint Weapon { get; set; }
+        public Single MaxSpeed { get; set; }
+        public Single MaxAcceleration { get; set; }
+        public PlayerWeaponBlueprint Weapon { get; set; }
 
         internal override IEnumerable<string> GetSprites()
         {

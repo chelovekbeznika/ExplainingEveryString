@@ -44,6 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blueprints\Blueprint.cs" />
+    <Compile Include="Blueprints\BlueprintsAccess.cs" />
+    <Compile Include="Blueprints\BlueprintsLoader.cs" />
+    <Compile Include="Blueprints\JsonBlueprintsLoader.cs" />
+    <Compile Include="Blueprints\MineBlueprint.cs" />
+    <Compile Include="Blueprints\PlayerBlueprint.cs" />
+    <Compile Include="Blueprints\PlayerWeaponBlueprint.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="ConfigurationAccess.cs" />
     <Compile Include="ControlDevice.cs" />
