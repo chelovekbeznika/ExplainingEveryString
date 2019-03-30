@@ -11,7 +11,7 @@ namespace ExplainingEveryString.Core.GameModel
     internal class Level
     {
         private Player player;
-        private List<Enemy<EnemyBlueprint>> enemies;
+        private List<IGameObject> enemies;
         private List<PlayerBullet> playerBullets = new List<PlayerBullet>();
         private GameObjectsFactory factory;
 
@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.GameModel
                 playerBullet.Update(elapsedSeconds);
             }
             player.Update(elapsedSeconds);
-            foreach (Enemy<EnemyBlueprint> enemy in enemies)
+            foreach (IUpdatable enemy in enemies)
             {
                 enemy.Update(elapsedSeconds);
             }
@@ -43,17 +43,21 @@ namespace ExplainingEveryString.Core.GameModel
         private void CheckCollisions()
         {
             CollisionsChecker collisionsChecker = new CollisionsChecker();
-            foreach (Enemy<EnemyBlueprint> enemy in enemies)
+            foreach (IGameObject enemy in enemies)
             {
                 if (collisionsChecker.Collides(enemy.GetHitbox(), player.GetHitbox()))
                 {
-                    enemy.Destroy();
-                    player.TakeDamage(enemy.CollisionDamage);
+                    if (enemy is ICrashable)
+                    {
+                        ICrashable crashable = enemy as ICrashable;
+                        crashable.Destroy();
+                        player.TakeDamage(crashable.CollisionDamage);
+                    }
                 }
             }
             foreach (PlayerBullet playerBullet in playerBullets)
             {
-                foreach (Enemy<EnemyBlueprint> enemy in enemies)
+                foreach (IGameObject enemy in enemies)
                 {
                     if (collisionsChecker.Collides(enemy.GetHitbox(), playerBullet.OldPosition, playerBullet.Position))
                     {
@@ -95,9 +99,9 @@ namespace ExplainingEveryString.Core.GameModel
                 new Vector2(500, 300)
             };
 
-            enemies = new List<Enemy<EnemyBlueprint>>();
+            enemies = new List<IGameObject>();
             enemies.AddRange(factory.Construct<Mine, EnemyBlueprint>(minePositions));
-            enemies.AddRange(factory.Construct<Hunter, EnemyBlueprint>(huntersPositions));
+            enemies.AddRange(factory.Construct<Hunter, HunterBlueprint>(huntersPositions));
         }
 
         private void PlayerShoot(Object sender, PlayerShootEventArgs args)

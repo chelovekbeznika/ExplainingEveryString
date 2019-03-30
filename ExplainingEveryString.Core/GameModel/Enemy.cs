@@ -10,9 +10,10 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal abstract class Enemy<TBlueprint> : GameObject<TBlueprint> where TBlueprint : EnemyBlueprint
     {
-        internal Single CollisionDamage { get; set; }
+        public Single CollisionDamage { get; set; }
         internal Single MaxSpeed { get; set; }
-        protected Func<Vector2> PlayerLocator { get; private set; }
+        private Func<Vector2> playerLocator;
+        protected Vector2 PlayerPosition => playerLocator();
 
         public override abstract void Update(Single elapsedSeconds);
 
@@ -21,12 +22,7 @@ namespace ExplainingEveryString.Core.GameModel
             base.Construct(blueprint, level);
             this.CollisionDamage = blueprint.CollisionDamage;
             this.MaxSpeed = blueprint.MaxSpeed;
-            this.PlayerLocator = () => level.PlayerPosition;
-        }
-
-        internal void Destroy()
-        {
-            Hitpoints = 0;
+            this.playerLocator = () => level.PlayerPosition;
         }
     }
 }

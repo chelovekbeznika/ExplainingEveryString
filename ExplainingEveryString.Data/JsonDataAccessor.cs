@@ -13,7 +13,8 @@ namespace ExplainingEveryString.Data
         {
             TypeNameHandling = TypeNameHandling.Auto,
             Culture = CultureInfo.InvariantCulture,
-            Formatting = Formatting.Indented
+            Formatting = Formatting.Indented,
+            MissingMemberHandling = MissingMemberHandling.Error
         };
 
         internal T Load<T>(String fileName)

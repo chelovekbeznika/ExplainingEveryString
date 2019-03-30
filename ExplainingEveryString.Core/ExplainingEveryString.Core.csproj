@@ -53,7 +53,7 @@
     <Compile Include="GameModel\Hitbox.cs" />
     <Compile Include="GameModel\Hunter.cs" />
     <Compile Include="GameModel\IDisplayble.cs" />
-    <Compile Include="GameModel\IUpdatable.cs" />
+    <Compile Include="GameModel\IGameObject.cs" />
     <Compile Include="GameModel\Level.cs" />
     <Compile Include="GameModel\MathConstants.cs" />
     <Compile Include="GameModel\PlayerBullet.cs" />
