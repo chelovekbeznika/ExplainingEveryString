@@ -3,23 +3,17 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel
 {
     internal class GameObjectsFactory
     {
-        private Dictionary<Type, Blueprint> blueprintsStorage = new Dictionary<Type, Blueprint>();
+        private Dictionary<String, Blueprint> blueprintsStorage = new Dictionary<String, Blueprint>();
+        internal Level Level { get; set; }
 
         internal GameObjectsFactory(IBlueprintsLoader blueprintsLoader)
         {
-            List<Blueprint> blueprints = blueprintsLoader.GetBlueprints();
-            foreach (Blueprint blueprint in blueprints)
-            {
-                blueprintsStorage.Add(blueprint.GetType(), blueprint);
-            }
+            this.blueprintsStorage = blueprintsLoader.GetBlueprints();
         }
 
         internal List<TGameObject> Construct<TGameObject, TBlueprint>(IEnumerable<Vector2> positions)
@@ -33,9 +27,9 @@ namespace ExplainingEveryString.Core.GameModel
             where TGameObject : GameObject<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
-            TBlueprint blueprint = blueprintsStorage[typeof(TBlueprint)] as TBlueprint;
+            TBlueprint blueprint = blueprintsStorage[typeof(TGameObject).Name] as TBlueprint;
             TGameObject gameObject = new TGameObject();
-            gameObject.Initialize(blueprint, position);
+            gameObject.Initialize(blueprint, Level, position);
             return gameObject;
         }
 

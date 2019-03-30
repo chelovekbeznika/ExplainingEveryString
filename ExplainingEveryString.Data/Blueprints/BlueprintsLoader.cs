@@ -9,14 +9,14 @@ namespace ExplainingEveryString.Data.Blueprints
     public interface IBlueprintsLoader
     {
         void Load();
-        List<Blueprint> GetBlueprints();
+        Dictionary<String, Blueprint> GetBlueprints();
     }
 
     public static class IBlueprintsLoaderExtenstions
     {
         public static List<String> GetNeccessarySprites(this IBlueprintsLoader loader)
         {
-            List<Blueprint> blueprints = loader.GetBlueprints();
+            IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
             return blueprints.SelectMany(blueprint => blueprint.GetSprites()).ToList();
         }
     }

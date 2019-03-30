@@ -1,20 +1,30 @@
-[
-  {
-    "$type": "ExplainingEveryString.Data.Blueprints.MineBlueprint, ExplainingEveryString.Data",
-    "Damage": 1.5,
+{
+  "Mine": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 1.5,
+    "MaxSpeed": 0,
     "DefaultSpriteName": "Sprites/Mine",
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 7.0
   },
-  {
+  "Hunter": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 1.0,
+    "MaxSpeed": 150.0,
+    "DefaultSpriteName": "Sprites/Hunter",
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 5.0
+  },
+  "Player": {
     "$type": "ExplainingEveryString.Data.Blueprints.PlayerBlueprint, ExplainingEveryString.Data",
     "MaxSpeed": 200.0,
     "MaxAcceleration": 200.0,
     "Weapon": {
-      "FireRate": 1.0,
+      "FireRate": 10.0,
       "BulletSpeed": 800.0,
-      "Damage": 2.0,
+      "Damage": 1.0,
       "WeaponRange": 2000.0,
       "BulletSpriteName": "Sprites/PlayerBullet"
     },
@@ -23,4 +33,4 @@
     "Width": 32.0,
     "Hitpoints": 3.0
   }
-]
+}

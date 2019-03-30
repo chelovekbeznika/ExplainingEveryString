@@ -15,10 +15,10 @@ namespace ExplainingEveryString.Core.GameModel
 
         public String CurrentSpriteName { get => spriteName; }
 
-        internal void Initialize(TBlueprint blueprint, Vector2 position)
+        internal void Initialize(TBlueprint blueprint, Level level, Vector2 position)
         {
             PlaceOnLevel(position);
-            Construct(blueprint);
+            Construct(blueprint, level);
         }
 
         public abstract void Update(Single elapsedSeconds);
@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.Position = position;
         }
 
-        protected virtual void Construct(TBlueprint blueprint)
+        protected virtual void Construct(TBlueprint blueprint, Level level)
         {
             this.spriteName = blueprint.DefaultSpriteName;
             this.Height = blueprint.Height;

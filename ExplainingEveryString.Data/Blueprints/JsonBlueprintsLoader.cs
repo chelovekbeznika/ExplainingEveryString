@@ -9,9 +9,9 @@ namespace ExplainingEveryString.Data.Blueprints
 {
     internal class JsonBlueprintsLoader : IBlueprintsLoader
     {
-        private List<Blueprint> blueprints;
+        private Dictionary<String, Blueprint> blueprints;
 
-        public List<Blueprint> GetBlueprints()
+        public Dictionary<String, Blueprint> GetBlueprints()
         {
             return blueprints;
         }
@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public void Load()
         {
             String fileName = FileNames.Blueprints;
-            blueprints = JsonDataAccessor.Instance.Load<List<Blueprint>>(fileName);
+            blueprints = JsonDataAccessor.Instance.Load<Dictionary<String, Blueprint>>(fileName);
         }
     }
 }

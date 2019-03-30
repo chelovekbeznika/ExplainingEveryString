@@ -14,9 +14,9 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal PlayerWeapon Weapon { get; private set; }
 
-        protected override void Construct(PlayerBlueprint blueprint)
+        protected override void Construct(PlayerBlueprint blueprint, Level level)
         {
-            base.Construct(blueprint);
+            base.Construct(blueprint, level);
             input = PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
