@@ -7,9 +7,8 @@ namespace ExplainingEveryString.Core.GameModel
         void Update(Single elapsedSeconds);
     }
     
-    internal interface IMortal
+    internal interface ITouchableByBullets : ICollidable
     {
-        Boolean IsAlive();
         void TakeDamage(Single damage);
     }
 
@@ -24,8 +23,8 @@ namespace ExplainingEveryString.Core.GameModel
         void Destroy();
     }
 
-    internal interface IGameObject : ICollidable, IUpdatable, IMortal, IDisplayble
+    internal interface IGameObject : ICollidable, IDisplayble
     {
-
+        Boolean IsAlive();
     }
 }

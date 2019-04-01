@@ -46,12 +46,12 @@
     <Compile Include="Camera.cs" />
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="EesGame.cs" />
-    <Compile Include="GameModel\Enemy.cs" />
+    <Compile Include="GameModel\Enemies\Enemy.cs" />
     <Compile Include="GameModel\FrictionCorrector.cs" />
     <Compile Include="GameModel\GameObject.cs" />
     <Compile Include="GameModel\GameObjectsFactory.cs" />
     <Compile Include="GameModel\Hitbox.cs" />
-    <Compile Include="GameModel\Hunter.cs" />
+    <Compile Include="GameModel\Enemies\Hunter.cs" />
     <Compile Include="GameModel\IDisplayble.cs" />
     <Compile Include="GameModel\IGameObject.cs" />
     <Compile Include="GameModel\Level.cs" />
@@ -62,7 +62,7 @@
     <Compile Include="Input\KeyBoardMousePlayerInput.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />
-    <Compile Include="GameModel\Mine.cs" />
+    <Compile Include="GameModel\Enemies\Mine.cs" />
     <Compile Include="GameModel\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

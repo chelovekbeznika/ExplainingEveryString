@@ -18,8 +18,6 @@ namespace ExplainingEveryString.Core.GameModel
             PlaceOnLevel(position);
             Construct(blueprint, level);
         }
-
-        public abstract void Update(Single elapsedSeconds);
         
         private void PlaceOnLevel(Vector2 position)
         {

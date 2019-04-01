@@ -5,7 +5,7 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal sealed class Player : GameObject<PlayerBlueprint>
+    internal sealed class Player : GameObject<PlayerBlueprint>, IUpdatable, ITouchableByBullets
     {
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel
             Weapon = new PlayerWeapon(blueprint.Weapon, input, () => Position);
         }
 
-        public override void Update(Single elapsedSeconds)
+        public void Update(Single elapsedSeconds)
         {
             Weapon.Check(elapsedSeconds);
             Move(elapsedSeconds);

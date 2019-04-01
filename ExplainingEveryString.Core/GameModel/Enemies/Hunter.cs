@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace ExplainingEveryString.Core.GameModel
+namespace ExplainingEveryString.Core.GameModel.Enemies
 {
-    internal class Hunter : Enemy<HunterBlueprint>, ICrashable
+    internal class Hunter : Enemy<HunterBlueprint>, IUpdatable, ITouchableByBullets, ICrashable
     {
         private Single acceleration;
         private Single startSpeed;
@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.turnedOn = false;
         }
 
-        public override void Update(Single elapsedSeconds)
+        public void Update(Single elapsedSeconds)
         {
             Vector2 playerPosition = PlayerPosition;
             Vector2 vectorToPlayer = playerPosition - this.Position;

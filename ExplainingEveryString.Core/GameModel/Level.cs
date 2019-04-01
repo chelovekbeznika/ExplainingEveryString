@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Core.GameModel.Enemies;
+using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace ExplainingEveryString.Core.GameModel
                 playerBullet.Update(elapsedSeconds);
             }
             player.Update(elapsedSeconds);
-            foreach (IUpdatable enemy in enemies)
+            foreach (IUpdatable enemy in enemies.OfType<IUpdatable>())
             {
                 enemy.Update(elapsedSeconds);
             }
@@ -43,25 +44,22 @@ namespace ExplainingEveryString.Core.GameModel
         private void CheckCollisions()
         {
             CollisionsChecker collisionsChecker = new CollisionsChecker();
-            foreach (IGameObject enemy in enemies)
+            foreach (ICrashable crashable in enemies.OfType<ICrashable>())
             {
-                if (collisionsChecker.Collides(enemy.GetHitbox(), player.GetHitbox()))
+                if (collisionsChecker.Collides(crashable.GetHitbox(), player.GetHitbox()))
                 {
-                    if (enemy is ICrashable)
-                    {
-                        ICrashable crashable = enemy as ICrashable;
-                        crashable.Destroy();
-                        player.TakeDamage(crashable.CollisionDamage);
-                    }
+                    crashable.Destroy();
+                    player.TakeDamage(crashable.CollisionDamage);
                 }
             }
             foreach (PlayerBullet playerBullet in playerBullets)
             {
-                foreach (IGameObject enemy in enemies)
+                foreach (ICollidable enemy in enemies.OfType<ICollidable>())
                 {
                     if (collisionsChecker.Collides(enemy.GetHitbox(), playerBullet.OldPosition, playerBullet.Position))
                     {
-                        enemy.TakeDamage(playerBullet.Damage);
+                        if (enemy is ITouchableByBullets)
+                            (enemy as ITouchableByBullets).TakeDamage(playerBullet.Damage);
                         playerBullet.RegisterCollision();
                     }
                 }

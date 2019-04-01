@@ -2,6 +2,7 @@
 using ExplainingEveryString.Core.GameModel;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
+using ExplainingEveryString.Core.GameModel.Enemies;
 
 namespace ExplainingEveryString.Core.Tests
 {
