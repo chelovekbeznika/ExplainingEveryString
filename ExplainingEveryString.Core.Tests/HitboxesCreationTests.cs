@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Tests
             };
             Mine mine = new Mine();
             mine.Initialize(mineBlueprint, null, new Vector2(-100, 200));
-            Hitbox hitbox = mine.GetHitbox();
+            Hitbox hitbox = mine.GetCurrentHitbox();
 
             Hitbox model = new Hitbox { Bottom = 192, Top = 208, Left = -108, Right = -92 };
             Assert.That(model, Is.EqualTo(hitbox));

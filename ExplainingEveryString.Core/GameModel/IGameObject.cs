@@ -14,7 +14,8 @@ namespace ExplainingEveryString.Core.GameModel
 
     internal interface ICollidable
     {
-        Hitbox GetHitbox();
+        Hitbox GetCurrentHitbox();
+        Hitbox GetOldHitbox();
     }
 
     internal interface ICrashable : ICollidable

@@ -74,6 +74,16 @@ namespace ExplainingEveryString.Core.Tests
         }
 
         [Test]
+        public void TryToRideThroughWallFromRightWhileTouchingIt()
+        {
+            Hitbox oldPosition = new Hitbox { Left = 50, Right = 80, Bottom = 20, Top = 50 };
+            Hitbox newPosition = new Hitbox { Left = -20, Right = 10, Bottom = 50, Top = 80 };
+            Vector2? actualPosition = null;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition);
+            Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 65, Y = 65 }));
+        }
+
+        [Test]
         public void TryToRideThroughWallFromTop()
         {
             Hitbox oldPosition = new Hitbox { Left = 10, Right = 40, Bottom = 60, Top = 90 };

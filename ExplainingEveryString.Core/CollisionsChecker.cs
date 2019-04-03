@@ -215,7 +215,7 @@ namespace ExplainingEveryString.Core
                 && (newHitbox.Left < wall.Right) && (oldHitbox.Left >= wall.Right);
             if (crossingWallRightLine)
             {
-                Single partOfPathBeforeCrossing = (wall.Right - oldHitbox.Right) / (newHitbox.Left - oldHitbox.Left);
+                Single partOfPathBeforeCrossing = (wall.Right - oldHitbox.Left) / (newHitbox.Left - oldHitbox.Left);
                 Single verticalDelta = (newHitbox.Top - oldHitbox.Top) * partOfPathBeforeCrossing;
                 return Overlaps(oldHitbox.Bottom + verticalDelta, oldHitbox.Top + verticalDelta,
                     wall.Bottom, wall.Top);

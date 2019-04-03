@@ -6,7 +6,18 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal abstract class GameObject<TBlueprint> : IGameObject where TBlueprint : Blueprint
     {
-        public Vector2 Position { get; protected set; }
+        private Vector2 position;
+
+        public Vector2 Position
+        {
+            get => position;
+            internal set
+            {
+                OldPosition = position;
+                position = value;
+            }
+        }
+        internal Vector2 OldPosition { get; private set; }
         private Single Width { get; set; }
         private Single Height { get; set; }
         protected Single Hitpoints { get; set; }
@@ -21,6 +32,7 @@ namespace ExplainingEveryString.Core.GameModel
         
         private void PlaceOnLevel(Vector2 position)
         {
+            this.OldPosition = position;
             this.Position = position;
         }
 
@@ -47,14 +59,24 @@ namespace ExplainingEveryString.Core.GameModel
             Hitpoints = 0;
         }
 
-        public Hitbox GetHitbox()
+        public Hitbox GetCurrentHitbox()
+        {
+            return GetHitboxWithCenterIn(Position);
+        }
+
+        public Hitbox GetOldHitbox()
+        {
+            return GetHitboxWithCenterIn(OldPosition);
+        }
+
+        private Hitbox GetHitboxWithCenterIn(Vector2 center)
         {
             return new Hitbox
             {
-                Bottom = Position.Y - Height / 2,
-                Top = Position.Y + Height / 2,
-                Left = Position.X - Width / 2,
-                Right = Position.X + Width / 2
+                Bottom = center.Y - Height / 2,
+                Top = center.Y + Height / 2,
+                Left = center.X - Width / 2,
+                Right = center.X + Width / 2
             };
         }
     }

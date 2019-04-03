@@ -58,6 +58,7 @@
     <Compile Include="GameModel\MathConstants.cs" />
     <Compile Include="GameModel\PlayerBullet.cs" />
     <Compile Include="GameModel\PlayerWeapon.cs" />
+    <Compile Include="GameModel\Wall.cs" />
     <Compile Include="Input\GamePadPlayerInput.cs" />
     <Compile Include="Input\KeyBoardMousePlayerInput.cs" />
     <Compile Include="Input\PlayerInput.cs" />

@@ -13,6 +13,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         private Player player;
         private List<IGameObject> enemies;
+        private List<IGameObject> walls;
         private List<PlayerBullet> playerBullets = new List<PlayerBullet>();
         private GameObjectsFactory factory;
 
@@ -46,20 +47,31 @@ namespace ExplainingEveryString.Core.GameModel
             CollisionsChecker collisionsChecker = new CollisionsChecker();
             foreach (ICrashable crashable in enemies.OfType<ICrashable>())
             {
-                if (collisionsChecker.Collides(crashable.GetHitbox(), player.GetHitbox()))
+                if (collisionsChecker.Collides(crashable.GetCurrentHitbox(), player.GetCurrentHitbox()))
                 {
                     crashable.Destroy();
                     player.TakeDamage(crashable.CollisionDamage);
                 }
             }
+
+            Hitbox oldHitbox = player.GetOldHitbox();
+            foreach (ICollidable wall in walls.Cast<ICollidable>())
+            {
+                Vector2? wallCorrection = null;
+                collisionsChecker.TryToBypassWall(oldHitbox, player.GetCurrentHitbox(),
+                    wall.GetCurrentHitbox(), out wallCorrection);
+                if (wallCorrection != null)
+                    player.Position = wallCorrection.Value;
+            }
+
             foreach (PlayerBullet playerBullet in playerBullets)
             {
-                foreach (ICollidable enemy in enemies.OfType<ICollidable>())
+                foreach (ICollidable collidable in enemies.Concat(walls).OfType<ICollidable>())
                 {
-                    if (collisionsChecker.Collides(enemy.GetHitbox(), playerBullet.OldPosition, playerBullet.Position))
+                    if (collisionsChecker.Collides(collidable.GetCurrentHitbox(), playerBullet.OldPosition, playerBullet.Position))
                     {
-                        if (enemy is ITouchableByBullets)
-                            (enemy as ITouchableByBullets).TakeDamage(playerBullet.Damage);
+                        if (collidable is ITouchableByBullets)
+                            (collidable as ITouchableByBullets).TakeDamage(playerBullet.Damage);
                         playerBullet.RegisterCollision();
                     }
                 }
@@ -76,7 +88,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
-            return new List<IDisplayble> { player }.Concat(enemies).Concat(playerBullets);
+            return new List<IDisplayble> { player }.Concat(enemies).Concat(playerBullets).Concat(walls);
         }
 
         private void InitializeGameObjects()
@@ -96,10 +108,20 @@ namespace ExplainingEveryString.Core.GameModel
                 new Vector2(400, 300),
                 new Vector2(500, 300)
             };
+            Vector2[] wallsPositions = new Vector2[]
+            {
+                new Vector2(0, -200),
+                new Vector2(8, -232),
+                new Vector2(16, -264),
+                new Vector2(32, -328),
+                new Vector2(100, -400)
+            };
 
             enemies = new List<IGameObject>();
             enemies.AddRange(factory.Construct<Mine, EnemyBlueprint>(minePositions));
             enemies.AddRange(factory.Construct<Hunter, HunterBlueprint>(huntersPositions));
+            walls = new List<IGameObject>();
+            walls.AddRange(factory.Construct<Wall, Blueprint>(wallsPositions));
         }
 
         private void PlayerShoot(Object sender, PlayerShootEventArgs args)

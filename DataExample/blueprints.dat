@@ -35,5 +35,12 @@
     "Height": 32.0,
     "Width": 32.0,
     "Hitpoints": 3.0
+  },
+  "Wall": {
+    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "Height": 32.0,
+    "Width": 64.0,
+    "Hitpoints": 0.0,
+    "DefaultSpriteName": "Sprites/WallBlock"
   }
 }
