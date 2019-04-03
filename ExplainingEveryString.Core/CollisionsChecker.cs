@@ -100,6 +100,130 @@ namespace ExplainingEveryString.Core
                 && point.Y <= hitbox.Top && point.Y >= hitbox.Bottom;
         }
 
+        //In our game we are sliding along a walls
+        internal void TryToBypassWall(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall, 
+            out Vector2? positionAfterWallHit)
+        {
+            if (MovingFromWall(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = null;
+                return;
+            }
+
+            if (CrossWallBottom(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = (newHitbox.Left + newHitbox.Right) / 2,
+                    Y = wall.Bottom - (newHitbox.Top - newHitbox.Bottom) / 2
+                };
+                return;
+            }
+            if (CrossWallTop(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = (newHitbox.Left + newHitbox.Right) / 2,
+                    Y = wall.Top + (newHitbox.Top - newHitbox.Bottom) / 2
+                };
+                return;
+            }
+
+            if (CrossWallLeft(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = wall.Left - (newHitbox.Right - newHitbox.Left) / 2,
+                    Y = (newHitbox.Top + newHitbox.Bottom) / 2
+                };
+                return;
+            }
+            if (CrossWallRight(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = wall.Right + (newHitbox.Right - newHitbox.Left) / 2,
+                    Y = (newHitbox.Top + newHitbox.Bottom) / 2
+                };
+                return;
+            }
+
+            positionAfterWallHit = null;
+        }
+
+        private Boolean MovingFromWall(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall)
+        {
+            if ((oldHitbox.Right <= wall.Left) && (newHitbox.Right <= oldHitbox.Right))
+                return true;
+            if ((oldHitbox.Left >= wall.Right) && (newHitbox.Left >= oldHitbox.Left))
+                return true;
+            if ((oldHitbox.Top <= wall.Bottom) && (newHitbox.Bottom <= oldHitbox.Bottom))
+                return true;
+            if ((oldHitbox.Bottom >= wall.Top) && (newHitbox.Top >= oldHitbox.Top))
+                return true;
+            return false;
+        }
+
+        private Boolean CrossWallBottom(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall)
+        {
+            Boolean crossingWallBottomLine = (newHitbox.Top > oldHitbox.Top)
+                && (newHitbox.Top > wall.Bottom) && (oldHitbox.Top <= wall.Bottom);
+            if (crossingWallBottomLine)
+            {
+                Single partOfPathBeforeCrossing = (wall.Bottom - oldHitbox.Top) / (newHitbox.Top - oldHitbox.Top);
+                Single horizontalDelta = (newHitbox.Right - oldHitbox.Right) * partOfPathBeforeCrossing;
+                return Overlaps(oldHitbox.Left + horizontalDelta, oldHitbox.Right + horizontalDelta, 
+                    wall.Left, wall.Right);
+            }
+            else
+                return false;
+        }
+
+        private Boolean CrossWallTop(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall)
+        {
+            Boolean crossingWallTopLine = (newHitbox.Bottom < oldHitbox.Bottom) 
+                && (newHitbox.Bottom < wall.Top) && (oldHitbox.Bottom >= wall.Top);
+            if (crossingWallTopLine)
+            {
+                Single partOfPathBeforeCrossing = (wall.Top - oldHitbox.Bottom) / (newHitbox.Bottom - oldHitbox.Bottom);
+                Single horizontalDelta = (newHitbox.Right - oldHitbox.Right) * partOfPathBeforeCrossing;
+                return Overlaps(oldHitbox.Left + horizontalDelta, oldHitbox.Right + horizontalDelta,
+                    wall.Left, wall.Right);
+            }
+            else
+                return false;
+        }
+
+        private Boolean CrossWallLeft(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall)
+        {
+            Boolean crossingWallLeftLine = (newHitbox.Right > oldHitbox.Right) 
+                && (newHitbox.Right > wall.Left) && (oldHitbox.Right <= wall.Left);
+            if (crossingWallLeftLine)
+            {
+                Single partOfPathBeforeCrossing = (wall.Left - oldHitbox.Right) / (newHitbox.Right - oldHitbox.Right);
+                Single verticalDelta = (newHitbox.Top - oldHitbox.Top) * partOfPathBeforeCrossing;
+                return Overlaps(oldHitbox.Bottom + verticalDelta, oldHitbox.Top + verticalDelta,
+                    wall.Bottom, wall.Top);
+            }
+            else
+                return false;
+        }
+
+        private Boolean CrossWallRight(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall)
+        {
+            Boolean crossingWallRightLine = (newHitbox.Left < oldHitbox.Left) 
+                && (newHitbox.Left < wall.Right) && (oldHitbox.Left >= wall.Right);
+            if (crossingWallRightLine)
+            {
+                Single partOfPathBeforeCrossing = (wall.Right - oldHitbox.Right) / (newHitbox.Left - oldHitbox.Left);
+                Single verticalDelta = (newHitbox.Top - oldHitbox.Top) * partOfPathBeforeCrossing;
+                return Overlaps(oldHitbox.Bottom + verticalDelta, oldHitbox.Top + verticalDelta,
+                    wall.Bottom, wall.Top);
+            }
+            else
+                return false;
+        }
+
         private Boolean Overlaps(Single firstBegin, Single firstEnd, Single secondBegin, Single secondEnd)
         {
             if (firstBegin > firstEnd)
@@ -108,8 +232,17 @@ namespace ExplainingEveryString.Core
                 firstBegin = firstEnd;
                 firstEnd = temporary;
             }
+            if (secondBegin > secondEnd)
+            {
+                Single temporary = secondBegin;
+                secondBegin = secondEnd;
+                secondEnd = temporary;
+            }
 
-            return !(firstEnd < secondBegin && secondEnd < firstBegin);
+            return (firstBegin <= secondEnd && firstBegin >= secondBegin)
+                || (firstEnd <= secondEnd && firstEnd >= secondBegin)
+                || (secondBegin <= firstEnd && secondBegin >= firstBegin)
+                || (secondEnd <= firstEnd && secondEnd >= firstBegin);
         }
     }
 }
