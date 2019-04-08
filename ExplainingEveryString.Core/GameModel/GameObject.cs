@@ -11,7 +11,7 @@ namespace ExplainingEveryString.Core.GameModel
         public Vector2 Position
         {
             get => position;
-            internal set
+            set
             {
                 OldPosition = position;
                 position = value;

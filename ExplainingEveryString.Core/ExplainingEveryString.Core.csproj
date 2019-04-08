@@ -46,6 +46,8 @@
     <Compile Include="Camera.cs" />
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="EesGame.cs" />
+    <Compile Include="GameModel\ActiveGameObjectsStorage.cs" />
+    <Compile Include="GameModel\CollisionsController.cs" />
     <Compile Include="GameModel\Enemies\Enemy.cs" />
     <Compile Include="GameModel\FrictionCorrector.cs" />
     <Compile Include="GameModel\GameObject.cs" />

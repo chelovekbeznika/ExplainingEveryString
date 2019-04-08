@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -16,6 +17,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         Hitbox GetCurrentHitbox();
         Hitbox GetOldHitbox();
+        Vector2 Position { set; }
     }
 
     internal interface ICrashable : ICollidable
