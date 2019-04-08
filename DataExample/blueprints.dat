@@ -42,5 +42,19 @@
     "Width": 64.0,
     "Hitpoints": 0.0,
     "DefaultSpriteName": "Sprites/WallBlock"
+  },
+  "MiddleWall": {
+    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 0.0,
+    "DefaultSpriteName": "Sprites/MiddleWall"
+  },
+  "LittleWall": {
+    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 0.0,
+    "DefaultSpriteName": "Sprites/LittleWall"
   }
 }

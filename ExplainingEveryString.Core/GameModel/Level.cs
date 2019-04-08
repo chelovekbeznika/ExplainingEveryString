@@ -88,7 +88,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
-            return new List<IDisplayble> { player }.Concat(enemies).Concat(playerBullets).Concat(walls);
+            return walls.Concat(new List<IDisplayble> { player }).Concat(enemies).Concat(playerBullets);
         }
 
         private void InitializeGameObjects()
@@ -108,20 +108,28 @@ namespace ExplainingEveryString.Core.GameModel
                 new Vector2(400, 300),
                 new Vector2(500, 300)
             };
-            Vector2[] wallsPositions = new Vector2[]
+            Vector2[] littleWallsPositions = new Vector2[]
             {
                 new Vector2(0, -200),
-                new Vector2(8, -232),
-                new Vector2(16, -264),
-                new Vector2(32, -328),
-                new Vector2(100, -400)
+                new Vector2(0, -232),
+                new Vector2(8, -264),
+                new Vector2(8, -312)
+            };
+            Vector2[] middleWallsPositions = new Vector2[]
+            {
+                new Vector2(-256, -256),
+                new Vector2(-256, -288),
+                new Vector2(-128, -256),
+                new Vector2(-96, -256),
+                new Vector2(-64, -256)
             };
 
             enemies = new List<IGameObject>();
             enemies.AddRange(factory.Construct<Mine, EnemyBlueprint>(minePositions));
             enemies.AddRange(factory.Construct<Hunter, HunterBlueprint>(huntersPositions));
             walls = new List<IGameObject>();
-            walls.AddRange(factory.Construct<Wall, Blueprint>(wallsPositions));
+            walls.AddRange(factory.Construct<Wall, Blueprint>("LittleWall", littleWallsPositions));
+            walls.AddRange(factory.Construct<Wall, Blueprint>("MiddleWall", middleWallsPositions));
         }
 
         private void PlayerShoot(Object sender, PlayerShootEventArgs args)

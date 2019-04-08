@@ -20,22 +20,31 @@ namespace ExplainingEveryString.Core.GameModel
             where TGameObject : GameObject<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
-            return positions.Select(position => Construct<TGameObject, TBlueprint>(position)).ToList();
+            return Construct<TGameObject, TBlueprint>(typeof(TGameObject).Name, positions);
+        }
+
+        internal List<TGameObject> Construct<TGameObject, TBlueprint>(String name, IEnumerable<Vector2> positions)
+            where TGameObject : GameObject<TBlueprint>, new()
+            where TBlueprint : Blueprint
+        {
+            return positions.Select(position => Construct<TGameObject, TBlueprint>(name, position)).ToList();
         }
 
         internal TGameObject Construct<TGameObject, TBlueprint>(Vector2 position)
             where TGameObject : GameObject<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
-            TBlueprint blueprint = blueprintsStorage[typeof(TGameObject).Name] as TBlueprint;
+            return Construct<TGameObject, TBlueprint>(typeof(TGameObject).Name, position);
+        }
+
+        internal TGameObject Construct<TGameObject, TBlueprint>(String name, Vector2 position)
+            where TGameObject : GameObject<TBlueprint>, new()
+            where TBlueprint : Blueprint
+        {
+            TBlueprint blueprint = blueprintsStorage[name] as TBlueprint;
             TGameObject gameObject = new TGameObject();
             gameObject.Initialize(blueprint, Level, position);
             return gameObject;
-        }
-
-        internal void Example()
-        {
-            Construct<Player, PlayerBlueprint>(new Vector2(0, 0));
         }
     }
 }
