@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal void CheckCollisions()
         {
             CheckEnemiesForCrashingIntoPlayer();
-            PreventInterpenetrationOfGameObject();
+            PreventInterpenetrationOfGameObjects();
             CheckForBulletCollisions();
         }
 
@@ -37,17 +37,17 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
 
-        private void PreventInterpenetrationOfGameObject()
+        private void PreventInterpenetrationOfGameObjects()
         {
             AdjustObjectToWalls(activeObjects.Player);
             foreach (ICollidable movingEnemy
-                in activeObjects.Enemies.OfType<ICollidable>().Where(ObjectIsMoving))
+                in activeObjects.Enemies.OfType<ICollidable>().Where(CollidableIsMoving))
             {
                 AdjustObjectToWalls(movingEnemy);
             }
         }
 
-        private Boolean ObjectIsMoving(ICollidable collidable)
+        private Boolean CollidableIsMoving(ICollidable collidable)
         {
             return !collidable.GetOldHitbox().Equals(collidable.GetCurrentHitbox());
         }
@@ -55,7 +55,7 @@ namespace ExplainingEveryString.Core.GameModel
         private void AdjustObjectToWalls(ICollidable movingObject)
         {
             Hitbox oldHitbox = movingObject.GetOldHitbox();
-            foreach (ICollidable wall in activeObjects.Walls.Cast<ICollidable>())
+            foreach (ICollidable wall in activeObjects.Walls.Concat(activeObjects.Enemies).OfType<ICollidable>())
             {
                 Vector2? wallCorrection = null;
                 collisionsChecker.TryToBypassWall(oldHitbox, movingObject.GetCurrentHitbox(),
