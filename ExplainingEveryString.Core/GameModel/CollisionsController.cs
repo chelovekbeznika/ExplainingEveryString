@@ -40,10 +40,16 @@ namespace ExplainingEveryString.Core.GameModel
         private void PreventInterpenetrationOfGameObject()
         {
             AdjustObjectToWalls(activeObjects.Player);
-            foreach (ICollidable movingEnemy in activeObjects.Enemies.OfType<ICollidable>())
+            foreach (ICollidable movingEnemy
+                in activeObjects.Enemies.OfType<ICollidable>().Where(ObjectIsMoving))
             {
                 AdjustObjectToWalls(movingEnemy);
             }
+        }
+
+        private Boolean ObjectIsMoving(ICollidable collidable)
+        {
+            return !collidable.GetOldHitbox().Equals(collidable.GetCurrentHitbox());
         }
 
         private void AdjustObjectToWalls(ICollidable movingObject)

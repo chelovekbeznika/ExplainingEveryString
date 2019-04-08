@@ -31,9 +31,9 @@ namespace ExplainingEveryString.Core.GameModel
         }
         
         private void PlaceOnLevel(Vector2 position)
-        {
-            this.OldPosition = position;
+        {          
             this.Position = position;
+            this.OldPosition = position;
         }
 
         protected virtual void Construct(TBlueprint blueprint, Level level)
