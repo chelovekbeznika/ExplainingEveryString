@@ -39,11 +39,11 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void PreventInterpenetrationOfGameObjects()
         {
-            AdjustObjectToWalls(activeObjects.Player);
+            AdjustObjectToWalls(activeObjects.Player, null, null);
             foreach (ICollidable movingEnemy
                 in activeObjects.Enemies.OfType<ICollidable>().Where(CollidableIsMoving))
             {
-                AdjustObjectToWalls(movingEnemy);
+                AdjustObjectToWalls(movingEnemy, null, null);
             }
         }
 
@@ -52,16 +52,32 @@ namespace ExplainingEveryString.Core.GameModel
             return !collidable.GetOldHitbox().Equals(collidable.GetCurrentHitbox());
         }
 
-        private void AdjustObjectToWalls(ICollidable movingObject)
+        private void AdjustObjectToWalls(ICollidable movingObject, 
+            ICollidable tryVerticalMovePriorityForThis, Hitbox? previousOldHitbox)
         {
-            Hitbox oldHitbox = movingObject.GetOldHitbox();
+            Hitbox oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
+            Vector2 savedMovingObjectPosition = movingObject.Position;
+            ICollidable touchingToCorner = null;
             foreach (ICollidable wall in activeObjects.Walls.Concat(activeObjects.Enemies).OfType<ICollidable>())
             {
-                Vector2? wallCorrection = null;
+                Vector2? wallCorrection;
+                Boolean ridingIntoCorner;
+                Boolean horizontalPriority = wall != tryVerticalMovePriorityForThis;
                 collisionsChecker.TryToBypassWall(oldHitbox, movingObject.GetCurrentHitbox(),
-                    wall.GetCurrentHitbox(), out wallCorrection);
+                    wall.GetCurrentHitbox(), out wallCorrection, horizontalPriority, out ridingIntoCorner);
+                
                 if (wallCorrection != null)
-                    movingObject.Position = wallCorrection.Value;
+                {
+                    if (ridingIntoCorner && tryVerticalMovePriorityForThis == null)
+                        touchingToCorner = wall;
+                    movingObject.Position = wallCorrection.Value;                       
+                }
+            }
+
+            if (touchingToCorner != null && oldHitbox.Equals(movingObject.GetCurrentHitbox()))
+            {
+                movingObject.Position = savedMovingObjectPosition;
+                AdjustObjectToWalls(movingObject, touchingToCorner, oldHitbox);
             }
         }
 

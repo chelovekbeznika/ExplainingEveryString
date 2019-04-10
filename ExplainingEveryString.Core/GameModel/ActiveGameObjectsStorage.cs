@@ -68,7 +68,10 @@ namespace ExplainingEveryString.Core.GameModel
             Vector2[] middleWallsPositions = new Vector2[]
             {
                 new Vector2(-256, -256),
+                new Vector2(-288, -256),
                 new Vector2(-256, -288),
+                new Vector2(-320, -256),
+                new Vector2(-320, -288),
                 new Vector2(-128, -256),
                 new Vector2(-96, -256),
                 new Vector2(-64, -256)

@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         Hitbox GetCurrentHitbox();
         Hitbox GetOldHitbox();
-        Vector2 Position { set; }
+        Vector2 Position { get; set; }
     }
 
     internal interface ICrashable : ICollidable

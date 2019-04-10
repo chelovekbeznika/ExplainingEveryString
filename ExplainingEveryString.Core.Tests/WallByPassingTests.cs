@@ -49,8 +49,10 @@ namespace ExplainingEveryString.Core.Tests
             Hitbox oldPosition = new Hitbox { Left = 10, Right = 40, Bottom = -40, Top = -10 };
             Hitbox newPosition = new Hitbox { Left = 50, Right = 80, Bottom = 70, Top = 100 };
             Vector2? actualPosition = null;
-            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition);
+            Boolean corner;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
             Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 65, Y = 15 }));
+            Assert.That(corner, Is.EqualTo(false));
         }
 
         [Test]
@@ -59,8 +61,10 @@ namespace ExplainingEveryString.Core.Tests
             Hitbox oldPosition = new Hitbox { Left = 70, Right = 100, Bottom = 25, Top = 55 };
             Hitbox newPosition = new Hitbox { Left = 40, Right = 70, Bottom = 25, Top = 55 };
             Vector2? actualPosition = null;
-            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition);
+            Boolean corner;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
             Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 65, Y = 40 }));
+            Assert.That(corner, Is.EqualTo(false));
         }
 
         [Test]
@@ -69,8 +73,10 @@ namespace ExplainingEveryString.Core.Tests
             Hitbox oldPosition = new Hitbox { Left = 0, Right = 30, Bottom = 20, Top = 50 };
             Hitbox newPosition = new Hitbox { Left = 90, Right = 120, Bottom = 50, Top = 80 };
             Vector2? actualPosition = null;
-            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition);
+            Boolean corner;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
             Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 15, Y = 65 }));
+            Assert.That(corner, Is.EqualTo(false));
         }
 
         [Test]
@@ -79,8 +85,10 @@ namespace ExplainingEveryString.Core.Tests
             Hitbox oldPosition = new Hitbox { Left = 50, Right = 80, Bottom = 20, Top = 50 };
             Hitbox newPosition = new Hitbox { Left = -20, Right = 10, Bottom = 50, Top = 80 };
             Vector2? actualPosition = null;
-            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition);
+            Boolean corner;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
             Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 65, Y = 65 }));
+            Assert.That(corner, Is.EqualTo(false));
         }
 
         [Test]
@@ -89,8 +97,10 @@ namespace ExplainingEveryString.Core.Tests
             Hitbox oldPosition = new Hitbox { Left = 10, Right = 40, Bottom = 60, Top = 90 };
             Hitbox newPosition = new Hitbox { Left = 20, Right = 50, Bottom = 30, Top = 60 };
             Vector2? actualPosition = null;
-            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition);
+            Boolean corner;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
             Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 35, Y = 65 }));
+            Assert.That(corner, Is.EqualTo(false));
         }
 
         [Test]
@@ -99,15 +109,22 @@ namespace ExplainingEveryString.Core.Tests
             Hitbox oldPosition = new Hitbox { Left = 0, Right = 30, Bottom = 0, Top = 30 };
             Hitbox newPosition = new Hitbox { Left = 40, Right = 70, Bottom = 10, Top = 40 };
             Vector2? actualPosition = null;
-            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition);
+            Boolean corner;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
             Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 55, Y = 15 }));
+            Assert.That(corner, Is.EqualTo(true));
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, false, out corner);
+            Assert.That(actualPosition.Value, Is.EqualTo(new Vector2 { X = 15, Y = 25 }));
+            Assert.That(corner, Is.EqualTo(true));
         }
 
         private void AssertWallIsNotAffectingMovement(Hitbox oldPosition, Hitbox newPosition)
         {
             Vector2? actual;
-            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actual);
+            Boolean corner;
+            collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actual, true, out corner);
             Assert.That(actual, Is.EqualTo(null));
+            Assert.That(corner, Is.EqualTo(false));
         }
     }
 }

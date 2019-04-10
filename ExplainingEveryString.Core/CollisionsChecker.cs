@@ -102,54 +102,30 @@ namespace ExplainingEveryString.Core
 
         //In our game we are sliding along a walls
         internal void TryToBypassWall(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall, 
-            out Vector2? positionAfterWallHit)
+            out Vector2? positionAfterWallHit, Boolean horMovePriority, out Boolean movingIntoCorner)
         {
             if (MovingFromWall(oldHitbox, newHitbox, wall))
             {
                 positionAfterWallHit = null;
+                movingIntoCorner = false;
                 return;
             }
 
-            if (CrossWallBottom(oldHitbox, newHitbox, wall))
+            if (horMovePriority)
             {
-                positionAfterWallHit = new Vector2
-                {
-                    X = (newHitbox.Left + newHitbox.Right) / 2,
-                    Y = wall.Bottom - (newHitbox.Top - newHitbox.Bottom) / 2
-                };
-                return;
+                CheckHorizontalMove(oldHitbox, newHitbox, wall, out positionAfterWallHit, out movingIntoCorner);
+                if (positionAfterWallHit == null)
+                    CheckVerticalMove(oldHitbox, newHitbox, wall, out positionAfterWallHit, out movingIntoCorner);
             }
-            if (CrossWallTop(oldHitbox, newHitbox, wall))
+            else
             {
-                positionAfterWallHit = new Vector2
-                {
-                    X = (newHitbox.Left + newHitbox.Right) / 2,
-                    Y = wall.Top + (newHitbox.Top - newHitbox.Bottom) / 2
-                };
-                return;
+                CheckVerticalMove(oldHitbox, newHitbox, wall, out positionAfterWallHit, out movingIntoCorner);
+                if (positionAfterWallHit == null)
+                    CheckHorizontalMove(oldHitbox, newHitbox, wall, out positionAfterWallHit, out movingIntoCorner);
             }
-
-            if (CrossWallLeft(oldHitbox, newHitbox, wall))
-            {
-                positionAfterWallHit = new Vector2
-                {
-                    X = wall.Left - (newHitbox.Right - newHitbox.Left) / 2,
-                    Y = (newHitbox.Top + newHitbox.Bottom) / 2
-                };
-                return;
-            }
-            if (CrossWallRight(oldHitbox, newHitbox, wall))
-            {
-                positionAfterWallHit = new Vector2
-                {
-                    X = wall.Right + (newHitbox.Right - newHitbox.Left) / 2,
-                    Y = (newHitbox.Top + newHitbox.Bottom) / 2
-                };
-                return;
-            }
-
-            positionAfterWallHit = null;
         }
+
+
 
         private Boolean MovingFromWall(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall)
         {
@@ -162,6 +138,69 @@ namespace ExplainingEveryString.Core
             if ((oldHitbox.Bottom >= wall.Top) && (newHitbox.Top >= oldHitbox.Top))
                 return true;
             return false;
+        }
+
+        private void CheckHorizontalMove(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall,
+            out Vector2? positionAfterWallHit, out Boolean touchingCorner)
+        {
+            Boolean touchingHorizontalFringes = (Math.Abs(oldHitbox.Left - wall.Right) < MathConstants.Epsilon
+                    || Math.Abs(oldHitbox.Right - wall.Left) < MathConstants.Epsilon);
+            if (CrossWallBottom(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = (newHitbox.Left + newHitbox.Right) / 2,
+                    Y = wall.Bottom - (newHitbox.Top - newHitbox.Bottom) / 2
+                };
+                touchingCorner = Math.Abs(oldHitbox.Top - wall.Bottom) < MathConstants.Epsilon
+                    && touchingHorizontalFringes;
+;
+                return;
+            }
+            if (CrossWallTop(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = (newHitbox.Left + newHitbox.Right) / 2,
+                    Y = wall.Top + (newHitbox.Top - newHitbox.Bottom) / 2
+                };
+                touchingCorner = Math.Abs(oldHitbox.Bottom - wall.Top) < MathConstants.Epsilon
+                    && touchingHorizontalFringes;
+                return;
+            }
+            positionAfterWallHit = null;
+            touchingCorner = false;
+        }
+
+        private void CheckVerticalMove(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall,
+            out Vector2? positionAfterWallHit, out Boolean touchingCorner)
+        {
+            Boolean touchingVerticalFringes = (Math.Abs(oldHitbox.Top - wall.Bottom) < MathConstants.Epsilon
+                    || Math.Abs(oldHitbox.Bottom - wall.Top) < MathConstants.Epsilon);
+            if (CrossWallLeft(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = wall.Left - (newHitbox.Right - newHitbox.Left) / 2,
+                    Y = (newHitbox.Top + newHitbox.Bottom) / 2
+                };
+                touchingCorner = Math.Abs(oldHitbox.Right - wall.Left) < MathConstants.Epsilon
+                    && touchingVerticalFringes;
+                return;
+            }
+            if (CrossWallRight(oldHitbox, newHitbox, wall))
+            {
+                positionAfterWallHit = new Vector2
+                {
+                    X = wall.Right + (newHitbox.Right - newHitbox.Left) / 2,
+                    Y = (newHitbox.Top + newHitbox.Bottom) / 2
+                };
+                touchingCorner = Math.Abs(oldHitbox.Left - wall.Right) < MathConstants.Epsilon
+                    && touchingVerticalFringes;
+                return;
+            }
+            positionAfterWallHit = null;
+            touchingCorner = false;
         }
 
         private Boolean CrossWallBottom(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall)
