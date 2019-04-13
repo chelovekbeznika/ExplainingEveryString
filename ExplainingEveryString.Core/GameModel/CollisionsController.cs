@@ -40,10 +40,30 @@ namespace ExplainingEveryString.Core.GameModel
         private void PreventInterpenetrationOfGameObjects()
         {
             AdjustObjectToWalls(activeObjects.Player, null, null);
-            foreach (ICollidable movingEnemy
-                in activeObjects.Enemies.OfType<ICollidable>().Where(CollidableIsMoving))
+
+            IEnumerable<ICollidable> enemies = activeObjects.Enemies.OfType<ICollidable>().ToArray();
+            IEnumerable<ICollidable> movingEnemies = enemies.Where(CollidableIsMoving).ToArray();
+            List<ICollidable> stoppedEnemies = new List<ICollidable>();
+            foreach (ICollidable movingEnemy in movingEnemies)
             {
-                AdjustObjectToWalls(movingEnemy, null, null);
+                Vector2 beforeMovePosition = movingEnemy.OldPosition;
+                Boolean bumpedIntoOtherEnemy = false;
+                foreach (ICollidable otherEnemy in enemies.Except(stoppedEnemies).Where(e => e != movingEnemy))
+                {
+                    if (collisionsChecker.Collides(otherEnemy.GetOldHitbox(), movingEnemy.GetCurrentHitbox())
+                        || collisionsChecker.Collides(otherEnemy.GetCurrentHitbox(), movingEnemy.GetCurrentHitbox()))
+                    {
+                        bumpedIntoOtherEnemy = true;
+                        break;
+                    }
+                }
+                if (bumpedIntoOtherEnemy)
+                {
+                    movingEnemy.Position = beforeMovePosition;
+                    stoppedEnemies.Add(movingEnemy);
+                }
+                else
+                    AdjustObjectToWalls(movingEnemy, null, null);             
             }
         }
 
@@ -58,7 +78,7 @@ namespace ExplainingEveryString.Core.GameModel
             Hitbox oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
             Vector2 savedMovingObjectPosition = movingObject.Position;
             ICollidable touchingToCorner = null;
-            foreach (ICollidable wall in activeObjects.Walls.Concat(activeObjects.Enemies).OfType<ICollidable>())
+            foreach (ICollidable wall in activeObjects.Walls.OfType<ICollidable>())
             {
                 Vector2? wallCorrection;
                 Boolean ridingIntoCorner;

@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.GameModel
                 position = value;
             }
         }
-        internal Vector2 OldPosition { get; private set; }
+        public Vector2 OldPosition { get; private set; }
         private Single Width { get; set; }
         private Single Height { get; set; }
         protected Single Hitpoints { get; set; }
