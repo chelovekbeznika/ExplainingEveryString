@@ -10,5 +10,8 @@ namespace ExplainingEveryString.Data
         public ControlDevice ControlDevice { get; set; }
         public Int32 PlayerFramePercentageWidth { get; set; }
         public Int32 PlayerFramePercentageHeigth { get; set; }
+        public Int32 ScreenWidth { get; set; }
+        public Int32 ScreenHeight { get; set; }
+        public Boolean FullScreen { get; set; }
     }
 }

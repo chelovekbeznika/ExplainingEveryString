@@ -24,7 +24,12 @@ namespace ExplainingEveryString.Core
 
         public EesGame()
         {
+            ConfigurationAccess.InitializeConfig();
+            Configuration config = ConfigurationAccess.GetCurrentConfig();
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = config.ScreenHeight;
+            graphics.PreferredBackBufferWidth = config.ScreenWidth;
+            graphics.IsFullScreen = config.FullScreen;
             Content.RootDirectory = "Content";
             CurrentlyRunnedGame = this;
             this.IsMouseVisible = true;
@@ -32,8 +37,6 @@ namespace ExplainingEveryString.Core
 
         protected override void Initialize()
         {
-            ConfigurationAccess.InitializeConfig();
-
             blueprintsLoader = BlueprintsAccess.GetBlueprintsLoader();
             blueprintsLoader.Load();
 
