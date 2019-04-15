@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Displaying;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel

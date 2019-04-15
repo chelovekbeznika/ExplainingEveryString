@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.GameModel
         public Vector2 OldPosition { get; private set; }
         private Single Width { get; set; }
         private Single Height { get; set; }
-        protected Single Hitpoints { get; set; }
+        protected virtual Single Hitpoints { get; set; }
 
         public String CurrentSpriteName { get; private set; }
 
@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.Hitpoints = blueprint.Hitpoints;
         }
 
-        public void TakeDamage(Single damage)
+        public virtual void TakeDamage(Single damage)
         {
             Hitpoints -= damage;
         }

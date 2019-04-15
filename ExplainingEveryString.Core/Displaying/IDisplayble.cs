@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace ExplainingEveryString.Core.GameModel
+namespace ExplainingEveryString.Core.Displaying
 {
     internal interface IDisplayble
     {

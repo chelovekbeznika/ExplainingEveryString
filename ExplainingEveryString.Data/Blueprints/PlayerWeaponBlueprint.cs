@@ -8,6 +8,8 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single BulletSpeed { get; set; }
         public Single Damage { get; set; }
         public Single WeaponRange { get; set; }
+
         public String BulletSpriteName { get; set; }
+        public SpecEffectSpecification ShootingEffect { get; set; }
     }
 }

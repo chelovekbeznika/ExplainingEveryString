@@ -3,22 +3,28 @@
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 1.5,
     "MaxSpeed": 0,
-    "DefaultSpriteName": "Sprites/Mine",
     "Height": 16.0,
     "Width": 16.0,
-    "Hitpoints": 7.0
+    "Hitpoints": 7.0,
+    "DefaultSpriteName": "Sprites/Mine",
+    "DeathEffect": {
+      "Sound": "Sounds/Explosion_02"
+    }
   },
   "Hunter": {
     "$type": "ExplainingEveryString.Data.Blueprints.HunterBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 1.0,
     "MaxSpeed": 300.0,
-    "DefaultSpriteName": "Sprites/Hunter",
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 5.0,
     "Acceleration": 600.0,
     "StartSpeed": 100.0,
-    "PlayerDetectionRange": 400.0
+    "PlayerDetectionRange": 400.0,
+    "DefaultSpriteName": "Sprites/Hunter",
+    "DeathEffect": {
+      "Sound": "Sounds/Explosion_01"
+    }
   },
   "Player": {
     "$type": "ExplainingEveryString.Data.Blueprints.PlayerBlueprint, ExplainingEveryString.Data",
@@ -29,12 +35,18 @@
       "BulletSpeed": 800.0,
       "Damage": 1.0,
       "WeaponRange": 2000.0,
-      "BulletSpriteName": "Sprites/PlayerBullet"
+      "BulletSpriteName": "Sprites/PlayerBullet",
+      "ShootingEffect": {
+        "Sound": "Sounds/PlayerShoot"
+      }
     },
-    "DefaultSpriteName": "Sprites/Rectangle",
     "Height": 32.0,
     "Width": 32.0,
-    "Hitpoints": 3.0
+    "Hitpoints": 3.0,
+    "DefaultSpriteName": "Sprites/Rectangle",
+    "DamageEffect": {
+      "Sound": "Sounds/Hit_01"
+    }
   },
   "Wall": {
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",

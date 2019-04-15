@@ -7,10 +7,13 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal sealed class Player : GameObject<PlayerBlueprint>, IUpdatable, ITouchableByBullets
     {
+        internal event EventHandler<EpicEventArgs> DamageTaken;
+
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
         private Single maxAcceleration;
         private IPlayerInput input;
+        private SpecEffectSpecification damageEffect;
 
         internal PlayerWeapon Weapon { get; private set; }
 
@@ -20,7 +23,12 @@ namespace ExplainingEveryString.Core.GameModel
             input = PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
+            damageEffect = blueprint.DamageEffect;
+            DamageTaken += level.EpicEventOccured;
+            
             Weapon = new PlayerWeapon(blueprint.Weapon, input, () => Position);
+            Weapon.Shoot += level.PlayerShoot;
+            Weapon.WeaponFired += level.EpicEventOccured;
         }
 
         public void Update(Single elapsedSeconds)
@@ -34,6 +42,16 @@ namespace ExplainingEveryString.Core.GameModel
             Vector2 speed = GetCurrentSpeed(elapsedSeconds);
             Vector2 positionChange = speed * elapsedSeconds;
             Position += positionChange;
+        }
+
+        public override void TakeDamage(Single damage)
+        {
+            base.TakeDamage(damage);
+            DamageTaken?.Invoke(this, new EpicEventArgs
+            {
+                Position = this.Position,
+                SpecEffectSpecification = damageEffect
+            });
         }
 
         private Vector2 GetCurrentSpeed(Single elapsedSeconds)

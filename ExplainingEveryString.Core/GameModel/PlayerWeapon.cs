@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Core.GameModel
     internal class PlayerWeapon
     {
         internal event EventHandler<PlayerShootEventArgs> Shoot;
+        internal event EventHandler<EpicEventArgs> WeaponFired;
 
         private Single shootCooldown;
         private Single timeTillNextShoot;
@@ -16,7 +17,9 @@ namespace ExplainingEveryString.Core.GameModel
         private Single bulletSpeed;
         private Single range;
         private Single Damage { get; set; }
+
         private String bulletSprite;
+        private SpecEffectSpecification shootingEffect;
 
         private IPlayerInput input;
         private Func<Vector2> findOutWhereIAm;
@@ -29,6 +32,7 @@ namespace ExplainingEveryString.Core.GameModel
             bulletSprite = blueprint.BulletSpriteName;
             range = blueprint.WeaponRange;
             Damage = blueprint.Damage;
+            shootingEffect = blueprint.ShootingEffect;
             this.input = input;
             this.findOutWhereIAm = findOutWhereIAm;
         }
@@ -39,6 +43,7 @@ namespace ExplainingEveryString.Core.GameModel
                 timeTillNextShoot -= elapsedSeconds;
             if (input.IsFiring())
             {
+                Boolean weaponFired = false;
                 nextBulletFirstUpdateTime += elapsedSeconds;
                 while (timeTillNextShoot <= MathConstants.Epsilon)
                 {
@@ -47,7 +52,14 @@ namespace ExplainingEveryString.Core.GameModel
                     if (nextBulletFirstUpdateTime < -MathConstants.Epsilon)
                         nextBulletFirstUpdateTime = 0;
                     OnShoot(nextBulletFirstUpdateTime);
+                    weaponFired = true;
                 }
+                if (weaponFired)
+                    WeaponFired?.Invoke(this, new EpicEventArgs
+                    {
+                        Position = findOutWhereIAm(),
+                        SpecEffectSpecification = shootingEffect
+                    });
             }
         }
 

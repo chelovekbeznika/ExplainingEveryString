@@ -43,18 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Camera.cs" />
+    <Compile Include="Displaying\Camera.cs" />
+    <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="CollisionsChecker.cs" />
+    <Compile Include="Displaying\EpicEventsProcessor.cs" />
     <Compile Include="EesGame.cs" />
     <Compile Include="GameModel\ActiveGameObjectsStorage.cs" />
     <Compile Include="GameModel\CollisionsController.cs" />
     <Compile Include="GameModel\Enemies\Enemy.cs" />
+    <Compile Include="GameModel\EpicEventArgs.cs" />
     <Compile Include="GameModel\FrictionCorrector.cs" />
     <Compile Include="GameModel\GameObject.cs" />
     <Compile Include="GameModel\GameObjectsFactory.cs" />
     <Compile Include="GameModel\Hitbox.cs" />
     <Compile Include="GameModel\Enemies\Hunter.cs" />
-    <Compile Include="GameModel\IDisplayble.cs" />
+    <Compile Include="Displaying\IDisplayble.cs" />
     <Compile Include="GameModel\IGameObject.cs" />
     <Compile Include="GameModel\Level.cs" />
     <Compile Include="GameModel\MathConstants.cs" />

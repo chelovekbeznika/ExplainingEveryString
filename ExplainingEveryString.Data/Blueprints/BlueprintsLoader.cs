@@ -19,5 +19,11 @@ namespace ExplainingEveryString.Data.Blueprints
             IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
             return blueprints.SelectMany(blueprint => blueprint.GetSprites()).ToList();
         }
+
+        public static List<String> GetNecessarySounds(this IBlueprintsLoader loader)
+        {
+            IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
+            return blueprints.SelectMany(blueprint => blueprint.GetSpecEffects()).Select(se => se.Sound).ToList();
+        }
     }
 }

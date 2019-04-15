@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.GameModel.Enemies;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;
@@ -14,6 +15,7 @@ namespace ExplainingEveryString.Core.GameModel
         private ActiveGameObjectsStorage activeObjects;
         private CollisionsController collisionsController;
         private GameObjectsFactory factory;
+        private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
 
         internal Vector2 PlayerPosition => activeObjects.Player.Position;
         internal event GameLost Lost;
@@ -24,7 +26,6 @@ namespace ExplainingEveryString.Core.GameModel
             factory.Level = this;
             activeObjects = new ActiveGameObjectsStorage(factory);
             activeObjects.InitializeGameObjects();
-            activeObjects.Player.Weapon.Shoot += PlayerShoot;
             collisionsController = new CollisionsController(activeObjects);
         }
 
@@ -43,11 +44,23 @@ namespace ExplainingEveryString.Core.GameModel
             return activeObjects.GetObjectsToDraw();
         }
 
-        private void PlayerShoot(Object sender, PlayerShootEventArgs args)
+        internal IEnumerable<EpicEventArgs> CollectEpicEvents()
+        {
+            IEnumerable<EpicEventArgs> result = epicEventsHappened;
+            epicEventsHappened = new List<EpicEventArgs>();
+            return result;
+        }
+
+        internal void PlayerShoot(Object sender, PlayerShootEventArgs args)
         {
             PlayerBullet playerBullet = args.PlayerBullet;
             playerBullet.Update(args.FirstUpdateTime);
             activeObjects.PlayerBullets.Add(playerBullet);
+        }
+
+        internal void EpicEventOccured(Object sender, EpicEventArgs epicEvent)
+        {
+            epicEventsHappened.Add(epicEvent);
         }
     }
 }

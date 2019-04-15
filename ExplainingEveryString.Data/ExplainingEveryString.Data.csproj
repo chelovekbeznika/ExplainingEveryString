@@ -52,6 +52,7 @@
     <Compile Include="Blueprints\JsonBlueprintsLoader.cs" />
     <Compile Include="Blueprints\PlayerBlueprint.cs" />
     <Compile Include="Blueprints\PlayerWeaponBlueprint.cs" />
+    <Compile Include="Blueprints\SpecEffectSpecification.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="ConfigurationAccess.cs" />
     <Compile Include="ControlDevice.cs" />

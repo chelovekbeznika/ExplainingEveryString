@@ -17,5 +17,9 @@ namespace ExplainingEveryString.Data.Blueprints
         {
             return new String[] { DefaultSpriteName };
         }
+        internal virtual IEnumerable<SpecEffectSpecification> GetSpecEffects()
+        {
+            return Enumerable.Empty<SpecEffectSpecification>();
+        }
     }
 }
