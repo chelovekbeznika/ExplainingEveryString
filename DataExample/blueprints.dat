@@ -8,7 +8,8 @@
     "Hitpoints": 7.0,
     "DefaultSpriteName": "Sprites/Mine",
     "DeathEffect": {
-      "Sound": "Sounds/Explosion_02"
+      "Sound": "Sounds/Explosion_02",
+      "Volume": 0.4
     }
   },
   "Hunter": {
@@ -23,7 +24,8 @@
     "PlayerDetectionRange": 400.0,
     "DefaultSpriteName": "Sprites/Hunter",
     "DeathEffect": {
-      "Sound": "Sounds/Explosion_01"
+      "Sound": "Sounds/Explosion_01",
+      "Volume": 0.2
     }
   },
   "Player": {
@@ -37,7 +39,8 @@
       "WeaponRange": 2000.0,
       "BulletSpriteName": "Sprites/PlayerBullet",
       "ShootingEffect": {
-        "Sound": "Sounds/PlayerShoot"
+        "Sound": "Sounds/PlayerShoot",
+        "Volume":  0.1
       }
     },
     "Height": 32.0,
@@ -45,7 +48,8 @@
     "Hitpoints": 3.0,
     "DefaultSpriteName": "Sprites/Rectangle",
     "DamageEffect": {
-      "Sound": "Sounds/Hit_01"
+      "Sound": "Sounds/Hit_01",
+      "Volume": 1.0
     }
   },
   "Wall": {

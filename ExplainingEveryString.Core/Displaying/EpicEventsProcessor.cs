@@ -29,7 +29,9 @@ namespace ExplainingEveryString.Core.Displaying
 
         private void ProcessEpicEvent(EpicEventArgs epicEvent)
         {
-            soundEffectsStorage[epicEvent.SpecEffectSpecification.Sound].Play();
+            String sound = epicEvent.SpecEffectSpecification.Sound;
+            Single volume = epicEvent.SpecEffectSpecification.Volume;
+            soundEffectsStorage[sound].Play(volume, 0, 0);
         }
     }
 }
