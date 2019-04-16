@@ -6,5 +6,6 @@ namespace ExplainingEveryString.Data
     {
         internal const String Configuration = "config.dat";
         internal const String Blueprints = "blueprints.dat";
+        internal const String AssetsMetadata = "assets_metadata.dat";
     }
 }

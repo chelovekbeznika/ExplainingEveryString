@@ -10,12 +10,12 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class EpicEventsProcessor
     {
-        private Dictionary<String, SoundEffect> soundEffectsStorage;
+        private AssetsStorage assetsStorage;
         private Level level;
 
-        internal EpicEventsProcessor(Dictionary<String, SoundEffect> soundEffectsStorage, Level level)
+        internal EpicEventsProcessor(AssetsStorage assetsStorage, Level level)
         {
-            this.soundEffectsStorage = soundEffectsStorage;
+            this.assetsStorage = assetsStorage;
             this.level = level;
         }
 
@@ -29,9 +29,9 @@ namespace ExplainingEveryString.Core.Displaying
 
         private void ProcessEpicEvent(EpicEventArgs epicEvent)
         {
-            String sound = epicEvent.SpecEffectSpecification.Sound;
+            String soundName = epicEvent.SpecEffectSpecification.Sound;
             Single volume = epicEvent.SpecEffectSpecification.Volume;
-            soundEffectsStorage[sound].Play(volume, 0, 0);
+            assetsStorage.GetSound(soundName).Play(volume, 0, 0);
         }
     }
 }

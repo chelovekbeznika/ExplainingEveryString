@@ -6,12 +6,14 @@
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 7.0,
-    "DefaultSpriteName": "Sprites/Mine",
-    "DeathEffect": {
-      "Sound": "Sounds/Explosion_02",
-      "Volume": 0.4
-    }
-  },
+    "DefaultSprite": {
+      "Name": "Sprites/Mine"
+    },
+      "DeathEffect": {
+        "Sound": "Sounds/Explosion_02",
+        "Volume": 0.4
+      }
+    },
   "Hunter": {
     "$type": "ExplainingEveryString.Data.Blueprints.HunterBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 1.0,
@@ -22,7 +24,9 @@
     "Acceleration": 600.0,
     "StartSpeed": 100.0,
     "PlayerDetectionRange": 400.0,
-    "DefaultSpriteName": "Sprites/Hunter",
+    "DefaultSprite": {
+      "Name": "Sprites/Hunter"
+    },
     "DeathEffect": {
       "Sound": "Sounds/Explosion_01",
       "Volume": 0.2
@@ -37,16 +41,20 @@
       "BulletSpeed": 800.0,
       "Damage": 1.0,
       "WeaponRange": 2000.0,
-      "BulletSpriteName": "Sprites/PlayerBullet",
+      "BulletSprite": {
+        "Name": "Sprites/PlayerBullet" 
+      },
       "ShootingEffect": {
         "Sound": "Sounds/PlayerShoot",
-        "Volume":  0.1
+        "Volume": 0.1
       }
     },
     "Height": 32.0,
     "Width": 32.0,
     "Hitpoints": 3.0,
-    "DefaultSpriteName": "Sprites/Rectangle",
+    "DefaultSprite": {
+      "Name": "Sprites/Rectangle"
+    },
     "DamageEffect": {
       "Sound": "Sounds/Hit_01",
       "Volume": 1.0
@@ -57,20 +65,36 @@
     "Height": 32.0,
     "Width": 64.0,
     "Hitpoints": 0.0,
-    "DefaultSpriteName": "Sprites/WallBlock"
+    "DefaultSprite": {
+      "Name": "Sprites/WallBlock" 
+    }
   },
   "MiddleWall": {
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 32.0,
     "Width": 32.0,
     "Hitpoints": 0.0,
-    "DefaultSpriteName": "Sprites/MiddleWall"
+    "DefaultSprite": {
+      "Name": "Sprites/MiddleWall"
+    }
   },
   "LittleWall": {
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 0.0,
-    "DefaultSpriteName": "Sprites/LittleWall"
+    "DefaultSprite": {
+      "Name": "Sprites/LittleWall"
+    }
+  },
+  "LittleDecoration": {
+    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 0.0,
+    "DefaultSprite": {
+      "Name": "Sprites/LittleDecoration",
+      "AnimationCycle": 0.5
+    }
   }
 }

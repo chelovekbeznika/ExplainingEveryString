@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.Tests
         {
             EnemyBlueprint mineBlueprint = new EnemyBlueprint()
             {
-                DefaultSpriteName = "mine",
+                DefaultSprite = new SpriteSpecification { Name = "mine" },
                 Width = 16,
                 Height = 16
             };

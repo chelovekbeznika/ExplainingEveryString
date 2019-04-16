@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Tests
                     "Mine",
                     new EnemyBlueprint()
                     {
-                        DefaultSpriteName = @"Sprites/Mine",
+                        DefaultSprite = new SpriteSpecification { Name = @"Sprites/Mine" },
                         Height = 16,
                         Width = 16,
                         Hitpoints = 7,
@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.Tests
                     "Player",
                     new PlayerBlueprint()
                     {
-                        DefaultSpriteName = @"Sprites/Rectangle",
+                        DefaultSprite = new SpriteSpecification { Name = @"Sprites/Rectangle" },
                         Height = 32,
                         Width = 32,
                         Hitpoints = 3,
@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.Tests
                             FireRate = 1,
                             Damage = 2,
                             WeaponRange = 2000,
-                            BulletSpriteName = @"Sprites/PlayerBullet"
+                            BulletSprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" }
                         }
                     }
                 }

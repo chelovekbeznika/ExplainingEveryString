@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString.Data"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataExample", "DataExample", "{550CC66D-18FA-4FC4-9727-CE9FA4F5E1BC}"
 	ProjectSection(SolutionItems) = preProject
+		DataExample\assets_metadata.dat = DataExample\assets_metadata.dat
 		DataExample\blueprints.dat = DataExample\blueprints.dat
 		DataExample\config.dat = DataExample\config.dat
 	EndProjectSection

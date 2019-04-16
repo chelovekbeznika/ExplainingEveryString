@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using ExplainingEveryString.Data.Blueprints;
 using System;
+using ExplainingEveryString.Core.Displaying;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -22,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel
         private Single Height { get; set; }
         protected virtual Single Hitpoints { get; set; }
 
-        public String CurrentSpriteName { get; private set; }
+        public SpriteState SpriteState { get; private set; }
 
         internal void Initialize(TBlueprint blueprint, Level level, Vector2 position)
         {
@@ -38,10 +39,15 @@ namespace ExplainingEveryString.Core.GameModel
 
         protected virtual void Construct(TBlueprint blueprint, Level level)
         {
-            this.CurrentSpriteName = blueprint.DefaultSpriteName;
+            this.SpriteState = new SpriteState(blueprint.DefaultSprite);
             this.Height = blueprint.Height;
             this.Width = blueprint.Width;
             this.Hitpoints = blueprint.Hitpoints;
+        }
+
+        public virtual void Update(Single elapsedSeconds)
+        {
+            SpriteState.Update(elapsedSeconds);
         }
 
         public virtual void TakeDamage(Single damage)

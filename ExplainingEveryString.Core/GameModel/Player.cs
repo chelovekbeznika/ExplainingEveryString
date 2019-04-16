@@ -31,8 +31,9 @@ namespace ExplainingEveryString.Core.GameModel
             Weapon.WeaponFired += level.EpicEventOccured;
         }
 
-        public void Update(Single elapsedSeconds)
+        public override void Update(Single elapsedSeconds)
         {
+            base.Update(elapsedSeconds);
             Weapon.Check(elapsedSeconds);
             Move(elapsedSeconds);
         }

@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.GameModel
         void Destroy();
     }
 
-    internal interface IGameObject : ICollidable, IDisplayble
+    internal interface IGameObject : ICollidable, IDisplayble, IUpdatable
     {
         Boolean IsAlive();
     }

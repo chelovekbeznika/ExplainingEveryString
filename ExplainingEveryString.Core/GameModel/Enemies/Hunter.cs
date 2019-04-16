@@ -21,8 +21,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.turnedOn = false;
         }
 
-        public void Update(Single elapsedSeconds)
+        public override void Update(Single elapsedSeconds)
         {
+            base.Update(elapsedSeconds);
+
             Vector2 playerPosition = PlayerPosition;
             Vector2 vectorToPlayer = playerPosition - this.Position;
             if (!turnedOn)

@@ -43,10 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssetsStorage.cs" />
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="Displaying\EpicEventsProcessor.cs" />
+    <Compile Include="Displaying\SpriteState.cs" />
     <Compile Include="EesGame.cs" />
     <Compile Include="GameModel\ActiveGameObjectsStorage.cs" />
     <Compile Include="GameModel\CollisionsController.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="GameModel\Enemies\Mine.cs" />
     <Compile Include="GameModel\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpriteData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExplainingEveryString.Data\ExplainingEveryString.Data.csproj">

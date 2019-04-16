@@ -9,7 +9,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single Damage { get; set; }
         public Single WeaponRange { get; set; }
 
-        public String BulletSpriteName { get; set; }
+        public SpriteSpecification BulletSprite { get; set; }
         public SpecEffectSpecification ShootingEffect { get; set; }
     }
 }

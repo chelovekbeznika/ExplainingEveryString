@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel
         private Single range;
         private Single Damage { get; set; }
 
-        private String bulletSprite;
+        private SpriteSpecification bulletSprite;
         private SpecEffectSpecification shootingEffect;
 
         private IPlayerInput input;
@@ -29,7 +29,7 @@ namespace ExplainingEveryString.Core.GameModel
             shootCooldown = 1 / blueprint.FireRate;
             timeTillNextShoot = shootCooldown;
             bulletSpeed = blueprint.BulletSpeed;
-            bulletSprite = blueprint.BulletSpriteName;
+            bulletSprite = blueprint.BulletSprite;
             range = blueprint.WeaponRange;
             Damage = blueprint.Damage;
             shootingEffect = blueprint.ShootingEffect;

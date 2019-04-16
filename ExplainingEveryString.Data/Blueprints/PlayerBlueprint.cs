@@ -13,9 +13,9 @@ namespace ExplainingEveryString.Data.Blueprints
         public PlayerWeaponBlueprint Weapon { get; set; }
         public SpecEffectSpecification DamageEffect { get; set; }
 
-        internal override IEnumerable<string> GetSprites()
+        internal override IEnumerable<SpriteSpecification> GetSprites()
         {
-            return new String[] { DefaultSpriteName, Weapon.BulletSpriteName };
+            return new SpriteSpecification[] { DefaultSprite, Weapon.BulletSprite };
         }
         internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
         {

@@ -14,7 +14,8 @@ namespace ExplainingEveryString.Data
             TypeNameHandling = TypeNameHandling.Auto,
             Culture = CultureInfo.InvariantCulture,
             Formatting = Formatting.Indented,
-            MissingMemberHandling = MissingMemberHandling.Error
+            MissingMemberHandling = MissingMemberHandling.Error,
+            DefaultValueHandling = DefaultValueHandling.Populate
         };
 
         internal T Load<T>(String fileName)

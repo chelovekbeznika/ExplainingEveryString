@@ -27,14 +27,16 @@ namespace ExplainingEveryString.Core.GameModel
         {
             return Walls
                 .Concat(new List<IDisplayble> { Player })
-                .Concat(Enemies).Concat(PlayerBullets);
+                .Concat(Enemies)
+                .Concat(PlayerBullets);
         }
 
         internal IEnumerable<IUpdatable> GetObjectsToUpdate()
         {
             return PlayerBullets
                 .Concat(new List<IUpdatable> { Player })
-                .Concat(Enemies.OfType<IUpdatable>());
+                .Concat(Enemies.OfType<IUpdatable>())
+                .Concat(Walls.OfType<IUpdatable>());
         }
 
         internal void SendDeadToHeaven()
@@ -83,7 +85,7 @@ namespace ExplainingEveryString.Core.GameModel
             Enemies.AddRange(factory.Construct<Mine, EnemyBlueprint>(minePositions));
             Enemies.AddRange(factory.Construct<Hunter, HunterBlueprint>(huntersPositions));
             Walls = new List<IGameObject>();
-            Walls.AddRange(factory.Construct<Wall, Blueprint>("LittleWall", littleWallsPositions));
+            Walls.AddRange(factory.Construct<Wall, Blueprint>("LittleDecoration", littleWallsPositions));
             Walls.AddRange(factory.Construct<Wall, Blueprint>("MiddleWall", middleWallsPositions));
             PlayerBullets = new List<PlayerBullet>();
         }

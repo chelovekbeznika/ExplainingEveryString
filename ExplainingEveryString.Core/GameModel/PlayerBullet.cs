@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString.Core.GameModel
@@ -14,15 +15,15 @@ namespace ExplainingEveryString.Core.GameModel
         private Single remainingDistance;
         private Boolean alive = true;
 
-        public string CurrentSpriteName { get; }
+        public SpriteState SpriteState { get; private set; }
         public Vector2 Position { get; private set; }
         internal Vector2 OldPosition { get; private set; }
         internal Single Damage { get; private set; }
 
 
-        internal PlayerBullet(String spriteName, Vector2 position, Vector2 speed, Single damage, Single range)
+        internal PlayerBullet(SpriteSpecification sprite, Vector2 position, Vector2 speed, Single damage, Single range)
         {
-            this.CurrentSpriteName = spriteName;
+            this.SpriteState = new SpriteState(sprite);
             this.Position = position;
             this.OldPosition = position;
             this.speed = speed;
@@ -38,6 +39,8 @@ namespace ExplainingEveryString.Core.GameModel
             remainingDistance -= positionChange.Length();
             if (remainingDistance < 0)
                 alive = false;
+
+            SpriteState.Update(elapsedSeconds);
         }
 
         public void RegisterCollision()

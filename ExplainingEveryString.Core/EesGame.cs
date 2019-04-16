@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data;
+using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -17,9 +18,8 @@ namespace ExplainingEveryString.Core
 
         private GraphicsDeviceManager graphics;
 
-        private Dictionary<String, Texture2D> spritesStorage = new Dictionary<String, Texture2D>();
-        private Dictionary<String, SoundEffect> soundsStorage = new Dictionary<String, SoundEffect>();
         private IBlueprintsLoader blueprintsLoader;
+        private AssetsStorage assetsStorage;
         private Level level;
 
         internal Camera Camera { get; private set; }
@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core
 
         protected override void Initialize()
         {
-            blueprintsLoader = BlueprintsAccess.GetBlueprintsLoader();
+            blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
             GameObjectsFactory factory = new GameObjectsFactory(blueprintsLoader);
@@ -53,23 +53,14 @@ namespace ExplainingEveryString.Core
         protected override void LoadContent()
         {
             Configuration config = ConfigurationAccess.GetCurrentConfig();
-            Camera = new Camera(level, GraphicsDevice, spritesStorage,
+
+            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
+            assetsStorage = new AssetsStorage();
+            assetsStorage.FillAssetsStorages(blueprintsLoader, metadataLoader, Content);
+
+            Camera = new Camera(level, GraphicsDevice, assetsStorage,
                 config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
-            EpicEventsProcessor = new EpicEventsProcessor(soundsStorage, level);
-
-            FillAssetsStorages();
-        }
-
-        private void FillAssetsStorages()
-        {
-            foreach (String spriteName in blueprintsLoader.GetNeccessarySprites())
-            {
-                spritesStorage[spriteName] = Content.Load<Texture2D>(spriteName);
-            }
-            foreach (String soundName in blueprintsLoader.GetNecessarySounds())
-            {
-                soundsStorage[soundName] = Content.Load<SoundEffect>(soundName);
-            }
+            EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level);
         }
 
         protected override void UnloadContent()

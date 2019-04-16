@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Tests
         private PlayerWeaponBlueprint blueprint = new PlayerWeaponBlueprint()
         {
             BulletSpeed = 100,
-            BulletSpriteName = "FooBar",
+            BulletSprite = new SpriteSpecification { Name = "FooBar" },
             FireRate = 1,
             WeaponRange = 50
         };
