@@ -29,10 +29,6 @@ namespace ExplainingEveryString.Data
             }
             catch (Exception ex)
             {
-                using (StreamWriter sw = File.AppendText("log.txt"))
-                {
-                    sw.WriteLine(ex.Message);
-                }
                 configuration = GetDefaultConfig();
             }
         }

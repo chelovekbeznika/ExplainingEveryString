@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,11 @@ namespace ExplainingEveryString.Core.GameModel
         internal Vector2 PlayerPosition => activeObjects.Player.Position;
         internal event GameLost Lost;
 
-        internal Level(GameObjectsFactory factory)
+        internal Level(GameObjectsFactory factory, LevelData levelData)
         {
             this.factory = factory;
             factory.Level = this;
-            activeObjects = new ActiveGameObjectsStorage(factory);
+            activeObjects = new ActiveGameObjectsStorage(factory, levelData);
             activeObjects.InitializeGameObjects();
             collisionsController = new CollisionsController(activeObjects);
         }

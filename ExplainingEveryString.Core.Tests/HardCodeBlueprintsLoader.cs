@@ -21,7 +21,8 @@ namespace ExplainingEveryString.Core.Tests
                         Width = 16,
                         Hitpoints = 7,
                         CollisionDamage = 1.5F,
-                        MaxSpeed = 0
+                        MaxSpeed = 0,
+                        DeathEffect = new SpecEffectSpecification()
                     }
                 },
                 {
@@ -34,13 +35,15 @@ namespace ExplainingEveryString.Core.Tests
                         Hitpoints = 3,
                         MaxAcceleration = 200,
                         MaxSpeed = 200,
+                        DamageEffect = new SpecEffectSpecification(),
                         Weapon = new PlayerWeaponBlueprint()
                         {
                             BulletSpeed = 800,
                             FireRate = 1,
                             Damage = 2,
                             WeaponRange = 2000,
-                            BulletSprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" }
+                            BulletSprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" },
+                            ShootingEffect = new SpecEffectSpecification()
                         }
                     }
                 }

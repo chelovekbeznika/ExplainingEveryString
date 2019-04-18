@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataExample", "DataExample"
 		DataExample\assets_metadata.dat = DataExample\assets_metadata.dat
 		DataExample\blueprints.dat = DataExample\blueprints.dat
 		DataExample\config.dat = DataExample\config.dat
+		DataExample\level_01.dat = DataExample\level_01.dat
 	EndProjectSection
 EndProject
 Global

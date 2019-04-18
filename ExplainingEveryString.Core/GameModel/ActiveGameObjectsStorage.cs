@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,12 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<IGameObject> Walls { get; private set; }
         internal List<PlayerBullet> PlayerBullets { get; private set; }
         private GameObjectsFactory factory;
+        private LevelData levelData;
 
-        internal ActiveGameObjectsStorage(GameObjectsFactory factory)
+        internal ActiveGameObjectsStorage(GameObjectsFactory factory, LevelData levelData)
         {
             this.factory = factory;
+            this.levelData = levelData;
         }
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
@@ -47,46 +50,22 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void InitializeGameObjects()
         {
-            Vector2 playerPosition = new Vector2(0, 0);
-            Vector2[] minePositions = new Vector2[]
-            {
-                new Vector2(100, 100),
-                new Vector2(200, 200),
-                new Vector2(-300, -150),
-                new Vector2(500, 250)
-            };
-            Vector2[] huntersPositions = new Vector2[]
-            {
-                new Vector2(300, 300),
-                new Vector2(400, 300),
-                new Vector2(500, 300)
-            };
-            Vector2[] littleWallsPositions = new Vector2[]
-            {
-                new Vector2(0, -200),
-                new Vector2(0, -232),
-                new Vector2(8, -264),
-                new Vector2(8, -312)
-            };
-            Vector2[] middleWallsPositions = new Vector2[]
-            {
-                new Vector2(-256, -256),
-                new Vector2(-288, -256),
-                new Vector2(-256, -288),
-                new Vector2(-320, -256),
-                new Vector2(-320, -288),
-                new Vector2(-128, -256),
-                new Vector2(-96, -256),
-                new Vector2(-64, -256)
-            };
+            Player = factory.ConstructPlayer(levelData.PlayerPosition);
 
-            Player = factory.Construct<Player, PlayerBlueprint>(playerPosition);
-            Enemies = new List<IGameObject>();
-            Enemies.AddRange(factory.Construct<Mine, EnemyBlueprint>(minePositions));
-            Enemies.AddRange(factory.Construct<Hunter, HunterBlueprint>(huntersPositions));
             Walls = new List<IGameObject>();
-            Walls.AddRange(factory.Construct<Wall, Blueprint>("LittleDecoration", littleWallsPositions));
-            Walls.AddRange(factory.Construct<Wall, Blueprint>("MiddleWall", middleWallsPositions));
+            foreach (String wallType in levelData.WallsPositions.Keys)
+            {
+                List<Vector2> wallPositions = levelData.WallsPositions[wallType];
+                Walls.AddRange(factory.ConstructWalls(wallType, wallPositions));
+            }
+
+            Enemies = new List<IGameObject>();
+            foreach (String enemyType in levelData.EnemiesPositions.Keys)
+            {
+                List<Vector2> enemiesPositions = levelData.EnemiesPositions[enemyType];
+                Enemies.AddRange(factory.ConstructEnemies(enemyType, enemiesPositions));
+            }
+
             PlayerBullets = new List<PlayerBullet>();
         }
     }

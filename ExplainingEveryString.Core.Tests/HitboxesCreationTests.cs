@@ -1,8 +1,8 @@
-﻿using ExplainingEveryString.Data.Blueprints;
-using ExplainingEveryString.Core.GameModel;
+﻿using ExplainingEveryString.Core.GameModel;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using ExplainingEveryString.Core.GameModel.Enemies;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.Tests
 {
@@ -12,14 +12,8 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void MineHitbox()
         {
-            EnemyBlueprint mineBlueprint = new EnemyBlueprint()
-            {
-                DefaultSprite = new SpriteSpecification { Name = "mine" },
-                Width = 16,
-                Height = 16
-            };
-            Mine mine = new Mine();
-            mine.Initialize(mineBlueprint, null, new Vector2(-100, 200));
+            TestLevel testLevel = new TestLevel();
+            Mine mine = testLevel.GameObjectsStorage.Enemies.OfType<Mine>().First();
             Hitbox hitbox = mine.GetCurrentHitbox();
 
             Hitbox model = new Hitbox { Bottom = 192, Top = 208, Left = -108, Right = -92 };

@@ -3,6 +3,7 @@ using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -44,7 +45,10 @@ namespace ExplainingEveryString.Core
             blueprintsLoader.Load();
 
             GameObjectsFactory factory = new GameObjectsFactory(blueprintsLoader);
-            level = new Level(factory);
+
+            ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
+            LevelData levelData = levelLoader.Load("level_01.dat");
+            level = new Level(factory, levelData);
             level.Lost += GameLost;
 
             base.Initialize();
