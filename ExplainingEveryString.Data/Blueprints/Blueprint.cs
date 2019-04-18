@@ -15,7 +15,9 @@ namespace ExplainingEveryString.Data.Blueprints
 
         internal virtual IEnumerable<SpriteSpecification> GetSprites()
         {
-            return new SpriteSpecification[] { DefaultSprite };
+            IEnumerable<SpriteSpecification> specEffectSprites = GetSpecEffects()
+                .Where(ses => ses.Sprite != null).Select(ses => ses.Sprite);
+            return new SpriteSpecification[] { DefaultSprite }.Concat(specEffectSprites);
         }
         internal virtual IEnumerable<SpecEffectSpecification> GetSpecEffects()
         {

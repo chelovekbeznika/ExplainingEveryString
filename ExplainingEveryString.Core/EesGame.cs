@@ -72,16 +72,21 @@ namespace ExplainingEveryString.Core
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            level.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
+            Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            level.Update(elapsedSeconds);
             Camera.Update();
+            EpicEventsProcessor.Update(elapsedSeconds);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            Camera.Draw();
+            Camera.Begin();
+            Camera.Draw(level.GetObjectsToDraw());
             EpicEventsProcessor.ProcessEpicEvents();
+            Camera.Draw(EpicEventsProcessor.GetSpecEffectsToDraw());
+            Camera.End();
             base.Draw(gameTime);
         }
 

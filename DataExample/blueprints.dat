@@ -11,7 +11,11 @@
     },
       "DeathEffect": {
         "Sound": "Sounds/Explosion_02",
-        "Volume": 0.4
+        "Volume": 0.4,
+        "Sprite": {
+          "Name": "Sprites/Explosions/01",
+          "AnimationCycle": 0.5
+        }
       }
     },
   "Hunter": {

@@ -10,7 +10,6 @@ namespace ExplainingEveryString.Core.Displaying
     {
         private AssetsStorage assetsStorage;
         private SpriteBatch spriteBatch;       
-        private Level level;
         private Single screenHeight;
         private CameraObjectGlass objectGlass;
 
@@ -22,17 +21,18 @@ namespace ExplainingEveryString.Core.Displaying
             this.spriteBatch = new SpriteBatch(graphicsDevice);
             this.screenHeight = graphicsDevice.Viewport.Height;
             this.assetsStorage = assetsStorage;
-            this.level = level;
             this.objectGlass =
                 new CameraObjectGlass(level, graphicsDevice, playerFramePercentageWidth, playerFramePercentageHeight);
         }
 
-        internal void Draw()
+        internal void Begin() => spriteBatch.Begin();
+
+        internal void End() => spriteBatch.End();
+
+        internal void Draw(IEnumerable<IDisplayble> thingsToDraw)
         {
-            spriteBatch.Begin();
-            foreach (IDisplayble objectToDraw in level.GetObjectsToDraw())
+            foreach (IDisplayble objectToDraw in thingsToDraw)
                 Draw(objectToDraw);
-            spriteBatch.End();
         }
 
         private void Draw(IDisplayble objectToDraw)

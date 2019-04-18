@@ -3,6 +3,10 @@
     {
       "Name": "Sprites/LittleDecoration",
       "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Explosions/01",
+      "AnimationFrames": 12
     }
   ]
 }

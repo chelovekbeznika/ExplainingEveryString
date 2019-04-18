@@ -48,6 +48,7 @@
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="CollisionsChecker.cs" />
     <Compile Include="Displaying\EpicEventsProcessor.cs" />
+    <Compile Include="Displaying\SpecEffect.cs" />
     <Compile Include="Displaying\SpriteState.cs" />
     <Compile Include="EesGame.cs" />
     <Compile Include="GameModel\ActiveGameObjectsStorage.cs" />
