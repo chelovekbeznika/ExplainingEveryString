@@ -1,4 +1,6 @@
-﻿using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;
 namespace ExplainingEveryString.Core.GameModel.Enemies
@@ -21,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             set
             {
                 base.Hitpoints = value;
-                if (value < MathConstants.Epsilon)
+                if (value < Constants.Epsilon)
                 {
                     if (!deathHandled)
                         Death?.Invoke(this, new EpicEventArgs

@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Data
                     JsonDataAccessor.Instance.Save(fileName, configuration);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 configuration = GetDefaultConfig();
             }

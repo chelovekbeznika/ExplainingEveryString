@@ -9,7 +9,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal static Vector2 Correct(Vector2 beforeFriction, Single elapsedSeconds)
         {
-            Vector2 afterFriction = beforeFriction * (Single)Math.Pow(1 - FrictionCoefficient, elapsedSeconds);
+            Vector2 afterFriction = beforeFriction * (Single)System.Math.Pow(1 - FrictionCoefficient, elapsedSeconds);
             if (afterFriction.Length() < 5)
                 afterFriction = new Vector2(0, 0);
             return afterFriction;

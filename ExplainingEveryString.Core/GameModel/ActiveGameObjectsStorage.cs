@@ -1,13 +1,10 @@
 ﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.GameModel.Enemies;
-using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -16,7 +13,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal Player Player { get; private set; }
         internal List<IGameObject> Enemies { get; private set; }
         internal List<IGameObject> Walls { get; private set; }
-        internal List<PlayerBullet> PlayerBullets { get; private set; }
+        internal List<Bullet> PlayerBullets { get; private set; }
         private GameObjectsFactory factory;
         private LevelData levelData;
 
@@ -66,7 +63,7 @@ namespace ExplainingEveryString.Core.GameModel
                 Enemies.AddRange(factory.ConstructEnemies(enemyType, enemiesPositions));
             }
 
-            PlayerBullets = new List<PlayerBullet>();
+            PlayerBullets = new List<Bullet>();
         }
     }
 }

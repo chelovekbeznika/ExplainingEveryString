@@ -2,6 +2,7 @@
 using ExplainingEveryString.Data.Blueprints;
 using System;
 using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.Math;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -24,6 +25,7 @@ namespace ExplainingEveryString.Core.GameModel
         protected virtual Single Hitpoints { get; set; }
 
         public SpriteState SpriteState { get; private set; }
+        public Boolean IsVisible => IsAlive();
 
         internal void Initialize(TBlueprint blueprint, Level level, Vector2 position)
         {
@@ -57,7 +59,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         public bool IsAlive()
         {
-            return Hitpoints > MathConstants.Epsilon;
+            return Hitpoints > Constants.Epsilon;
         }
 
         public void Destroy()

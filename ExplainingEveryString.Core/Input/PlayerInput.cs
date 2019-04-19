@@ -1,13 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace ExplainingEveryString.Core.Input
 {
-    internal interface IPlayerInput
+    internal interface IPlayerInput : IAimer
     {
         Vector2 GetMoveDirection();
-        Vector2 GetFireDirection();
-        Boolean IsFiring();
     }
 
     internal abstract class PlayerInput : IPlayerInput

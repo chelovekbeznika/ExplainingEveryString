@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.GameModel
+namespace ExplainingEveryString.Core.Math
 {
-    internal static class MathConstants
+    internal static class Constants
     {
         internal const Single Epsilon = 0.000001F;
     }

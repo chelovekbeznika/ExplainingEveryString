@@ -46,7 +46,8 @@
     <Compile Include="AssetsStorage.cs" />
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
-    <Compile Include="CollisionsChecker.cs" />
+    <Compile Include="Math\AngleConverter.cs" />
+    <Compile Include="Math\CollisionsChecker.cs" />
     <Compile Include="Displaying\EpicEventsProcessor.cs" />
     <Compile Include="Displaying\SpecEffect.cs" />
     <Compile Include="Displaying\SpriteState.cs" />
@@ -54,7 +55,7 @@
     <Compile Include="GameModel\ActiveGameObjectsStorage.cs" />
     <Compile Include="GameModel\CollisionsController.cs" />
     <Compile Include="GameModel\Enemies\Enemy.cs" />
-    <Compile Include="GameModel\EpicEventArgs.cs" />
+    <Compile Include="Displaying\EpicEventArgs.cs" />
     <Compile Include="GameModel\FrictionCorrector.cs" />
     <Compile Include="GameModel\GameObject.cs" />
     <Compile Include="GameModel\GameObjectsFactory.cs" />
@@ -63,10 +64,14 @@
     <Compile Include="Displaying\IDisplayble.cs" />
     <Compile Include="GameModel\IGameObject.cs" />
     <Compile Include="GameModel\Level.cs" />
-    <Compile Include="GameModel\MathConstants.cs" />
-    <Compile Include="GameModel\PlayerBullet.cs" />
-    <Compile Include="GameModel\PlayerWeapon.cs" />
+    <Compile Include="Math\Constants.cs" />
+    <Compile Include="GameModel\Weaponry\Bullet.cs" />
+    <Compile Include="GameModel\Weaponry\Barrel.cs" />
+    <Compile Include="GameModel\Weaponry\IAimer.cs" />
+    <Compile Include="GameModel\Weaponry\Weapon.cs" />
     <Compile Include="GameModel\Wall.cs" />
+    <Compile Include="GameModel\Weaponry\ShootEventArgs.cs" />
+    <Compile Include="GameModel\Weaponry\WeaponReloader.cs" />
     <Compile Include="Input\GamePadPlayerInput.cs" />
     <Compile Include="Input\KeyBoardMousePlayerInput.cs" />
     <Compile Include="Input\PlayerInput.cs" />

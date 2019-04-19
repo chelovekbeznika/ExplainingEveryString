@@ -36,13 +36,16 @@ namespace ExplainingEveryString.Core.Tests
                         MaxAcceleration = 200,
                         MaxSpeed = 200,
                         DamageEffect = new SpecEffectSpecification(),
-                        Weapon = new PlayerWeaponBlueprint()
+                        Weapon = new WeaponSpecification()
                         {
-                            BulletSpeed = 800,
+                            BulletSpecification = new BulletSpecification
+                            {
+                                Damage = 2,
+                                Speed = 800,
+                                Range = 2000,
+                                Sprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" }
+                            },
                             FireRate = 1,
-                            Damage = 2,
-                            WeaponRange = 2000,
-                            BulletSprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" },
                             ShootingEffect = new SpecEffectSpecification()
                         }
                     }

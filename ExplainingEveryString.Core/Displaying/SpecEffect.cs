@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;
@@ -14,6 +15,11 @@ namespace ExplainingEveryString.Core.Displaying
         public SpriteState SpriteState { get; private set; }
         public Vector2 Position { get; private set; }
 
+        public Boolean IsVisible
+        {
+            get { return IsAlive(); }
+        }
+
         internal SpecEffect(Vector2 position, SpriteSpecification sprite)
         {
             this.SpriteState = new SpriteState(sprite);
@@ -27,7 +33,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         public Boolean IsAlive()
         {
-            return SpriteState.ElapsedTime < SpriteState.AnimationCycle + MathConstants.Epsilon;
+            return SpriteState.ElapsedTime < SpriteState.AnimationCycle + Constants.Epsilon;
         }
     }
 }

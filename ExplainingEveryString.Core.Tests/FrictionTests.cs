@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void HalfSecondStep()
         {
-            Single halfSecondSpeed = 100 * (Single)(1 / Math.Sqrt(2));
+            Single halfSecondSpeed = 100 * (Single)(1 / System.Math.Sqrt(2));
             AssertSlowing(100, halfSecondSpeed, 0.5F);
             AssertSlowing(halfSecondSpeed, 50, 0.5F);
         }

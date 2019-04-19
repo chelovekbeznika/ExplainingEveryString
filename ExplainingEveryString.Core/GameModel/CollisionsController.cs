@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.Math;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,7 +105,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void CheckForBulletCollisions()
         {
-            foreach (PlayerBullet playerBullet in activeObjects.PlayerBullets)
+            foreach (Bullet playerBullet in activeObjects.PlayerBullets)
             {
                 foreach (ICollidable collidable 
                     in activeObjects.Enemies.Concat(activeObjects.Walls).OfType<ICollidable>())

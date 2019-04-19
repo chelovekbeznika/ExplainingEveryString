@@ -2,10 +2,13 @@
 using ExplainingEveryString.Core.Input;
 using Microsoft.Xna.Framework;
 using System;
+using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.Displaying;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal sealed class Player : GameObject<PlayerBlueprint>, IUpdatable, ITouchableByBullets
+    internal sealed class Player : GameObject<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets
     {
         internal event EventHandler<EpicEventArgs> DamageTaken;
 
@@ -15,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel
         private IPlayerInput input;
         private SpecEffectSpecification damageEffect;
 
-        internal PlayerWeapon Weapon { get; private set; }
+        private Weapon Weapon { get; set; }
 
         protected override void Construct(PlayerBlueprint blueprint, Level level)
         {
@@ -25,8 +28,8 @@ namespace ExplainingEveryString.Core.GameModel
             maxAcceleration = blueprint.MaxAcceleration;
             damageEffect = blueprint.DamageEffect;
             DamageTaken += level.EpicEventOccured;
-            
-            Weapon = new PlayerWeapon(blueprint.Weapon, input, () => Position);
+
+            Weapon = new Weapon(blueprint.Weapon, input, () => Position);
             Weapon.Shoot += level.PlayerShoot;
             Weapon.WeaponFired += level.EpicEventOccured;
         }
@@ -34,7 +37,7 @@ namespace ExplainingEveryString.Core.GameModel
         public override void Update(Single elapsedSeconds)
         {
             base.Update(elapsedSeconds);
-            Weapon.Check(elapsedSeconds);
+            Weapon.Update(elapsedSeconds);
             Move(elapsedSeconds);
         }
 
@@ -77,11 +80,10 @@ namespace ExplainingEveryString.Core.GameModel
             Vector2 direction = input.GetMoveDirection();
             return direction * maxAcceleration;
         }
-    }
 
-    internal class PlayerShootEventArgs : EventArgs
-    {
-        internal PlayerBullet PlayerBullet { get; set; }
-        internal Single FirstUpdateTime { get; set; }
+        public IEnumerable<IDisplayble> GetParts()
+        {
+            return new IDisplayble[] { Weapon };
+        }
     }
 }

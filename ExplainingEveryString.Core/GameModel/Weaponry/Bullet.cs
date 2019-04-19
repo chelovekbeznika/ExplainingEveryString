@@ -7,9 +7,9 @@ using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 
-namespace ExplainingEveryString.Core.GameModel
+namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
-    internal class PlayerBullet : IDisplayble, IUpdatable
+    internal class Bullet : IDisplayble, IUpdatable
     {
         private Vector2 speed;
         private Single remainingDistance;
@@ -20,15 +20,16 @@ namespace ExplainingEveryString.Core.GameModel
         internal Vector2 OldPosition { get; private set; }
         internal Single Damage { get; private set; }
 
+        public Boolean IsVisible => IsAlive();
 
-        internal PlayerBullet(SpriteSpecification sprite, Vector2 position, Vector2 speed, Single damage, Single range)
+        internal Bullet(Vector2 position, Vector2 fireDirection, BulletSpecification bulletSpecification)
         {
-            this.SpriteState = new SpriteState(sprite);
+            this.SpriteState = new SpriteState(bulletSpecification.Sprite);
             this.Position = position;
             this.OldPosition = position;
-            this.speed = speed;
-            this.Damage = damage;
-            this.remainingDistance = range;
+            this.speed = bulletSpecification.Speed * fireDirection;
+            this.Damage = bulletSpecification.Damage;
+            this.remainingDistance = bulletSpecification.Range;
         }
 
         public void Update(Single elapsedSeconds)

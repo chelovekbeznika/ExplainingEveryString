@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Enemies;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
@@ -52,11 +53,11 @@ namespace ExplainingEveryString.Core.GameModel
             return result;
         }
 
-        internal void PlayerShoot(Object sender, PlayerShootEventArgs args)
+        internal void PlayerShoot(Object sender, ShootEventArgs args)
         {
-            PlayerBullet playerBullet = args.PlayerBullet;
-            playerBullet.Update(args.FirstUpdateTime);
-            activeObjects.PlayerBullets.Add(playerBullet);
+            Bullet bullet = args.Bullet;
+            bullet.Update(args.FirstUpdateTime);
+            activeObjects.PlayerBullets.Add(bullet);
         }
 
         internal void EpicEventOccured(Object sender, EpicEventArgs epicEvent)

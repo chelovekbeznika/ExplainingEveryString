@@ -42,11 +42,17 @@
     "MaxAcceleration": 200.0,
     "Weapon": {
       "FireRate": 10.0,
-      "BulletSpeed": 800.0,
-      "Damage": 1.0,
-      "WeaponRange": 2000.0,
-      "BulletSprite": {
-        "Name": "Sprites/PlayerBullet" 
+      "BarrelLength": 14.0,
+      "Sprite": {
+        "Name": "Sprites/Player/Cannon"
+      },
+      "BulletSpecification": {
+        "Speed": 800.0,
+        "Damage": 1.0,
+        "Range": 2000.0,
+        "Sprite": {
+          "Name": "Sprites/PlayerBullet"
+        }
       },
       "ShootingEffect": {
         "Sound": "Sounds/PlayerShoot",
@@ -57,7 +63,7 @@
     "Width": 32.0,
     "Hitpoints": 3.0,
     "DefaultSprite": {
-      "Name": "Sprites/Rectangle"
+      "Name": "Sprites/Player/Base"
     },
     "DamageEffect": {
       "Sound": "Sounds/Hit_01",
@@ -68,7 +74,6 @@
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 32.0,
     "Width": 64.0,
-    "Hitpoints": 0.0,
     "DefaultSprite": {
       "Name": "Sprites/WallBlock" 
     }
@@ -77,7 +82,6 @@
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 32.0,
     "Width": 32.0,
-    "Hitpoints": 0.0,
     "DefaultSprite": {
       "Name": "Sprites/MiddleWall"
     }
@@ -86,7 +90,6 @@
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 16.0,
     "Width": 16.0,
-    "Hitpoints": 0.0,
     "DefaultSprite": {
       "Name": "Sprites/LittleWall"
     }
@@ -95,7 +98,6 @@
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 16.0,
     "Width": 16.0,
-    "Hitpoints": 0.0,
     "DefaultSprite": {
       "Name": "Sprites/LittleDecoration",
       "AnimationCycle": 0.5

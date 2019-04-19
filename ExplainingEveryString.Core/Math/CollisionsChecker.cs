@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Math
 {
     internal class CollisionsChecker
     {
@@ -143,8 +143,8 @@ namespace ExplainingEveryString.Core
         private void CheckHorizontalMove(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall,
             out Vector2? positionAfterWallHit, out Boolean touchingCorner)
         {
-            Boolean touchingHorizontalFringes = (Math.Abs(oldHitbox.Left - wall.Right) < MathConstants.Epsilon
-                    || Math.Abs(oldHitbox.Right - wall.Left) < MathConstants.Epsilon);
+            Boolean touchingHorizontalFringes = System.Math.Abs(oldHitbox.Left - wall.Right) < Constants.Epsilon
+                    || System.Math.Abs(oldHitbox.Right - wall.Left) < Constants.Epsilon;
             if (CrossWallBottom(oldHitbox, newHitbox, wall))
             {
                 positionAfterWallHit = new Vector2
@@ -152,7 +152,7 @@ namespace ExplainingEveryString.Core
                     X = (newHitbox.Left + newHitbox.Right) / 2,
                     Y = wall.Bottom - (newHitbox.Top - newHitbox.Bottom) / 2
                 };
-                touchingCorner = Math.Abs(oldHitbox.Top - wall.Bottom) < MathConstants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Top - wall.Bottom) < Constants.Epsilon
                     && touchingHorizontalFringes;
 ;
                 return;
@@ -164,7 +164,7 @@ namespace ExplainingEveryString.Core
                     X = (newHitbox.Left + newHitbox.Right) / 2,
                     Y = wall.Top + (newHitbox.Top - newHitbox.Bottom) / 2
                 };
-                touchingCorner = Math.Abs(oldHitbox.Bottom - wall.Top) < MathConstants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Bottom - wall.Top) < Constants.Epsilon
                     && touchingHorizontalFringes;
                 return;
             }
@@ -175,8 +175,8 @@ namespace ExplainingEveryString.Core
         private void CheckVerticalMove(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall,
             out Vector2? positionAfterWallHit, out Boolean touchingCorner)
         {
-            Boolean touchingVerticalFringes = (Math.Abs(oldHitbox.Top - wall.Bottom) < MathConstants.Epsilon
-                    || Math.Abs(oldHitbox.Bottom - wall.Top) < MathConstants.Epsilon);
+            Boolean touchingVerticalFringes = System.Math.Abs(oldHitbox.Top - wall.Bottom) < Constants.Epsilon
+                    || System.Math.Abs(oldHitbox.Bottom - wall.Top) < Constants.Epsilon;
             if (CrossWallLeft(oldHitbox, newHitbox, wall))
             {
                 positionAfterWallHit = new Vector2
@@ -184,7 +184,7 @@ namespace ExplainingEveryString.Core
                     X = wall.Left - (newHitbox.Right - newHitbox.Left) / 2,
                     Y = (newHitbox.Top + newHitbox.Bottom) / 2
                 };
-                touchingCorner = Math.Abs(oldHitbox.Right - wall.Left) < MathConstants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Right - wall.Left) < Constants.Epsilon
                     && touchingVerticalFringes;
                 return;
             }
@@ -195,7 +195,7 @@ namespace ExplainingEveryString.Core
                     X = wall.Right + (newHitbox.Right - newHitbox.Left) / 2,
                     Y = (newHitbox.Top + newHitbox.Bottom) / 2
                 };
-                touchingCorner = Math.Abs(oldHitbox.Left - wall.Right) < MathConstants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Left - wall.Right) < Constants.Epsilon
                     && touchingVerticalFringes;
                 return;
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public SpriteSpecification DefaultSprite { get; set; }
         public Single Height { get; set; }
         public Single Width { get; set; }
+        [DefaultValue(1)]
         public Single Hitpoints { get; set; }
 
         internal virtual IEnumerable<SpriteSpecification> GetSprites()
