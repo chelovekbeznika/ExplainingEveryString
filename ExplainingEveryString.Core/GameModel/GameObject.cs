@@ -3,6 +3,7 @@ using ExplainingEveryString.Data.Blueprints;
 using System;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Level;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -27,16 +28,16 @@ namespace ExplainingEveryString.Core.GameModel
         public SpriteState SpriteState { get; private set; }
         public Boolean IsVisible => IsAlive();
 
-        internal void Initialize(TBlueprint blueprint, Level level, Vector2 position)
+        internal void Initialize(TBlueprint blueprint, Level level, GameObjectStartPosition position)
         {
             PlaceOnLevel(position);
             Construct(blueprint, level);
         }
         
-        private void PlaceOnLevel(Vector2 position)
+        protected virtual void PlaceOnLevel(GameObjectStartPosition position)
         {          
-            this.Position = position;
-            this.OldPosition = position;
+            this.Position = position.Position;
+            this.OldPosition = position.Position;
         }
 
         protected virtual void Construct(TBlueprint blueprint, Level level)

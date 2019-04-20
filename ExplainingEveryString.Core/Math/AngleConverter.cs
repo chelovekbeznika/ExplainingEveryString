@@ -9,6 +9,11 @@ namespace ExplainingEveryString.Core.Math
 {
     internal static class AngleConverter
     {
+        internal static Single ToRadians(Single degrees)
+        {
+            return degrees * MathHelper.Pi / 180;
+        }
+
         internal static Single ToRadians(Vector2 directionVector)
         {
             return (Single)System.Math.Atan2(directionVector.Y, directionVector.X);

@@ -63,7 +63,7 @@ namespace ExplainingEveryString.Core.GameModel
             Enemies = new List<IGameObject>();
             foreach (String enemyType in levelData.EnemiesPositions.Keys)
             {
-                List<Vector2> enemiesPositions = levelData.EnemiesPositions[enemyType];
+                List<GameObjectStartPosition> enemiesPositions = levelData.EnemiesPositions[enemyType];
                 Enemies.AddRange(factory.ConstructEnemies(enemyType, enemiesPositions));
             }
 

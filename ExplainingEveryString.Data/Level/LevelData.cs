@@ -9,8 +9,8 @@ namespace ExplainingEveryString.Data.Level
 {
     public class LevelData
     {
-        public Vector2 PlayerPosition { get; set; }
-        public Dictionary<String, List<Vector2>> EnemiesPositions { get; set; }
+        public GameObjectStartPosition PlayerPosition { get; set; }
+        public Dictionary<String, List<GameObjectStartPosition>> EnemiesPositions { get; set; }
         public Dictionary<String, List<Vector2>> WallsPositions { get; set; }
     }
 }

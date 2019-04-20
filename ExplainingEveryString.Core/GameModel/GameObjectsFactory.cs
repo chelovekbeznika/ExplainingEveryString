@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ namespace ExplainingEveryString.Core.GameModel
     internal class GameObjectsFactory
     {
         private Dictionary<String, Blueprint> blueprintsStorage = new Dictionary<String, Blueprint>();
-        private Dictionary<String, Func<Vector2, IGameObject>> enemyConstruction;
+        private Dictionary<String, Func<GameObjectStartPosition, IGameObject>> enemyConstruction;
         internal Level Level { get; set; }
 
         internal GameObjectsFactory(IBlueprintsLoader blueprintsLoader)
         {
             this.blueprintsStorage = blueprintsLoader.GetBlueprints();
-            this.enemyConstruction = new Dictionary<String, Func<Vector2, IGameObject>>
+            this.enemyConstruction = new Dictionary<String, Func<GameObjectStartPosition, IGameObject>>
             {
                 { "Mine", (pos) => Construct<Mine, EnemyBlueprint>(pos) },
                 { "Hunter", (pos) => Construct<Hunter, HunterBlueprint>(pos) },
@@ -24,43 +25,44 @@ namespace ExplainingEveryString.Core.GameModel
             };
         }
 
-        internal Player ConstructPlayer(Vector2 position)
+        internal Player ConstructPlayer(GameObjectStartPosition position)
         {
             return Construct<Player, PlayerBlueprint>(position);
         }
 
         internal List<Wall> ConstructWalls(String name, IEnumerable<Vector2> positions)
         {
-            return Construct<Wall, Blueprint>(name, positions);
+            return Construct<Wall, Blueprint>(name, 
+                positions.Select(pos => new GameObjectStartPosition { Position = pos, Angle = 0 }));
         }
 
-        internal List<IGameObject> ConstructEnemies(String name, IEnumerable<Vector2> positions)
+        internal List<IGameObject> ConstructEnemies(String name, IEnumerable<GameObjectStartPosition> positions)
         {
             return positions.Select(pos => enemyConstruction[name](pos)).ToList();
         }
 
-        private List<TGameObject> Construct<TGameObject, TBlueprint>(IEnumerable<Vector2> positions)
+        private List<TGameObject> Construct<TGameObject, TBlueprint>(IEnumerable<GameObjectStartPosition> positions)
             where TGameObject : GameObject<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
             return Construct<TGameObject, TBlueprint>(typeof(TGameObject).Name, positions);
         }
 
-        private List<TGameObject> Construct<TGameObject, TBlueprint>(String name, IEnumerable<Vector2> positions)
+        private List<TGameObject> Construct<TGameObject, TBlueprint>(String name, IEnumerable<GameObjectStartPosition> positions)
             where TGameObject : GameObject<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
             return positions.Select(position => Construct<TGameObject, TBlueprint>(name, position)).ToList();
         }
 
-        private TGameObject Construct<TGameObject, TBlueprint>(Vector2 position)
+        private TGameObject Construct<TGameObject, TBlueprint>(GameObjectStartPosition position)
             where TGameObject : GameObject<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
             return Construct<TGameObject, TBlueprint>(typeof(TGameObject).Name, position);
         }
 
-        private TGameObject Construct<TGameObject, TBlueprint>(String name, Vector2 position)
+        private TGameObject Construct<TGameObject, TBlueprint>(String name, GameObjectStartPosition position)
             where TGameObject : GameObject<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
