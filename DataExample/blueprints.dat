@@ -7,7 +7,7 @@
     "Width": 16.0,
     "Hitpoints": 7.0,
     "DefaultSprite": {
-      "Name": "Sprites/Mine"
+      "Name": "Sprites/Enemies/Mine"
     },
     "DeathEffect": {
       "Sound": "Sounds/Explosion_02",
@@ -29,7 +29,7 @@
     "StartSpeed": 100.0,
     "PlayerDetectionRange": 400.0,
     "DefaultSprite": {
-      "Name": "Sprites/Hunter"
+      "Name": "Sprites/Enemies/Hunter"
     },
     "DeathEffect": {
       "Sound": "Sounds/Explosion_01",
@@ -44,7 +44,7 @@
     "Width": 16.0,
     "Hitpoints": 10.0,
     "DefaultSprite": {
-      "Name": "Sprites/FixedCannon"
+      "Name": "Sprites/Enemies/FixedCannon"
     },
     "DeathEffect": {
       "Sound": "Sounds/Explosion_02",
@@ -62,7 +62,7 @@
         "Damage": 2.0,
         "Range": 2000.0,
         "Sprite": {
-          "Name": "Sprites/EnemyBullet"
+          "Name": "Sprites/Enemies/EnemyBullet"
         }
       },
       "ShootingEffect": {
@@ -86,7 +86,7 @@
         "Damage": 1.0,
         "Range": 2000.0,
         "Sprite": {
-          "Name": "Sprites/PlayerBullet"
+          "Name": "Sprites/Player/PlayerBullet"
         }
       },
       "ShootingEffect": {
@@ -110,7 +110,7 @@
     "Height": 32.0,
     "Width": 64.0,
     "DefaultSprite": {
-      "Name": "Sprites/WallBlock"
+      "Name": "Sprites/Walls/WallBlock"
     }
   },
   "MiddleWall": {
@@ -118,7 +118,7 @@
     "Height": 32.0,
     "Width": 32.0,
     "DefaultSprite": {
-      "Name": "Sprites/MiddleWall"
+      "Name": "Sprites/Walls/MiddleWall"
     }
   },
   "LittleWall": {
@@ -126,7 +126,7 @@
     "Height": 16.0,
     "Width": 16.0,
     "DefaultSprite": {
-      "Name": "Sprites/LittleWall"
+      "Name": "Sprites/Walls/LittleWall"
     }
   },
   "LittleDecoration": {
@@ -134,7 +134,7 @@
     "Height": 16.0,
     "Width": 16.0,
     "DefaultSprite": {
-      "Name": "Sprites/LittleDecoration",
+      "Name": "Sprites/Walls/LittleDecoration",
       "AnimationCycle": 0.5
     }
   }

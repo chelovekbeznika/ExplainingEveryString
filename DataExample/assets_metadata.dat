@@ -1,7 +1,7 @@
 {
   "SpritesMetadata": [
     {
-      "Name": "Sprites/LittleDecoration",
+      "Name": "Sprites/Walls/LittleDecoration",
       "AnimationFrames": 10
     },
     {
@@ -9,7 +9,7 @@
       "AnimationFrames": 12
     },
     {
-      "Name": "Sprites/EnemyBullet",
+      "Name": "Sprites/Enemies/EnemyBullet",
       "AnimationFrames": 6
     }
   ]
