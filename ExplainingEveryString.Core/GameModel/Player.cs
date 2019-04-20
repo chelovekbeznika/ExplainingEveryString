@@ -29,9 +29,8 @@ namespace ExplainingEveryString.Core.GameModel
             damageEffect = blueprint.DamageEffect;
             DamageTaken += level.EpicEventOccured;
 
-            Weapon = new Weapon(blueprint.Weapon, input, () => Position);
+            Weapon = new Weapon(blueprint.Weapon, input, () => Position, level);
             Weapon.Shoot += level.PlayerShoot;
-            Weapon.WeaponFired += level.EpicEventOccured;
         }
 
         public override void Update(Single elapsedSeconds)

@@ -7,6 +7,10 @@
     {
       "Name": "Sprites/Explosions/01",
       "AnimationFrames": 12
+    },
+    {
+      "Name": "Sprites/EnemyBullet",
+      "AnimationFrames": 6
     }
   ]
 }

@@ -53,6 +53,7 @@
     <Compile Include="Blueprints\BlueprintsLoader.cs" />
     <Compile Include="Blueprints\BulletSpecification.cs" />
     <Compile Include="Blueprints\EnemyBlueprint.cs" />
+    <Compile Include="Blueprints\FixedCannonBlueprint.cs" />
     <Compile Include="Blueprints\HunterBlueprint.cs" />
     <Compile Include="Blueprints\JsonBlueprintsLoader.cs" />
     <Compile Include="Blueprints\PlayerBlueprint.cs" />

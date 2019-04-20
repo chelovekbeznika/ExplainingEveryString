@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public static List<String> GetNeccessarySprites(this IBlueprintsLoader loader)
         {
             IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
-            return blueprints.SelectMany(blueprint => blueprint.GetSprites())
+            return blueprints.SelectMany(blueprint => blueprint.GetSprites()).Where(ss => ss != null)
                 .Select(ss => ss.Name).Distinct().ToList();
         }
 

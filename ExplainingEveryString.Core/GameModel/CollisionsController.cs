@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             CheckEnemiesForCrashingIntoPlayer();
             PreventInterpenetrationOfGameObjects();
-            CheckForBulletCollisions();
+            CheckForBulletsCollisions();
         }
 
         private void CheckEnemiesForCrashingIntoPlayer()
@@ -103,19 +103,29 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
 
-        private void CheckForBulletCollisions()
+        private void CheckForBulletsCollisions()
         {
-            foreach (Bullet playerBullet in activeObjects.PlayerBullets)
+            foreach (Bullet bullet in activeObjects.PlayerBullets)
             {
-                foreach (ICollidable collidable 
-                    in activeObjects.Enemies.Concat(activeObjects.Walls).OfType<ICollidable>())
+                CheckBulletForCollisions(bullet, 
+                    activeObjects.Enemies.Concat(activeObjects.Walls).OfType<ICollidable>());
+            }
+            foreach (Bullet bullet in activeObjects.EnemyBullets)
+            {
+                CheckBulletForCollisions(bullet,
+                    new ICollidable[] { activeObjects.Player }.Concat(activeObjects.Walls).OfType<ICollidable>());
+            }
+        }
+
+        private void CheckBulletForCollisions(Bullet bullet, IEnumerable<ICollidable> collidables)
+        {
+            foreach (ICollidable collidable in collidables)
+            {
+                if (collisionsChecker.Collides(collidable.GetCurrentHitbox(), bullet.OldPosition, bullet.Position))
                 {
-                    if (collisionsChecker.Collides(collidable.GetCurrentHitbox(), playerBullet.OldPosition, playerBullet.Position))
-                    {
-                        if (collidable is ITouchableByBullets)
-                            (collidable as ITouchableByBullets).TakeDamage(playerBullet.Damage);
-                        playerBullet.RegisterCollision();
-                    }
+                    if (collidable is ITouchableByBullets)
+                        (collidable as ITouchableByBullets).TakeDamage(bullet.Damage);
+                    bullet.RegisterCollision();
                 }
             }
         }

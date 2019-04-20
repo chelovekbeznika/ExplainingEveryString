@@ -19,7 +19,8 @@ namespace ExplainingEveryString.Core.GameModel
             this.enemyConstruction = new Dictionary<String, Func<Vector2, IGameObject>>
             {
                 { "Mine", (pos) => Construct<Mine, EnemyBlueprint>(pos) },
-                { "Hunter", (pos) => Construct<Hunter, HunterBlueprint>(pos) }
+                { "Hunter", (pos) => Construct<Hunter, HunterBlueprint>(pos) },
+                { "FixedCannon", (pos) => Construct<FixedCannon, FixedCannonBlueprint>(pos) }
             };
         }
 

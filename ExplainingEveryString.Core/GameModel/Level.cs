@@ -60,6 +60,13 @@ namespace ExplainingEveryString.Core.GameModel
             activeObjects.PlayerBullets.Add(bullet);
         }
 
+        internal void EnemyShoot(Object sender, ShootEventArgs args)
+        {
+            Bullet bullet = args.Bullet;
+            bullet.Update(args.FirstUpdateTime);
+            activeObjects.EnemyBullets.Add(bullet);
+        }
+
         internal void EpicEventOccured(Object sender, EpicEventArgs epicEvent)
         {
             epicEventsHappened.Add(epicEvent);

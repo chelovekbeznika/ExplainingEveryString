@@ -29,7 +29,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public bool IsVisible => SpriteState != null;
 
-        internal Weapon(WeaponSpecification specification, IAimer aimer, Func<Vector2> findOutWhereIAm)
+        internal Weapon(WeaponSpecification specification, IAimer aimer, Func<Vector2> findOutWhereIAm, Level level)
         {
             this.aimer = aimer;
             barrel = new Barrel(aimer, findOutWhereIAm, specification.BulletSpecification, specification.BarrelLength);
@@ -37,6 +37,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             shootingEffect = specification.ShootingEffect;
             this.findOutWhereIAm = findOutWhereIAm;
+            this.WeaponFired += level.EpicEventOccured;
         }
 
         internal void Update(Single elapsedSeconds)
@@ -49,7 +50,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     Position = findOutWhereIAm(),
                     SpecEffectSpecification = shootingEffect
                 });
-            if (aimer.IsFiring())
+            if (aimer.IsFiring() && IsVisible)
                 SpriteState.Angle = AngleConverter.ToRadians(aimer.GetFireDirection());
         }
     }

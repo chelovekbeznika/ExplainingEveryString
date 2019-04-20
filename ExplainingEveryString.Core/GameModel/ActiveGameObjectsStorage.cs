@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<IGameObject> Enemies { get; private set; }
         internal List<IGameObject> Walls { get; private set; }
         internal List<Bullet> PlayerBullets { get; private set; }
+        internal List<Bullet> EnemyBullets { get; private set; }
         private GameObjectsFactory factory;
         private LevelData levelData;
 
@@ -28,12 +29,14 @@ namespace ExplainingEveryString.Core.GameModel
             return Walls
                 .Concat(new List<IDisplayble> { Player })
                 .Concat(Enemies)
+                .Concat(EnemyBullets)
                 .Concat(PlayerBullets);
         }
 
         internal IEnumerable<IUpdatable> GetObjectsToUpdate()
         {
             return PlayerBullets
+                .Concat(EnemyBullets)
                 .Concat(new List<IUpdatable> { Player })
                 .Concat(Enemies.OfType<IUpdatable>())
                 .Concat(Walls.OfType<IUpdatable>());
@@ -41,7 +44,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void SendDeadToHeaven()
         {
-            PlayerBullets = PlayerBullets.Where(playerBullet => playerBullet.IsAlive()).ToList();
+            PlayerBullets = PlayerBullets.Where(bullet => bullet.IsAlive()).ToList();
+            EnemyBullets = EnemyBullets.Where(bullet => bullet.IsAlive()).ToList();
             Enemies = Enemies.Where(mine => mine.IsAlive()).ToList();
         }
 
@@ -64,6 +68,7 @@ namespace ExplainingEveryString.Core.GameModel
             }
 
             PlayerBullets = new List<Bullet>();
+            EnemyBullets = new List<Bullet>();
         }
     }
 }
