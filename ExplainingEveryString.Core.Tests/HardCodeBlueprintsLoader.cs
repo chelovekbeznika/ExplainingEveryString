@@ -38,14 +38,24 @@ namespace ExplainingEveryString.Core.Tests
                         DamageEffect = new SpecEffectSpecification(),
                         Weapon = new WeaponSpecification()
                         {
-                            BulletSpecification = new BulletSpecification
+                            Barrels = new BarrelSpecification[]
                             {
-                                Damage = 2,
-                                Speed = 800,
-                                Range = 2000,
-                                Sprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" }
+                                new BarrelSpecification
+                                {
+                                    Length = 14,
+                                    AngleCorrection = 0,
+                                    Bullet = new BulletSpecification
+                                    {
+                                        Damage = 2,
+                                        Speed = 800,
+                                        Range = 2000,
+                                        Sprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" }
+                                    }
+                                }
                             },
                             FireRate = 1,
+                            Ammo = 1,
+                            AimType = AimType.ControlledByPlayer,
                             ShootingEffect = new SpecEffectSpecification()
                         }
                     }

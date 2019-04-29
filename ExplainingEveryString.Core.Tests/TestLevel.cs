@@ -21,10 +21,22 @@ namespace ExplainingEveryString.Core.Tests
             ConfigurationAccess.InitializeConfig();
             LevelData levelData = new LevelData
             {
-                PlayerPosition = new Vector2 { X = 0, Y = 0 },
-                EnemiesPositions = new Dictionary<String, List<Vector2>>
+                PlayerPosition = new GameObjectStartPosition
                 {
-                    { "Mine", new List<Vector2> { new Vector2 (-100, 200)} }
+                    Position = new Vector2 { X = 0, Y = 0 },
+                    Angle = 0
+                },
+                EnemiesPositions = new Dictionary<String, List<GameObjectStartPosition>>
+                {
+                    { "Mine", new List<GameObjectStartPosition>
+                        {
+                            new GameObjectStartPosition
+                            {
+                                Position = new Vector2 { X = -100, Y = 200 },
+                                Angle = 0
+                            }
+                        }
+                    }
                 },
                 WallsPositions = new Dictionary<String, List<Vector2>>()
             };

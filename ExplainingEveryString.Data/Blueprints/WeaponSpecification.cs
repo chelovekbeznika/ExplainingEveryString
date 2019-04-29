@@ -10,7 +10,10 @@ namespace ExplainingEveryString.Data.Blueprints
     public class WeaponSpecification
     {
         public Single FireRate { get; set; }
-        [DefaultValue(null)]
+        [DefaultValue(1)]
+        public Int32 Ammo { get; set; }
+        [DefaultValue(0.0)]
+        public Single ReloadTime { get; set; }
         public BarrelSpecification[] Barrels { get; set; }
         public SpriteSpecification Sprite { get; set; }
         public SpecEffectSpecification ShootingEffect { get; set; }

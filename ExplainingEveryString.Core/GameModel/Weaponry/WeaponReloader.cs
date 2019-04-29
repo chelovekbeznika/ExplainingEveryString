@@ -12,17 +12,26 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     internal class WeaponReloader
     {
         private Single shootCooldown;
+        private Single reloadTime;
         private Single timeTillNextShoot;
         private Single nextBulletFirstUpdateTime = 0;
+        private Int32 maxAmmo;
+        private Int32 currentAmmo;
         private IAimer aimer;
         private Action<Single> onShoot;
 
+        private Boolean AmmoLimited => maxAmmo > 1;
+
         internal WeaponReloader(WeaponSpecification blueprint, IAimer aimer, Action<Single> onShoot)
-        {
-            shootCooldown = 1 / blueprint.FireRate;
-            timeTillNextShoot = shootCooldown;
+        { 
             this.aimer = aimer;
             this.onShoot = onShoot;
+            this.maxAmmo = blueprint.Ammo;
+            shootCooldown = 1 / blueprint.FireRate;
+            this.reloadTime = blueprint.ReloadTime;
+            this.currentAmmo = 0;
+
+            timeTillNextShoot = AmmoLimited ? reloadTime : shootCooldown;
         }
 
         internal void TryReload(Single elapsedSeconds, out Boolean weaponFired)
@@ -32,11 +41,21 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             if (aimer.IsFiring())
             {
                 weaponFired = false;
-                nextBulletFirstUpdateTime += elapsedSeconds;
+                if (timeTillNextShoot <= Constants.Epsilon)
+                    nextBulletFirstUpdateTime += elapsedSeconds;
                 while (timeTillNextShoot <= Constants.Epsilon)
                 {
-                    timeTillNextShoot += shootCooldown;
-                    nextBulletFirstUpdateTime -= shootCooldown;
+                    Single betweenShoots = shootCooldown;
+                    if (AmmoLimited)
+                    {
+                        Boolean reloaded;
+                        ConsumeAmmo(out reloaded);
+                        if (reloaded)
+                            betweenShoots = reloadTime;
+                    }
+
+                    timeTillNextShoot += betweenShoots;
+                    nextBulletFirstUpdateTime -= betweenShoots;
                     if (nextBulletFirstUpdateTime < -Constants.Epsilon)
                         nextBulletFirstUpdateTime = 0;
                     onShoot(nextBulletFirstUpdateTime);
@@ -45,6 +64,18 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             }
             else
                 weaponFired = false;
+        }
+
+        private void ConsumeAmmo(out Boolean reloaded)
+        {          
+            if (currentAmmo == 0)
+            {
+                currentAmmo = this.maxAmmo;
+                reloaded = true;
+            }
+            else
+                reloaded = false;
+            currentAmmo -= 1;
         }
     }
 }
