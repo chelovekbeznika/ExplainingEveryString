@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Displaying
             get
             {
                 Vector2 result = level.PlayerPosition - cameraCenter + screenHalf;
-                result.Y = screenHeight - PlayerPositionOnScreen.Y;
+                result.Y = screenHeight - result.Y;
                 return result;
             }
         }
