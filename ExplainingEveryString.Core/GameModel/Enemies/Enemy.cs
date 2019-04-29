@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 namespace ExplainingEveryString.Core.GameModel.Enemies
@@ -12,8 +13,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         public Single CollisionDamage { get; set; }
         internal Single MaxSpeed { get; set; }       
-        private Func<Vector2> playerLocator;
-        protected Vector2 PlayerPosition => playerLocator();
+        protected Func<Vector2> PlayerLocator { get; private set; }
+        protected Vector2 PlayerPosition => PlayerLocator();
 
         private SpecEffectSpecification deathEffect;
 
@@ -36,12 +37,17 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             }
         }
 
+        protected override void PlaceOnLevel(GameObjectStartPosition position)
+        {
+            base.PlaceOnLevel(position);
+        }
+
         protected override void Construct(TBlueprint blueprint, Level level)
         {
+            this.PlayerLocator = () => level.PlayerPosition;
             base.Construct(blueprint, level);
             this.CollisionDamage = blueprint.CollisionDamage;
             this.MaxSpeed = blueprint.MaxSpeed;
-            this.playerLocator = () => level.PlayerPosition;
             this.deathEffect = blueprint.DeathEffect;
             this.Death += level.EpicEventOccured;
         }

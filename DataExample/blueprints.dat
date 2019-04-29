@@ -42,7 +42,7 @@
     "MaxSpeed": 0,
     "Height": 16.0,
     "Width": 16.0,
-    "Hitpoints": 10.0,
+    "Hitpoints": 8.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/FixedCannon"
     },
@@ -68,7 +68,8 @@
       "ShootingEffect": {
         "Sound": "Sounds/FixedCannonShoot",
         "Volume": 0.1
-      }
+      },
+      "AimType": "AimAtPlayer"
     }
   },
   "Player": {
@@ -92,7 +93,8 @@
       "ShootingEffect": {
         "Sound": "Sounds/PlayerShoot",
         "Volume": 0.1
-      }
+      },
+      "AimType": "ControlledByPlayer"
     },
     "Height": 32.0,
     "Width": 32.0,

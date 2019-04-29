@@ -15,16 +15,18 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
     {
         private IAimer aimer;
         private Weapon weapon;
+        private Single startAngle;
 
         protected override void PlaceOnLevel(GameObjectStartPosition position)
         {
             base.PlaceOnLevel(position);
-            aimer = new FixedAimer(AngleConverter.ToRadians(position.Angle));
+            startAngle = position.Angle;
         }
 
         protected override void Construct(FixedCannonBlueprint blueprint, Level level)
         {
             base.Construct(blueprint, level);
+            aimer = CreateAimer(blueprint.Weapon);
             weapon = new Weapon(blueprint.Weapon, aimer, () => this.Position, level);
             weapon.Shoot += level.EnemyShoot;
         }
@@ -35,6 +37,19 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             weapon.Update(elapsedSeconds);
             if (aimer.IsFiring() && !weapon.IsVisible)
                 SpriteState.Angle = AngleConverter.ToRadians(aimer.GetFireDirection());
+        }
+
+        private IAimer CreateAimer(WeaponSpecification weapon)
+        {
+            switch (weapon.AimType)
+            {
+                case AimType.FixedFireDirection:
+                    return new FixedAimer(AngleConverter.ToRadians(startAngle));
+                case AimType.AimAtPlayer:
+                    return new PlayerAimer(PlayerLocator, () => this.Position);
+                default:
+                    throw new ArgumentException("Wrong aimtype in blueprint");
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Blueprints
@@ -11,5 +13,12 @@ namespace ExplainingEveryString.Data.Blueprints
         [DefaultValue(null)]
         public SpriteSpecification Sprite { get; set; }
         public SpecEffectSpecification ShootingEffect { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AimType AimType { get; set; }
+    }
+
+    public enum AimType
+    {
+        FixedFireDirection, AimAtPlayer, ControlledByPlayer
     }
 }
