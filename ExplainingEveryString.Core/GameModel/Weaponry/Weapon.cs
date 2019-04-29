@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;
+using System.Linq;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
 
@@ -10,14 +11,22 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     {
         internal event EventHandler<ShootEventArgs> Shoot
         {
-            add { barrel.Shoot += value; }
-            remove { barrel.Shoot -= value; }
+            add
+            {
+                foreach (Barrel barrel in barrels)
+                    barrel.Shoot += value;
+            }
+            remove
+            {
+                foreach (Barrel barrel in barrels)
+                    barrel.Shoot -= value;
+            }
         }
         internal event EventHandler<EpicEventArgs> WeaponFired;
 
         private WeaponReloader reloader;
         private IAimer aimer;
-        private Barrel barrel;
+        private Barrel[] barrels;
 
         private SpecEffectSpecification shootingEffect;
 
@@ -32,8 +41,13 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal Weapon(WeaponSpecification specification, IAimer aimer, Func<Vector2> findOutWhereIAm, Level level)
         {
             this.aimer = aimer;
-            barrel = new Barrel(aimer, findOutWhereIAm, specification.BulletSpecification, specification.BarrelLength);
-            reloader = new WeaponReloader(specification, aimer, barrel.OnShoot);
+            barrels = specification.Barrels.Select(bs => new Barrel(aimer, findOutWhereIAm, bs)).ToArray();
+            Action<Single> onShoot = new Action<Single>((seconds) => { });
+            foreach (Action<Single> barellShoot in barrels.Select(b => new Action<Single>(b.OnShoot)))
+            {
+                onShoot += barellShoot;
+            }
+            reloader = new WeaponReloader(specification, aimer, onShoot);
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             shootingEffect = specification.ShootingEffect;
             this.findOutWhereIAm = findOutWhereIAm;

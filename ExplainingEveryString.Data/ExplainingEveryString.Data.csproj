@@ -48,6 +48,7 @@
     <Compile Include="AssetsMetadata\AssetsMetadata.cs" />
     <Compile Include="AssetsMetadata\AssetsMetadataAccess.cs" />
     <Compile Include="AssetsMetadata\SpriteMetadata.cs" />
+    <Compile Include="Blueprints\BarrelSpecification.cs" />
     <Compile Include="Blueprints\Blueprint.cs" />
     <Compile Include="Blueprints\BlueprintsAccess.cs" />
     <Compile Include="Blueprints\BlueprintsLoader.cs" />

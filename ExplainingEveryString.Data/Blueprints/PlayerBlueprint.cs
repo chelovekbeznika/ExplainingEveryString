@@ -15,11 +15,7 @@ namespace ExplainingEveryString.Data.Blueprints
 
         internal override IEnumerable<SpriteSpecification> GetSprites()
         {
-            return base.GetSprites().Concat(new SpriteSpecification[] 
-            {
-                Weapon.BulletSpecification.Sprite,
-                Weapon.Sprite
-            });
+            return base.GetSprites().Concat(Weapon.GetSprites());
         }
         internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
         {

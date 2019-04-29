@@ -56,18 +56,46 @@
     },
     "Weapon": {
       "FireRate": 0.5,
-      "BarrelLength": 13.0,
-      "BulletSpecification": {
-        "Speed": 200.0,
-        "Damage": 2.0,
-        "Range": 2000.0,
-        "Sprite": {
-          "Name": "Sprites/Enemies/EnemyBullet"
+      "Barrels": [
+        {
+          "Length": 13.0,
+          "Bullet": {
+            "Speed": 200.0,
+            "Damage": 2.0,
+            "Range": 2000.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        },
+        {
+          "Length": 14.0,
+          "AngleCorrection": 15.0,
+          "Bullet": {
+            "Speed": 200.0,
+            "Damage": 2.0,
+            "Range": 2000.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        },
+        {
+          "Length": 14.0,
+          "AngleCorrection": -15.0,
+          "Bullet": {
+            "Speed": 200.0,
+            "Damage": 2.0,
+            "Range": 2000.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
         }
-      },
+      ],
       "ShootingEffect": {
         "Sound": "Sounds/FixedCannonShoot",
-        "Volume": 0.1
+        "Volume": 0.05
       },
       "AimType": "AimAtPlayer"
     }
@@ -78,18 +106,22 @@
     "MaxAcceleration": 200.0,
     "Weapon": {
       "FireRate": 10.0,
-      "BarrelLength": 14.0,
       "Sprite": {
         "Name": "Sprites/Player/Cannon"
       },
-      "BulletSpecification": {
-        "Speed": 800.0,
-        "Damage": 1.0,
-        "Range": 2000.0,
-        "Sprite": {
-          "Name": "Sprites/Player/PlayerBullet"
+      "Barrels": [
+        {
+          "Length": 14.0,
+          "Bullet": {
+            "Speed": 800.0,
+            "Damage": 1.0,
+            "Range": 2000.0,
+            "Sprite": {
+              "Name": "Sprites/Player/PlayerBullet"
+            }
+          }
         }
-      },
+      ],
       "ShootingEffect": {
         "Sound": "Sounds/PlayerShoot",
         "Volume": 0.1
