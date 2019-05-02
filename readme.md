@@ -1,6 +1,6 @@
 # What?
 
-This repository belongs to youtube channel ["Explaining every string"](https://www.youtube.com/channel/UC90GNOUDTklc8gUUxRY4nGw)
+This repository belongs to youtube channel ["Explaining every string"](https://www.youtube.com/c/explainingeverystring)
 
 I'm making here videogame on "Monogame framework".
 
@@ -26,4 +26,4 @@ Third, open your VS studio solution and build debug or release version
 
 Fourth, in monogame pipeline tool project in project properties select "Debug" or "Release" config and build assets project.
 
-Fifth, now you have in Build folder in Debug/Release subfolder builded game with assets.
+Fifth, now you have in Build folder in Debug/Release subfolder built game with assets.
