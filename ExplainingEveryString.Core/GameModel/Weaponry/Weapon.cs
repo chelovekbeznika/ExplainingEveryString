@@ -64,7 +64,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     Position = findOutWhereIAm(),
                     SpecEffectSpecification = shootingEffect
                 });
-            if (aimer.IsFiring() && IsVisible)
+            if (IsVisible)
                 SpriteState.Angle = AngleConverter.ToRadians(aimer.GetFireDirection());
         }
     }

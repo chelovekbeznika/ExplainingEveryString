@@ -6,6 +6,8 @@ namespace ExplainingEveryString.Core.Input
 {
     internal class GamePadPlayerInput : PlayerInput
     {
+        private Vector2 lastDirection = new Vector2(1, 0);
+
         public override Vector2 GetMoveDirection()
         {
             Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
@@ -19,8 +21,15 @@ namespace ExplainingEveryString.Core.Input
 
         public override Vector2 GetFireDirection()
         {
-            Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Right;
-            return NormalizeDirectionVector(direction);
+            if (IsFiring())
+            {
+                Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Right;
+                direction = NormalizeDirectionVector(direction);
+                lastDirection = direction;
+                return direction;
+            }
+            else
+                return lastDirection;
         }
     }
 }

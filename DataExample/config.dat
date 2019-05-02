@@ -1,7 +1,7 @@
 {
-  "ControlDevice": "KeyBoard",
+  "ControlDevice": "GamePad",
   "PlayerFramePercentageWidth": 60,
-  "PlayerFramePercentageHeigth": 60,
+  "PlayerFramePercentageHeigth": 40,
   "ScreenWidth": 1024,
   "ScreenHeight": 768,
   "FullScreen": false
