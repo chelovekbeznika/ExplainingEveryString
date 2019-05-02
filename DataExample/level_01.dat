@@ -36,7 +36,9 @@
       {
         "Position": "-400.0, 300.0",
         "Angle": -45.0
-      },
+      }
+    ],
+    "TripleCannon": [
       {
         "Position": "-400.0, -400.0",
         "Angle": 90.0

@@ -11,17 +11,17 @@ namespace ExplainingEveryString.Core.GameModel
     internal class GameObjectsFactory
     {
         private Dictionary<String, Blueprint> blueprintsStorage = new Dictionary<String, Blueprint>();
-        private Dictionary<String, Func<GameObjectStartPosition, IGameObject>> enemyConstruction;
+        private Dictionary<String, Func<GameObjectStartPosition, String, IGameObject>> enemyConstruction;
         internal Level Level { get; set; }
 
         internal GameObjectsFactory(IBlueprintsLoader blueprintsLoader)
         {
             this.blueprintsStorage = blueprintsLoader.GetBlueprints();
-            this.enemyConstruction = new Dictionary<String, Func<GameObjectStartPosition, IGameObject>>
+            this.enemyConstruction = new Dictionary<String, Func<GameObjectStartPosition, String, IGameObject>>
             {
-                { "Mine", (pos) => Construct<Mine, EnemyBlueprint>(pos) },
-                { "Hunter", (pos) => Construct<Hunter, HunterBlueprint>(pos) },
-                { "FixedCannon", (pos) => Construct<FixedCannon, FixedCannonBlueprint>(pos) }
+                { "Mine", (pos, name) => Construct<Mine, EnemyBlueprint>(name, pos) },
+                { "Hunter", (pos, name) => Construct<Hunter, HunterBlueprint>(name, pos) },
+                { "FixedCannon", (pos, name) => Construct<FixedCannon, FixedCannonBlueprint>(name, pos) },
             };
         }
 
@@ -38,7 +38,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal List<IGameObject> ConstructEnemies(String name, IEnumerable<GameObjectStartPosition> positions)
         {
-            return positions.Select(pos => enemyConstruction[name](pos)).ToList();
+            String type = (blueprintsStorage[name] as EnemyBlueprint).Type;
+            return positions.Select(pos => enemyConstruction[type](pos, name)).ToList();
         }
 
         private List<TGameObject> Construct<TGameObject, TBlueprint>(IEnumerable<GameObjectStartPosition> positions)

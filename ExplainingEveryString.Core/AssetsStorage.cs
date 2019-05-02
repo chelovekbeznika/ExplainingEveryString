@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core
                 {
                     Sprite = contentManager.Load<Texture2D>(spriteName),
                     AnimationFrames = 1
-                };  
+                };
             }
             foreach (String soundName in blueprintsLoader.GetNecessarySounds())
             {

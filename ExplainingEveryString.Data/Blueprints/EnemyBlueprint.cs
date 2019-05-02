@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Data.Blueprints
 {
     public class EnemyBlueprint : Blueprint
     {
+        public String Type { get; set; }
         public Single CollisionDamage { get; set; }
         public Single MaxSpeed { get; set; }
         public SpecEffectSpecification DeathEffect { get; set; }
