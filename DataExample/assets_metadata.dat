@@ -11,6 +11,10 @@
     {
       "Name": "Sprites/Enemies/EnemyBullet",
       "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Player/Cannon",
+      "AnimationFrames": 2
     }
   ]
 }
