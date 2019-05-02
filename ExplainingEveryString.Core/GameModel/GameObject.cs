@@ -78,6 +78,11 @@ namespace ExplainingEveryString.Core.GameModel
             return GetHitboxWithCenterIn(OldPosition);
         }
 
+        public virtual Hitbox GetBulletsHitbox()
+        {
+            return GetCurrentHitbox();
+        }
+
         private Hitbox GetHitboxWithCenterIn(Vector2 center)
         {
             return new Hitbox

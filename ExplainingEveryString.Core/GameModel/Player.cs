@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core.GameModel
         private Single maxSpeed;
         private Single maxAcceleration;
         private IPlayerInput input;
+        private Single bulletHitboxWidth;
         private SpecEffectSpecification damageEffect;
 
         private Weapon Weapon { get; set; }
@@ -26,6 +27,7 @@ namespace ExplainingEveryString.Core.GameModel
             input = PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
+            bulletHitboxWidth = blueprint.BulletHitboxWidth;
             damageEffect = blueprint.DamageEffect;
             DamageTaken += level.EpicEventOccured;
 
@@ -83,6 +85,17 @@ namespace ExplainingEveryString.Core.GameModel
         public IEnumerable<IDisplayble> GetParts()
         {
             return new IDisplayble[] { Weapon };
+        }
+
+        public override Hitbox GetBulletsHitbox()
+        {
+            return new Hitbox
+            {
+                Left = Position.X - bulletHitboxWidth / 2,
+                Right = Position.X + bulletHitboxWidth / 2,
+                Bottom = Position.Y - bulletHitboxWidth / 2,
+                Top = Position.Y + bulletHitboxWidth / 2
+            };
         }
     }
 }

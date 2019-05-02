@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Data.Blueprints
 {
     public class PlayerBlueprint : Blueprint
     {
+        public Single BulletHitboxWidth { get; set; }
         public Single MaxSpeed { get; set; }
         public Single MaxAcceleration { get; set; }
         public WeaponSpecification Weapon { get; set; }

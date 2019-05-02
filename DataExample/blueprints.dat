@@ -202,6 +202,7 @@
     },
     "Height": 32.0,
     "Width": 32.0,
+    "BulletHitboxWidth": 7.0,
     "Hitpoints": 3.0,
     "DefaultSprite": {
       "Name": "Sprites/Player/Base"

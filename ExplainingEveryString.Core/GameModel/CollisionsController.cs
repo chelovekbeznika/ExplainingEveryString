@@ -121,7 +121,10 @@ namespace ExplainingEveryString.Core.GameModel
         {
             foreach (ICollidable collidable in collidables)
             {
-                if (collisionsChecker.Collides(collidable.GetCurrentHitbox(), bullet.OldPosition, bullet.Position))
+                Hitbox hitbox = collidable is ITouchableByBullets
+                    ? (collidable as ITouchableByBullets).GetBulletsHitbox()
+                    : collidable.GetCurrentHitbox();
+                if (collisionsChecker.Collides(hitbox, bullet.OldPosition, bullet.Position))
                 {
                     if (collidable is ITouchableByBullets)
                         (collidable as ITouchableByBullets).TakeDamage(bullet.Damage);

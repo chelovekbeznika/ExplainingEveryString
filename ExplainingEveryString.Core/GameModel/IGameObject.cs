@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.GameModel
     internal interface ITouchableByBullets : ICollidable
     {
         void TakeDamage(Single damage);
+        Hitbox GetBulletsHitbox();
     }
 
     internal interface ICollidable
