@@ -47,12 +47,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 {
                     Single betweenShoots = shootCooldown;
                     if (AmmoLimited)
-                    {
-                        Boolean reloaded;
-                        ConsumeAmmo(out reloaded);
-                        if (reloaded)
-                            betweenShoots = reloadTime;
-                    }
+                        ProcessReloadForLimitedAmmo(ref betweenShoots);
 
                     timeTillNextShoot += betweenShoots;
                     nextBulletFirstUpdateTime -= betweenShoots;
@@ -66,16 +61,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 weaponFired = false;
         }
 
-        private void ConsumeAmmo(out Boolean reloaded)
-        {          
+        private void ProcessReloadForLimitedAmmo(ref Single betweenShoots)
+        {
+            Boolean reloadAfterThisBullet = false;
+            if (currentAmmo == 1)
+                reloadAfterThisBullet = true;
             if (currentAmmo == 0)
-            {
                 currentAmmo = this.maxAmmo;
-                reloaded = true;
-            }
-            else
-                reloaded = false;
             currentAmmo -= 1;
+            if (reloadAfterThisBullet)
+                betweenShoots = reloadTime;
         }
     }
 }
