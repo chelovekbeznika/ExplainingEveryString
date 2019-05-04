@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,11 @@ namespace ExplainingEveryString.Data.Blueprints
 {
     public class BulletSpecification
     {
-        public Single Speed { get; set; }
+        public Dictionary<String, Single> TrajectoryParameters { get; set; }
+        [DefaultValue("Linear")]
+        public String TrajectoryType { get; set; }
         public Single Damage { get; set; }
-        public Single Range { get; set; }
+        public Single TimeToLive { get; set; }
 
         public SpriteSpecification Sprite { get; set; }
     }

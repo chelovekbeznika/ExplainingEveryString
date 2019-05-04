@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Weaponry.Trajectories;
 using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 
@@ -11,9 +12,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
     internal class Bullet : IDisplayble, IUpdatable
     {
-        private Vector2 speed;
-        private Single remainingDistance;
+        private static TrajectoryFactory trajectoryFactory = new TrajectoryFactory();
+
+        private Single timeToLive;
+        private Single bulletAge = 0;
         private Boolean alive = true;
+        private BulletTrajectory trajectory;
 
         public SpriteState SpriteState { get; private set; }
         public Vector2 Position { get; private set; }
@@ -27,20 +31,17 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.SpriteState = new SpriteState(bulletSpecification.Sprite);
             this.Position = position;
             this.OldPosition = position;
-            this.speed = bulletSpecification.Speed * fireDirection;
             this.Damage = bulletSpecification.Damage;
-            this.remainingDistance = bulletSpecification.Range;
+            this.timeToLive = bulletSpecification.TimeToLive;
+            this.trajectory = trajectoryFactory.GetTrajectory(bulletSpecification.TrajectoryType,
+                position, fireDirection, bulletSpecification.TrajectoryParameters);
         }
 
         public void Update(Single elapsedSeconds)
         {
             OldPosition = Position;
-            Vector2 positionChange = speed * elapsedSeconds;
-            Position += positionChange;
-            remainingDistance -= positionChange.Length();
-            if (remainingDistance < 0)
-                alive = false;
-
+            bulletAge += elapsedSeconds;
+            Position = trajectory.GetBulletPosition(bulletAge);
             SpriteState.Update(elapsedSeconds);
         }
 
@@ -51,7 +52,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public Boolean IsAlive()
         {
-            return alive;
+            return alive && bulletAge <= timeToLive;
         }
     }
 }

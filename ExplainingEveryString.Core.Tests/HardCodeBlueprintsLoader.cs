@@ -47,8 +47,8 @@ namespace ExplainingEveryString.Core.Tests
                                     Bullet = new BulletSpecification
                                     {
                                         Damage = 2,
-                                        Speed = 800,
-                                        Range = 2000,
+                                        TrajectoryParameters = new Dictionary<String, Single> { { "speed", 800 } },
+                                        TimeToLive = 2000,
                                         Sprite = new SpriteSpecification { Name = @"Sprites/PlayerBullet" }
                                     }
                                 }

@@ -49,6 +49,10 @@
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="GameModel\Enemies\FixedCannon.cs" />
+    <Compile Include="GameModel\Weaponry\Trajectories\BulletTrajectory.cs" />
+    <Compile Include="GameModel\Weaponry\Trajectories\LinearTrajectory.cs" />
+    <Compile Include="GameModel\Weaponry\Trajectories\SinusTrajectory.cs" />
+    <Compile Include="GameModel\Weaponry\Trajectories\TrajectoryFactory.cs" />
     <Compile Include="Math\AngleConverter.cs" />
     <Compile Include="Math\CollisionsChecker.cs" />
     <Compile Include="Displaying\EpicEventsProcessor.cs" />
@@ -90,5 +94,6 @@
       <Name>ExplainingEveryString.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

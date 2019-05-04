@@ -65,9 +65,11 @@
         {
           "Length": 13.0,
           "Bullet": {
-            "Speed": 300.0,
+            "TrajectoryParameters": {
+              "speed": 300.0
+            },
             "Damage": 0.5,
-            "Range": 2000.0,
+            "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/EnemyBullet"
             }
@@ -106,9 +108,11 @@
         {
           "Length": 13.0,
           "Bullet": {
-            "Speed": 200.0,
+            "TrajectoryParameters": {
+              "speed": 200.0
+            },
             "Damage": 1.0,
-            "Range": 2000.0,
+            "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/EnemyBullet"
             }
@@ -118,9 +122,11 @@
           "Length": 13.5,
           "AngleCorrection": 10.0,
           "Bullet": {
-            "Speed": 200.0,
+            "TrajectoryParameters": {
+              "speed": 200.0
+            },
             "Damage": 1.0,
-            "Range": 2000.0,
+            "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/EnemyBullet"
             }
@@ -130,9 +136,11 @@
           "Length": 13.5,
           "AngleCorrection": -10.0,
           "Bullet": {
-            "Speed": 200.0,
+            "TrajectoryParameters": {
+              "speed": 200.0
+            },
             "Damage": 1.0,
-            "Range": 2000.0,
+            "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/EnemyBullet"
             }
@@ -142,9 +150,14 @@
           "Length": 18.0,
           "AngleCorrection": 45.0,
           "Bullet": {
-            "Speed": 200.0,
+            "TrajectoryType": "Sinus",
+            "TrajectoryParameters": {
+              "speed": 200.0,
+              "amplitude": 100.0,
+              "angularVelocity": 10.0
+            },
             "Damage": 1.0,
-            "Range": 2000.0,
+            "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/EnemyBullet"
             }
@@ -154,9 +167,14 @@
           "Length": 18.0,
           "AngleCorrection": -45.0,
           "Bullet": {
-            "Speed": 200.0,
+            "TrajectoryType": "Sinus",
+            "TrajectoryParameters": {
+              "speed": 200.0,
+              "amplitude": 100.0,
+              "angularVelocity": 10.0
+            },
             "Damage": 1.0,
-            "Range": 2000.0,
+            "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/EnemyBullet"
             }
@@ -186,9 +204,12 @@
         {
           "Length": 14.0,
           "Bullet": {
-            "Speed": 800.0,
+            "TrajectoryParameters": {
+              "speed": 800.0,
+              "amplitude": 10.0
+            },
             "Damage": 1.0,
-            "Range": 2000.0,
+            "TimeToLive": 3.0,
             "Sprite": {
               "Name": "Sprites/Player/PlayerBullet"
             }
@@ -203,7 +224,7 @@
     },
     "Height": 32.0,
     "Width": 32.0,
-    "BulletHitboxWidth": 6.0,
+    "BulletHitboxWidth": 16.0,
     "Hitpoints": 3.0,
     "DefaultSprite": {
       "Name": "Sprites/Player/Base"

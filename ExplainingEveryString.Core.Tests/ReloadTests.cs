@@ -20,9 +20,9 @@ namespace ExplainingEveryString.Core.Tests
                 {
                     Bullet = new BulletSpecification
                     {
-                        Speed = 100,
+                        TrajectoryParameters = new Dictionary<String, Single> { { "speed", 100 } },
                         Sprite = new SpriteSpecification { Name = "FooBar" },
-                        Range = 50,
+                        TimeToLive = 50,
                         Damage = 1
                     },
                     Length = 14,
