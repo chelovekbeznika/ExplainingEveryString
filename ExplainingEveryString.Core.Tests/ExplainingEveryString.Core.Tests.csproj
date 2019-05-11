@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClosestArcTests.cs" />
     <Compile Include="HardCodeBlueprintsLoader.cs" />
     <Compile Include="HitboxBulletCollisionsTests.cs" />
     <Compile Include="HitboxesCollisionsTests.cs" />

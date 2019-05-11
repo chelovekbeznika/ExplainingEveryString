@@ -15,16 +15,18 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private IAimer aimer;
         private Func<Vector2> findOutWhereIAm;
+        private Func<Vector2> targetLocator;
         private BulletSpecification bulletSpecification;
         private Single length;
         private Single angleCorrection;
         private Single accuracy;
 
-        internal Barrel(IAimer aimer, Func<Vector2> findOutWhereIAm, BarrelSpecification specification)
+        internal Barrel(IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
         {
             this.length = specification.Length;
             this.aimer = aimer;
             this.findOutWhereIAm = findOutWhereIAm;
+            this.targetLocator = targetLocator;
             this.bulletSpecification = specification.Bullet;
             this.angleCorrection = AngleConverter.ToRadians(specification.AngleCorrection);
             this.accuracy = AngleConverter.ToRadians(specification.Accuracy);
@@ -34,7 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             Vector2 direction = GetFireDirection();
             Vector2 position = findOutWhereIAm() + direction * length;
-            Bullet bullet = new Bullet(position, direction, bulletSpecification);
+            Bullet bullet = new Bullet(position, direction, bulletSpecification, targetLocator);
             ShootEventArgs eventArgs = new ShootEventArgs
             {
                 Bullet = bullet,

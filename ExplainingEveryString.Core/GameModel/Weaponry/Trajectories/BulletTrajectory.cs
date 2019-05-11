@@ -10,20 +10,20 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
     internal abstract class BulletTrajectory
     {
         private Vector2 startPosition;
-        private Vector2 fireDirection;
+        internal Vector2 FireDirection { get; set; }
 
         internal BulletTrajectory(Vector2 startPosition, Vector2 fireDirection, Dictionary<String, Single> parameters)
         {
             this.startPosition = startPosition;
-            this.fireDirection = fireDirection;
+            this.FireDirection = fireDirection;
             AssignParameters(parameters);
         }
 
         internal Vector2 GetBulletPosition(Single time)
         {
             Vector2 rawPosition = GetTrajectoryOffset(time);
-            Single sinus = fireDirection.Y;
-            Single cosinus = fireDirection.X;
+            Single sinus = FireDirection.Y;
+            Single cosinus = FireDirection.X;
             Vector2 rotatedPosition = new Vector2
             {
                 X = rawPosition.X * cosinus - rawPosition.Y * sinus,

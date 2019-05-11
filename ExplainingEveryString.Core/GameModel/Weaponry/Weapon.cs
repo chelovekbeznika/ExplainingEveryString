@@ -31,6 +31,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private SpecEffectSpecification shootingEffect;
 
         private Func<Vector2> findOutWhereIAm;
+        private Func<Vector2> targetLocator;
 
         public SpriteState SpriteState { get; private set; }
 
@@ -38,10 +39,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public bool IsVisible => SpriteState != null;
 
-        internal Weapon(WeaponSpecification specification, IAimer aimer, Func<Vector2> findOutWhereIAm, Level level)
+        internal Weapon(WeaponSpecification specification, IAimer aimer, 
+            Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, Level level)
         {
             this.aimer = aimer;
-            barrels = specification.Barrels.Select(bs => new Barrel(aimer, findOutWhereIAm, bs)).ToArray();
+            barrels = specification.Barrels
+                .Select(bs => new Barrel(aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
             Action<Single> onShoot = new Action<Single>((seconds) => { });
             foreach (Action<Single> barellShoot in barrels.Select(b => new Action<Single>(b.OnShoot)))
             {
@@ -51,6 +54,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             shootingEffect = specification.ShootingEffect;
             this.findOutWhereIAm = findOutWhereIAm;
+            this.targetLocator = targetLocator;
             this.WeaponFired += level.EpicEventOccured;
         }
 

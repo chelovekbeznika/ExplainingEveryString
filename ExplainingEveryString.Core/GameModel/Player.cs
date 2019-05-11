@@ -31,7 +31,7 @@ namespace ExplainingEveryString.Core.GameModel
             damageEffect = blueprint.DamageEffect;
             DamageTaken += level.EpicEventOccured;
 
-            Weapon = new Weapon(blueprint.Weapon, input, () => Position, level);
+            Weapon = new Weapon(blueprint.Weapon, input, () => Position, null, level);
             Weapon.Shoot += level.PlayerShoot;
         }
 

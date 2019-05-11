@@ -23,5 +23,24 @@ namespace ExplainingEveryString.Core.Math
         {
             return new Vector2 { X = (Single)System.Math.Cos(radians), Y = (Single)System.Math.Sin(radians) };
         }
+
+        internal static Single ClosestArc(Single a, Single b)
+        {
+            Single counterclockArc, clockwiseArc;
+            if (a > b)
+            {
+                clockwiseArc = a - b;
+                counterclockArc = MathHelper.TwoPi - clockwiseArc;
+            }
+            else
+            {
+                counterclockArc = b - a;
+                clockwiseArc = MathHelper.TwoPi - counterclockArc;
+            }
+            if (counterclockArc < clockwiseArc)
+                return counterclockArc;
+            else
+                return -clockwiseArc;
+        }
     }
 }

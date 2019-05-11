@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         {
             base.Construct(blueprint, level);
             aimer = CreateAimer(blueprint.Weapon);
-            weapon = new Weapon(blueprint.Weapon, aimer, () => this.Position, level);
+            weapon = new Weapon(blueprint.Weapon, aimer, () => this.Position, () => level.PlayerPosition, level);
             weapon.Shoot += level.EnemyShoot;
         }
 

@@ -14,6 +14,11 @@ namespace ExplainingEveryString.Data.Blueprints
         public String TrajectoryType { get; set; }
         public Single Damage { get; set; }
         public Single TimeToLive { get; set; }
+        /// <summary>
+        /// Degrees per second
+        /// </summary>
+        [DefaultValue(0.0)]
+        public Single HomingSpeed { get; set; }
 
         public SpriteSpecification Sprite { get; set; }
     }
