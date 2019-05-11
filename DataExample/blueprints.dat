@@ -203,6 +203,7 @@
       "Barrels": [
         {
           "Length": 14.0,
+          "Accuracy": 5.0,
           "Bullet": {
             "TrajectoryParameters": {
               "speed": 800.0,

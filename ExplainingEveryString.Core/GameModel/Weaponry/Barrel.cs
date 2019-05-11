@@ -18,6 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private BulletSpecification bulletSpecification;
         private Single length;
         private Single angleCorrection;
+        private Single accuracy;
 
         internal Barrel(IAimer aimer, Func<Vector2> findOutWhereIAm, BarrelSpecification specification)
         {
@@ -26,6 +27,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.findOutWhereIAm = findOutWhereIAm;
             this.bulletSpecification = specification.Bullet;
             this.angleCorrection = AngleConverter.ToRadians(specification.AngleCorrection);
+            this.accuracy = AngleConverter.ToRadians(specification.Accuracy);
         }
 
         internal void OnShoot(Single bulletFirstFrameUpdateTime)
@@ -44,12 +46,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Vector2 GetFireDirection()
         {
             Vector2 direction = aimer.GetFireDirection();
+            Single angle = AngleConverter.ToRadians(direction);
             if (angleCorrection != 0)
-            {
-                Single resultAngle = AngleConverter.ToRadians(direction);
-                resultAngle += angleCorrection;
-                direction = AngleConverter.ToVector(resultAngle);
-            }
+                angle += angleCorrection;
+            if (accuracy != 0)
+                angle += (RandomUtility.Next() - 0.5F) * accuracy;
+            direction = AngleConverter.ToVector(angle);
             return direction;
         }
     }
