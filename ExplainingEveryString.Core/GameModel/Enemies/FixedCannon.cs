@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Weapon weapon;
         private Single startAngle;
 
-        protected override void PlaceOnLevel(GameObjectStartPosition position)
+        protected override void PlaceOnLevel(ActorStartPosition position)
         {
             base.PlaceOnLevel(position);
             startAngle = position.Angle;

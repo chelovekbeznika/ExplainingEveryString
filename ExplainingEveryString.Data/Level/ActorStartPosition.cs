@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Data.Level
 {
-    public class GameObjectStartPosition
+    public class ActorStartPosition
     {
         public Vector2 Position { get; set; }
         [DefaultValue(0)]

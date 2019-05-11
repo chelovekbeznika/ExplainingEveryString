@@ -68,7 +68,7 @@
     <Compile Include="ControlDevice.cs" />
     <Compile Include="FileNames.cs" />
     <Compile Include="JsonDataAccessor.cs" />
-    <Compile Include="Level\GameObjectStartPosition.cs" />
+    <Compile Include="Level\ActorStartPosition.cs" />
     <Compile Include="Level\LevelData.cs" />
     <Compile Include="Level\LevelDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,36 +14,36 @@ namespace ExplainingEveryString.Core.GameModel
 
     internal class Level
     {
-        private ActiveGameObjectsStorage activeObjects;
+        private ActiveActorsStorage activeActors;
         private CollisionsController collisionsController;
-        private GameObjectsFactory factory;
+        private ActorsFactory factory;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
 
-        internal Vector2 PlayerPosition => activeObjects.Player.Position;
+        internal Vector2 PlayerPosition => activeActors.Player.Position;
         internal event GameLost Lost;
 
-        internal Level(GameObjectsFactory factory, LevelData levelData)
+        internal Level(ActorsFactory factory, LevelData levelData)
         {
             this.factory = factory;
             factory.Level = this;
-            activeObjects = new ActiveGameObjectsStorage(factory, levelData);
-            activeObjects.InitializeGameObjects();
-            collisionsController = new CollisionsController(activeObjects);
+            activeActors = new ActiveActorsStorage(factory, levelData);
+            activeActors.InitializeActors();
+            collisionsController = new CollisionsController(activeActors);
         }
 
         internal void Update(Single elapsedSeconds)
         {
-            foreach (IUpdatable updatable in activeObjects.GetObjectsToUpdate())
+            foreach (IUpdatable updatable in activeActors.GetObjectsToUpdate())
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
-            activeObjects.SendDeadToHeaven();
-            if (!activeObjects.Player.IsAlive())
+            activeActors.SendDeadToHeaven();
+            if (!activeActors.Player.IsAlive())
                 Lost?.Invoke(this, EventArgs.Empty);
         }
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
-            return activeObjects.GetObjectsToDraw();
+            return activeActors.GetObjectsToDraw();
         }
 
         internal IEnumerable<EpicEventArgs> CollectEpicEvents()
@@ -57,14 +57,14 @@ namespace ExplainingEveryString.Core.GameModel
         {
             Bullet bullet = args.Bullet;
             bullet.Update(args.FirstUpdateTime);
-            activeObjects.PlayerBullets.Add(bullet);
+            activeActors.PlayerBullets.Add(bullet);
         }
 
         internal void EnemyShoot(Object sender, ShootEventArgs args)
         {
             Bullet bullet = args.Bullet;
             bullet.Update(args.FirstUpdateTime);
-            activeObjects.EnemyBullets.Add(bullet);
+            activeActors.EnemyBullets.Add(bullet);
         }
 
         internal void EpicEventOccured(Object sender, EpicEventArgs epicEvent)

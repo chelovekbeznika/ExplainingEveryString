@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core
             blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
-            GameObjectsFactory factory = new GameObjectsFactory(blueprintsLoader);
+            ActorsFactory factory = new ActorsFactory(blueprintsLoader);
 
             ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
             LevelData levelData = levelLoader.Load("level_01.dat");

@@ -7,7 +7,7 @@ using ExplainingEveryString.Data.Level;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal abstract class GameObject<TBlueprint> : IGameObject where TBlueprint : Blueprint
+    internal abstract class Actor<TBlueprint> : IActor where TBlueprint : Blueprint
     {
         private Vector2 position;
 
@@ -28,13 +28,13 @@ namespace ExplainingEveryString.Core.GameModel
         public SpriteState SpriteState { get; private set; }
         public Boolean IsVisible => IsAlive();
 
-        internal void Initialize(TBlueprint blueprint, Level level, GameObjectStartPosition position)
+        internal void Initialize(TBlueprint blueprint, Level level, ActorStartPosition position)
         {
             PlaceOnLevel(position);
             Construct(blueprint, level);
         }
         
-        protected virtual void PlaceOnLevel(GameObjectStartPosition position)
+        protected virtual void PlaceOnLevel(ActorStartPosition position)
         {          
             this.Position = position.Position;
             this.OldPosition = position.Position;

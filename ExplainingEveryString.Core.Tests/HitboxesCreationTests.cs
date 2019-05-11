@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Core.Tests
         public void MineHitbox()
         {
             TestLevel testLevel = new TestLevel();
-            Mine mine = testLevel.GameObjectsStorage.Enemies.OfType<Mine>().First();
+            Mine mine = testLevel.ActorsStorage.Enemies.OfType<Mine>().First();
             Hitbox hitbox = mine.GetCurrentHitbox();
 
             Hitbox model = new Hitbox { Bottom = 192, Top = 208, Left = -108, Right = -92 };

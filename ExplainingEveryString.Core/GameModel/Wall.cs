@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal class Wall : GameObject<Blueprint>
+    internal class Wall : Actor<Blueprint>
     {
     }
 }

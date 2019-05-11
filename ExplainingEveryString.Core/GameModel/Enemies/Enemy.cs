@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using System;
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {
-    internal abstract class Enemy<TBlueprint> : GameObject<TBlueprint> where TBlueprint : EnemyBlueprint
+    internal abstract class Enemy<TBlueprint> : Actor<TBlueprint> where TBlueprint : EnemyBlueprint
     {
         internal event EventHandler<EpicEventArgs> Death;
         private Boolean deathHandled = false;
@@ -37,7 +37,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             }
         }
 
-        protected override void PlaceOnLevel(GameObjectStartPosition position)
+        protected override void PlaceOnLevel(ActorStartPosition position)
         {
             base.PlaceOnLevel(position);
         }

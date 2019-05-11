@@ -13,24 +13,24 @@ namespace ExplainingEveryString.Core.Tests
     internal class TestLevel
     {
         internal Level Level { get; private set; }
-        internal ActiveGameObjectsStorage GameObjectsStorage { get; private set; }
-        private readonly GameObjectsFactory testFactory;
+        internal ActiveActorsStorage ActorsStorage { get; private set; }
+        private readonly ActorsFactory testFactory;
 
         internal TestLevel()
         {
             ConfigurationAccess.InitializeConfig();
             LevelData levelData = new LevelData
             {
-                PlayerPosition = new GameObjectStartPosition
+                PlayerPosition = new ActorStartPosition
                 {
                     Position = new Vector2 { X = 0, Y = 0 },
                     Angle = 0
                 },
-                EnemiesPositions = new Dictionary<String, List<GameObjectStartPosition>>
+                EnemiesPositions = new Dictionary<String, List<ActorStartPosition>>
                 {
-                    { "Mine", new List<GameObjectStartPosition>
+                    { "Mine", new List<ActorStartPosition>
                         {
-                            new GameObjectStartPosition
+                            new ActorStartPosition
                             {
                                 Position = new Vector2 { X = -100, Y = 200 },
                                 Angle = 0
@@ -42,11 +42,11 @@ namespace ExplainingEveryString.Core.Tests
             };
             HardCodeBlueprintsLoader loader = new HardCodeBlueprintsLoader();
             loader.Load();
-            testFactory = new GameObjectsFactory(loader);
+            testFactory = new ActorsFactory(loader);
             Level = new Level(testFactory, levelData);
             testFactory.Level = Level;
-            GameObjectsStorage = new ActiveGameObjectsStorage(testFactory, levelData);
-            GameObjectsStorage.InitializeGameObjects();
+            ActorsStorage = new ActiveActorsStorage(testFactory, levelData);
+            ActorsStorage.InitializeActors();
             
         }
     }

@@ -8,17 +8,17 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal class ActiveGameObjectsStorage
+    internal class ActiveActorsStorage
     {
         internal Player Player { get; private set; }
-        internal List<IGameObject> Enemies { get; private set; }
-        internal List<IGameObject> Walls { get; private set; }
+        internal List<IActor> Enemies { get; private set; }
+        internal List<IActor> Walls { get; private set; }
         internal List<Bullet> PlayerBullets { get; private set; }
         internal List<Bullet> EnemyBullets { get; private set; }
-        private GameObjectsFactory factory;
+        private ActorsFactory factory;
         private LevelData levelData;
 
-        internal ActiveGameObjectsStorage(GameObjectsFactory factory, LevelData levelData)
+        internal ActiveActorsStorage(ActorsFactory factory, LevelData levelData)
         {
             this.factory = factory;
             this.levelData = levelData;
@@ -49,21 +49,21 @@ namespace ExplainingEveryString.Core.GameModel
             Enemies = Enemies.Where(mine => mine.IsAlive()).ToList();
         }
 
-        internal void InitializeGameObjects()
+        internal void InitializeActors()
         {
             Player = factory.ConstructPlayer(levelData.PlayerPosition);
 
-            Walls = new List<IGameObject>();
+            Walls = new List<IActor>();
             foreach (String wallType in levelData.WallsPositions.Keys)
             {
                 List<Vector2> wallPositions = levelData.WallsPositions[wallType];
                 Walls.AddRange(factory.ConstructWalls(wallType, wallPositions));
             }
 
-            Enemies = new List<IGameObject>();
+            Enemies = new List<IActor>();
             foreach (String enemyType in levelData.EnemiesPositions.Keys)
             {
-                List<GameObjectStartPosition> enemiesPositions = levelData.EnemiesPositions[enemyType];
+                List<ActorStartPosition> enemiesPositions = levelData.EnemiesPositions[enemyType];
                 Enemies.AddRange(factory.ConstructEnemies(enemyType, enemiesPositions));
             }
 

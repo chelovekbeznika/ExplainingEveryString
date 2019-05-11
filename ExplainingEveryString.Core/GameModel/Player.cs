@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal sealed class Player : GameObject<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets
+    internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets
     {
         internal event EventHandler<EpicEventArgs> DamageTaken;
 

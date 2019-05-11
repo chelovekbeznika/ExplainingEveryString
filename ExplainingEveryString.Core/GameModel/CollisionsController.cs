@@ -11,10 +11,10 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class CollisionsController
     {
-        private ActiveGameObjectsStorage activeObjects;
+        private ActiveActorsStorage activeObjects;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
 
-        internal CollisionsController(ActiveGameObjectsStorage activeObjects)
+        internal CollisionsController(ActiveActorsStorage activeObjects)
         {
             this.activeObjects = activeObjects;
         }
@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal void CheckCollisions()
         {
             CheckEnemiesForCrashingIntoPlayer();
-            PreventInterpenetrationOfGameObjects();
+            PreventInterpenetrationOfActors();
             CheckForBulletsCollisions();
         }
 
@@ -39,7 +39,7 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
 
-        private void PreventInterpenetrationOfGameObjects()
+        private void PreventInterpenetrationOfActors()
         {
             AdjustObjectToWalls(activeObjects.Player, null, null);
 
