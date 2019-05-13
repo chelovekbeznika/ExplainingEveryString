@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core
             blueprintsLoader.Load();
 
             gameplayComponent = new GameplayComponent(blueprintsLoader, "level_01.dat", this);
-            interfaceComponent = new InterfaceComponent(this);
+            interfaceComponent = new InterfaceComponent(this, gameplayComponent);
             base.Initialize();
         }
 

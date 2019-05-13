@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Input;
+using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
@@ -65,6 +66,11 @@ namespace ExplainingEveryString.Core
             Camera.Draw(EpicEventsProcessor.GetSpecEffectsToDraw());
             Camera.End();
             base.Draw(gameTime);
+        }
+
+        internal InterfaceInfo GetInterfaceInfo()
+        {
+            return level.GetInterfaceInfo();
         }
     }
 }

@@ -12,6 +12,9 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal event EventHandler<EpicEventArgs> DamageTaken;
 
+        internal Single Health => Hitpoints;
+        internal Single MaxHealth { get; private set; }
+
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
         private Single maxAcceleration;
@@ -30,6 +33,7 @@ namespace ExplainingEveryString.Core.GameModel
             bulletHitboxWidth = blueprint.BulletHitboxWidth;
             damageEffect = blueprint.DamageEffect;
             DamageTaken += level.EpicEventOccured;
+            MaxHealth = blueprint.Hitpoints;
 
             Weapon = new Weapon(blueprint.Weapon, input, () => Position, null, level);
             Weapon.Shoot += level.PlayerShoot;

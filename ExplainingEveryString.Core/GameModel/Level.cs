@@ -2,6 +2,7 @@
 using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Input;
+using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
@@ -73,6 +74,15 @@ namespace ExplainingEveryString.Core.GameModel
         internal void EpicEventOccured(Object sender, EpicEventArgs epicEvent)
         {
             epicEventsHappened.Add(epicEvent);
+        }
+
+        internal InterfaceInfo GetInterfaceInfo()
+        {
+            return new InterfaceInfo
+            {
+                Health = activeActors.Player.Health,
+                MaxHealth = activeActors.Player.MaxHealth
+            };
         }
     }
 }
