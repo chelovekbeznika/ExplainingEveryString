@@ -56,13 +56,11 @@
     <Compile Include="HitboxBulletCollisionsTests.cs" />
     <Compile Include="HitboxesCollisionsTests.cs" />
     <Compile Include="FrictionTests.cs" />
-    <Compile Include="HitboxesCreationTests.cs" />
     <Compile Include="SimpleReloadTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LimitedAmmoReloadTests.cs" />
     <Compile Include="ReloadTests.cs" />
     <Compile Include="TestAimer.cs" />
-    <Compile Include="TestLevel.cs" />
     <Compile Include="WallByPassingTests.cs" />
   </ItemGroup>
   <ItemGroup>

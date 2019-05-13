@@ -10,6 +10,12 @@ namespace ExplainingEveryString.Core.Input
         private static readonly Vector2 up = new Vector2(0, 1);
         private static readonly Vector2 left = new Vector2(-1, 0);
         private static readonly Vector2 right = new Vector2(1, 0);
+        private Func<Vector2> playerPositionOnScreen;
+
+        internal KeyBoardMousePlayerInput(Func<Vector2> playerPositionOnScreen)
+        {
+            this.playerPositionOnScreen = playerPositionOnScreen;
+        }
 
         public override Vector2 GetMoveDirection()
         {
@@ -33,12 +39,11 @@ namespace ExplainingEveryString.Core.Input
 
         public override Vector2 GetFireDirection()
         {
-            Vector2 playerPosition = EesGame.CurrentlyRunnedGame.Camera.PlayerPositionOnScreen;
             Point mousePoint = Mouse.GetState().Position;
             Vector2 mousePosition = new Vector2(mousePoint.X, mousePoint.Y);
-            Vector2 screenDirection = mousePosition - playerPosition;
-            Vector2 levelDirection = new Vector2(screenDirection.X, -screenDirection.Y);
-            return NormalizeDirectionVector(levelDirection);
+            Vector2 fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
+            Vector2 fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
+            return NormalizeDirectionVector(fireDirectionOnLevel);
         }
     }
 }

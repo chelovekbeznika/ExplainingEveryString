@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
@@ -18,13 +19,15 @@ namespace ExplainingEveryString.Core.GameModel
         private CollisionsController collisionsController;
         private ActorsFactory factory;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
+        internal PlayerInputFactory PlayerInputFactory { get; private set; }
 
         internal Vector2 PlayerPosition => activeActors.Player.Position;
         internal event GameLost Lost;
 
-        internal Level(ActorsFactory factory, LevelData levelData)
+        internal Level(ActorsFactory factory, PlayerInputFactory playerInputFactory, LevelData levelData)
         {
             this.factory = factory;
+            this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
             activeActors = new ActiveActorsStorage(factory, levelData);
             activeActors.InitializeActors();

@@ -1,16 +1,28 @@
-﻿using ExplainingEveryString.Data;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Data;
+using Microsoft.Xna.Framework;
+using System;
 
 namespace ExplainingEveryString.Core.Input
 {
-    internal static class PlayerInputFactory
+    internal class PlayerInputFactory
     {
-        internal static IPlayerInput Create()
+        private GameplayComponent gameplayComponent;
+
+        internal PlayerInputFactory(GameplayComponent gameplayComponent)
+        {
+            this.gameplayComponent = gameplayComponent;
+        }
+
+        internal IPlayerInput Create()
         {
             Configuration config = ConfigurationAccess.GetCurrentConfig();
             switch (config.ControlDevice)
             {
                 case ControlDevice.GamePad: return new GamePadPlayerInput();
-                case ControlDevice.Keyboard: return new KeyBoardMousePlayerInput();
+                case ControlDevice.Keyboard:
+                    Func<Vector2> playerScreenPosition = () => gameplayComponent.Camera.PlayerPositionOnScreen;
+                    return new KeyBoardMousePlayerInput(playerScreenPosition);
                 default: throw new System.Exception("Badly configured input");
             }
         }

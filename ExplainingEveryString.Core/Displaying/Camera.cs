@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Data;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,21 +9,21 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class Camera
     {
-        private AssetsStorage assetsStorage;
+        private AssetsStorage AssetsStorage => game.AssetsStorage;
         private SpriteBatch spriteBatch;       
         private Single screenHeight;
         private CameraObjectGlass objectGlass;
+        private EesGame game;
 
         internal Vector2 PlayerPositionOnScreen => objectGlass.PlayerPositionOnScreen;
 
-        internal Camera(Level level, GraphicsDevice graphicsDevice, AssetsStorage assetsStorage,
-            Single playerFramePercentageWidth, Single playerFramePercentageHeight)
+        internal Camera(Level level, EesGame game, Configuration config)
         {
-            this.spriteBatch = new SpriteBatch(graphicsDevice);
-            this.screenHeight = graphicsDevice.Viewport.Height;
-            this.assetsStorage = assetsStorage;
-            this.objectGlass =
-                new CameraObjectGlass(level, graphicsDevice, playerFramePercentageWidth, playerFramePercentageHeight);
+            this.game = game;
+            this.spriteBatch = new SpriteBatch(game.GraphicsDevice);
+            this.screenHeight = game.GraphicsDevice.Viewport.Height;
+            this.objectGlass = new CameraObjectGlass(level, game.GraphicsDevice, 
+                config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
         }
 
         internal void Begin() => spriteBatch.Begin();
@@ -48,7 +49,7 @@ namespace ExplainingEveryString.Core.Displaying
                 return;
 
             SpriteState spriteState = toDraw.SpriteState;
-            SpriteData spriteData = assetsStorage.GetSprite(spriteState.Name);
+            SpriteData spriteData = AssetsStorage.GetSprite(spriteState.Name);
             Vector2 position = toDraw.Position;
             Vector2 drawPosition = GetDrawPosition(position, spriteData);
             Rectangle? drawPart = GetDrawPart(spriteData, spriteState);

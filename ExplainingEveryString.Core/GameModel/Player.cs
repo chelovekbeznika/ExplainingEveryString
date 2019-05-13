@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core.GameModel
         protected override void Construct(PlayerBlueprint blueprint, Level level)
         {
             base.Construct(blueprint, level);
-            input = PlayerInputFactory.Create();
+            input = level.PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
             bulletHitboxWidth = blueprint.BulletHitboxWidth;

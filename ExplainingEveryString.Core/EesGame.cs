@@ -15,16 +15,12 @@ namespace ExplainingEveryString.Core
 {
     public class EesGame : Game
     {
-        internal static EesGame CurrentlyRunnedGame { get; private set; }
-
         private GraphicsDeviceManager graphics;
-
         private IBlueprintsLoader blueprintsLoader;
-        private AssetsStorage assetsStorage;
-        private Level level;
+        private GameplayComponent gameplayComponent;
+        private InterfaceComponent interfaceComponent;
 
-        internal Camera Camera { get; private set; }
-        internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
+        internal AssetsStorage AssetsStorage { get; private set; }
 
         public EesGame()
         {
@@ -35,7 +31,6 @@ namespace ExplainingEveryString.Core
             graphics.PreferredBackBufferWidth = config.ScreenWidth;
             graphics.IsFullScreen = config.FullScreen;
             Content.RootDirectory = "Content";
-            CurrentlyRunnedGame = this;
             this.IsMouseVisible = true;
         }
 
@@ -44,27 +39,17 @@ namespace ExplainingEveryString.Core
             blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
-            ActorsFactory factory = new ActorsFactory(blueprintsLoader);
-
-            ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
-            LevelData levelData = levelLoader.Load("level_01.dat");
-            level = new Level(factory, levelData);
-            level.Lost += GameLost;
-
+            gameplayComponent = new GameplayComponent(blueprintsLoader, "level_01.dat", this);
+            interfaceComponent = new InterfaceComponent(this);
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            Configuration config = ConfigurationAccess.GetCurrentConfig();
-
             IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
-            assetsStorage = new AssetsStorage();
-            assetsStorage.FillAssetsStorages(blueprintsLoader, metadataLoader, Content);
-
-            Camera = new Camera(level, GraphicsDevice, assetsStorage,
-                config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
-            EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level);
+            AssetsStorage = new AssetsStorage();
+            AssetsStorage.FillAssetsStorages(blueprintsLoader, metadataLoader, Content);
+            base.LoadContent();
         }
 
         protected override void UnloadContent()
@@ -75,26 +60,21 @@ namespace ExplainingEveryString.Core
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
-            level.Update(elapsedSeconds);
-            Camera.Update();
-            EpicEventsProcessor.Update(elapsedSeconds);
+            if (!Components.Contains(gameplayComponent))
+            {
+                Components.Add(gameplayComponent);
+                Components.Add(interfaceComponent);
+            }
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            Camera.Begin();
-            Camera.Draw(level.GetObjectsToDraw());
-            EpicEventsProcessor.ProcessEpicEvents();
-            Camera.Draw(EpicEventsProcessor.GetSpecEffectsToDraw());
-            Camera.End();
             base.Draw(gameTime);
         }
 
-        private void GameLost(Object sender, EventArgs args)
+        internal void GameLost(Object sender, EventArgs args)
         {
             Exit();
         }
