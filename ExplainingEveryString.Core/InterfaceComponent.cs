@@ -15,6 +15,7 @@ namespace ExplainingEveryString.Core
         private GameplayComponent gameplayComponent;
         private InterfaceInfo interfaceInfo;
         private Texture2D healthBar;
+        private Texture2D emptyHealthBar;
         private EesGame eesGame;
         private SpriteBatch spriteBatch;
         private Single alpha;
@@ -31,6 +32,7 @@ namespace ExplainingEveryString.Core
         {
             this.spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
             healthBar = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/HealthBar");
+            emptyHealthBar = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/EmptyHealthBar");
             base.LoadContent();
         }
 
@@ -44,8 +46,20 @@ namespace ExplainingEveryString.Core
         {
             Vector2 healthBarPosition = CalculatePlaceForHealthBar(spriteBatch.GraphicsDevice.Viewport);
             Rectangle healthBarPart = CalculateHealthBarDrawPart();
+            Vector2 emptyHealthBarPosition = healthBarPosition;
+            emptyHealthBarPosition.X += healthBarPart.Width;
+            Rectangle emptyHealthBarPart = new Rectangle
+            {
+                X = healthBarPart.Width,
+                Y = 0,
+                Height = healthBarPart.Height,
+                Width = healthBar.Width - healthBarPart.Width
+            };
+
+            Color interfaceMask = new Color(Color.White, alpha);
             spriteBatch.Begin();
-            spriteBatch.Draw(healthBar, healthBarPosition, healthBarPart, new Color(Color.White, alpha));
+            spriteBatch.Draw(healthBar, healthBarPosition, healthBarPart, interfaceMask);
+            spriteBatch.Draw(emptyHealthBar, emptyHealthBarPosition, emptyHealthBarPart, interfaceMask);
             spriteBatch.End();
             base.Draw(gameTime);
         }
