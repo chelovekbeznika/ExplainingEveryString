@@ -4,5 +4,6 @@
   "PlayerFramePercentageHeigth": 40,
   "ScreenWidth": 1024,
   "ScreenHeight": 768,
-  "FullScreen": false
+  "FullScreen": false,
+  "InterfaceAlpha": 0.25
 }
