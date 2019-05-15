@@ -5,5 +5,5 @@
   "ScreenWidth": 1024,
   "ScreenHeight": 768,
   "FullScreen": false,
-  "InterfaceAlpha": 0.25
+  "InterfaceAlpha": 0.5
 }

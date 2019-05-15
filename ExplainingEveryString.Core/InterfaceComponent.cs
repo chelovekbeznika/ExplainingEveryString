@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Core
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
             healthBarDisplayer.Draw(interfaceInfo.Health, interfaceInfo.MaxHealth, spriteBatch, alphaMask);
             gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
             spriteBatch.End();
