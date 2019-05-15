@@ -55,6 +55,8 @@
     <Compile Include="GameModel\Weaponry\Trajectories\TrajectoryFactory.cs" />
     <Compile Include="GameplayComponent.cs" />
     <Compile Include="InterfaceComponent.cs" />
+    <Compile Include="Interface\GameTimeDisplayer.cs" />
+    <Compile Include="Interface\HealthBarDisplayer.cs" />
     <Compile Include="Interface\InterfaceInfo.cs" />
     <Compile Include="Math\AngleConverter.cs" />
     <Compile Include="Math\CollisionsChecker.cs" />

@@ -14,25 +14,28 @@ namespace ExplainingEveryString.Core
     {
         private GameplayComponent gameplayComponent;
         private InterfaceInfo interfaceInfo;
-        private Texture2D healthBar;
-        private Texture2D emptyHealthBar;
         private EesGame eesGame;
         private SpriteBatch spriteBatch;
-        private Single alpha;
+        private HealthBarDisplayer healthBarDisplayer;
+        private GameTimeDisplayer gameTimeDisplayer;
+        private Color alphaMask;
 
         internal InterfaceComponent(EesGame eesGame, GameplayComponent gameplayComponent) : base(eesGame)
         {
             Configuration config = ConfigurationAccess.GetCurrentConfig();
             this.eesGame = eesGame;
             this.gameplayComponent = gameplayComponent;
-            this.alpha = config.InterfaceAlpha;
+            this.alphaMask = new Color(Color.White, config.InterfaceAlpha);
         }
 
         protected override void LoadContent()
         {
             this.spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
-            healthBar = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/HealthBar");
-            emptyHealthBar = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/EmptyHealthBar");
+            Texture2D healthBarSprite = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/HealthBar");
+            Texture2D emptyHealthBarSprite = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/EmptyHealthBar");
+            SpriteFont timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
+            healthBarDisplayer = new HealthBarDisplayer(healthBarSprite, emptyHealthBarSprite);
+            gameTimeDisplayer = new GameTimeDisplayer(timeFont);
             base.LoadContent();
         }
 
@@ -44,43 +47,11 @@ namespace ExplainingEveryString.Core
 
         public override void Draw(GameTime gameTime)
         {
-            Vector2 healthBarPosition = CalculatePlaceForHealthBar(spriteBatch.GraphicsDevice.Viewport);
-            Rectangle healthBarPart = CalculateHealthBarDrawPart();
-            Vector2 emptyHealthBarPosition = healthBarPosition;
-            emptyHealthBarPosition.X += healthBarPart.Width;
-            Rectangle emptyHealthBarPart = new Rectangle
-            {
-                X = healthBarPart.Width,
-                Y = 0,
-                Height = healthBarPart.Height,
-                Width = healthBar.Width - healthBarPart.Width
-            };
-
-            Color interfaceMask = new Color(Color.White, alpha);
             spriteBatch.Begin();
-            spriteBatch.Draw(healthBar, healthBarPosition, healthBarPart, interfaceMask);
-            spriteBatch.Draw(emptyHealthBar, emptyHealthBarPosition, emptyHealthBarPart, interfaceMask);
+            healthBarDisplayer.Draw(interfaceInfo.Health, interfaceInfo.MaxHealth, spriteBatch, alphaMask);
+            gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
             spriteBatch.End();
             base.Draw(gameTime);
-        }
-
-        private Vector2 CalculatePlaceForHealthBar(Viewport viewport)
-        {
-            Int32 x = 32;
-            Int32 y = viewport.Height - 32 - healthBar.Height;
-            return new Vector2(x, y);
-        }
-
-        private Rectangle CalculateHealthBarDrawPart()
-        {
-            Single healthRemained = interfaceInfo.Health / interfaceInfo.MaxHealth;
-            return new Rectangle
-            {
-                X = 0,
-                Y = 0,
-                Height = healthBar.Height,
-                Width = (Int32)(healthBar.Width * healthRemained)
-            };
         }
     }
 }

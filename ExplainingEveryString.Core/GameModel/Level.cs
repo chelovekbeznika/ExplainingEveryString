@@ -20,6 +20,7 @@ namespace ExplainingEveryString.Core.GameModel
         private CollisionsController collisionsController;
         private ActorsFactory factory;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
+        private Single gameTime = 0;
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
 
         internal Vector2 PlayerPosition => activeActors.Player.Position;
@@ -43,6 +44,7 @@ namespace ExplainingEveryString.Core.GameModel
             activeActors.SendDeadToHeaven();
             if (!activeActors.Player.IsAlive())
                 Lost?.Invoke(this, EventArgs.Empty);
+            gameTime += elapsedSeconds;
         }
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
@@ -81,7 +83,8 @@ namespace ExplainingEveryString.Core.GameModel
             return new InterfaceInfo
             {
                 Health = activeActors.Player.Health,
-                MaxHealth = activeActors.Player.MaxHealth
+                MaxHealth = activeActors.Player.MaxHealth,
+                GameTime = gameTime
             };
         }
     }

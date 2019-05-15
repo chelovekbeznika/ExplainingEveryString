@@ -10,5 +10,6 @@ namespace ExplainingEveryString.Core.Interface
     {
         internal Single MaxHealth { get; set; }
         internal Single Health { get; set; }
+        internal Single GameTime { get; set; }
     }
 }
