@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.Interface
             Int32 x = 32;
             Single healthRemained = health / maxHealth;
             Int32 y = viewport.Height - 32 - healthBar.Height;
-            return (new Vector2(x, y), new Vector2(x + healthBar.Width * healthRemained, y));
+            return (new Vector2(x, y), new Vector2((Int32)(x + healthBar.Width * healthRemained), y));
         }
 
         private ValueTuple<Rectangle, Rectangle> CalculateHealthBarDrawPart(Single health, Single maxHealth)
