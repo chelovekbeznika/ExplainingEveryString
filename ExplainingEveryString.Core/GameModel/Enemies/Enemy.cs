@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using System;
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {
-    internal abstract class Enemy<TBlueprint> : Actor<TBlueprint> where TBlueprint : EnemyBlueprint
+    internal abstract class Enemy<TBlueprint> : Actor<TBlueprint>, IInterfaceAccessable where TBlueprint : EnemyBlueprint
     {
         internal event EventHandler<EpicEventArgs> Death;
         private Boolean deathHandled = false;
@@ -18,12 +18,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         private SpecEffectSpecification deathEffect;
 
-        protected override float Hitpoints
+        public override Single HitPoints
         {
-            get => base.Hitpoints;
+            get => base.HitPoints;
             set
             {
-                base.Hitpoints = value;
+                base.HitPoints = value;
                 if (value < Constants.Epsilon)
                 {
                     if (!deathHandled)
@@ -37,6 +37,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             }
         }
 
+        public Single MaxHitPoints { get; private set; }
+
         protected override void PlaceOnLevel(ActorStartPosition position)
         {
             base.PlaceOnLevel(position);
@@ -46,6 +48,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         {
             this.PlayerLocator = () => level.PlayerPosition;
             base.Construct(blueprint, level);
+            this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
             this.MaxSpeed = blueprint.MaxSpeed;
             this.deathEffect = blueprint.DeathEffect;

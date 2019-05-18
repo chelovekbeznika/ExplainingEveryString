@@ -15,4 +15,10 @@ namespace ExplainingEveryString.Core.Displaying
         Vector2 Position { get; }
         Boolean IsVisible { get; }
     }
+
+    internal interface IInterfaceAccessable : IDisplayble
+    {
+        Single HitPoints { get; }
+        Single MaxHitPoints { get; }
+    }
 }

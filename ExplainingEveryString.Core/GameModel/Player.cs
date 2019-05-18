@@ -8,12 +8,11 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets
+    internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets, IInterfaceAccessable
     {
         internal event EventHandler<EpicEventArgs> DamageTaken;
-
-        internal Single Health => Hitpoints;
-        internal Single MaxHealth { get; private set; }
+        
+        public Single MaxHitPoints { get; private set; }
 
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
@@ -33,7 +32,7 @@ namespace ExplainingEveryString.Core.GameModel
             bulletHitboxWidth = blueprint.BulletHitboxWidth;
             damageEffect = blueprint.DamageEffect;
             DamageTaken += level.EpicEventOccured;
-            MaxHealth = blueprint.Hitpoints;
+            MaxHitPoints = blueprint.Hitpoints;
 
             Weapon = new Weapon(blueprint.Weapon, input, () => Position, null, level);
             Weapon.Shoot += level.PlayerShoot;

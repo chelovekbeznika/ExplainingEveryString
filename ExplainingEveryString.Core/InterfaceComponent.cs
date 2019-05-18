@@ -18,6 +18,7 @@ namespace ExplainingEveryString.Core
         private SpriteBatch spriteBatch;
         private HealthBarDisplayer healthBarDisplayer;
         private GameTimeDisplayer gameTimeDisplayer;
+        private EnemyInfoDisplayer enemiesInfoDisplayer;
         private Color alphaMask;
 
         internal InterfaceComponent(EesGame eesGame, GameplayComponent gameplayComponent) : base(eesGame)
@@ -33,9 +34,13 @@ namespace ExplainingEveryString.Core
             this.spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
             Texture2D healthBarSprite = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/HealthBar");
             Texture2D emptyHealthBarSprite = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/EmptyHealthBar");
-            SpriteFont timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
             healthBarDisplayer = new HealthBarDisplayer(healthBarSprite, emptyHealthBarSprite);
+
+            SpriteFont timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
+
+            Texture2D enemyHealthBar = eesGame.Content.Load<Texture2D>(@"Sprites/Interface/EnemyHealthBar");
+            enemiesInfoDisplayer = new EnemyInfoDisplayer(enemyHealthBar);
             base.LoadContent();
         }
 
@@ -48,6 +53,7 @@ namespace ExplainingEveryString.Core
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+            enemiesInfoDisplayer.Draw(interfaceInfo.Enemies, spriteBatch, alphaMask);
             healthBarDisplayer.Draw(interfaceInfo.Health, interfaceInfo.MaxHealth, spriteBatch, alphaMask);
             gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
             spriteBatch.End();

@@ -51,7 +51,7 @@ namespace ExplainingEveryString.Core.Displaying
             SpriteState spriteState = toDraw.SpriteState;
             SpriteData spriteData = AssetsStorage.GetSprite(spriteState.Name);
             Vector2 position = toDraw.Position;
-            Vector2 drawPosition = GetDrawPosition(position, spriteData);
+            Vector2 drawPosition = ConvertToScreenPosition(position);
             Rectangle? drawPart = GetDrawPart(spriteData, spriteState);
             Single angle = -spriteState.Angle;
             Vector2 spriteCenter = new Vector2
@@ -64,9 +64,33 @@ namespace ExplainingEveryString.Core.Displaying
                 spriteCenter, 1, SpriteEffects.None, 0);
         }
 
-        private Vector2 GetDrawPosition(Vector2 position, SpriteData spriteData)
+        internal Rectangle PositionOnScreen(IDisplayble displayble)
         {
-            Texture2D sprite = spriteData.Sprite;
+            SpriteData sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
+            Point visibleSize = new Point
+            {
+                X = sprite.Sprite.Width / sprite.AnimationFrames,
+                Y = sprite.Sprite.Height
+            };
+            Vector2 centerOnScreen = ConvertToScreenPosition(displayble.Position);
+            return new Rectangle
+            {
+                X = (Int32)(centerOnScreen.X - visibleSize.X / 2),
+                Y = (Int32)(centerOnScreen.Y - visibleSize.Y / 2),
+                Width = visibleSize.X,
+                Height = visibleSize.Y
+            };
+        }
+
+        internal Boolean IsVisibleOnScreen(IDisplayble displayble)
+        {
+            Rectangle displaybleOnScreen = PositionOnScreen(displayble);
+            Rectangle screen = spriteBatch.GraphicsDevice.Viewport.Bounds;
+            return screen.Intersects(displaybleOnScreen);
+        }
+
+        private Vector2 ConvertToScreenPosition(Vector2 position)
+        {
             Vector2 cameraOffset = objectGlass.CameraOffset;
             Vector2 centerOfSpriteOnScreen = position - cameraOffset;
             centerOfSpriteOnScreen.Y = screenHeight - centerOfSpriteOnScreen.Y;

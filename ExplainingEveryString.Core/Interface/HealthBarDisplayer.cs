@@ -12,6 +12,8 @@ namespace ExplainingEveryString.Core.Interface
     {
         private Texture2D healthBar;
         private Texture2D emptyHealthBar;
+        private readonly Int32 pixelsFromLeft = 32;
+        private readonly Int32 pixelsFromBottom = 32;
 
         internal HealthBarDisplayer(Texture2D healthBar, Texture2D emptyHealthBar)
         {
@@ -33,9 +35,9 @@ namespace ExplainingEveryString.Core.Interface
         private ValueTuple<Vector2, Vector2> CalculatePlaceForHealthBar
             (Viewport viewport, Single health, Single maxHealth)
         {
-            Int32 x = 32;
+            Int32 x = pixelsFromLeft;
             Single healthRemained = health / maxHealth;
-            Int32 y = viewport.Height - 32 - healthBar.Height;
+            Int32 y = viewport.Height - pixelsFromBottom - healthBar.Height;
             return (new Vector2(x, y), new Vector2((Int32)(x + healthBar.Width * healthRemained), y));
         }
 

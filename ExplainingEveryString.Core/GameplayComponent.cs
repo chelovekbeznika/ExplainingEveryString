@@ -70,7 +70,7 @@ namespace ExplainingEveryString.Core
 
         internal InterfaceInfo GetInterfaceInfo()
         {
-            return level.GetInterfaceInfo();
+            return level.GetInterfaceInfo(Camera);
         }
     }
 }

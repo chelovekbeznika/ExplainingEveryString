@@ -11,6 +11,8 @@ namespace ExplainingEveryString.Core.Interface
     internal class GameTimeDisplayer
     {
         private SpriteFont timeFont;
+        private readonly Int32 pixelsFromLeft = 64;
+        private readonly Int32 pixelsFromTop = 32;
 
         internal GameTimeDisplayer(SpriteFont timeFont)
         {
@@ -27,7 +29,7 @@ namespace ExplainingEveryString.Core.Interface
         private Vector2 CalculatePositionOnScreen(String timeString)
         {
             Vector2 stringSize = timeFont.MeasureString(timeString);
-            return new Vector2 { X = 64 - stringSize.X, Y = 32 };
+            return new Vector2 { X = pixelsFromLeft - stringSize.X, Y = pixelsFromTop };
         }
     }
 }

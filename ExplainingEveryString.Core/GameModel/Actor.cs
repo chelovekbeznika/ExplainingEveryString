@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel
         public Vector2 OldPosition { get; private set; }
         private Single Width { get; set; }
         private Single Height { get; set; }
-        protected virtual Single Hitpoints { get; set; }
+        public virtual Single HitPoints { get; set; }
 
         public SpriteState SpriteState { get; private set; }
         public Boolean IsVisible => IsAlive();
@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.SpriteState = new SpriteState(blueprint.DefaultSprite);
             this.Height = blueprint.Height;
             this.Width = blueprint.Width;
-            this.Hitpoints = blueprint.Hitpoints;
+            this.HitPoints = blueprint.Hitpoints;
         }
 
         public virtual void Update(Single elapsedSeconds)
@@ -55,17 +55,17 @@ namespace ExplainingEveryString.Core.GameModel
 
         public virtual void TakeDamage(Single damage)
         {
-            Hitpoints -= damage;
+            HitPoints -= damage;
         }
 
         public bool IsAlive()
         {
-            return Hitpoints > Constants.Epsilon;
+            return HitPoints > Constants.Epsilon;
         }
 
         public void Destroy()
         {
-            Hitpoints = 0;
+            HitPoints = 0;
         }
 
         public Hitbox GetCurrentHitbox()

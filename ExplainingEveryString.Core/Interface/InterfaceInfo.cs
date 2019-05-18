@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,13 @@ namespace ExplainingEveryString.Core.Interface
         internal Single MaxHealth { get; set; }
         internal Single Health { get; set; }
         internal Single GameTime { get; set; }
+        internal List<EnemyInterfaceInfo> Enemies { get; set; }
+    }
+
+    internal class EnemyInterfaceInfo
+    {
+        internal Single MaxHealth { get; set; }
+        internal Single Health { get; set; }
+        internal Rectangle PositionOnScreen { get; set; }
     }
 }

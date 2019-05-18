@@ -78,13 +78,25 @@ namespace ExplainingEveryString.Core.GameModel
             epicEventsHappened.Add(epicEvent);
         }
 
-        internal InterfaceInfo GetInterfaceInfo()
+        internal InterfaceInfo GetInterfaceInfo(Camera camera)
         {
             return new InterfaceInfo
             {
-                Health = activeActors.Player.Health,
-                MaxHealth = activeActors.Player.MaxHealth,
-                GameTime = gameTime
+                Health = activeActors.Player.HitPoints,
+                MaxHealth = activeActors.Player.MaxHitPoints,
+                GameTime = gameTime,
+                Enemies = activeActors.Enemies.Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
+                            .Select(e => GetInterfaceInfo(e, camera)).ToList()
+            };
+        }
+
+        private EnemyInterfaceInfo GetInterfaceInfo(IInterfaceAccessable interfaceAccessable, Camera camera)
+        {
+            return new EnemyInterfaceInfo
+            {
+                Health = interfaceAccessable.HitPoints,
+                MaxHealth = interfaceAccessable.MaxHitPoints,
+                PositionOnScreen = camera.PositionOnScreen(interfaceAccessable)
             };
         }
     }
