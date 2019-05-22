@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Input;
+﻿using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
+using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;

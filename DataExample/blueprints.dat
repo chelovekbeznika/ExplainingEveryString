@@ -48,8 +48,7 @@
     }
   },
   "FixedCannon": {
-    "$type": "ExplainingEveryString.Data.Blueprints.FixedCannonBlueprint, ExplainingEveryString.Data",
-    "Type": "FixedCannon",
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 3.0,
     "Height": 16.0,
     "Width": 16.0,
@@ -99,8 +98,7 @@
     }
   },
   "TripleCannon": {
-    "$type": "ExplainingEveryString.Data.Blueprints.FixedCannonBlueprint, ExplainingEveryString.Data",
-    "Type": "FixedCannon",
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 3.0,
     "Height": 16.0,
     "Width": 16.0,

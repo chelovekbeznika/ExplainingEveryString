@@ -23,7 +23,6 @@ namespace ExplainingEveryString.Core.Tests
                         Width = 16,
                         Hitpoints = 7,
                         CollisionDamage = 1.5F,
-                        MaxSpeed = 0,
                         DeathEffect = new SpecEffectSpecification()
                     }
                 },

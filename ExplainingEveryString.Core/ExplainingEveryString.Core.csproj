@@ -48,7 +48,6 @@
     <Compile Include="AssetsStorage.cs" />
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
-    <Compile Include="GameModel\Enemies\FixedCannon.cs" />
     <Compile Include="GameModel\Movement\IMover.cs" />
     <Compile Include="GameModel\Movement\IMoveTargetSelector.cs" />
     <Compile Include="GameModel\Movement\Movers\AcceleratedMover.cs" />
@@ -59,6 +58,9 @@
     <Compile Include="GameModel\Movement\MoveTargetSelectorFactory.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\NotATargetSelector.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\PlayerHunter.cs" />
+    <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
+    <Compile Include="GameModel\Weaponry\Aimers\FixedAimer.cs" />
+    <Compile Include="GameModel\Weaponry\Aimers\PlayerAimer.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\BulletTrajectory.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\LinearTrajectory.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\SinusTrajectory.cs" />
@@ -89,7 +91,7 @@
     <Compile Include="Math\Constants.cs" />
     <Compile Include="GameModel\Weaponry\Bullet.cs" />
     <Compile Include="GameModel\Weaponry\Barrel.cs" />
-    <Compile Include="GameModel\Weaponry\IAimer.cs" />
+    <Compile Include="GameModel\Weaponry\Aimers\IAimer.cs" />
     <Compile Include="GameModel\Weaponry\Weapon.cs" />
     <Compile Include="GameModel\Wall.cs" />
     <Compile Include="GameModel\Weaponry\ShootEventArgs.cs" />

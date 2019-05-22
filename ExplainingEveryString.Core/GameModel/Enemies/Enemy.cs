@@ -1,5 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Movement;
+using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
@@ -13,6 +15,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
     {
         internal event EventHandler<EpicEventArgs> Death;
         private Boolean deathHandled = false;
+        private Weapon weapon;
+        private Single startAngle;
 
         public Single CollisionDamage { get; set; }
         protected IMoveTargetSelector MoveTargetSelector { private get; set; }
@@ -43,9 +47,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         public Single MaxHitPoints { get; private set; }
 
-        protected override void PlaceOnLevel(ActorStartInfo info)
+        protected override void PlaceOnLevel(ActorStartInfo startInfo)
         {
-            base.PlaceOnLevel(info);
+            base.PlaceOnLevel(startInfo);
+            startAngle = startInfo.Angle;
         }
 
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level)
@@ -56,12 +61,35 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.CollisionDamage = blueprint.CollisionDamage;
             this.deathEffect = blueprint.DeathEffect;
             this.Death += level.EpicEventOccured;
+            ConstructMovement(blueprint, startInfo);
+            ConstructWeaponry(blueprint, startInfo, level);
+        }
+
+        private void ConstructMovement(TBlueprint blueprint, ActorStartInfo startInfo)
+        {
             this.MoveTargetSelector = MoveTargetSelectorFactory.Get(
                 blueprint.MoveTargetSelectType, startInfo.TrajectoryTargets, PlayerLocator, () => Position);
             this.Mover = MoverFactory.Get(blueprint.Mover);
         }
 
+        private void ConstructWeaponry(TBlueprint blueprint, ActorStartInfo startInfo, Level level)
+        {
+            if (blueprint.Weapon != null)
+            {
+                IAimer aimer = AimersFactory.Get(blueprint.Weapon, startInfo, () => this.Position, PlayerLocator);
+                weapon = new Weapon(blueprint.Weapon, aimer, () => this.Position, PlayerLocator, level);
+                weapon.Shoot += level.EnemyShoot;
+            }
+        }
+
         public override void Update(Single elapsedSeconds)
+        {
+            Move(elapsedSeconds);
+            UseWeapon(elapsedSeconds);
+            base.Update(elapsedSeconds);
+        }
+
+        private void Move(Single elapsedSeconds)
         {
             Vector2 target = MoveTargetSelector.GetTarget();
             Vector2 lineToTarget = target - Position;
@@ -69,7 +97,16 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             Position += positionChange;
             if (goalReached)
                 MoveTargetSelector.SwitchToNextTarget();
-            base.Update(elapsedSeconds);
+        }
+
+        private void UseWeapon(Single elapsedSeconds)
+        {
+            if (weapon != null)
+            {
+                weapon.Update(elapsedSeconds);
+                if (weapon.IsFiring() && !weapon.IsVisible)
+                    SpriteState.Angle = AngleConverter.ToRadians(weapon.GetFireDirection());
+            }
         }
     }
 }

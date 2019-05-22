@@ -1,35 +1,12 @@
-﻿using ExplainingEveryString.Core.Math;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.GameModel.Weaponry
+namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
 {
-    internal interface IAimer
-    {
-        Vector2 GetFireDirection();
-        Boolean IsFiring();
-    }
-
-    internal class FixedAimer : IAimer
-    {
-        private Vector2 fireDirection;
-
-        public FixedAimer(Single angle)
-        {
-            fireDirection = AngleConverter.ToVector(angle);
-        }
-
-        public Vector2 GetFireDirection()
-        {
-            return fireDirection;
-        }
-
-        public bool IsFiring()
-        {
-            return true;
-        }
-    }
-
     internal class PlayerAimer : IAimer
     {
         private Func<Vector2> playerLocator;

@@ -20,11 +20,23 @@ namespace ExplainingEveryString.Data.Blueprints
         [JsonConverter(typeof(StringEnumConverter))]
         [DefaultValue(MoveTargetSelectType.NoTarget)]
         public MoveTargetSelectType MoveTargetSelectType { get; set; }
+        public WeaponSpecification Weapon { get; set; }
         public SpecEffectSpecification DeathEffect { get; set; }
 
         internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
         {
-            return new SpecEffectSpecification[] { DeathEffect };
+            if (Weapon != null)
+                return new SpecEffectSpecification[] { DeathEffect, Weapon.ShootingEffect };
+            else
+                return new SpecEffectSpecification[] { DeathEffect };
+        }
+
+        internal override IEnumerable<SpriteSpecification> GetSprites()
+        {
+            if (Weapon != null)
+                return base.GetSprites().Concat(Weapon.GetSprites());
+            else
+                return base.GetSprites();
         }
     }
 }

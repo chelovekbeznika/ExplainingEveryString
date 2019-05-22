@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 using Microsoft.Xna.Framework;
 using System;
 

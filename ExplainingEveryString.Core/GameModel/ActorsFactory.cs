@@ -19,8 +19,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.blueprintsStorage = blueprintsLoader.GetBlueprints();
             this.enemyConstruction = new Dictionary<String, Func<ActorStartInfo, String, IActor>>
             {
-                { "Enemy", (pos, name) => Construct<Enemy<EnemyBlueprint>, EnemyBlueprint>(name, pos) },
-                { "FixedCannon", (pos, name) => Construct<FixedCannon, FixedCannonBlueprint>(name, pos) },
+                { "Enemy", (pos, name) => Construct<Enemy<EnemyBlueprint>, EnemyBlueprint>(name, pos) }
             };
         }
 

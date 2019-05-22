@@ -5,6 +5,7 @@ using System.Linq;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Specifications;
+using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
@@ -37,8 +38,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public SpriteState SpriteState { get; private set; }
 
         public Vector2 Position => findOutWhereIAm();
-
-        public bool IsVisible => SpriteState != null;
+        public Boolean IsVisible => SpriteState != null;
+        internal Boolean IsFiring () => aimer.IsFiring();
+        internal Vector2 GetFireDirection() => aimer.GetFireDirection();
 
         internal Weapon(WeaponSpecification specification, IAimer aimer, 
             Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, Level level)
