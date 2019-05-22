@@ -49,6 +49,16 @@
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="GameModel\Enemies\FixedCannon.cs" />
+    <Compile Include="GameModel\Movement\IMover.cs" />
+    <Compile Include="GameModel\Movement\IMoveTargetSelector.cs" />
+    <Compile Include="GameModel\Movement\Movers\AcceleratedMover.cs" />
+    <Compile Include="GameModel\Movement\Movers\LinearMover.cs" />
+    <Compile Include="GameModel\Movement\MoverFactory.cs" />
+    <Compile Include="GameModel\Movement\Movers\NonMover.cs" />
+    <Compile Include="GameModel\Movement\TargetSelectors\LoopingTargetsSelector.cs" />
+    <Compile Include="GameModel\Movement\MoveTargetSelectorFactory.cs" />
+    <Compile Include="GameModel\Movement\TargetSelectors\NotATargetSelector.cs" />
+    <Compile Include="GameModel\Movement\TargetSelectors\PlayerHunter.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\BulletTrajectory.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\LinearTrajectory.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\SinusTrajectory.cs" />
@@ -73,7 +83,6 @@
     <Compile Include="GameModel\Actor.cs" />
     <Compile Include="GameModel\ActorsFactory.cs" />
     <Compile Include="GameModel\Hitbox.cs" />
-    <Compile Include="GameModel\Enemies\Hunter.cs" />
     <Compile Include="Displaying\IDisplayble.cs" />
     <Compile Include="GameModel\IActor.cs" />
     <Compile Include="GameModel\Level.cs" />
@@ -89,7 +98,6 @@
     <Compile Include="Input\KeyBoardMousePlayerInput.cs" />
     <Compile Include="Input\PlayerInput.cs" />
     <Compile Include="Input\PlayerInputFactory.cs" />
-    <Compile Include="GameModel\Enemies\Mine.cs" />
     <Compile Include="GameModel\Player.cs" />
     <Compile Include="Math\RandomUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

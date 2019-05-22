@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Specifications;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {

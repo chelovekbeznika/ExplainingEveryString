@@ -7,6 +7,7 @@ using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry.Trajectories;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry

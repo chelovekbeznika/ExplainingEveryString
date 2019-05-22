@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Data.Blueprints
+namespace ExplainingEveryString.Data.Specifications
 {
     public class BarrelSpecification
     {

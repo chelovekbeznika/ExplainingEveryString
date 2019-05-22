@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace ExplainingEveryString.Data.Blueprints
+namespace ExplainingEveryString.Data.Specifications
 {
     public class WeaponSpecification
     {

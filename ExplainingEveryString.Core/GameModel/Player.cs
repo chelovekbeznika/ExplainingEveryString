@@ -5,6 +5,8 @@ using System;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Displaying;
 using System.Collections.Generic;
+using ExplainingEveryString.Data.Level;
+using ExplainingEveryString.Data.Specifications;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -23,9 +25,9 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Weapon Weapon { get; set; }
 
-        protected override void Construct(PlayerBlueprint blueprint, Level level)
+        protected override void Construct(PlayerBlueprint blueprint, ActorStartInfo startInfo, Level level)
         {
-            base.Construct(blueprint, level);
+            base.Construct(blueprint, startInfo, level);
             input = level.PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;

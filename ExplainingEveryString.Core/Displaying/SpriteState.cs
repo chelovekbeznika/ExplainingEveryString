@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;

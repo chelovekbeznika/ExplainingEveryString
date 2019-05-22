@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Data.Level
 {
-    public class ActorStartPosition
+    public class ActorStartInfo
     {
         public Vector2 Position { get; set; }
         [DefaultValue(0)]
         public Single Angle { get; set; }
+        [DefaultValue(null)]
+        public List<Vector2> TrajectoryTargets { get; set; }
     }
 }

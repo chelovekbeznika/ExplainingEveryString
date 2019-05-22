@@ -1,7 +1,10 @@
-﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+﻿using ExplainingEveryString.Core.GameModel.Movement.Movers;
+using ExplainingEveryString.Core.GameModel.Movement.TargetSelectors;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,15 +20,15 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Weapon weapon;
         private Single startAngle;
 
-        protected override void PlaceOnLevel(ActorStartPosition position)
+        protected override void PlaceOnLevel(ActorStartInfo position)
         {
             base.PlaceOnLevel(position);
             startAngle = position.Angle;
         }
 
-        protected override void Construct(FixedCannonBlueprint blueprint, Level level)
+        protected override void Construct(FixedCannonBlueprint blueprint, ActorStartInfo startInfo, Level level)
         {
-            base.Construct(blueprint, level);
+            base.Construct(blueprint, startInfo, level);
             aimer = CreateAimer(blueprint.Weapon);
             weapon = new Weapon(blueprint.Weapon, aimer, () => this.Position, () => level.PlayerPosition, level);
             weapon.Shoot += level.EnemyShoot;

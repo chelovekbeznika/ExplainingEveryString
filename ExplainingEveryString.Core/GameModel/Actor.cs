@@ -28,19 +28,19 @@ namespace ExplainingEveryString.Core.GameModel
         public SpriteState SpriteState { get; private set; }
         public Boolean IsVisible => IsAlive();
 
-        internal void Initialize(TBlueprint blueprint, Level level, ActorStartPosition position)
+        internal void Initialize(TBlueprint blueprint, Level level, ActorStartInfo startInfo)
         {
-            PlaceOnLevel(position);
-            Construct(blueprint, level);
+            PlaceOnLevel(startInfo);
+            Construct(blueprint, startInfo, level);
         }
         
-        protected virtual void PlaceOnLevel(ActorStartPosition position)
+        protected virtual void PlaceOnLevel(ActorStartInfo info)
         {          
-            this.Position = position.Position;
-            this.OldPosition = position.Position;
+            this.Position = info.Position;
+            this.OldPosition = info.Position;
         }
 
-        protected virtual void Construct(TBlueprint blueprint, Level level)
+        protected virtual void Construct(TBlueprint blueprint, ActorStartInfo info, Level level)
         {
             this.SpriteState = new SpriteState(blueprint.DefaultSprite);
             this.Height = blueprint.Height;

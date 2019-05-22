@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace ExplainingEveryString.Data.Blueprints
+namespace ExplainingEveryString.Data.Specifications
 {
     public class SpriteSpecification
     {
