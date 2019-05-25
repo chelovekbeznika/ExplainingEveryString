@@ -9,6 +9,14 @@
       "AnimationFrames": 12
     },
     {
+      "Name": "Sprites/Explosions/HelicopterDeath",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Helicopter",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Enemies/EnemyBullet",
       "AnimationFrames": 6
     },

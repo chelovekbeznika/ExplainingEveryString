@@ -13,6 +13,7 @@ namespace ExplainingEveryString.Data.Specifications
     {
         NoTarget,
         TargetsList,
+        RandomTargets,
         MoveTowardPlayer
     }
 }

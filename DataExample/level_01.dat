@@ -35,25 +35,12 @@
         ]
       }
     ],
-    "Hunter": [
+    "Helicopter": [
       {
-        "Position": "300.0, 300.0"
-      },
-      {
-        "Position": "400.0, 300.0"
-      },
-      {
-        "Position": "500.0, 300.0"
-      }
-    ],
-    "FixedCannon": [
-      {
-        "Position": "-300.0, 300.0",
-        "Angle": 0.0
-      },
-      {
-        "Position": "-400.0, 300.0",
-        "Angle": -45.0
+        "Position": "0, 300.0",
+        "TrajectoryTargets": [
+          "200.0, 100.0"
+        ]
       }
     ],
     "TripleCannon": [

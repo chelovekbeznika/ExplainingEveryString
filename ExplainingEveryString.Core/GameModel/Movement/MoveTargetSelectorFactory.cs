@@ -19,6 +19,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                     return new LoopingTargetSelector(targets, currentPositionLocator());
                 case MoveTargetSelectType.MoveTowardPlayer:
                     return new PlayerHunter(playerLocator);
+                case MoveTargetSelectType.RandomTargets:
+                    return new RandomFlight(currentPositionLocator(), targets[0]);
                 default:
                     throw new ArgumentException("Unknow type of MoveTargetSelectType");
             }

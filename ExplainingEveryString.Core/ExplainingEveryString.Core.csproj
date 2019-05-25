@@ -50,7 +50,7 @@
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="GameModel\Movement\IMover.cs" />
     <Compile Include="GameModel\Movement\IMoveTargetSelector.cs" />
-    <Compile Include="GameModel\Movement\Movers\AcceleratedMover.cs" />
+    <Compile Include="GameModel\Movement\Movers\AccelerationMover.cs" />
     <Compile Include="GameModel\Movement\Movers\LinearMover.cs" />
     <Compile Include="GameModel\Movement\MoverFactory.cs" />
     <Compile Include="GameModel\Movement\Movers\NonMover.cs" />
@@ -58,6 +58,7 @@
     <Compile Include="GameModel\Movement\MoveTargetSelectorFactory.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\NotATargetSelector.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\PlayerHunter.cs" />
+    <Compile Include="GameModel\Movement\TargetSelectors\RandomFlight.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\FixedAimer.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\PlayerAimer.cs" />

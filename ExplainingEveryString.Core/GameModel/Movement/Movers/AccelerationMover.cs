@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel.Movement.Movers
 {
-    internal class AcceleratedMover : IMover
+    internal class AccelerationMover : IMover
     {
         private Single acceleration;
         private Single startSpeed;
@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
         private Vector2 currentSpeed = new Vector2(0, 0);
         private Boolean moving = false;
 
-        internal AcceleratedMover(Single acceleration, Single startSpeed, Single maxSpeed)
+        internal AccelerationMover(Single acceleration, Single startSpeed, Single maxSpeed)
         {
             this.acceleration = acceleration;
             this.startSpeed = startSpeed;
@@ -37,8 +37,9 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
                 currentSpeed += speedChange;
                 if (currentSpeed.Length() > maxSpeed)
                     currentSpeed = currentSpeed / currentSpeed.Length() * maxSpeed;
-                goalReached = lineToTarget.Length() <= currentSpeed.Length();
-                return currentSpeed * elapsedSeconds;
+                Vector2 positionChange = currentSpeed * elapsedSeconds;
+                goalReached = lineToTarget.Length() <= positionChange.Length();
+                return positionChange;
             }
             else
             {

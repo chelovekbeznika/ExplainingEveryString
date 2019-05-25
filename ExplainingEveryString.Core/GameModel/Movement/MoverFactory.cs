@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                     Single maxSpeed = specification.Parameters["maxSpeed"];
                     Single startSpeed = specification.Parameters["startSpeed"];
                     Single acceleration = specification.Parameters["acceleration"];
-                    return new AcceleratedMover(acceleration, startSpeed, maxSpeed);
+                    return new AccelerationMover(acceleration, startSpeed, maxSpeed);
                 default:
                     throw new ArgumentException("Unknown MoveType");
             }

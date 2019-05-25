@@ -53,13 +53,6 @@
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 8.0,
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 50.0
-      }
-    },
-    "MoveTargetSelectType": "MoveTowardPlayer",
     "DefaultSprite": {
       "Name": "Sprites/Enemies/FixedCannon"
     },
@@ -71,6 +64,13 @@
         "AnimationCycle": 0.4
       }
     },
+    "Mover": {
+      "Type": "Linear",
+      "Parameters": {
+        "speed": 50.0
+      }
+    },
+    "MoveTargetSelectType": "MoveTowardPlayer",
     "Weapon": {
       "FireRate": 5.0,
       "Ammo": 5,
@@ -95,6 +95,88 @@
         "Volume": 0.05
       },
       "AimType": "AimAtPlayer"
+    }
+  },
+  "Helicopter": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 5.0,
+    "Height": 80.0,
+    "Width": 32.0,
+    "Hitpoints": 15.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Helicopter",
+      "AnimationCycle": 0.1
+    },
+    "DeathEffect": {
+      "Sound": "Sounds/HelicopterExplosion",
+      "Volume": 0.2,
+      "Sprite": {
+        "Name": "Sprites/Explosions/HelicopterDeath",
+        "AnimationCycle": 0.33
+      }
+    },
+    "Mover": {
+      "Type": "Acceleration",
+      "Parameters": {
+        "startSpeed": 300.0,
+        "maxSpeed": 300.0,
+        "acceleration": 450.0
+      }
+    },
+    "MoveTargetSelectType": "RandomTargets",
+    "Weapon": {
+      "FireRate": 10.0,
+      "Ammo": 10,
+      "ReloadTime": 2.0,
+      "Barrels": [
+        {
+          "Length": 36.0,
+          "AngleCorrection": -90.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 500.0
+            },
+            "Damage": 2.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        },
+        {
+          "Length": 36.0,
+          "AngleCorrection": -85.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 500.0
+            },
+            "Damage": 2.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        },
+        {
+          "Length": 36.0,
+          "AngleCorrection": -95.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 500.0
+            },
+            "Damage": 2.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": "Sounds/HelicopterShoot",
+        "Volume": 0.15
+      },
+      "AimType": "FixedFireDirection"
     }
   },
   "TripleCannon": {
@@ -238,7 +320,7 @@
     "Height": 32.0,
     "Width": 32.0,
     "BulletHitboxWidth": 32.0,
-    "Hitpoints": 3.0,
+    "Hitpoints": 10.0,
     "DefaultSprite": {
       "Name": "Sprites/Player/Base"
     },
