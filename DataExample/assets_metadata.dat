@@ -17,6 +17,10 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/EvilEyeCannon",
+      "AnimationFrames": 16
+    },
+    {
       "Name": "Sprites/Enemies/EnemyBullet",
       "AnimationFrames": 6
     },

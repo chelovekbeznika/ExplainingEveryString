@@ -72,7 +72,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     SpecEffectSpecification = shootingEffect
                 });
             if (IsVisible)
+            {
+                SpriteState.Update(elapsedSeconds);
                 SpriteState.Angle = AngleConverter.ToRadians(aimer.GetFireDirection());
+            }
         }
     }
 }

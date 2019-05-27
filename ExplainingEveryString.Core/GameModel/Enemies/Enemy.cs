@@ -8,9 +8,12 @@ using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {
-    internal class Enemy<TBlueprint> : Actor<TBlueprint>, IInterfaceAccessable, ICrashable, ITouchableByBullets 
+    internal class Enemy<TBlueprint> : Actor<TBlueprint>, IInterfaceAccessable, ICrashable, ITouchableByBullets, IMultiPartDisplayble 
         where TBlueprint : EnemyBlueprint
     {
         internal event EventHandler<EpicEventArgs> Death;
@@ -80,6 +83,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 weapon = new Weapon(blueprint.Weapon, aimer, () => this.Position, PlayerLocator, level);
                 weapon.Shoot += level.EnemyShoot;
             }
+        }
+
+        public IEnumerable<IDisplayble> GetParts()
+        {
+            if (weapon != null)
+                return new IDisplayble[] { weapon };
+            else
+                return Enumerable.Empty<IDisplayble>();
         }
 
         public override void Update(Single elapsedSeconds)

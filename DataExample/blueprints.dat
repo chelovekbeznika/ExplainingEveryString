@@ -116,14 +116,12 @@
       }
     },
     "Mover": {
-      "Type": "Acceleration",
+      "Type": "Linear",
       "Parameters": {
-        "startSpeed": 300.0,
-        "maxSpeed": 300.0,
-        "acceleration": 450.0
+        "speed": 200.0
       }
     },
-    "MoveTargetSelectType": "RandomTargets",
+    "MoveTargetSelectType": "TargetsList",
     "Weapon": {
       "FireRate": 10.0,
       "Ammo": 10,
@@ -179,11 +177,69 @@
       "AimType": "FixedFireDirection"
     }
   },
+  "EvilEye": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 10.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 10.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/EvilEyeBase"
+    },
+    "DeathEffect": {
+      "Sound": "Sounds/Explosion_02",
+      "Volume": 0.3,
+      "Sprite": {
+        "Name": "Sprites/Explosions/01",
+        "AnimationCycle": 0.4
+      }
+    },
+    "Mover": {
+      "Type": "Acceleration",
+      "Parameters": {
+        "startSpeed": 300.0,
+        "maxSpeed": 300.0,
+        "acceleration": 450.0
+      }
+    },
+    "MoveTargetSelectType": "RandomTargets",
+    "Weapon": {
+      "FireRate": 0.3333333333,
+      "AimType": "AimAtPlayer",
+      "Barrels": [
+        {
+          "Length": 0.0,
+          "Bullet": {
+            "TrajectoryType": "Sinus",
+            "TrajectoryParameters": {
+              "speed": 300.0,
+              "amplitude": 10.0,
+              "angularVelocity": 20.0
+            },
+            "TimeToLive": 5.0,
+            "HomingSpeed": 15.0,
+            "Damage": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        }
+      ],
+      "Sprite": {
+        "Name": "Sprites/Enemies/EvilEyeCannon",
+        "AnimationCycle": 1.5
+      },
+      "ShootingEffect": {
+        "Sound": "Sounds/TripleCannonShoot",
+        "Volume": 0.05
+      }
+    }
+  },
   "TripleCannon": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 3.0,
-    "Height": 16.0,
-    "Width": 16.0,
+    "Height": 32.0,
+    "Width": 32.0,
     "Hitpoints": 8.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/TripleCannon"
