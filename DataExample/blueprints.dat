@@ -1,10 +1,13 @@
 {
   "Mine": {
-    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ShadowEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "ShadowEnemy",
     "CollisionDamage": 1.5,
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 7.0,
+    "ActiveTime": 2.5,
+    "ShadowTime": 2.5,
     "Mover": {
       "Type": "Linear",
       "Parameters": {
@@ -15,12 +18,23 @@
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Mine"
     },
+    "ShadowSprite": {
+      "Name": "Sprites/Enemies/MineInShadow"
+    },
     "DeathEffect": {
       "Sound": "Sounds/Explosion_02",
       "Volume": 0.4,
       "Sprite": {
         "Name": "Sprites/Explosions/01",
         "AnimationCycle": 0.5
+      }
+    },
+    "PhaseChangeEffect" : {
+      "Sound": "Sounds/ShadowPhaseChange",
+      "Volume": 0.3,
+      "Sprite": {
+        "Name": "Sprites/Enemies/MineTrace",
+        "AnimationCycle": 0.25
       }
     }
   },

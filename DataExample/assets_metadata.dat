@@ -21,6 +21,10 @@
       "AnimationFrames": 16
     },
     {
+      "Name": "Sprites/Enemies/MineTrace",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/EnemyBullet",
       "AnimationFrames": 6
     },

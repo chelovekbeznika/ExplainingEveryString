@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.GameModel
         private Single Height { get; set; }
         public virtual Single HitPoints { get; set; }
 
-        public SpriteState SpriteState { get; private set; }
+        public virtual SpriteState SpriteState { get; private set; }
         public Boolean IsVisible => IsAlive();
 
         internal void Initialize(TBlueprint blueprint, Level level, ActorStartInfo startInfo)

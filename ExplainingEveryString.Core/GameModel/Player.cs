@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets, IInterfaceAccessable
     {
-        internal event EventHandler<EpicEventArgs> DamageTaken;
+        private event EventHandler<EpicEventArgs> DamageTaken;
         
         public Single MaxHitPoints { get; private set; }
 
