@@ -1,4 +1,6 @@
 {
+  "TileMap": "TileMaps/level_01",
+  "TileMapUpperLeftCorner": "0.0, 0.0",
   "PlayerPosition": {
     "Position": "0.0, 0.0"
   },

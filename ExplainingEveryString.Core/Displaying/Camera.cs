@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Core.Displaying
                 config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
         }
 
-        internal void Begin() => spriteBatch.Begin();
+        internal void Begin() => spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
         internal void End() => spriteBatch.End();
 
@@ -89,7 +89,7 @@ namespace ExplainingEveryString.Core.Displaying
             return screen.Intersects(displaybleOnScreen);
         }
 
-        private Vector2 ConvertToScreenPosition(Vector2 position)
+        internal Vector2 ConvertToScreenPosition(Vector2 position)
         {
             Vector2 cameraOffset = objectGlass.CameraOffset;
             Vector2 centerOfSpriteOnScreen = position - cameraOffset;

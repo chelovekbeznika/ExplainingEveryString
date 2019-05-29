@@ -6,6 +6,7 @@ using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
+using MonoGame.Extended.Tiled;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,9 @@ namespace ExplainingEveryString.Core
         private IBlueprintsLoader blueprintsLoader;
         private Level level;
         private String levelFileName;
+        private LevelData levelData;
         private EesGame eesGame;
+        private TiledMapDisplayer mapDisplayer;
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
 
@@ -34,7 +37,7 @@ namespace ExplainingEveryString.Core
         {
             ActorsFactory factory = new ActorsFactory(blueprintsLoader);
             ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
-            LevelData levelData = levelLoader.Load(levelFileName);
+            this.levelData = levelLoader.Load(levelFileName);
             level = new Level(factory, new PlayerInputFactory(this), levelData);
             level.Lost += eesGame.GameLost;
 
@@ -42,10 +45,11 @@ namespace ExplainingEveryString.Core
         }
 
         protected override void LoadContent()
-        {
+        {         
             Configuration config = ConfigurationAccess.GetCurrentConfig();
             Camera = new Camera(level, eesGame, config);
             EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level);
+            this.mapDisplayer = new TiledMapDisplayer(levelData, eesGame, Camera);
             base.LoadContent();
         }
 
@@ -54,13 +58,15 @@ namespace ExplainingEveryString.Core
             Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
             level.Update(elapsedSeconds);
             Camera.Update();
+            mapDisplayer.Update(gameTime);
             EpicEventsProcessor.Update(elapsedSeconds);
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
-        {
+        {          
             Camera.Begin();
+            mapDisplayer.Draw();
             Camera.Draw(level.GetObjectsToDraw());
             EpicEventsProcessor.ProcessEpicEvents();
             Camera.Draw(EpicEventsProcessor.GetSpecEffectsToDraw());
