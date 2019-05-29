@@ -48,7 +48,7 @@ namespace ExplainingEveryString.Core
         {         
             Configuration config = ConfigurationAccess.GetCurrentConfig();
             Camera = new Camera(level, eesGame, config);
-            EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level);
+            EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);
             this.mapDisplayer = new TiledMapDisplayer(levelData, eesGame, Camera);
             base.LoadContent();
         }

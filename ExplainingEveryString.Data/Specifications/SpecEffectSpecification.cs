@@ -5,8 +5,7 @@ namespace ExplainingEveryString.Data.Specifications
 {
     public class SpecEffectSpecification
     {
-        public String Sound { get; set; }
-        public Single Volume { get; set; }
+        public SoundSpecification Sound { get; set; }
         [DefaultValue(null)]
         public SpriteSpecification Sprite { get; set; }
     }

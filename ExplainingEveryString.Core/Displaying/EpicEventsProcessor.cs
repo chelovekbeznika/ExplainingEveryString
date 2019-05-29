@@ -1,4 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Data;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
@@ -13,11 +15,13 @@ namespace ExplainingEveryString.Core.Displaying
         private AssetsStorage assetsStorage;
         private Level level;
         private List<SpecEffect> activeSpecEffects = new List<SpecEffect>();
+        private Single fadingOutDistance;
 
-        internal EpicEventsProcessor(AssetsStorage assetsStorage, Level level)
+        internal EpicEventsProcessor(AssetsStorage assetsStorage, Level level, Configuration config)
         {
             this.assetsStorage = assetsStorage;
             this.level = level;
+            this.fadingOutDistance = config.SoundFadingOut;
         }
 
         internal void ProcessEpicEvents()
@@ -44,10 +48,26 @@ namespace ExplainingEveryString.Core.Displaying
 
         private void ProcessEpicEvent(EpicEventArgs epicEvent)
         {
-            String soundName = epicEvent.SpecEffectSpecification.Sound;
-            Single volume = epicEvent.SpecEffectSpecification.Volume;
-            assetsStorage.GetSound(soundName).Play(volume, 0, 0);
+            ProcessSound(epicEvent);
+            ProcessAnimation(epicEvent);
+        }
 
+        private void ProcessSound(EpicEventArgs epicEvent)
+        {
+            Single distance = (level.PlayerPosition - epicEvent.Position).Length();
+            SoundSpecification sound = epicEvent.SpecEffectSpecification.Sound;
+            Single currentFadingOutDistance = fadingOutDistance * sound.FadingCoeff;
+            if (distance <= currentFadingOutDistance)
+            {
+                Single nearEpicenterVolume = epicEvent.SpecEffectSpecification.Sound.Volume;
+                Single fadingCoeff = 1 - (distance / currentFadingOutDistance);
+                Single volume = nearEpicenterVolume * fadingCoeff;
+                assetsStorage.GetSound(sound.Name).Play(volume, 0, 0);
+            }
+        }
+
+        private void ProcessAnimation(EpicEventArgs epicEvent)
+        {
             if (epicEvent.SpecEffectSpecification.Sprite != null)
             {
                 activeSpecEffects.Add(new SpecEffect(epicEvent.Position, epicEvent.SpecEffectSpecification.Sprite));

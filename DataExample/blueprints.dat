@@ -22,16 +22,21 @@
       "Name": "Sprites/Enemies/MineInShadow"
     },
     "DeathEffect": {
-      "Sound": "Sounds/Explosion_02",
-      "Volume": 0.4,
+      "Sound": {
+        "Name": "Sounds/Explosion_02",
+        "Volume": 0.4
+      },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
         "AnimationCycle": 0.5
       }
     },
     "PhaseChangeEffect" : {
-      "Sound": "Sounds/ShadowPhaseChange",
-      "Volume": 0.3,
+      "Sound": {
+        "Name": "Sounds/ShadowPhaseChange",
+        "Volume": 0.25, 
+        "FadingCoeff": 0.33333
+      },
       "Sprite": {
         "Name": "Sprites/Enemies/MineTrace",
         "AnimationCycle": 0.25
@@ -57,8 +62,10 @@
       "Name": "Sprites/Enemies/Hunter"
     },
     "DeathEffect": {
-      "Sound": "Sounds/Explosion_01",
-      "Volume": 0.2
+      "Sound": {
+        "Name": "Sounds/Explosion_01",
+        "Volume": 0.2
+      }
     }
   },
   "FixedCannon": {
@@ -71,8 +78,10 @@
       "Name": "Sprites/Enemies/FixedCannon"
     },
     "DeathEffect": {
-      "Sound": "Sounds/Explosion_02",
-      "Volume": 0.3,
+      "Sound": {
+        "Name": "Sounds/Explosion_02",
+        "Volume": 0.3
+      },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
         "AnimationCycle": 0.4
@@ -105,8 +114,10 @@
         }
       ],
       "ShootingEffect": {
-        "Sound": "Sounds/FixedCannonShoot",
-        "Volume": 0.05
+        "Sound": {
+          "Name": "Sounds/FixedCannonShoot",
+          "Volume": 0.05
+        }
       },
       "AimType": "AimAtPlayer"
     }
@@ -122,8 +133,10 @@
       "AnimationCycle": 0.1
     },
     "DeathEffect": {
-      "Sound": "Sounds/HelicopterExplosion",
-      "Volume": 0.2,
+      "Sound": {
+        "Name": "Sounds/HelicopterExplosion",
+        "Volume": 0.2
+      },
       "Sprite": {
         "Name": "Sprites/Explosions/HelicopterDeath",
         "AnimationCycle": 0.33
@@ -185,8 +198,10 @@
         }
       ],
       "ShootingEffect": {
-        "Sound": "Sounds/HelicopterShoot",
-        "Volume": 0.15
+        "Sound": {
+          "Name": "Sounds/HelicopterShoot",
+          "Volume": 0.15
+        }
       },
       "AimType": "FixedFireDirection"
     }
@@ -201,8 +216,10 @@
       "Name": "Sprites/Enemies/EvilEyeBase"
     },
     "DeathEffect": {
-      "Sound": "Sounds/Explosion_02",
-      "Volume": 0.3,
+      "Sound": {
+        "Name": "Sounds/Explosion_02",
+        "Volume": 0.3
+      },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
         "AnimationCycle": 0.4
@@ -231,7 +248,7 @@
               "angularVelocity": 20.0
             },
             "TimeToLive": 5.0,
-            "HomingSpeed": 15.0,
+            "HomingSpeed": 5.0,
             "Damage": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/EnemyBullet"
@@ -244,8 +261,10 @@
         "AnimationCycle": 1.5
       },
       "ShootingEffect": {
-        "Sound": "Sounds/TripleCannonShoot",
-        "Volume": 0.05
+        "Sound": {
+          "Name": "Sounds/TripleCannonShoot",
+          "Volume": 0.05
+        }
       }
     }
   },
@@ -259,8 +278,10 @@
       "Name": "Sprites/Enemies/TripleCannon"
     },
     "DeathEffect": {
-      "Sound": "Sounds/Explosion_02",
-      "Volume": 0.3,
+      "Sound": {
+        "Name": "Sounds/Explosion_02",
+        "Volume": 0.3
+      },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
         "AnimationCycle": 0.4
@@ -346,8 +367,10 @@
         }
       ],
       "ShootingEffect": {
-        "Sound": "Sounds/TripleCannonShoot",
-        "Volume": 0.05
+        "Sound": {
+          "Name": "Sounds/TripleCannonShoot",
+          "Volume": 0.05
+        }
       },
       "AimType": "AimAtPlayer"
     }
@@ -382,8 +405,10 @@
         }
       ],
       "ShootingEffect": {
-        "Sound": "Sounds/PlayerShoot",
-        "Volume": 0.1
+        "Sound": {
+          "Name": "Sounds/PlayerShoot",
+          "Volume": 0.1
+        }
       },
       "AimType": "ControlledByPlayer"
     },
@@ -395,8 +420,10 @@
       "Name": "Sprites/Player/Base"
     },
     "DamageEffect": {
-      "Sound": "Sounds/Hit_01",
-      "Volume": 1.0
+      "Sound": {
+        "Name": "Sounds/Hit_01",
+        "Volume": 1.0
+      }
     }
   },
   "Wall": {

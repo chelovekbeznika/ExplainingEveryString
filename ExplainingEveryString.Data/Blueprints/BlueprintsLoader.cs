@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Data.Blueprints
         {
             IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
             return blueprints.SelectMany(blueprint => blueprint.GetSpecEffects())
-                .Select(se => se.Sound).Distinct().ToList();
+                .Select(se => se.Sound.Name).Distinct().ToList();
         }
     }
 }

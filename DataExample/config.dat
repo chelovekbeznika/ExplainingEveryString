@@ -2,6 +2,7 @@
   "ControlDevice": "GamePad",
   "PlayerFramePercentageWidth": 60,
   "PlayerFramePercentageHeigth": 40,
+  "SoundFadingOut": 1000.0,
   "ScreenWidth": 1024,
   "ScreenHeight": 768,
   "FullScreen": false,

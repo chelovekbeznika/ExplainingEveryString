@@ -14,5 +14,6 @@ namespace ExplainingEveryString.Data
         public Int32 ScreenWidth { get; set; }
         public Int32 ScreenHeight { get; set; }
         public Boolean FullScreen { get; set; }
+        public Single SoundFadingOut { get; set; }
     }
 }

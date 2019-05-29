@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Core.Displaying
         {
             Vector2 renderPosition = camera.ConvertToScreenPosition(upperLeftCorner);
             Matrix viewMatrix = Matrix.CreateTranslation(renderPosition.X, renderPosition.Y, 0);
-            renderer.Draw(map, viewMatrix);
+            renderer.Draw(map, viewMatrix, null);
         }
     }
 }
