@@ -80,7 +80,7 @@ namespace ExplainingEveryString.Core.GameModel
             Hitbox oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
             Vector2 savedMovingObjectPosition = movingObject.Position;
             ICollidable touchingToCorner = null;
-            foreach (ICollidable wall in activeObjects.Walls.OfType<ICollidable>())
+            foreach (ICollidable wall in activeObjects.GetWalls())
             {
                 Vector2? wallCorrection;
                 Boolean ridingIntoCorner;
@@ -108,12 +108,12 @@ namespace ExplainingEveryString.Core.GameModel
             foreach (Bullet bullet in activeObjects.PlayerBullets)
             {
                 CheckBulletForCollisions(bullet, 
-                    activeObjects.Enemies.Concat(activeObjects.Walls).OfType<ICollidable>());
+                    activeObjects.Enemies.Concat(activeObjects.GetWalls()).OfType<ICollidable>());
             }
             foreach (Bullet bullet in activeObjects.EnemyBullets)
             {
                 CheckBulletForCollisions(bullet,
-                    new ICollidable[] { activeObjects.Player }.Concat(activeObjects.Walls).OfType<ICollidable>());
+                    new ICollidable[] { activeObjects.Player }.Concat(activeObjects.GetWalls()).OfType<ICollidable>());
             }
         }
 

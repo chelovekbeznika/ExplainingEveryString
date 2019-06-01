@@ -73,6 +73,9 @@
     <Compile Include="GameModel\Movement\TargetSelectors\NotATargetSelector.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\PlayerHunter.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFlight.cs" />
+    <Compile Include="GameModel\TileWall.cs" />
+    <Compile Include="GameModel\TileWallsFactory.cs" />
+    <Compile Include="TileUtility.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\FixedAimer.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\PlayerAimer.cs" />

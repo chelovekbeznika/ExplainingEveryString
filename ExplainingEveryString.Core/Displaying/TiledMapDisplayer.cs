@@ -18,10 +18,10 @@ namespace ExplainingEveryString.Core.Displaying
         private Camera camera;
         private Vector2 upperLeftCorner;
 
-        internal TiledMapDisplayer(LevelData levelData, EesGame eesGame, Camera camera)
+        internal TiledMapDisplayer(TiledMap map, EesGame eesGame, Camera camera)
         {
-            this.map = eesGame.Content.Load<TiledMap>(levelData.TileMap);
-            this.upperLeftCorner = levelData.TileMapUpperLeftCorner;
+            this.map = map;
+            this.upperLeftCorner = TileUtility.GetUpperLeftCorner(map);
             this.renderer = new TiledMapRenderer(eesGame.GraphicsDevice);
             this.camera = camera;
         }

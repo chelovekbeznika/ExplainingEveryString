@@ -26,12 +26,13 @@ namespace ExplainingEveryString.Core.GameModel
         internal Vector2 PlayerPosition => activeActors.Player.Position;
         internal event GameLost Lost;
 
-        internal Level(ActorsFactory factory, PlayerInputFactory playerInputFactory, LevelData levelData)
+        internal Level(ActorsFactory factory, TileWallsFactory tileWallsFactory, 
+            PlayerInputFactory playerInputFactory, LevelData levelData)
         {
             this.factory = factory;
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
-            activeActors = new ActiveActorsStorage(factory, levelData);
+            activeActors = new ActiveActorsStorage(factory, tileWallsFactory, levelData);
             activeActors.InitializeActors();
             collisionsController = new CollisionsController(activeActors);
         }
