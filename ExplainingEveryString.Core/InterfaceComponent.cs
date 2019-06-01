@@ -52,7 +52,7 @@ namespace ExplainingEveryString.Core
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp);
             enemiesInfoDisplayer.Draw(interfaceInfo.Enemies, spriteBatch, alphaMask);
             healthBarDisplayer.Draw(interfaceInfo.Health, interfaceInfo.MaxHealth, spriteBatch, alphaMask);
             gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);

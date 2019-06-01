@@ -64,7 +64,7 @@ namespace ExplainingEveryString.Core
         }
 
         public override void Draw(GameTime gameTime)
-        {          
+        {
             Camera.Begin();
             mapDisplayer.Draw();
             Camera.Draw(level.GetObjectsToDraw());
