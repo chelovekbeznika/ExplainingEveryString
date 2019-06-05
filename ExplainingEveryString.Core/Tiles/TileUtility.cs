@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Tiles
 {
     internal static class TileUtility
     {
@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Core
             };
         }
 
-        internal static List<Point> GetWalls(TiledMap map)
+        internal static List<Point> GetWallTiles(TiledMap map)
         {
             List<Point> result = new List<Point>();
             TiledMapTileLayer wallsLayer = map.TileLayers.First(tl => tl.Name == "Walls");

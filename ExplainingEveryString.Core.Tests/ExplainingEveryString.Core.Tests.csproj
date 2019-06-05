@@ -62,6 +62,7 @@
     <Compile Include="ReloadTests.cs" />
     <Compile Include="TestAimer.cs" />
     <Compile Include="WallByPassingTests.cs" />
+    <Compile Include="WallOptimizationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExplainingEveryString.Core\ExplainingEveryString.Core.csproj">
