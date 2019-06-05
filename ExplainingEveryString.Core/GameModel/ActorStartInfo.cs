@@ -1,19 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Data.Level
+namespace ExplainingEveryString.Core.GameModel
 {
-    public class ActorStartInfo
+    internal class ActorStartInfo
     {
-        public Point TilePosition { get; set; }
-        [DefaultValue(0)]
+        public Vector2 Position { get; set; }
         public Single Angle { get; set; }
-        [DefaultValue(null)]
         public List<Vector2> TrajectoryTargets { get; set; }
     }
 }

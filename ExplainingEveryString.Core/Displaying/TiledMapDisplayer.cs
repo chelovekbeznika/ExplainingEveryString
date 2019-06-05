@@ -17,12 +17,10 @@ namespace ExplainingEveryString.Core.Displaying
         private TiledMap map;
         private TiledMapRenderer renderer;
         private Camera camera;
-        private Vector2 upperLeftCorner;
 
         internal TiledMapDisplayer(TiledMap map, EesGame eesGame, Camera camera)
         {
             this.map = map;
-            this.upperLeftCorner = TileUtility.GetUpperLeftCorner(map);
             this.renderer = new TiledMapRenderer(eesGame.GraphicsDevice);
             this.camera = camera;
         }
@@ -34,7 +32,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void Draw()
         {
-            Vector2 renderPosition = camera.ConvertToScreenPosition(upperLeftCorner);
+            Vector2 renderPosition = camera.ConvertToScreenPosition(new Vector2(0, 0));
             Matrix viewMatrix = Matrix.CreateTranslation(renderPosition.X, renderPosition.Y, 0);
             renderer.Draw(map, viewMatrix, null);
         }

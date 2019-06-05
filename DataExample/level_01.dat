@@ -1,33 +1,48 @@
 {
   "TileMap": "TileMaps/level_01",
   "PlayerPosition": {
-    "Position": "0.0, 0.0"
+    "TilePosition": {
+      "X": 38,
+      "Y": 44
+    }
   },
   "EnemiesPositions": {
     "Mine": [
       {
-        "Position": "100.0, 100.0",
+        "TilePosition": {
+          "X": "16",
+          "Y": "23"
+        },
         "TrajectoryTargets": [
           "0.0, -100.0",
           "0.0, 0.0"
         ]
       },
       {
-        "Position": "200.0, 200.0",
+        "TilePosition": {
+          "X": 38,
+          "Y": 27
+        },
         "TrajectoryTargets": [
           "0.0, -100.0",
           "0.0, 0.0"
         ]
       },
       {
-        "Position": "-300.0, -150.0",
+        "TilePosition": {
+          "X": 9,
+          "Y": 43
+        },
         "TrajectoryTargets": [
           "0.0, 200.0",
           "0.0, 0.0"
         ]
       },
       {
-        "Position": "500.0, 250.0",
+        "TilePosition": {
+          "X": 58,
+          "Y": 12
+        },
         "TrajectoryTargets": [
           "50.0, 50.0",
           "100.0, 150.0",
@@ -38,7 +53,10 @@
     ],
     "Helicopter": [
       {
-        "Position": "0, 300.0",
+        "TilePosition": {
+          "X": 5,
+          "Y": 5
+        },
         "TrajectoryTargets": [
           "-300.0, 0.0",
           "300.0, 0.0"
@@ -47,35 +65,77 @@
     ],
     "TripleCannon": [
       {
-        "Position": "-400.0, -400.0",
+        "TilePosition": {
+          "X": 13,
+          "Y": 69
+        },
         "Angle": 90.0
       }
     ],
     "EvilEye": [
       {
-        "Position": "400.0, -400.0",
+        "TilePosition": {
+          "X": 55,
+          "Y": 60
+        },
         "TrajectoryTargets": [
           "100.0, 100.0"
         ]
       }
     ]
   },
-  "WallsPositions": {
+  "WallsTilePositions": {
     "LittleDecoration": [
-      "0.0, -200.0",
-      "0.0, -232.0",
-      "8.0, -264.0",
-      "8.0, -328.0"
+      {
+        "X": 29,
+        "Y": 48
+      },
+      {
+        "X": 29,
+        "Y": 50
+      },
+      {
+        "X": 30,
+        "Y": 52
+      },
+      {
+        "X": 30,
+        "Y": 54
+      }
     ],
     "MiddleWall": [
-      "-256.0, -256.0",
-      "-288.0, -256.0",
-      "-256.0, -288.0",
-      "-320.0, -256.0",
-      "-320.0, -288.0",
-      "-128.0, -256.0",
-      "-96.0, -256.0",
-      "-128.0, -256.0"
+      {
+        "X": 8,
+        "Y": 56
+      },
+      {
+        "X": 10,
+        "Y": 56
+      },
+      {
+        "X": 12,
+        "Y": 56
+      },
+      {
+        "X": 8,
+        "Y": 58
+      },
+      {
+        "X": 12,
+        "Y": 58
+      },
+      {
+        "X": 18,
+        "Y": 56
+      },
+      {
+        "X": 20,
+        "Y": 56
+      },
+      {
+        "X": 22,
+        "Y": 56
+      } 
     ]
   }
 }

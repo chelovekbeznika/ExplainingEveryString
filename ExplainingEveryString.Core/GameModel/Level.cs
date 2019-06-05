@@ -6,6 +6,7 @@ using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
+using MonoGame.Extended.Tiled;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,13 +27,13 @@ namespace ExplainingEveryString.Core.GameModel
         internal Vector2 PlayerPosition => activeActors.Player.Position;
         internal event GameLost Lost;
 
-        internal Level(ActorsFactory factory, TileWallsFactory tileWallsFactory, 
+        internal Level(ActorsFactory factory, TiledMap map, 
             PlayerInputFactory playerInputFactory, LevelData levelData)
         {
             this.factory = factory;
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
-            activeActors = new ActiveActorsStorage(factory, tileWallsFactory, levelData);
+            activeActors = new ActiveActorsStorage(factory, map, levelData);
             activeActors.InitializeActors();
             collisionsController = new CollisionsController(activeActors);
         }

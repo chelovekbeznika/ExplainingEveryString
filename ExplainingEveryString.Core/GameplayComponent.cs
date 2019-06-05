@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core
         private String levelFileName;
         private LevelData levelData;
         private EesGame eesGame;
+        private TiledMap map;
         private TiledMapDisplayer mapDisplayer;
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
@@ -38,8 +39,8 @@ namespace ExplainingEveryString.Core
             ActorsFactory factory = new ActorsFactory(blueprintsLoader);
             ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
             this.levelData = levelLoader.Load(levelFileName);
-            TiledMap map = eesGame.Content.Load<TiledMap>(levelData.TileMap);
-            level = new Level(factory, new TileWallsFactory(map), new PlayerInputFactory(this), levelData);
+            map = eesGame.Content.Load<TiledMap>(levelData.TileMap);
+            level = new Level(factory, map, new PlayerInputFactory(this), levelData);
             level.Lost += eesGame.GameLost;
             base.Initialize();
         }
@@ -48,8 +49,7 @@ namespace ExplainingEveryString.Core
         {         
             Configuration config = ConfigurationAccess.GetCurrentConfig();
             Camera = new Camera(level, eesGame, config);
-            EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);
-            TiledMap map = eesGame.Content.Load<TiledMap>(levelData.TileMap);
+            EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);       
             this.mapDisplayer = new TiledMapDisplayer(map, eesGame, Camera);
             base.LoadContent();
         }

@@ -1,7 +1,9 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
+using MonoGame.Extended.Tiled;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +19,16 @@ namespace ExplainingEveryString.Core.GameModel
 
         private ActorsFactory actorsFactory;
         private TileWallsFactory tileWallsFactory;
+        private TileUtility tileUtility;
         private List<IActor> walls;
         private List<TileWall> tileWalls;
         private LevelData levelData;
 
-        internal ActiveActorsStorage(ActorsFactory factory, TileWallsFactory tileWallsFactory, LevelData levelData)
+        internal ActiveActorsStorage(ActorsFactory factory, TiledMap map, LevelData levelData)
         {
             this.actorsFactory = factory;
-            this.tileWallsFactory = tileWallsFactory;
+            this.tileWallsFactory = new TileWallsFactory(map);
+            this.tileUtility = new TileUtility(map);
             this.levelData = levelData;
         }
 
@@ -60,7 +64,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void InitializeActors()
         {
-            Player = actorsFactory.ConstructPlayer(levelData.PlayerPosition);
+            Player = actorsFactory.ConstructPlayer(Convert(levelData.PlayerPosition));
             InitializeWalls();
             InitializeTileWalls();
             InitializeEnemies();
@@ -71,9 +75,10 @@ namespace ExplainingEveryString.Core.GameModel
         private void InitializeWalls()
         {
             walls = new List<IActor>();
-            foreach (String wallType in levelData.WallsPositions.Keys)
+            foreach (String wallType in levelData.WallsTilePositions.Keys)
             {
-                List<Vector2> wallPositions = levelData.WallsPositions[wallType];
+                List<Vector2> wallPositions = levelData.WallsTilePositions[wallType]
+                    .Select(t => tileUtility.GetCenterOfTile(t)).ToList();
                 walls.AddRange(actorsFactory.ConstructWalls(wallType, wallPositions));
             }
         }
@@ -88,9 +93,19 @@ namespace ExplainingEveryString.Core.GameModel
             Enemies = new List<IActor>();
             foreach (String enemyType in levelData.EnemiesPositions.Keys)
             {
-                List<ActorStartInfo> enemiesPositions = levelData.EnemiesPositions[enemyType];
+                IEnumerable<ActorStartInfo> enemiesPositions = levelData.EnemiesPositions[enemyType].Select(asi => Convert(asi));
                 Enemies.AddRange(actorsFactory.ConstructEnemies(enemyType, enemiesPositions));
             }
+        }
+
+        private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo)
+        {
+            return new ActorStartInfo
+            {
+                Position = tileUtility.GetCenterOfTile(dataLayerStartInfo.TilePosition),
+                Angle = dataLayerStartInfo.Angle,
+                TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets
+            };
         }
     }
 }
