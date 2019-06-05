@@ -10,7 +10,7 @@ namespace ExplainingEveryString.Data.Level
 {
     public class ActorStartInfo
     {
-        public Point TilePosition { get; set; }
+        public PositionOnTileMap TilePosition { get; set; }
         [DefaultValue(0)]
         public Single Angle { get; set; }
         [DefaultValue(null)]

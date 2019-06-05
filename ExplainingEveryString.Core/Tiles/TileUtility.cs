@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled;
 using System;
@@ -18,11 +19,11 @@ namespace ExplainingEveryString.Core.Tiles
             this.map = map;
         }
 
-        internal Vector2 GetCenterOfTile(Point tilePosition)
+        internal Vector2 GetPosition(PositionOnTileMap tilePosition)
         {
             Vector2 upperLeftCorner = new Vector2 { X = tilePosition.X * map.TileWidth, Y = -tilePosition.Y * map.TileWidth };
             Vector2 center = upperLeftCorner + new Vector2 { X = map.TileWidth / 2, Y = -map.TileHeight / 2 };
-            return center;
+            return center + tilePosition.Offset;
         }
 
         internal List<Point> GetWallTiles()

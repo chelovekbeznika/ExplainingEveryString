@@ -51,6 +51,7 @@
     <Compile Include="AssetsMetadata\AssetsMetadataAccess.cs" />
     <Compile Include="AssetsMetadata\SpriteMetadata.cs" />
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
+    <Compile Include="Level\PositionOnTileMap.cs" />
     <Compile Include="Specifications\BarrelSpecification.cs" />
     <Compile Include="Blueprints\Blueprint.cs" />
     <Compile Include="Blueprints\BlueprintsAccess.cs" />

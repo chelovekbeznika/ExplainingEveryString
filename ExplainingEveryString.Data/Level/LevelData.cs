@@ -12,6 +12,6 @@ namespace ExplainingEveryString.Data.Level
         public String TileMap { get; set; }
         public ActorStartInfo PlayerPosition { get; set; }
         public Dictionary<String, List<ActorStartInfo>> EnemiesPositions { get; set; }
-        public Dictionary<String, List<Point>> WallsTilePositions { get; set; }
+        public Dictionary<String, List<PositionOnTileMap>> WallsTilePositions { get; set; }
     }
 }
