@@ -19,11 +19,11 @@ namespace ExplainingEveryString.Core.GameModel
             this.map = map;
         }
 
-        internal IEnumerable<TileWall> ConstructTileWalls()
+        internal ICollidable[] ConstructTileWalls()
         {
             List<Point> wallsTiles = map.GetWallTiles();
             List<Rectangle> walls = wallsOptimizer.GetWalls(wallsTiles);
-            return walls.Select(w => new TileWall(map.GetHitbox(w)));
+            return walls.Select(w => new TileWall(map.GetHitbox(w))).Cast<ICollidable>().ToArray();
         }
     }
 }

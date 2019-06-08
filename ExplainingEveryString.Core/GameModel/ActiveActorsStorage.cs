@@ -3,7 +3,6 @@ using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
-using MonoGame.Extended.Tiled;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,22 +15,15 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<IActor> Enemies { get; private set; }
         internal List<Bullet> PlayerBullets { get; private set; }
         internal List<Bullet> EnemyBullets { get; private set; }
-
-        private ActorsFactory actorsFactory;
-        private TileWallsFactory tileWallsFactory;
-        private TileWrapper map;
+        
         private List<IActor> walls;
-        private List<TileWall> tileWalls;
-        private LevelData levelData;
+        private ICollidable[] tileWalls;
 
-        internal ActiveActorsStorage(ActorsFactory factory, TileWrapper map, LevelData levelData)
+        internal ActiveActorsStorage()
         {
-            this.actorsFactory = factory;
-            this.map = map;
-            this.tileWallsFactory = new TileWallsFactory(map);
-            this.map = map;
-            this.levelData = levelData;
         }
+
+        internal Boolean CurrentEnemyWaveDestroyed => !Enemies.Any();
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
@@ -53,7 +45,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal IEnumerable<ICollidable> GetWalls()
         {
-            return walls.OfType<ICollidable>().Concat(tileWalls.Cast<ICollidable>());
+            return walls.OfType<ICollidable>().Concat(tileWalls);
         }
 
         internal void SendDeadToHeaven()
@@ -63,50 +55,19 @@ namespace ExplainingEveryString.Core.GameModel
             Enemies = Enemies.Where(mine => mine.IsAlive()).ToList();
         }
 
-        internal void InitializeActors()
+        internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer)
         {
-            Player = actorsFactory.ConstructPlayer(Convert(levelData.PlayerPosition));
-            InitializeWalls();
-            InitializeTileWalls();
-            InitializeEnemies();
+            Player = actorsInitializer.InitializePlayer();
+            walls = actorsInitializer.InitializeWalls();
+            tileWalls = actorsInitializer.InitializeTileWalls();
+            Enemies = actorsInitializer.InitializeEnemies(0);
             PlayerBullets = new List<Bullet>();
             EnemyBullets = new List<Bullet>();
         }
 
-        private void InitializeWalls()
+        internal void GetNextEnemyWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
         {
-            walls = new List<IActor>();
-            foreach (String wallType in levelData.WallsTilePositions.Keys)
-            {
-                List<Vector2> wallPositions = levelData.WallsTilePositions[wallType]
-                    .Select(t => map.GetPosition(t)).ToList();
-                walls.AddRange(actorsFactory.ConstructWalls(wallType, wallPositions));
-            }
-        }
-
-        private void InitializeTileWalls()
-        {
-            tileWalls = tileWallsFactory.ConstructTileWalls().ToList();
-        }
-
-        private void InitializeEnemies()
-        {
-            Enemies = new List<IActor>();
-            foreach (String enemyType in levelData.EnemiesPositions.Keys)
-            {
-                IEnumerable<ActorStartInfo> enemiesPositions = levelData.EnemiesPositions[enemyType].Select(asi => Convert(asi));
-                Enemies.AddRange(actorsFactory.ConstructEnemies(enemyType, enemiesPositions));
-            }
-        }
-
-        private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo)
-        {
-            return new ActorStartInfo
-            {
-                Position = map.GetPosition(dataLayerStartInfo.TilePosition),
-                Angle = dataLayerStartInfo.Angle,
-                TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets
-            };
+            Enemies = actorsInitializer.InitializeEnemies(waveNumber);
         }
     }
 }

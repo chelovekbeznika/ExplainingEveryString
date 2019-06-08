@@ -18,41 +18,41 @@ namespace ExplainingEveryString.Core.GameModel
 
     internal class Level
     {
-        private ActiveActorsStorage activeActors;
+        private LevelState levelState;
         private CollisionsController collisionsController;
-        private ActorsFactory factory;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
         private Single gameTime = 0;
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
 
-        internal Vector2 PlayerPosition => activeActors.Player.Position;
+        internal Vector2 PlayerPosition => levelState.ActiveActors.Player.Position;
         internal event GameLost Lost;
 
         internal Level(ActorsFactory factory, TileWrapper map, 
             PlayerInputFactory playerInputFactory, LevelData levelData)
         {
-            this.factory = factory;
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
-            activeActors = new ActiveActorsStorage(factory, map, levelData);
-            activeActors.InitializeActors();
+            ActorsInitializer actorsInitializer = new ActorsInitializer(map, factory, levelData);
+            ActiveActorsStorage activeActors = new ActiveActorsStorage();
+            activeActors.InitializeActorsOnLevelStart(actorsInitializer);
+            this.levelState = new LevelState(activeActors, actorsInitializer, levelData);
             collisionsController = new CollisionsController(activeActors);
         }
 
         internal void Update(Single elapsedSeconds)
         {
-            foreach (IUpdatable updatable in activeActors.GetObjectsToUpdate())
+            foreach (IUpdatable updatable in levelState.ActiveActors.GetObjectsToUpdate())
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
-            activeActors.SendDeadToHeaven();
-            if (!activeActors.Player.IsAlive())
+            levelState.Update();
+            if (levelState.Lost)
                 Lost?.Invoke(this, EventArgs.Empty);
             gameTime += elapsedSeconds;
         }
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
-            return activeActors.GetObjectsToDraw();
+            return levelState.ActiveActors.GetObjectsToDraw();
         }
 
         internal IEnumerable<EpicEventArgs> CollectEpicEvents()
@@ -66,14 +66,14 @@ namespace ExplainingEveryString.Core.GameModel
         {
             Bullet bullet = args.Bullet;
             bullet.Update(args.FirstUpdateTime);
-            activeActors.PlayerBullets.Add(bullet);
+            levelState.ActiveActors.PlayerBullets.Add(bullet);
         }
 
         internal void EnemyShoot(Object sender, ShootEventArgs args)
         {
             Bullet bullet = args.Bullet;
             bullet.Update(args.FirstUpdateTime);
-            activeActors.EnemyBullets.Add(bullet);
+            levelState.ActiveActors.EnemyBullets.Add(bullet);
         }
 
         internal void EpicEventOccured(Object sender, EpicEventArgs epicEvent)
@@ -85,10 +85,11 @@ namespace ExplainingEveryString.Core.GameModel
         {
             return new InterfaceInfo
             {
-                Health = activeActors.Player.HitPoints,
-                MaxHealth = activeActors.Player.MaxHitPoints,
+                Health = levelState.ActiveActors.Player.HitPoints,
+                MaxHealth = levelState.ActiveActors.Player.MaxHitPoints,
                 GameTime = gameTime,
-                Enemies = activeActors.Enemies.Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
+                Enemies = levelState.ActiveActors.Enemies
+                            .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
                             .Select(e => GetInterfaceInfo(e, camera)).ToList()
             };
         }

@@ -61,8 +61,10 @@
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="Displaying\TiledMapDisplayer.cs" />
+    <Compile Include="GameModel\ActorsInitializer.cs" />
     <Compile Include="GameModel\ActorStartInfo.cs" />
     <Compile Include="GameModel\Enemies\ShadowEnemy.cs" />
+    <Compile Include="GameModel\LevelState.cs" />
     <Compile Include="GameModel\Movement\IMover.cs" />
     <Compile Include="GameModel\Movement\IMoveTargetSelector.cs" />
     <Compile Include="GameModel\Movement\Movers\AccelerationMover.cs" />
