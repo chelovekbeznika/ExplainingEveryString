@@ -1,13 +1,10 @@
 ﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
-using MonoGame.Extended.Tiled;
 using System;
 using System.Collections.Generic;
 using System.Linq;

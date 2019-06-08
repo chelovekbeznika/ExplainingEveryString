@@ -12,18 +12,21 @@ namespace ExplainingEveryString.Core.GameModel
     internal class ActiveActorsStorage
     {
         internal Player Player { get; private set; }
-        internal List<IActor> Enemies { get; private set; }
+        internal List<IActor> Enemies => currentWaveEnemies;
         internal List<Bullet> PlayerBullets { get; private set; }
         internal List<Bullet> EnemyBullets { get; private set; }
         
         private List<IActor> walls;
         private ICollidable[] tileWalls;
+        private List<IActor> currentWaveEnemies;
+        private Int32 maxEnemiesAtOnce;
+        private Queue<IActor> enemiesQueue;
 
         internal ActiveActorsStorage()
         {
         }
 
-        internal Boolean CurrentEnemyWaveDestroyed => !Enemies.Any();
+        internal Boolean CurrentEnemyWaveDestroyed => !Enemies.Any() && enemiesQueue.Count == 0;
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
@@ -48,11 +51,20 @@ namespace ExplainingEveryString.Core.GameModel
             return walls.OfType<ICollidable>().Concat(tileWalls);
         }
 
-        internal void SendDeadToHeaven()
+        internal void Update()
+        {
+            SendDeadToHeaven();
+            while (enemiesQueue.Count > 0 && currentWaveEnemies.Count < maxEnemiesAtOnce)
+            {
+                currentWaveEnemies.Add(enemiesQueue.Dequeue());
+            }
+        }
+
+        private void SendDeadToHeaven()
         {
             PlayerBullets = PlayerBullets.Where(bullet => bullet.IsAlive()).ToList();
             EnemyBullets = EnemyBullets.Where(bullet => bullet.IsAlive()).ToList();
-            Enemies = Enemies.Where(mine => mine.IsAlive()).ToList();
+            currentWaveEnemies = currentWaveEnemies.Where(mine => mine.IsAlive()).ToList();
         }
 
         internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer)
@@ -60,14 +72,15 @@ namespace ExplainingEveryString.Core.GameModel
             Player = actorsInitializer.InitializePlayer();
             walls = actorsInitializer.InitializeWalls();
             tileWalls = actorsInitializer.InitializeTileWalls();
-            Enemies = actorsInitializer.InitializeEnemies(0);
+            GetNextEnemyWave(actorsInitializer, 0);
             PlayerBullets = new List<Bullet>();
             EnemyBullets = new List<Bullet>();
         }
 
         internal void GetNextEnemyWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
         {
-            Enemies = actorsInitializer.InitializeEnemies(waveNumber);
+            (currentWaveEnemies, enemiesQueue) = actorsInitializer.InitializeEnemies(waveNumber);
+            maxEnemiesAtOnce = currentWaveEnemies.Count;
         }
     }
 }

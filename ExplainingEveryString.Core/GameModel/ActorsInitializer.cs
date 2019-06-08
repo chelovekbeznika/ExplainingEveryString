@@ -43,22 +43,20 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal Player InitializePlayer() => actorsFactory.ConstructPlayer(Convert(levelData.PlayerPosition));
 
-        internal List<IActor> InitializeEnemies(Int32 waveNumber)
+        internal ValueTuple<List<IActor>, Queue<IActor>> InitializeEnemies(Int32 waveNumber)
         {
             EnemyWave wave = levelData.EnemyWaves[waveNumber];
-            List<IActor> enemies = new List<IActor>();
-            foreach (String enemyType in wave.EnemiesPositions.Keys)
-            {
-                IEnumerable<ActorStartInfo> enemiesPositions = wave.EnemiesPositions[enemyType].Select(asi => Convert(asi));
-                enemies.AddRange(actorsFactory.ConstructEnemies(enemyType, enemiesPositions));
-            }
-            return enemies;
+            IEnumerable<ActorStartInfo> enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi));
+            IEnumerable<IActor> enemies = actorsFactory.ConstructEnemies(enemiesStartInfos);
+            return (new List<IActor>(enemies.Take(wave.MaxEnemiesAtOnce)), 
+                new Queue<IActor>(enemies.Skip(wave.MaxEnemiesAtOnce)));
         }
 
         private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo)
         {
             return new ActorStartInfo
             {
+                BlueprintType = dataLayerStartInfo.BlueprintType,
                 Position = map.GetPosition(dataLayerStartInfo.TilePosition),
                 Angle = dataLayerStartInfo.Angle,
                 TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets

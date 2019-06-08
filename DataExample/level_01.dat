@@ -1,6 +1,7 @@
 {
   "TileMap": "TileMaps/level_01",
   "PlayerPosition": {
+    "BlueprintType": "Player",
     "TilePosition": {
       "X": 38,
       "Y": 44
@@ -8,96 +9,120 @@
   },
   "EnemyWaves": [
     {
-      "EnemiesPositions": {
-        "Mine": [
-          {
-            "TilePosition": {
-              "X": "16",
-              "Y": "23"
-            },
-            "TrajectoryTargets": [
-              "0.0, -100.0",
-              "0.0, 0.0"
-            ]
-          },
-          {
-            "TilePosition": {
-              "X": 38,
-              "Y": 27
-            },
-            "TrajectoryTargets": [
-              "0.0, -100.0",
-              "0.0, 0.0"
-            ]
-          },
-          {
-            "TilePosition": {
-              "X": 9,
-              "Y": 43
-            },
-            "TrajectoryTargets": [
-              "0.0, 200.0",
-              "0.0, 0.0"
-            ]
-          },
-          {
-            "TilePosition": {
-              "X": 58,
-              "Y": 12
-            },
-            "TrajectoryTargets": [
-              "50.0, 50.0",
-              "100.0, 150.0",
-              "-200.0, 0.0",
-              "0.0, 0.0"
-            ]
+      "MaxEnemiesAtOnce": 1,
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter",
+          "TilePosition": {
+            "X": 11,
+            "Y": 18
           }
-        ],
-        "Helicopter": [
-          {
-            "TilePosition": {
-              "X": 5,
-              "Y": 5
-            },
-            "TrajectoryTargets": [
-              "-300.0, 0.0",
-              "300.0, 0.0"
-            ]
+        },
+        {
+          "BlueprintType": "Hunter",
+          "TilePosition": {
+            "X": 29,
+            "Y": 20
           }
-        ],
-        "TripleCannon": [
-          {
-            "TilePosition": {
-              "X": 13,
-              "Y": 69
-            },
-            "Angle": 90.0
+        },
+        {
+          "BlueprintType": "Hunter",
+          "TilePosition": {
+            "X": 38,
+            "Y": 10
           }
-        ],
-        "EvilEye": [
-          {
-            "TilePosition": {
-              "X": 55,
-              "Y": 60
-            },
-            "TrajectoryTargets": [
-              "100.0, 100.0"
-            ]
+        },
+        {
+          "BlueprintType": "Hunter",
+          "TilePosition": {
+            "X": 38,
+            "Y": 50
           }
-        ]
-      }
+        }
+      ]
     },
     {
-      "EnemiesPositions": {
-        "Hunter": [
-          {
-            "TilePosition": {
-              "X": 38,
-              "Y": 41
-            }
-          }
-        ]
-      }
+      "Enemies": [
+        {
+          "BlueprintType": "Mine",
+          "TilePosition": {
+            "X": "16",
+            "Y": "23"
+          },
+          "TrajectoryTargets": [
+            "0.0, -100.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine",
+          "TilePosition": {
+            "X": 38,
+            "Y": 27
+          },
+          "TrajectoryTargets": [
+            "0.0, -100.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine",
+          "TilePosition": {
+            "X": 9,
+            "Y": 43
+          },
+          "TrajectoryTargets": [
+            "0.0, 200.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine",
+          "TilePosition": {
+            "X": 58,
+            "Y": 12
+          },
+          "TrajectoryTargets": [
+            "50.0, 50.0",
+            "100.0, 150.0",
+            "-200.0, 0.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 5,
+            "Y": 5
+          },
+          "TrajectoryTargets": [
+            "-300.0, 0.0",
+            "300.0, 0.0"
+          ]
+        }
+      ]
+    },
+    {
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon",
+          "TilePosition": {
+            "X": 13,
+            "Y": 69
+          },
+          "Angle": 90.0
+        },
+        {
+          "BlueprintType": "EvilEye",
+          "TilePosition": {
+            "X": 55,
+            "Y": 60
+          },
+          "TrajectoryTargets": [
+            "100.0, 100.0"
+          ]
+        }
+      ]
     }
   ],
   "WallsTilePositions": {

@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Update()
         {
-            ActiveActors.SendDeadToHeaven();
+            ActiveActors.Update();
             if (ActiveActors.CurrentEnemyWaveDestroyed && !Won)
             {
                 currentEnemyWaveNumber += 1;
