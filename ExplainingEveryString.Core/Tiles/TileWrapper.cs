@@ -10,33 +10,34 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.Tiles
 {
-    internal class TileUtility
+    internal class TileWrapper
     {
-        private TiledMap map;
+        internal TiledMap TiledMap { get; }
+        internal Int32 MapHeight => TiledMap.Height * TiledMap.TileHeight;
 
-        internal TileUtility(TiledMap map)
+        internal TileWrapper(TiledMap map)
         {
-            this.map = map;
+            this.TiledMap = map;
         }
 
         internal Vector2 GetPosition(PositionOnTileMap tilePosition)
         {
-            Vector2 upperLeftCorner = new Vector2 { X = tilePosition.X * map.TileWidth, Y = -tilePosition.Y * map.TileWidth };
-            Vector2 center = upperLeftCorner + new Vector2 { X = map.TileWidth / 2, Y = -map.TileHeight / 2 };
+            Vector2 upperLeftCorner = TileCoordinatesToLevelCoordinates(tilePosition.X, tilePosition.Y);
+            Vector2 center = upperLeftCorner + new Vector2 { X = TiledMap.TileWidth / 2, Y = -TiledMap.TileHeight / 2 };
             return center + tilePosition.Offset;
         }
 
         internal List<Point> GetWallTiles()
         {
             List<Point> result = new List<Point>();
-            TiledMapTileLayer wallsLayer = map.TileLayers.First(tl => tl.Name == "Walls");
-            foreach (Int32 row in Enumerable.Range(0, map.Height))
-                foreach (Int32 column in Enumerable.Range(0, map.Width))
+            TiledMapTileLayer wallsLayer = TiledMap.TileLayers.First(tl => tl.Name == "Walls");
+            foreach (Int32 row in Enumerable.Range(0, TiledMap.Height))
+                foreach (Int32 column in Enumerable.Range(0, TiledMap.Width))
                 {
                     if (wallsLayer.TryGetTile(column, row, out TiledMapTile? wallTile))
                     {
                         Int32 tileId = wallTile.Value.GlobalIdentifier;
-                        if (IsWall(map, tileId))
+                        if (IsWall(TiledMap, tileId))
                             result.Add(new Point { X = column, Y = row });
                     }
                 }
@@ -61,17 +62,22 @@ namespace ExplainingEveryString.Core.Tiles
 
         internal Hitbox GetHitbox(Rectangle wall)
         {
-            Vector2 hitboxUpperLeftCorner = new Vector2
-            {
-                X = wall.X * map.TileWidth,
-                Y = -wall.Y * map.TileHeight
-            };
+            Vector2 hitboxUpperLeftCorner = TileCoordinatesToLevelCoordinates(wall.X, wall.Y);
             return new Hitbox
             {
                 Top = hitboxUpperLeftCorner.Y,
-                Bottom = hitboxUpperLeftCorner.Y - map.TileHeight * wall.Height,
+                Bottom = hitboxUpperLeftCorner.Y - TiledMap.TileHeight * wall.Height,
                 Left = hitboxUpperLeftCorner.X,
-                Right = hitboxUpperLeftCorner.X + map.TileWidth * wall.Width
+                Right = hitboxUpperLeftCorner.X + TiledMap.TileWidth * wall.Width
+            };
+        }
+
+        private Vector2 TileCoordinatesToLevelCoordinates(Int32 x, Int32 y)
+        {
+            return new Vector2
+            {
+                X = x * TiledMap.TileWidth,
+                Y = MapHeight - y * TiledMap.TileHeight
             };
         }
     }

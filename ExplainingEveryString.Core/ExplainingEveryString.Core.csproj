@@ -76,7 +76,7 @@
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFlight.cs" />
     <Compile Include="GameModel\TileWall.cs" />
     <Compile Include="GameModel\TileWallsFactory.cs" />
-    <Compile Include="Tiles\TileUtility.cs" />
+    <Compile Include="Tiles\TileWrapper.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\FixedAimer.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\PlayerAimer.cs" />

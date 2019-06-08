@@ -2,6 +2,7 @@
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
+using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
@@ -22,7 +23,7 @@ namespace ExplainingEveryString.Core
         private String levelFileName;
         private LevelData levelData;
         private EesGame eesGame;
-        private TiledMap map;
+        private TileWrapper map;
         private TiledMapDisplayer mapDisplayer;
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
@@ -39,7 +40,7 @@ namespace ExplainingEveryString.Core
             ActorsFactory factory = new ActorsFactory(blueprintsLoader);
             ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
             this.levelData = levelLoader.Load(levelFileName);
-            map = eesGame.Content.Load<TiledMap>(levelData.TileMap);
+            map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
             level = new Level(factory, map, new PlayerInputFactory(this), levelData);
             level.Lost += eesGame.GameLost;
             base.Initialize();

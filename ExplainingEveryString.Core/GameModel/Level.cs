@@ -3,6 +3,7 @@ using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
+using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
@@ -27,7 +28,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal Vector2 PlayerPosition => activeActors.Player.Position;
         internal event GameLost Lost;
 
-        internal Level(ActorsFactory factory, TiledMap map, 
+        internal Level(ActorsFactory factory, TileWrapper map, 
             PlayerInputFactory playerInputFactory, LevelData levelData)
         {
             this.factory = factory;

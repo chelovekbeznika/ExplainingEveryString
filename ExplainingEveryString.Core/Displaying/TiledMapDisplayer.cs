@@ -14,11 +14,11 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class TiledMapDisplayer
     {
-        private TiledMap map;
+        private TileWrapper map;
         private TiledMapRenderer renderer;
         private Camera camera;
 
-        internal TiledMapDisplayer(TiledMap map, EesGame eesGame, Camera camera)
+        internal TiledMapDisplayer(TileWrapper map, EesGame eesGame, Camera camera)
         {
             this.map = map;
             this.renderer = new TiledMapRenderer(eesGame.GraphicsDevice);
@@ -27,14 +27,14 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void Update(GameTime gameTime)
         {
-            renderer.Update(map, gameTime);
+            renderer.Update(map.TiledMap, gameTime);
         }
 
         internal void Draw()
         {
-            Vector2 renderPosition = camera.ConvertToScreenPosition(new Vector2(0, 0));
+            Vector2 renderPosition = camera.ConvertToScreenPosition(new Vector2(0, map.MapHeight));
             Matrix viewMatrix = Matrix.CreateTranslation(renderPosition.X, renderPosition.Y, 0);
-            renderer.Draw(map, viewMatrix, null);
+            renderer.Draw(map.TiledMap, viewMatrix, null);
         }
     }
 }

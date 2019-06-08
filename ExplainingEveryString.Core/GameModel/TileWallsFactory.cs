@@ -11,19 +11,19 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class TileWallsFactory
     {
-        private TileUtility utility;
+        private TileWrapper map;
         private WallsOptimizer wallsOptimizer = new WallsOptimizer();
 
-        internal TileWallsFactory(TiledMap map)
+        internal TileWallsFactory(TileWrapper map)
         {
-            this.utility = new TileUtility(map);
+            this.map = map;
         }
 
         internal IEnumerable<TileWall> ConstructTileWalls()
         {
-            List<Point> wallsTiles = utility.GetWallTiles();
+            List<Point> wallsTiles = map.GetWallTiles();
             List<Rectangle> walls = wallsOptimizer.GetWalls(wallsTiles);
-            return walls.Select(w => new TileWall(utility.GetHitbox(w)));
+            return walls.Select(w => new TileWall(map.GetHitbox(w)));
         }
     }
 }

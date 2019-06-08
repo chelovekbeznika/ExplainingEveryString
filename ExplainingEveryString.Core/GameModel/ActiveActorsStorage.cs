@@ -19,16 +19,17 @@ namespace ExplainingEveryString.Core.GameModel
 
         private ActorsFactory actorsFactory;
         private TileWallsFactory tileWallsFactory;
-        private TileUtility tileUtility;
+        private TileWrapper map;
         private List<IActor> walls;
         private List<TileWall> tileWalls;
         private LevelData levelData;
 
-        internal ActiveActorsStorage(ActorsFactory factory, TiledMap map, LevelData levelData)
+        internal ActiveActorsStorage(ActorsFactory factory, TileWrapper map, LevelData levelData)
         {
             this.actorsFactory = factory;
+            this.map = map;
             this.tileWallsFactory = new TileWallsFactory(map);
-            this.tileUtility = new TileUtility(map);
+            this.map = map;
             this.levelData = levelData;
         }
 
@@ -78,7 +79,7 @@ namespace ExplainingEveryString.Core.GameModel
             foreach (String wallType in levelData.WallsTilePositions.Keys)
             {
                 List<Vector2> wallPositions = levelData.WallsTilePositions[wallType]
-                    .Select(t => tileUtility.GetPosition(t)).ToList();
+                    .Select(t => map.GetPosition(t)).ToList();
                 walls.AddRange(actorsFactory.ConstructWalls(wallType, wallPositions));
             }
         }
@@ -102,7 +103,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             return new ActorStartInfo
             {
-                Position = tileUtility.GetPosition(dataLayerStartInfo.TilePosition),
+                Position = map.GetPosition(dataLayerStartInfo.TilePosition),
                 Angle = dataLayerStartInfo.Angle,
                 TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets
             };
