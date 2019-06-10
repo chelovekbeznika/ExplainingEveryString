@@ -29,7 +29,8 @@ namespace ExplainingEveryString.Core.GameModel
         private void CheckEnemiesForCrashingIntoPlayer()
         {
             Player player = activeObjects.Player;
-            foreach (ICrashable crashable in activeObjects.Enemies.OfType<ICrashable>())
+            foreach (ICrashable crashable in activeObjects.Enemies.OfType<ICrashable>()
+                .Where(c => c.Mode == CollidableMode.Solid))
             {
                 if (collisionsChecker.Collides(crashable.GetCurrentHitbox(), player.GetCurrentHitbox()))
                 {
@@ -43,7 +44,8 @@ namespace ExplainingEveryString.Core.GameModel
         {
             AdjustObjectToWalls(activeObjects.Player, null, null);
 
-            IEnumerable<ICollidable> enemies = activeObjects.Enemies.OfType<ICollidable>().ToArray();
+            IEnumerable<ICollidable> enemies = activeObjects.Enemies.OfType<ICollidable>()
+                .Where(c => c.Mode == CollidableMode.Solid).ToArray();
             IEnumerable<ICollidable> movingEnemies = enemies.Where(CollidableIsMoving).ToArray();
             List<ICollidable> stoppedEnemies = new List<ICollidable>();
             foreach (ICollidable movingEnemy in movingEnemies)
@@ -80,7 +82,7 @@ namespace ExplainingEveryString.Core.GameModel
             Hitbox oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
             Vector2 savedMovingObjectPosition = movingObject.Position;
             ICollidable touchingToCorner = null;
-            foreach (ICollidable wall in activeObjects.GetWalls())
+            foreach (ICollidable wall in activeObjects.GetWalls().Where(c => c.Mode == CollidableMode.Solid))
             {
                 Vector2? wallCorrection;
                 Boolean ridingIntoCorner;
@@ -119,7 +121,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void CheckBulletForCollisions(Bullet bullet, IEnumerable<ICollidable> collidables)
         {
-            foreach (ICollidable collidable in collidables)
+            foreach (ICollidable collidable in collidables.Where(c => c.Mode == CollidableMode.Solid))
             {
                 Hitbox hitbox = collidable is ITouchableByBullets
                     ? (collidable as ITouchableByBullets).GetBulletsHitbox()

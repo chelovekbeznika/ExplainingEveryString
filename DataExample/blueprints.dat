@@ -18,6 +18,11 @@
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Mine"
     },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/16_16",
+      "AnimationCycle": 0.2
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
     "ShadowSprite": {
       "Name": "Sprites/Enemies/MineInShadow"
     },
@@ -31,10 +36,10 @@
         "AnimationCycle": 0.5
       }
     },
-    "PhaseChangeEffect" : {
+    "PhaseChangeEffect": {
       "Sound": {
         "Name": "Sounds/ShadowPhaseChange",
-        "Volume": 0.25, 
+        "Volume": 0.25,
         "FadingCoeff": 0.33333
       },
       "Sprite": {
@@ -66,7 +71,12 @@
         "Name": "Sounds/Explosion_01",
         "Volume": 0.2
       }
-    }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/16_16",
+      "AnimationCycle": 0.15
+    },
+    "DefaultAppearancePhaseDuration": 1.0
   },
   "FixedCannon": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
@@ -87,6 +97,11 @@
         "AnimationCycle": 0.4
       }
     },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
     "Mover": {
       "Type": "Linear",
       "Parameters": {
@@ -142,6 +157,11 @@
         "AnimationCycle": 0.33
       }
     },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/16_16",
+      "AnimationCycle": 0.2
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
     "Mover": {
       "Type": "Linear",
       "Parameters": {
@@ -225,6 +245,11 @@
         "AnimationCycle": 0.4
       }
     },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.3333333
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
     "Mover": {
       "Type": "Acceleration",
       "Parameters": {
@@ -287,6 +312,11 @@
         "AnimationCycle": 0.4
       }
     },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
     "Weapon": {
       "FireRate": 0.666666667,
       "Barrels": [

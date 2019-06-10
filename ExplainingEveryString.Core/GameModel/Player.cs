@@ -13,7 +13,8 @@ namespace ExplainingEveryString.Core.GameModel
     internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets, IInterfaceAccessable
     {
         private event EventHandler<EpicEventArgs> DamageTaken;
-        
+
+        public Boolean ShowInterfaceInfo => false;
         public Single MaxHitPoints { get; private set; }
 
         private Vector2 speed = new Vector2(0, 0);

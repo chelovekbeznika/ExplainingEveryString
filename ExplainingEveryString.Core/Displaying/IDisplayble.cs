@@ -20,5 +20,6 @@ namespace ExplainingEveryString.Core.Displaying
     {
         Single HitPoints { get; }
         Single MaxHitPoints { get; }
+        Boolean ShowInterfaceInfo { get; }
     }
 }

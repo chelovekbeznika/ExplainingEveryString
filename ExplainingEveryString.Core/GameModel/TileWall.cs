@@ -20,6 +20,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         public Vector2 OldPosition => GetHitboxCenter();
 
+        public CollidableMode Mode => CollidableMode.Solid;
+
         public Hitbox GetCurrentHitbox()
         {
             return hitbox;

@@ -64,6 +64,7 @@
     <Compile Include="GameModel\ActorsInitializer.cs" />
     <Compile Include="GameModel\ActorStartInfo.cs" />
     <Compile Include="GameModel\Enemies\ShadowEnemy.cs" />
+    <Compile Include="GameModel\ICollidable.cs" />
     <Compile Include="GameModel\LevelState.cs" />
     <Compile Include="GameModel\Movement\IMover.cs" />
     <Compile Include="GameModel\Movement\IMoveTargetSelector.cs" />

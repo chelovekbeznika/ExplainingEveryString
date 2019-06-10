@@ -87,7 +87,7 @@ namespace ExplainingEveryString.Core.GameModel
                 GameTime = gameTime,
                 Enemies = levelState.ActiveActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
-                            .Select(e => GetInterfaceInfo(e, camera)).ToList()
+                            .Where(e => e.ShowInterfaceInfo).Select(e => GetInterfaceInfo(e, camera)).ToList()
             };
         }
 

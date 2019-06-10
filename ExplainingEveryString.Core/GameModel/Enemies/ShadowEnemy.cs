@@ -17,17 +17,16 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Single phaseCountingTime = 0;
 
         private SpriteState shadowSprite;
-        private SpriteState activeSprite;
         private Single activeTime;
         private Single shadowTime;
         private SpecEffectSpecification phaseChangeSpecEffect;
 
-        public override SpriteState SpriteState => !inShadow ? activeSprite : shadowSprite;
+        public override SpriteState SpriteState => !inShadow ? base.SpriteState : shadowSprite;
+        public override CollidableMode Mode => !inShadow ? base.Mode : CollidableMode.Ghost;
 
         protected override void Construct(ShadowEnemyBlueprint blueprint, ActorStartInfo startInfo, Level level)
         {
             base.Construct(blueprint, startInfo, level);
-            this.activeSprite = new SpriteState(blueprint.DefaultSprite);
             this.shadowSprite = new SpriteState(blueprint.ShadowSprite);
             this.activeTime = blueprint.ActiveTime;
             this.shadowTime = blueprint.ShadowTime;
@@ -35,19 +34,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.PhaseChanged += level.EpicEventOccured;
         }
 
-        public override void TakeDamage(Single damage)
-        {
-            if (!inShadow)
-                base.TakeDamage(damage);
-        }
-
         public override void Update(Single elapsedSeconds)
         {
-            UpdatePhase(elapsedSeconds);
+            if (!IsInAppearancePhase)
+                UpdateShadowPhase(elapsedSeconds);
             base.Update(elapsedSeconds);
         }
 
-        private void UpdatePhase(Single elapsedSeconds)
+        private void UpdateShadowPhase(Single elapsedSeconds)
         {
             phaseCountingTime += elapsedSeconds;
             Single currentPhaseTimeToLive = inShadow ? shadowTime : activeTime;

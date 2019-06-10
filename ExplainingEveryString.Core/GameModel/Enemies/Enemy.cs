@@ -21,7 +21,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Weapon weapon;
         private Single startAngle;
 
+        private Single appearancePhaseRemained;
+        private SpriteState appearanceSprite;
+
+        internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Math.Constants.Epsilon;
+        public override SpriteState SpriteState => IsInAppearancePhase ? appearanceSprite : base.SpriteState;
+        public override CollidableMode Mode => IsInAppearancePhase ? CollidableMode.Ghost : base.Mode;
         public Single CollisionDamage { get; set; }
+       
         protected IMoveTargetSelector MoveTargetSelector { private get; set; }
         protected IMover Mover { private get; set; }
         protected Func<Vector2> PlayerLocator { get; private set; }
@@ -47,8 +54,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 }
             }
         }
-
+        
         public Single MaxHitPoints { get; private set; }
+        public virtual Boolean ShowInterfaceInfo => !IsInAppearancePhase;
 
         protected override void PlaceOnLevel(ActorStartInfo startInfo)
         {
@@ -64,6 +72,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.CollisionDamage = blueprint.CollisionDamage;
             this.deathEffect = blueprint.DeathEffect;
             this.Death += level.EpicEventOccured;
+            this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite);
+            this.appearancePhaseRemained = blueprint.DefaultAppearancePhaseDuration;
             ConstructMovement(blueprint, startInfo);
             ConstructWeaponry(blueprint, startInfo, level);
         }
@@ -95,8 +105,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         public override void Update(Single elapsedSeconds)
         {
-            Move(elapsedSeconds);
-            UseWeapon(elapsedSeconds);
+            if (IsInAppearancePhase)
+                appearancePhaseRemained -= elapsedSeconds;
+            else
+            {
+                Move(elapsedSeconds);
+                UseWeapon(elapsedSeconds);
+            }
             base.Update(elapsedSeconds);
         }
 

@@ -9,7 +9,7 @@
   },
   "EnemyWaves": [
     {
-      "MaxEnemiesAtOnce": 1,
+      "MaxEnemiesAtOnce": 2,
       "Enemies": [
         {
           "BlueprintType": "Hunter",

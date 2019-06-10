@@ -22,6 +22,8 @@ namespace ExplainingEveryString.Data.Blueprints
         public MoveTargetSelectType MoveTargetSelectType { get; set; }
         public WeaponSpecification Weapon { get; set; }
         public SpecEffectSpecification DeathEffect { get; set; }
+        public SpriteSpecification AppearancePhaseSprite { get; set; }
+        public Single DefaultAppearancePhaseDuration { get; set; }
 
         internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
         {
@@ -33,10 +35,9 @@ namespace ExplainingEveryString.Data.Blueprints
 
         internal override IEnumerable<SpriteSpecification> GetSprites()
         {
-            if (Weapon != null)
-                return base.GetSprites().Concat(Weapon.GetSprites());
-            else
-                return base.GetSprites();
+            IEnumerable<SpriteSpecification> sprites = 
+                base.GetSprites().Concat( new SpriteSpecification[] { AppearancePhaseSprite});
+            return Weapon != null ? sprites.Concat(Weapon.GetSprites()) : sprites;
         }
     }
 }
