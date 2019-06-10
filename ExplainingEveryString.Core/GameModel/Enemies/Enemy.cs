@@ -73,7 +73,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.deathEffect = blueprint.DeathEffect;
             this.Death += level.EpicEventOccured;
             this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite);
-            this.appearancePhaseRemained = blueprint.DefaultAppearancePhaseDuration;
+            this.appearancePhaseRemained = startInfo.AppearancePhaseDuration > 0 
+                ? startInfo.AppearancePhaseDuration
+                : blueprint.DefaultAppearancePhaseDuration;
             ConstructMovement(blueprint, startInfo);
             ConstructWeaponry(blueprint, startInfo, level);
         }

@@ -20,6 +20,7 @@
         },
         {
           "BlueprintType": "Hunter",
+          "AppearancePhaseDuration": 10.0,
           "TilePosition": {
             "X": 29,
             "Y": 20

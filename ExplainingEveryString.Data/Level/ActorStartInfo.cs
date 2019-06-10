@@ -16,5 +16,7 @@ namespace ExplainingEveryString.Data.Level
         public Single Angle { get; set; }
         [DefaultValue(null)]
         public List<Vector2> TrajectoryTargets { get; set; }
+        [DefaultValue(0)]
+        public Single AppearancePhaseDuration { get; set; }
     }
 }

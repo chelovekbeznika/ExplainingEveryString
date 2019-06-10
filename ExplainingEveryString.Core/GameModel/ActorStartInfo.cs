@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,5 +14,6 @@ namespace ExplainingEveryString.Core.GameModel
         public Vector2 Position { get; set; }
         public Single Angle { get; set; }
         public List<Vector2> TrajectoryTargets { get; set; }
+        public Single AppearancePhaseDuration { get; set; }
     }
 }

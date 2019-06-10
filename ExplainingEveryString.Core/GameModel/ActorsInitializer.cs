@@ -59,7 +59,8 @@ namespace ExplainingEveryString.Core.GameModel
                 BlueprintType = dataLayerStartInfo.BlueprintType,
                 Position = map.GetPosition(dataLayerStartInfo.TilePosition),
                 Angle = dataLayerStartInfo.Angle,
-                TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets
+                TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets,
+                AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration
             };
         }
     }
