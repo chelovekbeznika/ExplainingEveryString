@@ -52,13 +52,18 @@ namespace ExplainingEveryString.Core.Interface
             Vector2 healthBarPosition = new Vector2
             {
                 X = PositionOnScreen.Center.X + pixelsToCutX,
-                Y = PositionOnScreen.Top - pixelsBetweenEnemyAndHealthBar - healthBar.Height / 2 + pixelsToCutY
+                Y = PositionOnScreen.Top - YHealthBarGap(pixelsToCutY)
             };
             if (healthBarPosition.Y <= 0)
             {
-                healthBarPosition.Y += pixelsBetweenEnemyAndHealthBar * 2 + PositionOnScreen.Height;
+                healthBarPosition.Y = PositionOnScreen.Bottom + YHealthBarGap(pixelsToCutY);
             }
             return healthBarPosition;
+        }
+
+        private Int32 YHealthBarGap(Int32 pixelsToCutY)
+        {
+            return pixelsBetweenEnemyAndHealthBar + healthBar.Height / 2 - pixelsToCutY;
         }
     }
 }
