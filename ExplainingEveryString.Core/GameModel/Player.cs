@@ -58,11 +58,7 @@ namespace ExplainingEveryString.Core.GameModel
         public override void TakeDamage(Single damage)
         {
             base.TakeDamage(damage);
-            DamageTaken?.Invoke(this, new EpicEventArgs
-            {
-                Position = this.Position,
-                SpecEffectSpecification = damageEffect
-            });
+            DamageTaken?.Invoke(this, StandardEpicEvent(damageEffect));
         }
 
         private Vector2 GetCurrentSpeed(Single elapsedSeconds)

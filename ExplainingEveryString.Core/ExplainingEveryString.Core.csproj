@@ -60,6 +60,7 @@
     <Compile Include="AssetsStorage.cs" />
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
+    <Compile Include="Displaying\OneTimeEpicEvent.cs" />
     <Compile Include="Displaying\TiledMapDisplayer.cs" />
     <Compile Include="GameModel\ActorsInitializer.cs" />
     <Compile Include="GameModel\ActorStartInfo.cs" />

@@ -16,8 +16,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
     internal class Enemy<TBlueprint> : Actor<TBlueprint>, IInterfaceAccessable, ICrashable, ITouchableByBullets, IMultiPartDisplayble 
         where TBlueprint : EnemyBlueprint
     {
-        internal event EventHandler<EpicEventArgs> Death;
-        private Boolean deathHandled = false;
+        private OneTimeEpicEvent death;
+        internal OneTimeEpicEvent beforeAppearance;
+        internal OneTimeEpicEvent afterAppearance;
         private Weapon weapon;
         private Single startAngle;
 
@@ -34,8 +35,6 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         protected Func<Vector2> PlayerLocator { get; private set; }
         protected Vector2 PlayerPosition => PlayerLocator();
 
-        private SpecEffectSpecification deathEffect;
-
         public override Single HitPoints
         {
             get => base.HitPoints;
@@ -44,13 +43,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 base.HitPoints = value;
                 if (value < Constants.Epsilon)
                 {
-                    if (!deathHandled)
-                        Death?.Invoke(this, new EpicEventArgs
-                        {
-                            Position = this.Position,
-                            SpecEffectSpecification = deathEffect
-                        });
-                    deathHandled = true;
+                    death.TryHandle();
                 }
             }
         }
@@ -70,8 +63,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             base.Construct(blueprint, startInfo, level);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
-            this.deathEffect = blueprint.DeathEffect;
-            this.Death += level.EpicEventOccured;
+            this.death = new OneTimeEpicEvent(level, blueprint.DeathEffect, this);
+            this.afterAppearance = new OneTimeEpicEvent(level, blueprint.AfterAppearanceEffect, this);
+            this.beforeAppearance = new OneTimeEpicEvent(level, blueprint.BeforeAppearanceEffect, this);
             this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite);
             this.appearancePhaseRemained = startInfo.AppearancePhaseDuration > 0 
                 ? startInfo.AppearancePhaseDuration
@@ -108,9 +102,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public override void Update(Single elapsedSeconds)
         {
             if (IsInAppearancePhase)
+            {
                 appearancePhaseRemained -= elapsedSeconds;
+                beforeAppearance.TryHandle();
+            }   
             else
             {
+                afterAppearance.TryHandle();
                 Move(elapsedSeconds);
                 UseWeapon(elapsedSeconds);
             }

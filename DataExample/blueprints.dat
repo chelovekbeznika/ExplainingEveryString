@@ -72,6 +72,18 @@
         "Volume": 0.2
       }
     },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/ShadowPhaseChange",
+        "Volume": 0.2
+      }
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/ShadowPhaseChange",
+        "Volume": 0.5
+      }
+    },
     "AppearancePhaseSprite": {
       "Name": "Sprites/Enemies/Appearance/16_16",
       "AnimationCycle": 0.15

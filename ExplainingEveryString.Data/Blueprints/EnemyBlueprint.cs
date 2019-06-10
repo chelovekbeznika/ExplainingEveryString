@@ -22,6 +22,10 @@ namespace ExplainingEveryString.Data.Blueprints
         public MoveTargetSelectType MoveTargetSelectType { get; set; }
         public WeaponSpecification Weapon { get; set; }
         public SpecEffectSpecification DeathEffect { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification BeforeAppearanceEffect { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification AfterAppearanceEffect { get; set; }
         public SpriteSpecification AppearancePhaseSprite { get; set; }
         public Single DefaultAppearancePhaseDuration { get; set; }
 

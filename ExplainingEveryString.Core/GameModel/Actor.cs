@@ -4,6 +4,7 @@ using System;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Level;
+using ExplainingEveryString.Data.Specifications;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -92,6 +93,15 @@ namespace ExplainingEveryString.Core.GameModel
                 Top = center.Y + Height / 2,
                 Left = center.X - Width / 2,
                 Right = center.X + Width / 2
+            };
+        }
+
+        protected EpicEventArgs StandardEpicEvent(SpecEffectSpecification specEffectSpecification)
+        {
+            return new EpicEventArgs
+            {
+                Position = this.Position,
+                SpecEffectSpecification = specEffectSpecification
             };
         }
     }

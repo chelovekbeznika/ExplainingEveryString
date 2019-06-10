@@ -55,11 +55,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private void ChangePhase()
         {
             inShadow = !inShadow;
-            PhaseChanged?.Invoke(this, new EpicEventArgs
-            {
-                Position = this.Position,
-                SpecEffectSpecification = phaseChangeSpecEffect
-            });
+            PhaseChanged?.Invoke(this, StandardEpicEvent(phaseChangeSpecEffect));
         }
     }
 }
