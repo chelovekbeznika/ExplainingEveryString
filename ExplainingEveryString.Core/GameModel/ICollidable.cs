@@ -28,5 +28,5 @@ namespace ExplainingEveryString.Core.GameModel
         void Destroy();
     }
 
-    internal enum CollidableMode { Solid, Ghost }
+    internal enum CollidableMode { Solid, Shadow, Ghost }
 }

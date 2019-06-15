@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private SpecEffectSpecification phaseChangeSpecEffect;
 
         public override SpriteState SpriteState => !inShadow ? base.SpriteState : shadowSprite;
-        public override CollidableMode Mode => !inShadow ? base.Mode : CollidableMode.Ghost;
+        public override CollidableMode Mode => !inShadow ? base.Mode : CollidableMode.Shadow;
 
         protected override void Construct(ShadowEnemyBlueprint blueprint, ActorStartInfo startInfo, Level level)
         {
