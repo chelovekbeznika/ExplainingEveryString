@@ -13,6 +13,7 @@ namespace ExplainingEveryString.Core.Displaying
         private Single screenHeight;
         private Vector2 cameraCenter;
         private Vector2 playerPositionOnScreen { get; }
+        private Single cameraMoveSpeed;
       
         internal Vector2 CameraOffset => cameraCenter - screenHalf;
         internal Vector2 PlayerPositionOnScreen
@@ -38,19 +39,41 @@ namespace ExplainingEveryString.Core.Displaying
                 X = screenHalf.X * playerFramePercentageWidth / 100,
                 Y = screenHalf.Y * playerFramePercentageHeight / 100
             };
+            this.cameraMoveSpeed = CalculateCameraMoveSpeed(1.5F);
         }
 
-        internal void Update()
+        internal void Update(Single elapsedSeconds)
         {
-            Vector2 currentDifference = level.PlayerPosition - cameraCenter;
-            if (currentDifference.X > playerFrame.X)
-                cameraCenter.X += currentDifference.X - playerFrame.X;
-            if (currentDifference.X < -playerFrame.X)
-                cameraCenter.X += currentDifference.X + playerFrame.X;
-            if (currentDifference.Y > playerFrame.Y)
-                cameraCenter.Y += currentDifference.Y - playerFrame.Y;
-            if (currentDifference.Y < -playerFrame.Y)
-                cameraCenter.Y += currentDifference.Y + playerFrame.Y;
+            Vector2 desiredCenter = CalculateDesiredCenter();
+            Single maxFrameCameraMove = cameraMoveSpeed * elapsedSeconds;
+            if ((desiredCenter - cameraCenter).Length() < maxFrameCameraMove)
+                cameraCenter = desiredCenter;
+            else
+            {
+                Vector2 normalizedCameraMoveDirection = (desiredCenter - cameraCenter);
+                normalizedCameraMoveDirection.Normalize();
+                cameraCenter += normalizedCameraMoveDirection * maxFrameCameraMove;
+            }
+        }
+
+        private Vector2 CalculateDesiredCenter()
+        {
+            Vector2 screenFrameArrow = -level.PlayerFireDirection;
+            Single targetXPosition = screenFrameArrow.X < 0 ? -playerFrame.X : playerFrame.X;
+            Single targetYPosition = screenFrameArrow.Y < 0 ? -playerFrame.Y : playerFrame.Y;
+            Single distanceToFrameX = targetYPosition / screenFrameArrow.Y;
+            Single distanceToFrameY = targetXPosition / screenFrameArrow.X;
+            Vector2 desiredPlayerPositionRelativeToCenter =
+                (!Single.IsInfinity(distanceToFrameX) && distanceToFrameX < distanceToFrameY) || Single.IsInfinity(distanceToFrameY)
+                    ? screenFrameArrow * distanceToFrameX
+                    : screenFrameArrow * distanceToFrameY;
+            return level.PlayerPosition - desiredPlayerPositionRelativeToCenter;
+        }
+
+        private Single CalculateCameraMoveSpeed(Single timeFromAngleToAngle)
+        {
+            Single distanceFromAngleToAngle = playerFrame.Length() * 2;
+            return distanceFromAngleToAngle / timeFromAngleToAngle;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         public Boolean ShowInterfaceInfo => false;
         public Single MaxHitPoints { get; private set; }
+        internal Vector2 FireDirection => input.GetFireDirection();
 
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;

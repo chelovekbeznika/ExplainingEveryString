@@ -6,7 +6,7 @@ namespace ExplainingEveryString.Core.Input
 {
     internal class GamePadPlayerInput : PlayerInput
     {
-        private Vector2 lastDirection = new Vector2(1, 0);
+        private Vector2 lastDirection = new Vector2(0, 1);
 
         public override Vector2 GetMoveDirection()
         {

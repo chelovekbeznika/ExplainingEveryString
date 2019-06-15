@@ -115,9 +115,9 @@ namespace ExplainingEveryString.Core.Displaying
         
         }
 
-        internal void Update()
+        internal void Update(Single elapsedSeconds)
         {
-            objectGlass.Update();
+            objectGlass.Update(elapsedSeconds);
         }
     }
 }

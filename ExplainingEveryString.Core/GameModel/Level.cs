@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
 
         internal Vector2 PlayerPosition => levelState.ActiveActors.Player.Position;
+        internal Vector2 PlayerFireDirection => levelState.ActiveActors.Player.FireDirection;
         internal event GameLost Lost;
 
         internal Level(ActorsFactory factory, TileWrapper map, 

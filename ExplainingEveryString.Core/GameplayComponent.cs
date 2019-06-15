@@ -59,7 +59,7 @@ namespace ExplainingEveryString.Core
         {
             Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
             level.Update(elapsedSeconds);
-            Camera.Update();
+            Camera.Update(elapsedSeconds);
             mapDisplayer.Update(gameTime);
             EpicEventsProcessor.Update(elapsedSeconds);
             base.Update(gameTime);
