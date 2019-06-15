@@ -39,7 +39,7 @@ namespace ExplainingEveryString.Core.Displaying
                 X = screenHalf.X * playerFramePercentageWidth / 100,
                 Y = screenHalf.Y * playerFramePercentageHeight / 100
             };
-            this.cameraMoveSpeed = CalculateCameraMoveSpeed(1.5F);
+            this.cameraMoveSpeed = CalculateCameraMoveSpeed(3F);
         }
 
         internal void Update(Single elapsedSeconds)
