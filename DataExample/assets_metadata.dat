@@ -37,6 +37,10 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Appearance/Helicopter",
+      "AnimationFrames": 14
+    },
+    {
       "Name": "Sprites/Player/Cannon",
       "AnimationFrames": 2
     }

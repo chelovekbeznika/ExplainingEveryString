@@ -170,10 +170,10 @@
       }
     },
     "AppearancePhaseSprite": {
-      "Name": "Sprites/Enemies/Appearance/16_16",
+      "Name": "Sprites/Enemies/Appearance/Helicopter",
       "AnimationCycle": 0.2
     },
-    "DefaultAppearancePhaseDuration": 1.5,
+    "DefaultAppearancePhaseDuration": 0.2,
     "Mover": {
       "Type": "Linear",
       "Parameters": {
