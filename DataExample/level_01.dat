@@ -9,6 +9,12 @@
   },
   "EnemyWaves": [
     {
+      "StartRegion": {
+        "X": 35,
+        "Y": 29,
+        "Width": 6,
+        "Height": 1
+      },
       "MaxEnemiesAtOnce": 2,
       "Enemies": [
         {
@@ -43,6 +49,12 @@
       ]
     },
     {
+      "StartRegion": {
+        "X": 0,
+        "Y": 30,
+        "Width": 33,
+        "Height": 18
+      },
       "Enemies": [
         {
           "BlueprintType": "Mine",
@@ -104,6 +116,12 @@
       ]
     },
     {
+      "StartRegion": {
+        "X": 59,
+        "Y": 31,
+        "Width": 2,
+        "Height":17
+      },
       "Enemies": [
         {
           "BlueprintType": "TripleCannon",

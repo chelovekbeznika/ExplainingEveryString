@@ -43,6 +43,11 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal Player InitializePlayer() => actorsFactory.ConstructPlayer(Convert(levelData.PlayerPosition));
 
+        internal Hitbox InitializeStartRegion(Int32 waveNumber)
+        {
+            return map.GetHitbox(levelData.EnemyWaves[waveNumber].StartRegion);
+        }
+
         internal ValueTuple<List<IActor>, Queue<IActor>> InitializeEnemies(Int32 waveNumber)
         {
             EnemyWave wave = levelData.EnemyWaves[waveNumber];

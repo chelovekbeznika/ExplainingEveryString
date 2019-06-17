@@ -15,12 +15,13 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<IActor> Enemies => currentWaveEnemies;
         internal List<Bullet> PlayerBullets { get; private set; }
         internal List<Bullet> EnemyBullets { get; private set; }
+        internal Hitbox CurrentWaveStartRegion { get; private set; }
         
         private List<IActor> walls;
         private ICollidable[] tileWalls;
-        private List<IActor> currentWaveEnemies;
+        private List<IActor> currentWaveEnemies = new List<IActor>();
         private Int32 maxEnemiesAtOnce;
-        private Queue<IActor> enemiesQueue;
+        private Queue<IActor> enemiesQueue = new Queue<IActor>();
 
         internal ActiveActorsStorage()
         {
@@ -72,12 +73,18 @@ namespace ExplainingEveryString.Core.GameModel
             Player = actorsInitializer.InitializePlayer();
             walls = actorsInitializer.InitializeWalls();
             tileWalls = actorsInitializer.InitializeTileWalls();
-            GetNextEnemyWave(actorsInitializer, 0);
+
+            SwitchStartRegion(actorsInitializer, 0);
             PlayerBullets = new List<Bullet>();
             EnemyBullets = new List<Bullet>();
         }
 
-        internal void GetNextEnemyWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
+        internal void SwitchStartRegion(ActorsInitializer actorsInitializer, Int32 waveNumber)
+        {
+            CurrentWaveStartRegion = actorsInitializer.InitializeStartRegion(waveNumber);
+        }
+
+        internal void GetEnemiesFromWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
         {
             (currentWaveEnemies, enemiesQueue) = actorsInitializer.InitializeEnemies(waveNumber);
             maxEnemiesAtOnce = currentWaveEnemies.Count;

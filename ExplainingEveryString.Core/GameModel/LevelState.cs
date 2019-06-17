@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Level;
+﻿using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Level;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace ExplainingEveryString.Core.GameModel
         private Int32 currentEnemyWaveNumber = 0;
         private ActorsInitializer actorsInitializer;
         private LevelData levelData;
+        private WaveState currentEnemyWaveState = WaveState.Sleeping;
+        private CollisionsChecker collisionsChecker = new CollisionsChecker();
 
         internal ActiveActorsStorage ActiveActors { get; private set; }
 
@@ -28,12 +31,34 @@ namespace ExplainingEveryString.Core.GameModel
         internal void Update()
         {
             ActiveActors.Update();
+            if (currentEnemyWaveState == WaveState.Sleeping)
+                SleepingWaveCheck();
+            if (currentEnemyWaveState == WaveState.Triggered)
+                TriggeredWaveCheck();
+        }
+
+        private void SleepingWaveCheck()
+        {
+            if (collisionsChecker.Collides(ActiveActors.Player.GetCurrentHitbox(), ActiveActors.CurrentWaveStartRegion))
+            {
+                currentEnemyWaveState = WaveState.Triggered;
+                ActiveActors.GetEnemiesFromWave(actorsInitializer, currentEnemyWaveNumber);
+            }
+        }
+
+        private void TriggeredWaveCheck()
+        {
             if (ActiveActors.CurrentEnemyWaveDestroyed && !Won)
             {
                 currentEnemyWaveNumber += 1;
+                currentEnemyWaveState = WaveState.Sleeping;
                 if (!Won)
-                    ActiveActors.GetNextEnemyWave(actorsInitializer, currentEnemyWaveNumber);
+                {
+                    ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
+                }       
             }
         }
+
+        private enum WaveState { Sleeping, Triggered }
     }
 }
