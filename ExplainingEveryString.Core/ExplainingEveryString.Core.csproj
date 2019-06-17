@@ -64,6 +64,7 @@
     <Compile Include="Displaying\TiledMapDisplayer.cs" />
     <Compile Include="GameModel\ActorsInitializer.cs" />
     <Compile Include="GameModel\ActorStartInfo.cs" />
+    <Compile Include="GameModel\Door.cs" />
     <Compile Include="GameModel\Enemies\ShadowEnemy.cs" />
     <Compile Include="GameModel\ICollidable.cs" />
     <Compile Include="GameModel\LevelState.cs" />

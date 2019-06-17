@@ -18,6 +18,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal Hitbox CurrentWaveStartRegion { get; private set; }
         
         private List<IActor> walls;
+        private List<Door> doors;
         private ICollidable[] tileWalls;
         private List<IActor> currentWaveEnemies = new List<IActor>();
         private Int32 maxEnemiesAtOnce;
@@ -32,6 +33,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
             return walls
+                .Concat(doors)
                 .Concat(new List<IDisplayble> { Player })
                 .Concat(Enemies)
                 .Concat(EnemyBullets)
@@ -44,12 +46,13 @@ namespace ExplainingEveryString.Core.GameModel
                 .Concat(EnemyBullets)
                 .Concat(new List<IUpdatable> { Player })
                 .Concat(Enemies.OfType<IUpdatable>())
-                .Concat(walls.OfType<IUpdatable>());
+                .Concat(walls.OfType<IUpdatable>())
+                .Concat(doors.OfType<IUpdatable>());
         }
 
         internal IEnumerable<ICollidable> GetWalls()
         {
-            return walls.OfType<ICollidable>().Concat(tileWalls);
+            return walls.Concat(doors).OfType<ICollidable>().Concat(tileWalls);
         }
 
         internal void Update()
@@ -65,7 +68,8 @@ namespace ExplainingEveryString.Core.GameModel
         {
             PlayerBullets = PlayerBullets.Where(bullet => bullet.IsAlive()).ToList();
             EnemyBullets = EnemyBullets.Where(bullet => bullet.IsAlive()).ToList();
-            currentWaveEnemies = currentWaveEnemies.Where(mine => mine.IsAlive()).ToList();
+            currentWaveEnemies = currentWaveEnemies.Where(enemy => enemy.IsAlive()).ToList();
+            doors = doors.Where(door => door.IsAlive()).ToList();
         }
 
         internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer)
@@ -73,10 +77,17 @@ namespace ExplainingEveryString.Core.GameModel
             Player = actorsInitializer.InitializePlayer();
             walls = actorsInitializer.InitializeWalls();
             tileWalls = actorsInitializer.InitializeTileWalls();
+            doors = actorsInitializer.InitializeDoors();
 
             SwitchStartRegion(actorsInitializer, 0);
             PlayerBullets = new List<Bullet>();
             EnemyBullets = new List<Bullet>();
+        }
+
+        internal void EndWave(Int32 waveNumber)
+        {
+            foreach (Door door in doors.Where(d => d.OpeningWaveNumber == waveNumber))
+                door.Open();
         }
 
         internal void SwitchStartRegion(ActorsInitializer actorsInitializer, Int32 waveNumber)

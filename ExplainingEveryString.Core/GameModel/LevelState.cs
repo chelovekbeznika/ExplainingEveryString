@@ -50,12 +50,10 @@ namespace ExplainingEveryString.Core.GameModel
         {
             if (ActiveActors.CurrentEnemyWaveDestroyed && !Won)
             {
+                ActiveActors.EndWave(currentEnemyWaveNumber);
                 currentEnemyWaveNumber += 1;
                 currentEnemyWaveState = WaveState.Sleeping;
-                if (!Won)
-                {
-                    ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
-                }       
+                ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
             }
         }
 

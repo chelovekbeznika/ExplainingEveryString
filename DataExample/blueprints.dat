@@ -468,6 +468,18 @@
       }
     }
   },
+  "DefaultVerticalDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 64,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/DefaultVertical"
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/DefaultVerticalOpening",
+      "AnimationCycle": 1.0
+    }
+  },
   "Wall": {
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 32.0,

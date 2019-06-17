@@ -24,6 +24,22 @@ namespace ExplainingEveryString.Core.GameModel
             this.levelData = levelData;
         }
 
+        internal List<Door> InitializeDoors()
+        {
+            List<Door> doors = new List<Door>();
+            for (Int32 waveNumber = 0; waveNumber < levelData.EnemyWaves.Length; waveNumber++)
+            {
+                List<Data.Level.ActorStartInfo> doorsStartInfo = levelData.EnemyWaves[waveNumber].Doors;
+                if (doorsStartInfo != null)
+                {
+                    IEnumerable<Door> waveDoors = doorsStartInfo.Select(d => Convert(d))
+                        .Select(d => actorsFactory.ConstructDoor(d, waveNumber));
+                    doors.AddRange(waveDoors);
+                }
+            }
+            return doors;
+        }
+
         internal List<IActor> InitializeWalls()
         {
             List<IActor> result = new List<IActor>();

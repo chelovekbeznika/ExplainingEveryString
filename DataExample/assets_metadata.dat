@@ -5,6 +5,10 @@
       "AnimationFrames": 10
     },
     {
+      "Name": "Sprites/Doors/DefaultVerticalOpening",
+      "AnimationFrames": 10
+    },
+    {
       "Name": "Sprites/Explosions/01",
       "AnimationFrames": 12
     },

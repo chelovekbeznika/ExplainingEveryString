@@ -29,6 +29,13 @@ namespace ExplainingEveryString.Core.GameModel
             return Construct<Player, PlayerBlueprint>(position);
         }
 
+        internal Door ConstructDoor(ActorStartInfo position, Int32 openingWaveNumber)
+        {
+            Door door = Construct<Door, DoorBlueprint>(position);
+            door.OpeningWaveNumber = openingWaveNumber;
+            return door;
+        }
+
         internal List<Wall> ConstructWalls(String name, IEnumerable<Vector2> positions)
         {
             return Construct<Wall, Blueprint>(name, 

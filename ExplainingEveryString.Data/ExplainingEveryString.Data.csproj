@@ -50,6 +50,7 @@
     <Compile Include="AssetsMetadata\AssetsMetadata.cs" />
     <Compile Include="AssetsMetadata\AssetsMetadataAccess.cs" />
     <Compile Include="AssetsMetadata\SpriteMetadata.cs" />
+    <Compile Include="Blueprints\DoorBlueprint.cs" />
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
     <Compile Include="Level\PositionOnTileMap.cs" />
     <Compile Include="Level\EnemyWave.cs" />

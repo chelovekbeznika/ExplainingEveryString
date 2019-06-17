@@ -55,6 +55,16 @@
         "Width": 33,
         "Height": 18
       },
+      "Doors": [
+        {
+          "BlueprintType": "DefaultVerticalDoor",
+          "TilePosition": {
+            "X": 76,
+            "Y": 15,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
       "Enemies": [
         {
           "BlueprintType": "Mine",
