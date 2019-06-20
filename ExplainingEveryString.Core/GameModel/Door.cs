@@ -13,6 +13,8 @@ namespace ExplainingEveryString.Core.GameModel
         private SpriteState openingSprite;
         private Boolean opened = false;
         internal Int32 OpeningWaveNumber { get; set; }
+        private Single OpenCoefficient => opened ? SpriteState.ElapsedTime / SpriteState.AnimationCycle : 0;
+        private Func<Single, Hitbox> getPartiallyOpenHitbox;
 
         public override SpriteState SpriteState => opened ? openingSprite : base.SpriteState;
 
@@ -20,6 +22,11 @@ namespace ExplainingEveryString.Core.GameModel
         {
             base.Construct(blueprint, info, level);
             this.openingSprite = new SpriteState(blueprint.OpeningSprite);
+            switch (blueprint.OpeningMode)
+            {
+                case DoorOpeningMode.Instant: getPartiallyOpenHitbox = InstantOpen; break;
+                case DoorOpeningMode.Up: getPartiallyOpenHitbox = OpenUp; break;
+            }
         }
 
         protected override void PlaceOnLevel(ActorStartInfo info)
@@ -35,8 +42,35 @@ namespace ExplainingEveryString.Core.GameModel
         public override void Update(Single elapsedSeconds)
         {
             base.Update(elapsedSeconds);
-            if (opened && SpriteState.ElapsedTime > SpriteState.AnimationCycle - Math.Constants.Epsilon)
+            if (OpenCoefficient > 1 - Math.Constants.Epsilon)
                 this.Destroy();
+        }
+
+        public override Hitbox GetCurrentHitbox()
+        {
+            if (!opened)
+                return base.GetCurrentHitbox();
+            else
+                return getPartiallyOpenHitbox(OpenCoefficient);
+        }
+
+        private Hitbox InstantOpen(Single openingCoefficient)
+        {
+            return base.GetCurrentHitbox();
+        }
+
+        private Hitbox OpenUp(Single openingCoefficient)
+        {
+            Hitbox wholeHitbox = base.GetCurrentHitbox();
+            Single height = wholeHitbox.Top - wholeHitbox.Bottom;
+            Single toCut = height * openingCoefficient;
+            return new Hitbox
+            {
+                Top = wholeHitbox.Top,
+                Bottom = wholeHitbox.Bottom + toCut,
+                Left = wholeHitbox.Left,
+                Right = wholeHitbox.Right
+            };
         }
     }
 }

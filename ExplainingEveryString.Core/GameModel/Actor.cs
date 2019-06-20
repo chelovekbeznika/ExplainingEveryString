@@ -70,12 +70,12 @@ namespace ExplainingEveryString.Core.GameModel
             HitPoints = 0;
         }
 
-        public Hitbox GetCurrentHitbox()
+        public virtual Hitbox GetCurrentHitbox()
         {
             return GetHitboxWithCenterIn(Position);
         }
 
-        public Hitbox GetOldHitbox()
+        public virtual Hitbox GetOldHitbox()
         {
             return GetHitboxWithCenterIn(OldPosition);
         }

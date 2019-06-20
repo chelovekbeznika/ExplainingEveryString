@@ -15,6 +15,15 @@
         "Width": 6,
         "Height": 1
       },
+      "Doors": [
+        {
+          "BlueprintType": "TestDoor",
+          "TilePosition": {
+            "X": 57,
+            "Y": 57
+          }
+        }
+      ],
       "MaxEnemiesAtOnce": 2,
       "Enemies": [
         {

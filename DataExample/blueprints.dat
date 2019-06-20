@@ -480,6 +480,19 @@
       "AnimationCycle": 1.0
     }
   },
+  "TestDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 64,
+    "Width": 64,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/TestDoor"
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/TestDoorUp",
+      "AnimationCycle": 5
+    },
+    "OpeningMode": "Up"
+  },
   "Wall": {
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 32.0,

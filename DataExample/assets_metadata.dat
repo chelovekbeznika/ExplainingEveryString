@@ -9,6 +9,10 @@
       "AnimationFrames": 10
     },
     {
+      "Name": "Sprites/Doors/TestDoorUp",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Explosions/01",
       "AnimationFrames": 12
     },
