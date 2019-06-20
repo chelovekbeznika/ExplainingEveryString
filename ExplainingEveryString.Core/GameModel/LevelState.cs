@@ -53,7 +53,8 @@ namespace ExplainingEveryString.Core.GameModel
                 ActiveActors.EndWave(currentEnemyWaveNumber);
                 currentEnemyWaveNumber += 1;
                 currentEnemyWaveState = WaveState.Sleeping;
-                ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
+                if (!Won)
+                    ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
             }
         }
 
