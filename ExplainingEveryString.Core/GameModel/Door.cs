@@ -112,7 +112,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Hitbox OpenLeft(Single openingCoefficient)
         {
-            Hitbox wholeHitbox = base.GetBulletsHitbox();
+            Hitbox wholeHitbox = base.GetCurrentHitbox();
             Single toCut = (wholeHitbox.Right - wholeHitbox.Left) * openingCoefficient;
             return new Hitbox
             {
