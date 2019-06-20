@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public static List<String> GetNecessarySounds(this IBlueprintsLoader loader)
         {
             IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
-            return blueprints.SelectMany(blueprint => blueprint.GetSpecEffects())
+            return blueprints.SelectMany(blueprint => blueprint.GetSpecEffects()).Where(se => se != null)
                 .Select(se => se.Sound.Name).Distinct().ToList();
         }
     }

@@ -16,10 +16,20 @@ namespace ExplainingEveryString.Data.Blueprints
         [DefaultValue(DoorOpeningMode.Instant)]
         [JsonConverter(typeof(StringEnumConverter))]
         public DoorOpeningMode OpeningMode { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification OpeningStartedEffect { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification CompletelyOpenedEffect { get; set; }
 
         internal override IEnumerable<SpriteSpecification> GetSprites()
         {
             return base.GetSprites().Concat(new SpriteSpecification[] { OpeningSprite });
+        }
+
+        internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
+        {
+            return base.GetSpecEffects()
+                .Concat(new SpecEffectSpecification[] { OpeningStartedEffect, CompletelyOpenedEffect });
         }
     }
 

@@ -478,6 +478,12 @@
     "OpeningSprite": {
       "Name": "Sprites/Doors/DefaultVerticalOpening",
       "AnimationCycle": 1.0
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/TestOpeningDoor",
+        "Volume": 0.5
+      }
     }
   },
   "TestDoor": {
@@ -491,7 +497,13 @@
       "Name": "Sprites/Doors/TestDoorUp",
       "AnimationCycle": 5
     },
-    "OpeningMode": "Up"
+    "OpeningMode": "Up",
+    "CompletelyOpenedEffect": {
+      "Sound": {
+        "Name": "Sounds/CompletelyOpenedTest",
+        "Volume": 1.0
+      }
+    }
   },
   "Wall": {
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
