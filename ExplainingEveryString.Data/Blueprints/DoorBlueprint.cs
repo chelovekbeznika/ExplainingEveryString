@@ -23,5 +23,5 @@ namespace ExplainingEveryString.Data.Blueprints
         }
     }
 
-    public enum DoorOpeningMode { Instant, Up }
+    public enum DoorOpeningMode { Instant, Up, Down, Left, Right }
 }

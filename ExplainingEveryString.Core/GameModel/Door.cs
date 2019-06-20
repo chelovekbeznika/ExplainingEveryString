@@ -26,6 +26,10 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 case DoorOpeningMode.Instant: getPartiallyOpenHitbox = InstantOpen; break;
                 case DoorOpeningMode.Up: getPartiallyOpenHitbox = OpenUp; break;
+                case DoorOpeningMode.Down: getPartiallyOpenHitbox = OpenDown; break;
+                case DoorOpeningMode.Left: getPartiallyOpenHitbox = OpenLeft; break;
+                case DoorOpeningMode.Right: getPartiallyOpenHitbox = OpenRight; break;
+                default: throw new ArgumentException("blueprint.OpeningMode");
             }
         }
 
@@ -62,14 +66,52 @@ namespace ExplainingEveryString.Core.GameModel
         private Hitbox OpenUp(Single openingCoefficient)
         {
             Hitbox wholeHitbox = base.GetCurrentHitbox();
-            Single height = wholeHitbox.Top - wholeHitbox.Bottom;
-            Single toCut = height * openingCoefficient;
+            Single toCut = (wholeHitbox.Top - wholeHitbox.Bottom) * openingCoefficient;
             return new Hitbox
             {
                 Top = wholeHitbox.Top,
                 Bottom = wholeHitbox.Bottom + toCut,
                 Left = wholeHitbox.Left,
                 Right = wholeHitbox.Right
+            };
+        }
+
+        private Hitbox OpenDown(Single openingCoefficient)
+        {
+            Hitbox wholeHitbox = base.GetCurrentHitbox();
+            Single toCut = (wholeHitbox.Top - wholeHitbox.Bottom) * openingCoefficient;
+            return new Hitbox
+            {
+                Top = wholeHitbox.Top - toCut,
+                Bottom = wholeHitbox.Bottom,
+                Left = wholeHitbox.Left,
+                Right = wholeHitbox.Right,
+            };
+        }
+
+        private Hitbox OpenRight(Single openingCoefficient)
+        {
+            Hitbox wholeHitbox = base.GetCurrentHitbox();
+            Single toCut = (wholeHitbox.Right - wholeHitbox.Left) * openingCoefficient;
+            return new Hitbox
+            {
+                Top = wholeHitbox.Top,
+                Bottom = wholeHitbox.Bottom,
+                Left = wholeHitbox.Left + toCut,
+                Right = wholeHitbox.Right
+            };
+        }
+
+        private Hitbox OpenLeft(Single openingCoefficient)
+        {
+            Hitbox wholeHitbox = base.GetBulletsHitbox();
+            Single toCut = (wholeHitbox.Right - wholeHitbox.Left) * openingCoefficient;
+            return new Hitbox
+            {
+                Top = wholeHitbox.Top,
+                Bottom = wholeHitbox.Bottom,
+                Left = wholeHitbox.Left,
+                Right = wholeHitbox.Right - toCut
             };
         }
     }
