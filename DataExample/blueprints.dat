@@ -38,7 +38,7 @@
     },
     "PhaseChangeEffect": {
       "Sound": {
-        "Name": "Sounds/ShadowPhaseChange",
+        "Name": "Sounds/StandardEnemy/ShadowPhaseChange",
         "Volume": 0.25,
         "FadingCoeff": 0.33333
       },
@@ -74,13 +74,13 @@
     },
     "BeforeAppearanceEffect": {
       "Sound": {
-        "Name": "Sounds/ShadowPhaseChange",
+        "Name": "Sounds/StandardEnemy/Appearance",
         "Volume": 0.2
       }
     },
     "AfterAppearanceEffect": {
       "Sound": {
-        "Name": "Sounds/ShadowPhaseChange",
+        "Name": "Sounds/StandardEnemy/Appearance",
         "Volume": 0.5
       }
     },
@@ -497,7 +497,7 @@
       "Name": "Sprites/Doors/TestDoorUp",
       "AnimationCycle": 5
     },
-    "OpeningMode": "Up",
+    "OpeningMode": "Right",
     "CompletelyOpenedEffect": {
       "Sound": {
         "Name": "Sounds/CompletelyOpenedTest",

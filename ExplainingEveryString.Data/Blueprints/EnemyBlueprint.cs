@@ -31,10 +31,13 @@ namespace ExplainingEveryString.Data.Blueprints
 
         internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
         {
+            List<SpecEffectSpecification> specEffects = new List<SpecEffectSpecification>
+            {
+                DeathEffect, BeforeAppearanceEffect, AfterAppearanceEffect
+            };
             if (Weapon != null)
-                return new SpecEffectSpecification[] { DeathEffect, Weapon.ShootingEffect };
-            else
-                return new SpecEffectSpecification[] { DeathEffect };
+                specEffects.Add(Weapon.ShootingEffect);
+            return specEffects;
         }
 
         internal override IEnumerable<SpriteSpecification> GetSprites()
