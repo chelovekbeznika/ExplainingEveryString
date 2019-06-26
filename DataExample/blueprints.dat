@@ -190,8 +190,11 @@
           "Length": 36.0,
           "AngleCorrection": -90.0,
           "Bullet": {
+            "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
-              "speed": 500.0
+              "speed": 500.0,
+              "outerCoefficient": -5.0,
+              "innerCoefficient": 3.0
             },
             "Damage": 2.0,
             "TimeToLive": 5.0,
@@ -202,10 +205,13 @@
         },
         {
           "Length": 36.0,
-          "AngleCorrection": -85.0,
+          "AngleCorrection": -90.0,
           "Bullet": {
+            "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
-              "speed": 500.0
+              "speed": 500.0,
+              "outerCoefficient": 5.0,
+              "innerCoefficient": 3.0
             },
             "Damage": 2.0,
             "TimeToLive": 5.0,
@@ -216,7 +222,7 @@
         },
         {
           "Length": 36.0,
-          "AngleCorrection": -95.0,
+          "AngleCorrection": -90.0,
           "Bullet": {
             "TrajectoryParameters": {
               "speed": 500.0

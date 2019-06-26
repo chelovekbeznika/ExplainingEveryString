@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
             this.angularVelocity = parameters[nameof(angularVelocity)];
         }
 
-        protected override Vector2 GetTrajectoryOffset(float time)
+        protected override Vector2 GetTrajectoryOffset(Single time)
         {
             return new Vector2(time * speed, (Single)System.Math.Sin(time * angularVelocity) * amplitude);
         }
