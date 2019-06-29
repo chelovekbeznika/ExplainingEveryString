@@ -55,6 +55,14 @@
     {
       "Name": "Sprites/Enemies/Level1X/Death/Cannon",
       "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Doors/IceDoorOpening",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Doors/BigIceDoorOpening",
+      "AnimationFrames": 10
     }
   ]
 }

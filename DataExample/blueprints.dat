@@ -585,21 +585,27 @@
       "AnimationCycle": 0.333333
     },
     "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
     "Weapon": {
       "Reloader": {
-        "FireRate": 10,
-        "Ammo": 5,
-        "ReloadTime": 1
+        "FireRate": 20,
+        "Ammo": 3,
+        "ReloadTime": 2
       },
       "Barrels": [
         {
           "Length": 13.0,
           "Bullet": {
             "TrajectoryParameters": {
-              "speed": 320.0
+              "speed": 240.0
             },
             "Damage": 10.0,
-            "TimeToLive": 3.0,
+            "TimeToLive": 10.0,
             "Sprite": {
               "Name": "Sprites/Enemies/HelicopterBullet"
             }
@@ -609,10 +615,46 @@
       "ShootingEffect": {
         "Sound": {
           "Name": "Sounds/StandardEnemy/Shot",
-          "Volume": 0.05
+          "Volume": 0.15
         }
       },
       "AimType": "AimAtPlayer"
+    }
+  },
+  "IceDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 96,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/IceDoor"
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/IceDoorOpening",
+      "AnimationCycle": 1.0
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/IceDoorOpening",
+        "Volume": 0.5
+      }
+    }
+  },
+  "BigIceDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 160,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/BigIceDoor"
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/BigIceDoorOpening",
+      "AnimationCycle": 2.0
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/BossDoorOpening",
+        "Volume": 0.5
+      }
     }
   }
 }

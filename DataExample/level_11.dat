@@ -17,7 +17,14 @@
         "Height": 10
       },
       "Doors": [
-
+        {
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 239,
+            "Offset": "8.0, 0.0"
+          }
+        }
       ],
       "Enemies": [
         {
