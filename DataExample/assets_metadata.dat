@@ -51,6 +51,10 @@
     {
       "Name": "Sprites/Player/Cannon",
       "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/Death/Cannon",
+      "AnimationFrames": 8
     }
   ]
 }

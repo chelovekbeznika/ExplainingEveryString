@@ -440,11 +440,11 @@
   },
   "Player": {
     "$type": "ExplainingEveryString.Data.Blueprints.PlayerBlueprint, ExplainingEveryString.Data",
-    "MaxSpeed": 200.0,
-    "MaxAcceleration": 200.0,
+    "MaxSpeed": 300.0,
+    "MaxAcceleration": 400.0,
     "Weapon": {
       "Reloader": {
-        "FireRate": 10.0,
+        "FireRate": 20.0,
         "Ammo": 1,
         "ReloadTime": 0.0
       },
@@ -480,7 +480,7 @@
     "Height": 32.0,
     "Width": 32.0,
     "BulletHitboxWidth": 32.0,
-    "Hitpoints": 10.0,
+    "Hitpoints": 100.0,
     "DefaultSprite": {
       "Name": "Sprites/Player/Base"
     },
@@ -559,6 +559,60 @@
     "DefaultSprite": {
       "Name": "Sprites/Walls/LittleDecoration",
       "AnimationCycle": 0.5
+    }
+  },
+  "SimpleCannon_mk1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 25.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 12.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level1X/Cannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level1X/Death/Cannon",
+        "AnimationCycle": 0.33333333
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "Weapon": {
+      "Reloader": {
+        "FireRate": 10,
+        "Ammo": 5,
+        "ReloadTime": 1
+      },
+      "Barrels": [
+        {
+          "Length": 13.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 320.0
+            },
+            "Damage": 10.0,
+            "TimeToLive": 3.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/StandardEnemy/Shot",
+          "Volume": 0.05
+        }
+      },
+      "AimType": "AimAtPlayer"
     }
   }
 }

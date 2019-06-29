@@ -1,0 +1,56 @@
+{
+  "TileMap": "TileMaps/Level_11",
+  "PlayerPosition": {
+    "BlueprintType": "Player",
+    "TilePosition": {
+      "X": 47,
+      "Y": 284,
+      "Offset": "8.0, 8.0"
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 43,
+        "Y": 240,
+        "Width": 10,
+        "Height": 10
+      },
+      "Doors": [
+
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 241
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 78,
+            "Y": 241
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 286
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 78,
+            "Y": 286
+          }
+        }
+      ]
+    }
+  ],
+  "WallsTilePositions": {
+  }
+}
