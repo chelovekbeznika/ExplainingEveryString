@@ -31,10 +31,13 @@ namespace ExplainingEveryString.Core.GameModel
         internal void Update()
         {
             ActiveActors.Update();
-            if (currentEnemyWaveState == WaveState.Sleeping)
-                SleepingWaveCheck();
-            if (currentEnemyWaveState == WaveState.Triggered)
-                TriggeredWaveCheck();
+            if (!Won)
+            {
+                if (currentEnemyWaveState == WaveState.Sleeping)
+                    SleepingWaveCheck();
+                if (currentEnemyWaveState == WaveState.Triggered)
+                    TriggeredWaveCheck();
+            }
         }
 
         private void SleepingWaveCheck()
@@ -48,7 +51,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void TriggeredWaveCheck()
         {
-            if (ActiveActors.CurrentEnemyWaveDestroyed && !Won)
+            if (ActiveActors.CurrentEnemyWaveDestroyed)
             {
                 ActiveActors.EndWave(currentEnemyWaveNumber);
                 currentEnemyWaveNumber += 1;
