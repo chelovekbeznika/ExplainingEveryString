@@ -14,5 +14,10 @@ namespace ExplainingEveryString.Core.Math
         {
             return (Single)random.NextDouble();
         }
+
+        internal static Int32 NextInt(Int32 range)
+        {
+            return random.Next(range);
+        }
     }
 }

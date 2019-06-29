@@ -24,9 +24,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public override SpriteState SpriteState => !inShadow ? base.SpriteState : shadowSprite;
         public override CollidableMode Mode => !inShadow ? base.Mode : CollidableMode.Shadow;
 
-        protected override void Construct(ShadowEnemyBlueprint blueprint, ActorStartInfo startInfo, Level level)
+        protected override void Construct(ShadowEnemyBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            base.Construct(blueprint, startInfo, level);
+            base.Construct(blueprint, startInfo, level, factory);
             this.shadowSprite = new SpriteState(blueprint.ShadowSprite);
             this.activeTime = blueprint.ActiveTime;
             this.shadowTime = blueprint.ShadowTime;

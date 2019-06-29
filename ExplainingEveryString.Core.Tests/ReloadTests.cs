@@ -13,37 +13,22 @@ namespace ExplainingEveryString.Core.Tests
     public class ReloadTests
     {
         private protected TestAimer aimer = new TestAimer();
-        protected WeaponSpecification specification = new WeaponSpecification()
+        protected ReloaderSpecification specification = new ReloaderSpecification()
         {
-            Barrels = new BarrelSpecification[]
-            {
-                new BarrelSpecification
-                {
-                    Bullet = new BulletSpecification
-                    {
-                        TrajectoryParameters = new Dictionary<String, Single> { { "speed", 100 } },
-                        Sprite = new SpriteSpecification { Name = "FooBar" },
-                        TimeToLive = 50,
-                        Damage = 1
-                    },
-                    Length = 14,
-                    AngleCorrection = 0
-                }
-            },
             FireRate = 1,
             Ammo = 1,
             ReloadTime = 0
         };
         protected Int32 shots = 0;
         protected List<Single> bulletUpdateTimes = new List<Single>();
-        private protected WeaponReloader reloader;
+        private protected Reloader reloader;
 
         [SetUp]
         public virtual void SetUp()
         {
             shots = 0;
             bulletUpdateTimes = new List<Single>();
-            reloader = new WeaponReloader(specification, aimer, (fut) =>
+            reloader = new Reloader(specification, () => aimer.IsFiring(), (fut) =>
             {
                 shots += 1;
                 bulletUpdateTimes.Add(fut);

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
-    internal class WeaponReloader
+    internal class Reloader
     {
         private Single shootCooldown;
         private Single reloadTime;
@@ -19,18 +19,18 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Single nextBulletFirstUpdateTime = 0;
         private Int32 maxAmmo;
         private Int32 currentAmmo;
-        private IAimer aimer;
-        private Action<Single> onShoot;
+        private Func<Boolean> isOn;
+        private Action<Single> onReloadEnd;
 
         private Boolean AmmoLimited => maxAmmo > 1;
 
-        internal WeaponReloader(WeaponSpecification blueprint, IAimer aimer, Action<Single> onShoot)
+        internal Reloader(ReloaderSpecification specification, Func<Boolean> isOn, Action<Single> onReloadEnd)
         { 
-            this.aimer = aimer;
-            this.onShoot = onShoot;
-            this.maxAmmo = blueprint.Ammo;
-            shootCooldown = 1 / blueprint.FireRate;
-            this.reloadTime = blueprint.ReloadTime;
+            this.isOn = isOn;
+            this.onReloadEnd = onReloadEnd;
+            this.maxAmmo = specification.Ammo;
+            shootCooldown = 1 / specification.FireRate;
+            this.reloadTime = specification.ReloadTime;
             this.currentAmmo = 0;
 
             timeTillNextShoot = AmmoLimited ? reloadTime : shootCooldown;
@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             if (timeTillNextShoot > Constants.Epsilon)
                 timeTillNextShoot -= elapsedSeconds;
-            if (aimer.IsFiring())
+            if (isOn())
             {
                 weaponFired = false;
                 if (timeTillNextShoot <= Constants.Epsilon)
@@ -55,7 +55,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     nextBulletFirstUpdateTime -= betweenShoots;
                     if (nextBulletFirstUpdateTime < -Constants.Epsilon)
                         nextBulletFirstUpdateTime = 0;
-                    onShoot(nextBulletFirstUpdateTime);
+                    onReloadEnd(nextBulletFirstUpdateTime);
                     weaponFired = true;
                 }
             }

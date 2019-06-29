@@ -42,7 +42,7 @@ namespace ExplainingEveryString.Core.GameModel
             if (collisionsChecker.Collides(ActiveActors.Player.GetCurrentHitbox(), ActiveActors.CurrentWaveStartRegion))
             {
                 currentEnemyWaveState = WaveState.Triggered;
-                ActiveActors.GetEnemiesFromWave(actorsInitializer, currentEnemyWaveNumber);
+                ActiveActors.AssignEnemiesFromWave(actorsInitializer, currentEnemyWaveNumber);
             }
         }
 

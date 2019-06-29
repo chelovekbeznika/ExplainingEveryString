@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -12,5 +13,10 @@ namespace ExplainingEveryString.Core.GameModel
     internal interface IActor : ICollidable, IDisplayble, IUpdatable
     {
         Boolean IsAlive();
+    }
+
+    internal interface IEnemy : IActor, IInterfaceAccessable, ICrashable, ITouchableByBullets, IMultiPartDisplayble
+    {
+        SpawnedActorsController SpawnedActors { get; }
     }
 }

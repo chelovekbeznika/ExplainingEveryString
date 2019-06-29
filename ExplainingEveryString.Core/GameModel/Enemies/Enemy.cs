@@ -13,23 +13,25 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {
-    internal class Enemy<TBlueprint> : Actor<TBlueprint>, IInterfaceAccessable, ICrashable, ITouchableByBullets, IMultiPartDisplayble 
+    internal class Enemy<TBlueprint> : Actor<TBlueprint>, IEnemy
         where TBlueprint : EnemyBlueprint
     {
         private OneTimeEpicEvent death;
         internal OneTimeEpicEvent beforeAppearance;
         internal OneTimeEpicEvent afterAppearance;
-        private Weapon weapon;
+        public SpawnedActorsController SpawnedActors { get; private set; }
+
         private Single startAngle;
 
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
 
-        internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Math.Constants.Epsilon;
+        internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Constants.Epsilon;
         public override SpriteState SpriteState => IsInAppearancePhase ? appearanceSprite : base.SpriteState;
         public override CollidableMode Mode => IsInAppearancePhase ? CollidableMode.Ghost : base.Mode;
         public Single CollisionDamage { get; set; }
-       
+
+        private Weapon weapon;
         protected IMoveTargetSelector MoveTargetSelector { private get; set; }
         protected IMover Mover { private get; set; }
         protected Func<Vector2> PlayerLocator { get; private set; }
@@ -57,10 +59,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             startAngle = startInfo.Angle;
         }
 
-        protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level)
+        protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
             this.PlayerLocator = () => level.PlayerPosition;
-            base.Construct(blueprint, startInfo, level);
+            base.Construct(blueprint, startInfo, level, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
             this.death = new OneTimeEpicEvent(level, blueprint.DeathEffect, this);
@@ -72,6 +74,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 : blueprint.DefaultAppearancePhaseDuration;
             ConstructMovement(blueprint, startInfo);
             ConstructWeaponry(blueprint, startInfo, level);
+            if (blueprint.Spawner != null) 
+                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, this, startInfo.SpawnPoints, factory);
         }
 
         private void ConstructMovement(TBlueprint blueprint, ActorStartInfo startInfo)

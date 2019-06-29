@@ -122,9 +122,11 @@
     },
     "MoveTargetSelectType": "MoveTowardPlayer",
     "Weapon": {
-      "FireRate": 5.0,
-      "Ammo": 5,
-      "ReloadTime": 1.5,
+      "Reloader": {
+        "FireRate": 5.0,
+        "Ammo": 5,
+        "ReloadTime": 1.5
+      },
       "Barrels": [
         {
           "Length": 13.0,
@@ -182,9 +184,11 @@
     },
     "MoveTargetSelectType": "TargetsList",
     "Weapon": {
-      "FireRate": 10.0,
-      "Ammo": 10,
-      "ReloadTime": 2.0,
+      "Reloader": {
+        "FireRate": 10.0,
+        "Ammo": 10,
+        "ReloadTime": 2.0
+      },
       "Barrels": [
         {
           "Length": 36.0,
@@ -242,6 +246,13 @@
         }
       },
       "AimType": "FixedFireDirection"
+    },
+    "Spawner": {
+      "MaxSpawned": 4,
+      "Reloader": {
+        "FireRate": 1
+      },
+      "BlueprintType": "Hunter"
     }
   },
   "EvilEye": {
@@ -278,7 +289,9 @@
     },
     "MoveTargetSelectType": "RandomTargets",
     "Weapon": {
-      "FireRate": 0.3333333333,
+      "Reloader": {
+        "FireRate": 0.3333333333
+      },
       "AimType": "AimAtPlayer",
       "Barrels": [
         {
@@ -336,7 +349,9 @@
     },
     "DefaultAppearancePhaseDuration": 1.0,
     "Weapon": {
-      "FireRate": 0.666666667,
+      "Reloader": {
+        "FireRate": 0.666666667
+      },
       "Barrels": [
         {
           "Length": 13.0,
@@ -428,9 +443,11 @@
     "MaxSpeed": 200.0,
     "MaxAcceleration": 200.0,
     "Weapon": {
-      "FireRate": 10.0,
-      "Ammo": 1,
-      "ReloadTime": 0.0,
+      "Reloader": {
+        "FireRate": 10.0,
+        "Ammo": 1,
+        "ReloadTime": 0.0
+      },
       "Sprite": {
         "Name": "Sprites/Player/Cannon",
         "AnimationCycle": 0.5

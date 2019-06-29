@@ -64,7 +64,9 @@
     <Compile Include="Blueprints\PlayerBlueprint.cs" />
     <Compile Include="Specifications\MoverSpecification.cs" />
     <Compile Include="Specifications\MoveTargetSelectType.cs" />
+    <Compile Include="Specifications\ReloaderSpecification.cs" />
     <Compile Include="Specifications\SoundSpecification.cs" />
+    <Compile Include="Specifications\SpawnerSpecification.cs" />
     <Compile Include="Specifications\WeaponSpecification.cs" />
     <Compile Include="Specifications\SpecEffectSpecification.cs" />
     <Compile Include="Specifications\SpriteSpecification.cs" />

@@ -9,11 +9,7 @@ namespace ExplainingEveryString.Data.Specifications
 {
     public class WeaponSpecification
     {
-        public Single FireRate { get; set; }
-        [DefaultValue(1)]
-        public Int32 Ammo { get; set; }
-        [DefaultValue(0.0)]
-        public Single ReloadTime { get; set; }
+        public ReloaderSpecification Reloader { get; set; }
         public BarrelSpecification[] Barrels { get; set; }
         public SpriteSpecification Sprite { get; set; }
         public SpecEffectSpecification ShootingEffect { get; set; }

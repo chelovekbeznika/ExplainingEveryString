@@ -64,6 +64,20 @@
         "Width": 33,
         "Height": 18
       },
+      "SpawnPoints": [
+        {
+          "X": 0,
+          "Y": 0
+        },
+        {
+          "X": 20,
+          "Y": 0
+        },
+        {
+          "X": 40,
+          "Y": 0
+        }
+      ],
       "Doors": [
         {
           "BlueprintType": "DefaultVerticalDoor",

@@ -30,10 +30,10 @@ namespace ExplainingEveryString.Core.GameModel
         public Boolean IsVisible => IsAlive();
         public virtual CollidableMode Mode => CollidableMode.Solid;
 
-        internal void Initialize(TBlueprint blueprint, Level level, ActorStartInfo startInfo)
+        internal void Initialize(TBlueprint blueprint, Level level, ActorStartInfo startInfo, ActorsFactory factory)
         {
             PlaceOnLevel(startInfo);
-            Construct(blueprint, startInfo, level);
+            Construct(blueprint, startInfo, level, factory);
         }
         
         protected virtual void PlaceOnLevel(ActorStartInfo info)
@@ -42,7 +42,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.OldPosition = info.Position;
         }
 
-        protected virtual void Construct(TBlueprint blueprint, ActorStartInfo info, Level level)
+        protected virtual void Construct(TBlueprint blueprint, ActorStartInfo info, Level level, ActorsFactory factory)
         {
             this.SpriteState = new SpriteState(blueprint.DefaultSprite);
             this.Height = blueprint.Height;

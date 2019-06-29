@@ -29,7 +29,7 @@ namespace ExplainingEveryString.Core.GameModel
             List<Door> doors = new List<Door>();
             for (Int32 waveNumber = 0; waveNumber < levelData.EnemyWaves.Length; waveNumber++)
             {
-                List<Data.Level.ActorStartInfo> doorsStartInfo = levelData.EnemyWaves[waveNumber].Doors;
+                Data.Level.ActorStartInfo[] doorsStartInfo = levelData.EnemyWaves[waveNumber].Doors;
                 if (doorsStartInfo != null)
                 {
                     IEnumerable<Door> waveDoors = doorsStartInfo.Select(d => Convert(d))
@@ -64,16 +64,16 @@ namespace ExplainingEveryString.Core.GameModel
             return map.GetHitbox(levelData.EnemyWaves[waveNumber].StartRegion);
         }
 
-        internal ValueTuple<List<IActor>, Queue<IActor>> InitializeEnemies(Int32 waveNumber)
+        internal ValueTuple<List<IEnemy>, Queue<IEnemy>> InitializeEnemies(Int32 waveNumber)
         {
             EnemyWave wave = levelData.EnemyWaves[waveNumber];
-            IEnumerable<ActorStartInfo> enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi));
-            IEnumerable<IActor> enemies = actorsFactory.ConstructEnemies(enemiesStartInfos);
-            return (new List<IActor>(enemies.Take(wave.MaxEnemiesAtOnce)), 
-                new Queue<IActor>(enemies.Skip(wave.MaxEnemiesAtOnce)));
+            IEnumerable<ActorStartInfo> enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi, wave));
+            IEnumerable<IEnemy> enemies = actorsFactory.ConstructEnemies(enemiesStartInfos);
+            return (new List<IEnemy>(enemies.Take(wave.MaxEnemiesAtOnce)), 
+                new Queue<IEnemy>(enemies.Skip(wave.MaxEnemiesAtOnce)));
         }
 
-        private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo)
+        private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo, EnemyWave enemyWave = null)
         {
             return new ActorStartInfo
             {
@@ -81,7 +81,8 @@ namespace ExplainingEveryString.Core.GameModel
                 Position = map.GetPosition(dataLayerStartInfo.TilePosition),
                 Angle = dataLayerStartInfo.Angle,
                 TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets,
-                AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration
+                AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration,
+                SpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray()
             };
         }
     }

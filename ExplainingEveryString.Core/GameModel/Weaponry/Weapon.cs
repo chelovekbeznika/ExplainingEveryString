@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         }
         internal event EventHandler<EpicEventArgs> WeaponFired;
 
-        private WeaponReloader reloader;
+        private Reloader reloader;
         private IAimer aimer;
         private Barrel[] barrels;
 
@@ -53,7 +53,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             {
                 onShoot += barellShoot;
             }
-            reloader = new WeaponReloader(specification, aimer, onShoot);
+            reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), onShoot);
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             shootingEffect = specification.ShootingEffect;
             this.findOutWhereIAm = findOutWhereIAm;

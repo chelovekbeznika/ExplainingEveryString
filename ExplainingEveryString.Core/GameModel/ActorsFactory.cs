@@ -11,13 +11,13 @@ namespace ExplainingEveryString.Core.GameModel
     internal class ActorsFactory
     {
         private Dictionary<String, Blueprint> blueprintsStorage = new Dictionary<String, Blueprint>();
-        private Dictionary<String, Func<ActorStartInfo, IActor>> enemyConstruction;
+        private Dictionary<String, Func<ActorStartInfo, IEnemy>> enemyConstruction;
         internal Level Level { get; set; }
 
         internal ActorsFactory(IBlueprintsLoader blueprintsLoader)
         {
             this.blueprintsStorage = blueprintsLoader.GetBlueprints();
-            this.enemyConstruction = new Dictionary<String, Func<ActorStartInfo, IActor>>
+            this.enemyConstruction = new Dictionary<String, Func<ActorStartInfo, IEnemy>>
             {
                 { "Enemy", (pos) => Construct<Enemy<EnemyBlueprint>, EnemyBlueprint>(pos) },
                 { "ShadowEnemy", (pos) => Construct<ShadowEnemy, ShadowEnemyBlueprint>(pos) }
@@ -42,13 +42,15 @@ namespace ExplainingEveryString.Core.GameModel
                 positions.Select(pos => new ActorStartInfo { BlueprintType = name, Position = pos, Angle = 0 }));
         }
 
-        internal List<IActor> ConstructEnemies(IEnumerable<ActorStartInfo> positions)
+        internal List<IEnemy> ConstructEnemies(IEnumerable<ActorStartInfo> positions)
         {
-            return positions.Select(pos => 
-            {
-                String type = (blueprintsStorage[pos.BlueprintType] as EnemyBlueprint).Type;
-                return enemyConstruction[type](pos);
-            }).ToList();
+            return positions.Select(ConstructEnemy).ToList();
+        }
+
+        internal IEnemy ConstructEnemy(ActorStartInfo position)
+        {
+            String type = (blueprintsStorage[position.BlueprintType] as EnemyBlueprint).Type;
+            return enemyConstruction[type](position);
         }
 
         private List<TActor> Construct<TActor, TBlueprint>(String name, IEnumerable<ActorStartInfo> positions)
@@ -65,7 +67,7 @@ namespace ExplainingEveryString.Core.GameModel
             String name = position.BlueprintType;
             TBlueprint blueprint = blueprintsStorage[name] as TBlueprint;
             TActor actor = new TActor();
-            actor.Initialize(blueprint, Level, position);
+            actor.Initialize(blueprint, Level, position, this);
             return actor;
         }
     }

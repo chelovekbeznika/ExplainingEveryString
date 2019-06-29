@@ -81,6 +81,7 @@
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFlight.cs" />
     <Compile Include="GameModel\TileWall.cs" />
     <Compile Include="GameModel\TileWallsFactory.cs" />
+    <Compile Include="GameModel\Weaponry\SpawnedActorsController.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\ParabolicTrajectory.cs" />
     <Compile Include="Tiles\TileWrapper.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
@@ -120,7 +121,7 @@
     <Compile Include="GameModel\Weaponry\Weapon.cs" />
     <Compile Include="GameModel\Wall.cs" />
     <Compile Include="GameModel\Weaponry\ShootEventArgs.cs" />
-    <Compile Include="GameModel\Weaponry\WeaponReloader.cs" />
+    <Compile Include="GameModel\Weaponry\Reloader.cs" />
     <Compile Include="Input\GamePadPlayerInput.cs" />
     <Compile Include="Input\KeyBoardMousePlayerInput.cs" />
     <Compile Include="Input\PlayerInput.cs" />

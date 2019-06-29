@@ -20,9 +20,9 @@ namespace ExplainingEveryString.Core.GameModel
 
         public override SpriteState SpriteState => opened ? openingSprite : base.SpriteState;
 
-        protected override void Construct(DoorBlueprint blueprint, ActorStartInfo info, Level level)
+        protected override void Construct(DoorBlueprint blueprint, ActorStartInfo info, Level level, ActorsFactory factory)
         {
-            base.Construct(blueprint, info, level);
+            base.Construct(blueprint, info, level, factory);
             this.openingSprite = new SpriteState(blueprint.OpeningSprite);
             switch (blueprint.OpeningMode)
             {

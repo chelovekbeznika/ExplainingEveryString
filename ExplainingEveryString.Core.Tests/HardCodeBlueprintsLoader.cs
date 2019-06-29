@@ -54,8 +54,11 @@ namespace ExplainingEveryString.Core.Tests
                                     }
                                 }
                             },
-                            FireRate = 1,
-                            Ammo = 1,
+                            Reloader = new ReloaderSpecification()
+                            {
+                                FireRate = 1,
+                                Ammo = 1
+                            },
                             AimType = AimType.ControlledByPlayer,
                             ShootingEffect = new SpecEffectSpecification()
                         }
