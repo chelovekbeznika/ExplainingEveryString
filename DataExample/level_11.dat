@@ -110,6 +110,89 @@
           }
         }
       ]
+    },
+    {
+      "StartRegion": {
+        "X": 44,
+        "Y": 189,
+        "Height": 10,
+        "Width": 8
+      },
+      "Doors": [
+        {
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 188,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
+      "MaxEnemiesAtOnce": 5,
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 45,
+            "Y": 189,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 47,
+            "Y": 189,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 49,
+            "Y": 189,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 37,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 58,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 37,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 58,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 37,
+            "Y": 190
+          }
+        }
+      ]
     }
   ],
   "WallsTilePositions": {
