@@ -621,6 +621,75 @@
       "AimType": "AimAtPlayer"
     }
   },
+  "Tank_mk1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 25.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 20.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level1X/TankBase",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level1X/Death/Tank",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "Mover": {
+      "Type": "Linear",
+      "Parameters": {
+        "speed": 50.0
+      }
+    },
+    "MoveTargetSelectType": "MoveTowardPlayer",
+    "Weapon": {
+      "Reloader": {
+        "FireRate": 0.3333333
+      },
+      "Barrels": [
+        {
+          "Length": 12.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 320.0
+            },
+            "Damage": 25.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        }
+      ],
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level1X/TankCannon"
+      },
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/StandardEnemy/LongShot",
+          "Volume": 0.2
+        }
+      },
+      "AimType": "AimAtPlayer"
+    }
+  },
   "IceDoor": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,

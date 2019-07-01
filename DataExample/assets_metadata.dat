@@ -53,7 +53,15 @@
       "AnimationFrames": 2
     },
     {
+      "Name": "Sprites/Enemies/Level1X/TankBase",
+      "AnimationFrames": 3
+    },
+    {
       "Name": "Sprites/Enemies/Level1X/Death/Cannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/Death/Tank",
       "AnimationFrames": 8
     },
     {
