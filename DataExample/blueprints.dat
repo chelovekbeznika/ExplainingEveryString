@@ -809,6 +809,86 @@
       }
     }
   },
+  "TripleCannon_mk1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 20.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level1X/TripleCannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level1X/Death/TripleCannon",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level1X/Appearance/TripleCannon",
+      "AnimationCycle": 0.1666666
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Weapon": {
+      "Reloader": {
+        "FireRate": 0.333333
+      },
+      "Barrels": [
+        {
+          "Length": 24.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 240.0
+            },
+            "Damage": 25.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        },
+        {
+          "Length": 29.0,
+          "AngleCorrection": 36.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 240.0
+            },
+            "Damage": 25.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        },
+        {
+          "Length": 29.0,
+          "AngleCorrection": -36.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 240.0
+            },
+            "Damage": 25.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/StandardEnemy/LongShot",
+          "Volume": 0.15
+        }
+      },
+      "AimType": "AimAtPlayer"
+    }
+  },
   "BigIceDoor": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
@@ -825,6 +905,18 @@
         "Name": "Sounds/Doors/BossDoorOpening",
         "Volume": 0.5
       }
+    }
+  },
+  "IceRoomCenterLevel11": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 704,
+    "Width": 512,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/IceRoomCenterLevel11"
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/IceRoomCenterLevel11Opening",
+      "AnimationCycle": 2.0
     }
   }
 }

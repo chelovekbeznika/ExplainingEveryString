@@ -57,6 +57,14 @@
       "AnimationFrames": 3
     },
     {
+      "Name": "Sprites/Enemies/Level1X/TripleCannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/Appearance/TripleCannon",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Enemies/Level1X/Death/Cannon",
       "AnimationFrames": 8
     },
@@ -70,6 +78,10 @@
     },
     {
       "Name": "Sprites/Enemies/Level1X/Death/FixedCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/Death/TripleCannon",
       "AnimationFrames": 7
     },
     {
