@@ -38,7 +38,7 @@
         "X": 43,
         "Y": 240,
         "Width": 10,
-        "Height": 5
+        "Height": 15
       },
       "Doors": [
         {
@@ -110,6 +110,15 @@
           "TilePosition": {
             "X": 47,
             "Y": 188,
+            "Offset": "8.0, 0.0"
+          }
+        },
+        {
+          "BlueprintType": "IceDoor",
+          "ClosesAt": 2,
+          "TilePosition": {
+            "X": 47,
+            "Y": 238,
             "Offset": "8.0, 0.0"
           }
         }
@@ -301,6 +310,15 @@
             "Y": 127,
             "Offset": "8.0, 0.0"
           }
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 187,
+            "Offset": "8.0, 0.0"
+          }
         }
       ],
       "MaxEnemiesAtOnce": 6,
@@ -390,6 +408,15 @@
           "TilePosition": {
             "X": 47,
             "Y": 64,
+            "Offset": "8.0, 0.0"
+          }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 126,
             "Offset": "8.0, 0.0"
           }
         }
@@ -513,8 +540,9 @@
           "Offset": "-8.0, -8.0"
         }
       ],
-      "ClosingDoors": [
+      "Doors": [
         {
+          "ClosesAt": 7,
           "BlueprintType": "BigIceDoor",
           "TilePosition": {
             "X": 47,

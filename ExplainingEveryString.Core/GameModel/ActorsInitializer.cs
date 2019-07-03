@@ -26,27 +26,33 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal List<Door> InitializeCommonDoors()
         {
+            return InitializeDoors(null);
+        }
+
+        internal List<Door> InitializeClosingDoors(Int32 closesAt)
+        {
+            return InitializeDoors(closesAt);
+        }
+
+        private List<Door> InitializeDoors(Int32? closesAt)
+        {
             List<Door> doors = new List<Door>();
             for (Int32 waveNumber = 0; waveNumber < levelData.EnemyWaves.Length; waveNumber++)
             {
-                Data.Level.ActorStartInfo[] doorsStartInfo = levelData.EnemyWaves[waveNumber].Doors;
-                doors.AddRange(InitializeDoors(doorsStartInfo, waveNumber));
+                IEnumerable<DoorStartInfo> doorsStartInfo = levelData.EnemyWaves[waveNumber].Doors;
+                doors.AddRange(InitializeDoors(doorsStartInfo, waveNumber, closesAt));
             }
             return doors;
         }
 
-        internal List<Door> InitializeClosingDoors(Int32 waveNumber)
-        {
-            Data.Level.ActorStartInfo[] doorsStartInfo = levelData.EnemyWaves[waveNumber].ClosingDoors;
-            return InitializeDoors(doorsStartInfo, waveNumber).ToList();
-        }
-
-        private IEnumerable<Door> InitializeDoors(Data.Level.ActorStartInfo[] doorsStartInfo, Int32 openingWave)
+        private IEnumerable<Door> InitializeDoors
+            (IEnumerable<DoorStartInfo> doorsStartInfo, Int32 openingWave, Int32? closesAt)
         {
             if (doorsStartInfo != null)
             {
-                IEnumerable<Door> waveDoors = doorsStartInfo.Select(d => Convert(d))
-                    .Select(d => actorsFactory.ConstructDoor(d, openingWave));
+                IEnumerable<Door> waveDoors = doorsStartInfo
+                    .Where(dsi => dsi.ClosesAt == closesAt).Select(dsi => Convert(dsi))
+                    .Select(asi => actorsFactory.ConstructDoor(asi, openingWave));
                 return waveDoors;
             }
             else
