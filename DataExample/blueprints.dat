@@ -791,24 +791,6 @@
     },
     "DefaultAppearancePhaseDuration": 0.6666667
   },
-  "IceDoor": {
-    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
-    "Height": 16,
-    "Width": 96,
-    "DefaultSprite": {
-      "Name": "Sprites/Doors/IceDoor"
-    },
-    "OpeningSprite": {
-      "Name": "Sprites/Doors/IceDoorOpening",
-      "AnimationCycle": 1.0
-    },
-    "OpeningStartedEffect": {
-      "Sound": {
-        "Name": "Sounds/Doors/IceDoorOpening",
-        "Volume": 0.5
-      }
-    }
-  },
   "TripleCannon_mk1": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 50.0,
@@ -887,6 +869,146 @@
         }
       },
       "AimType": "AimAtPlayer"
+    }
+  },
+  "Miniboss_mk11": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ShadowEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "ShadowEnemy",
+    "CollisionDamage": 100.0,
+    "Height": 80.0,
+    "Width": 32.0,
+    "Hitpoints": 50.0,
+    "ActiveTime": 5.0,
+    "ShadowTime": 5.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level1X/Helicopter",
+      "AnimationCycle": 0.1
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/HelicopterExplosion",
+        "Volume": 0.2
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level1X/Death/Helicopter",
+        "AnimationCycle": 0.33
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level1X/Appearance/Helicopter",
+      "AnimationCycle": 0.4
+    },
+    "DefaultAppearancePhaseDuration": 0.4,
+    "ShadowSprite": {
+      "Name": "Sprites/Enemies/Level1X/HelicopterShadow",
+      "AnimationCycle": 0.1
+    },
+    "PhaseChangeEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/ShadowPhaseChange",
+        "Volume": 0.25,
+        "FadingCoeff": 1.5
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level1X/HelicopterShift",
+        "AnimationCycle": 0.15
+      }
+    },
+    "Mover": {
+      "Type": "Linear",
+      "Parameters": {
+        "speed": 100.0
+      }
+    },
+    "MoveTargetSelectType": "TargetsList",
+    "Weapon": {
+      "Reloader": {
+        "FireRate": 10.0,
+        "Ammo": 10,
+        "ReloadTime": 3.0
+      },
+      "Barrels": [
+        {
+          "Length": 36.0,
+          "AngleCorrection": -90.0,
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 500.0,
+              "outerCoefficient": -5.0,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 10.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        },
+        {
+          "Length": 36.0,
+          "AngleCorrection": -90.0,
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 500.0,
+              "outerCoefficient": 5.0,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 10.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        },
+        {
+          "Length": 36.0,
+          "AngleCorrection": -90.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 500.0
+            },
+            "Damage": 10.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/StandardEnemy/Shot",
+          "Volume": 0.25
+        }
+      },
+      "AimType": "FixedFireDirection"
+    },
+    "Spawner": {
+      "MaxSpawned": 2,
+      "Reloader": {
+        "FireRate": 0.2
+      },
+      "BlueprintType": "Hunter_mk1"
+    }
+  },
+  "IceDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 96,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/IceDoor"
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/IceDoorOpening",
+      "AnimationCycle": 1.0
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/IceDoorOpening",
+        "Volume": 0.5
+      }
     }
   },
   "BigIceDoor": {

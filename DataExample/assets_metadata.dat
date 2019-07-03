@@ -61,8 +61,24 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level1X/Helicopter",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/HelicopterShadow",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/HelicopterShift",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/Level1X/Appearance/TripleCannon",
       "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/Appearance/Helicopter",
+      "AnimationFrames": 14
     },
     {
       "Name": "Sprites/Enemies/Level1X/Death/Cannon",
@@ -85,12 +101,16 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Level1X/Death/Helicopter",
+      "AnimationFrames": 7
+    },
+    {
       "Name": "Sprites/Doors/IceDoorOpening",
       "AnimationFrames": 8
     },
     {
       "Name": "Sprites/Doors/BigIceDoorOpening",
-      "AnimationFrames": 10
+      "AnimationFrames": 8
     }
   ]
 }

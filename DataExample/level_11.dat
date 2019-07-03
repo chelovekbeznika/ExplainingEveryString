@@ -30,20 +30,6 @@
             "X": 78,
             "Y": 241
           }
-        },
-        {
-          "BlueprintType": "SimpleCannon_mk1",
-          "TilePosition": {
-            "X": 17,
-            "Y": 286
-          }
-        },
-        {
-          "BlueprintType": "SimpleCannon_mk1",
-          "TilePosition": {
-            "X": 78,
-            "Y": 286
-          }
         }
       ]
     },
@@ -96,17 +82,17 @@
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
-            "X": 43,
-            "Y": 270,
-            "Offset": "8.0, -8.0"
+            "X": 41,
+            "Y": 240,
+            "Offset": "8.0, -12.0"
           }
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
-            "X": 52,
-            "Y": 270,
-            "Offset": "-8.0, -8.0"
+            "X": 54,
+            "Y": 240,
+            "Offset": "-8.0, -12.0"
           }
         }
       ]
@@ -246,10 +232,10 @@
     },
     {
       "StartRegion": {
-        "X": 32,
+        "X": 33,
         "Y": 144,
         "Height": 32,
-        "Width": 32
+        "Width": 30
       },
       "Enemies": [
         {
@@ -350,43 +336,43 @@
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
-            "X": 45,
-            "Y": 128
+            "X": 40,
+            "Y": 144
           }
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
-            "X": 50,
-            "Y": 128
+            "X": 55,
+            "Y": 144
           }
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
-            "X": 45,
-            "Y": 128
+            "X": 40,
+            "Y": 144
           }
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
-            "X": 50,
-            "Y": 128
+            "X": 55,
+            "Y": 144
           }
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
-            "X": 45,
-            "Y": 128
+            "X": 40,
+            "Y": 144
           }
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
-            "X": 50,
-            "Y": 128
+            "X": 55,
+            "Y": 144
           }
         }
       ]
@@ -424,7 +410,7 @@
           "TilePosition": {
             "X": 23,
             "Y": 92,
-            "Offset": "8.0, -8.0"
+            "Offset": "8.0, 8.0"
           }
         },
         {
@@ -463,23 +449,82 @@
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 40,
-            "Y": 121
+            "Y": 68
           }
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 55,
-            "Y": 121
+            "Y": 68
           }
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 47,
-            "Y": 123,
+            "Y": 66,
             "Offset": "8.0, -8.0"
           }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 23,
+        "Y": 17,
+        "Height": 20,
+        "Width": 50
+      },
+      "SpawnPoints": [
+        {
+          "X": 21,
+          "Y": 48,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 21,
+          "Y": 32,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 31,
+          "Y": 14,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 47,
+          "Y": 14,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 63,
+          "Y": 14,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 74,
+          "Y": 32,
+          "Offset": "-8.0, -8.0"
+        },
+        {
+          "X": 74,
+          "Y": 32,
+          "Offset": "-8.0, -8.0"
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "Miniboss_mk11",
+          "TilePosition": {
+            "X": 47,
+            "Y": 19,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "-256.0, 0.0",
+            "256.0, 0.0"
+          ]
         }
       ]
     }
