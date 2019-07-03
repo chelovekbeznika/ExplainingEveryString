@@ -86,7 +86,7 @@ namespace ExplainingEveryString.Core.GameModel
             Player = actorsInitializer.InitializePlayer();
             walls = actorsInitializer.InitializeWalls();
             tileWalls = actorsInitializer.InitializeTileWalls();
-            doors = actorsInitializer.InitializeDoors();
+            doors = actorsInitializer.InitializeCommonDoors();
 
             SwitchStartRegion(actorsInitializer, 0);
             PlayerBullets = new List<Bullet>();
@@ -104,13 +104,14 @@ namespace ExplainingEveryString.Core.GameModel
             CurrentWaveStartRegion = actorsInitializer.InitializeStartRegion(waveNumber);
         }
 
-        internal void AssignEnemiesFromWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
+        internal void StartEnemyWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
         {
             (currentWaveEnemies, enemiesQueue) = actorsInitializer.InitializeEnemies(waveNumber);
             activeEnemySpawners = currentWaveEnemies
                 .Where(e => e.SpawnedActors != null)
                 .Select(e => e.SpawnedActors).ToList();
             maxEnemiesAtOnce = currentWaveEnemies.Count;
+            doors.AddRange(actorsInitializer.InitializeClosingDoors(waveNumber));
         }
     }
 }

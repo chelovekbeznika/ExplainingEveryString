@@ -513,6 +513,16 @@
           "Offset": "-8.0, -8.0"
         }
       ],
+      "ClosingDoors": [
+        {
+          "BlueprintType": "BigIceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 63,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
       "Enemies": [
         {
           "BlueprintType": "Miniboss_mk11",

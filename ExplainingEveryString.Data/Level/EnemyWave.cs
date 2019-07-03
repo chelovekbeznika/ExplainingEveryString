@@ -12,6 +12,8 @@ namespace ExplainingEveryString.Data.Level
     {
         [DefaultValue(null)]
         public ActorStartInfo[] Doors { get; set; }
+        [DefaultValue(null)]
+        public ActorStartInfo[] ClosingDoors { get; set; }
         public Rectangle StartRegion { get; set; }
         [DefaultValue(Int32.MaxValue)]
         public Int32 MaxEnemiesAtOnce { get; set; }

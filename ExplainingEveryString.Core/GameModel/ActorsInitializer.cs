@@ -24,20 +24,33 @@ namespace ExplainingEveryString.Core.GameModel
             this.levelData = levelData;
         }
 
-        internal List<Door> InitializeDoors()
+        internal List<Door> InitializeCommonDoors()
         {
             List<Door> doors = new List<Door>();
             for (Int32 waveNumber = 0; waveNumber < levelData.EnemyWaves.Length; waveNumber++)
             {
                 Data.Level.ActorStartInfo[] doorsStartInfo = levelData.EnemyWaves[waveNumber].Doors;
-                if (doorsStartInfo != null)
-                {
-                    IEnumerable<Door> waveDoors = doorsStartInfo.Select(d => Convert(d))
-                        .Select(d => actorsFactory.ConstructDoor(d, waveNumber));
-                    doors.AddRange(waveDoors);
-                }
+                doors.AddRange(InitializeDoors(doorsStartInfo, waveNumber));
             }
             return doors;
+        }
+
+        internal List<Door> InitializeClosingDoors(Int32 waveNumber)
+        {
+            Data.Level.ActorStartInfo[] doorsStartInfo = levelData.EnemyWaves[waveNumber].ClosingDoors;
+            return InitializeDoors(doorsStartInfo, waveNumber).ToList();
+        }
+
+        private IEnumerable<Door> InitializeDoors(Data.Level.ActorStartInfo[] doorsStartInfo, Int32 openingWave)
+        {
+            if (doorsStartInfo != null)
+            {
+                IEnumerable<Door> waveDoors = doorsStartInfo.Select(d => Convert(d))
+                    .Select(d => actorsFactory.ConstructDoor(d, openingWave));
+                return waveDoors;
+            }
+            else
+                return Enumerable.Empty<Door>();
         }
 
         internal List<IActor> InitializeWalls()
