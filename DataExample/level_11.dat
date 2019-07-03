@@ -390,6 +390,98 @@
           }
         }
       ]
+    },
+    {
+      "StartRegion": {
+        "X": 23,
+        "Y": 79,
+        "Height": 14,
+        "Width": 50
+      },
+      "Doors": [
+        {
+          "BlueprintType": "BigIceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 64,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -14.477512,
+          "TilePosition": {
+            "X": 23,
+            "Y": 79,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 14.477512,
+          "TilePosition": {
+            "X": 23,
+            "Y": 92,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -165.522487,
+          "TilePosition": {
+            "X": 72,
+            "Y": 79,
+            "Offset": "-8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 165.522487,
+          "TilePosition": {
+            "X": 72,
+            "Y": 92,
+            "Offset": "-8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 33,
+            "Y": 66
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 62,
+            "Y": 66
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 40,
+            "Y": 121
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 55,
+            "Y": 121
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 47,
+            "Y": 123,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ]
     }
   ],
   "WallsTilePositions": {

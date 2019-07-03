@@ -722,7 +722,7 @@
     },
     "Weapon": {
       "Reloader": {
-        "FireRate": 1.0
+        "FireRate": 0.5
       },
       "Barrels": [
         {
