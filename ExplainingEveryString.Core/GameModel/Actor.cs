@@ -95,14 +95,5 @@ namespace ExplainingEveryString.Core.GameModel
                 Right = center.X + Width / 2
             };
         }
-
-        protected EpicEventArgs StandardEpicEvent(SpecEffectSpecification specEffectSpecification)
-        {
-            return new EpicEventArgs
-            {
-                Position = this.Position,
-                SpecEffectSpecification = specEffectSpecification
-            };
-        }
     }
 }

@@ -24,13 +24,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     barrel.Shoot -= value;
             }
         }
-        internal event EventHandler<EpicEventArgs> WeaponFired;
 
         private Reloader reloader;
         private IAimer aimer;
         private Barrel[] barrels;
 
-        private SpecEffectSpecification shootingEffect;
+        private EpicEvent WeaponFired;
 
         private Func<Vector2> findOutWhereIAm;
         private Func<Vector2> targetLocator;
@@ -55,10 +54,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             }
             reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), onShoot);
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
-            shootingEffect = specification.ShootingEffect;
             this.findOutWhereIAm = findOutWhereIAm;
             this.targetLocator = targetLocator;
-            this.WeaponFired += level.EpicEventOccured;
+            this.WeaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
         }
 
         internal void Update(Single elapsedSeconds)
@@ -66,11 +64,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             Boolean weaponFired;
             reloader.TryReload(elapsedSeconds, out weaponFired);
             if (weaponFired)
-                WeaponFired?.Invoke(this, new EpicEventArgs
-                {
-                    Position = findOutWhereIAm(),
-                    SpecEffectSpecification = shootingEffect
-                });
+                WeaponFired.TryHandle();
             if (IsVisible)
             {
                 SpriteState.Update(elapsedSeconds);

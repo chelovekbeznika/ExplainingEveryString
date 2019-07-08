@@ -21,9 +21,9 @@ namespace ExplainingEveryString.Core.Displaying
             get { return IsAlive(); }
         }
 
-        internal SpecEffect(Vector2 position, SpriteSpecification sprite)
+        internal SpecEffect(Vector2 position, Single angle, SpriteSpecification sprite)
         {
-            this.SpriteState = new SpriteState(sprite);
+            this.SpriteState = new SpriteState(sprite) { Angle = angle };
             this.Position = position;
         }
 

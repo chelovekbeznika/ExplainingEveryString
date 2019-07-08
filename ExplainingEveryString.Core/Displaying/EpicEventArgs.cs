@@ -9,5 +9,6 @@ namespace ExplainingEveryString.Core.Displaying
     {
         internal Vector2 Position { get; set; }
         internal SpecEffectSpecification SpecEffectSpecification { get; set; }
+        internal Single Angle { get; set; }
     }
 }

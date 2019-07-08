@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets, IInterfaceAccessable
     {
-        private event EventHandler<EpicEventArgs> DamageTaken;
+        private EpicEvent DamageTaken;
 
         public Boolean ShowInterfaceInfo => false;
         public Single MaxHitPoints { get; private set; }
@@ -23,7 +23,6 @@ namespace ExplainingEveryString.Core.GameModel
         private Single maxAcceleration;
         private IPlayerInput input;
         private Single bulletHitboxWidth;
-        private SpecEffectSpecification damageEffect;
 
         private Weapon Weapon { get; set; }
 
@@ -34,8 +33,7 @@ namespace ExplainingEveryString.Core.GameModel
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
             bulletHitboxWidth = blueprint.BulletHitboxWidth;
-            damageEffect = blueprint.DamageEffect;
-            DamageTaken += level.EpicEventOccured;
+            DamageTaken = new EpicEvent(level, blueprint.DamageEffect, false, this, true);
             MaxHitPoints = blueprint.Hitpoints;
 
             Weapon = new Weapon(blueprint.Weapon, input, () => Position, null, level);
@@ -59,7 +57,7 @@ namespace ExplainingEveryString.Core.GameModel
         public override void TakeDamage(Single damage)
         {
             base.TakeDamage(damage);
-            DamageTaken?.Invoke(this, StandardEpicEvent(damageEffect));
+            DamageTaken.TryHandle();
         }
 
         private Vector2 GetCurrentSpeed(Single elapsedSeconds)

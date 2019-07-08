@@ -10,8 +10,8 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class Door : Actor<DoorBlueprint>
     {
-        private OneTimeEpicEvent startedToOpen;
-        private OneTimeEpicEvent completelyOpened;
+        private EpicEvent startedToOpen;
+        private EpicEvent completelyOpened;
         private SpriteState openingSprite;
         private Boolean opened = false;
         internal Int32 OpeningWaveNumber { get; set; }
@@ -33,8 +33,8 @@ namespace ExplainingEveryString.Core.GameModel
                 case DoorOpeningMode.Right: getPartiallyOpenHitbox = OpenRight; break;
                 default: throw new ArgumentException("blueprint.OpeningMode");
             }
-            this.startedToOpen = new OneTimeEpicEvent(level, blueprint.OpeningStartedEffect, this);
-            this.completelyOpened = new OneTimeEpicEvent(level, blueprint.CompletelyOpenedEffect, this);
+            this.startedToOpen = new EpicEvent(level, blueprint.OpeningStartedEffect, true, this, false);
+            this.completelyOpened = new EpicEvent(level, blueprint.CompletelyOpenedEffect, true, this, false);
         }
 
         protected override void PlaceOnLevel(ActorStartInfo info)

@@ -16,9 +16,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
     internal class Enemy<TBlueprint> : Actor<TBlueprint>, IEnemy
         where TBlueprint : EnemyBlueprint
     {
-        private OneTimeEpicEvent death;
-        internal OneTimeEpicEvent beforeAppearance;
-        internal OneTimeEpicEvent afterAppearance;
+        private EpicEvent death;
+        internal EpicEvent beforeAppearance;
+        internal EpicEvent afterAppearance;
         public SpawnedActorsController SpawnedActors { get; private set; }
 
         private Single appearancePhaseRemained;
@@ -57,9 +57,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             base.Construct(blueprint, startInfo, level, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
-            this.death = new OneTimeEpicEvent(level, blueprint.DeathEffect, this);
-            this.afterAppearance = new OneTimeEpicEvent(level, blueprint.AfterAppearanceEffect, this);
-            this.beforeAppearance = new OneTimeEpicEvent(level, blueprint.BeforeAppearanceEffect, this);
+            this.death = new EpicEvent(level, blueprint.DeathEffect, true, this, true);
+            this.afterAppearance = new EpicEvent(level, blueprint.AfterAppearanceEffect, true, this, false);
+            this.beforeAppearance = new EpicEvent(level, blueprint.BeforeAppearanceEffect, true, this, false);
             this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite) { Angle = startInfo.Angle };
             this.appearancePhaseRemained = startInfo.AppearancePhaseDuration > 0 
                 ? startInfo.AppearancePhaseDuration

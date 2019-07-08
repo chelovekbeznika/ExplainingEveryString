@@ -70,7 +70,9 @@ namespace ExplainingEveryString.Core.Displaying
         {
             if (epicEvent.SpecEffectSpecification.Sprite != null)
             {
-                activeSpecEffects.Add(new SpecEffect(epicEvent.Position, epicEvent.SpecEffectSpecification.Sprite));
+                SpriteSpecification sprite = epicEvent.SpecEffectSpecification.Sprite;
+                SpecEffect specEffect = new SpecEffect(epicEvent.Position, epicEvent.Angle, sprite);
+                activeSpecEffects.Add(specEffect);
             }
         }
     }
