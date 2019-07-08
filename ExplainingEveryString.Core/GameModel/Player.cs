@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Core.GameModel
             Move(elapsedSeconds);
         }
 
-        internal void Move(Single elapsedSeconds)
+        private void Move(Single elapsedSeconds)
         {
             Vector2 speed = GetCurrentSpeed(elapsedSeconds);
             Vector2 positionChange = speed * elapsedSeconds;

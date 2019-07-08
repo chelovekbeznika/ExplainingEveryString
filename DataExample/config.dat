@@ -3,7 +3,7 @@
   "Camera": {
     "PlayerFramePercentageWidth": 60,
     "PlayerFramePercentageHeight": 40,
-    "CameraMoveTimeFromAngleToAngle": 2.0
+    "CameraMoveTimeFromAngleToAngle": 3.0
   },
   "Screen": {
     "ScreenWidth": 1024,

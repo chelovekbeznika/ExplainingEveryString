@@ -53,7 +53,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            this.PlayerLocator = () => level.PlayerPosition;
+            this.PlayerLocator = () => level.Player.Position;
             base.Construct(blueprint, startInfo, level, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;

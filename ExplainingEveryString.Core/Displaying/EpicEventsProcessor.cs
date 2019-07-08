@@ -55,7 +55,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         private void ProcessSound(EpicEventArgs epicEvent)
         {
-            Single distance = (level.PlayerPosition - epicEvent.Position).Length();
+            Single distance = (level.Player.Position - epicEvent.Position).Length();
             SoundSpecification sound = epicEvent.SpecEffectSpecification.Sound;
             Single currentFadingOutDistance = fadingOutDistance * sound.FadingCoeff;
             if (distance <= currentFadingOutDistance)
