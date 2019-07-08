@@ -5,6 +5,7 @@ using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled;

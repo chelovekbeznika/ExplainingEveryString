@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -26,8 +27,7 @@ namespace ExplainingEveryString.Core.Displaying
             }
         }
 
-        internal CameraObjectGlass(Level level, GraphicsDevice graphicsDevice, 
-            Single playerFramePercentageWidth, Single playerFramePercentageHeight)
+        internal CameraObjectGlass(Level level, GraphicsDevice graphicsDevice, CameraConfiguration config)
         {
             Viewport viewport = graphicsDevice.Viewport;
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
@@ -36,10 +36,10 @@ namespace ExplainingEveryString.Core.Displaying
             this.cameraCenter = level.PlayerPosition;
             this.playerFrame = new Vector2()
             {
-                X = screenHalf.X * playerFramePercentageWidth / 100,
-                Y = screenHalf.Y * playerFramePercentageHeight / 100
+                X = screenHalf.X * config.PlayerFramePercentageWidth / 100,
+                Y = screenHalf.Y * config.PlayerFramePercentageHeight / 100
             };
-            this.cameraMoveSpeed = CalculateCameraMoveSpeed(3F);
+            this.cameraMoveSpeed = CalculateCameraMoveSpeed(config.CameraMoveTimeFromAngleToAngle);
         }
 
         internal void Update(Single elapsedSeconds)

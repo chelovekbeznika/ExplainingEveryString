@@ -3,6 +3,7 @@ using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -25,11 +26,11 @@ namespace ExplainingEveryString.Core
         public EesGame()
         {
             ConfigurationAccess.InitializeConfig();
-            Configuration config = ConfigurationAccess.GetCurrentConfig();
+            ScreenConfiguration screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = config.ScreenHeight;
-            graphics.PreferredBackBufferWidth = config.ScreenWidth;
-            graphics.IsFullScreen = config.FullScreen;
+            graphics.PreferredBackBufferHeight = screenConfig.ScreenHeight;
+            graphics.PreferredBackBufferWidth = screenConfig.ScreenWidth;
+            graphics.IsFullScreen = screenConfig.FullScreen;
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
         }

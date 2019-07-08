@@ -52,6 +52,8 @@
     <Compile Include="AssetsMetadata\SpriteMetadata.cs" />
     <Compile Include="Blueprints\DoorBlueprint.cs" />
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
+    <Compile Include="Configuration\CameraConfiguration.cs" />
+    <Compile Include="Configuration\ScreenConfiguration.cs" />
     <Compile Include="Level\DoorStartInfo.cs" />
     <Compile Include="Level\PositionOnTileMap.cs" />
     <Compile Include="Level\EnemyWave.cs" />
@@ -71,9 +73,9 @@
     <Compile Include="Specifications\WeaponSpecification.cs" />
     <Compile Include="Specifications\SpecEffectSpecification.cs" />
     <Compile Include="Specifications\SpriteSpecification.cs" />
-    <Compile Include="Configuration.cs" />
-    <Compile Include="ConfigurationAccess.cs" />
-    <Compile Include="ControlDevice.cs" />
+    <Compile Include="Configuration\Configuration.cs" />
+    <Compile Include="Configuration\ConfigurationAccess.cs" />
+    <Compile Include="Configuration\ControlDevice.cs" />
     <Compile Include="FileNames.cs" />
     <Compile Include="JsonDataAccessor.cs" />
     <Compile Include="Level\ActorStartInfo.cs" />

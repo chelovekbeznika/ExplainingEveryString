@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -22,8 +23,7 @@ namespace ExplainingEveryString.Core.Displaying
             this.game = game;
             this.spriteBatch = new SpriteBatch(game.GraphicsDevice);
             this.screenHeight = game.GraphicsDevice.Viewport.Height;
-            this.objectGlass = new CameraObjectGlass(level, game.GraphicsDevice, 
-                config.PlayerFramePercentageWidth, config.PlayerFramePercentageHeigth);
+            this.objectGlass = new CameraObjectGlass(level, game.GraphicsDevice, config.Camera);
         }
 
         internal void Begin() => spriteBatch.Begin(samplerState: SamplerState.PointClamp);

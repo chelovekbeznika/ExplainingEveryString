@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data;
+using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework.Audio;
 using System;

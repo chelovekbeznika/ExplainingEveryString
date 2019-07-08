@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ExplainingEveryString.Data
+namespace ExplainingEveryString.Data.Configuration
 {
     public static class ConfigurationAccess
     {
@@ -38,8 +38,20 @@ namespace ExplainingEveryString.Data
             return new Configuration()
             {
                 ControlDevice = ControlDevice.Keyboard,
-                PlayerFramePercentageWidth = 60,
-                PlayerFramePercentageHeigth = 60
+                Camera = new CameraConfiguration
+                {
+                    PlayerFramePercentageWidth = 60,
+                    PlayerFramePercentageHeight = 60,
+                    CameraMoveTimeFromAngleToAngle = 3
+                },
+                Screen = new ScreenConfiguration
+                {
+                    FullScreen = false,
+                    ScreenWidth = 1024,
+                    ScreenHeight = 768
+                },
+                InterfaceAlpha = 0.75F,
+                SoundFadingOut = 1000,
             };
         }
     }
