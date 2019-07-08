@@ -21,8 +21,6 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         internal OneTimeEpicEvent afterAppearance;
         public SpawnedActorsController SpawnedActors { get; private set; }
 
-        private Single startAngle;
-
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
 
@@ -53,12 +51,6 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public Single MaxHitPoints { get; private set; }
         public virtual Boolean ShowInterfaceInfo => !IsInAppearancePhase;
 
-        protected override void PlaceOnLevel(ActorStartInfo startInfo)
-        {
-            base.PlaceOnLevel(startInfo);
-            startAngle = startInfo.Angle;
-        }
-
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
             this.PlayerLocator = () => level.PlayerPosition;
@@ -68,7 +60,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.death = new OneTimeEpicEvent(level, blueprint.DeathEffect, this);
             this.afterAppearance = new OneTimeEpicEvent(level, blueprint.AfterAppearanceEffect, this);
             this.beforeAppearance = new OneTimeEpicEvent(level, blueprint.BeforeAppearanceEffect, this);
-            this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite);
+            this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite) { Angle = startInfo.Angle };
             this.appearancePhaseRemained = startInfo.AppearancePhaseDuration > 0 
                 ? startInfo.AppearancePhaseDuration
                 : blueprint.DefaultAppearancePhaseDuration;

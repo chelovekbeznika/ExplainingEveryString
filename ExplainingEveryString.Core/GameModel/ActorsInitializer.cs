@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Tiles;
+﻿using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
@@ -98,7 +99,7 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 BlueprintType = dataLayerStartInfo.BlueprintType,
                 Position = map.GetPosition(dataLayerStartInfo.TilePosition),
-                Angle = dataLayerStartInfo.Angle,
+                Angle = AngleConverter.ToRadians(dataLayerStartInfo.Angle),
                 TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets,
                 AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration,
                 SpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray()

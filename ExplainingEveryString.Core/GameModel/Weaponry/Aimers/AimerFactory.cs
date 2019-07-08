@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
             switch (weapon.AimType)
             {
                 case AimType.FixedFireDirection:
-                    return new FixedAimer(AngleConverter.ToRadians(actorStartInfo.Angle));
+                    return new FixedAimer(actorStartInfo.Angle);
                 case AimType.AimAtPlayer:
                     return new PlayerAimer(playerLocator, currentPositionLocator);
                 default:

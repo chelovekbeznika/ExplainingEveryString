@@ -209,6 +209,7 @@
       "Enemies": [
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -90.0,
           "TilePosition": {
             "X": 20,
             "Y": 132
@@ -216,6 +217,7 @@
         },
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -90.0,
           "TilePosition": {
             "X": 75,
             "Y": 132
@@ -249,6 +251,7 @@
       "Enemies": [
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -60.0,
           "TilePosition": {
             "X": 17,
             "Y": 129
@@ -256,6 +259,7 @@
         },
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -120.0,
           "TilePosition": {
             "X": 78,
             "Y": 129
@@ -325,6 +329,7 @@
       "Enemies": [
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -105.0,
           "TilePosition": {
             "X": 46,
             "Y": 156
@@ -332,6 +337,7 @@
         },
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -75.0,
           "TilePosition": {
             "X": 49,
             "Y": 156
@@ -460,6 +466,7 @@
         },
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -60.0,
           "TilePosition": {
             "X": 33,
             "Y": 66
@@ -467,6 +474,7 @@
         },
         {
           "BlueprintType": "TripleCannon_mk1",
+          "Angle": -120.0,
           "TilePosition": {
             "X": 62,
             "Y": 66
