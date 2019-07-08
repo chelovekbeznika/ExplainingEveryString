@@ -42,7 +42,7 @@
     },
     {
       "Name": "Sprites/Enemies/Appearance/32_32",
-      "AnimationFrames": 7
+      "AnimationFrames": 6
     },
     {
       "Name": "Sprites/Enemies/Appearance/Helicopter",
