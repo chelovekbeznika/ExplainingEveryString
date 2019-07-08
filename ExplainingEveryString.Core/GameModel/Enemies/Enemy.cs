@@ -97,7 +97,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         public IEnumerable<IDisplayble> GetParts()
         {
-            if (weapon != null)
+            if (weapon != null && !IsInAppearancePhase)
                 return new IDisplayble[] { weapon };
             else
                 return Enumerable.Empty<IDisplayble>();
