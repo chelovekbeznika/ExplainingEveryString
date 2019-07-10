@@ -17,8 +17,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         where TBlueprint : EnemyBlueprint
     {
         private EpicEvent death;
-        internal EpicEvent beforeAppearance;
-        internal EpicEvent afterAppearance;
+        private EpicEvent beforeAppearance;
+        private EpicEvent afterAppearance;
         public SpawnedActorsController SpawnedActors { get; private set; }
 
         private Single appearancePhaseRemained;

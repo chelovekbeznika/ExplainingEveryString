@@ -28,6 +28,11 @@ namespace ExplainingEveryString.Core
             {
                 soundsStorage[soundName] = contentManager.Load<SoundEffect>(soundName);
             }
+            AddMetadata(metadataLoader);
+        }
+
+        private void AddMetadata(IAssetsMetadataLoader metadataLoader)
+        {
             AssetsMetadata assetsMetadata = metadataLoader.Load();
             foreach (SpriteMetadata spriteMetadata in assetsMetadata.SpritesMetadata)
             {

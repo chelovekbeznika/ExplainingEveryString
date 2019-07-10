@@ -4,7 +4,6 @@ using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +18,7 @@ namespace ExplainingEveryString.Core.GameModel
         private CollisionsController collisionsController;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
         private Single gameTime = 0;
+
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
         internal event GameLost Lost;
@@ -30,7 +30,6 @@ namespace ExplainingEveryString.Core.GameModel
             factory.Level = this;
             ActorsInitializer actorsInitializer = new ActorsInitializer(map, factory, levelData);
             ActiveActorsStorage activeActors = new ActiveActorsStorage();
-            activeActors.InitializeActorsOnLevelStart(actorsInitializer);
             this.levelState = new LevelState(activeActors, actorsInitializer, levelData);
             collisionsController = new CollisionsController(activeActors);
         }

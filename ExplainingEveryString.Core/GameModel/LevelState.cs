@@ -26,6 +26,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.ActiveActors = activeActors;
             this.actorsInitializer = actorsInitializer;
             this.levelData = levelData;
+            activeActors.InitializeActorsOnLevelStart(actorsInitializer);
         }
 
         internal void Update()

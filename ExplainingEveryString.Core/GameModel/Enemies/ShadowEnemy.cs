@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 {
     internal class ShadowEnemy : Enemy<ShadowEnemyBlueprint>
     {
-        private EpicEvent PhaseChanged;
+        private EpicEvent phaseChanged;
         private Boolean inShadow = false;
         private Single phaseCountingTime = 0;
 
@@ -29,7 +29,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.shadowSprite = new SpriteState(blueprint.ShadowSprite);
             this.activeTime = blueprint.ActiveTime;
             this.shadowTime = blueprint.ShadowTime;
-            this.PhaseChanged = new EpicEvent(level, blueprint.PhaseChangeEffect, false, this, true);
+            this.phaseChanged = new EpicEvent(level, blueprint.PhaseChangeEffect, false, this, true);
         }
 
         public override void Update(Single elapsedSeconds)
@@ -53,7 +53,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private void ChangePhase()
         {
             inShadow = !inShadow;
-            PhaseChanged.TryHandle();
+            phaseChanged.TryHandle();
         }
     }
 }
