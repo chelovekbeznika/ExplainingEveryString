@@ -11,33 +11,40 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuInputProcessor
     {
-        internal event EventHandler OnPause;
-        internal event EventHandler OnExit;
-        
-        private Func<Boolean> pauseButtonPressed;
-        private Func<Boolean> exitButtonPressed;
+        internal MenuButtonHandler Pause { get; private set; }
+        internal MenuButtonHandler Exit { get; private set; }
 
         internal MenuInputProcessor(Configuration config)
         {
             switch (config.ControlDevice)
             {
                 case ControlDevice.GamePad:
-                    pauseButtonPressed = () => GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed;
-                    exitButtonPressed = () => GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed;
+                    Pause = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed);
+                    Exit = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed);
                     break;
                 case ControlDevice.Keyboard:
-                    pauseButtonPressed = () => Keyboard.GetState().IsKeyDown(Keys.Space);
-                    exitButtonPressed = () => Keyboard.GetState().IsKeyDown(Keys.Escape);
+                    Pause = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.Space));
+                    Exit = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.Escape));
                     break;
             }
         }
 
-        internal void Update()
+        internal void Update(Single elapsedSeconds)
         {
-            if (pauseButtonPressed())
-                OnPause(this, EventArgs.Empty);
-            if (exitButtonPressed())
-                OnExit(this, EventArgs.Empty);
+            Pause.Update(elapsedSeconds);
+            Exit.Update(elapsedSeconds);
+        }
+
+        private void InitGamepadButtons()
+        {
+            Pause = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed);
+            Exit = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed);
+        }
+
+        private void InitKeyboardButtons()
+        {
+            Pause = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.Space));
+            Exit = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.Escape));
         }
     }
 }

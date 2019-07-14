@@ -19,11 +19,9 @@ namespace ExplainingEveryString.Core
     {
         private GraphicsDeviceManager graphics;
         private IBlueprintsLoader blueprintsLoader;
-        private GameplayComponent gameplayComponent;
-        private InterfaceComponent interfaceComponent;
-        private MenuComponent menuComponent;
+
         private MenuInputProcessor menuInputProcessor;
-        private GameState GameState = GameState.Menu;
+        private GameStateManager gameState;
 
         internal AssetsStorage AssetsStorage { get; private set; }
 
@@ -44,13 +42,14 @@ namespace ExplainingEveryString.Core
             blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
-            gameplayComponent = new GameplayComponent(this, blueprintsLoader, "level_11.dat");
-            interfaceComponent = new InterfaceComponent(this, gameplayComponent);
-            menuComponent = new MenuComponent(this);
+            GameplayComponent gameplayComponent = new GameplayComponent(this, blueprintsLoader, "level_11.dat");
+            InterfaceComponent interfaceComponent = new InterfaceComponent(this, gameplayComponent);
+            MenuComponent menuComponent = new MenuComponent(this);
 
-            menuInputProcessor = new MenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
-            menuInputProcessor.OnExit += (sender, e) => Exit();
-            menuInputProcessor.OnPause += (sender, e) => SwitchGameState();
+            this.gameState = new GameStateManager(Components, gameplayComponent, interfaceComponent, menuComponent);
+            this.menuInputProcessor = new MenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
+            menuInputProcessor.Exit.ButtonPressed += (sender, e) => Exit();
+            menuInputProcessor.Pause.ButtonPressed += (sender, e) => gameState.SwitchGameState();
             base.Initialize();
         }
 
@@ -68,15 +67,11 @@ namespace ExplainingEveryString.Core
 
         protected override void Update(GameTime gameTime)
         {
-            if (!Components.Contains(gameplayComponent))
+            if (Components.Count == 0)
             {
-                Components.Add(gameplayComponent);
-                Components.Add(interfaceComponent);
-                Components.Add(menuComponent);
-                SwitchMenuRelatedComponents(true);
-                SwitchGameplayRelatedComponents(false);
+                gameState.InitComponents();
             }
-            menuInputProcessor.Update();
+            menuInputProcessor.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
@@ -90,38 +85,7 @@ namespace ExplainingEveryString.Core
         {
             Exit();
         }
-
-        private void SwitchGameState ()
-        {
-            GameState newState = GameState == GameState.Gameplay ? GameState.Menu : GameState.Gameplay;
-            GameState = newState;
-            switch (newState)
-            {
-                case GameState.Menu:
-                    SwitchGameplayRelatedComponents(false);
-                    SwitchMenuRelatedComponents(true);
-                    break;
-                case GameState.Gameplay:
-                    SwitchGameplayRelatedComponents(true);
-                    SwitchMenuRelatedComponents(false);
-                    break;
-            }
-        }
-
-        private void SwitchGameplayRelatedComponents(Boolean active)
-        {
-            gameplayComponent.Enabled = active;
-            interfaceComponent.Enabled = active;
-            gameplayComponent.Visible = active;
-            interfaceComponent.Visible = active;
-        }
-
-        private void SwitchMenuRelatedComponents(Boolean active)
-        {
-            menuComponent.Enabled = active;
-            menuComponent.Visible = active;
-        }
     }
 
-    public enum GameState { Gameplay, Menu }
+
 }
