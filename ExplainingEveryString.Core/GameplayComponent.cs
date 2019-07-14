@@ -29,7 +29,7 @@ namespace ExplainingEveryString.Core
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
 
-        internal GameplayComponent(IBlueprintsLoader blueprintsLoader, String levelFileName, EesGame game) : base(game)
+        internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName) : base(game)
         {
             this.eesGame = game;
             this.levelFileName = levelFileName;
