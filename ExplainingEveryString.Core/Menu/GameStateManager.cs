@@ -13,66 +13,43 @@ namespace ExplainingEveryString.Core.Menu
 
         private GameState CurrentState = GameState.Menu;
         private Game game;
-        private GameplayComponent gameplayComponent;
-        private InterfaceComponent interfaceComponent;
-        private MenuComponent menuComponent;
+        private ComponentsManager componentsManager;
 
-        internal GameStateManager(Game game, 
-            GameplayComponent gameplay, InterfaceComponent @interface, MenuComponent menu)
+        internal GameStateManager(Game game, ComponentsManager componentsManager)
         {
             this.game = game;
-            this.gameplayComponent = gameplay;
-            this.interfaceComponent = @interface;
-            this.menuComponent = menu;
+            this.componentsManager = componentsManager;
         }
 
         internal void InitMenuInput(MenuInputProcessor menuInputProcessor)
         {
             menuInputProcessor.Exit.ButtonPressed += (sender, e) => game.Exit();
-            menuInputProcessor.Pause.ButtonPressed += (sender, e) => SwitchGameState();
-            menuInputProcessor.Down.ButtonPressed += (sender, e) => menuComponent.SelectedItemIndex += 1;
-            menuInputProcessor.Up.ButtonPressed += (sender, e) => menuComponent.SelectedItemIndex -= 1;
+            menuInputProcessor.Pause.ButtonPressed += (sender, e) => TryPauseGame();
+            menuInputProcessor.Down.ButtonPressed += (sender, e) => componentsManager.Menu.SelectedItemIndex += 1;
+            menuInputProcessor.Up.ButtonPressed += (sender, e) => componentsManager.Menu.SelectedItemIndex -= 1;
+            menuInputProcessor.Accept.ButtonPressed += (sender, e) => componentsManager.Menu.Accept();
         }
 
         internal void InitComponents()
         {
-            GameComponentCollection components = game.Components;
-            components.Add(gameplayComponent);
-            components.Add(interfaceComponent);
-            components.Add(menuComponent);
-            SwitchMenuRelatedComponents(true);
-            SwitchGameplayRelatedComponents(false);
+            componentsManager.InitComponents();
         }
 
-        internal void SwitchGameState()
+        internal void TryPauseGame()
         {
             GameState newState = CurrentState == GameState.Gameplay ? GameState.Menu : GameState.Gameplay;
             CurrentState = newState;
             switch (newState)
             {
                 case GameState.Menu:
-                    SwitchGameplayRelatedComponents(false);
-                    SwitchMenuRelatedComponents(true);
+                    componentsManager.SwitchGameplayRelatedComponents(false);
+                    componentsManager.SwitchMenuRelatedComponents(true);
                     break;
                 case GameState.Gameplay:
-                    SwitchGameplayRelatedComponents(true);
-                    SwitchMenuRelatedComponents(false);
+                    componentsManager.SwitchGameplayRelatedComponents(true);
+                    componentsManager.SwitchMenuRelatedComponents(false);
                     break;
             }
-        }
-
-        private void SwitchGameplayRelatedComponents(Boolean active)
-        {
-            gameplayComponent.Enabled = active;
-            interfaceComponent.Enabled = active;
-            gameplayComponent.Visible = active;
-            interfaceComponent.Visible = active;
-        }
-
-        private void SwitchMenuRelatedComponents(Boolean active)
-        {
-            menuComponent.Enabled = active;
-            menuComponent.Visible = active;
         }
     }
 }

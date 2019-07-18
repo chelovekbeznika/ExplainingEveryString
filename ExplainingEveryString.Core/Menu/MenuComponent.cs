@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.Menu
         private MenuVisiblePart InitializeVisiblePart()
         {
             Texture2D borderPart = Game.Content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder");
-            MenuBuilder menuBuild = new MenuBuilder(Game.Content);
+            MenuBuilder menuBuild = new MenuBuilder(Game);
             Rectangle screen = Game.GraphicsDevice.Viewport.Bounds;
             MenuItemPositionsMapper positionsMapper = new MenuItemPositionsMapper(new Point(screen.Width, screen.Height), 16);
             MenuItemDisplayer menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);
@@ -46,6 +46,11 @@ namespace ExplainingEveryString.Core.Menu
             visiblePart.Draw();
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        internal void Accept()
+        {
+            visiblePart.RequestSelectedCommandExecution();
         }
     }
 }

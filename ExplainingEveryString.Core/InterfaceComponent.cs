@@ -22,12 +22,22 @@ namespace ExplainingEveryString.Core
         private EnemyInfoDisplayer enemiesInfoDisplayer;
         private Color alphaMask;
 
-        internal InterfaceComponent(EesGame eesGame, GameplayComponent gameplayComponent) : base(eesGame)
+        internal InterfaceComponent(EesGame eesGame) : base(eesGame)
         {
             Configuration config = ConfigurationAccess.GetCurrentConfig();
             this.eesGame = eesGame;
-            this.gameplayComponent = gameplayComponent;
             this.alphaMask = new Color(Color.White, config.InterfaceAlpha);
+            this.SetGameplayComponentToDraw(null);
+        }
+
+        internal void SetGameplayComponentToDraw(GameplayComponent gameplayComponent)
+        {
+            this.gameplayComponent = gameplayComponent;
+            if (gameplayComponent == null)
+            {
+                this.Enabled = false;
+                this.Visible = false;
+            }
         }
 
         protected override void LoadContent()

@@ -46,5 +46,10 @@ namespace ExplainingEveryString.Core.Menu
                 itemDisplayer.Draw(pair.Item, pair.Position);
             }
         }
+
+        internal void RequestSelectedCommandExecution()
+        {
+            items[SelectedIndex].RequestCommandExecution();
+        }
     }
 }

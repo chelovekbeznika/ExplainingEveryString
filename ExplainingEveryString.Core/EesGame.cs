@@ -42,11 +42,10 @@ namespace ExplainingEveryString.Core
             blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
-            GameplayComponent gameplayComponent = new GameplayComponent(this, blueprintsLoader, "level_11.dat");
-            InterfaceComponent interfaceComponent = new InterfaceComponent(this, gameplayComponent);
-            MenuComponent menuComponent = new MenuComponent(this);
+            ComponentsManager componentsManager = new ComponentsManager(this);
+            componentsManager.ConstructGameplayComponent(blueprintsLoader, "Level_11.dat");
 
-            this.gameState = new GameStateManager(this, gameplayComponent, interfaceComponent, menuComponent);
+            this.gameState = new GameStateManager(this, componentsManager);
             this.menuInputProcessor = new MenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
             gameState.InitMenuInput(menuInputProcessor);
             base.Initialize();

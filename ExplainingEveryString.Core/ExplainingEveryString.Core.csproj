@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
+    <Compile Include="ComponentsManager.cs" />
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="Displaying\EpicEvent.cs" />

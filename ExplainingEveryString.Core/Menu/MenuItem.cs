@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.Menu
     {
         internal Texture2D Sprite { get; private set; }
         internal Boolean Selected { get; set; } = false;
+        internal EventHandler<EventArgs> ItemCommandExecuteRequested;
 
         internal MenuItem(Texture2D sprite)
         {
@@ -21,6 +22,11 @@ namespace ExplainingEveryString.Core.Menu
         internal Point GetSize()
         {
             return new Point(Sprite.Width, Sprite.Height);
+        }
+
+        internal void RequestCommandExecution()
+        {
+            ItemCommandExecuteRequested?.Invoke(this, EventArgs.Empty);
         }
     }
 }
