@@ -13,41 +13,39 @@ namespace ExplainingEveryString.Core.Menu
     {
         private Texture2D background;
         private SpriteBatch spriteBatch;
-        private MenuItem[] menu;
-        private MenuItemPositionsMapper positionsMapper;
+        private MenuVisiblePart visiblePart;
+
+        internal Int32 SelectedItemIndex { get => visiblePart.SelectedIndex; set => visiblePart.SelectedIndex = value; }
 
         internal MenuComponent(EesGame game) : base(game)
         {
-            Rectangle screen = game.GraphicsDevice.Viewport.Bounds;
-            this.positionsMapper = new MenuItemPositionsMapper(new Point(screen.Width, screen.Height), 16);
         }
 
         public override void Initialize()
         {
             this.background = Game.Content.Load<Texture2D>(@"Sprites/Menu/Background");
-            MenuBuilder menuBuild = new MenuBuilder();
-            menu = menuBuild.BuildMenu(Game.Content);
             this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
+            this.visiblePart = InitializeVisiblePart();
             base.Initialize();
+        }
+
+        private MenuVisiblePart InitializeVisiblePart()
+        {
+            Texture2D borderPart = Game.Content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder");
+            MenuBuilder menuBuild = new MenuBuilder(Game.Content);
+            Rectangle screen = Game.GraphicsDevice.Viewport.Bounds;
+            MenuItemPositionsMapper positionsMapper = new MenuItemPositionsMapper(new Point(screen.Width, screen.Height), 16);
+            MenuItemDisplayer menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);
+            return new MenuVisiblePart(menuBuild, positionsMapper, menuItemDisplayer);
         }
 
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
             spriteBatch.Draw(background, Game.GraphicsDevice.Viewport.Bounds, Color.White);
-            DrawMenu(spriteBatch, menu);
+            visiblePart.Draw();
             spriteBatch.End();
             base.Draw(gameTime);
-        }
-
-        private void DrawMenu(SpriteBatch spriteBatch, MenuItem[] menu)
-        {
-            Point[] positions = positionsMapper.GetItemsPositions(menu.Select(item => item.GetSize()).ToArray());
-            foreach (var item in menu.Zip(positions, (rawItem, position) => new { rawItem.Sprite, Position = position }))
-            {
-                Vector2 position = new Vector2(item.Position.X, item.Position.Y);
-                spriteBatch.Draw(item.Sprite, position, Color.White);
-            }
         }
     }
 }

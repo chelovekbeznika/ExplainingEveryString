@@ -46,10 +46,9 @@ namespace ExplainingEveryString.Core
             InterfaceComponent interfaceComponent = new InterfaceComponent(this, gameplayComponent);
             MenuComponent menuComponent = new MenuComponent(this);
 
-            this.gameState = new GameStateManager(Components, gameplayComponent, interfaceComponent, menuComponent);
+            this.gameState = new GameStateManager(this, gameplayComponent, interfaceComponent, menuComponent);
             this.menuInputProcessor = new MenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
-            menuInputProcessor.Exit.ButtonPressed += (sender, e) => Exit();
-            menuInputProcessor.Pause.ButtonPressed += (sender, e) => gameState.SwitchGameState();
+            gameState.InitMenuInput(menuInputProcessor);
             base.Initialize();
         }
 

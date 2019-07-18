@@ -11,6 +11,7 @@ namespace ExplainingEveryString.Core.Menu
     internal class MenuItem
     {
         internal Texture2D Sprite { get; private set; }
+        internal Boolean Selected { get; set; } = false;
 
         internal MenuItem(Texture2D sprite)
         {

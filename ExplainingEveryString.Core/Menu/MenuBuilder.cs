@@ -10,7 +10,14 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuBuilder
     {
-        internal MenuItem[] BuildMenu(ContentManager content)
+        private ContentManager content;
+
+        internal MenuBuilder(ContentManager content)
+        {
+            this.content = content;
+        }
+
+        internal MenuItem[] BuildMenu()
         {
             return new MenuItem[]
             {

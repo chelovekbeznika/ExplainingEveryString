@@ -91,6 +91,8 @@
     <Compile Include="Menu\MenuComponent.cs" />
     <Compile Include="Menu\MenuInputProcessor.cs" />
     <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuItemDisplayer.cs" />
+    <Compile Include="Menu\MenuVisiblePart.cs" />
     <Compile Include="Tiles\TileWrapper.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\FixedAimer.cs" />

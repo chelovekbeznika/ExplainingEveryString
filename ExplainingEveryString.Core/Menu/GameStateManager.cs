@@ -12,22 +12,31 @@ namespace ExplainingEveryString.Core.Menu
         private enum GameState { Gameplay, Menu }
 
         private GameState CurrentState = GameState.Menu;
-        private GameComponentCollection components;
+        private Game game;
         private GameplayComponent gameplayComponent;
         private InterfaceComponent interfaceComponent;
         private MenuComponent menuComponent;
 
-        internal GameStateManager(GameComponentCollection components, 
+        internal GameStateManager(Game game, 
             GameplayComponent gameplay, InterfaceComponent @interface, MenuComponent menu)
         {
-            this.components = components;
+            this.game = game;
             this.gameplayComponent = gameplay;
             this.interfaceComponent = @interface;
             this.menuComponent = menu;
         }
 
+        internal void InitMenuInput(MenuInputProcessor menuInputProcessor)
+        {
+            menuInputProcessor.Exit.ButtonPressed += (sender, e) => game.Exit();
+            menuInputProcessor.Pause.ButtonPressed += (sender, e) => SwitchGameState();
+            menuInputProcessor.Down.ButtonPressed += (sender, e) => menuComponent.SelectedItemIndex += 1;
+            menuInputProcessor.Up.ButtonPressed += (sender, e) => menuComponent.SelectedItemIndex -= 1;
+        }
+
         internal void InitComponents()
         {
+            GameComponentCollection components = game.Components;
             components.Add(gameplayComponent);
             components.Add(interfaceComponent);
             components.Add(menuComponent);
