@@ -34,6 +34,8 @@ namespace ExplainingEveryString.Core
             this.eesGame = game;
             this.levelFileName = levelFileName;
             this.blueprintsLoader = blueprintsLoader;
+            this.DrawOrder = 0;
+            this.UpdateOrder = 0;
         }
 
         public override void Initialize()

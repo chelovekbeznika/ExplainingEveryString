@@ -14,11 +14,15 @@ namespace ExplainingEveryString.Core.Menu
         private Texture2D background;
         private SpriteBatch spriteBatch;
         private MenuVisiblePart visiblePart;
+        private EesGame game;
 
         internal Int32 SelectedItemIndex { get => visiblePart.SelectedIndex; set => visiblePart.SelectedIndex = value; }
 
         internal MenuComponent(EesGame game) : base(game)
         {
+            this.game = game;
+            this.DrawOrder = 2;
+            this.UpdateOrder = 2;
         }
 
         public override void Initialize()
@@ -31,9 +35,9 @@ namespace ExplainingEveryString.Core.Menu
 
         private MenuVisiblePart InitializeVisiblePart()
         {
-            Texture2D borderPart = Game.Content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder");
-            MenuBuilder menuBuild = new MenuBuilder(Game);
-            Rectangle screen = Game.GraphicsDevice.Viewport.Bounds;
+            Texture2D borderPart = game.Content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder");
+            MenuBuilder menuBuild = new MenuBuilder(game);
+            Rectangle screen = game.GraphicsDevice.Viewport.Bounds;
             MenuItemPositionsMapper positionsMapper = new MenuItemPositionsMapper(new Point(screen.Width, screen.Height), 16);
             MenuItemDisplayer menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);
             return new MenuVisiblePart(menuBuild, positionsMapper, menuItemDisplayer);
@@ -42,7 +46,7 @@ namespace ExplainingEveryString.Core.Menu
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(background, Game.GraphicsDevice.Viewport.Bounds, Color.White);
+            spriteBatch.Draw(background, game.GraphicsDevice.Viewport.Bounds, Color.White);
             visiblePart.Draw();
             spriteBatch.End();
             base.Draw(gameTime);

@@ -11,9 +11,9 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuBuilder
     {
-        private Game game;
+        private EesGame game;
 
-        internal MenuBuilder(Game game)
+        internal MenuBuilder(EesGame game)
         {
             this.game = game;
         }
@@ -28,6 +28,7 @@ namespace ExplainingEveryString.Core.Menu
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect")),
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/Exit"))
             };
+            items[0].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
             items[3].ItemCommandExecuteRequested += (sender, e) => game.Exit();
             return items;
         }

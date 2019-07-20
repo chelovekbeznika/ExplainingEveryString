@@ -7,36 +7,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.GameState
 {
     internal class ComponentsManager
     {
         private EesGame game;
+        private IBlueprintsLoader blueprintsLoader;
 
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
 
-        internal ComponentsManager(EesGame game)
+        internal ComponentsManager(EesGame game, IBlueprintsLoader blueprintsLoader)
         {
             this.game = game;
+            this.blueprintsLoader = blueprintsLoader;
             Interface = new InterfaceComponent(game);
             Menu = new MenuComponent(game);
         }
 
-        internal void ConstructGameplayComponent(IBlueprintsLoader blueprintsLoader, String levelFile)
+        internal void InitNewGameplayComponent(String levelFile)
         {
             CurrentGameplay = new GameplayComponent(game, blueprintsLoader, levelFile);
+            Interface.SetGameplayComponentToDraw(CurrentGameplay);
+            game.Components.Insert(0, CurrentGameplay);
+            
+        }
+
+        internal void DeleteCurrentGameplayComponent()
+        {
+            if (CurrentGameplay != null)
+            {
+                game.Components.Remove(CurrentGameplay);
+                Interface.SetGameplayComponentToDraw(null);
+                CurrentGameplay = null;
+            }
         }
 
         internal void InitComponents()
         {
             GameComponentCollection components = game.Components;
-            components.Add(CurrentGameplay);
             components.Add(Interface);
             components.Add(Menu);
             SwitchMenuRelatedComponents(true);
-            SwitchGameplayRelatedComponents(false);
         }
 
         internal void SwitchGameplayRelatedComponents(Boolean active)

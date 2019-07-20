@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
-    <Compile Include="ComponentsManager.cs" />
+    <Compile Include="GameState\ComponentsManager.cs" />
     <Compile Include="Displaying\Camera.cs" />
     <Compile Include="Displaying\CameraObjectGlass.cs" />
     <Compile Include="Displaying\EpicEvent.cs" />
@@ -85,8 +85,9 @@
     <Compile Include="GameModel\TileWallsFactory.cs" />
     <Compile Include="GameModel\Weaponry\SpawnedActorsController.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\ParabolicTrajectory.cs" />
+    <Compile Include="GameState\LevelSequence.cs" />
     <Compile Include="Math\MenuItemPositionsMapper.cs" />
-    <Compile Include="Menu\GameStateManager.cs" />
+    <Compile Include="GameState\GameStateManager.cs" />
     <Compile Include="Menu\MenuBuilder.cs" />
     <Compile Include="Menu\MenuButtonHandler.cs" />
     <Compile Include="Menu\MenuComponent.cs" />

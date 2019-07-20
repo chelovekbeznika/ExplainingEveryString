@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.AssetsMetadata;
@@ -21,7 +22,7 @@ namespace ExplainingEveryString.Core
         private IBlueprintsLoader blueprintsLoader;
 
         private MenuInputProcessor menuInputProcessor;
-        private GameStateManager gameState;
+        internal GameStateManager GameState { get; private set; }
 
         internal AssetsStorage AssetsStorage { get; private set; }
 
@@ -42,12 +43,11 @@ namespace ExplainingEveryString.Core
             blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
-            ComponentsManager componentsManager = new ComponentsManager(this);
-            componentsManager.ConstructGameplayComponent(blueprintsLoader, "Level_11.dat");
+            ComponentsManager componentsManager = new ComponentsManager(this, blueprintsLoader);
 
-            this.gameState = new GameStateManager(this, componentsManager);
+            this.GameState = new GameStateManager(this, componentsManager);
             this.menuInputProcessor = new MenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
-            gameState.InitMenuInput(menuInputProcessor);
+            GameState.InitMenuInput(menuInputProcessor);
             base.Initialize();
         }
 
@@ -67,7 +67,7 @@ namespace ExplainingEveryString.Core
         {
             if (Components.Count == 0)
             {
-                gameState.InitComponents();
+                GameState.InitComponents();
             }
             menuInputProcessor.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
