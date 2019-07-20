@@ -3,17 +3,12 @@ using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core
 {
@@ -28,6 +23,9 @@ namespace ExplainingEveryString.Core
         private TiledMapDisplayer mapDisplayer;
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
+
+        internal Boolean Lost => level.Lost;
+        internal Boolean Won => level.Won;
 
         internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName) : base(game)
         {
@@ -45,7 +43,6 @@ namespace ExplainingEveryString.Core
             this.levelData = levelLoader.Load(levelFileName);
             map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
             level = new Level(factory, map, new PlayerInputFactory(this), levelData);
-            level.Lost += eesGame.GameLost;
             base.Initialize();
         }
 

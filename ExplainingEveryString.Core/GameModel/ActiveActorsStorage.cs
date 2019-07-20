@@ -37,7 +37,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             return walls
                 .Concat(doors)
-                .Concat(new List<IDisplayble> { Player })
+                .Concat(Player.IsAlive() ? new List<IDisplayble> { Player } : Enumerable.Empty<IDisplayble>())
                 .Concat(Enemies)
                 .Concat(EnemyBullets)
                 .Concat(PlayerBullets);
@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             return PlayerBullets
                 .Concat(EnemyBullets)
-                .Concat(new List<IUpdatable> { Player })
+                .Concat(Player.IsAlive() ? new List<IUpdatable> { Player } : Enumerable.Empty<IUpdatable>())
                 .Concat(activeEnemySpawners.OfType<IUpdatable>())
                 .Concat(Enemies.OfType<IUpdatable>())
                 .Concat(walls.OfType<IUpdatable>())

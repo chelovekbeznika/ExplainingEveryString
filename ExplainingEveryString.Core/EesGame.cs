@@ -71,6 +71,7 @@ namespace ExplainingEveryString.Core
             }
             menuInputProcessor.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
+            GameState.Update();
         }
 
         protected override void Draw(GameTime gameTime)
@@ -78,12 +79,5 @@ namespace ExplainingEveryString.Core
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(gameTime);
         }
-
-        internal void GameLost(Object sender, EventArgs args)
-        {
-            Exit();
-        }
     }
-
-
 }

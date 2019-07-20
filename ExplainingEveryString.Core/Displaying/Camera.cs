@@ -35,11 +35,6 @@ namespace ExplainingEveryString.Core.Displaying
             foreach (IDisplayble toDraw in thingsToDraw)
             {
                 Draw(toDraw);
-                if (toDraw is IMultiPartDisplayble)
-                {
-                    foreach (IDisplayble part in ((IMultiPartDisplayble)toDraw).GetParts())
-                        Draw(part);
-                }
             }   
         }
 
@@ -62,6 +57,12 @@ namespace ExplainingEveryString.Core.Displaying
 
             spriteBatch.Draw(spriteData.Sprite, drawPosition, drawPart, Color.White, angle, 
                 spriteCenter, 1, SpriteEffects.None, 0);
+
+            if (toDraw is IMultiPartDisplayble)
+            {
+                foreach (IDisplayble part in ((IMultiPartDisplayble)toDraw).GetParts())
+                    Draw(part);
+            }
         }
 
         internal Rectangle PositionOnScreen(IDisplayble displayble)

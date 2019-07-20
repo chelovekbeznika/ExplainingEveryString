@@ -2,10 +2,6 @@
 using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameState
 {
@@ -31,7 +27,6 @@ namespace ExplainingEveryString.Core.GameState
             CurrentGameplay = new GameplayComponent(game, blueprintsLoader, levelFile);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
             game.Components.Insert(0, CurrentGameplay);
-            
         }
 
         internal void DeleteCurrentGameplayComponent()

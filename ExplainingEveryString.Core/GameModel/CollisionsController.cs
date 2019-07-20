@@ -21,7 +21,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void CheckCollisions()
         {
-            CheckEnemiesForCrashingIntoPlayer();
+            if (activeObjects.Player.IsAlive())
+                CheckEnemiesForCrashingIntoPlayer();
             PreventInterpenetrationOfActors();
             CheckForBulletsCollisions();
         }
@@ -107,15 +108,17 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void CheckForBulletsCollisions()
         {
-            foreach (Bullet bullet in activeObjects.PlayerBullets)
-            {
-                CheckBulletForCollisions(bullet, 
-                    activeObjects.Enemies.Concat(activeObjects.GetWalls()).OfType<ICollidable>());
-            }
-            foreach (Bullet bullet in activeObjects.EnemyBullets)
+            CheckForBulletsCollisions(activeObjects.PlayerBullets, activeObjects.Enemies.Cast<ICollidable>());
+            if (activeObjects.Player.IsAlive())
+                CheckForBulletsCollisions(activeObjects.EnemyBullets, new ICollidable[] { activeObjects.Player });
+        }
+
+        private void CheckForBulletsCollisions(IEnumerable<Bullet> bullets, IEnumerable<ICollidable> targets)
+        {
+            foreach (Bullet bullet in bullets)
             {
                 CheckBulletForCollisions(bullet,
-                    new ICollidable[] { activeObjects.Player }.Concat(activeObjects.GetWalls()).OfType<ICollidable>());
+                    targets.Concat(activeObjects.GetWalls()));
             }
         }
 

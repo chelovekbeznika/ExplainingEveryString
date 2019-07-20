@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal ActiveActorsStorage ActiveActors { get; private set; }
 
         internal Boolean Lost => !ActiveActors.Player.IsAlive();
-        internal Boolean Won => currentEnemyWaveNumber >= levelData.EnemyWaves.Length;
+        internal Boolean Won => !Lost && currentEnemyWaveNumber >= levelData.EnemyWaves.Length;
 
         internal LevelState(ActiveActorsStorage activeActors, ActorsInitializer actorsInitializer, LevelData levelData)
         {

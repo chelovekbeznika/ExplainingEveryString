@@ -25,7 +25,6 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void InitMenuInput(MenuInputProcessor menuInputProcessor)
         {
-            menuInputProcessor.Exit.ButtonPressed += (sender, e) => game.Exit();
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => TryPauseGame();
             menuInputProcessor.Down.ButtonPressed += (sender, e) => componentsManager.Menu.SelectedItemIndex += 1;
             menuInputProcessor.Up.ButtonPressed += (sender, e) => componentsManager.Menu.SelectedItemIndex -= 1;
@@ -37,15 +36,43 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.InitComponents();
         }
 
+        internal void Update()
+        {
+            if (componentsManager.CurrentGameplay != null)
+            {
+                if (componentsManager.CurrentGameplay.Lost)
+                    StartCurrentLevel();
+                if (componentsManager.CurrentGameplay.Won)
+                    SwitchToNextLevel();
+            }
+        }
+
         internal void StartNewGame()
         {
             levelSequence.Reset();
+            StartCurrentLevel();
+        }
+
+        private void StartCurrentLevel()
+        {
             componentsManager.DeleteCurrentGameplayComponent();
             componentsManager.InitNewGameplayComponent(levelSequence.GetCurrentLevelFile());
             SwitchToInGameState();
         }
 
-        internal void TryPauseGame()
+        private void SwitchToNextLevel()
+        {
+            levelSequence.MarkLevelComplete();
+            if (!levelSequence.GameCompleted)
+                StartCurrentLevel();
+            else
+            {
+                levelSequence.Reset();
+                SwitchToBetweenLevelsState();
+            }
+        }
+
+        private void TryPauseGame()
         {
             if (CurrentState == GameState.InGame)
             {
@@ -71,6 +98,14 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchMenuRelatedComponents(true);
             CurrentState = GameState.Paused;
+        }
+
+        private void SwitchToBetweenLevelsState()
+        {
+            componentsManager.SwitchMenuRelatedComponents(true);
+            componentsManager.SwitchGameplayRelatedComponents(false);
+            componentsManager.DeleteCurrentGameplayComponent();
+            CurrentState = GameState.BetweenLevels;
         }
     }
 }

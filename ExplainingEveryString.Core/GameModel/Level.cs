@@ -10,8 +10,6 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal delegate void GameLost(Object sender, EventArgs e);
-
     internal class Level
     {
         private LevelState levelState;
@@ -21,7 +19,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
-        internal event GameLost Lost;
+        internal Boolean Lost => levelState.Lost;
+        internal Boolean Won => levelState.Won;
 
         internal Level(ActorsFactory factory, TileWrapper map, 
             PlayerInputFactory playerInputFactory, LevelData levelData)
@@ -40,9 +39,8 @@ namespace ExplainingEveryString.Core.GameModel
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
             levelState.Update();
-            if (levelState.Lost)
-                Lost?.Invoke(this, EventArgs.Empty);
-            gameTime += elapsedSeconds;
+            if (!Lost && !Won)
+                gameTime += elapsedSeconds;
         }
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
