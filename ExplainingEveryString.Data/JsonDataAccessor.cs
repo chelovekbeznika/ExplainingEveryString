@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Data
 
         internal T Load<T>(String fileName)
         {
-            using (StreamReader streamReader = new StreamReader(fileName))
+            using (StreamReader streamReader = new StreamReader(GetPath(fileName)))
             using (JsonReader jsonReader = new JsonTextReader(streamReader))
             {
                 return serializer.Deserialize<T>(jsonReader);
@@ -29,11 +29,16 @@ namespace ExplainingEveryString.Data
 
         internal void Save<T>(String fileName, T data)
         {
-            using (StreamWriter streamWriter = new StreamWriter(fileName))
+            using (StreamWriter streamWriter = new StreamWriter(GetPath(fileName)))
             using (JsonWriter writer = new JsonTextWriter(streamWriter))
             {
                 serializer.Serialize(writer, data);
             }
+        }
+
+        private String GetPath(String fileName)
+        {
+            return Path.Combine("Data", fileName);
         }
     }
 }
