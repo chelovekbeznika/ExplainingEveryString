@@ -1,29 +1,13 @@
 # What?
-
 This repository belongs to youtube channel ["Explaining every string"](https://www.youtube.com/c/explainingeverystring)
-
 I'm making here videogame on "Monogame framework".
-
 # How to start up?
-
-First, you download assets project from [here](https://yadi.sk/d/BOZclJEuR9JhMw)
-
-Second, you recreating next folders structure:
-
-|>Explaining Every String
-
-|>|>Build - Actually will be created by Visual studio
-
-|>|>Source
-
-|>|>|>ExplainingEveryString - Put github repository in this folder
-
-|>|>Content
-
-|>|>|>Ready - Put monogame pipeline tool project with assets in this folder
-
-Third, open your VS studio solution and build debug or release version
-
-Fourth, in monogame pipeline tool project in project properties select "Debug" or "Release" config and build assets project.
-
-Fifth, now you have in Build folder in Debug/Release subfolder built game with assets.
+You need VS2017 at least and installed Monogame
+Need to use recreate next folder structure and use 
+There are two repositories and they require recreating next folder structure to work correctly:
+* Build
+* Source
+   * ExplainingEveryString CLONE THIS REPOSITORY HERE
+* ExplainingEveryStringAssets (CLONE ASSETS REPOSITORY HERE)[https://github.com/chelovekbeznika/ExplainingEveryStringAssets]
+Second, open your VS studio solution and build solution. It should find, build and copy assets in postbuild of ExplainingEveryString project.
+I know, I know - going with relative paths outside solution is bad but for now I'm came up with this. I'm ready to hear out better options and add it to Roadmap.txt.
