@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class Level
     {
+        private readonly Single delayBeforeLevelEnd = 2.0F;
         private LevelState levelState;
         private CollisionsController collisionsController;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
@@ -19,8 +20,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
-        internal Boolean Lost => levelState.Lost;
-        internal Boolean Won => levelState.Won;
+        internal Boolean Lost => levelState.Lost && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
+        internal Boolean Won => levelState.Won && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
 
         internal Level(ActorsFactory factory, TileWrapper map, 
             PlayerInputFactory playerInputFactory, LevelData levelData)
@@ -38,8 +39,8 @@ namespace ExplainingEveryString.Core.GameModel
             foreach (IUpdatable updatable in levelState.ActiveActors.GetObjectsToUpdate())
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
-            levelState.Update();
-            if (!Lost && !Won)
+            levelState.Update(elapsedSeconds);
+            if (!levelState.LevelEnded)
                 gameTime += elapsedSeconds;
         }
 

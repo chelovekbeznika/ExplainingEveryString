@@ -1,10 +1,6 @@
 ﻿using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Level;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -17,9 +13,11 @@ namespace ExplainingEveryString.Core.GameModel
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
 
         internal ActiveActorsStorage ActiveActors { get; private set; }
+        internal Single SecondsPassedAfterLevelEnd { get; private set; } = 0;
 
         internal Boolean Lost => !ActiveActors.Player.IsAlive();
         internal Boolean Won => !Lost && currentEnemyWaveNumber >= levelData.EnemyWaves.Length;
+        internal Boolean LevelEnded => Won || Lost;
 
         internal LevelState(ActiveActorsStorage activeActors, ActorsInitializer actorsInitializer, LevelData levelData)
         {
@@ -29,7 +27,7 @@ namespace ExplainingEveryString.Core.GameModel
             activeActors.InitializeActorsOnLevelStart(actorsInitializer);
         }
 
-        internal void Update()
+        internal void Update(Single elapsedSeconds)
         {
             ActiveActors.Update();
             if (!Won)
@@ -39,6 +37,8 @@ namespace ExplainingEveryString.Core.GameModel
                 if (currentEnemyWaveState == WaveState.Triggered)
                     TriggeredWaveCheck();
             }
+            if (LevelEnded)
+                SecondsPassedAfterLevelEnd += elapsedSeconds;
         }
 
         private void SleepingWaveCheck()
