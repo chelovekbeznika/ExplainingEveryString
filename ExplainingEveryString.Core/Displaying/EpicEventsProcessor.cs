@@ -55,23 +55,26 @@ namespace ExplainingEveryString.Core.Displaying
 
         private void ProcessSound(EpicEventArgs epicEvent)
         {
-            Single distance = (level.Player.Position - epicEvent.Position).Length();
             SoundSpecification sound = epicEvent.SpecEffectSpecification.Sound;
-            Single currentFadingOutDistance = fadingOutDistance * sound.FadingCoeff;
-            if (distance <= currentFadingOutDistance)
+            if (sound != null)
             {
-                Single nearEpicenterVolume = epicEvent.SpecEffectSpecification.Sound.Volume;
-                Single fadingCoeff = 1 - (distance / currentFadingOutDistance);
-                Single volume = nearEpicenterVolume * fadingCoeff;
-                assetsStorage.GetSound(sound.Name).Play(volume, 0, 0);
+                Single distance = (level.Player.Position - epicEvent.Position).Length();
+                Single currentFadingOutDistance = fadingOutDistance * sound.FadingCoeff;
+                if (distance <= currentFadingOutDistance)
+                {
+                    Single nearEpicenterVolume = epicEvent.SpecEffectSpecification.Sound.Volume;
+                    Single fadingCoeff = 1 - (distance / currentFadingOutDistance);
+                    Single volume = nearEpicenterVolume * fadingCoeff;
+                    assetsStorage.GetSound(sound.Name).Play(volume, 0, 0);
+                }
             }
         }
 
         private void ProcessAnimation(EpicEventArgs epicEvent)
         {
-            if (epicEvent.SpecEffectSpecification.Sprite != null)
+            SpriteSpecification sprite = epicEvent.SpecEffectSpecification.Sprite;
+            if (sprite != null)
             {
-                SpriteSpecification sprite = epicEvent.SpecEffectSpecification.Sprite;
                 SpecEffect specEffect = new SpecEffect(epicEvent.Position, epicEvent.Angle, sprite);
                 activeSpecEffects.Add(specEffect);
             }

@@ -14,6 +14,8 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single MaxAcceleration { get; set; }
         public WeaponSpecification Weapon { get; set; }
         public SpecEffectSpecification DamageEffect { get; set; }
+        public SpecEffectSpecification BaseDestructionEffect { get; set; }
+        public SpecEffectSpecification CannonDestructionEffect { get; set; }
 
         internal override IEnumerable<SpriteSpecification> GetSprites()
         {
@@ -21,7 +23,10 @@ namespace ExplainingEveryString.Data.Blueprints
         }
         internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
         {
-            return new SpecEffectSpecification[] { Weapon.ShootingEffect, DamageEffect };
+            return new SpecEffectSpecification[] 
+            {
+                Weapon.ShootingEffect, DamageEffect, BaseDestructionEffect, CannonDestructionEffect
+            };
         }
     }
 }

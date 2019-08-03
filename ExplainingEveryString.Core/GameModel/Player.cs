@@ -7,15 +7,31 @@ using ExplainingEveryString.Core.Displaying;
 using System.Collections.Generic;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Specifications;
+using ExplainingEveryString.Core.Math;
 
 namespace ExplainingEveryString.Core.GameModel
 {
     internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets, IInterfaceAccessable
     {
         private EpicEvent damageTaken;
+        private EpicEvent baseDestroyed;
+        private EpicEvent cannonDestroyed;
 
         public Boolean ShowInterfaceInfo => false;
         public Single MaxHitPoints { get; private set; }
+        public override Single HitPoints
+        {
+            get => base.HitPoints;
+            set
+            {
+                base.HitPoints = value;
+                if (value < Constants.Epsilon)
+                {
+                    baseDestroyed.TryHandle();
+                    cannonDestroyed.TryHandle();
+                }
+            }
+        }
         internal Vector2 FireDirection => input.GetFireDirection();
 
         private Vector2 speed = new Vector2(0, 0);
@@ -33,11 +49,15 @@ namespace ExplainingEveryString.Core.GameModel
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
             bulletHitboxWidth = blueprint.BulletHitboxWidth;
-            damageTaken = new EpicEvent(level, blueprint.DamageEffect, false, this, true);
+            
             MaxHitPoints = blueprint.Hitpoints;
 
             Weapon = new Weapon(blueprint.Weapon, input, () => Position, null, level);
             Weapon.Shoot += level.PlayerShoot;
+
+            damageTaken = new EpicEvent(level, blueprint.DamageEffect, false, this, true);
+            baseDestroyed = new EpicEvent(level, blueprint.BaseDestructionEffect, true, this, false);
+            cannonDestroyed = new EpicEvent(level, blueprint.CannonDestructionEffect, true, this.Weapon, true);
         }
 
         public override void Update(Single elapsedSeconds)
