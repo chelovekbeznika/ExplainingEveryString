@@ -11,16 +11,17 @@ namespace ExplainingEveryString.Core.GameModel
     {
         private Hitbox hitbox;
 
-        public TileWall(Hitbox hitbox)
+        public TileWall(Hitbox hitbox, CollidableMode mode)
         {
             this.hitbox = hitbox;
+            this.Mode = mode;
         }
 
         public Vector2 Position { get => GetHitboxCenter(); set { } }
 
         public Vector2 OldPosition => GetHitboxCenter();
 
-        public CollidableMode Mode => CollidableMode.Solid;
+        public CollidableMode Mode { get; }
 
         public Hitbox GetCurrentHitbox()
         {

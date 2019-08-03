@@ -23,7 +23,11 @@ namespace ExplainingEveryString.Core.GameModel
         {
             List<Point> wallsTiles = map.GetWallTiles();
             List<Rectangle> walls = wallsOptimizer.GetWalls(wallsTiles);
-            return walls.Select(w => new TileWall(map.GetHitbox(w))).Cast<ICollidable>().ToArray();
+            List<Point> pitTiles = map.GetPitTiles();
+            List<Rectangle> pits = wallsOptimizer.GetWalls(pitTiles);
+            return walls.Select(w => new TileWall(map.GetHitbox(w), CollidableMode.Solid))
+                .Concat(pits.Select(p => new TileWall(map.GetHitbox(p), CollidableMode.Pit)))
+                .Cast<ICollidable>().ToArray();
         }
     }
 }
