@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void PreventInterpenetrationOfActors()
         {
-            AdjustObjectToWalls(activeObjects.Player, null, null);
+            AdjustObjectToWalls(activeObjects.Player, false, null, null);
 
             IEnumerable<ICollidable> enemies = activeObjects.Enemies.OfType<ICollidable>()
                 .Where(c => c.Mode != CollidableMode.Ghost).ToArray();
@@ -68,7 +68,7 @@ namespace ExplainingEveryString.Core.GameModel
                     stoppedEnemies.Add(movingEnemy);
                 }
                 else
-                    AdjustObjectToWalls(movingEnemy, null, null);             
+                    AdjustObjectToWalls(movingEnemy, true, null, null);             
             }
         }
 
@@ -77,13 +77,16 @@ namespace ExplainingEveryString.Core.GameModel
             return !collidable.GetOldHitbox().Equals(collidable.GetCurrentHitbox());
         }
 
-        private void AdjustObjectToWalls(ICollidable movingObject, 
+        private void AdjustObjectToWalls(ICollidable movingObject, Boolean ridesThroughPit,
             ICollidable tryVerticalMovePriorityForThis, Hitbox? previousOldHitbox)
         {
             Hitbox oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
             Vector2 savedMovingObjectPosition = movingObject.Position;
             ICollidable touchingToCorner = null;
-            foreach (ICollidable wall in activeObjects.GetWalls().Where(c => c.Mode != CollidableMode.Ghost))
+            Func<ICollidable, Boolean> bumpIntoThisWall = ridesThroughPit
+                ? new Func<ICollidable, Boolean>(c => c.Mode == CollidableMode.Solid)
+                : new Func<ICollidable, Boolean>(c => c.Mode == CollidableMode.Solid || c.Mode == CollidableMode.Pit);
+            foreach (ICollidable wall in activeObjects.GetWalls().Where(bumpIntoThisWall))
             {
                 Vector2? wallCorrection;
                 Boolean ridingIntoCorner;
@@ -102,7 +105,7 @@ namespace ExplainingEveryString.Core.GameModel
             if (touchingToCorner != null && oldHitbox.Equals(movingObject.GetCurrentHitbox()))
             {
                 movingObject.Position = savedMovingObjectPosition;
-                AdjustObjectToWalls(movingObject, touchingToCorner, oldHitbox);
+                AdjustObjectToWalls(movingObject, ridesThroughPit, touchingToCorner, oldHitbox);
             }
         }
 
