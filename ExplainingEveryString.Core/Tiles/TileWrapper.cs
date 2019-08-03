@@ -40,17 +40,18 @@ namespace ExplainingEveryString.Core.Tiles
         private List<Point> GetSpecificTiles(String layerName, String property)
         {
             List<Point> result = new List<Point>();
-            TiledMapTileLayer wallsLayer = TiledMap.TileLayers.First(tl => tl.Name == layerName);
-            foreach (Int32 row in Enumerable.Range(0, TiledMap.Height))
-                foreach (Int32 column in Enumerable.Range(0, TiledMap.Width))
-                {
-                    if (wallsLayer.TryGetTile(column, row, out TiledMapTile? wallTile))
+            TiledMapTileLayer layer = TiledMap.TileLayers.FirstOrDefault(tl => tl.Name == layerName);
+            if (layer != null)
+                foreach (Int32 row in Enumerable.Range(0, TiledMap.Height))
+                    foreach (Int32 column in Enumerable.Range(0, TiledMap.Width))
                     {
-                        Int32 tileId = wallTile.Value.GlobalIdentifier;
-                        if (ContainsProperty(TiledMap, tileId, property))
-                            result.Add(new Point { X = column, Y = row });
+                        if (layer.TryGetTile(column, row, out TiledMapTile? wallTile))
+                        {
+                            Int32 tileId = wallTile.Value.GlobalIdentifier;
+                            if (ContainsProperty(TiledMap, tileId, property))
+                                result.Add(new Point { X = column, Y = row });
+                        }
                     }
-                }
             return result;
         }
 
