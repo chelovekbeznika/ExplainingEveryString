@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.GameModel
     internal interface ICrashable : ICollidable
     {
         Single CollisionDamage { get; }
-        void Destroy();
+        void Crash();
     }
 
     internal enum CollidableMode { Solid, Pit, Shadow, Ghost }

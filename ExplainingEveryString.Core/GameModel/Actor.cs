@@ -65,7 +65,7 @@ namespace ExplainingEveryString.Core.GameModel
             return HitPoints > Constants.Epsilon;
         }
 
-        public void Destroy()
+        public virtual void Destroy()
         {
             HitPoints = 0;
         }

@@ -30,9 +30,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public Single CollisionDamage { get; set; }
 
         private Weapon weapon;
+        private PostMortemSurprise postMortemSurprise;
         protected IMoveTargetSelector MoveTargetSelector { private get; set; }
         protected IMover Mover { private get; set; }
         protected Func<Vector2> PlayerLocator { get; private set; }
+        private Func<Vector2> CurrentPositionLocator => () => this.Position;
         protected Vector2 PlayerPosition => PlayerLocator();
 
         public override Single HitPoints
@@ -44,6 +46,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 if (value < Constants.Epsilon)
                 {
                     death.TryHandle();
+                    postMortemSurprise?.TryTrigger();
                 }
             }
         }
@@ -73,7 +76,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private void ConstructMovement(TBlueprint blueprint, ActorStartInfo startInfo)
         {
             this.MoveTargetSelector = MoveTargetSelectorFactory.Get(
-                blueprint.MoveTargetSelectType, startInfo.TrajectoryTargets, PlayerLocator, () => Position);
+                blueprint.MoveTargetSelectType, startInfo.TrajectoryTargets, PlayerLocator, CurrentPositionLocator);
             this.Mover = MoverFactory.Get(blueprint.Mover);
         }
 
@@ -81,9 +84,15 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         {
             if (blueprint.Weapon != null)
             {
-                IAimer aimer = AimersFactory.Get(blueprint.Weapon, startInfo, () => this.Position, PlayerLocator);
-                weapon = new Weapon(blueprint.Weapon, aimer, () => this.Position, PlayerLocator, level);
+                IAimer aimer = AimersFactory.Get(
+                    blueprint.Weapon.AimType, startInfo.Angle, CurrentPositionLocator, PlayerLocator);
+                weapon = new Weapon(blueprint.Weapon, aimer, CurrentPositionLocator, PlayerLocator, level);
                 weapon.Shoot += level.EnemyShoot;
+            }
+            if (blueprint.PostMortemSurprise != null)
+            {
+                postMortemSurprise = 
+                    new PostMortemSurprise(blueprint.PostMortemSurprise, CurrentPositionLocator, PlayerLocator, level);
             }
         }
 
@@ -129,6 +138,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 if (weapon.IsFiring() && !weapon.IsVisible)
                     SpriteState.Angle = AngleConverter.ToRadians(weapon.GetFireDirection());
             }
+        }
+
+        public void Crash()
+        {
+            postMortemSurprise?.Cancel();
+            Destroy();
         }
     }
 }

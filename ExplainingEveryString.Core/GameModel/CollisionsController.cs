@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 if (collisionsChecker.Collides(crashable.GetCurrentHitbox(), player.GetCurrentHitbox()))
                 {
-                    crashable.Destroy();
+                    crashable.Crash();
                     player.TakeDamage(crashable.CollisionDamage);
                 }
             }

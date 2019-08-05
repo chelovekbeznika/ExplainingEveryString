@@ -20,9 +20,12 @@ namespace ExplainingEveryString.Data.Blueprints
         [JsonConverter(typeof(StringEnumConverter))]
         [DefaultValue(MoveTargetSelectType.NoTarget)]
         public MoveTargetSelectType MoveTargetSelectType { get; set; }
+        [DefaultValue(null)]
         public WeaponSpecification Weapon { get; set; }
         [DefaultValue(null)]
         public SpawnerSpecification Spawner { get; set; }
+        [DefaultValue(null)]
+        public PostMortemSurpriseSpecification PostMortemSurprise { get; set; }
         public SpecEffectSpecification DeathEffect { get; set; }
         [DefaultValue(null)]
         public SpecEffectSpecification BeforeAppearanceEffect { get; set; }

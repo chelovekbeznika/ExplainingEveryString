@@ -12,13 +12,13 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
 {
     internal static class AimersFactory
     {
-        internal static IAimer Get(WeaponSpecification weapon, ActorStartInfo actorStartInfo,
+        internal static IAimer Get(AimType aimType, Single angle,
             Func<Vector2> currentPositionLocator, Func<Vector2> playerLocator)
         {
-            switch (weapon.AimType)
+            switch (aimType)
             {
                 case AimType.FixedFireDirection:
-                    return new FixedAimer(actorStartInfo.Angle);
+                    return new FixedAimer(angle);
                 case AimType.AimAtPlayer:
                     return new PlayerAimer(playerLocator, currentPositionLocator);
                 default:
