@@ -2,6 +2,7 @@
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -18,5 +19,6 @@ namespace ExplainingEveryString.Core.GameModel
     internal interface IEnemy : IActor, IInterfaceAccessable, ICrashable, ITouchableByBullets, IMultiPartDisplayble
     {
         SpawnedActorsController SpawnedActors { get; }
+        List<IEnemy> Avengers { get; }
     }
 }

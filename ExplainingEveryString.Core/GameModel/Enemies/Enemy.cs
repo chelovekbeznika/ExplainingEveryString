@@ -20,6 +20,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private EpicEvent beforeAppearance;
         private EpicEvent afterAppearance;
         public SpawnedActorsController SpawnedActors { get; private set; }
+        public List<IEnemy> Avengers => postMortemSurprise?.Avengers;
 
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
@@ -68,9 +69,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 ? startInfo.AppearancePhaseDuration
                 : blueprint.DefaultAppearancePhaseDuration;
             ConstructMovement(blueprint, startInfo);
-            ConstructWeaponry(blueprint, startInfo, level);
-            if (blueprint.Spawner != null) 
-                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, this, startInfo.LevelSpawnPoints, factory);
+            ConstructWeaponry(blueprint, startInfo, level, factory);
         }
 
         private void ConstructMovement(TBlueprint blueprint, ActorStartInfo startInfo)
@@ -80,7 +79,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.Mover = MoverFactory.Get(blueprint.Mover);
         }
 
-        private void ConstructWeaponry(TBlueprint blueprint, ActorStartInfo startInfo, Level level)
+        private void ConstructWeaponry(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
             if (blueprint.Weapon != null)
             {
@@ -91,9 +90,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             }
             if (blueprint.PostMortemSurprise != null)
             {
-                postMortemSurprise = 
-                    new PostMortemSurprise(blueprint.PostMortemSurprise, CurrentPositionLocator, PlayerLocator, level);
+                postMortemSurprise = new PostMortemSurprise(blueprint.PostMortemSurprise, CurrentPositionLocator, 
+                    PlayerLocator, level, startInfo.LevelSpawnPoints, factory);
             }
+            if (blueprint.Spawner != null)
+                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, this, startInfo.LevelSpawnPoints, factory);
         }
 
         public IEnumerable<IDisplayble> GetParts()

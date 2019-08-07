@@ -17,12 +17,14 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<Bullet> EnemyBullets { get; private set; }
         internal Hitbox CurrentWaveStartRegion { get; private set; }
         internal List<IEnemy> Enemies => currentWaveEnemies
+            .Concat(avengers)
             .Concat(activeEnemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
       
         private List<IActor> walls;
         private List<Door> doors;
         private ICollidable[] tileWalls;
         private List<IEnemy> currentWaveEnemies = new List<IEnemy>();
+        private List<IEnemy> avengers = new List<IEnemy>();
         private List<SpawnedActorsController> activeEnemySpawners = new List<SpawnedActorsController>();
         private Int32 maxEnemiesAtOnce;
         private Queue<IEnemy> enemiesQueue = new Queue<IEnemy>();
@@ -75,10 +77,12 @@ namespace ExplainingEveryString.Core.GameModel
         {
             PlayerBullets = PlayerBullets.Where(bullet => bullet.IsAlive()).ToList();
             EnemyBullets = EnemyBullets.Where(bullet => bullet.IsAlive()).ToList();
-            currentWaveEnemies = currentWaveEnemies.Where(enemy => enemy.IsAlive()).ToList();
             doors = doors.Where(door => door.IsAlive()).ToList();
+
+            currentWaveEnemies = EnemyDeathProcessor.SendDeadToHeaven(currentWaveEnemies, avengers);
             foreach (SpawnedActorsController spawnedActorsController in activeEnemySpawners)
-                spawnedActorsController.SendDeadToHeaven();
+                spawnedActorsController.SendDeadToHeaven(avengers);
+            avengers = EnemyDeathProcessor.SendDeadToHeaven(avengers, avengers);
         }
 
         internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer)

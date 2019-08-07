@@ -29,26 +29,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.spawner = spawner;
             this.levelSpawnPoints = spawnPoints;
             this.factory = factory;
-            InitializeSpawnPositionSelector(specification);
-        }
-
-        private void InitializeSpawnPositionSelector(SpawnerSpecification specification)
-        {
-            Func<Vector2> spawnerLocator = () => (spawner as ICollidable).Position;
-            switch (specification.PositionSelectionType)
-            {
-                case SpawnPositionSelectionType.LevelSpawnPoints:
-                    spawnPositionSelector = new LevelSpawnPositionSelector(levelSpawnPoints);
-                    break;
-                case SpawnPositionSelectionType.RandomInCircle:
-                    Single maxRadius = (specification as RandomSpawnerSpecification).SpawnRadius;
-                    spawnPositionSelector = new RandomSpawnPositionSelector(spawnerLocator, maxRadius);
-                    break;
-                case SpawnPositionSelectionType.RelativeToSpawner:
-                    Vector2[] spawnPositions = (specification as RelativeSpawnerSpecificaton).SpawnPositions;
-                    spawnPositionSelector = new RelativeSpawnPositionSelector(spawnerLocator, spawnPositions);
-                    break;
-            }
+            this.spawnPositionSelector = SpawnPositionSelectorsFactory.Get(
+                specification.PositionSelector, () => (spawner as ICollidable).Position, levelSpawnPoints);
         }
 
         public void Update(Single elapsedSeconds)
@@ -56,9 +38,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             reloader.TryReload(elapsedSeconds, out Boolean enemySpawned);
         }
 
-        internal void SendDeadToHeaven()
+        internal void SendDeadToHeaven(List<IEnemy> avengers)
         {
-            SpawnedEnemies = SpawnedEnemies.Where(e => e.IsAlive()).ToList();
+            SpawnedEnemies = EnemyDeathProcessor.SendDeadToHeaven(SpawnedEnemies, avengers);
         }
 
         private void SpawnEnemy(Single firstUpdateTime)
