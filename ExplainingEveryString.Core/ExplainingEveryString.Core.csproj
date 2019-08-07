@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
+    <Compile Include="GameModel\Weaponry\LevelPointsSpawner.cs" />
     <Compile Include="GameModel\Weaponry\PostMortemSurprise.cs" />
     <Compile Include="GameState\ComponentsManager.cs" />
     <Compile Include="Displaying\Camera.cs" />

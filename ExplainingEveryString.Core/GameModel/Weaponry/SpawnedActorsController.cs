@@ -14,7 +14,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private String enemyType;
         private Int32 maxSpawned;
         private Reloader reloader;
-        private Vector2[] spawnPoints;
+        private Vector2[] levelSpawnPoints;
+        private ISpawnPositionSelector spawnPositionSelector;
         private ActorsFactory factory;
         private IActor spawner;
         internal List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
@@ -26,8 +27,28 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.maxSpawned = specification.MaxSpawned;
             this.reloader = new Reloader(specification.Reloader, CanSpawnEnemy, SpawnEnemy);
             this.spawner = spawner;
-            this.spawnPoints = spawnPoints;
+            this.levelSpawnPoints = spawnPoints;
             this.factory = factory;
+            InitializeSpawnPositionSelector(specification);
+        }
+
+        private void InitializeSpawnPositionSelector(SpawnerSpecification specification)
+        {
+            Func<Vector2> spawnerLocator = () => (spawner as ICollidable).Position;
+            switch (specification.PositionSelectionType)
+            {
+                case SpawnPositionSelectionType.LevelSpawnPoints:
+                    spawnPositionSelector = new LevelSpawnPositionSelector(levelSpawnPoints);
+                    break;
+                case SpawnPositionSelectionType.RandomInCircle:
+                    Single maxRadius = (specification as RandomSpawnerSpecification).SpawnRadius;
+                    spawnPositionSelector = new RandomSpawnPositionSelector(spawnerLocator, maxRadius);
+                    break;
+                case SpawnPositionSelectionType.RelativeToSpawner:
+                    Vector2[] spawnPositions = (specification as RelativeSpawnerSpecificaton).SpawnPositions;
+                    spawnPositionSelector = new RelativeSpawnPositionSelector(spawnerLocator, spawnPositions);
+                    break;
+            }
         }
 
         public void Update(Single elapsedSeconds)
@@ -45,8 +66,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             ActorStartInfo asi = new ActorStartInfo
             {
                 BlueprintType = enemyType,
-                Position = spawnPoints[RandomUtility.NextInt(spawnPoints.Length)],
-                SpawnPoints = spawnPoints
+                Position = spawnPositionSelector.GetNextSpawnPosition(),
+                LevelSpawnPoints = levelSpawnPoints
             };
             IEnemy enemy = factory.ConstructEnemy(asi);
             enemy.Update(firstUpdateTime);

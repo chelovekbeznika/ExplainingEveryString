@@ -15,6 +15,6 @@ namespace ExplainingEveryString.Core.GameModel
         internal Single Angle { get; set; }
         internal List<Vector2> TrajectoryTargets { get; set; }
         internal Single AppearancePhaseDuration { get; set; }
-        internal Vector2[] SpawnPoints { get; set; }
+        internal Vector2[] LevelSpawnPoints { get; set; }
     }
 }

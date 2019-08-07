@@ -70,7 +70,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             ConstructMovement(blueprint, startInfo);
             ConstructWeaponry(blueprint, startInfo, level);
             if (blueprint.Spawner != null) 
-                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, this, startInfo.SpawnPoints, factory);
+                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, this, startInfo.LevelSpawnPoints, factory);
         }
 
         private void ConstructMovement(TBlueprint blueprint, ActorStartInfo startInfo)
