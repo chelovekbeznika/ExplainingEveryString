@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Menu;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,13 @@ namespace ExplainingEveryString.Core.GameState
         private GameState CurrentState = GameState.BetweenLevels;
         private Game game;
         private ComponentsManager componentsManager;
-        private LevelSequence levelSequence = new LevelSequence();
+        private LevelSequence levelSequence;
 
         internal GameStateManager(Game game, ComponentsManager componentsManager)
         {
             this.game = game;
             this.componentsManager = componentsManager;
+            this.levelSequence = new LevelSequence(LevelSequenceAccess.LoadLevelSequence());
         }
 
         internal void InitMenuInput(MenuInputProcessor menuInputProcessor)

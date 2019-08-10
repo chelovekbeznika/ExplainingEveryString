@@ -8,8 +8,13 @@ namespace ExplainingEveryString.Core.GameState
 {
     internal class LevelSequence
     {
-        private String[] fileNamesSequence = new String[] { "level_01.dat", "level_11.dat" };
+        private String[] fileNamesSequence;
         private Int32 levelsCompleted = 0;
+
+        internal LevelSequence(String[] fileNamesSequence)
+        {
+            this.fileNamesSequence = fileNamesSequence;
+        }
 
         internal Boolean GameCompleted => levelsCompleted >= fileNamesSequence.Length;
         internal String GetCurrentLevelFile() => fileNamesSequence[levelsCompleted];

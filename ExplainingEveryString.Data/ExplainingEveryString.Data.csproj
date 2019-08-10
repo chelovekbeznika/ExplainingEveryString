@@ -55,6 +55,7 @@
     <Compile Include="Configuration\CameraConfiguration.cs" />
     <Compile Include="Configuration\ScreenConfiguration.cs" />
     <Compile Include="Level\DoorStartInfo.cs" />
+    <Compile Include="Level\LevelSequenceAccess.cs" />
     <Compile Include="Level\PositionOnTileMap.cs" />
     <Compile Include="Level\EnemyWave.cs" />
     <Compile Include="Specifications\BarrelSpecification.cs" />
