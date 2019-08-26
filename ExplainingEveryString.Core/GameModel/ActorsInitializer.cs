@@ -77,7 +77,7 @@ namespace ExplainingEveryString.Core.GameModel
             return tileWallsFactory.ConstructTileWalls().OfType<ICollidable>().ToArray();
         }
 
-        internal Player InitializePlayer() => actorsFactory.ConstructPlayer(Convert(levelData.PlayerPosition));
+        internal Player InitializePlayer(ActorStartInfo playerStartInfo) => actorsFactory.ConstructPlayer(playerStartInfo);
 
         internal Hitbox InitializeStartRegion(Int32 waveNumber)
         {

@@ -54,6 +54,7 @@
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
     <Compile Include="Configuration\CameraConfiguration.cs" />
     <Compile Include="Configuration\ScreenConfiguration.cs" />
+    <Compile Include="Level\CheckpointSpecification.cs" />
     <Compile Include="Level\DoorStartInfo.cs" />
     <Compile Include="Level\LevelSequenceAccess.cs" />
     <Compile Include="Level\PositionOnTileMap.cs" />

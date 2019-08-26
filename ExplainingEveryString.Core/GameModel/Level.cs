@@ -20,17 +20,20 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
+        internal String CurrentCheckpoint => levelState.CurrentCheckpoint;
         internal Boolean Lost => levelState.Lost && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
         internal Boolean Won => levelState.Won && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
 
-        internal Level(ActorsFactory factory, TileWrapper map, 
-            PlayerInputFactory playerInputFactory, LevelData levelData)
+        internal Level(ActorsFactory factory, TileWrapper map, PlayerInputFactory playerInputFactory, 
+            LevelData levelData, String startCheckpoint)
         {
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
             ActorsInitializer actorsInitializer = new ActorsInitializer(map, factory, levelData);
             ActiveActorsStorage activeActors = new ActiveActorsStorage();
-            this.levelState = new LevelState(activeActors, actorsInitializer, levelData);
+            CheckpointsManager checkpointsManager = new CheckpointsManager(map, levelData);
+            this.levelState = new LevelState(activeActors, actorsInitializer, checkpointsManager, 
+                levelData.EnemyWaves.Length, startCheckpoint);
             collisionsController = new CollisionsController(activeActors);
         }
 

@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
+    <Compile Include="GameModel\Checkpoint.cs" />
+    <Compile Include="GameModel\CheckpointsManager.cs" />
     <Compile Include="GameModel\EnemiesDeathProcessor.cs" />
     <Compile Include="GameModel\Weaponry\LevelPointsSpawner.cs" />
     <Compile Include="GameModel\Weaponry\PostMortemSurprise.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Menu\MenuItem.cs" />
     <Compile Include="Menu\MenuItemDisplayer.cs" />
     <Compile Include="Menu\MenuVisiblePart.cs" />
+    <Compile Include="Tiles\ITilePositionConverter.cs" />
     <Compile Include="Tiles\TileWrapper.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\FixedAimer.cs" />

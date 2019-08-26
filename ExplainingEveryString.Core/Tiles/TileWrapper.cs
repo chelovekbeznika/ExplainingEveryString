@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.Tiles
 {
-    internal class TileWrapper
+    internal class TileWrapper : ITilePositionConverter
     {
         internal TiledMap TiledMap { get; }
         internal Int32 MapHeight => TiledMap.Height * TiledMap.TileHeight;
@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Tiles
             this.TiledMap = map;
         }
 
-        internal Vector2 GetPosition(PositionOnTileMap tilePosition)
+        public Vector2 GetPosition(PositionOnTileMap tilePosition)
         {
             Vector2 upperLeftCorner = TileCoordinatesToLevelCoordinates(tilePosition.X, tilePosition.Y);
             Vector2 center = upperLeftCorner + new Vector2 { X = TiledMap.TileWidth / 2, Y = -TiledMap.TileHeight / 2 };

@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.GameState
             if (componentsManager.CurrentGameplay != null)
             {
                 if (componentsManager.CurrentGameplay.Lost)
-                    StartCurrentLevel();
+                    StartCurrentLevel(componentsManager.CurrentGameplay.CurrentCheckpoint);
                 if (componentsManager.CurrentGameplay.Won)
                     SwitchToNextLevel();
             }
@@ -55,10 +55,10 @@ namespace ExplainingEveryString.Core.GameState
             StartCurrentLevel();
         }
 
-        private void StartCurrentLevel()
+        private void StartCurrentLevel(String startCheckpoint = GameModel.CheckpointsManager.StartCheckpointName)
         {
             componentsManager.DeleteCurrentGameplayComponent();
-            componentsManager.InitNewGameplayComponent(levelSequence.GetCurrentLevelFile());
+            componentsManager.InitNewGameplayComponent(levelSequence.GetCurrentLevelFile(), startCheckpoint);
             SwitchToInGameState();
         }
 

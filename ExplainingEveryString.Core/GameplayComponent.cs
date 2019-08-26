@@ -17,6 +17,7 @@ namespace ExplainingEveryString.Core
         private IBlueprintsLoader blueprintsLoader;
         private Level level;
         private String levelFileName;
+        private String startCheckpoint;
         private LevelData levelData;
         private EesGame eesGame;
         private TileWrapper map;
@@ -26,12 +27,16 @@ namespace ExplainingEveryString.Core
 
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
+        internal String CurrentCheckpoint => level.CurrentCheckpoint;
 
-        internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName) : base(game)
+        internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName, String startCheckpoint) 
+            : base(game)
         {
             this.eesGame = game;
-            this.levelFileName = levelFileName;
             this.blueprintsLoader = blueprintsLoader;
+            this.levelFileName = levelFileName;
+            this.startCheckpoint = startCheckpoint;
+
             this.DrawOrder = 0;
             this.UpdateOrder = 0;
         }
@@ -42,7 +47,7 @@ namespace ExplainingEveryString.Core
             ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
             this.levelData = levelLoader.Load(levelFileName);
             map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
-            level = new Level(factory, map, new PlayerInputFactory(this), levelData);
+            level = new Level(factory, map, new PlayerInputFactory(this), levelData, startCheckpoint);
             base.Initialize();
         }
 

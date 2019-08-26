@@ -6,25 +6,31 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class LevelState
     {
-        private Int32 currentEnemyWaveNumber = 0;
+        private Int32 currentEnemyWaveNumber;
+        private Int32 wavesAmount;
         private ActorsInitializer actorsInitializer;
-        private LevelData levelData;
         private WaveState currentEnemyWaveState = WaveState.Sleeping;
+        private CheckpointsManager checkpointsManager;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
 
         internal ActiveActorsStorage ActiveActors { get; private set; }
+        internal String CurrentCheckpoint { get; private set; }
         internal Single SecondsPassedAfterLevelEnd { get; private set; } = 0;
 
         internal Boolean Lost => !ActiveActors.Player.IsAlive();
-        internal Boolean Won => !Lost && currentEnemyWaveNumber >= levelData.EnemyWaves.Length;
+        internal Boolean Won => !Lost && currentEnemyWaveNumber >= wavesAmount;
         internal Boolean LevelEnded => Won || Lost;
 
-        internal LevelState(ActiveActorsStorage activeActors, ActorsInitializer actorsInitializer, LevelData levelData)
+        internal LevelState(ActiveActorsStorage activeActors, ActorsInitializer actorsInitializer, 
+            CheckpointsManager checkpointsManager, Int32 wavesAmount, String startCheckpoint)
         {
             this.ActiveActors = activeActors;
             this.actorsInitializer = actorsInitializer;
-            this.levelData = levelData;
-            activeActors.InitializeActorsOnLevelStart(actorsInitializer);
+            this.checkpointsManager = checkpointsManager;
+            this.wavesAmount = wavesAmount;
+            checkpointsManager.InitializeCheckpoints();
+            activeActors.InitializeActorsOnLevelStart(actorsInitializer, checkpointsManager, startCheckpoint);
+            currentEnemyWaveNumber = checkpointsManager.GetStartWave(startCheckpoint);
         }
 
         internal void Update(Single elapsedSeconds)
@@ -46,6 +52,9 @@ namespace ExplainingEveryString.Core.GameModel
             if (collisionsChecker.Collides(ActiveActors.Player.GetCurrentHitbox(), ActiveActors.CurrentWaveStartRegion))
             {
                 currentEnemyWaveState = WaveState.Triggered;
+                String possibleCheckpoint = checkpointsManager.CheckForCheckpoint(currentEnemyWaveNumber);
+                if (possibleCheckpoint != null)
+                    CurrentCheckpoint = possibleCheckpoint;
                 ActiveActors.StartEnemyWave(actorsInitializer, currentEnemyWaveNumber);
             }
         }

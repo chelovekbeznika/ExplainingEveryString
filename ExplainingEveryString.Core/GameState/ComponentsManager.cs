@@ -22,9 +22,9 @@ namespace ExplainingEveryString.Core.GameState
             Menu = new MenuComponent(game);
         }
 
-        internal void InitNewGameplayComponent(String levelFile)
+        internal void InitNewGameplayComponent(String levelFile, String startCheckpoint)
         {
-            CurrentGameplay = new GameplayComponent(game, blueprintsLoader, levelFile);
+            CurrentGameplay = new GameplayComponent(game, blueprintsLoader, levelFile, startCheckpoint);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
             game.Components.Insert(0, CurrentGameplay);
         }

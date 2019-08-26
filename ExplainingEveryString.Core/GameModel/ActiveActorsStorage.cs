@@ -85,14 +85,15 @@ namespace ExplainingEveryString.Core.GameModel
             avengers = EnemyDeathProcessor.SendDeadToHeaven(avengers, avengers);
         }
 
-        internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer)
+        internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer, 
+            CheckpointsManager checkpointsManager, String startCheckpoint)
         {
-            Player = actorsInitializer.InitializePlayer();
+            Player = actorsInitializer.InitializePlayer(checkpointsManager.GetPlayerPosition(startCheckpoint));
             walls = actorsInitializer.InitializeWalls();
             tileWalls = actorsInitializer.InitializeTileWalls();
             doors = actorsInitializer.InitializeCommonDoors();
 
-            SwitchStartRegion(actorsInitializer, 0);
+            SwitchStartRegion(actorsInitializer, checkpointsManager.GetStartWave(startCheckpoint));
             PlayerBullets = new List<Bullet>();
             EnemyBullets = new List<Bullet>();
         }
