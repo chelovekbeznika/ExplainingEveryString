@@ -88,12 +88,14 @@ namespace ExplainingEveryString.Core.GameModel
         internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer, 
             CheckpointsManager checkpointsManager, String startCheckpoint)
         {
+            Int32 startWave = checkpointsManager.GetStartWave(startCheckpoint);
+
             Player = actorsInitializer.InitializePlayer(checkpointsManager.GetPlayerPosition(startCheckpoint));
             walls = actorsInitializer.InitializeWalls();
             tileWalls = actorsInitializer.InitializeTileWalls();
-            doors = actorsInitializer.InitializeCommonDoors();
+            doors = actorsInitializer.InitializeCommonDoors(startWave);
 
-            SwitchStartRegion(actorsInitializer, checkpointsManager.GetStartWave(startCheckpoint));
+            SwitchStartRegion(actorsInitializer, startWave);
             PlayerBullets = new List<Bullet>();
             EnemyBullets = new List<Bullet>();
         }

@@ -25,39 +25,33 @@ namespace ExplainingEveryString.Core.GameModel
             this.levelData = levelData;
         }
 
-        internal List<Door> InitializeCommonDoors()
+        internal List<Door> InitializeCommonDoors(Int32 startWave)
         {
-            return InitializeDoors(null);
+            return InitializeDoors(startWave, dsi => !dsi.ClosesAt.HasValue || dsi.ClosesAt < startWave);
         }
 
         internal List<Door> InitializeClosingDoors(Int32 closesAt)
         {
-            return InitializeDoors(closesAt);
+            return InitializeDoors(closesAt, dsi => dsi.ClosesAt == closesAt);
         }
 
-        private List<Door> InitializeDoors(Int32? closesAt)
+        private List<Door> InitializeDoors(Int32 startWave, Func<DoorStartInfo, Boolean> dsiFilter)
         {
-            List<Door> doors = new List<Door>();
-            for (Int32 waveNumber = 0; waveNumber < levelData.EnemyWaves.Length; waveNumber++)
+            List<Door> result = new List<Door>();
+            foreach (Int32 waveNumber in Enumerable.Range(startWave, levelData.EnemyWaves.Length - startWave))
             {
-                IEnumerable<DoorStartInfo> doorsStartInfo = levelData.EnemyWaves[waveNumber].Doors;
-                doors.AddRange(InitializeDoors(doorsStartInfo, waveNumber, closesAt));
+                EnemyWave wave = levelData.EnemyWaves[waveNumber];
+                DoorStartInfo[] doorsInfo = wave.Doors;
+                if (doorsInfo != null)
+                {
+                    IEnumerable<Door> waveDoors = doorsInfo
+                        .Where(dsiFilter)
+                        .Select(dsi => Convert(dsi, wave))
+                        .Select(asi => actorsFactory.ConstructDoor(asi, waveNumber));
+                    result.AddRange(waveDoors);
+                }
             }
-            return doors;
-        }
-
-        private IEnumerable<Door> InitializeDoors
-            (IEnumerable<DoorStartInfo> doorsStartInfo, Int32 openingWave, Int32? closesAt)
-        {
-            if (doorsStartInfo != null)
-            {
-                IEnumerable<Door> waveDoors = doorsStartInfo
-                    .Where(dsi => dsi.ClosesAt == closesAt).Select(dsi => Convert(dsi))
-                    .Select(asi => actorsFactory.ConstructDoor(asi, openingWave));
-                return waveDoors;
-            }
-            else
-                return Enumerable.Empty<Door>();
+            return result;
         }
 
         internal List<IActor> InitializeWalls()
