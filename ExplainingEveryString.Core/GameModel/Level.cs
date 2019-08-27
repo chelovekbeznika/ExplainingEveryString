@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
@@ -16,25 +17,27 @@ namespace ExplainingEveryString.Core.GameModel
         private LevelState levelState;
         private CollisionsController collisionsController;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
-        private Single gameTime = 0;
 
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
-        internal String CurrentCheckpoint => levelState.CurrentCheckpoint;
         internal Boolean Lost => levelState.Lost && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
         internal Boolean Won => levelState.Won && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
+        internal LevelProgress LevelProgress { get; private set; }
 
         internal Level(ActorsFactory factory, TileWrapper map, PlayerInputFactory playerInputFactory, 
-            LevelData levelData, String startCheckpoint)
+            LevelData levelData, LevelProgress levelProgress)
         {
+            this.LevelProgress = levelProgress;
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
+
             ActorsInitializer actorsInitializer = new ActorsInitializer(map, factory, levelData);
             ActiveActorsStorage activeActors = new ActiveActorsStorage();
             CheckpointsManager checkpointsManager = new CheckpointsManager(map, levelData);
             this.levelState = new LevelState(activeActors, actorsInitializer, checkpointsManager, 
-                levelData.EnemyWaves.Length, startCheckpoint);
-            collisionsController = new CollisionsController(activeActors);
+                levelData.EnemyWaves.Length, levelProgress.CurrentCheckPoint);
+
+            this.collisionsController = new CollisionsController(activeActors);
         }
 
         internal void Update(Single elapsedSeconds)
@@ -43,8 +46,14 @@ namespace ExplainingEveryString.Core.GameModel
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
             levelState.Update(elapsedSeconds);
+            UpdateLevelProgress(elapsedSeconds);
+        }
+
+        private void UpdateLevelProgress(Single elapsedSeconds)
+        {
             if (!levelState.LevelEnded)
-                gameTime += elapsedSeconds;
+                LevelProgress.GameTime += elapsedSeconds;
+            LevelProgress.CurrentCheckPoint = levelState.CurrentCheckpoint;
         }
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
@@ -84,7 +93,7 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 Health = levelState.ActiveActors.Player.HitPoints,
                 MaxHealth = levelState.ActiveActors.Player.MaxHitPoints,
-                GameTime = gameTime,
+                GameTime = LevelProgress.GameTime,
                 Enemies = levelState.ActiveActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
                             .Where(e => e.ShowInterfaceInfo).Select(e => GetInterfaceInfo(e, camera)).ToList()

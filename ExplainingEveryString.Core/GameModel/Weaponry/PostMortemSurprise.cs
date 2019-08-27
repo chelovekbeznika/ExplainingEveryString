@@ -11,7 +11,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
     internal class PostMortemSurprise
     {
-        private Level level;
         private Barrel[] barrels;
 
         private Int32 howMuchToSpawn;

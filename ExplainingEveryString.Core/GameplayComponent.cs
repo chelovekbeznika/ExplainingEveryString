@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
@@ -17,7 +18,7 @@ namespace ExplainingEveryString.Core
         private IBlueprintsLoader blueprintsLoader;
         private Level level;
         private String levelFileName;
-        private String startCheckpoint;
+        private LevelProgress levelStart;
         private LevelData levelData;
         private EesGame eesGame;
         private TileWrapper map;
@@ -27,15 +28,15 @@ namespace ExplainingEveryString.Core
 
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
-        internal String CurrentCheckpoint => level.CurrentCheckpoint;
+        internal LevelProgress LevelProgress => level.LevelProgress;
 
-        internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName, String startCheckpoint) 
+        internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName, LevelProgress levelStart) 
             : base(game)
         {
             this.eesGame = game;
             this.blueprintsLoader = blueprintsLoader;
             this.levelFileName = levelFileName;
-            this.startCheckpoint = startCheckpoint;
+            this.levelStart = levelStart;
 
             this.DrawOrder = 0;
             this.UpdateOrder = 0;
@@ -47,7 +48,7 @@ namespace ExplainingEveryString.Core
             ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
             this.levelData = levelLoader.Load(levelFileName);
             map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
-            level = new Level(factory, map, new PlayerInputFactory(this), levelData, startCheckpoint);
+            level = new Level(factory, map, new PlayerInputFactory(this), levelData, levelStart);
             base.Initialize();
         }
 
