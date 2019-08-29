@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Data.Level
     {
         public LevelData Load(String fileName)
         {
-            return JsonDataAccessor.Instance.Load<LevelData>(fileName);
+            return JsonDataAccessor.Instance.Load<LevelData>(FileNames.GetJsonDataPath(fileName));
         }
     }
 }

@@ -14,6 +14,27 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Data/assets_metadata.dat
+/copy:Data/assets_metadata.dat
+
+#begin Data/blueprints.dat
+/copy:Data/blueprints.dat
+
+#begin Data/config.dat
+/copy:Data/config.dat
+
+#begin Data/level_01.dat
+/copy:Data/level_01.dat
+
+#begin Data/level_11.dat
+/copy:Data/level_11.dat
+
+#begin Data/level_12.dat
+/copy:Data/level_12.dat
+
+#begin Data/level_sequence.dat
+/copy:Data/level_sequence.dat
+
 #begin Sounds/CompletelyOpenedTest.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

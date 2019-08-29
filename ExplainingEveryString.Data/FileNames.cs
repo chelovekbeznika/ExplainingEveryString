@@ -1,12 +1,18 @@
 ﻿using System;
+using System.IO;
 
 namespace ExplainingEveryString.Data
 {
     internal static class FileNames
     {
-        internal const String Configuration = "config.dat";
-        internal const String Blueprints = "blueprints.dat";
-        internal const String AssetsMetadata = "assets_metadata.dat";
-        internal const String LevelSequence = "level_sequence.dat";
+        internal static String Configuration => GetJsonDataPath("config.dat");
+        internal static String Blueprints => GetJsonDataPath("blueprints.dat");
+        internal static String AssetsMetadata => GetJsonDataPath("assets_metadata.dat");
+        internal static String LevelSequence => GetJsonDataPath("level_sequence.dat");
+
+        internal static String GetJsonDataPath(String fileName)
+        {
+            return Path.Combine("Content", "Data", fileName);
+        }
     }
 }
