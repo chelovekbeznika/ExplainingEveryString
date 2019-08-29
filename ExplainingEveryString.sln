@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString", "ExplainingEveryString\ExplainingEveryString.csproj", "{3A60ECD8-33B2-45A3-AAA8-136B76514954}"
+	ProjectSection(ProjectDependencies) = postProject
+		{99731D96-7455-4294-B29B-9B8AAD098057} = {99731D96-7455-4294-B29B-9B8AAD098057}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString.Core", "ExplainingEveryString.Core\ExplainingEveryString.Core.csproj", "{C033F4F6-87D8-406F-B2B9-855B06D1A417}"
 EndProject
