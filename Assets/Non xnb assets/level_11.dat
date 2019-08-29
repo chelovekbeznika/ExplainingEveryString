@@ -1,0 +1,612 @@
+{
+  "TileMap": "TileMaps/Level_11",
+  "PlayerPosition": {
+    "BlueprintType": "Player",
+    "TilePosition": {
+      "X": 47,
+      "Y": 284,
+      "Offset": "8.0, 8.0"
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 43,
+        "Y": 240,
+        "Width": 10,
+        "Height": 10
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 241
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 78,
+            "Y": 241
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 43,
+        "Y": 240,
+        "Width": 10,
+        "Height": 15
+      },
+      "Doors": [
+        {
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 239,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 241
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 78,
+            "Y": 241
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 22,
+            "Y": 276
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 73,
+            "Y": 276
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 41,
+            "Y": 240,
+            "Offset": "8.0, -12.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 54,
+            "Y": 240,
+            "Offset": "-8.0, -12.0"
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 44,
+        "Y": 189,
+        "Height": 10,
+        "Width": 8
+      },
+      "Checkpoint": {
+        "Name": "FirstHallway",
+        "PlayerPosition": {
+          "X": 47,
+          "Y": 214,
+          "Offset": "8.0, -8.0"
+        }
+      },
+      "Doors": [
+        {
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 188,
+            "Offset": "8.0, 0.0"
+          }
+        },
+        {
+          "BlueprintType": "IceDoor",
+          "ClosesAt": 2,
+          "TilePosition": {
+            "X": 47,
+            "Y": 238,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
+      "MaxEnemiesAtOnce": 5,
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 45,
+            "Y": 189,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 47,
+            "Y": 189,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 49,
+            "Y": 189,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 37,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 58,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 37,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 58,
+            "Y": 190
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 37,
+            "Y": 190
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 16,
+        "Y": 128,
+        "Height": 24,
+        "Width": 64
+      },
+      "Checkpoint": {
+        "Name": "Center",
+        "PlayerPosition": {
+          "X": 47,
+          "Y": 183,
+          "Offset": "8.0, -8.0"
+        }
+      },
+      "Doors": [
+        {
+          "BlueprintType": "IceRoomCenterLevel11",
+          "TilePosition": {
+            "X": 47,
+            "Y": 158,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 20,
+            "Y": 132
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -90.0,
+          "TilePosition": {
+            "X": 75,
+            "Y": 132
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 19,
+            "Y": 182,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 72,
+            "Y": 182,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 33,
+        "Y": 144,
+        "Height": 32,
+        "Width": 30
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -60.0,
+          "TilePosition": {
+            "X": 17,
+            "Y": 129
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -120.0,
+          "TilePosition": {
+            "X": 78,
+            "Y": 129
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -5.0,
+          "TilePosition": {
+            "X": 25,
+            "Y": 137
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -95.0,
+          "TilePosition": {
+            "X": 70,
+            "Y": 137
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 175.0,
+          "TilePosition": {
+            "X": 70,
+            "Y": 177
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 85.0,
+          "TilePosition": {
+            "X": 25,
+            "Y": 177
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 32,
+        "Y": 144,
+        "Height": 32,
+        "Width": 32
+      },
+      "Doors": [
+        {
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 127,
+            "Offset": "8.0, 0.0"
+          }
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 187,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
+      "MaxEnemiesAtOnce": 6,
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -105.0,
+          "TilePosition": {
+            "X": 46,
+            "Y": 156
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -75.0,
+          "TilePosition": {
+            "X": 49,
+            "Y": 156
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 129
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 78,
+            "Y": 129
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 40,
+            "Y": 144
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 55,
+            "Y": 144
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 40,
+            "Y": 144
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 55,
+            "Y": 144
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 40,
+            "Y": 144
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 55,
+            "Y": 144
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 23,
+        "Y": 79,
+        "Height": 14,
+        "Width": 50
+      },
+      "Checkpoint": {
+        "Name": "SecondHallway",
+        "PlayerPosition": {
+          "X": 47,
+          "Y": 104,
+          "Offset": "8.0, -8.0"
+        }
+      },
+      "Doors": [
+        {
+          "BlueprintType": "BigIceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 64,
+            "Offset": "8.0, 0.0"
+          }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "IceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 126,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -14.477512,
+          "TilePosition": {
+            "X": 23,
+            "Y": 79,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 14.477512,
+          "TilePosition": {
+            "X": 23,
+            "Y": 92,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -165.522487,
+          "TilePosition": {
+            "X": 72,
+            "Y": 79,
+            "Offset": "-8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 165.522487,
+          "TilePosition": {
+            "X": 72,
+            "Y": 92,
+            "Offset": "-8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -60.0,
+          "TilePosition": {
+            "X": 33,
+            "Y": 66
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "Angle": -120.0,
+          "TilePosition": {
+            "X": 62,
+            "Y": 66
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 40,
+            "Y": 68
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 55,
+            "Y": 68
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 47,
+            "Y": 66,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 23,
+        "Y": 17,
+        "Height": 20,
+        "Width": 50
+      },
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 47,
+          "Y": 58,
+          "Offset": "8.0, -8.0"
+        }
+      },
+      "SpawnPoints": [
+        {
+          "X": 21,
+          "Y": 48,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 21,
+          "Y": 32,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 31,
+          "Y": 14,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 47,
+          "Y": 14,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 63,
+          "Y": 14,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 74,
+          "Y": 32,
+          "Offset": "-8.0, -8.0"
+        },
+        {
+          "X": 74,
+          "Y": 32,
+          "Offset": "-8.0, -8.0"
+        }
+      ],
+      "Doors": [
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "BigIceDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 63,
+            "Offset": "8.0, 0.0"
+          }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "Miniboss_mk11",
+          "TilePosition": {
+            "X": 47,
+            "Y": 19,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "-256.0, 0.0",
+            "256.0, 0.0"
+          ]
+        }
+      ]
+    }
+  ],
+  "WallsTilePositions": {
+  }
+}

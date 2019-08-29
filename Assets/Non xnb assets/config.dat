@@ -1,0 +1,15 @@
+{
+  "ControlDevice": "GamePad",
+  "Camera": {
+    "PlayerFramePercentageWidth": 60,
+    "PlayerFramePercentageHeight": 40,
+    "CameraMoveTimeFromAngleToAngle": 3.0
+  },
+  "Screen": {
+    "ScreenWidth": 1024,
+    "ScreenHeight": 768,
+    "FullScreen": false
+  },
+  "SoundFadingOut": 1000.0,
+  "InterfaceAlpha": 0.75
+}
