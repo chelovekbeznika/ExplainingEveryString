@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
@@ -28,7 +27,6 @@ namespace ExplainingEveryString.Core
 
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
-        internal LevelProgress LevelProgress => level.LevelProgress;
 
         internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName, LevelProgress levelStart) 
             : base(game)
@@ -49,6 +47,7 @@ namespace ExplainingEveryString.Core
             this.levelData = levelLoader.Load(levelFileName);
             map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
             level = new Level(factory, map, new PlayerInputFactory(this), levelData, levelStart);
+            level.CheckpointReached += eesGame.GameState.NotableProgressMaid;
             base.Initialize();
         }
 

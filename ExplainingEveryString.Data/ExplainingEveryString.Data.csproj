@@ -56,6 +56,9 @@
     <Compile Include="Configuration\ScreenConfiguration.cs" />
     <Compile Include="Level\CheckpointSpecification.cs" />
     <Compile Include="Level\DoorStartInfo.cs" />
+    <Compile Include="Level\GameProgress.cs" />
+    <Compile Include="Level\GameProgressAccess.cs" />
+    <Compile Include="Level\LevelProgress.cs" />
     <Compile Include="Level\LevelSequenceAccess.cs" />
     <Compile Include="Level\PositionOnTileMap.cs" />
     <Compile Include="Level\EnemyWave.cs" />

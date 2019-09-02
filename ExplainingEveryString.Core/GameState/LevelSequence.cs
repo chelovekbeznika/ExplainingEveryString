@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameState
 {
@@ -11,14 +9,18 @@ namespace ExplainingEveryString.Core.GameState
         private String[] fileNamesSequence;
         private Int32 levelsCompleted = 0;
 
-        internal LevelSequence(String[] fileNamesSequence)
+        internal LevelSequence(String[] fileNamesSequence, String startLevel)
         {
             this.fileNamesSequence = fileNamesSequence;
+            foreach (var (index, level) in fileNamesSequence.Select((level, index) => (index, level)))
+                if (level == startLevel)
+                    this.levelsCompleted = index;
         }
 
         internal Boolean GameCompleted => levelsCompleted >= fileNamesSequence.Length;
         internal String GetCurrentLevelFile() => fileNamesSequence[levelsCompleted];
         internal void MarkLevelComplete() => levelsCompleted += 1;
         internal void Reset() => levelsCompleted = 0;
+        internal String CurrentLevelName => fileNamesSequence[levelsCompleted];
     }
 }

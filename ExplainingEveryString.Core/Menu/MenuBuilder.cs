@@ -29,6 +29,7 @@ namespace ExplainingEveryString.Core.Menu
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/Exit"))
             };
             items[0].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
+            items[1].ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueCurrentGame();
             items[3].ItemCommandExecuteRequested += (sender, e) => game.Exit();
             return items;
         }

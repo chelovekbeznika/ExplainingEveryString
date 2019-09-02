@@ -1,18 +1,11 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Core.GameState;
+﻿using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Menu;
-using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
-using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core
 {

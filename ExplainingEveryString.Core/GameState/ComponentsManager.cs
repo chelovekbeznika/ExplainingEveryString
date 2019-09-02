@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -22,9 +23,10 @@ namespace ExplainingEveryString.Core.GameState
             Menu = new MenuComponent(game);
         }
 
-        internal void InitNewGameplayComponent(String levelFile, LevelProgress levelStart)
+        internal void InitNewGameplayComponent(GameProgress gameProgress)
         {
-            CurrentGameplay = new GameplayComponent(game, blueprintsLoader, levelFile, levelStart);
+            CurrentGameplay = new GameplayComponent(
+                game, blueprintsLoader, gameProgress.LevelName, gameProgress.LevelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
             game.Components.Insert(0, CurrentGameplay);
         }

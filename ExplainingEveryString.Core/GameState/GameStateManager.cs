@@ -3,10 +3,6 @@ using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameState
 {
@@ -18,12 +14,21 @@ namespace ExplainingEveryString.Core.GameState
         private Game game;
         private ComponentsManager componentsManager;
         private LevelSequence levelSequence;
+        private GameProgress gameProgress;
 
         internal GameStateManager(Game game, ComponentsManager componentsManager)
         {
             this.game = game;
             this.componentsManager = componentsManager;
-            this.levelSequence = new LevelSequence(LevelSequenceAccess.LoadLevelSequence());
+            this.gameProgress = GameProgressAccess.Load();
+            String[] rawLevelSequence = LevelSequenceAccess.LoadLevelSequence();
+            if (gameProgress != null)
+                this.levelSequence = new LevelSequence(rawLevelSequence, gameProgress.LevelName);
+            else
+            {
+                this.levelSequence = new LevelSequence(rawLevelSequence, null);
+                ProgressToLevelStart();
+            }
         }
 
         internal void InitMenuInput(MenuInputProcessor menuInputProcessor)
@@ -44,7 +49,9 @@ namespace ExplainingEveryString.Core.GameState
             if (componentsManager.CurrentGameplay != null)
             {
                 if (componentsManager.CurrentGameplay.Lost)
-                    StartCurrentLevel(componentsManager.CurrentGameplay.LevelProgress);
+                {
+                    StartCurrentLevel();
+                }
                 if (componentsManager.CurrentGameplay.Won)
                     SwitchToNextLevel();
             }
@@ -53,19 +60,26 @@ namespace ExplainingEveryString.Core.GameState
         internal void StartNewGame()
         {
             levelSequence.Reset();
+            ProgressToLevelStart();
+            GameProgressAccess.Save(gameProgress);
             StartCurrentLevel();
         }
 
-        private void StartCurrentLevel(LevelProgress levelProgress = null)
+        internal void ContinueCurrentGame()
         {
-            if (levelProgress == null)
-                levelProgress = new LevelProgress
-                {
-                    CurrentCheckPoint = CheckpointsManager.StartCheckpointName,
-                    GameTime = 0
-                };
+            StartCurrentLevel();
+        }
+
+        internal void NotableProgressMaid(Object sender, CheckpointReachedEventArgs eventArgs)
+        {
+            gameProgress.LevelProgress = eventArgs.LevelProgress;
+            GameProgressAccess.Save(gameProgress);
+        }
+
+        private void StartCurrentLevel()
+        {
             componentsManager.DeleteCurrentGameplayComponent();
-            componentsManager.InitNewGameplayComponent(levelSequence.GetCurrentLevelFile(), levelProgress);
+            componentsManager.InitNewGameplayComponent(gameProgress);
             SwitchToInGameState();
         }
 
@@ -73,10 +87,13 @@ namespace ExplainingEveryString.Core.GameState
         {
             levelSequence.MarkLevelComplete();
             if (!levelSequence.GameCompleted)
+            {
+                ProgressToLevelStart();
                 StartCurrentLevel();
+                GameProgressAccess.Save(gameProgress);
+            }
             else
             {
-                levelSequence.Reset();
                 SwitchToBetweenLevelsState();
             }
         }
@@ -115,6 +132,19 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.DeleteCurrentGameplayComponent();
             CurrentState = GameState.BetweenLevels;
+        }
+
+        private void ProgressToLevelStart()
+        {
+            this.gameProgress = new GameProgress
+            {
+                LevelName = this.levelSequence.CurrentLevelName,
+                LevelProgress = new LevelProgress
+                {
+                    CurrentCheckPoint = CheckpointsManager.StartCheckpointName,
+                    GameTime = 0
+                }
+            };
         }
     }
 }

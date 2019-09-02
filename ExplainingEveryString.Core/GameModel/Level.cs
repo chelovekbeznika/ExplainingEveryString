@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
@@ -13,21 +12,24 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class Level
     {
+        internal event EventHandler<CheckpointReachedEventArgs> CheckpointReached;
+
         private readonly Single delayBeforeLevelEnd = 2.0F;
         private LevelState levelState;
         private CollisionsController collisionsController;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
+        private LevelProgress levelProgress { get; set; }
 
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
         internal Boolean Lost => levelState.Lost && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
         internal Boolean Won => levelState.Won && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
-        internal LevelProgress LevelProgress { get; private set; }
+
 
         internal Level(ActorsFactory factory, TileWrapper map, PlayerInputFactory playerInputFactory, 
             LevelData levelData, LevelProgress levelProgress)
         {
-            this.LevelProgress = levelProgress;
+            this.levelProgress = levelProgress;
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
 
@@ -52,8 +54,11 @@ namespace ExplainingEveryString.Core.GameModel
         private void UpdateLevelProgress(Single elapsedSeconds)
         {
             if (!levelState.LevelEnded)
-                LevelProgress.GameTime += elapsedSeconds;
-            LevelProgress.CurrentCheckPoint = levelState.CurrentCheckpoint;
+                levelProgress.GameTime += elapsedSeconds;
+            Boolean checkpointReached = levelProgress.CurrentCheckPoint != levelState.CurrentCheckpoint;
+            levelProgress.CurrentCheckPoint = levelState.CurrentCheckpoint;
+            if (checkpointReached)
+                CheckpointReached?.Invoke(this, new CheckpointReachedEventArgs { LevelProgress = levelProgress });
         }
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
@@ -93,7 +98,7 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 Health = levelState.ActiveActors.Player.HitPoints,
                 MaxHealth = levelState.ActiveActors.Player.MaxHitPoints,
-                GameTime = LevelProgress.GameTime,
+                GameTime = levelProgress.GameTime,
                 Enemies = levelState.ActiveActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
                             .Where(e => e.ShowInterfaceInfo).Select(e => GetInterfaceInfo(e, camera)).ToList()
@@ -109,5 +114,10 @@ namespace ExplainingEveryString.Core.GameModel
                 PositionOnScreen = camera.PositionOnScreen(interfaceAccessable)
             };
         }
+    }
+
+    internal class CheckpointReachedEventArgs : EventArgs
+    {
+        internal LevelProgress LevelProgress { get; set; }
     }
 }

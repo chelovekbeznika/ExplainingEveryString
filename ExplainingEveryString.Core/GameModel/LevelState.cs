@@ -29,6 +29,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.checkpointsManager = checkpointsManager;
             this.wavesAmount = wavesAmount;
             checkpointsManager.InitializeCheckpoints();
+            TrySwitchCheckpoint();
             activeActors.InitializeActorsOnLevelStart(actorsInitializer, checkpointsManager, startCheckpoint);
             currentEnemyWaveNumber = checkpointsManager.GetStartWave(startCheckpoint);
         }
@@ -36,15 +37,15 @@ namespace ExplainingEveryString.Core.GameModel
         internal void Update(Single elapsedSeconds)
         {
             ActiveActors.Update();
-            if (!Won)
+            if (LevelEnded)
+                SecondsPassedAfterLevelEnd += elapsedSeconds;
+            else
             {
                 if (currentEnemyWaveState == WaveState.Sleeping)
                     SleepingWaveCheck();
                 if (currentEnemyWaveState == WaveState.Triggered)
                     TriggeredWaveCheck();
             }
-            if (LevelEnded)
-                SecondsPassedAfterLevelEnd += elapsedSeconds;
         }
 
         private void SleepingWaveCheck()
@@ -52,9 +53,7 @@ namespace ExplainingEveryString.Core.GameModel
             if (collisionsChecker.Collides(ActiveActors.Player.GetCurrentHitbox(), ActiveActors.CurrentWaveStartRegion))
             {
                 currentEnemyWaveState = WaveState.Triggered;
-                String possibleCheckpoint = checkpointsManager.CheckForCheckpoint(currentEnemyWaveNumber);
-                if (possibleCheckpoint != null)
-                    CurrentCheckpoint = possibleCheckpoint;
+                TrySwitchCheckpoint();
                 ActiveActors.StartEnemyWave(actorsInitializer, currentEnemyWaveNumber);
             }
         }
@@ -66,9 +65,16 @@ namespace ExplainingEveryString.Core.GameModel
                 ActiveActors.EndWave(currentEnemyWaveNumber);
                 currentEnemyWaveNumber += 1;
                 currentEnemyWaveState = WaveState.Sleeping;
-                if (!Won)
+                if (!LevelEnded)
                     ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
             }
+        }
+
+        private void TrySwitchCheckpoint()
+        {
+            String possibleCheckpoint = checkpointsManager.CheckForCheckpoint(currentEnemyWaveNumber);
+            if (possibleCheckpoint != null)
+                CurrentCheckpoint = possibleCheckpoint;
         }
 
         private enum WaveState { Sleeping, Triggered }
