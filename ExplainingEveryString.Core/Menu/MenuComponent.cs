@@ -2,10 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.Menu
 {
@@ -21,8 +17,8 @@ namespace ExplainingEveryString.Core.Menu
         internal MenuComponent(EesGame game) : base(game)
         {
             this.game = game;
-            this.DrawOrder = 2;
-            this.UpdateOrder = 2;
+            this.DrawOrder = ComponentsOrder.Menu;
+            this.UpdateOrder = ComponentsOrder.Menu;
         }
 
         public override void Initialize()

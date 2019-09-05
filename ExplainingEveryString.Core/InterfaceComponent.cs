@@ -28,8 +28,8 @@ namespace ExplainingEveryString.Core
             this.eesGame = eesGame;
             this.alphaMask = new Color(Color.White, config.InterfaceAlpha);
             this.SetGameplayComponentToDraw(null);
-            this.DrawOrder = 1;
-            this.UpdateOrder = 1;
+            this.DrawOrder = ComponentsOrder.Interface;
+            this.UpdateOrder = ComponentsOrder.Interface;
         }
 
         internal void SetGameplayComponentToDraw(GameplayComponent gameplayComponent)

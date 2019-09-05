@@ -36,8 +36,8 @@ namespace ExplainingEveryString.Core
             this.levelFileName = levelFileName;
             this.levelStart = levelStart;
 
-            this.DrawOrder = 0;
-            this.UpdateOrder = 0;
+            this.DrawOrder = ComponentsOrder.Gameplay;
+            this.UpdateOrder = ComponentsOrder.Gameplay;
         }
 
         public override void Initialize()

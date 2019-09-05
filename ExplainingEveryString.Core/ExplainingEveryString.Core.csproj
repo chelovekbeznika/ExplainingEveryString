@@ -58,9 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
+    <Compile Include="ComponentsOrder.cs" />
     <Compile Include="GameModel\Checkpoint.cs" />
     <Compile Include="GameModel\CheckpointsManager.cs" />
     <Compile Include="GameModel\EnemiesDeathProcessor.cs" />
+    <Compile Include="Timer.cs" />
     <Compile Include="GameModel\Weaponry\LevelPointsSpawner.cs" />
     <Compile Include="GameModel\Weaponry\PostMortemSurprise.cs" />
     <Compile Include="GameModel\Weaponry\SpawnPositionSelectorsFactory.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpriteData.cs" />
     <Compile Include="Tiles\WallsOptimizer.cs" />
+    <Compile Include="TimersComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExplainingEveryString.Data\ExplainingEveryString.Data.csproj">

@@ -12,18 +12,21 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class Level
     {
+        private const Single defeatDelay = 2;
+        private const Single wonDelay = 5;
+
         internal event EventHandler<CheckpointReachedEventArgs> CheckpointReached;
 
-        private readonly Single delayBeforeLevelEnd = 2.0F;
         private LevelState levelState;
         private CollisionsController collisionsController;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
         private LevelProgress levelProgress { get; set; }
+        private Boolean levelEndDelayPassed = false;
 
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
-        internal Boolean Lost => levelState.Lost && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
-        internal Boolean Won => levelState.Won && levelState.SecondsPassedAfterLevelEnd > delayBeforeLevelEnd;
+        internal Boolean Lost => levelState.Lost && levelEndDelayPassed;
+        internal Boolean Won => levelState.Won && levelEndDelayPassed;
 
 
         internal Level(ActorsFactory factory, TileWrapper map, PlayerInputFactory playerInputFactory, 
@@ -44,16 +47,19 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Update(Single elapsedSeconds)
         {
+            Boolean levelEndedBeforeUpdate = levelState.LevelIsEnded;
             foreach (IUpdatable updatable in levelState.ActiveActors.GetObjectsToUpdate())
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
             levelState.Update(elapsedSeconds);
             UpdateLevelProgress(elapsedSeconds);
+            if (levelState.LevelIsEnded != levelEndedBeforeUpdate)
+                PlanLevelEndDelay();
         }
 
         private void UpdateLevelProgress(Single elapsedSeconds)
         {
-            if (!levelState.LevelEnded)
+            if (!levelState.LevelIsEnded)
                 levelProgress.GameTime += elapsedSeconds;
             Boolean checkpointReached = levelProgress.CurrentCheckPoint != levelState.CurrentCheckpoint;
             levelProgress.CurrentCheckPoint = levelState.CurrentCheckpoint;
@@ -113,6 +119,12 @@ namespace ExplainingEveryString.Core.GameModel
                 MaxHealth = interfaceAccessable.MaxHitPoints,
                 PositionOnScreen = camera.PositionOnScreen(interfaceAccessable)
             };
+        }
+
+        private void PlanLevelEndDelay()
+        {
+            Single levelEndDelay = levelState.Won ? wonDelay : defeatDelay;
+            TimersComponent.Instance.ScheduleEvent(levelEndDelay, () => levelEndDelayPassed = true);
         }
     }
 

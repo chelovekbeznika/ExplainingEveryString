@@ -6,6 +6,8 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class LevelState
     {
+        private const Single waveDelay = 2;
+
         private Int32 currentEnemyWaveNumber;
         private Int32 wavesAmount;
         private ActorsInitializer actorsInitializer;
@@ -15,11 +17,10 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal ActiveActorsStorage ActiveActors { get; private set; }
         internal String CurrentCheckpoint { get; private set; }
-        internal Single SecondsPassedAfterLevelEnd { get; private set; } = 0;
 
         internal Boolean Lost => !ActiveActors.Player.IsAlive();
         internal Boolean Won => !Lost && currentEnemyWaveNumber >= wavesAmount;
-        internal Boolean LevelEnded => Won || Lost;
+        internal Boolean LevelIsEnded => Won || Lost;
 
         internal LevelState(ActiveActorsStorage activeActors, ActorsInitializer actorsInitializer, 
             CheckpointsManager checkpointsManager, Int32 wavesAmount, String startCheckpoint)
@@ -37,9 +38,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal void Update(Single elapsedSeconds)
         {
             ActiveActors.Update();
-            if (LevelEnded)
-                SecondsPassedAfterLevelEnd += elapsedSeconds;
-            else
+            if (!LevelIsEnded)
             {
                 if (currentEnemyWaveState == WaveState.Sleeping)
                     SleepingWaveCheck();
@@ -64,9 +63,12 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 ActiveActors.EndWave(currentEnemyWaveNumber);
                 currentEnemyWaveNumber += 1;
-                currentEnemyWaveState = WaveState.Sleeping;
-                if (!LevelEnded)
+                currentEnemyWaveState = WaveState.Delay;
+                if (!LevelIsEnded)
+                {
                     ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
+                    TimersComponent.Instance.ScheduleEvent(waveDelay, () => currentEnemyWaveState = WaveState.Sleeping);
+                }                   
             }
         }
 
@@ -77,6 +79,6 @@ namespace ExplainingEveryString.Core.GameModel
                 CurrentCheckpoint = possibleCheckpoint;
         }
 
-        private enum WaveState { Sleeping, Triggered }
+        private enum WaveState { Delay, Sleeping, Triggered }
     }
 }

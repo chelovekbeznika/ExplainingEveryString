@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.GameState
             CurrentGameplay = new GameplayComponent(
                 game, blueprintsLoader, gameProgress.LevelName, gameProgress.LevelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
-            game.Components.Insert(0, CurrentGameplay);
+            game.Components.Insert(ComponentsOrder.Gameplay, CurrentGameplay);
         }
 
         internal void DeleteCurrentGameplayComponent()
@@ -44,6 +44,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void InitComponents()
         {
             GameComponentCollection components = game.Components;
+            TimersComponent.Init(game);
             components.Add(Interface);
             components.Add(Menu);
             SwitchMenuRelatedComponents(true);
