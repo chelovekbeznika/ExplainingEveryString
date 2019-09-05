@@ -31,14 +31,6 @@ namespace ExplainingEveryString.Core.GameState
             }
         }
 
-        internal void InitMenuInput(MenuInputProcessor menuInputProcessor)
-        {
-            menuInputProcessor.Pause.ButtonPressed += (sender, e) => TryPauseGame();
-            menuInputProcessor.Down.ButtonPressed += (sender, e) => componentsManager.Menu.SelectedItemIndex += 1;
-            menuInputProcessor.Up.ButtonPressed += (sender, e) => componentsManager.Menu.SelectedItemIndex -= 1;
-            menuInputProcessor.Accept.ButtonPressed += (sender, e) => componentsManager.Menu.Accept();
-        }
-
         internal void InitComponents()
         {
             componentsManager.InitComponents();
@@ -98,7 +90,7 @@ namespace ExplainingEveryString.Core.GameState
             }
         }
 
-        private void TryPauseGame()
+        internal void TryPauseGame()
         {
             if (CurrentState == GameState.InGame)
             {

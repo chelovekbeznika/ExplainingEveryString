@@ -13,8 +13,8 @@ namespace ExplainingEveryString.Core
     {
         private readonly GraphicsDeviceManager graphics;
         private IBlueprintsLoader blueprintsLoader;
+        private OuterMenuInputProcessor menuInputProcessor;
 
-        private MenuInputProcessor menuInputProcessor;
         internal GameStateManager GameState { get; private set; }
 
         internal AssetsStorage AssetsStorage { get; private set; }
@@ -41,8 +41,8 @@ namespace ExplainingEveryString.Core
             ComponentsManager componentsManager = new ComponentsManager(this, blueprintsLoader);
 
             this.GameState = new GameStateManager(this, componentsManager);
-            this.menuInputProcessor = new MenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
-            GameState.InitMenuInput(menuInputProcessor);
+            this.menuInputProcessor = new OuterMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
+            menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseGame();
             base.Initialize();
         }
 
@@ -64,9 +64,9 @@ namespace ExplainingEveryString.Core
             {
                 GameState.InitComponents();
             }
-            menuInputProcessor.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
             GameState.Update();
+            menuInputProcessor.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)

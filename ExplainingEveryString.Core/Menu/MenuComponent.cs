@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,6 +12,7 @@ namespace ExplainingEveryString.Core.Menu
         private SpriteBatch spriteBatch;
         private MenuVisiblePart visiblePart;
         private EesGame game;
+        private InnerMenuInputProcessor menuInputProcessor;
 
         internal Int32 SelectedItemIndex { get => visiblePart.SelectedIndex; set => visiblePart.SelectedIndex = value; }
 
@@ -19,6 +21,8 @@ namespace ExplainingEveryString.Core.Menu
             this.game = game;
             this.DrawOrder = ComponentsOrder.Menu;
             this.UpdateOrder = ComponentsOrder.Menu;
+            this.menuInputProcessor = new InnerMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
+            InitMenuInput(menuInputProcessor);
         }
 
         public override void Initialize()
@@ -27,6 +31,12 @@ namespace ExplainingEveryString.Core.Menu
             this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             this.visiblePart = InitializeVisiblePart();
             base.Initialize();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            menuInputProcessor.Update(gameTime);
+            base.Update(gameTime);
         }
 
         private MenuVisiblePart InitializeVisiblePart()
@@ -51,6 +61,13 @@ namespace ExplainingEveryString.Core.Menu
         internal void Accept()
         {
             visiblePart.RequestSelectedCommandExecution();
+        }
+
+        internal void InitMenuInput(InnerMenuInputProcessor menuInputProcessor)
+        {
+            menuInputProcessor.Down.ButtonPressed += (sender, e) => SelectedItemIndex += 1;
+            menuInputProcessor.Up.ButtonPressed += (sender, e) => SelectedItemIndex -= 1;
+            menuInputProcessor.Accept.ButtonPressed += (sender, e) => Accept();
         }
     }
 }

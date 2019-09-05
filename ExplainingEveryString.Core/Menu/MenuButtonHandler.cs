@@ -9,8 +9,8 @@ namespace ExplainingEveryString.Core.Menu
     internal class MenuButtonHandler
     {
         internal event EventHandler ButtonPressed;
-        private Func<Boolean> isButtonPressed;
-        private Single buttonCooldown = 1.0F / 3;
+        private readonly Func<Boolean> isButtonPressed;
+        private const Single buttonCooldown = 1.0F / 3;
         private Single cooldownRemained = 0;
 
         internal MenuButtonHandler(Func<Boolean> isButtonPressed)
