@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Displaying
         private AssetsStorage assetsStorage;
         private Level level;
         private List<SpecEffect> activeSpecEffects = new List<SpecEffect>();
-        private Single fadingOutDistance;
+        private readonly Single fadingOutDistance;
 
         internal EpicEventsProcessor(AssetsStorage assetsStorage, Level level, Configuration config)
         {

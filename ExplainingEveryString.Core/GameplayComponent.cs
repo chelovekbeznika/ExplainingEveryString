@@ -14,10 +14,10 @@ namespace ExplainingEveryString.Core
 {
     internal class GameplayComponent : DrawableGameComponent
     {
-        private IBlueprintsLoader blueprintsLoader;
+        private readonly IBlueprintsLoader blueprintsLoader;
         private Level level;
-        private String levelFileName;
-        private LevelProgress levelStart;
+        private readonly String levelFileName;
+        private readonly LevelProgress levelStart;
         private LevelData levelData;
         private EesGame eesGame;
         private TileWrapper map;

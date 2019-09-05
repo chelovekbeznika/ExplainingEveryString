@@ -10,7 +10,7 @@ namespace ExplainingEveryString.Core.Input
         private static readonly Vector2 up = new Vector2(0, 1);
         private static readonly Vector2 left = new Vector2(-1, 0);
         private static readonly Vector2 right = new Vector2(1, 0);
-        private Func<Vector2> playerPositionOnScreen;
+        private readonly Func<Vector2> playerPositionOnScreen;
 
         internal KeyBoardMousePlayerInput(Func<Vector2> playerPositionOnScreen)
         {

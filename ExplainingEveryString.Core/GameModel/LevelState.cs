@@ -9,8 +9,8 @@ namespace ExplainingEveryString.Core.GameModel
         private const Single waveDelay = 2;
 
         private Int32 currentEnemyWaveNumber;
-        private Int32 wavesAmount;
-        private ActorsInitializer actorsInitializer;
+        private readonly Int32 wavesAmount;
+        private readonly ActorsInitializer actorsInitializer;
         private WaveState currentEnemyWaveState = WaveState.Sleeping;
         private CheckpointsManager checkpointsManager;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();

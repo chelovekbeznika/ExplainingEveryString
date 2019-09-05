@@ -11,7 +11,7 @@ namespace ExplainingEveryString.Core
 {
     public class EesGame : Game
     {
-        private GraphicsDeviceManager graphics;
+        private readonly GraphicsDeviceManager graphics;
         private IBlueprintsLoader blueprintsLoader;
 
         private MenuInputProcessor menuInputProcessor;
@@ -23,10 +23,12 @@ namespace ExplainingEveryString.Core
         {
             ConfigurationAccess.InitializeConfig();
             ScreenConfiguration screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
-            graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = screenConfig.ScreenHeight;
-            graphics.PreferredBackBufferWidth = screenConfig.ScreenWidth;
-            graphics.IsFullScreen = screenConfig.FullScreen;
+            graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferHeight = screenConfig.ScreenHeight,
+                PreferredBackBufferWidth = screenConfig.ScreenWidth,
+                IsFullScreen = screenConfig.FullScreen
+            };
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
         }

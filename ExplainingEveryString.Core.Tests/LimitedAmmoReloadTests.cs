@@ -55,8 +55,7 @@ namespace ExplainingEveryString.Core.Tests
         private void InnerAssert(Single time, Int32 shots)
         {
             aimer.StartFire();
-            Boolean weaponFired = false;
-            reloader.TryReload(time, out weaponFired);
+            reloader.TryReload(time, out Boolean weaponFired);
             aimer.StopFire();
             Assert.That(shots, Is.EqualTo(shots));
         }

@@ -11,7 +11,7 @@ namespace ExplainingEveryString.Core.GameState
         private enum GameState { BetweenLevels, InGame, Paused }
 
         private GameState CurrentState = GameState.BetweenLevels;
-        private Game game;
+        private readonly Game game;
         private ComponentsManager componentsManager;
         private LevelSequence levelSequence;
         private GameProgress gameProgress;

@@ -14,8 +14,8 @@ namespace ExplainingEveryString.Core.Tests
     [TestFixture]
     public class CheckpointsManagerTests
     {
-        private ITilePositionConverter tilePositionConverter = new TilePositionConverterMock();
-        private LevelData levelData = InitLevelData();
+        private readonly ITilePositionConverter tilePositionConverter = new TilePositionConverterMock();
+        private readonly LevelData levelData = InitLevelData();
         private const String PhonyCheckpoint = "PhonyCheckpoint";
 
         [Test]

@@ -29,10 +29,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private IAimer aimer;
         private Barrel[] barrels;
 
-        private EpicEvent weaponFired;
+        private readonly EpicEvent weaponFired;
 
-        private Func<Vector2> findOutWhereIAm;
-        private Func<Vector2> targetLocator;
+        private readonly Func<Vector2> findOutWhereIAm;
+        private readonly Func<Vector2> targetLocator;
 
         public SpriteState SpriteState { get; private set; }
 
@@ -47,11 +47,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.aimer = aimer;
             barrels = specification.Barrels
                 .Select(bs => new Barrel(aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
-            Action<Single> onShoot = (seconds) => 
+            void onShoot(float seconds)
             {
                 foreach (Barrel barrel in barrels)
                     barrel.OnShoot(seconds);
-            };
+            }
             reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), onShoot);
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             this.findOutWhereIAm = findOutWhereIAm;
@@ -61,8 +61,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal void Update(Single elapsedSeconds)
         {
-            Boolean weaponFired;
-            reloader.TryReload(elapsedSeconds, out weaponFired);
+            reloader.TryReload(elapsedSeconds, out Boolean weaponFired);
             if (weaponFired)
                 this.weaponFired.TryHandle();
             if (IsVisible)

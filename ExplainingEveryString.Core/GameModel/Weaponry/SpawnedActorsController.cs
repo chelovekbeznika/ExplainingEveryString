@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     internal class SpawnedActorsController : IUpdatable
     {
         private String enemyType;
-        private Int32 maxSpawned;
+        private readonly Int32 maxSpawned;
         private Reloader reloader;
         private Vector2[] levelSpawnPoints;
         private ISpawnPositionSelector spawnPositionSelector;

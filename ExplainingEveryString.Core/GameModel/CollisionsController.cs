@@ -88,11 +88,10 @@ namespace ExplainingEveryString.Core.GameModel
                 : new Func<ICollidable, Boolean>(c => c.Mode == CollidableMode.Solid || c.Mode == CollidableMode.Pit);
             foreach (ICollidable wall in activeObjects.GetWalls().Where(bumpIntoThisWall))
             {
-                Vector2? wallCorrection;
-                Boolean ridingIntoCorner;
                 Boolean horizontalPriority = wall != tryVerticalMovePriorityForThis;
                 collisionsChecker.TryToBypassWall(oldHitbox, movingObject.GetCurrentHitbox(),
-                    wall.GetCurrentHitbox(), out wallCorrection, horizontalPriority, out ridingIntoCorner);
+                    wall.GetCurrentHitbox(), out Vector2? wallCorrection, 
+                    horizontalPriority, out Boolean ridingIntoCorner);
                 
                 if (wallCorrection != null)
                 {

@@ -11,7 +11,7 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuInputProcessor
     {
-        private MenuButtonHandler[] buttons = new MenuButtonHandler[4];
+        private readonly MenuButtonHandler[] buttons = new MenuButtonHandler[4];
         internal MenuButtonHandler Pause { get => buttons[0]; private set => buttons[0] = value; }
         internal MenuButtonHandler Up { get => buttons[1]; private set => buttons[1] = value; }
         internal MenuButtonHandler Down { get => buttons[2]; private set => buttons[2] = value; }

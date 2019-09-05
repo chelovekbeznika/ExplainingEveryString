@@ -6,7 +6,7 @@ namespace ExplainingEveryString.Core
     internal class Timer : IUpdatable
     {
         private Single secondsTillEvent;
-        private Action atTimerElapsed;
+        private readonly Action atTimerElapsed;
         internal Boolean Happened { get; private set; } = false;
 
         internal Timer(Single secondsTillEvent, Action atTimerElapsed)

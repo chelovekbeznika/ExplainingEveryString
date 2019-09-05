@@ -11,12 +11,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal event EventHandler<ShootEventArgs> Shoot;
 
         private IAimer aimer;
-        private Func<Vector2> findOutWhereIAm;
-        private Func<Vector2> targetLocator;
-        private BulletSpecification bulletSpecification;
-        private Single length;
-        private Single angleCorrection;
-        private Single accuracy;
+        private readonly Func<Vector2> findOutWhereIAm;
+        private readonly Func<Vector2> targetLocator;
+        private readonly BulletSpecification bulletSpecification;
+        private readonly Single length;
+        private readonly Single angleCorrection;
+        private readonly Single accuracy;
 
         internal Barrel(IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
         {

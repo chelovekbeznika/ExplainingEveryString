@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.GameModel
         private LevelState levelState;
         private CollisionsController collisionsController;
         private List<EpicEventArgs> epicEventsHappened = new List<EpicEventArgs>();
-        private LevelProgress levelProgress { get; set; }
+        private LevelProgress levelProgress;
         private Boolean levelEndDelayPassed = false;
 
         internal PlayerInputFactory PlayerInputFactory { get; private set; }

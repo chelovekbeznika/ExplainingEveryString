@@ -9,7 +9,7 @@ namespace ExplainingEveryString.Core.GameState
     internal class ComponentsManager
     {
         private EesGame game;
-        private IBlueprintsLoader blueprintsLoader;
+        private readonly IBlueprintsLoader blueprintsLoader;
 
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
