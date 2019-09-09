@@ -16,17 +16,5 @@ namespace ExplainingEveryString.Data.Blueprints
         public SpecEffectSpecification DamageEffect { get; set; }
         public SpecEffectSpecification BaseDestructionEffect { get; set; }
         public SpecEffectSpecification CannonDestructionEffect { get; set; }
-
-        internal override IEnumerable<SpriteSpecification> GetSprites()
-        {
-            return base.GetSprites().Concat(Weapon.GetSprites());
-        }
-        internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
-        {
-            return new SpecEffectSpecification[] 
-            {
-                Weapon.ShootingEffect, DamageEffect, BaseDestructionEffect, CannonDestructionEffect
-            };
-        }
     }
 }

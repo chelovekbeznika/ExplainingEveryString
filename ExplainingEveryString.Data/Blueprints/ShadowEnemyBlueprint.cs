@@ -13,15 +13,5 @@ namespace ExplainingEveryString.Data.Blueprints
         public SpecEffectSpecification PhaseChangeEffect { get; set; }
         public Single ActiveTime { get; set; }
         public Single ShadowTime { get; set; }
-
-        internal override IEnumerable<SpriteSpecification> GetSprites()
-        {
-            return base.GetSprites().Concat(new SpriteSpecification[] { ShadowSprite });
-        }
-
-        internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
-        {
-            return base.GetSpecEffects().Concat(new SpecEffectSpecification[] { PhaseChangeEffect });
-        }
     }
 }

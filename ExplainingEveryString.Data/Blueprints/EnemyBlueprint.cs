@@ -35,23 +35,5 @@ namespace ExplainingEveryString.Data.Blueprints
         public SpecEffectSpecification AfterAppearanceEffect { get; set; }
         public SpriteSpecification AppearancePhaseSprite { get; set; }
         public Single DefaultAppearancePhaseDuration { get; set; }
-
-        internal override IEnumerable<SpecEffectSpecification> GetSpecEffects()
-        {
-            List<SpecEffectSpecification> specEffects = new List<SpecEffectSpecification>
-            {
-                DeathEffect, BeforeAppearanceEffect, AfterAppearanceEffect
-            };
-            if (Weapon != null)
-                specEffects.Add(Weapon.ShootingEffect);
-            return specEffects;
-        }
-
-        internal override IEnumerable<SpriteSpecification> GetSprites()
-        {
-            IEnumerable<SpriteSpecification> sprites = 
-                base.GetSprites().Concat( new SpriteSpecification[] { AppearancePhaseSprite});
-            return Weapon != null ? sprites.Concat(Weapon.GetSprites()) : sprites;
-        }
     }
 }

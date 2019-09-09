@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core
         internal void FillAssetsStorages(IBlueprintsLoader blueprintsLoader, 
             IAssetsMetadataLoader metadataLoader, ContentManager contentManager)
         {
-            foreach (String spriteName in blueprintsLoader.GetNeccessarySprites())
+            foreach (String spriteName in AssetsExtractor.GetNeccessarySprites(blueprintsLoader))
             {
                 spritesStorage[spriteName] = new SpriteData
                 {
@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core
                     AnimationFrames = 1
                 };
             }
-            foreach (String soundName in blueprintsLoader.GetNecessarySounds())
+            foreach (String soundName in AssetsExtractor.GetNecessarySounds(blueprintsLoader))
             {
                 soundsStorage[soundName] = contentManager.Load<SoundEffect>(soundName);
             }

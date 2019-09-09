@@ -50,6 +50,13 @@
     <Compile Include="AssetsMetadata\AssetsMetadata.cs" />
     <Compile Include="AssetsMetadata\AssetsMetadataAccess.cs" />
     <Compile Include="AssetsMetadata\SpriteMetadata.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\BlueprintAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\DoorAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\EnemyAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\IAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\PlayerAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\ShadowEnemyAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtractor.cs" />
     <Compile Include="Blueprints\DoorBlueprint.cs" />
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
     <Compile Include="Configuration\CameraConfiguration.cs" />
