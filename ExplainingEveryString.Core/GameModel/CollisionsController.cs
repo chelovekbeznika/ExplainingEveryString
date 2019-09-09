@@ -45,23 +45,15 @@ namespace ExplainingEveryString.Core.GameModel
         {
             AdjustObjectToWalls(activeObjects.Player, false, null, null);
 
-            IEnumerable<ICollidable> enemies = activeObjects.Enemies.OfType<ICollidable>()
+            IEnumerable<IMovableCollidable> enemies = activeObjects.Enemies.OfType<IMovableCollidable>()
                 .Where(c => c.Mode != CollidableMode.Ghost).ToArray();
-            IEnumerable<ICollidable> movingEnemies = enemies.Where(CollidableIsMoving).ToArray();
-            List<ICollidable> stoppedEnemies = new List<ICollidable>();
-            foreach (ICollidable movingEnemy in movingEnemies)
+            IEnumerable<IMovableCollidable> movingEnemies = enemies.Where(CollidableIsMoving).ToArray();
+            List<IMovableCollidable> stoppedEnemies = new List<IMovableCollidable>();
+            foreach (IMovableCollidable movingEnemy in movingEnemies)
             {
                 Vector2 beforeMovePosition = movingEnemy.OldPosition;
-                Boolean bumpedIntoOtherEnemy = false;
-                foreach (ICollidable otherEnemy in enemies.Except(stoppedEnemies).Where(e => e != movingEnemy))
-                {
-                    if (collisionsChecker.Collides(otherEnemy.GetOldHitbox(), movingEnemy.GetCurrentHitbox())
-                        || collisionsChecker.Collides(otherEnemy.GetCurrentHitbox(), movingEnemy.GetCurrentHitbox()))
-                    {
-                        bumpedIntoOtherEnemy = true;
-                        break;
-                    }
-                }
+                Boolean bumpedIntoOtherEnemy = IsBumpedIntoOtherEnemies(movingEnemy, movingEnemies, stoppedEnemies);
+
                 if (bumpedIntoOtherEnemy)
                 {
                     movingEnemy.Position = beforeMovePosition;
@@ -72,39 +64,65 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
 
-        private Boolean CollidableIsMoving(ICollidable collidable)
+        private Boolean IsBumpedIntoOtherEnemies(IMovableCollidable enemy, IEnumerable<IMovableCollidable> movingEnemies, 
+            List<IMovableCollidable> stoppedEnemies)
+        {
+            if (enemy.CollideTag != null)
+            {
+                foreach (IMovableCollidable otherEnemy in movingEnemies.Except(stoppedEnemies)
+                    .Where(e => e.CollideTag == enemy.CollideTag && e != enemy))
+                {
+                    if (collisionsChecker.Collides(otherEnemy.GetOldHitbox(), enemy.GetCurrentHitbox())
+                        || collisionsChecker.Collides(otherEnemy.GetCurrentHitbox(), enemy.GetCurrentHitbox()))
+                        return true;
+                }
+                return false;
+            }
+            else
+                return false;
+        }
+
+        private Boolean CollidableIsMoving(IMovableCollidable collidable)
         {
             return !collidable.GetOldHitbox().Equals(collidable.GetCurrentHitbox());
         }
 
-        private void AdjustObjectToWalls(ICollidable movingObject, Boolean ridesThroughPit,
+        private void AdjustObjectToWalls(IMovableCollidable movingObject, Boolean ridesThroughPit,
             ICollidable tryVerticalMovePriorityForThis, Hitbox? previousOldHitbox)
         {
             Hitbox oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
             Vector2 savedMovingObjectPosition = movingObject.Position;
-            ICollidable touchingToCorner = null;
             Func<ICollidable, Boolean> bumpIntoThisWall = ridesThroughPit
                 ? new Func<ICollidable, Boolean>(c => c.Mode == CollidableMode.Solid)
                 : new Func<ICollidable, Boolean>(c => c.Mode == CollidableMode.Solid || c.Mode == CollidableMode.Pit);
-            foreach (ICollidable wall in activeObjects.GetWalls().Where(bumpIntoThisWall))
-            {
-                Boolean horizontalPriority = wall != tryVerticalMovePriorityForThis;
-                collisionsChecker.TryToBypassWall(oldHitbox, movingObject.GetCurrentHitbox(),
-                    wall.GetCurrentHitbox(), out Vector2? wallCorrection, 
-                    horizontalPriority, out Boolean ridingIntoCorner);
-                
-                if (wallCorrection != null)
-                {
-                    if (ridingIntoCorner && tryVerticalMovePriorityForThis == null)
-                        touchingToCorner = wall;
-                    movingObject.Position = wallCorrection.Value;                       
-                }
-            }
+            IEnumerable<ICollidable> walls = activeObjects.GetWalls().Where(bumpIntoThisWall);
+
+            WallsCheck(movingObject, walls, oldHitbox, tryVerticalMovePriorityForThis, out ICollidable touchingToCorner);
 
             if (touchingToCorner != null && oldHitbox.Equals(movingObject.GetCurrentHitbox()))
             {
                 movingObject.Position = savedMovingObjectPosition;
                 AdjustObjectToWalls(movingObject, ridesThroughPit, touchingToCorner, oldHitbox);
+            }
+        }
+
+        private void WallsCheck(IMovableCollidable movingObject, IEnumerable<ICollidable> walls, Hitbox oldHitbox, 
+            ICollidable tryVerticalMovePriorityForThis, out ICollidable touchingToCorner)
+        {
+            touchingToCorner = null;
+            foreach (ICollidable wall in walls)
+            {
+                Boolean horizontalPriority = wall != tryVerticalMovePriorityForThis;
+                collisionsChecker.TryToBypassWall(oldHitbox, movingObject.GetCurrentHitbox(),
+                    wall.GetCurrentHitbox(), out Vector2? wallCorrection,
+                    horizontalPriority, out Boolean ridingIntoCorner);
+
+                if (wallCorrection != null)
+                {
+                    if (ridingIntoCorner && tryVerticalMovePriorityForThis == null)
+                        touchingToCorner = wall;
+                    movingObject.Position = wallCorrection.Value;
+                }
             }
         }
 

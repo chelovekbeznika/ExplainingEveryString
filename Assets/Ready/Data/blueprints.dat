@@ -54,6 +54,7 @@
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 5.0,
+    "CollideTag": "Hunter",
     "Mover": {
       "Type": "Acceleration",
       "Parameters": {
@@ -738,6 +739,7 @@
     "Height": 32.0,
     "Width": 32.0,
     "Hitpoints": 20.0,
+    "CollideTag": "Tank",
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level1X/TankBase",
       "AnimationCycle": 0.25
@@ -870,6 +872,7 @@
     "Height": 16.0,
     "Width": 16.0,
     "Hitpoints": 8.0,
+    "CollideTag": "Hunter",
     "Mover": {
       "Type": "Acceleration",
       "Parameters": {

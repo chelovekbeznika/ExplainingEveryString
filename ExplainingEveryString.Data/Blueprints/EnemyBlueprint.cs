@@ -16,6 +16,8 @@ namespace ExplainingEveryString.Data.Blueprints
         public String Type { get; set; }
         public Single CollisionDamage { get; set; }
         [DefaultValue(null)]
+        public String CollideTag { get; set; }
+        [DefaultValue(null)]
         public MoverSpecification Mover { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         [DefaultValue(MoveTargetSelectType.NoTarget)]

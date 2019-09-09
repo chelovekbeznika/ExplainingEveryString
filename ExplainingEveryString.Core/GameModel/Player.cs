@@ -11,7 +11,8 @@ using ExplainingEveryString.Core.Math;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, ITouchableByBullets, IInterfaceAccessable
+    internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, IMovableCollidable,
+        ITouchableByBullets, IInterfaceAccessable
     {
         private EpicEvent damageTaken;
         private EpicEvent baseDestroyed;
@@ -32,6 +33,7 @@ namespace ExplainingEveryString.Core.GameModel
                 }
             }
         }
+        public String CollideTag => null;
         internal Vector2 FireDirection => input.GetFireDirection();
 
         private Vector2 speed = new Vector2(0, 0);

@@ -92,8 +92,8 @@
     <Compile Include="GameModel\Movement\TargetSelectors\NotATargetSelector.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\PlayerHunter.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFlight.cs" />
-    <Compile Include="GameModel\TileWall.cs" />
-    <Compile Include="GameModel\TileWallsFactory.cs" />
+    <Compile Include="GameModel\Wall.cs" />
+    <Compile Include="GameModel\WallsFactory.cs" />
     <Compile Include="GameModel\Weaponry\SpawnedActorsController.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\ParabolicTrajectory.cs" />
     <Compile Include="GameState\LevelSequence.cs" />
@@ -143,7 +143,7 @@
     <Compile Include="GameModel\Weaponry\Barrel.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\IAimer.cs" />
     <Compile Include="GameModel\Weaponry\Weapon.cs" />
-    <Compile Include="GameModel\Wall.cs" />
+    <Compile Include="GameModel\Obstacle.cs" />
     <Compile Include="GameModel\Weaponry\ShootEventArgs.cs" />
     <Compile Include="GameModel\Weaponry\Reloader.cs" />
     <Compile Include="Input\GamePadPlayerInput.cs" />

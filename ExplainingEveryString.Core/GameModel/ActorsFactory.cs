@@ -36,9 +36,9 @@ namespace ExplainingEveryString.Core.GameModel
             return door;
         }
 
-        internal List<Wall> ConstructWalls(String name, IEnumerable<Vector2> positions)
+        internal List<Obstacle> ConstructObstacles(String name, IEnumerable<Vector2> positions)
         {
-            return Construct<Wall, Blueprint>(name, 
+            return Construct<Obstacle, Blueprint>(name, 
                 positions.Select(pos => new ActorStartInfo { BlueprintType = name, Position = pos, Angle = 0 }));
         }
 

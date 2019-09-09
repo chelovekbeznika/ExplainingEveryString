@@ -16,10 +16,15 @@ namespace ExplainingEveryString.Core.GameModel
     internal interface ICollidable
     {
         Hitbox GetCurrentHitbox();
-        Hitbox GetOldHitbox();
         Vector2 Position { get; set; }
-        Vector2 OldPosition { get; }
         CollidableMode Mode { get; }
+    }
+
+    internal interface IMovableCollidable : ICollidable
+    {
+        Hitbox GetOldHitbox();
+        Vector2 OldPosition { get; }
+        String CollideTag { get; }
     }
 
     internal interface ICrashable : ICollidable

@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.GameModel
         Boolean IsAlive();
     }
 
-    internal interface IEnemy : IActor, IInterfaceAccessable, ICrashable, ITouchableByBullets, IMultiPartDisplayble
+    internal interface IEnemy : IActor, IInterfaceAccessable, IMovableCollidable, ICrashable, ITouchableByBullets, IMultiPartDisplayble
     {
         SpawnedActorsController SpawnedActors { get; }
         List<IEnemy> Avengers { get; }

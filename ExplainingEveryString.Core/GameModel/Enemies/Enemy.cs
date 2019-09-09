@@ -28,6 +28,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Constants.Epsilon;
         public override SpriteState SpriteState => IsInAppearancePhase ? appearanceSprite : base.SpriteState;
         public override CollidableMode Mode => IsInAppearancePhase ? CollidableMode.Ghost : base.Mode;
+        private String collideTag;
+        public String CollideTag => collideTag;
         public Single CollisionDamage { get; set; }
 
         private Weapon weapon;
@@ -68,6 +70,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.appearancePhaseRemained = startInfo.AppearancePhaseDuration > 0 
                 ? startInfo.AppearancePhaseDuration
                 : blueprint.DefaultAppearancePhaseDuration;
+            this.collideTag = blueprint.CollideTag;
             ConstructMovement(blueprint, startInfo);
             ConstructWeaponry(blueprint, startInfo, level, factory);
         }

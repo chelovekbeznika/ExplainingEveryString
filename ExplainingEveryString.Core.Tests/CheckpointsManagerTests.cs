@@ -103,7 +103,7 @@ namespace ExplainingEveryString.Core.Tests
                     new EnemyWave { Checkpoint = null },
                     new EnemyWave { Checkpoint = seventhWaveCheckpont }
                 },
-                WallsTilePositions = new Dictionary<String, PositionOnTileMap[]>(),
+                ObstaclesTilePositions = new Dictionary<String, PositionOnTileMap[]>(),
                 TileMap = "SomeTileMap"
             };
         }

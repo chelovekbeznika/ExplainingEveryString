@@ -14,14 +14,14 @@ namespace ExplainingEveryString.Core.GameModel
     {
         private TileWrapper map;
         private ActorsFactory actorsFactory;
-        private TileWallsFactory tileWallsFactory;
+        private WallsFactory wallsFactory;
         private LevelData levelData;
 
         internal ActorsInitializer(TileWrapper map, ActorsFactory actorsFactory, LevelData levelData)
         {
             this.map = map;
             this.actorsFactory = actorsFactory;
-            this.tileWallsFactory = new TileWallsFactory(map);
+            this.wallsFactory = new WallsFactory(map);
             this.levelData = levelData;
         }
 
@@ -54,21 +54,21 @@ namespace ExplainingEveryString.Core.GameModel
             return result;
         }
 
-        internal List<IActor> InitializeWalls()
+        internal List<IActor> InitializeObstacles()
         {
             List<IActor> result = new List<IActor>();
-            foreach (String wallType in levelData.WallsTilePositions.Keys)
+            foreach (String obstacleType in levelData.ObstaclesTilePositions.Keys)
             {
-                List<Vector2> wallPositions = levelData.WallsTilePositions[wallType]
+                List<Vector2> obstaclePositions = levelData.ObstaclesTilePositions[obstacleType]
                     .Select(t => map.GetPosition(t)).ToList();
-                result.AddRange(actorsFactory.ConstructWalls(wallType, wallPositions));
+                result.AddRange(actorsFactory.ConstructObstacles(obstacleType, obstaclePositions));
             }
             return result;
         }
 
-        internal ICollidable[] InitializeTileWalls()
+        internal ICollidable[] InitializeWalls()
         {
-            return tileWallsFactory.ConstructTileWalls().OfType<ICollidable>().ToArray();
+            return wallsFactory.ConstructWalls().OfType<ICollidable>().ToArray();
         }
 
         internal Player InitializePlayer(ActorStartInfo playerStartInfo) => actorsFactory.ConstructPlayer(playerStartInfo);

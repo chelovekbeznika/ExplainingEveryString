@@ -184,7 +184,7 @@
       ]
     }
   ],
-  "WallsTilePositions": {
+  "ObstaclesTilePositions": {
     "LittleDecoration": [
       {
         "X": 29,

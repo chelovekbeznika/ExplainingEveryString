@@ -20,9 +20,9 @@ namespace ExplainingEveryString.Core.GameModel
             .Concat(avengers)
             .Concat(activeEnemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
       
-        private List<IActor> walls;
+        private List<IActor> obstacles;
         private List<Door> doors;
-        private ICollidable[] tileWalls;
+        private ICollidable[] walls;
         private List<IEnemy> currentWaveEnemies = new List<IEnemy>();
         private List<IEnemy> avengers = new List<IEnemy>();
         private List<SpawnedActorsController> activeEnemySpawners = new List<SpawnedActorsController>();
@@ -37,7 +37,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal IEnumerable<IDisplayble> GetObjectsToDraw()
         {
-            return walls
+            return obstacles
                 .Concat(doors)
                 .Concat(Player.IsAlive() ? new List<IDisplayble> { Player } : Enumerable.Empty<IDisplayble>())
                 .Concat(Enemies)
@@ -52,13 +52,13 @@ namespace ExplainingEveryString.Core.GameModel
                 .Concat(Player.IsAlive() ? new List<IUpdatable> { Player } : Enumerable.Empty<IUpdatable>())
                 .Concat(activeEnemySpawners.OfType<IUpdatable>())
                 .Concat(Enemies.OfType<IUpdatable>())
-                .Concat(walls.OfType<IUpdatable>())
+                .Concat(obstacles.OfType<IUpdatable>())
                 .Concat(doors.OfType<IUpdatable>());
         }
 
         internal IEnumerable<ICollidable> GetWalls()
         {
-            return walls.Concat(doors).OfType<ICollidable>().Concat(tileWalls);
+            return obstacles.Concat(doors).OfType<ICollidable>().Concat(walls);
         }
 
         internal void Update()
@@ -91,8 +91,8 @@ namespace ExplainingEveryString.Core.GameModel
             Int32 startWave = checkpointsManager.GetStartWave(startCheckpoint);
 
             Player = actorsInitializer.InitializePlayer(checkpointsManager.GetPlayerPosition(startCheckpoint));
+            obstacles = actorsInitializer.InitializeObstacles();
             walls = actorsInitializer.InitializeWalls();
-            tileWalls = actorsInitializer.InitializeTileWalls();
             doors = actorsInitializer.InitializeCommonDoors(startWave);
 
             SwitchStartRegion(actorsInitializer, startWave);
