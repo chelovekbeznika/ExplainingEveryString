@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.Displaying
         private AssetsStorage assetsStorage;
         private Level level;
         private List<SpecEffect> activeSpecEffects = new List<SpecEffect>();
+        private Dictionary<String, Single> soundsToPlay = new Dictionary<String, Single>();
         private readonly Single fadingOutDistance;
 
         internal EpicEventsProcessor(AssetsStorage assetsStorage, Level level, Configuration config)
@@ -27,6 +28,18 @@ namespace ExplainingEveryString.Core.Displaying
             {
                 ProcessEpicEvent(epicEvent);
             }
+            PlaySounds();
+        }
+
+        private void PlaySounds()
+        {
+            foreach (KeyValuePair<String, Single> soundPair in soundsToPlay)
+            {
+                String soundName = soundPair.Key;
+                Single volume = soundPair.Value;
+                assetsStorage.GetSound(soundName).Play(volume, 0, 0);
+            }
+            soundsToPlay.Clear();
         }
 
         internal void Update(Single elapsedSeconds)
@@ -58,12 +71,21 @@ namespace ExplainingEveryString.Core.Displaying
                 Single currentFadingOutDistance = fadingOutDistance * sound.FadingCoeff;
                 if (distance <= currentFadingOutDistance)
                 {
-                    Single nearEpicenterVolume = epicEvent.SpecEffectSpecification.Sound.Volume;
+                    Single nearEpicenterVolume = sound.Volume;
                     Single fadingCoeff = 1 - (distance / currentFadingOutDistance);
                     Single volume = nearEpicenterVolume * fadingCoeff;
-                    assetsStorage.GetSound(sound.Name).Play(volume, 0, 0);
+                    ScheduleSound(sound.Name, volume);
                 }
             }
+        }
+
+        private void ScheduleSound(String name, Single volume)
+        {
+            if (!soundsToPlay.ContainsKey(name))
+                soundsToPlay.Add(name, volume);
+            else
+                if (volume > soundsToPlay[name])
+                    soundsToPlay[name] = volume;
         }
 
         private void ProcessAnimation(EpicEventArgs epicEvent)
