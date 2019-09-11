@@ -244,7 +244,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/HelicopterExplosion",
+        "Name": "Sounds/Bosses/HelicopterExplosion",
         "Volume": 0.2
       },
       "Sprite": {
@@ -322,7 +322,7 @@
       ],
       "ShootingEffect": {
         "Sound": {
-          "Name": "Sounds/HelicopterShoot",
+          "Name": "Sounds/Bosses/HelicopterShoot",
           "Volume": 0.15
         }
       },
@@ -569,7 +569,7 @@
       ],
       "ShootingEffect": {
         "Sound": {
-          "Name": "Sounds/PlayerShoot",
+          "Name": "Sounds/Player/Shoot",
           "Volume": 0.1
         }
       },
@@ -584,13 +584,13 @@
     },
     "DamageEffect": {
       "Sound": {
-        "Name": "Sounds/Hit_01",
+        "Name": "Sounds/Player/Hit",
         "Volume": 1.0
       }
     },
     "BaseDestructionEffect": {
       "Sound": {
-        "Name": "Sounds/PlayerDeath",
+        "Name": "Sounds/Player/Death",
         "Volume": 0.5
       },
       "Sprite": {
@@ -618,7 +618,7 @@
     },
     "OpeningStartedEffect": {
       "Sound": {
-        "Name": "Sounds/TestOpeningDoor",
+        "Name": "Sounds/Doors/BridgeBlockerOpening",
         "Volume": 0.5
       }
     }
@@ -637,7 +637,7 @@
     "OpeningMode": "Right",
     "CompletelyOpenedEffect": {
       "Sound": {
-        "Name": "Sounds/CompletelyOpenedTest",
+        "Name": "Sounds/Doors/CompletelyOpenedTest",
         "Volume": 1.0
       }
     }
@@ -1218,7 +1218,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/HelicopterExplosion",
+        "Name": "Sounds/Bosses/HelicopterExplosion",
         "Volume": 0.2
       },
       "Sprite": {
@@ -1339,7 +1339,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/SwanDyingScream",
+        "Name": "Sounds/Bosses/SwanDyingScream",
         "Volume": 0.2
       },
       "Sprite": {
@@ -1349,7 +1349,7 @@
     },
     "BeforeAppearanceEffect": {
       "Sound": {
-        "Name": "Sounds/SwanPecking",
+        "Name": "Sounds/Bosses/SwanPecking",
         "Volume": 0.2
       }
     },
@@ -1458,7 +1458,7 @@
       ],
       "ShootingEffect": {
         "Sound": {
-          "Name": "Sounds/SwanShot",
+          "Name": "Sounds/Bosses/SwanShot",
           "Volume": 0.25
         }
       },
@@ -1538,7 +1538,7 @@
     },
     "OpeningStartedEffect": {
       "Sound": {
-        "Name": "Sounds/TestOpeningDoor",
+        "Name": "Sounds/Doors/BridgeBlockerOpening",
         "Volume": 0.3
       }
     }

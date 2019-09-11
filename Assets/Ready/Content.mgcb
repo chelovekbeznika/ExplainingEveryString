@@ -35,17 +35,53 @@
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
-#begin Sounds/CompletelyOpenedTest.wav
+#begin Sounds/Bosses/HelicopterExplosion.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/CompletelyOpenedTest.wav
+/build:Sounds/Bosses/HelicopterExplosion.wav
+
+#begin Sounds/Bosses/HelicopterShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/HelicopterShoot.wav
+
+#begin Sounds/Bosses/SwanDyingScream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/SwanDyingScream.wav
+
+#begin Sounds/Bosses/SwanPecking.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/SwanPecking.wav
+
+#begin Sounds/Bosses/SwanShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/SwanShot.wav
 
 #begin Sounds/Doors/BossDoorOpening.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Doors/BossDoorOpening.wav
+
+#begin Sounds/Doors/BridgeBlockerOpening.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Doors/BridgeBlockerOpening.wav
+
+#begin Sounds/Doors/CompletelyOpenedTest.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Doors/CompletelyOpenedTest.wav
 
 #begin Sounds/Doors/IceDoorOpening.wav
 /importer:WavImporter
@@ -71,41 +107,29 @@
 /processorParam:Quality=Best
 /build:Sounds/FixedCannonShoot.wav
 
-#begin Sounds/HelicopterExplosion.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/HelicopterExplosion.wav
-
-#begin Sounds/HelicopterShoot.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/HelicopterShoot.wav
-
-#begin Sounds/Hit_01.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Hit_01.wav
-
 #begin Sounds/MineDiggingUp.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/MineDiggingUp.wav
 
-#begin Sounds/PlayerDeath.wav
+#begin Sounds/Player/Death.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/PlayerDeath.wav
+/build:Sounds/Player/Death.wav
 
-#begin Sounds/PlayerShoot.wav
+#begin Sounds/Player/Hit.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/PlayerShoot.wav
+/build:Sounds/Player/Hit.wav
+
+#begin Sounds/Player/Shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/Shoot.wav
 
 #begin Sounds/StandardEnemy/Appearance.wav
 /importer:WavImporter
@@ -142,30 +166,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/StandardEnemy/SmallExplosion.wav
-
-#begin Sounds/SwanDyingScream.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/SwanDyingScream.wav
-
-#begin Sounds/SwanPecking.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/SwanPecking.wav
-
-#begin Sounds/SwanShot.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/SwanShot.wav
-
-#begin Sounds/TestOpeningDoor.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/TestOpeningDoor.wav
 
 #begin Sounds/TripleCannonShoot.wav
 /importer:WavImporter
