@@ -28,7 +28,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/Explosion_02",
+        "Name": "Sounds/Enemy/Explosion_02",
         "Volume": 0.4
       },
       "Sprite": {
@@ -89,7 +89,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/Explosion_01",
+        "Name": "Sounds/Enemy/Explosion_01",
         "Volume": 0.2
       }
     },
@@ -122,7 +122,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/Explosion_02",
+        "Name": "Sounds/Enemy/Explosion_02",
         "Volume": 0.3
       },
       "Sprite": {
@@ -225,7 +225,7 @@
       ],
       "ShootingEffect": {
         "Sound": {
-          "Name": "Sounds/FixedCannonShoot",
+          "Name": "Sounds/Enemy/FixedCannonShoot",
           "Volume": 0.05
         }
       },
@@ -364,7 +364,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/Explosion_02",
+        "Name": "Sounds/Enemy/Explosion_02",
         "Volume": 0.3
       },
       "Sprite": {
@@ -416,7 +416,7 @@
       },
       "ShootingEffect": {
         "Sound": {
-          "Name": "Sounds/TripleCannonShoot",
+          "Name": "Sounds/Enemy/TripleCannonShoot",
           "Volume": 0.05
         }
       }
@@ -433,7 +433,7 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/Explosion_02",
+        "Name": "Sounds/Enemy/Explosion_02",
         "Volume": 0.3
       },
       "Sprite": {
@@ -529,7 +529,7 @@
       ],
       "ShootingEffect": {
         "Sound": {
-          "Name": "Sounds/TripleCannonShoot",
+          "Name": "Sounds/Enemy/TripleCannonShoot",
           "Volume": 0.05
         }
       },
@@ -1188,7 +1188,7 @@
     },
     "BeforeAppearanceEffect": {
       "Sound": {
-        "Name": "Sounds/MineDiggingUp",
+        "Name": "Sounds/Enemy/MineDiggingUp",
         "Volume": 0.5
       }
     },

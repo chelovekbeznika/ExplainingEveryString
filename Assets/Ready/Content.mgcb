@@ -89,29 +89,35 @@
 /processorParam:Quality=Best
 /build:Sounds/Doors/IceDoorOpening.wav
 
-#begin Sounds/Explosion_01.wav
+#begin Sounds/Enemy/Explosion_01.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/Explosion_01.wav
+/build:Sounds/Enemy/Explosion_01.wav
 
-#begin Sounds/Explosion_02.wav
+#begin Sounds/Enemy/Explosion_02.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/Explosion_02.wav
+/build:Sounds/Enemy/Explosion_02.wav
 
-#begin Sounds/FixedCannonShoot.wav
+#begin Sounds/Enemy/FixedCannonShoot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/FixedCannonShoot.wav
+/build:Sounds/Enemy/FixedCannonShoot.wav
 
-#begin Sounds/MineDiggingUp.wav
+#begin Sounds/Enemy/MineDiggingUp.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/MineDiggingUp.wav
+/build:Sounds/Enemy/MineDiggingUp.wav
+
+#begin Sounds/Enemy/TripleCannonShoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/TripleCannonShoot.wav
 
 #begin Sounds/Player/Death.wav
 /importer:WavImporter
@@ -166,12 +172,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/StandardEnemy/SmallExplosion.wav
-
-#begin Sounds/TripleCannonShoot.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/TripleCannonShoot.wav
 
 #begin Sprites/Doors/DefaultVertical.png
 /importer:TextureImporter
