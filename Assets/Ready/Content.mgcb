@@ -119,6 +119,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Enemy/TripleCannonShoot.wav
 
+#begin Sounds/Player/Dash.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/Dash.wav
+
 #begin Sounds/Player/Death.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -833,6 +839,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Explosions/HelicopterDeath.png
 
+#begin Sprites/Interface/EmptyDash.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/EmptyDash.png
+
 #begin Sprites/Interface/EmptyHealthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -856,6 +874,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/EnemyHealthBar.png
+
+#begin Sprites/Interface/FullDash.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/FullDash.png
+
+#begin Sprites/Interface/FullDashNotReady.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/FullDashNotReady.png
 
 #begin Sprites/Interface/HealthBar.png
 /importer:TextureImporter
@@ -976,6 +1018,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/CannonDeath.png
+
+#begin Sprites/Player/Dash.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Dash.png
+
+#begin Sprites/Player/DashState.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/DashState.png
 
 #begin Sprites/Player/Death.png
 /importer:TextureImporter
