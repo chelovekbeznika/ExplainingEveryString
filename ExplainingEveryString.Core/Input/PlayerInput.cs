@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Core.Input
     internal interface IPlayerInput : IAimer
     {
         Vector2 GetMoveDirection();
+        Boolean IsTryingToDash();
     }
 
     internal abstract class PlayerInput : IPlayerInput
@@ -31,5 +32,6 @@ namespace ExplainingEveryString.Core.Input
         public abstract Boolean IsFiring();
         public abstract Vector2 GetMoveDirection();
         public abstract Vector2 GetFireDirection();
+        public abstract Boolean IsTryingToDash();
     }
 }

@@ -540,6 +540,27 @@
     "$type": "ExplainingEveryString.Data.Blueprints.PlayerBlueprint, ExplainingEveryString.Data",
     "MaxSpeed": 300.0,
     "MaxAcceleration": 400.0,
+    "Dash": {
+      "MaxSpeedIncrease": 2.0,
+      "SpeedIncrease": 3.0,
+      "AccelerationIncrease": 2.5,
+      "RechargeTime": 5.0,
+      "Duration": 1.0,
+      "SpecEffect": {
+        "Sound": {
+          "Name": "Sounds/Player/Dash",
+          "Volume": 0.3
+        },
+        "Sprite": {
+          "Name": "Sprites/Player/Dash",
+          "AnimationCycle": 0.25
+        }
+      },
+      "Sprite": {
+        "Name": "Sprites/Player/DashState",
+        "AnimationCycle": 0.2
+      }
+    },
     "Weapon": {
       "Reloader": {
         "FireRate": 20.0,

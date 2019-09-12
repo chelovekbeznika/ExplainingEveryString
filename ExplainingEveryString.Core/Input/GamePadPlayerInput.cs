@@ -31,5 +31,10 @@ namespace ExplainingEveryString.Core.Input
             else
                 return lastDirection;
         }
+
+        public override Boolean IsTryingToDash()
+        {
+            return GamePad.GetState(PlayerIndex.One).Triggers.Left >= 0.5;
+        }
     }
 }

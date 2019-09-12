@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.Displaying
         }
 
         internal Vector2 Position => player.Position;
-        internal Vector2 FireDirection => player.FireDirection;
+        internal Vector2 FireDirection => player.Input.GetFireDirection();
         internal Vector2 CurrentMoveSpeed => player.Position - player.OldPosition;
     }
 }

@@ -11,7 +11,9 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
     {
         public IEnumerable<SpriteSpecification> GetSprites(PlayerBlueprint blueprint)
         {
-            return base.GetSprites(blueprint).Concat(blueprint.Weapon.GetSprites());
+            return base.GetSprites(blueprint)
+                .Concat(GetSpritesFromWeapon(blueprint.Weapon))
+                .Concat(new SpriteSpecification[] { blueprint.Dash.Sprite });
         }
 
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(PlayerBlueprint blueprint)
@@ -19,7 +21,8 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
             return base.GetSpecEffects(blueprint).Concat(new SpecEffectSpecification[]
             {
                 blueprint.Weapon.ShootingEffect, blueprint.DamageEffect,
-                blueprint.BaseDestructionEffect, blueprint.CannonDestructionEffect
+                blueprint.BaseDestructionEffect, blueprint.CannonDestructionEffect,
+                blueprint.Dash.SpecEffect
             });
         }
     }

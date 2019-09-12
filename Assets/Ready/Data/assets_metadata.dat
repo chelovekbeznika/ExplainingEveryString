@@ -12,14 +12,14 @@
       "Name": "Sprites/Doors/TestDoorUp",
       "AnimationFrames": 8
     },
-	{
-	  "Name": "Sprites/Walls/Level1X/BottomLamp",
-	  "AnimationFrames": 3
-	},
-	{
-	  "Name": "Sprites/Walls/Level1X/TopLamp",
-	  "AnimationFrames": 3
-	},
+    {
+      "Name": "Sprites/Walls/Level1X/BottomLamp",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Walls/Level1X/TopLamp",
+      "AnimationFrames": 3
+    },
     {
       "Name": "Sprites/Explosions/01",
       "AnimationFrames": 12
@@ -71,6 +71,14 @@
     {
       "Name": "Sprites/Player/CannonDeath",
       "AnimationFrames": 9
+    },
+    {
+      "Name": "Sprites/Player/Dash",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Player/DashState",
+      "AnimationFrames": 4
     },
     {
       "Name": "Sprites/Enemies/Level1X/TankBase",

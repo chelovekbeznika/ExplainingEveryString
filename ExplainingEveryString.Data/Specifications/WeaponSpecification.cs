@@ -15,11 +15,6 @@ namespace ExplainingEveryString.Data.Specifications
         public SpecEffectSpecification ShootingEffect { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public AimType AimType { get; set; }
-
-        public IEnumerable<SpriteSpecification> GetSprites()
-        {
-            return new SpriteSpecification[] { Sprite }.Concat(Barrels.Select(b => b.Bullet.Sprite));
-        }
     }
 
     public enum AimType

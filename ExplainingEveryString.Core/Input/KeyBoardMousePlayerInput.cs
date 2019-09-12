@@ -45,5 +45,10 @@ namespace ExplainingEveryString.Core.Input
             Vector2 fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
             return NormalizeDirectionVector(fireDirectionOnLevel);
         }
+
+        public override Boolean IsTryingToDash()
+        {
+            return Keyboard.GetState().IsKeyDown(Keys.LeftShift);
+        }
     }
 }

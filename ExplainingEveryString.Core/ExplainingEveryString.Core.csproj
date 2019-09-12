@@ -61,7 +61,9 @@
     <Compile Include="ComponentsOrder.cs" />
     <Compile Include="GameModel\Checkpoint.cs" />
     <Compile Include="GameModel\CheckpointsManager.cs" />
+    <Compile Include="GameModel\DashSpeedingUp.cs" />
     <Compile Include="GameModel\EnemiesDeathProcessor.cs" />
+    <Compile Include="GameModel\PlayerDashController.cs" />
     <Compile Include="Menu\InnerMenuInputProcessor.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="Timer.cs" />

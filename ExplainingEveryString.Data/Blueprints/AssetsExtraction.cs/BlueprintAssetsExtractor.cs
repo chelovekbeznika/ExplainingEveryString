@@ -18,5 +18,11 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
         {
             return Enumerable.Empty<SpecEffectSpecification>();
         }
+
+        public IEnumerable<SpriteSpecification> GetSpritesFromWeapon(WeaponSpecification specification)
+        {
+            return new SpriteSpecification[] { specification.Sprite }
+                .Concat(specification.Barrels.Select(b => b.Bullet.Sprite));
+        }
     }
 }

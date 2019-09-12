@@ -5,7 +5,6 @@ using System;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Displaying;
 using System.Collections.Generic;
-using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Specifications;
 using ExplainingEveryString.Core.Math;
 
@@ -34,38 +33,48 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
         public String CollideTag => null;
-        internal Vector2 FireDirection => input.GetFireDirection();
+        internal IPlayerInput Input { get; private set; }
 
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
         private Single maxAcceleration;
-        private IPlayerInput input;
         private Single bulletHitboxWidth;
+
+        private PlayerDashController dashController;
+        private DashAcceleration dashAcceleration;
 
         private Weapon Weapon { get; set; }
 
         protected override void Construct(PlayerBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
             base.Construct(blueprint, startInfo, level, factory);
-            input = level.PlayerInputFactory.Create();
+            Input = level.PlayerInputFactory.Create();
             maxSpeed = blueprint.MaxSpeed;
             maxAcceleration = blueprint.MaxAcceleration;
             bulletHitboxWidth = blueprint.BulletHitboxWidth;
             
             MaxHitPoints = blueprint.Hitpoints;
 
-            Weapon = new Weapon(blueprint.Weapon, input, () => Position, null, level);
+            Weapon = new Weapon(blueprint.Weapon, Input, () => Position, null, level);
             Weapon.Shoot += level.PlayerShoot;
 
             damageTaken = new EpicEvent(level, blueprint.DamageEffect, false, this, true);
             baseDestroyed = new EpicEvent(level, blueprint.BaseDestructionEffect, true, this, false);
             cannonDestroyed = new EpicEvent(level, blueprint.CannonDestructionEffect, true, this.Weapon, true);
+            ConstructDash(level, blueprint.Dash);
+        }
+
+        private void ConstructDash(Level level, DashSpecification specification)
+        {
+            this.dashController = new PlayerDashController(specification, this, level);
+            this.dashAcceleration = new DashAcceleration(specification);
         }
 
         public override void Update(Single elapsedSeconds)
         {
             base.Update(elapsedSeconds);
             Weapon.Update(elapsedSeconds);
+            dashController.Update(elapsedSeconds);
             Move(elapsedSeconds);
         }
 
@@ -101,13 +110,13 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Vector2 GetAcceleration()
         {
-            Vector2 direction = input.GetMoveDirection();
+            Vector2 direction = Input.GetMoveDirection();
             return direction * maxAcceleration;
         }
 
         public IEnumerable<IDisplayble> GetParts()
         {
-            return new IDisplayble[] { Weapon };
+            return new IDisplayble[] { Weapon, dashController };
         }
 
         public override Hitbox GetBulletsHitbox()
