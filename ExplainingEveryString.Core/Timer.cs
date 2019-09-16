@@ -5,13 +5,13 @@ namespace ExplainingEveryString.Core
 {
     internal class Timer : IUpdatable
     {
-        private Single secondsTillEvent;
         private readonly Action atTimerElapsed;
         internal Boolean Happened { get; private set; } = false;
+        internal Single SecondsTillEvent { get; private set; }
 
         internal Timer(Single secondsTillEvent, Action atTimerElapsed)
         {
-            this.secondsTillEvent = secondsTillEvent;
+            this.SecondsTillEvent = secondsTillEvent;
             this.atTimerElapsed = atTimerElapsed;
         }
 
@@ -19,8 +19,8 @@ namespace ExplainingEveryString.Core
         {
             if (!Happened)
             {
-                secondsTillEvent -= elapsedSeconds;
-                if (secondsTillEvent < Math.Constants.Epsilon)
+                SecondsTillEvent -= elapsedSeconds;
+                if (SecondsTillEvent < Math.Constants.Epsilon)
                 {
                     atTimerElapsed();
                     Happened = true;

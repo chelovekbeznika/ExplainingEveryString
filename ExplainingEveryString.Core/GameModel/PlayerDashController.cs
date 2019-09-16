@@ -15,19 +15,22 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal event EventHandler DashActivated;
         internal Boolean IsActive { get; private set; } = false;
+        internal Single RechargeTime { get; }
+        internal Single TillRecharge => 
+            rechargeTimer != null && rechargeTimer.SecondsTillEvent > 0 ? rechargeTimer.SecondsTillEvent : 0;
         public Boolean IsVisible => IsActive;
         public SpriteState SpriteState { get; private set; }
         public Vector2 Position => player.Position;
 
         private EpicEvent dashActivatedEpicEvent;
         private Boolean recharged = true;
-        private Single rechargeTime;
-        private Single duration;
+        private readonly Single duration;
         private Player player;
+        private Timer rechargeTimer = null;
 
         internal PlayerDashController(DashSpecification specification, Player player, Level level)
         {
-            this.rechargeTime = specification.RechargeTime;
+            this.RechargeTime = specification.RechargeTime;
             this.duration = specification.Duration;
             this.SpriteState = new SpriteState(specification.Sprite);
             this.player = player;
@@ -43,7 +46,7 @@ namespace ExplainingEveryString.Core.GameModel
                 DashActivated?.Invoke(this, EventArgs.Empty);
                 dashActivatedEpicEvent.TryHandle();
                 TimersComponent.Instance.ScheduleEvent(duration, () => IsActive = false);
-                TimersComponent.Instance.ScheduleEvent(rechargeTime, () => recharged = true);
+                rechargeTimer = TimersComponent.Instance.ScheduleEvent(duration + RechargeTime, () => recharged = true);
             }
             SpriteState.Update(elapsedSeconds);
             SpriteState.Angle = AngleConverter.ToRadians(player.Input.GetMoveDirection());

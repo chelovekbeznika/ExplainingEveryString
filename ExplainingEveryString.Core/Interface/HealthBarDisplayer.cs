@@ -10,10 +10,13 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class HealthBarDisplayer
     {
-        private Texture2D healthBar;
-        private Texture2D emptyHealthBar;
+        private readonly Texture2D healthBar;
+        private readonly Texture2D emptyHealthBar;
         private readonly Int32 pixelsFromLeft = 32;
         private readonly Int32 pixelsFromBottom = 32;
+
+        internal Int32 MarginOfLeftEdge => pixelsFromLeft;
+        internal Int32 HeightOfTopEdge => pixelsFromBottom + healthBar.Height;
 
         internal HealthBarDisplayer(Texture2D healthBar, Texture2D emptyHealthBar)
         {
@@ -21,8 +24,10 @@ namespace ExplainingEveryString.Core.Interface
             this.emptyHealthBar = emptyHealthBar;
         }
 
-        internal void Draw(Single health, Single maxHealth, SpriteBatch spriteBatch, Color colorMask)
+        internal void Draw(PlayerInterfaceInfo interfaceInfo, SpriteBatch spriteBatch, Color colorMask)
         {
+            Single health = interfaceInfo.Health;
+            Single maxHealth = interfaceInfo.MaxHealth;
             var (healthBarPosition, emptyHealthBarPosition) = 
                 CalculatePlaceForHealthBar(spriteBatch.GraphicsDevice.Viewport, health, maxHealth);
             var (healthBarPart, emptyHealthBarPart) = 

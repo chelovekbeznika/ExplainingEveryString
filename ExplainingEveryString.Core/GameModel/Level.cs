@@ -100,25 +100,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal InterfaceInfo GetInterfaceInfo(Camera camera)
         {
-            return new InterfaceInfo
-            {
-                Health = levelState.ActiveActors.Player.HitPoints,
-                MaxHealth = levelState.ActiveActors.Player.MaxHitPoints,
-                GameTime = levelProgress.GameTime,
-                Enemies = levelState.ActiveActors.Enemies
-                            .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
-                            .Where(e => e.ShowInterfaceInfo).Select(e => GetInterfaceInfo(e, camera)).ToList()
-            };
-        }
-
-        private EnemyInterfaceInfo GetInterfaceInfo(IInterfaceAccessable interfaceAccessable, Camera camera)
-        {
-            return new EnemyInterfaceInfo
-            {
-                Health = interfaceAccessable.HitPoints,
-                MaxHealth = interfaceAccessable.MaxHitPoints,
-                PositionOnScreen = camera.PositionOnScreen(interfaceAccessable)
-            };
+            return new InterfaceInfoExtractor().GetInterfaceInfo(camera, levelState.ActiveActors, levelProgress);
         }
 
         private void PlanLevelEndDelay()

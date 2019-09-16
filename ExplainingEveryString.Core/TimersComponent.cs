@@ -24,9 +24,11 @@ namespace ExplainingEveryString.Core
             UpdateOrder = ComponentsOrder.Timers;
         }
 
-        public void ScheduleEvent(Single seconds, Action atTimerElapsed)
+        public Timer ScheduleEvent(Single seconds, Action atTimerElapsed)
         {
-            timers.Add(new Timer(seconds, atTimerElapsed));
+            Timer timer = new Timer(seconds, atTimerElapsed);
+            timers.Add(timer);
+            return timer;
         }
 
         public override void Update(GameTime gameTime)

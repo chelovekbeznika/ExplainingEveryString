@@ -34,13 +34,13 @@ namespace ExplainingEveryString.Core.GameModel
         }
         public String CollideTag => null;
         internal IPlayerInput Input { get; private set; }
+        internal PlayerDashController DashController { get; private set; }
 
         private Vector2 speed = new Vector2(0, 0);
         private Single maxSpeed;
         private Single maxAcceleration;
         private Single bulletHitboxWidth;
 
-        private PlayerDashController dashController;
         private DashAcceleration dashAcceleration;
 
         private Weapon Weapon { get; set; }
@@ -66,7 +66,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void ConstructDash(Level level, DashSpecification specification)
         {
-            this.dashController = new PlayerDashController(specification, this, level);
+            this.DashController = new PlayerDashController(specification, this, level);
             this.dashAcceleration = new DashAcceleration(specification);
         }
 
@@ -74,7 +74,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             base.Update(elapsedSeconds);
             Weapon.Update(elapsedSeconds);
-            dashController.Update(elapsedSeconds);
+            DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);
         }
 
@@ -116,7 +116,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         public IEnumerable<IDisplayble> GetParts()
         {
-            return new IDisplayble[] { Weapon, dashController };
+            return new IDisplayble[] { Weapon, DashController };
         }
 
         public override Hitbox GetBulletsHitbox()

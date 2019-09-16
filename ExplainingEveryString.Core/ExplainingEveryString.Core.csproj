@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
     <Compile Include="ComponentsOrder.cs" />
+    <Compile Include="Interface\DashStateDisplayer.cs" />
+    <Compile Include="Interface\InterfaceInfoExtractor.cs" />
     <Compile Include="GameModel\Checkpoint.cs" />
     <Compile Include="GameModel\CheckpointsManager.cs" />
     <Compile Include="GameModel\DashSpeedingUp.cs" />
