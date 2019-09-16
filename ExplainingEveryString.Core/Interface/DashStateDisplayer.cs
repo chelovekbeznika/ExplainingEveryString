@@ -26,6 +26,7 @@ namespace ExplainingEveryString.Core.Interface
             this.nonAvailable = nonAvailable;
             this.cooldown = cooldown;
             this.active = active;
+
         }
 
         internal void Draw(PlayerInterfaceInfo interfaceInfo, SpriteBatch spriteBatch, Color colorMask)
@@ -38,17 +39,23 @@ namespace ExplainingEveryString.Core.Interface
                     spriteBatch.Draw(active, barPosition, colorMask);
                     break;
                 case DashState.Nonavailable:
-                    spriteBatch.Draw(nonAvailable, barPosition, colorMask);
+                    DrawPartiallyCharged(interfaceInfo, spriteBatch, colorMask, barPosition, nonAvailable);
                     break;
                 case DashState.Available:
-                    Int32 width = available.Width;
-                    Single cooldownCoeff = interfaceInfo.TillDashRecharge / interfaceInfo.DashCooldown;
-                    Int32 cooldownPartPixels = (Int32)(width * cooldownCoeff);
-                    Int32 rechargedPartPixels = width - cooldownPartPixels;
-                    DrawCooldownPart(spriteBatch, colorMask, cooldownPartPixels, barPosition);
-                    DrawRechargedPart(spriteBatch, colorMask, rechargedPartPixels, cooldownPartPixels, barPosition);
+                    DrawPartiallyCharged(interfaceInfo, spriteBatch, colorMask, barPosition, available);
                     break;
             }
+        }
+
+        private void DrawPartiallyCharged(PlayerInterfaceInfo interfaceInfo, SpriteBatch spriteBatch, Color colorMask, 
+            Vector2 barPosition, Texture2D filledSprite)
+        {
+            Int32 width = available.Width;
+            Single cooldownCoeff = interfaceInfo.TillDashRecharge / interfaceInfo.DashCooldown;
+            Int32 cooldownPartPixels = (Int32)(width * cooldownCoeff);
+            Int32 rechargedPartPixels = width - cooldownPartPixels;
+            DrawCooldownPart(spriteBatch, colorMask, cooldownPartPixels, barPosition);
+            DrawRechargedPart(spriteBatch, colorMask, filledSprite, rechargedPartPixels, cooldownPartPixels, barPosition);
         }
 
         private void DrawCooldownPart(SpriteBatch spriteBatch, Color colorMask, 
@@ -68,8 +75,8 @@ namespace ExplainingEveryString.Core.Interface
             }
         }
 
-        private void DrawRechargedPart(SpriteBatch spriteBatch, Color colorMask, Int32 rechargedPartPixels,
-            Int32 cooldownPartPixels, Vector2 barPosition)
+        private void DrawRechargedPart(SpriteBatch spriteBatch, Color colorMask, Texture2D filledSprite, 
+            Int32 rechargedPartPixels, Int32 cooldownPartPixels, Vector2 barPosition)
         {
             Vector2 position = new Vector2 { X = barPosition.X + cooldownPartPixels, Y = barPosition.Y };
             Rectangle part = new Rectangle
@@ -79,7 +86,7 @@ namespace ExplainingEveryString.Core.Interface
                 Width = rechargedPartPixels,
                 Height = available.Height
             };
-            spriteBatch.Draw(available, position, part, colorMask);
+            spriteBatch.Draw(filledSprite, position, part, colorMask);
         }
     }
 }

@@ -541,6 +541,7 @@
     "MaxSpeed": 300.0,
     "MaxAcceleration": 400.0,
     "Dash": {
+      "AvailabityThreshold": 0.25,
       "MaxSpeedIncrease": 2.0,
       "SpeedIncrease": 3.0,
       "AccelerationIncrease": 2.5,

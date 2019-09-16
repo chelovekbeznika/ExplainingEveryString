@@ -32,7 +32,11 @@ namespace ExplainingEveryString.Core.Interface
                 MaxHealth = player.MaxHitPoints,
                 DashCooldown = player.DashController.RechargeTime,
                 TillDashRecharge = player.DashController.TillRecharge,
-                DashState = player.DashController.IsActive ? DashState.Active : DashState.Available
+                DashState = player.DashController.IsActive 
+                    ? DashState.Active 
+                    : player.DashController.IsAvailable
+                        ? DashState.Available 
+                        : DashState.Nonavailable
             };
         }
 

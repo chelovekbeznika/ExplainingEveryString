@@ -66,8 +66,9 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void ConstructDash(Level level, DashSpecification specification)
         {
-            this.DashController = new PlayerDashController(specification, this, level);
             this.dashAcceleration = new DashAcceleration(specification);
+            Boolean dashIsAvailable() => speed.Length() >= maxSpeed * dashAcceleration.AvailabilityThreshold;
+            this.DashController = new PlayerDashController(specification, dashIsAvailable, this, level);
         }
 
         public override void Update(Single elapsedSeconds)

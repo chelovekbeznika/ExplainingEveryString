@@ -15,6 +15,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal event EventHandler DashActivated;
         internal Boolean IsActive { get; private set; } = false;
+        internal Boolean IsAvailable => dashIsAvailable();
         internal Single RechargeTime { get; }
         internal Single TillRecharge => 
             rechargeTimer != null && rechargeTimer.SecondsTillEvent > 0 ? rechargeTimer.SecondsTillEvent : 0;
@@ -22,24 +23,27 @@ namespace ExplainingEveryString.Core.GameModel
         public SpriteState SpriteState { get; private set; }
         public Vector2 Position => player.Position;
 
+        private readonly Func<Boolean> dashIsAvailable;
         private EpicEvent dashActivatedEpicEvent;
         private Boolean recharged = true;
         private readonly Single duration;
         private Player player;
         private Timer rechargeTimer = null;
 
-        internal PlayerDashController(DashSpecification specification, Player player, Level level)
+        internal PlayerDashController(DashSpecification specification, Func<Boolean> dashIsAvailable, 
+            Player player, Level level)
         {
             this.RechargeTime = specification.RechargeTime;
             this.duration = specification.Duration;
             this.SpriteState = new SpriteState(specification.Sprite);
+            this.dashIsAvailable = dashIsAvailable;
             this.player = player;
             this.dashActivatedEpicEvent = new EpicEvent(level, specification.SpecEffect, false, this, true);
         }
 
         internal void Update(Single elapsedSeconds)
         {
-            if (recharged && player.Input.IsTryingToDash())
+            if (recharged && IsAvailable && player.Input.IsTryingToDash())
             {
                 IsActive = true;
                 recharged = false;
