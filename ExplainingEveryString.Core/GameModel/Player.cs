@@ -1,12 +1,12 @@
-﻿using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Input;
+using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
-using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Core.Displaying;
 using System.Collections.Generic;
-using ExplainingEveryString.Data.Specifications;
-using ExplainingEveryString.Core.Math;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -69,6 +69,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.dashAcceleration = new DashAcceleration(specification);
             Boolean dashIsAvailable() => speed.Length() >= maxSpeed * dashAcceleration.AvailabilityThreshold;
             this.DashController = new PlayerDashController(specification, dashIsAvailable, this, level);
+            DashController.DashActivated += (sender, e) => speed *= dashAcceleration.SpeedIncrease;
         }
 
         public override void Update(Single elapsedSeconds)
@@ -96,9 +97,10 @@ namespace ExplainingEveryString.Core.GameModel
         {
             Vector2 acceleration = GetAcceleration();
             speed += acceleration;
-            if (speed.Length() > maxSpeed)
+            Single speedLimit = DashController.IsActive ? maxSpeed * dashAcceleration.MaxSpeedIncrease : maxSpeed;
+            if (speed.Length() > speedLimit)
             {
-                Single overcharge = speed.Length() / maxSpeed;
+                Single overcharge = speed.Length() / speedLimit;
                 speed /= overcharge;
             }
             if (acceleration.Length() == 0)
@@ -112,7 +114,11 @@ namespace ExplainingEveryString.Core.GameModel
         private Vector2 GetAcceleration()
         {
             Vector2 direction = Input.GetMoveDirection();
-            return direction * maxAcceleration;
+            Vector2 acceleration = direction * maxAcceleration;
+            if (DashController.IsActive)
+                return acceleration * dashAcceleration.AccelerationIncrease;
+            else
+                return acceleration;
         }
 
         public IEnumerable<IDisplayble> GetParts()
