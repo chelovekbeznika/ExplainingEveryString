@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Data.Specifications
         public Single AccelerationIncrease { get; set; }
         public Single RechargeTime { get; set; }
         public Single Duration { get; set; }
+        public String[] CollideTagsDefense { get; set; }
         public SpecEffectSpecification SpecEffect { get; set; }
         public SpriteSpecification Sprite { get; set; }
     }

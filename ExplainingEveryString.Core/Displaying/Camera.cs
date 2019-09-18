@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
@@ -47,7 +48,7 @@ namespace ExplainingEveryString.Core.Displaying
             SpriteData spriteData = AssetsStorage.GetSprite(spriteState.Name);
             Vector2 position = toDraw.Position;
             Vector2 drawPosition = ConvertToScreenPosition(position);
-            Rectangle? drawPart = GetDrawPart(spriteData, spriteState);
+            Rectangle? drawPart = AnimationHelp.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);
             Single angle = -spriteState.Angle;
             Vector2 spriteCenter = new Vector2
             {
@@ -96,24 +97,6 @@ namespace ExplainingEveryString.Core.Displaying
             Vector2 centerOfSpriteOnScreen = position - cameraOffset;
             centerOfSpriteOnScreen.Y = screenHeight - centerOfSpriteOnScreen.Y;
             return centerOfSpriteOnScreen;
-        }
-
-        private Rectangle? GetDrawPart(SpriteData spriteData, SpriteState spriteState)
-        {
-            if (spriteData.AnimationFrames == 1)
-                return null;
-
-            Int32 frameWidth = spriteData.Sprite.Width / spriteData.AnimationFrames;
-            Single frameTime = spriteState.AnimationCycle / spriteData.AnimationFrames;
-            Int32 globalFrameNumber = (Int32)(spriteState.ElapsedTime / frameTime);
-            Int32 frameNumber = globalFrameNumber % spriteData.AnimationFrames;
-            return new Rectangle {
-                X = frameNumber * frameWidth,
-                Y = 0,
-                Width = frameWidth,
-                Height = spriteData.Sprite.Height
-            };
-        
         }
 
         internal void Update(Single elapsedSeconds)

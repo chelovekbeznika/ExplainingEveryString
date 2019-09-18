@@ -171,6 +171,11 @@
     {
       "Name": "Sprites/Doors/Level1X/BridgeLockOpening",
       "AnimationFrames": 3
-    }
+    },
+	{
+	  "Name": "Sprites/Interface/ActiveDash",
+	  "AnimationFrames": 11,
+	  "DefaultAnimationCycle": 0.4
+	}
   ]
 }

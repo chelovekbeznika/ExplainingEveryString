@@ -11,5 +11,6 @@ namespace ExplainingEveryString.Core
     {
         internal Texture2D Sprite { get; set; }
         internal Int32 AnimationFrames { get; set; }
+        internal Single DefaultAnimationCycle { get; set; }
     }
 }

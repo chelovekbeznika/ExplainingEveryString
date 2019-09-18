@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Data;
+using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,14 +15,16 @@ namespace ExplainingEveryString.Core
     internal class InterfaceComponent : DrawableGameComponent
     {
         private GameplayComponent gameplayComponent;
+        private AnimationController animationController;
         private InterfaceInfo interfaceInfo;
         private EesGame eesGame;
         private SpriteBatch spriteBatch;
+        private Color alphaMask;
+
         private HealthBarDisplayer healthBarDisplayer;
         private DashStateDisplayer dashStateDisplayer;
         private GameTimeDisplayer gameTimeDisplayer;
         private EnemyInfoDisplayer enemiesInfoDisplayer;
-        private Color alphaMask;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
         {
@@ -45,6 +48,12 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
+            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content);
+            String[] animatedSprites = new String[] { GetTextureFullName("ActiveDash") };
+            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
+            Dictionary<String, SpriteData> spritesStorage = spriteDataBuilder.Build(animatedSprites, metadataLoader);
+            this.animationController = new AnimationController(spritesStorage, Game.GraphicsDevice.RenderTargetCount);
+
             this.spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
             Texture2D healthBarSprite = GetTexture("HealthBar");
             Texture2D emptyHealthBarSprite = GetTexture("EmptyHealthBar");
@@ -53,9 +62,8 @@ namespace ExplainingEveryString.Core
             Texture2D availableDash = GetTexture("FullDash");
             Texture2D cooldownDash = GetTexture("EmptyDash");
             Texture2D nonAvailableDash = GetTexture("FullDashNotReady");
-            Texture2D activeDash = GetTexture("ActiveDash");
-            dashStateDisplayer = 
-                new DashStateDisplayer(healthBarDisplayer, availableDash, nonAvailableDash, cooldownDash, activeDash);
+            dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, animationController, 
+                availableDash, nonAvailableDash, cooldownDash, GetTextureFullName("ActiveDash"));
 
             SpriteFont timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
@@ -68,12 +76,18 @@ namespace ExplainingEveryString.Core
 
         private Texture2D GetTexture(String name)
         {
-            return eesGame.Content.Load<Texture2D>($@"Sprites/Interface/{name}");
+            return eesGame.Content.Load<Texture2D>(GetTextureFullName(name));
+        }
+
+        private String GetTextureFullName(String name)
+        {
+            return $@"Sprites/Interface/{name}";
         }
 
         public override void Update(GameTime gameTime)
         {
             interfaceInfo = gameplayComponent.GetInterfaceInfo();
+            this.animationController.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 

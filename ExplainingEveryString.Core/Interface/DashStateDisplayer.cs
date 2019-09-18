@@ -13,30 +13,31 @@ namespace ExplainingEveryString.Core.Interface
         private readonly Texture2D available;
         private readonly Texture2D nonAvailable;
         private readonly Texture2D cooldown;
-        private readonly Texture2D active;
+        private readonly String activeSpriteName;
+        private readonly AnimationController animationController;
         private readonly HealthBarDisplayer healthBarDisplayer;
         private Int32 PixelsFromLeft => healthBarDisplayer.MarginOfLeftEdge - 16;
         private Int32 PixelsFromBottom => healthBarDisplayer.HeightOfTopEdge;
 
-        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, Texture2D available, Texture2D nonAvailable, 
-            Texture2D cooldown, Texture2D active)
+        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, AnimationController animationController, 
+            Texture2D available, Texture2D nonAvailable, Texture2D cooldown, String activeSpriteName)
         {
             this.healthBarDisplayer = healthBarDisplayer;
+            this.animationController = animationController;
             this.available = available;
             this.nonAvailable = nonAvailable;
             this.cooldown = cooldown;
-            this.active = active;
-
+            this.activeSpriteName = activeSpriteName;
         }
 
         internal void Draw(PlayerInterfaceInfo interfaceInfo, SpriteBatch spriteBatch, Color colorMask)
         {
             Viewport viewport = spriteBatch.GraphicsDevice.Viewport;
-            Vector2 barPosition = new Vector2 { X = PixelsFromLeft, Y = viewport.Height - PixelsFromBottom - active.Height };
+            Vector2 barPosition = new Vector2 { X = PixelsFromLeft, Y = viewport.Height - PixelsFromBottom - available.Height };
             switch (interfaceInfo.DashState)
             {
                 case DashState.Active:
-                    spriteBatch.Draw(active, barPosition, colorMask);
+                    animationController.Draw(spriteBatch, colorMask, activeSpriteName, barPosition);
                     break;
                 case DashState.Nonavailable:
                     DrawPartiallyCharged(interfaceInfo, spriteBatch, colorMask, barPosition, nonAvailable);

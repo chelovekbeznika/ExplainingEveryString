@@ -16,27 +16,12 @@ namespace ExplainingEveryString.Core
         internal void FillAssetsStorages(IBlueprintsLoader blueprintsLoader, 
             IAssetsMetadataLoader metadataLoader, ContentManager contentManager)
         {
-            foreach (String spriteName in AssetsExtractor.GetNeccessarySprites(blueprintsLoader))
-            {
-                spritesStorage[spriteName] = new SpriteData
-                {
-                    Sprite = contentManager.Load<Texture2D>(spriteName),
-                    AnimationFrames = 1
-                };
-            }
+            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(contentManager);
+            IEnumerable<String> sprites = AssetsExtractor.GetNeccessarySprites(blueprintsLoader);
+            spritesStorage = spriteDataBuilder.Build(sprites, metadataLoader);
             foreach (String soundName in AssetsExtractor.GetNecessarySounds(blueprintsLoader))
             {
                 soundsStorage[soundName] = contentManager.Load<SoundEffect>(soundName);
-            }
-            AddMetadata(metadataLoader);
-        }
-
-        private void AddMetadata(IAssetsMetadataLoader metadataLoader)
-        {
-            AssetsMetadata assetsMetadata = metadataLoader.Load();
-            foreach (SpriteMetadata spriteMetadata in assetsMetadata.SpritesMetadata)
-            {
-                spritesStorage[spriteMetadata.Name].AnimationFrames = spriteMetadata.AnimationFrames;
             }
         }
 
