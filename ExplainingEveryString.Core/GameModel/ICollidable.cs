@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Core.GameModel
         String CollideTag { get; }
     }
 
-    internal interface ICrashable : ICollidable
+    internal interface ICrashable : IMovableCollidable
     {
         Single CollisionDamage { get; }
         void Crash();

@@ -19,6 +19,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal Single RechargeTime { get; }
         internal Single TillRecharge => 
             rechargeTimer != null && rechargeTimer.SecondsTillEvent > 0 ? rechargeTimer.SecondsTillEvent : 0;
+        internal String[] CollideTagsDefense { get; private set; }
         public Boolean IsVisible => IsActive;
         public SpriteState SpriteState { get; private set; }
         public Vector2 Position => player.Position;
@@ -35,6 +36,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             this.RechargeTime = specification.RechargeTime;
             this.duration = specification.Duration;
+            this.CollideTagsDefense = specification.CollideTagsDefense;
             this.SpriteState = new SpriteState(specification.Sprite);
             this.dashIsAvailable = dashIsAvailable;
             this.player = player;

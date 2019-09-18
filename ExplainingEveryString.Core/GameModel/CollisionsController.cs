@@ -30,8 +30,10 @@ namespace ExplainingEveryString.Core.GameModel
         private void CheckEnemiesForCrashingIntoPlayer()
         {
             Player player = activeObjects.Player;
+            PlayerDashController dash = player.DashController;
             foreach (ICrashable crashable in activeObjects.Enemies.OfType<ICrashable>()
-                .Where(c => c.CollidableMode != CollidableMode.Ghost))
+                .Where(c => c.CollidableMode != CollidableMode.Ghost)
+                .Where(c => !(dash.IsActive && dash.CollideTagsDefense.Contains(c.CollideTag))))
             {
                 if (collisionsChecker.Collides(crashable.GetCurrentHitbox(), player.GetCurrentHitbox()))
                 {

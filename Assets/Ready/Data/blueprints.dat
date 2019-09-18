@@ -547,6 +547,7 @@
       "AccelerationIncrease": 2.5,
       "RechargeTime": 5.0,
       "Duration": 1.0,
+	  "CollideTagsDefense": [ "Hunter" ],
       "SpecEffect": {
         "Sound": {
           "Name": "Sounds/Player/Dash",
