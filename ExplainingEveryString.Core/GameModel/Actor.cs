@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         public virtual SpriteState SpriteState { get; private set; }
         public Boolean IsVisible => IsAlive();
-        public virtual CollidableMode Mode => CollidableMode.Solid;
+        public virtual CollidableMode CollidableMode => CollidableMode.Solid;
 
         internal void Initialize(TBlueprint blueprint, Level level, ActorStartInfo startInfo, ActorsFactory factory)
         {

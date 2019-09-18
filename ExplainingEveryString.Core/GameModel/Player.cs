@@ -33,6 +33,7 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
         public String CollideTag => null;
+        public override CollidableMode CollidableMode => DashController.IsActive ? CollidableMode.Shadow : base.CollidableMode;
         internal IPlayerInput Input { get; private set; }
         internal PlayerDashController DashController { get; private set; }
 

@@ -14,12 +14,12 @@ namespace ExplainingEveryString.Core.GameModel
         public Wall(Hitbox hitbox, CollidableMode mode)
         {
             this.hitbox = hitbox;
-            this.Mode = mode;
+            this.CollidableMode = mode;
         }
 
         public Vector2 Position { get => GetHitboxCenter(); set { } }
 
-        public CollidableMode Mode { get; }
+        public CollidableMode CollidableMode { get; }
 
         public Hitbox GetCurrentHitbox()
         {

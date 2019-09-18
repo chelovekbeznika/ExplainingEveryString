@@ -31,7 +31,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             Player player = activeObjects.Player;
             foreach (ICrashable crashable in activeObjects.Enemies.OfType<ICrashable>()
-                .Where(c => c.Mode != CollidableMode.Ghost))
+                .Where(c => c.CollidableMode != CollidableMode.Ghost))
             {
                 if (collisionsChecker.Collides(crashable.GetCurrentHitbox(), player.GetCurrentHitbox()))
                 {
@@ -46,7 +46,7 @@ namespace ExplainingEveryString.Core.GameModel
             AdjustObjectToWalls(activeObjects.Player, false, null, null);
 
             IEnumerable<IMovableCollidable> enemies = activeObjects.Enemies.OfType<IMovableCollidable>()
-                .Where(c => c.Mode != CollidableMode.Ghost).ToArray();
+                .Where(c => c.CollidableMode != CollidableMode.Ghost).ToArray();
             IEnumerable<IMovableCollidable> movingEnemies = enemies.Where(CollidableIsMoving).ToArray();
             List<IMovableCollidable> stoppedEnemies = new List<IMovableCollidable>();
             foreach (IMovableCollidable movingEnemy in movingEnemies)
@@ -93,8 +93,8 @@ namespace ExplainingEveryString.Core.GameModel
             Hitbox oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
             Vector2 savedMovingObjectPosition = movingObject.Position;
             Func<ICollidable, Boolean> bumpIntoThisWall = ridesThroughPit
-                ? new Func<ICollidable, Boolean>(c => c.Mode == CollidableMode.Solid)
-                : new Func<ICollidable, Boolean>(c => c.Mode == CollidableMode.Solid || c.Mode == CollidableMode.Pit);
+                ? new Func<ICollidable, Boolean>(c => c.CollidableMode == CollidableMode.Solid)
+                : new Func<ICollidable, Boolean>(c => c.CollidableMode == CollidableMode.Solid || c.CollidableMode == CollidableMode.Pit);
             IEnumerable<ICollidable> walls = activeObjects.GetWalls().Where(bumpIntoThisWall);
 
             WallsCheck(movingObject, walls, oldHitbox, tryVerticalMovePriorityForThis, out ICollidable touchingToCorner);
@@ -144,7 +144,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void CheckBulletForCollisions(Bullet bullet, IEnumerable<ICollidable> collidables)
         {
-            foreach (ICollidable collidable in collidables.Where(c => c.Mode == CollidableMode.Solid))
+            foreach (ICollidable collidable in collidables.Where(c => c.CollidableMode == CollidableMode.Solid))
             {
                 Hitbox hitbox = collidable is ITouchableByBullets
                     ? (collidable as ITouchableByBullets).GetBulletsHitbox()

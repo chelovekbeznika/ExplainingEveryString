@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         Hitbox GetCurrentHitbox();
         Vector2 Position { get; set; }
-        CollidableMode Mode { get; }
+        CollidableMode CollidableMode { get; }
     }
 
     internal interface IMovableCollidable : ICollidable
