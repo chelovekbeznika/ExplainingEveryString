@@ -59,7 +59,7 @@
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
     <Compile Include="ComponentsOrder.cs" />
-    <Compile Include="Interface\AnimationController.cs" />
+    <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\DashStateDisplayer.cs" />
     <Compile Include="Interface\InterfaceInfoExtractor.cs" />
     <Compile Include="GameModel\Checkpoint.cs" />
@@ -67,6 +67,8 @@
     <Compile Include="GameModel\DashSpeedingUp.cs" />
     <Compile Include="GameModel\EnemiesDeathProcessor.cs" />
     <Compile Include="GameModel\PlayerDashController.cs" />
+    <Compile Include="Interface\ISpritePartDisplayer.cs" />
+    <Compile Include="Interface\TextureLoadingHelper.cs" />
     <Compile Include="Math\AnimationHelp.cs" />
     <Compile Include="Menu\InnerMenuInputProcessor.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />

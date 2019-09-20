@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.Math
             if (spriteData.AnimationFrames == 1)
                 return null;
 
-            Int32 frameWidth = spriteData.Sprite.Width / spriteData.AnimationFrames;
+            Int32 frameWidth = spriteData.Width;
             Single frameTime = animationCycle / spriteData.AnimationFrames;
             Int32 globalFrameNumber = (Int32)(elapsedTime / frameTime);
             Int32 frameNumber = globalFrameNumber % spriteData.AnimationFrames;
@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.Math
                 X = frameNumber * frameWidth,
                 Y = 0,
                 Width = frameWidth,
-                Height = spriteData.Sprite.Height
+                Height = spriteData.Height
             };
         }
     }

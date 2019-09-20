@@ -52,8 +52,8 @@ namespace ExplainingEveryString.Core.Displaying
             Single angle = -spriteState.Angle;
             Vector2 spriteCenter = new Vector2
             {
-                X = spriteData.Sprite.Width / spriteData.AnimationFrames / 2,
-                Y = spriteData.Sprite.Height / 2
+                X = spriteData.Width / 2,
+                Y = spriteData.Height / 2
             };
 
             spriteBatch.Draw(spriteData.Sprite, drawPosition, drawPart, Color.White, angle, 
@@ -71,8 +71,8 @@ namespace ExplainingEveryString.Core.Displaying
             SpriteData sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
             Point visibleSize = new Point
             {
-                X = sprite.Sprite.Width / sprite.AnimationFrames,
-                Y = sprite.Sprite.Height
+                X = sprite.Width,
+                Y = sprite.Height
             };
             Vector2 centerOnScreen = ConvertToScreenPosition(displayble.Position);
             return new Rectangle

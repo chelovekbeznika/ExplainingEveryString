@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core
     internal class InterfaceComponent : DrawableGameComponent
     {
         private GameplayComponent gameplayComponent;
-        private AnimationController animationController;
+        private InterfaceSpriteDisplayer interfaceSpritesDisplayer;
         private InterfaceInfo interfaceInfo;
         private EesGame eesGame;
         private SpriteBatch spriteBatch;
@@ -48,46 +48,37 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content);
-            String[] animatedSprites = new String[] { GetTextureFullName("ActiveDash") };
-            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
-            Dictionary<String, SpriteData> spritesStorage = spriteDataBuilder.Build(animatedSprites, metadataLoader);
-            this.animationController = new AnimationController(spritesStorage, Game.GraphicsDevice.RenderTargetCount);
+            Dictionary<String, SpriteData> sprites = GetSprites();
+            spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
+            interfaceSpritesDisplayer = new InterfaceSpriteDisplayer(spriteBatch, alphaMask);
 
-            this.spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
-            Texture2D healthBarSprite = GetTexture("HealthBar");
-            Texture2D emptyHealthBarSprite = GetTexture("EmptyHealthBar");
-            healthBarDisplayer = new HealthBarDisplayer(healthBarSprite, emptyHealthBarSprite);
-
-            Texture2D availableDash = GetTexture("FullDash");
-            Texture2D cooldownDash = GetTexture("EmptyDash");
-            Texture2D nonAvailableDash = GetTexture("FullDashNotReady");
-            dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, animationController, 
-                availableDash, nonAvailableDash, cooldownDash, GetTextureFullName("ActiveDash"));
-
+            healthBarDisplayer = new HealthBarDisplayer(interfaceSpritesDisplayer, sprites);
+            dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer, sprites);
+            enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer, sprites);
             SpriteFont timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
-
-            Texture2D enemyHealthBar = GetTexture("EnemyHealthBar");
-            enemiesInfoDisplayer = new EnemyInfoDisplayer(enemyHealthBar);
 
             base.LoadContent();
         }
 
-        private Texture2D GetTexture(String name)
+        private Dictionary<String, SpriteData> GetSprites()
         {
-            return eesGame.Content.Load<Texture2D>(GetTextureFullName(name));
-        }
-
-        private String GetTextureFullName(String name)
-        {
-            return $@"Sprites/Interface/{name}";
+            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content);
+            String[] animatedSprites = new String[] 
+            {
+                HealthBarDisplayer.HealthBarTexture, HealthBarDisplayer.EmptyHealthBarTexture,
+                EnemyInfoDisplayer.HealthBarTexture,
+                DashStateDisplayer.ActiveTexture, DashStateDisplayer.AvailableTexture,
+                DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture
+            }.Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();
+            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
+            return spriteDataBuilder.Build(animatedSprites, metadataLoader);
         }
 
         public override void Update(GameTime gameTime)
         {
             interfaceInfo = gameplayComponent.GetInterfaceInfo();
-            this.animationController.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
+            this.interfaceSpritesDisplayer.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
@@ -96,9 +87,9 @@ namespace ExplainingEveryString.Core
             if (interfaceInfo != null)
             {
                 spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp);
-                enemiesInfoDisplayer.Draw(interfaceInfo.Enemies, spriteBatch, alphaMask);
-                healthBarDisplayer.Draw(interfaceInfo.Player, spriteBatch, alphaMask);
-                dashStateDisplayer.Draw(interfaceInfo.Player, spriteBatch, alphaMask);
+                enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);
+                healthBarDisplayer.Draw(interfaceInfo.Player);
+                dashStateDisplayer.Draw(interfaceInfo.Player);
                 gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
                 spriteBatch.End();
             }
