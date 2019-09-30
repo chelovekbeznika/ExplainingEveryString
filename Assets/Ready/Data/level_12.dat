@@ -977,6 +977,15 @@
       ]
     }
   ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+	"ParticleHeight": 16,
+	"Sprites": [
+	  "Sprites/FogOfWar/Test/0",
+	  "Sprites/FogOfWar/Test/1",
+	  "Sprites/FogOfWar/Test/2"
+	]
+  },
   "ObstaclesTilePositions": {
   }
 }

@@ -5,6 +5,8 @@ using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Specifications;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -27,6 +29,7 @@ namespace ExplainingEveryString.Core.GameModel
         public virtual Single HitPoints { get; set; }
 
         public virtual SpriteState SpriteState { get; private set; }
+        public virtual IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
         public Boolean IsVisible => IsAlive();
         public virtual CollidableMode CollidableMode => CollidableMode.Solid;
 

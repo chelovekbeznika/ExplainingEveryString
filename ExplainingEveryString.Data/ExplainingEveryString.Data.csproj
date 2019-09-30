@@ -63,6 +63,7 @@
     <Compile Include="Configuration\ScreenConfiguration.cs" />
     <Compile Include="Level\CheckpointSpecification.cs" />
     <Compile Include="Level\DoorStartInfo.cs" />
+    <Compile Include="Level\FogOfWarSpecification.cs" />
     <Compile Include="Level\GameProgress.cs" />
     <Compile Include="Level\GameProgressAccess.cs" />
     <Compile Include="Level\LevelProgress.cs" />

@@ -6,6 +6,7 @@ using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Specifications;
 using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
@@ -35,6 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Func<Vector2> targetLocator;
 
         public SpriteState SpriteState { get; private set; }
+        public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
 
         public Vector2 Position => findOutWhereIAm();
         public Boolean IsVisible => SpriteState != null;

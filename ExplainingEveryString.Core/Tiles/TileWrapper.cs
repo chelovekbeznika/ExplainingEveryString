@@ -10,10 +10,16 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.Tiles
 {
-    internal class TileWrapper : ITilePositionConverter
+    internal class TileWrapper : ITileCoordinatesMaster
     {
         internal TiledMap TiledMap { get; }
-        internal Int32 MapHeight => TiledMap.Height * TiledMap.TileHeight;
+        public Rectangle Bounds => new Rectangle
+        {
+            X = 0,
+            Y = 0,
+            Width = TiledMap.Width * TiledMap.TileWidth,
+            Height = TiledMap.Height * TiledMap.TileHeight
+        };
 
         internal TileWrapper(TiledMap map)
         {
@@ -88,7 +94,7 @@ namespace ExplainingEveryString.Core.Tiles
             return new Vector2
             {
                 X = x * TiledMap.TileWidth,
-                Y = MapHeight - y * TiledMap.TileHeight
+                Y = Bounds.Height - y * TiledMap.TileHeight
             };
         }
     }

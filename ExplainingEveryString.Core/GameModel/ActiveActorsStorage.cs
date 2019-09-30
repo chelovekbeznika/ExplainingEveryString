@@ -45,15 +45,15 @@ namespace ExplainingEveryString.Core.GameModel
                 .Concat(PlayerBullets);
         }
 
-        internal IEnumerable<IUpdatable> GetObjectsToUpdate()
+        internal IEnumerable<IUpdateable> GetObjectsToUpdate()
         {
             return PlayerBullets
                 .Concat(EnemyBullets)
-                .Concat(Player.IsAlive() ? new List<IUpdatable> { Player } : Enumerable.Empty<IUpdatable>())
-                .Concat(activeEnemySpawners.OfType<IUpdatable>())
-                .Concat(Enemies.OfType<IUpdatable>())
-                .Concat(obstacles.OfType<IUpdatable>())
-                .Concat(doors.OfType<IUpdatable>());
+                .Concat(Player.IsAlive() ? new List<IUpdateable> { Player } : Enumerable.Empty<IUpdateable>())
+                .Concat(activeEnemySpawners.OfType<IUpdateable>())
+                .Concat(Enemies.OfType<IUpdateable>())
+                .Concat(obstacles.OfType<IUpdateable>())
+                .Concat(doors.OfType<IUpdateable>());
         }
 
         internal IEnumerable<ICollidable> GetWalls()

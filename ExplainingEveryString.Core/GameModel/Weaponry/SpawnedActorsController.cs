@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
-    internal class SpawnedActorsController : IUpdatable
+    internal class SpawnedActorsController : IUpdateable
     {
         private String enemyType;
         private readonly Int32 maxSpawned;

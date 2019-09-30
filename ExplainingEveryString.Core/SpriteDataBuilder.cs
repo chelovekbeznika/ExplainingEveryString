@@ -12,13 +12,15 @@ namespace ExplainingEveryString.Core
     internal class SpriteDataBuilder
     {
         private ContentManager contentManager;
+        private IAssetsMetadataLoader metadataLoader;
 
-        internal SpriteDataBuilder(ContentManager contentManager)
+        internal SpriteDataBuilder(ContentManager contentManager, IAssetsMetadataLoader metadataLoader)
         {
             this.contentManager = contentManager;
+            this.metadataLoader = metadataLoader;
         }
 
-        internal Dictionary<String, SpriteData> Build(IEnumerable<String> sprites, IAssetsMetadataLoader metadataLoader)
+        internal Dictionary<String, SpriteData> Build(IEnumerable<String> sprites)
         {
             Dictionary<String, SpriteData> spritesData = new Dictionary<string, SpriteData>();
             foreach (String spriteName in sprites)

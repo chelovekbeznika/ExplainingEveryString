@@ -63,16 +63,16 @@ namespace ExplainingEveryString.Core
 
         private Dictionary<String, SpriteData> GetSprites()
         {
-            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content);
+            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
+            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
             String[] animatedSprites = new String[] 
             {
                 HealthBarDisplayer.HealthBarTexture, HealthBarDisplayer.EmptyHealthBarTexture,
                 EnemyInfoDisplayer.HealthBarTexture,
                 DashStateDisplayer.ActiveTexture, DashStateDisplayer.AvailableTexture,
                 DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture
-            }.Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();
-            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
-            return spriteDataBuilder.Build(animatedSprites, metadataLoader);
+            }.Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();           
+            return spriteDataBuilder.Build(animatedSprites);
         }
 
         public override void Update(GameTime gameTime)

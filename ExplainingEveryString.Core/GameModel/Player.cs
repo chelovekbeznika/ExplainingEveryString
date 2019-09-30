@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal sealed class Player : Actor<PlayerBlueprint>, IMultiPartDisplayble, IUpdatable, IMovableCollidable,
+    internal sealed class Player : Actor<PlayerBlueprint>, IDisplayble, IUpdateable, IMovableCollidable,
         ITouchableByBullets, IInterfaceAccessable
     {
         private EpicEvent damageTaken;
@@ -122,7 +122,7 @@ namespace ExplainingEveryString.Core.GameModel
                 return acceleration;
         }
 
-        public IEnumerable<IDisplayble> GetParts()
+        public override IEnumerable<IDisplayble> GetParts()
         {
             return new IDisplayble[] { Weapon, DashController };
         }

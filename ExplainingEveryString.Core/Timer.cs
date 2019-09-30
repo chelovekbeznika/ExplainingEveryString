@@ -3,7 +3,7 @@ using System;
 
 namespace ExplainingEveryString.Core
 {
-    internal class Timer : IUpdatable
+    internal class Timer : IUpdateable
     {
         private readonly Action atTimerElapsed;
         internal Boolean Happened { get; private set; } = false;

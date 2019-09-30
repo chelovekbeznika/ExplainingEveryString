@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.Tests
     [TestFixture]
     public class CheckpointsManagerTests
     {
-        private readonly ITilePositionConverter tilePositionConverter = new TilePositionConverterMock();
+        private readonly ITileCoordinatesMaster tilePositionConverter = new TilePositionConverterMock();
         private readonly LevelData levelData = InitLevelData();
         private const String PhonyCheckpoint = "PhonyCheckpoint";
 
@@ -109,8 +109,10 @@ namespace ExplainingEveryString.Core.Tests
         }
     }
 
-    internal class TilePositionConverterMock : ITilePositionConverter
+    internal class TilePositionConverterMock : ITileCoordinatesMaster
     {
+        public Rectangle Bounds => Rectangle.Empty;
+
         public Vector2 GetPosition(PositionOnTileMap tilePosition)
         {
             return new Vector2 { X = tilePosition.X, Y = tilePosition.Y };

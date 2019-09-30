@@ -12,13 +12,13 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal const String StartCheckpointName = "Default";
 
-        private ITilePositionConverter tilePositionConverter;
+        private ITileCoordinatesMaster tilePositionConverter;
         private LevelData levelData;
         private Data.Level.ActorStartInfo playerStartInfo;
         private Dictionary<String, Checkpoint> checkpointsByName;
         private Dictionary<Int32, Checkpoint> checkpointsByWave;
 
-        internal CheckpointsManager(ITilePositionConverter tilePositionConverter, LevelData levelData)
+        internal CheckpointsManager(ITileCoordinatesMaster tilePositionConverter, LevelData levelData)
         {
             this.tilePositionConverter = tilePositionConverter;
             this.levelData = levelData;

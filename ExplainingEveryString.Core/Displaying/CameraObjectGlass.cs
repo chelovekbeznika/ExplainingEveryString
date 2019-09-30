@@ -6,30 +6,30 @@ using System;
 
 namespace ExplainingEveryString.Core.Displaying
 {
-    internal class CameraObjectGlass
+    internal class CameraObjectGlass : ILevelCoordinatesMaster
     {
         private readonly Vector2 playerFrame;
+        private readonly Single cameraMoveSpeed;
+        private readonly Single screenHeight;
+        private readonly Viewport viewport;
+
         private PlayerInfoForCameraExtractor playerInfo;
         private Vector2 screenHalf;
-        private Single screenHeight;
         private Vector2 cameraCenter;
-        private Vector2 playerPositionOnScreen { get; }
-        private Single cameraMoveSpeed;
       
-        internal Vector2 CameraOffset => cameraCenter - screenHalf;
-        internal Vector2 PlayerPositionOnScreen
+        public Vector2 CameraOffset => cameraCenter - screenHalf;
+        public Rectangle ScreenCovers => new Rectangle
         {
-            get
-            {
-                Vector2 result = playerInfo.Position - cameraCenter + screenHalf;
-                result.Y = screenHeight - result.Y;
-                return result;
-            }
-        }
+            X = (Int32)CameraOffset.X,
+            Y = (Int32)CameraOffset.Y,
+            Width = viewport.Width,
+            Height = viewport.Height
+        };
+        public Vector2 PlayerPosition => playerInfo.Position;
 
-        internal CameraObjectGlass(Level level, GraphicsDevice graphicsDevice, CameraConfiguration config)
+        internal CameraObjectGlass(Level level, Viewport viewport, CameraConfiguration config)
         {
-            Viewport viewport = graphicsDevice.Viewport;
+            this.viewport = viewport;
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
             this.screenHeight = viewport.Height;
             this.playerInfo = new PlayerInfoForCameraExtractor(level);
@@ -42,7 +42,7 @@ namespace ExplainingEveryString.Core.Displaying
             this.cameraMoveSpeed = CalculateCameraMoveSpeed(config.CameraMoveTimeFromAngleToAngle);
         }
 
-        internal void Update(Single elapsedSeconds)
+        public void Update(Single elapsedSeconds)
         {
             Vector2 desiredCenter = CalculateDesiredCenter();
             Single maxFrameCameraMove = cameraMoveSpeed * elapsedSeconds;

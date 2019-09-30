@@ -59,6 +59,19 @@
   <ItemGroup>
     <Compile Include="AssetsStorage.cs" />
     <Compile Include="ComponentsOrder.cs" />
+    <Compile Include="Displaying\FogOfWar\FogOfWarDisplayer.cs" />
+    <Compile Include="Displaying\FogOfWar\FogOfWarRuler.cs" />
+    <Compile Include="Displaying\FogOfWar\IFogOfWarDisplayer.cs" />
+    <Compile Include="Displaying\FogOfWar\LevelFogOfWarExtractor.cs" />
+    <Compile Include="Displaying\FogOfWar\ScreenFogOfWarDetector.cs" />
+    <Compile Include="Displaying\FogOfWar\FogOfWarScreenRegion.cs" />
+    <Compile Include="Displaying\FogOfWar\FogOfWarSpriteEntry.cs" />
+    <Compile Include="Displaying\FogOfWar\IScreenFogOfWarScreen.cs" />
+    <Compile Include="Displaying\FogOfWar\IFogOfWarFiller.cs" />
+    <Compile Include="Displaying\FogOfWar\FogOfWarFiller.cs" />
+    <Compile Include="Displaying\FogOfWar\ILevelFogOfWarExtractor.cs" />
+    <Compile Include="Displaying\ICoordinatesMaster.cs" />
+    <Compile Include="Displaying\ScreenCoordinatesMaster.cs" />
     <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\DashStateDisplayer.cs" />
     <Compile Include="Interface\InterfaceInfoExtractor.cs" />
@@ -115,7 +128,7 @@
     <Compile Include="Menu\MenuItem.cs" />
     <Compile Include="Menu\MenuItemDisplayer.cs" />
     <Compile Include="Menu\MenuVisiblePart.cs" />
-    <Compile Include="Tiles\ITilePositionConverter.cs" />
+    <Compile Include="Tiles\ITileCoordinatesMaster.cs" />
     <Compile Include="Tiles\TileWrapper.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\AimerFactory.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\FixedAimer.cs" />

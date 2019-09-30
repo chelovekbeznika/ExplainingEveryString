@@ -3,8 +3,9 @@ using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString.Core.Tiles
 {
-    interface ITilePositionConverter
+    interface ITileCoordinatesMaster
     {
+        Rectangle Bounds { get; }
         Vector2 GetPosition(PositionOnTileMap tilePosition);
     }
 }

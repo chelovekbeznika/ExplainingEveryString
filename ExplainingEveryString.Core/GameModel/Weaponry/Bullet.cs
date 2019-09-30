@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry.Trajectories;
 using ExplainingEveryString.Core.Math;
-using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
-    internal class Bullet : IDisplayble, IUpdatable
+    internal class Bullet : IDisplayble, IUpdateable
     {
         private static TrajectoryFactory trajectoryFactory = new TrajectoryFactory();
 
-        private Single timeToLive;
+        private readonly Single timeToLive;
+        private readonly Single homingSpeed;
+        private readonly Func<Vector2> targetLocator;
+
         private Single bulletAge = 0;
         private Boolean alive = true;
-        private Single homingSpeed;
-        private Func<Vector2> targetLocator;
         private BulletTrajectory trajectory;
 
         public SpriteState SpriteState { get; private set; }
+        public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
         public Vector2 Position { get; private set; }
         internal Vector2 OldPosition { get; private set; }
         internal Single Damage { get; private set; }

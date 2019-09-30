@@ -11,9 +11,10 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.Displaying
 {
-    internal class SpecEffect : IDisplayble, IUpdatable
+    internal class SpecEffect : IDisplayble, GameModel.IUpdateable
     {
         public SpriteState SpriteState { get; private set; }
+        public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
         public Vector2 Position { get; private set; }
 
         public Boolean IsVisible

@@ -48,7 +48,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal void Update(Single elapsedSeconds)
         {
             Boolean levelEndedBeforeUpdate = levelState.LevelIsEnded;
-            foreach (IUpdatable updatable in levelState.ActiveActors.GetObjectsToUpdate())
+            foreach (IUpdateable updatable in levelState.ActiveActors.GetObjectsToUpdate())
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
             levelState.Update(elapsedSeconds);

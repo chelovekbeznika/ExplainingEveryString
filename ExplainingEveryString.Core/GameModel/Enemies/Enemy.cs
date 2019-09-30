@@ -100,7 +100,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, this, startInfo.LevelSpawnPoints, factory);
         }
 
-        public IEnumerable<IDisplayble> GetParts()
+        public override IEnumerable<IDisplayble> GetParts()
         {
             if (weapon != null && !IsInAppearancePhase)
                 return new IDisplayble[] { weapon };

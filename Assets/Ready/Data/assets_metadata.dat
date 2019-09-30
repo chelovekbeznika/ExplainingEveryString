@@ -181,6 +181,11 @@
 	  "Name": "Sprites/Interface/EmptyHealthBar",
 	  "AnimationFrames": 2,
 	  "DefaultAnimationCycle": 1.0
+	},
+	{
+	  "Name": "Sprites/FogOfWar/Test/1",
+	  "AnimationFrames": 7,
+	  "DefaultAnimationCycle": 7.0
 	}
   ]
 }

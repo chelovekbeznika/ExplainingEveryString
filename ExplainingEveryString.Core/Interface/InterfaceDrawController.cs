@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.Interface
 
         internal void Draw(SpriteData spriteData, Vector2 position, ISpritePartDisplayer partDisplayer, Single coeff)
         {
-            Rectangle? animationFrame = AnimationHelp.GetDrawPart(spriteData, spriteData.DefaultAnimationCycle, elapsedTime);
+            Rectangle? animationFrame = AnimationHelp.GetDrawPart(spriteData, elapsedTime);
             Rectangle drawPart = partDisplayer.GetDrawPart(spriteData, coeff);
             if (animationFrame != null)
                 drawPart = new Rectangle

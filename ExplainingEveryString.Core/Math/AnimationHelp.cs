@@ -9,6 +9,11 @@ namespace ExplainingEveryString.Core.Math
 {
     internal static class AnimationHelp
     {
+        internal static Rectangle? GetDrawPart(SpriteData spriteData, Single elapsedTime)
+        {
+            return GetDrawPart(spriteData, spriteData.DefaultAnimationCycle, elapsedTime);
+        }
+
         internal static Rectangle? GetDrawPart(SpriteData spriteData, Single animationCycle, Single elapsedTime)
         {
             if (spriteData.AnimationFrames == 1)

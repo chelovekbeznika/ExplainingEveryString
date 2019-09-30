@@ -16,13 +16,13 @@ namespace ExplainingEveryString.Core.Displaying
     {
         private TileWrapper map;
         private TiledMapRenderer renderer;
-        private Camera camera;
+        private IScreenCoordinatesMaster screenCoordinatesMaster;
 
-        internal TiledMapDisplayer(TileWrapper map, EesGame eesGame, Camera camera)
+        internal TiledMapDisplayer(TileWrapper map, EesGame eesGame, IScreenCoordinatesMaster camera)
         {
             this.map = map;
             this.renderer = new TiledMapRenderer(eesGame.GraphicsDevice);
-            this.camera = camera;
+            this.screenCoordinatesMaster = camera;
         }
 
         internal void Update(GameTime gameTime)
@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void Draw()
         {
-            Vector2 renderPosition = camera.ConvertToScreenPosition(new Vector2(0, map.MapHeight));
+            Vector2 renderPosition = screenCoordinatesMaster.ConvertToScreenPosition(new Vector2(0, map.Bounds.Height));
             Matrix viewMatrix = Matrix.CreateTranslation(renderPosition.X, renderPosition.Y, 0);
             renderer.Draw(map.TiledMap, viewMatrix, null);
         }

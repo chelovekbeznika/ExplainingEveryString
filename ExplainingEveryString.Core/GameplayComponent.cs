@@ -1,12 +1,15 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.Displaying.FogOfWar;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
+using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
 using System;
 
@@ -22,8 +25,11 @@ namespace ExplainingEveryString.Core
         private EesGame eesGame;
         private TileWrapper map;
         private TiledMapDisplayer mapDisplayer;
+        private FogOfWarRuler fogOfWarRuler;
+        private SpriteBatch spriteBatch;
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
+
 
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
@@ -52,12 +58,31 @@ namespace ExplainingEveryString.Core
         }
 
         protected override void LoadContent()
-        {         
+        {
+            this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             Configuration config = ConfigurationAccess.GetCurrentConfig();
-            Camera = new Camera(level, eesGame, config);
-            EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);       
-            this.mapDisplayer = new TiledMapDisplayer(map, eesGame, Camera);
+            Viewport viewport = Game.GraphicsDevice.Viewport;
+            ILevelCoordinatesMaster levelCoordinatesMaster = new CameraObjectGlass(level, viewport, config.Camera);
+            IScreenCoordinatesMaster screenCoordinatesMaster = new ScreenCoordinatesMaster(viewport, levelCoordinatesMaster);
+            Camera = new Camera(level, eesGame, screenCoordinatesMaster);   
+            this.mapDisplayer = new TiledMapDisplayer(map, eesGame, screenCoordinatesMaster);
+            EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);
+            this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);
             base.LoadContent();
+        }
+
+        private FogOfWarRuler ConstructFogOfWarRuler(
+            ILevelCoordinatesMaster levelCoordinatesMaster, IScreenCoordinatesMaster screenCoordinatesMaster)
+        {
+            ILevelFogOfWarExtractor extractor = new LevelFogOfWarExtractor(map);
+            IScreenFogOfWarDetector screenDetector = new ScreenFogOfWarDetector(levelCoordinatesMaster, screenCoordinatesMaster);
+            IFogOfWarFiller filler = new FogOfWarFiller();
+
+            IFogOfWarDisplayer displayer = new FogOfWarDisplayer();
+            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content, AssetsMetadataAccess.GetLoader());
+            displayer.Construct(levelData.FogOfWar, spriteDataBuilder);
+
+            return new FogOfWarRuler(extractor, screenDetector, filler, displayer);
         }
 
         public override void Update(GameTime gameTime)
@@ -67,17 +92,19 @@ namespace ExplainingEveryString.Core
             Camera.Update(elapsedSeconds);
             mapDisplayer.Update(gameTime);
             EpicEventsProcessor.Update(elapsedSeconds);
+            fogOfWarRuler.Update(elapsedSeconds);
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            Camera.Begin();
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             mapDisplayer.Draw();
-            Camera.Draw(level.GetObjectsToDraw());
+            Camera.Draw(spriteBatch, level.GetObjectsToDraw());
             EpicEventsProcessor.ProcessEpicEvents();
-            Camera.Draw(EpicEventsProcessor.GetSpecEffectsToDraw());
-            Camera.End();
+            Camera.Draw(spriteBatch, EpicEventsProcessor.GetSpecEffectsToDraw());
+            fogOfWarRuler.DrawFogOfWar(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 

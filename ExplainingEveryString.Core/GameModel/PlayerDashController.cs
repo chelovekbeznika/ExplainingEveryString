@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal String[] CollideTagsDefense { get; private set; }
         public Boolean IsVisible => IsActive;
         public SpriteState SpriteState { get; private set; }
+        public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
         public Vector2 Position => player.Position;
 
         private readonly Func<Boolean> dashIsAvailable;

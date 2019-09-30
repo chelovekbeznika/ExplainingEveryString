@@ -11,35 +11,29 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class Camera
     {
-        private AssetsStorage AssetsStorage => game.AssetsStorage;
-        private SpriteBatch spriteBatch;       
-        private Single screenHeight;
-        private CameraObjectGlass objectGlass;
+        private AssetsStorage AssetsStorage => game.AssetsStorage;     
+        private readonly Single screenHeight;
+        private IScreenCoordinatesMaster screenCoordinatesMaster;
         private EesGame game;
 
-        internal Vector2 PlayerPositionOnScreen => objectGlass.PlayerPositionOnScreen;
+        internal Vector2 PlayerPositionOnScreen => screenCoordinatesMaster.PlayerPosition;
 
-        internal Camera(Level level, EesGame game, Configuration config)
+        internal Camera(Level level, EesGame game, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
             this.game = game;
-            this.spriteBatch = new SpriteBatch(game.GraphicsDevice);
             this.screenHeight = game.GraphicsDevice.Viewport.Height;
-            this.objectGlass = new CameraObjectGlass(level, game.GraphicsDevice, config.Camera);
+            this.screenCoordinatesMaster = screenCoordinatesMaster;
         }
 
-        internal void Begin() => spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
-        internal void End() => spriteBatch.End();
-
-        internal void Draw(IEnumerable<IDisplayble> thingsToDraw)
+        internal void Draw(SpriteBatch spriteBatch, IEnumerable<IDisplayble> thingsToDraw)
         {
             foreach (IDisplayble toDraw in thingsToDraw)
             {
-                Draw(toDraw);
+                Draw(spriteBatch, toDraw);
             }   
         }
 
-        private void Draw(IDisplayble toDraw)
+        private void Draw(SpriteBatch spriteBatch, IDisplayble toDraw)
         {
             if (!toDraw.IsVisible)
                 return;
@@ -47,7 +41,7 @@ namespace ExplainingEveryString.Core.Displaying
             SpriteState spriteState = toDraw.SpriteState;
             SpriteData spriteData = AssetsStorage.GetSprite(spriteState.Name);
             Vector2 position = toDraw.Position;
-            Vector2 drawPosition = ConvertToScreenPosition(position);
+            Vector2 drawPosition = screenCoordinatesMaster.ConvertToScreenPosition(position);
             Rectangle? drawPart = AnimationHelp.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);
             Single angle = -spriteState.Angle;
             Vector2 spriteCenter = new Vector2
@@ -59,49 +53,25 @@ namespace ExplainingEveryString.Core.Displaying
             spriteBatch.Draw(spriteData.Sprite, drawPosition, drawPart, Color.White, angle, 
                 spriteCenter, 1, SpriteEffects.None, 0);
 
-            if (toDraw is IMultiPartDisplayble)
-            {
-                foreach (IDisplayble part in ((IMultiPartDisplayble)toDraw).GetParts())
-                    Draw(part);
-            }
+            foreach (IDisplayble part in toDraw.GetParts())
+                Draw(spriteBatch, part);
+        }
+
+        internal void Update(Single elapsedSeconds)
+        {
+            screenCoordinatesMaster.Update(elapsedSeconds);
         }
 
         internal Rectangle PositionOnScreen(IDisplayble displayble)
         {
             SpriteData sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
-            Point visibleSize = new Point
-            {
-                X = sprite.Width,
-                Y = sprite.Height
-            };
-            Vector2 centerOnScreen = ConvertToScreenPosition(displayble.Position);
-            return new Rectangle
-            {
-                X = (Int32)(centerOnScreen.X - visibleSize.X / 2),
-                Y = (Int32)(centerOnScreen.Y - visibleSize.Y / 2),
-                Width = visibleSize.X,
-                Height = visibleSize.Y
-            };
+            return screenCoordinatesMaster.PositionOnScreen(displayble.Position, sprite);
         }
 
         internal Boolean IsVisibleOnScreen(IDisplayble displayble)
         {
-            Rectangle displaybleOnScreen = PositionOnScreen(displayble);
-            Rectangle screen = spriteBatch.GraphicsDevice.Viewport.Bounds;
-            return screen.Intersects(displaybleOnScreen);
-        }
-
-        internal Vector2 ConvertToScreenPosition(Vector2 position)
-        {
-            Vector2 cameraOffset = objectGlass.CameraOffset;
-            Vector2 centerOfSpriteOnScreen = position - cameraOffset;
-            centerOfSpriteOnScreen.Y = screenHeight - centerOfSpriteOnScreen.Y;
-            return centerOfSpriteOnScreen;
-        }
-
-        internal void Update(Single elapsedSeconds)
-        {
-            objectGlass.Update(elapsedSeconds);
+            SpriteData sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
+            return screenCoordinatesMaster.IsVisibleOnScreen(displayble.Position, sprite);
         }
     }
 }
