@@ -1,14 +1,6 @@
 ﻿using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.Displaying
 {

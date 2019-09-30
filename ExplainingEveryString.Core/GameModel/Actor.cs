@@ -3,8 +3,6 @@ using ExplainingEveryString.Data.Blueprints;
 using System;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Math;
-using ExplainingEveryString.Data.Level;
-using ExplainingEveryString.Data.Specifications;
 using System.Collections.Generic;
 using System.Linq;
 

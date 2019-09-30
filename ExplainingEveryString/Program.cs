@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using ExplainingEveryString.Core;
 using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString
-{   
+{
     public static class Program
     {
         [STAThread]

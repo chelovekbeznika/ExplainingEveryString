@@ -1,5 +1,4 @@
 ﻿using ExplainingEveryString.Core.Math;
-using ExplainingEveryString.Data.Level;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel

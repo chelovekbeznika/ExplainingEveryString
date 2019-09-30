@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
                         TouchesScreenAtLeft = Touches(onScreenRegion.Left, screenBounds.Left),
                         TouchesScreenAtRight = Touches(onScreenRegion.Right, screenBounds.Right)
                     });
-                };
+                }
             }
             return result.ToArray();
         }

@@ -1,8 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.Level;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

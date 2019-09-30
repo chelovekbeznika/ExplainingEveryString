@@ -6,7 +6,6 @@ using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel
 {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using ExplainingEveryString.Core.Math;
 
 namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors

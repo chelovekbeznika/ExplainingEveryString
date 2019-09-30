@@ -5,7 +5,6 @@ using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace ExplainingEveryString.Core
 {

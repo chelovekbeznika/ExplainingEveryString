@@ -1,12 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Data.Blueprints;
-using ExplainingEveryString.Data.Level;
-using ExplainingEveryString.Data.Specifications;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {

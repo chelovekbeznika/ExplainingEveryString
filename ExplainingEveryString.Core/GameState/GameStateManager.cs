@@ -1,5 +1,4 @@
 ﻿using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;

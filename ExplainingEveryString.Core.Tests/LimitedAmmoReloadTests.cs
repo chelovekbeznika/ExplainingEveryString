@@ -1,5 +1,4 @@
 ﻿using System;
-using ExplainingEveryString.Data.Blueprints;
 using NUnit.Framework;
 
 namespace ExplainingEveryString.Core.Tests

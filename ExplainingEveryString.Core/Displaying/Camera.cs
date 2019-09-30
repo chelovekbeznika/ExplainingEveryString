@@ -1,7 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Math;
-using ExplainingEveryString.Data;
-using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

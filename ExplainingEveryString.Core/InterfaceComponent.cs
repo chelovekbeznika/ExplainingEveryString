@@ -1,5 +1,4 @@
 ﻿using ExplainingEveryString.Core.Interface;
-using ExplainingEveryString.Data;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
@@ -7,8 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core
 {

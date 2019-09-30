@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Data.Configuration;
+﻿using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using System;
 
