@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString.Core.Displaying.FogOfWar
@@ -8,7 +10,8 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
     internal class FogOfWarFiller : IFogOfWarFiller
     {
         private readonly Int32 seed;
-        private Int32 spritesNumber;
+        private Int32[] ends;
+        private Int32 proportionsSum;
         private Int32 spriteWidth;
         private Int32 spriteHeight;
         private Random random;
@@ -18,12 +21,13 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
             seed = RandomUtility.NextInt(Int32.MaxValue);
         }
 
-        public List<FogOfWarSpriteEntry> Fill(FogOfWarScreenRegion region, Int32 spritesNumber, Int32 spriteWidth, Int32 spriteHeight)
+        public List<FogOfWarSpriteEntry> Fill(FogOfWarScreenRegion region, FogOfWarSpecification specification)
         {
             this.random = new Random(seed);
-            this.spritesNumber = spritesNumber;
-            this.spriteWidth = spriteWidth;
-            this.spriteHeight = spriteHeight;
+            this.ends = GetEnds(specification.Weights);
+            this.proportionsSum = specification.Weights.Sum();
+            this.spriteWidth = specification.ParticleWidth;
+            this.spriteHeight = specification.ParticleHeight;
             if (BottomRightCornerAcceptable(region))
                 return FromBottomRight(region);
             if (BottomLeftCornerAcceptable(region))
@@ -33,6 +37,18 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
             if (TopLeftCornerAcceptable(region))
                 return FromTopLeft(region);
             throw new ArgumentException($"Unsupported type of region {region.Rectangle.Width}X{region.Rectangle.Height}");
+        }
+
+        private Int32[] GetEnds(Int32[] weights)
+        {
+            Int32 spritesNumber = weights.Length;
+            Int32[] ends = new Int32[spritesNumber];
+            foreach (Int32 index in Enumerable.Range(0, spritesNumber))
+            {
+                Int32 previousEnd = index == 0 ? -1 : ends[index - 1];
+                ends[index] = previousEnd + weights[index];
+            }
+            return ends;
         }
 
         private Boolean BottomRightCornerAcceptable(FogOfWarScreenRegion region)
@@ -112,8 +128,17 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
             list.Add(new FogOfWarSpriteEntry
             {
                 ScreenPosition = new Point(x, y),
-                SpriteNumber = random.Next(spritesNumber)
+                SpriteNumber = GetSpriteNumber()
             });
+        }
+
+        private Int32 GetSpriteNumber()
+        {
+            Int32 currentNumber = random.Next(proportionsSum);
+            Int32 spriteNumber = 0;
+            while (currentNumber > ends[spriteNumber])
+                spriteNumber += 1;
+            return spriteNumber;
         }
     }
 }

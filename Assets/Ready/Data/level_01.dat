@@ -191,7 +191,8 @@
 	  "Sprites/FogOfWar/Test/0",
 	  "Sprites/FogOfWar/Test/1",
 	  "Sprites/FogOfWar/Test/2"
-	]
+	],
+	"Weights": [1, 1, 1]
   },
   "ObstaclesTilePositions": {
     "LittleDecoration": [

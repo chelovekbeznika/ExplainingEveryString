@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
             Rectangle[] levelFogOfWar = extractor.GetFogOfWarRegions();
             FogOfWarScreenRegion[] screenFogOfWar = screenDetector.GetFogOfWarRegions(levelFogOfWar);
             FogOfWarSpriteEntry[] fogOfWarSprites = screenFogOfWar
-                .Select(region => filler.Fill(region, displayer.SpritesNumber, displayer.SpriteWidth, displayer.SpriteHeight))
+                .Select(region => filler.Fill(region, displayer.Specification))
                 .SelectMany(spriteEntries => spriteEntries).ToArray();
             displayer.Draw(spriteBatch, fogOfWarSprites);
         }

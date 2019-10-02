@@ -12,14 +12,11 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
         private Single timeElapsed = 0;
         private SpriteData[] fogParticles;
 
-        public Int32 SpriteWidth { get; private set; }
-        public Int32 SpriteHeight { get; private set; }
-        public Int32 SpritesNumber => fogParticles.Length;
+        public FogOfWarSpecification Specification { get; private set; }
 
         public void Construct(FogOfWarSpecification specification, SpriteDataBuilder spriteDataBuilder)
         {
-            this.SpriteWidth = specification.ParticleWidth;
-            this.SpriteHeight = specification.ParticleHeight;
+            this.Specification = specification;
             this.fogParticles = spriteDataBuilder.Build(specification.Sprites).Values.ToArray();
         }
 
