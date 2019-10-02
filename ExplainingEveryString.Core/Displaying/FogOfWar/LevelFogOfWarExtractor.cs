@@ -20,6 +20,7 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
             //0  1  2
             //7 L_B 3
             //6  5  4
+            //In rectangle Bottom and Top inverted for screen coordinates =(
             return new Rectangle[]
             {
                 new Rectangle(levelBounds.Left - Infinity, levelBounds.Bottom, Infinity, Infinity),

@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Tiles;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled.Graphics;
+using System;
 
 namespace ExplainingEveryString.Core.Displaying
 {
@@ -10,11 +11,11 @@ namespace ExplainingEveryString.Core.Displaying
         private TiledMapRenderer renderer;
         private IScreenCoordinatesMaster screenCoordinatesMaster;
 
-        internal TiledMapDisplayer(TileWrapper map, EesGame eesGame, IScreenCoordinatesMaster camera)
+        internal TiledMapDisplayer(TileWrapper map, EesGame eesGame, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
             this.map = map;
             this.renderer = new TiledMapRenderer(eesGame.GraphicsDevice);
-            this.screenCoordinatesMaster = camera;
+            this.screenCoordinatesMaster = screenCoordinatesMaster;
         }
 
         internal void Update(GameTime gameTime)

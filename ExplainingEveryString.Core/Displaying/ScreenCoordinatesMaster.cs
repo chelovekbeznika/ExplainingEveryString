@@ -48,7 +48,8 @@ namespace ExplainingEveryString.Core.Displaying
         {
             Vector2 cameraOffset = levelCoordinatesMaster.CameraOffset;
             Vector2 centerOfSpriteOnScreen = position - cameraOffset;
-            centerOfSpriteOnScreen.Y = viewport.Height - centerOfSpriteOnScreen.Y;
+            centerOfSpriteOnScreen.X = (Int32)centerOfSpriteOnScreen.X;
+            centerOfSpriteOnScreen.Y = (Int32)(viewport.Height - centerOfSpriteOnScreen.Y);
             return centerOfSpriteOnScreen;
         }
 

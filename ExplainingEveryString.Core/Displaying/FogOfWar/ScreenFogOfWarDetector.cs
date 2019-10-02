@@ -26,14 +26,16 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
                 if (!coveredByScreenRegion.IsEmpty)
                 {
                     Rectangle onScreenRegion = GetOnScreenRegion(coveredByScreenRegion);
-                    result.Add(new FogOfWarScreenRegion
+                    FogOfWarScreenRegion fogOfWarScreenRegion = new FogOfWarScreenRegion
                     {
                         Rectangle = onScreenRegion,
                         TouchesScreenAtBottom = Touches(onScreenRegion.Bottom, screenBounds.Bottom),
                         TouchesScreenAtTop = Touches(onScreenRegion.Top, screenBounds.Top),
                         TouchesScreenAtLeft = Touches(onScreenRegion.Left, screenBounds.Left),
                         TouchesScreenAtRight = Touches(onScreenRegion.Right, screenBounds.Right)
-                    });
+                    };
+                    fogOfWarScreenRegion.MakeConsistent(screenBounds);
+                    result.Add(fogOfWarScreenRegion);
                 }
             }
             return result.ToArray();
