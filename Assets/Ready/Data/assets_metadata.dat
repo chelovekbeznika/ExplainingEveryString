@@ -186,6 +186,26 @@
 	  "Name": "Sprites/FogOfWar/Test/1",
 	  "AnimationFrames": 7,
 	  "DefaultAnimationCycle": 7.0
+	},
+	{
+	  "Name": "Sprites/FogOfWar/Level1X/1",
+	  "AnimationFrames": 14,
+	  "DefaultAnimationCycle": 2.0
+	},
+	{
+	  "Name": "Sprites/FogOfWar/Level1X/2",
+	  "AnimationFrames": 5,
+	  "DefaultAnimationCycle": 1.0
+	},
+	{
+	  "Name": "Sprites/FogOfWar/Level1X/3",
+	  "AnimationFrames": 8,
+	  "DefaultAnimationCycle": 1.0
+	},
+	{
+	  "Name": "Sprites/FogOfWar/Level1X/4",
+	  "AnimationFrames": 12,
+	  "DefaultAnimationCycle": 3.0
 	}
   ]
 }

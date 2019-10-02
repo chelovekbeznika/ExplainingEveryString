@@ -981,9 +981,11 @@
     "ParticleWidth": 16,
 	"ParticleHeight": 16,
 	"Sprites": [
-	  "Sprites/FogOfWar/Test/0",
-	  "Sprites/FogOfWar/Test/1",
-	  "Sprites/FogOfWar/Test/2"
+	  "Sprites/FogOfWar/Level1X/0",
+	  "Sprites/FogOfWar/Level1X/1",
+	  "Sprites/FogOfWar/Level1X/2",
+	  "Sprites/FogOfWar/Level1X/3",
+	  "Sprites/FogOfWar/Level1X/4"
 	]
   },
   "ObstaclesTilePositions": {
