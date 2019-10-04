@@ -1226,6 +1226,54 @@
       }
     }
   },
+  "MineSpawner_mk1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 30.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level1X/MineSpawner",
+      "AnimationCycle": 0.2
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.25
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level1X/Death/MineSpawner",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level1X/Appearance/MineSpawner",
+      "AnimationCycle": 0.66667
+    },
+    "DefaultAppearancePhaseDuration": 0.66667,
+    "Mover": {
+      "Type": "Linear",
+      "Parameters": {
+        "speed": 200.0
+      }
+    },
+    "MoveTargetSelectType": "RandomTargets",
+    "Spawner": {
+      "MaxSpawned": 21,
+      "Reloader": {
+        "FireRate": 0.16667,
+		"Ammo": 3,
+		"ReloadTime": 2.0
+      },
+      "PositionSelector" : {
+        "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+		"SpawnPositions": [
+		  "0.0, 0.0"
+		]
+      },
+      "BlueprintType": "Mine_mk1"
+    }
+  },
   "Miniboss_mk11": {
     "$type": "ExplainingEveryString.Data.Blueprints.ShadowEnemyBlueprint, ExplainingEveryString.Data",
     "Type": "ShadowEnemy",
