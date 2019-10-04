@@ -1261,7 +1261,7 @@
     "Spawner": {
       "MaxSpawned": 21,
       "Reloader": {
-        "FireRate": 0.16667,
+        "FireRate": 6.0,
 		"Ammo": 3,
 		"ReloadTime": 2.0
       },
