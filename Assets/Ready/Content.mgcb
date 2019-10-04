@@ -113,6 +113,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Enemy/MineDiggingUp.wav
 
+#begin Sounds/Enemy/MineSpawner.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/MineSpawner.wav
+
 #begin Sounds/Enemy/TripleCannonShoot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -491,6 +497,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/Appearance/Helicopter.png
 
+#begin Sprites/Enemies/Level1X/Appearance/MineSpawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/Appearance/MineSpawner.png
+
 #begin Sprites/Enemies/Level1X/Appearance/Swan.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -586,6 +604,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/Death/Mine.png
+
+#begin Sprites/Enemies/Level1X/Death/MineSpawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/Death/MineSpawner.png
 
 #begin Sprites/Enemies/Level1X/Death/MonorailCannon.png
 /importer:TextureImporter
@@ -706,6 +736,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/Mine.png
+
+#begin Sprites/Enemies/Level1X/MineSpawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/MineSpawner.png
 
 #begin Sprites/Enemies/Level1X/MonorailCannon.png
 /importer:TextureImporter
