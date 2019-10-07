@@ -32,6 +32,9 @@
 #begin Data/level_12.dat
 /copy:Data/level_12.dat
 
+#begin Data/level_13.dat
+/copy:Data/level_13.dat
+
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
@@ -1381,6 +1384,11 @@
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /build:TileMaps/Level_12.tmx
+
+#begin TileMaps/Level_13.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_13.tmx
 
 #begin TileSets/level_01.png
 /importer:TextureImporter

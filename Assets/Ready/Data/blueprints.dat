@@ -953,6 +953,12 @@
       "Name": "Sprites/Enemies/Level1X/Appearance/TripleCannon",
       "AnimationCycle": 0.1666666
     },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.25
+      }
+    },
     "DefaultAppearancePhaseDuration": 1.0,
     "Weapon": {
       "Reloader": {

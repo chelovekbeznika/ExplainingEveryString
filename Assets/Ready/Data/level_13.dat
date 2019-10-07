@@ -1,0 +1,176 @@
+{
+  "TileMap": "TileMaps/Level_13",
+  "PlayerPosition": {
+    "BlueprintType": "Player",
+    "TilePosition": {
+      "X": 26,
+      "Y": 86,
+      "Offset": "8.0, -8.0"
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 30,
+        "Y": 54,
+        "Width": 16,
+        "Height": 16
+      },
+      "Doors": [
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 46,
+            "Y": 59
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 46,
+            "Y": 70
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 46,
+            "Y": 81
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 46,
+            "Y": 92
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 29,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 18,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 7,
+            "Y": 53
+          }
+        },
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 10,
+            "Y": 89
+          }
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 17,
+            "Y": 54,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "0.0, -208.0",
+            "240.0, -208.0",
+            "240.0, -480.0",
+            "432.0, -480.0",
+            "240.0, -480.0",
+            "240.0, -208.0",
+            "0.0, -208.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 44,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "-192.0, 0.0",
+            "-192.0, 272.0",
+            "-432.0, 272.0",
+            "-432.0, 480.0",
+            "-432.0, 272.0",
+            "-192.0, 272.0",
+            "-192.0, 0.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 31,
+            "Y": 54,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 44,
+            "Y": 67,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ]
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level1X/0",
+      "Sprites/FogOfWar/Level1X/1",
+      "Sprites/FogOfWar/Level1X/2",
+      "Sprites/FogOfWar/Level1X/3",
+      "Sprites/FogOfWar/Level1X/4"
+    ],
+    "Weights": [6, 1, 1, 1, 1]
+  },
+  "ObstaclesTilePositions": {
+    "BottomLamp": [
+      {
+        "X": 23,
+        "Y": 93,
+        "Offset": "8.0, 0.0"
+      },
+      {
+        "X": 29,
+        "Y": 93,
+        "Offset": "8.0, 0.0"
+      },
+      {
+        "X": 35,
+        "Y": 93,
+        "Offset": "8.0, 0.0"
+      },
+      {
+        "X": 41,
+        "Y": 93,
+        "Offset": "8.0, 0.0"
+      }
+    ]
+  }
+}
