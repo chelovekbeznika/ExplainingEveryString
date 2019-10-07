@@ -547,7 +547,7 @@
       "AccelerationIncrease": 2.5,
       "RechargeTime": 5.0,
       "Duration": 1.0,
-	  "CollideTagsDefense": [ "Hunter" ],
+      "CollideTagsDefense": [ "Hunter" ],
       "SpecEffect": {
         "Sound": {
           "Name": "Sounds/Player/Dash",
@@ -1262,14 +1262,14 @@
       "MaxSpawned": 21,
       "Reloader": {
         "FireRate": 6.0,
-		"Ammo": 3,
-		"ReloadTime": 2.0
+        "Ammo": 3,
+        "ReloadTime": 2.0
       },
       "PositionSelector" : {
         "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
-		"SpawnPositions": [
-		  "0.0, 0.0"
-		]
+        "SpawnPositions": [
+          "0.0, 0.0"
+        ]
       },
       "BlueprintType": "Mine_mk1"
     }
@@ -1611,6 +1611,44 @@
       "Sound": {
         "Name": "Sounds/Doors/BridgeBlockerOpening",
         "Volume": 0.3
+      }
+    }
+  },
+  "QuarterDelimiterHorizontal": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 176,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level1X/QuarterDelimiterHorizontal",
+      "AnimationCycle": 1.0
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level1X/QuarterDelimiterHorizontalOpening",
+      "AnimationCycle": 0.1
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/QuarterDelimiterOpening",
+        "Volume": 0.2
+      }
+    }
+  },
+  "QuarterDelimiterVertical": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 176,
+    "Width": 16,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level1X/QuarterDelimiterVertical",
+      "AnimationCycle": 1.0
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level1X/QuarterDelimiterVerticalOpening",
+      "AnimationCycle": 0.33333
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/QuarterDelimiterOpening",
+        "Volume": 0.2
       }
     }
   },

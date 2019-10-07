@@ -17,10 +17,17 @@
       },
       "Doors": [
         {
-          "BlueprintType": "TestDoor",
+          "BlueprintType": "QuarterDelimiterHorizontal",
           "TilePosition": {
             "X": 57,
-            "Y": 57
+            "Y": 0
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 68,
+            "Y": 0
           }
         }
       ],
@@ -155,6 +162,26 @@
         }
       ]
     },
+	{
+	  "StartRegion": {
+        "X": 59,
+        "Y": 31,
+        "Width": 4,
+        "Height": 17
+      },
+	  "Enemies": [
+	    {
+		  "BlueprintType": "MineSpawner_mk1",
+		  "TilePosition": {
+		    "X": 50,
+			"Y": 66
+		  },
+		  "TrajectoryTargets": [
+		    "400.0, 200.0"
+		  ]
+		}
+	  ]
+	},
     {
       "StartRegion": {
         "X": 59,
