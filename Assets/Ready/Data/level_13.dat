@@ -280,34 +280,6 @@
         {
           "BlueprintType": "QuarterDelimiterHorizontal",
           "TilePosition": {
-            "X": 40,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 29,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 18,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 7,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
             "X": 59,
             "Y": 53
           }
@@ -331,6 +303,35 @@
           "TilePosition": {
             "X": 92,
             "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 59,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 70,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 81,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 92,
+            "Y": 46
           }
         }
       ],
@@ -592,6 +593,293 @@
             "Y": 57,
             "Offset": "8.0, -8.0"
           }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 52,
+        "Y": 2,
+        "Width": 46,
+        "Height": 41
+      },
+      "Checkpoint": { 
+        "Name": "Monorail",
+        "PlayerPosition": {
+          "X": 75,
+          "Y": 49,
+          "Offset": "8.0, -8.0"
+        }
+      },
+      "Doors": [
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 29,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 18,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 7,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 59
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 70
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 81
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 92
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 59
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 70
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 81
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 92
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 59,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 70,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 81,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 92,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 59,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 70,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 81,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 92,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 53,
+            "Y": 40
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 53,
+            "Y": 29
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 53,
+            "Y": 18
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "TilePosition": {
+            "X": 53,
+            "Y": 7
+          }
+        }
+      ],
+      "MaxEnemiesAtOnce": 4,
+      "Enemies": [
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 54,
+            "Y": 11,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "0.0, 112.0",
+            "0.0, -96.0"
+          ]
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 65,
+            "Y": 17,
+            "Offset": "0.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "-168.0, 0.0",
+            "168.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 75,
+            "Y": 31,
+            "Offset": "8.0, 0.0"
+          },
+          "TrajectoryTargets": [
+            "0.0, 216.0",
+            "0.0, -216.0"
+          ]
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 87,
+            "Y": 6
+          }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk1",
+          "TilePosition": {
+            "X": 66,
+            "Y": 32
+          }
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 54,
+            "Y": 5,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "0.0, -192.0",
+            "336.0, -192.0",
+            "336.0, -624.0",
+            "336.0, -192.0",
+            "0.0, -192.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 75,
+            "Y": 44,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "0.0, 432.0",
+            "-336.0, 432.0",
+            "-336.0, 624.0",
+            "-336.0, 432.0",
+            "0.0, 432.0",
+            "0.0, 0.0"
+          ]
         }
       ]
     }
