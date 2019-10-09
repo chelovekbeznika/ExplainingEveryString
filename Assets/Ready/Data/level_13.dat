@@ -46,33 +46,33 @@
           }
         },
         {
-          "BlueprintType": "QuarterDelimiterHorizontal",
+          "BlueprintType": "QuarterDelimiterVertical",
           "TilePosition": {
-            "X": 40,
-            "Y": 53
+            "X": 53,
+            "Y": 59
           }
         },
         {
-          "BlueprintType": "QuarterDelimiterHorizontal",
+          "BlueprintType": "QuarterDelimiterVertical",
           "TilePosition": {
-            "X": 29,
-            "Y": 53
+            "X": 53,
+            "Y": 70
           }
         },
         {
-          "BlueprintType": "QuarterDelimiterHorizontal",
+          "BlueprintType": "QuarterDelimiterVertical",
           "TilePosition": {
-            "X": 18,
-            "Y": 53
+            "X": 53,
+            "Y": 81
           }
         },
         {
-          "BlueprintType": "QuarterDelimiterHorizontal",
+          "BlueprintType": "QuarterDelimiterVertical",
           "TilePosition": {
-            "X": 7,
-            "Y": 53
+            "X": 53,
+            "Y": 92
           }
-        },
+        }
       ],
       "Enemies": [
         {
@@ -131,6 +131,195 @@
           "TilePosition": {
             "X": 44,
             "Y": 67,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 54,
+        "Y": 54,
+        "Width": 46,
+        "Height": 46
+      },
+      "Doors": [
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 29,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 18,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 7,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 59,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 70,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 81,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 92,
+            "Y": 53
+          }
+        }
+      ],
+      "MaxEnemiesAtOnce": 10,
+      "Enemies": [
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 92,
+            "Y": 58,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 92,
+            "Y": 70,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 92,
+            "Y": 64,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 52,
+            "Y": 94,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 72,
+            "Y": 94,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 3,
+            "Y": 55
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 3,
+            "Y": 65
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 3,
+            "Y": 75
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 3,
+            "Y": 85
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 3,
+            "Y": 95
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -20.0,
+          "TilePosition": {
+            "X": 17,
+            "Y": 67,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 75.0,
+          "TilePosition": {
+            "X": 32,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 140.0,
+          "TilePosition": {
+            "X": 62,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": 180.0,
+          "TilePosition": {
+            "X": 75,
+            "Y": 69,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk1",
+          "Angle": -160.0,
+          "TilePosition": {
+            "X": 62,
+            "Y": 69,
             "Offset": "8.0, -8.0"
           }
         }
