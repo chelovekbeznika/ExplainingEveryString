@@ -144,62 +144,6 @@
         "Height": 46
       },
       "Doors": [
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 40,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 29,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 18,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 7,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 59,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 70,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 81,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 92,
-            "Y": 53
-          }
-        }
       ],
       "MaxEnemiesAtOnce": 10,
       "Enemies": [
@@ -320,6 +264,332 @@
           "TilePosition": {
             "X": 62,
             "Y": 69,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 77,
+        "Y": 54,
+        "Width": 21,
+        "Height": 46
+      },
+      "Doors": [
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 29,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 18,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 7,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 59,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 70,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 81,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "TilePosition": {
+            "X": 92,
+            "Y": 53
+          }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 36,
+            "Y": 81
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 59,
+            "Y": 81
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 49,
+            "Y": 55,
+            "Offset": "8.0, 0.0"
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 21,
+            "Y": 64
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 21,
+            "Y": 56
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 73,
+            "Y": 56
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 73,
+            "Y": 67
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 54,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 54,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 54,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 59,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 64,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 19,
+            "Y": 67,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 24,
+            "Y": 67,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 29,
+            "Y": 67,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 32,
+            "Y": 69,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 32,
+            "Y": 74,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 32,
+            "Y": 79,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 32,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 37,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 42,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 47,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 52,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 57,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 62,
+            "Y": 84,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 62,
+            "Y": 79,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 62,
+            "Y": 74,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 62,
+            "Y": 69,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 67,
+            "Y": 69,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 72,
+            "Y": 69,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 75,
+            "Y": 67,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 75,
+            "Y": 62,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Mine_mk1",
+          "TilePosition": {
+            "X": 75,
+            "Y": 57,
             "Offset": "8.0, -8.0"
           }
         }
