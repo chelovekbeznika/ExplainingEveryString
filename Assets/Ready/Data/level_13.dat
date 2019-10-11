@@ -1150,134 +1150,6 @@
         },
         {
           "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 47,
-            "Y": 59
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 47,
-            "Y": 70
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 47,
-            "Y": 81
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 47,
-            "Y": 92
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 53,
-            "Y": 59
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 53,
-            "Y": 70
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 53,
-            "Y": 81
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 53,
-            "Y": 92
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 59,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 70,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 81,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 92,
-            "Y": 53
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 59,
-            "Y": 46
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 70,
-            "Y": 46
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 81,
-            "Y": 46
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "ClosesAt": 3,
-          "TilePosition": {
-            "X": 92,
-            "Y": 46
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
           "ClosesAt": 5,
           "TilePosition": {
             "X": 53,
@@ -1362,6 +1234,328 @@
           "TrajectoryTargets": [
             "384.0, 576.0"
           ]
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 2,
+        "Y": 2,
+        "Width": 96,
+        "Height": 40
+      },
+      "Doors": [
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 40,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 29,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 18,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 7,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 40,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 29,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 18,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 8,
+          "TilePosition": {
+            "X": 7,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 59
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 70
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 81
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 47,
+            "Y": 92
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 59
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 70
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 81
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterVertical",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 53,
+            "Y": 92
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 59,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 70,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 81,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 92,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 59,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 70,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 81,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 3,
+          "TilePosition": {
+            "X": 92,
+            "Y": 46
+          }
+        }
+      ],
+      "MaxEnemiesAtOnce": 10,
+      "Enemies": [
+        {
+          "BlueprintType": "MineSpawner_mk1",
+          "TilePosition": {
+            "X": 49,
+            "Y": 23,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "80.0, 658.0"
+          ]
+        },
+        {
+          "BlueprintType": "MineSpawner_mk1",
+          "TilePosition": {
+            "X": 49,
+            "Y": 23,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "80.0, 658.0"
+          ]
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 75,
+            "Y": 4,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 4,
+            "Y": 4
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 88,
+            "Y": 32,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 19,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 94,
+            "Y": 15,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 11,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 84,
+            "Y": 21,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 34,
+            "Y": 21,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 94,
+            "Y": 41,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 7,
+            "Y": 19,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 67,
+            "Y": 37,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 28,
+            "Y": 28,
+            "Offset": "8.0, -8.0"
+          }
         }
       ]
     }
