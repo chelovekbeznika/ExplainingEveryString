@@ -1234,10 +1234,10 @@
   },
   "MineSpawner_mk1": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
-    "CollisionDamage": 50.0,
+    "CollisionDamage": 100.0,
     "Height": 48.0,
     "Width": 48.0,
-    "Hitpoints": 30.0,
+    "Hitpoints": 75.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level1X/MineSpawner",
       "AnimationCycle": 0.2

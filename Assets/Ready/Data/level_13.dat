@@ -947,6 +947,206 @@
             "X": 7,
             "Y": 53
           }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 17,
+            "Y": 11,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "272.0, 0.0",
+            "272.0, 112.0",
+            "272.0, 0.0",
+            "432.0, 0.0",
+            "272.0, 0.0",
+            "272.0, -160.0",
+            "272.0, 0.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 44,
+            "Y": 11,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "-160.0, 0.0",
+            "-160.0, -160.0",
+            "-160.0, 0.0",
+            "-432.0, 0.0",
+            "-160.0, 0.0",
+            "-160.0, 112.0",
+            "-160.0, 0.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 17,
+            "Y": 44,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "0.0, 256.0",
+            "-160.0, 256.0",
+            "-160.0, 400.0",
+            "0.0, 400.0",
+            "0.0, 528.0",
+            "0.0, 400.0",
+            "176.0, 400.0",
+            "176.0, 256.0",
+            "0.0, 256.0",
+            "0.0, 0.0"
+          ]
+        },
+        {
+          "BlueprintType": "MonorailCannon",
+          "TilePosition": {
+            "X": 17,
+            "Y": 11,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryTargets": [
+            "0.0, -128.0",
+            "176.0, -128.0",
+            "176.0, -272.0",
+            "0.0, -272.0",
+            "0.0, -528.0",
+            "0.0, -272.0",
+            "-160.0, -272.0",
+            "-160.0, -128.0",
+            "0.0, -128.0",
+            "0.0, 0.0"
+          ]
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 2,
+        "Y": 58,
+        "Width": 44,
+        "Height": 40
+      },
+      "Checkpoint": {
+        "Name": "MineSwapperingSurprise",
+        "PlayerPosition": {
+          "X": 17,
+          "Y": 49,
+          "Offset": "8.0, -8.0"
+        }
+      },
+      "Doors": [
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 43,
+            "Y": 56
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 43,
+            "Y": 91
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 21,
+            "Y": 91
+          }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 4,
+            "Y": 78
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 2,
+        "Y": 54,
+        "Width": 44,
+        "Height": 44
+      },
+      "Doors": [
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 40,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 29,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 18,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 7,
+            "Y": 46
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 40,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 29,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 18,
+            "Y": 53
+          }
+        },
+        {
+          "BlueprintType": "QuarterDelimiterHorizontal",
+          "ClosesAt": 6,
+          "TilePosition": {
+            "X": 7,
+            "Y": 53
+          }
         },
         {
           "BlueprintType": "QuarterDelimiterVertical",
@@ -1143,79 +1343,24 @@
       ],
       "Enemies": [
         {
-          "BlueprintType": "MonorailCannon",
+          "BlueprintType": "MineSpawner_mk1",
           "TilePosition": {
-            "X": 17,
-            "Y": 11,
-            "Offset": "8.0, -8.0"
+            "X": 23,
+            "Y": 67,
+            "Offset": "8.0, 0.0"
           },
           "TrajectoryTargets": [
-            "272.0, 0.0",
-            "272.0, 112.0",
-            "272.0, 0.0",
-            "432.0, 0.0",
-            "272.0, 0.0",
-            "272.0, -160.0",
-            "272.0, 0.0",
-            "0.0, 0.0"
+            "656.0, 384.0"
           ]
         },
         {
-          "BlueprintType": "MonorailCannon",
+          "BlueprintType": "MineSpawner_mk1",
           "TilePosition": {
-            "X": 44,
-            "Y": 11,
-            "Offset": "8.0, -8.0"
+            "X": 32,
+            "Y": 73
           },
           "TrajectoryTargets": [
-            "-160.0, 0.0",
-            "-160.0, -160.0",
-            "-160.0, 0.0",
-            "-432.0, 0.0",
-            "-160.0, 0.0",
-            "-160.0, 112.0",
-            "-160.0, 0.0",
-            "0.0, 0.0"
-          ]
-        },
-        {
-          "BlueprintType": "MonorailCannon",
-          "TilePosition": {
-            "X": 17,
-            "Y": 44,
-            "Offset": "8.0, -8.0"
-          },
-          "TrajectoryTargets": [
-            "0.0, 256.0",
-            "-160.0, 256.0",
-            "-160.0, 400.0",
-            "0.0, 400.0",
-            "0.0, 528.0",
-            "0.0, 400.0",
-            "176.0, 400.0",
-            "176.0, 256.0",
-            "0.0, 256.0",
-            "0.0, 0.0"
-          ]
-        },
-        {
-          "BlueprintType": "MonorailCannon",
-          "TilePosition": {
-            "X": 17,
-            "Y": 11,
-            "Offset": "8.0, -8.0"
-          },
-          "TrajectoryTargets": [
-            "0.0, -128.0",
-            "176.0, -128.0",
-            "176.0, -272.0",
-            "0.0, -272.0",
-            "0.0, -528.0",
-            "0.0, -272.0",
-            "-160.0, -272.0",
-            "-160.0, -128.0",
-            "0.0, -128.0",
-            "0.0, 0.0"
+            "384.0, 576.0"
           ]
         }
       ]
