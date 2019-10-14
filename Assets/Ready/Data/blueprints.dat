@@ -1265,7 +1265,7 @@
     },
     "MoveTargetSelectType": "RandomTargets",
     "Spawner": {
-      "MaxSpawned": 21,
+      "MaxSpawned": 15,
       "Reloader": {
         "FireRate": 6.0,
         "Ammo": 3,
