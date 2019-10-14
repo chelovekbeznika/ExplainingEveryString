@@ -76,7 +76,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private void ConstructMovement(TBlueprint blueprint, ActorStartInfo startInfo)
         {
             this.MoveTargetSelector = MoveTargetSelectorFactory.Get(
-                blueprint.MoveTargetSelectType, startInfo.TrajectoryTargets, PlayerLocator, CurrentPositionLocator);
+                blueprint.MoveTargetSelectType, startInfo.TrajectoryParameters, PlayerLocator, this);
             this.Mover = MoverFactory.Get(blueprint.Mover);
         }
 

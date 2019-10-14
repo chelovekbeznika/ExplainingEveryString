@@ -92,7 +92,7 @@ namespace ExplainingEveryString.Core.GameModel
                 BlueprintType = dataLayerStartInfo.BlueprintType,
                 Position = map.GetPosition(dataLayerStartInfo.TilePosition),
                 Angle = AngleConverter.ToRadians(dataLayerStartInfo.Angle),
-                TrajectoryTargets = dataLayerStartInfo.TrajectoryTargets,
+                TrajectoryParameters = dataLayerStartInfo.TrajectoryParameters,
                 AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration,
                 LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray()
             };

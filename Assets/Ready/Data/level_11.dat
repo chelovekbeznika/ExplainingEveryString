@@ -599,7 +599,7 @@
             "Y": 19,
             "Offset": "8.0, -8.0"
           },
-          "TrajectoryTargets": [
+          "TrajectoryParameters": [
             "-256.0, 0.0",
             "256.0, 0.0"
           ]

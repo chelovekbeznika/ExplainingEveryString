@@ -109,7 +109,7 @@
             "X": "16",
             "Y": "23"
           },
-          "TrajectoryTargets": [
+          "TrajectoryParameters": [
             "0.0, -100.0",
             "0.0, 0.0"
           ]
@@ -120,7 +120,7 @@
             "X": 38,
             "Y": 27
           },
-          "TrajectoryTargets": [
+          "TrajectoryParameters": [
             "0.0, -100.0",
             "0.0, 0.0"
           ]
@@ -131,7 +131,7 @@
             "X": 9,
             "Y": 43
           },
-          "TrajectoryTargets": [
+          "TrajectoryParameters": [
             "0.0, 200.0",
             "0.0, 0.0"
           ]
@@ -142,7 +142,7 @@
             "X": 58,
             "Y": 12
           },
-          "TrajectoryTargets": [
+          "TrajectoryParameters": [
             "50.0, 50.0",
             "100.0, 150.0",
             "-200.0, 0.0",
@@ -155,7 +155,7 @@
             "X": 5,
             "Y": 5
           },
-          "TrajectoryTargets": [
+          "TrajectoryParameters": [
             "-300.0, 0.0",
             "300.0, 0.0"
           ]
@@ -176,7 +176,7 @@
 		    "X": 50,
 			"Y": 66
 		  },
-		  "TrajectoryTargets": [
+		  "TrajectoryParameters": [
 		    "400.0, 200.0"
 		  ]
 		}
@@ -204,8 +204,9 @@
             "X": 55,
             "Y": 60
           },
-          "TrajectoryTargets": [
-            "100.0, 100.0"
+          "TrajectoryParameters": [
+            "-50.0, 50.0",
+            "50.0, -50.0"
           ]
         }
       ]
