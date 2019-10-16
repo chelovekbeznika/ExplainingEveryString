@@ -113,10 +113,14 @@
       "AnimationFrames": 12
     },
     {
+      "Name": "Sprites/Enemies/Level1X/Penguin",
+      "AnimationFrames": 12
+    },
+    {
       "Name": "Sprites/Enemies/Level1X/Appearance/TripleCannon",
       "AnimationFrames": 2
     },
-	{
+    {
       "Name": "Sprites/Enemies/Level1X/Appearance/MineSpawner",
       "AnimationFrames": 8
     },
@@ -127,6 +131,10 @@
     {
       "Name": "Sprites/Enemies/Level1X/Appearance/Swan",
       "AnimationFrames": 18
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/Appearance/Swan",
+      "AnimationFrames": 4
     },
     {
       "Name": "Sprites/Enemies/Level1X/Death/Cannon",
@@ -166,6 +174,10 @@
     },
     {
       "Name": "Sprites/Enemies/Level1X/Death/Swan",
+      "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/Level1X/Death/Penguin",
       "AnimationFrames": 10
     },
     {

@@ -566,6 +566,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/Appearance/MineSpawner.png
 
+#begin Sprites/Enemies/Level1X/Appearance/Penguin.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/Appearance/Penguin.png
+
 #begin Sprites/Enemies/Level1X/Appearance/Swan.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -685,6 +697,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/Death/MonorailCannon.png
+
+#begin Sprites/Enemies/Level1X/Death/Penguin.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/Death/Penguin.png
 
 #begin Sprites/Enemies/Level1X/Death/Swan.png
 /importer:TextureImporter
@@ -818,6 +842,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/MonorailCannon.png
 
+#begin Sprites/Enemies/Level1X/Penguin.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/Penguin.png
+
 #begin Sprites/Enemies/Level1X/Swan.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -865,6 +901,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/TripleCannon.png
+
+#begin Sprites/Enemies/Level1X/VakidzasiBlade.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/VakidzasiBlade.png
+
+#begin Sprites/Enemies/Level1X/VakidzasiHandle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level1X/VakidzasiHandle.png
 
 #begin Sprites/Enemies/Mine.png
 /importer:TextureImporter
