@@ -98,6 +98,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Doors/QuarterDelimiterOpening.wav
 
+#begin Sounds/Enemy/BreakingIce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/BreakingIce.wav
+
 #begin Sounds/Enemy/Explosion_01.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -133,6 +139,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Enemy/TripleCannonShoot.wav
+
+#begin Sounds/Enemy/VakidzasiHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/VakidzasiHit.wav
 
 #begin Sounds/Player/Dash.wav
 /importer:WavImporter
