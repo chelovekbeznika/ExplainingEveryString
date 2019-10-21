@@ -38,6 +38,12 @@
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
+#begin Sounds/Bosses/BreakingIce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/BreakingIce.wav
+
 #begin Sounds/Bosses/HelicopterExplosion.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -68,6 +74,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/SwanShot.wav
 
+#begin Sounds/Bosses/VakidzasiHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/VakidzasiHit.wav
+
 #begin Sounds/Doors/BossDoorOpening.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -97,12 +109,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Doors/QuarterDelimiterOpening.wav
-
-#begin Sounds/Enemy/BreakingIce.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Enemy/BreakingIce.wav
 
 #begin Sounds/Enemy/Explosion_01.wav
 /importer:WavImporter
@@ -139,12 +145,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Enemy/TripleCannonShoot.wav
-
-#begin Sounds/Enemy/VakidzasiHit.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Enemy/VakidzasiHit.wav
 
 #begin Sounds/Player/Dash.wav
 /importer:WavImporter

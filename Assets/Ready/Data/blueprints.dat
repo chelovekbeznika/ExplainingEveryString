@@ -1542,6 +1542,76 @@
       "AimType": "FixedFireDirection"
     }
   },
+  "Miniboss_mk13": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 56.0,
+    "Width": 56.0,
+    "Hitpoints": 200.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level1X/Penguin",
+      "AnimationCycle": 1.0
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/Explosion_02",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Explosions/01",
+        "AnimationCycle": 0.4
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.3333333
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
+    "Mover": {
+      "Type": "Acceleration",
+      "Parameters": {
+        "startSpeed": 300.0,
+        "maxSpeed": 300.0,
+        "acceleration": 450.0
+      }
+    },
+    "MoveTargetSelectType": "RandomTargets",
+    "Weapon": {
+      "Reloader": {
+        "FireRate": 0.3333333333
+      },
+      "AimType": "AimAtPlayer",
+      "Barrels": [
+        {
+          "Length": 0.0,
+          "Bullet": {
+            "TrajectoryType": "Sinus",
+            "TrajectoryParameters": {
+              "speed": 300.0,
+              "amplitude": 10.0,
+              "angularVelocity": 20.0
+            },
+            "TimeToLive": 5.0,
+            "HomingSpeed": 5.0,
+            "Damage": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        }
+      ],
+      "Sprite": {
+        "Name": "Sprites/Enemies/EvilEyeCannon",
+        "AnimationCycle": 1.5
+      },
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Enemy/TripleCannonShoot",
+          "Volume": 0.05
+        }
+      }
+    }
+  },
   "IceDoor": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
