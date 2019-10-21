@@ -1247,6 +1247,178 @@
         "Height": 40
       },
       "Doors": [
+      ],
+      "MaxEnemiesAtOnce": 10,
+      "Enemies": [
+        {
+          "BlueprintType": "MineSpawner_mk1",
+          "TilePosition": {
+            "X": 49,
+            "Y": 5,
+            "Offset": "8.0, -8.0"
+          },
+          "TrajectoryParameters": [
+            "-64.0, 64.0",
+            "64.0, -640.0"
+          ]
+        },
+        {
+          "BlueprintType": "MineSpawner_mk1",
+          "TilePosition": {
+            "X": 49,
+            "Y": 42,
+            "Offset": "8.0, 8.0"
+          },
+          "TrajectoryParameters": [
+            "-64.0, 640.0",
+            "64.0, -64.0"
+          ]
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 75,
+            "Y": 4,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 4,
+            "Y": 4
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 88,
+            "Y": 32,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 19,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 94,
+            "Y": 15,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 17,
+            "Y": 11,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 84,
+            "Y": 21,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 34,
+            "Y": 21,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 94,
+            "Y": 41,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 7,
+            "Y": 19,
+            "Offset": "8.0, -8.0"
+          }
+        },
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 67,
+            "Y": 37,
+            "Offset": "8.0, 8.0"
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk1",
+          "TilePosition": {
+            "X": 28,
+            "Y": 28,
+            "Offset": "8.0, -8.0"
+          }
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 2,
+        "Y": 2,
+        "Width": 96,
+        "Height": 44
+      },
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 49,
+          "Y": 32,
+          "Offset": "8.0, -8.0"
+        }
+      },
+      "SpawnPoints": [
+        {
+          "X": 17,
+          "Y": 28,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 17,
+          "Y": 19,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 34,
+          "Y": 11,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 54,
+          "Y": 11,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 75,
+          "Y": 17,
+          "Offset": "8.0, -8.0"
+        },
+        {
+          "X": 75,
+          "Y": 33,
+          "Offset": "8.0, -8.0"
+        }
+      ],
+      "Doors": [
         {
           "BlueprintType": "QuarterDelimiterHorizontal",
           "ClosesAt": 8,
@@ -1440,128 +1612,30 @@
           }
         }
       ],
-      "MaxEnemiesAtOnce": 10,
       "Enemies": [
         {
-          "BlueprintType": "MineSpawner_mk1",
+          "BlueprintType": "Miniboss_mk13",
           "TilePosition": {
             "X": 49,
-            "Y": 5,
+            "Y": 7,
             "Offset": "8.0, -8.0"
           },
           "TrajectoryParameters": [
-            "-64.0, 64.0",
-            "64.0, -640.0"
+            "0.0, 0.0",
+            "-64.0, -96.0",
+            "-192.0, -160.0",
+            "-320.0, -256.0",
+            "-192.0, -352.0",
+            "-64.0, -448.0",
+            "0.0, -512.0",
+            "64.0, -448.0",
+            "192.0, -352.0",
+            "320.0, -256.0",
+            "192.0, -160.0",
+            "64.0, -96.0"
           ]
-        },
-        {
-          "BlueprintType": "MineSpawner_mk1",
-          "TilePosition": {
-            "X": 49,
-            "Y": 42,
-            "Offset": "8.0, 8.0"
-          },
-          "TrajectoryParameters": [
-            "-64.0, 640.0",
-            "64.0, -64.0"
-          ]
-        },
-        {
-          "BlueprintType": "Tank_mk1",
-          "TilePosition": {
-            "X": 75,
-            "Y": 4,
-            "Offset": "8.0, 8.0"
-          }
-        },
-        {
-          "BlueprintType": "Hunter_mk1",
-          "TilePosition": {
-            "X": 4,
-            "Y": 4
-          }
-        },
-        {
-          "BlueprintType": "Tank_mk1",
-          "TilePosition": {
-            "X": 88,
-            "Y": 32,
-            "Offset": "8.0, 8.0"
-          }
-        },
-        {
-          "BlueprintType": "Hunter_mk1",
-          "TilePosition": {
-            "X": 17,
-            "Y": 19,
-            "Offset": "8.0, -8.0"
-          }
-        },
-        {
-          "BlueprintType": "Tank_mk1",
-          "TilePosition": {
-            "X": 94,
-            "Y": 15,
-            "Offset": "8.0, 8.0"
-          }
-        },
-        {
-          "BlueprintType": "Hunter_mk1",
-          "TilePosition": {
-            "X": 17,
-            "Y": 11,
-            "Offset": "8.0, -8.0"
-          }
-        },
-        {
-          "BlueprintType": "Tank_mk1",
-          "TilePosition": {
-            "X": 84,
-            "Y": 21,
-            "Offset": "8.0, 8.0"
-          }
-        },
-        {
-          "BlueprintType": "Hunter_mk1",
-          "TilePosition": {
-            "X": 34,
-            "Y": 21,
-            "Offset": "8.0, -8.0"
-          }
-        },
-        {
-          "BlueprintType": "Tank_mk1",
-          "TilePosition": {
-            "X": 94,
-            "Y": 41,
-            "Offset": "8.0, 8.0"
-          }
-        },
-        {
-          "BlueprintType": "Hunter_mk1",
-          "TilePosition": {
-            "X": 7,
-            "Y": 19,
-            "Offset": "8.0, -8.0"
-          }
-        },
-        {
-          "BlueprintType": "Tank_mk1",
-          "TilePosition": {
-            "X": 67,
-            "Y": 37,
-            "Offset": "8.0, 8.0"
-          }
-        },
-        {
-          "BlueprintType": "Hunter_mk1",
-          "TilePosition": {
-            "X": 28,
-            "Y": 28,
-            "Offset": "8.0, -8.0"
-          }
         }
-      ]
+      ],
     }
   ],
   "FogOfWar": {

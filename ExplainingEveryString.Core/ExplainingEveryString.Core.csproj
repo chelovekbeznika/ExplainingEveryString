@@ -72,6 +72,7 @@
     <Compile Include="Displaying\FogOfWar\ILevelFogOfWarExtractor.cs" />
     <Compile Include="Displaying\ICoordinatesMaster.cs" />
     <Compile Include="Displaying\ScreenCoordinatesMaster.cs" />
+    <Compile Include="GameModel\Movement\TargetSelectors\RandomFromListTargetsSelector.cs" />
     <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\DashStateDisplayer.cs" />
     <Compile Include="Interface\InterfaceInfoExtractor.cs" />

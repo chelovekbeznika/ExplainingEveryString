@@ -18,6 +18,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                     return new NotATargetSelector(actorLocator);
                 case MoveTargetSelectType.TargetsList:
                     return new LoopingTargetSelector(parameters, actorLocator());
+                case MoveTargetSelectType.RandomFromListTargets:
+                    return new RandomFromListTargetsSelector(parameters, actorLocator());
                 case MoveTargetSelectType.MoveTowardPlayer:
                     return new PlayerHunter(playerLocator);
                 case MoveTargetSelectType.RandomTargets:

@@ -5,6 +5,7 @@
         NoTarget,
         TargetsList,
         RandomTargets,
+        RandomFromListTargets,
         MoveTowardPlayer
     }
 }

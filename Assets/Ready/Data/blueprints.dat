@@ -901,7 +901,7 @@
       "Parameters": {
         "startSpeed": 100.0,
         "maxSpeed": 300.0,
-        "acceleration": 600.0
+        "acceleration": 750.0
       }
     },
     "MoveTargetSelectType": "MoveTowardPlayer",
@@ -1554,17 +1554,23 @@
     },
     "DeathEffect": {
       "Sound": {
-        "Name": "Sounds/Enemy/Explosion_02",
+        "Name": "Sounds/Bosses/SwanDyingScream",
         "Volume": 0.3
       },
       "Sprite": {
-        "Name": "Sprites/Explosions/01",
-        "AnimationCycle": 0.4
+        "Name": "Sprites/Enemies/Level1X/Death/Penguin",
+        "AnimationCycle": 0.5
       }
     },
     "AppearancePhaseSprite": {
-      "Name": "Sprites/Enemies/Appearance/32_32",
-      "AnimationCycle": 0.3333333
+      "Name": "Sprites/Enemies/Level1X/Appearance/Penguin",
+      "AnimationCycle": 1.5
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BreakingIce",
+        "Volume": 0.3
+      }
     },
     "DefaultAppearancePhaseDuration": 1.5,
     "Mover": {
@@ -1572,44 +1578,187 @@
       "Parameters": {
         "startSpeed": 300.0,
         "maxSpeed": 300.0,
-        "acceleration": 450.0
+        "acceleration": 600.0
       }
     },
-    "MoveTargetSelectType": "RandomTargets",
+    "MoveTargetSelectType": "RandomFromListTargets",
     "Weapon": {
       "Reloader": {
-        "FireRate": 0.3333333333
+        "FireRate": 2.0,
+        "Ammo": 3,
+        "ReloadTime": 4.0
       },
       "AimType": "AimAtPlayer",
       "Barrels": [
         {
-          "Length": 0.0,
+          "Length": 16.0,
+          "AngleCorrection": -0.52085637450195765,
           "Bullet": {
-            "TrajectoryType": "Sinus",
             "TrajectoryParameters": {
-              "speed": 300.0,
-              "amplitude": 10.0,
-              "angularVelocity": 20.0
+              "speed": 550.0
             },
-            "TimeToLive": 5.0,
-            "HomingSpeed": 5.0,
-            "Damage": 5.0,
+            "TimeToLive": 2.5,
+            "Damage": 2.5,
             "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": -0.2064703837890759,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 555.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 2.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 560.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 2.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": 0.20281607151463135,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 565.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 2.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": 0.40206904570558361,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 570.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 7.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": 0.49821161261364399,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 575.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 7.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": 0.39513704250749049,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 580.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 7.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": 0.1958822437133316,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 585.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 7.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 590.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 7.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": -0.19259013017301566,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 595.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 7.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+            }
+          }
+        },
+        {
+          "Length": 16.0,
+          "AngleCorrection": -0.57293869768348371,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 600.0
+            },
+            "TimeToLive": 2.5,
+            "Damage": 7.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
             }
           }
         }
       ],
-      "Sprite": {
-        "Name": "Sprites/Enemies/EvilEyeCannon",
-        "AnimationCycle": 1.5
-      },
       "ShootingEffect": {
         "Sound": {
-          "Name": "Sounds/Enemy/TripleCannonShoot",
-          "Volume": 0.05
+          "Name": "Sounds/Bosses/VakidzasiHit",
+          "Volume": 0.2
         }
       }
+    },
+    "Spawner": {
+      "MaxSpawned": 2,
+      "Reloader": {
+        "FireRate": 0.1
+      },
+      "PositionSelector" : {
+        "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
+      },
+      "BlueprintType": "Tank_mk1"
     }
   },
   "IceDoor": {

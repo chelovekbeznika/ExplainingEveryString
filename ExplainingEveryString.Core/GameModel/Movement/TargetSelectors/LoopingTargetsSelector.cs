@@ -24,11 +24,5 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
             Vector2 formerTarget = targets.Dequeue();
             targets.Enqueue(formerTarget);
         }
-
-        public void UnpackTargets(List<Vector2> trajectoryParams, Vector2 startPosition)
-        {
-            this.targets = new Queue<Vector2>(trajectoryParams);
-            this.startPosition = startPosition;
-        }
     }
 }
