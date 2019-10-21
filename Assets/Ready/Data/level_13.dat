@@ -1615,6 +1615,7 @@
       "Enemies": [
         {
           "BlueprintType": "Miniboss_mk13",
+          "Angle": -90.0,
           "TilePosition": {
             "X": 49,
             "Y": 7,

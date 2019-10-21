@@ -1564,7 +1564,7 @@
     },
     "AppearancePhaseSprite": {
       "Name": "Sprites/Enemies/Level1X/Appearance/Penguin",
-      "AnimationCycle": 1.5
+      "AnimationCycle": 3.0
     },
     "BeforeAppearanceEffect": {
       "Sound": {
@@ -1572,7 +1572,13 @@
         "Volume": 0.3
       }
     },
-    "DefaultAppearancePhaseDuration": 1.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BreakingIce",
+        "Volume": 0.4
+      }
+    },
+    "DefaultAppearancePhaseDuration": 3.0,
     "Mover": {
       "Type": "Acceleration",
       "Parameters": {
