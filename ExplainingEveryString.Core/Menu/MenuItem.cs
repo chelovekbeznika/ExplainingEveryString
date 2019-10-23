@@ -8,7 +8,8 @@ namespace ExplainingEveryString.Core.Menu
     {
         internal Texture2D Sprite { get; private set; }
         internal Boolean Selected { get; set; } = false;
-        internal EventHandler<EventArgs> ItemCommandExecuteRequested;
+        internal event EventHandler<EventArgs> ItemCommandExecuteRequested;
+        internal Func<Boolean> IsVisible { get; set; } = () => true;
 
         internal MenuItem(Texture2D sprite)
         {

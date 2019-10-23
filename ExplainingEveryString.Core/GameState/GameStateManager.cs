@@ -9,11 +9,13 @@ namespace ExplainingEveryString.Core.GameState
     {
         private enum GameState { BetweenLevels, InGame, Paused }
 
-        private GameState CurrentState = GameState.BetweenLevels;
+        private GameState currentState = GameState.BetweenLevels;
         private readonly Game game;
         private ComponentsManager componentsManager;
         private LevelSequence levelSequence;
         private GameProgress gameProgress;
+
+        internal Boolean IsPaused => currentState == GameState.Paused;
 
         internal GameStateManager(Game game, ComponentsManager componentsManager)
         {
@@ -86,17 +88,19 @@ namespace ExplainingEveryString.Core.GameState
             else
             {
                 SwitchToBetweenLevelsState();
+                componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
             }
         }
 
-        internal void TryPauseGame()
+        internal void TryPauseSwitch()
         {
-            if (CurrentState == GameState.InGame)
+            if (currentState == GameState.InGame)
             {
                 SwitchToPausedState();
+                componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
                 return;
             }
-            if (CurrentState == GameState.Paused)
+            if (currentState == GameState.Paused)
             {
                 SwitchToInGameState();
                 return;
@@ -107,14 +111,14 @@ namespace ExplainingEveryString.Core.GameState
         {
             componentsManager.SwitchGameplayRelatedComponents(true);
             componentsManager.SwitchMenuRelatedComponents(false);
-            CurrentState = GameState.InGame;
+            currentState = GameState.InGame;
         }
 
         private void SwitchToPausedState()
         {
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchMenuRelatedComponents(true);
-            CurrentState = GameState.Paused;
+            currentState = GameState.Paused;
         }
 
         private void SwitchToBetweenLevelsState()
@@ -122,7 +126,7 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.DeleteCurrentGameplayComponent();
-            CurrentState = GameState.BetweenLevels;
+            currentState = GameState.BetweenLevels;
         }
 
         private void ProgressToLevelStart()

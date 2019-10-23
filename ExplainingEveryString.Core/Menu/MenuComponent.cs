@@ -11,10 +11,9 @@ namespace ExplainingEveryString.Core.Menu
         private Texture2D background;
         private SpriteBatch spriteBatch;
         private MenuVisiblePart visiblePart;
+        private MenuItemsContainer CurrentButtonsContainer => visiblePart.CurrentButtonsContainer;
         private EesGame game;
         private InnerMenuInputProcessor menuInputProcessor;
-
-        internal Int32 SelectedItemIndex { get => visiblePart.SelectedIndex; set => visiblePart.SelectedIndex = value; }
 
         internal MenuComponent(EesGame game) : base(game)
         {
@@ -60,13 +59,18 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void Accept()
         {
-            visiblePart.RequestSelectedCommandExecution();
+            CurrentButtonsContainer.RequestSelectedCommandExecution();
+        }
+
+        internal void ReturnMenuToDefaultStateAtPause()
+        {
+            CurrentButtonsContainer.SelectDefaultButton();
         }
 
         internal void InitMenuInput(InnerMenuInputProcessor menuInputProcessor)
         {
-            menuInputProcessor.Down.ButtonPressed += (sender, e) => SelectedItemIndex += 1;
-            menuInputProcessor.Up.ButtonPressed += (sender, e) => SelectedItemIndex -= 1;
+            menuInputProcessor.Down.ButtonPressed += (sender, e) => CurrentButtonsContainer.SelectNextButton();
+            menuInputProcessor.Up.ButtonPressed += (sender, e) => CurrentButtonsContainer.SelectPreviousButton();
             menuInputProcessor.Accept.ButtonPressed += (sender, e) => Accept();
         }
     }

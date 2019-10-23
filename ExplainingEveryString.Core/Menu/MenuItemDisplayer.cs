@@ -20,24 +20,27 @@ namespace ExplainingEveryString.Core.Menu
             Vector2 position = new Vector2(pointPosition.X, pointPosition.Y);
             spriteBatch.Draw(item.Sprite, position, Color.White);
             if (item.Selected)
-            {
-                DrawHorizontallBorder(
-                    pointPosition.X - borderPart.Width,
-                    pointPosition.X + item.Sprite.Width + borderPart.Width,
-                    pointPosition.Y - borderPart.Height);
-                DrawHorizontallBorder(
-                    pointPosition.X - borderPart.Width,
-                    pointPosition.X + item.Sprite.Width + borderPart.Width,
-                    pointPosition.Y + item.Sprite.Height);
-                DrawVerticalBorder(
-                    pointPosition.Y,
-                    pointPosition.Y + item.Sprite.Height,
-                    pointPosition.X - borderPart.Width);
-                DrawVerticalBorder(
-                    pointPosition.Y,
-                    pointPosition.Y + item.Sprite.Height,
-                    pointPosition.X + item.Sprite.Width);
-            }
+                DrawBorder(item, pointPosition);
+        }
+
+        internal void DrawBorder(MenuItem item, Point pointPosition)
+        {
+            DrawHorizontallBorder(
+                pointPosition.X - borderPart.Width,
+                pointPosition.X + item.Sprite.Width + borderPart.Width,
+                pointPosition.Y - borderPart.Height);
+            DrawHorizontallBorder(
+                pointPosition.X - borderPart.Width,
+                pointPosition.X + item.Sprite.Width + borderPart.Width,
+                pointPosition.Y + item.Sprite.Height);
+            DrawVerticalBorder(
+                pointPosition.Y,
+                pointPosition.Y + item.Sprite.Height,
+                pointPosition.X - borderPart.Width);
+            DrawVerticalBorder(
+                pointPosition.Y,
+                pointPosition.Y + item.Sprite.Height,
+                pointPosition.X + item.Sprite.Width);
         }
 
         internal void DrawHorizontallBorder(Int32 from, Int32 to, Int32 yLineCoord)

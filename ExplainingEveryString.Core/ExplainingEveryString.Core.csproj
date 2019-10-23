@@ -85,6 +85,7 @@
     <Compile Include="Interface\TextureLoadingHelper.cs" />
     <Compile Include="Math\AnimationHelp.cs" />
     <Compile Include="Menu\InnerMenuInputProcessor.cs" />
+    <Compile Include="Menu\MenuItemsCollection.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="SpriteDataBuilder.cs" />
     <Compile Include="Timer.cs" />

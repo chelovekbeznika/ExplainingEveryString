@@ -41,7 +41,7 @@ namespace ExplainingEveryString.Core
 
             this.GameState = new GameStateManager(this, componentsManager);
             this.menuInputProcessor = new OuterMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
-            menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseGame();
+            menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
             base.Initialize();
         }
 
