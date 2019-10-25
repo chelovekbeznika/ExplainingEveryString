@@ -1,1 +1,34 @@
-["level_11.dat", "level_12.dat", "level_13.dat"]
+{
+  "LevelsBlocks": [
+    {
+      "Id": "Ice",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/1X"
+    },
+    {
+      "Id": "Test",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/1X"
+    }
+  ],
+  "Levels": [
+    {
+      "LevelData": "level_11.dat",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/11",
+      "LevelsBlockId": "Ice"
+    },
+    {
+      "LevelData": "level_12.dat",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/12",
+      "LevelsBlockId": "Ice"
+    },
+    {
+      "LevelData": "level_13.dat",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/13",
+      "LevelsBlockId": "Ice"
+    },
+    {
+      "LevelData": "level_01.dat",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/14",
+      "LevelsBlockId": "Test"
+    }
+  ]
+}

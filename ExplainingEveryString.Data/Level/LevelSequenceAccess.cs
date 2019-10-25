@@ -4,9 +4,9 @@ namespace ExplainingEveryString.Data.Level
 {
     public static class LevelSequenceAccess
     {
-        public static String[] LoadLevelSequence()
+        public static LevelSequnceSpecification LoadLevelSequence()
         {
-            return JsonDataAccessor.Instance.Load<String[]>(FileNames.LevelSequence);
+            return JsonDataAccessor.Instance.Load<LevelSequnceSpecification>(FileNames.LevelSequence);
         }
     }
 }

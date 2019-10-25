@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Data.Level;
+using System;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.GameState
@@ -7,10 +8,11 @@ namespace ExplainingEveryString.Core.GameState
     {
         private String[] fileNamesSequence;
         private Int32 levelsCompleted = 0;
+        internal LevelSequnceSpecification Specification { get; private set; }
 
-        internal LevelSequence(String[] fileNamesSequence, String startLevel)
+        internal LevelSequence(LevelSequnceSpecification specification, String startLevel)
         {
-            this.fileNamesSequence = fileNamesSequence;
+            this.fileNamesSequence = specification.Levels.Select(level => level.LevelData).ToArray();
             foreach (var (index, level) in fileNamesSequence.Select((level, index) => (index, level)))
                 if (level == startLevel)
                     this.levelsCompleted = index;

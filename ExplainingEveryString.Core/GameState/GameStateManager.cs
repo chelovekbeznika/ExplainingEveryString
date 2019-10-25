@@ -17,17 +17,18 @@ namespace ExplainingEveryString.Core.GameState
 
         internal Boolean IsPaused => currentState == GameState.Paused;
 
-        internal GameStateManager(Game game, ComponentsManager componentsManager)
+        internal GameStateManager(Game game, LevelSequnceSpecification levelSequenceSpecification, 
+            ComponentsManager componentsManager)
         {
             this.game = game;
             this.componentsManager = componentsManager;
             this.gameProgress = GameProgressAccess.Load();
-            String[] rawLevelSequence = LevelSequenceAccess.LoadLevelSequence();
+            
             if (gameProgress != null)
-                this.levelSequence = new LevelSequence(rawLevelSequence, gameProgress.LevelName);
+                this.levelSequence = new LevelSequence(levelSequenceSpecification, gameProgress.LevelName);
             else
             {
-                this.levelSequence = new LevelSequence(rawLevelSequence, null);
+                this.levelSequence = new LevelSequence(levelSequenceSpecification, null);
                 ProgressToLevelStart();
             }
         }

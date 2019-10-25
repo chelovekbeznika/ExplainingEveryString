@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace ExplainingEveryString.Core.Displaying.FogOfWar
 {

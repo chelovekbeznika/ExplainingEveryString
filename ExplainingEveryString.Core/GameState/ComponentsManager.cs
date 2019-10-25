@@ -15,12 +15,13 @@ namespace ExplainingEveryString.Core.GameState
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
 
-        internal ComponentsManager(EesGame game, IBlueprintsLoader blueprintsLoader)
+        internal ComponentsManager(EesGame game, 
+            LevelSequnceSpecification levelSequenceSpecification, IBlueprintsLoader blueprintsLoader)
         {
             this.game = game;
             this.blueprintsLoader = blueprintsLoader;
             Interface = new InterfaceComponent(game);
-            Menu = new MenuComponent(game);
+            Menu = new MenuComponent(game, levelSequenceSpecification);
         }
 
         internal void InitNewGameplayComponent(GameProgress gameProgress)

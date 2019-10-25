@@ -3,6 +3,7 @@ using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -37,9 +38,12 @@ namespace ExplainingEveryString.Core
             blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
-            ComponentsManager componentsManager = new ComponentsManager(this, blueprintsLoader);
+            LevelSequnceSpecification levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
 
-            this.GameState = new GameStateManager(this, componentsManager);
+            ComponentsManager componentsManager = 
+                new ComponentsManager(this, levelSequenceSpecification, blueprintsLoader);
+
+            this.GameState = new GameStateManager(this, levelSequenceSpecification, componentsManager);
             this.menuInputProcessor = new OuterMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
             base.Initialize();

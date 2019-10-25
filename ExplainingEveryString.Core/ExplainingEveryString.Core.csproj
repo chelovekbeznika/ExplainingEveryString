@@ -84,7 +84,9 @@
     <Compile Include="Interface\ISpritePartDisplayer.cs" />
     <Compile Include="Interface\TextureLoadingHelper.cs" />
     <Compile Include="Math\AnimationHelp.cs" />
+    <Compile Include="Menu\IMenuItemsContainerBuilder.cs" />
     <Compile Include="Menu\InnerMenuInputProcessor.cs" />
+    <Compile Include="Menu\LevelSelectMenuBuilder.cs" />
     <Compile Include="Menu\MenuItemsContainer.cs" />
     <Compile Include="Menu\MenuItemWithContainer.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />

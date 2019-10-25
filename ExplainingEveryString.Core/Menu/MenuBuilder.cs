@@ -3,16 +3,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ExplainingEveryString.Core.Menu
 {
-    internal class MenuBuilder
+    internal class MenuBuilder : IMenuBuilder
     {
         private EesGame game;
+        private IMenuBuilder levelSelectBuilder;
 
-        internal MenuBuilder(EesGame game)
+        internal MenuBuilder(EesGame game, IMenuBuilder levelSelectBuilder)
         {
             this.game = game;
+            this.levelSelectBuilder = levelSelectBuilder;
         }
 
-        internal MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
+        public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
         {
             ContentManager content = game.Content;
             MenuItem[] items = new MenuItem[]
@@ -21,7 +23,7 @@ namespace ExplainingEveryString.Core.Menu
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/NewGame")),
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/Continue")),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect"),
-                    GetSelectLevelMenu(content, menuVisiblePart), menuVisiblePart),
+                    levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/Exit"))
             };
 
@@ -32,25 +34,6 @@ namespace ExplainingEveryString.Core.Menu
 
             items[0].IsVisible = () => game.GameState.IsPaused;
             return new MenuItemsContainer(items);
-        }
-
-        private MenuItemsContainer GetSelectLevelMenu(ContentManager content, MenuVisiblePart menuVisiblePart)
-        {
-            MenuItemsContainer childContainer = new MenuItemsContainer(
-                new MenuItem[]
-                {
-                    new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect/11")),
-                    new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect/12")),
-                    new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect/13")),
-                    new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect/14")),
-                });
-            MenuItemsContainer levelSelectContainer = new MenuItemsContainer(
-                new MenuItem[]
-                {
-                    new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect/1X"),
-                        childContainer, menuVisiblePart)
-                });
-            return levelSelectContainer;
         }
     }
 }

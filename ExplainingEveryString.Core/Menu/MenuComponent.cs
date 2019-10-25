@@ -1,8 +1,9 @@
-﻿using ExplainingEveryString.Core.Math;
+﻿using ExplainingEveryString.Core.GameState;
+using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Configuration;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace ExplainingEveryString.Core.Menu
 {
@@ -14,10 +15,12 @@ namespace ExplainingEveryString.Core.Menu
         private MenuItemsContainer CurrentButtonsContainer => visiblePart.CurrentButtonsContainer;
         private EesGame game;
         private InnerMenuInputProcessor menuInputProcessor;
+        private LevelSequnceSpecification levelSequenceSpecification;
 
-        internal MenuComponent(EesGame game) : base(game)
+        internal MenuComponent(EesGame game, LevelSequnceSpecification levelSequenceSpecification) : base(game)
         {
             this.game = game;
+            this.levelSequenceSpecification = levelSequenceSpecification;
             this.DrawOrder = ComponentsOrder.Menu;
             this.UpdateOrder = ComponentsOrder.Menu;
             this.menuInputProcessor = new InnerMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
@@ -41,7 +44,7 @@ namespace ExplainingEveryString.Core.Menu
         private MenuVisiblePart InitializeVisiblePart()
         {
             Texture2D borderPart = game.Content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder");
-            MenuBuilder menuBuild = new MenuBuilder(game);
+            MenuBuilder menuBuild = new MenuBuilder(game, new LevelSelectMenuBuilder(game, levelSequenceSpecification));
             Rectangle screen = game.GraphicsDevice.Viewport.Bounds;
             MenuItemPositionsMapper positionsMapper = new MenuItemPositionsMapper(new Point(screen.Width, screen.Height), 16);
             MenuItemDisplayer menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);

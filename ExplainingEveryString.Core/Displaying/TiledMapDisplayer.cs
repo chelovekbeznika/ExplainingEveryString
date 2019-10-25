@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.Tiles;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Tiled.Graphics;
-using System;
 
 namespace ExplainingEveryString.Core.Displaying
 {

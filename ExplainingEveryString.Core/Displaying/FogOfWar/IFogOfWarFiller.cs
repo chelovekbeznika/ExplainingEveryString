@@ -1,5 +1,4 @@
 ﻿using ExplainingEveryString.Data.Level;
-using System;
 using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.Displaying.FogOfWar

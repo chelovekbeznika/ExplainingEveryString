@@ -67,7 +67,10 @@
     <Compile Include="Level\GameProgress.cs" />
     <Compile Include="Level\GameProgressAccess.cs" />
     <Compile Include="Level\LevelProgress.cs" />
+    <Compile Include="Level\LevelsBlockSpecification.cs" />
     <Compile Include="Level\LevelSequenceAccess.cs" />
+    <Compile Include="Level\LevelSequnceSpecification.cs" />
+    <Compile Include="Level\LevelSpecification.cs" />
     <Compile Include="Level\PositionOnTileMap.cs" />
     <Compile Include="Level\EnemyWave.cs" />
     <Compile Include="Specifications\BarrelSpecification.cs" />
