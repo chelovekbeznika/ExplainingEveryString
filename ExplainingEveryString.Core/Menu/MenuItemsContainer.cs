@@ -8,10 +8,13 @@ namespace ExplainingEveryString.Core.Menu
 
         internal MenuItem[] Items { get; private set; }
         internal Int32 SelectedIndex { get; private set; }
+        internal MenuItemsContainer ParentContainer { get; set; }
 
-        internal MenuItemsContainer(MenuItem[] items, Int32 defaultButton)
+        internal MenuItemsContainer(MenuItem[] items, Int32 defaultButton = 0)
         {
             this.Items = items;
+            foreach (MenuItem item in Items)
+                item.ParentContainer = this;
             this.defaultButton = defaultButton;
             SelectDefaultButton();
         }

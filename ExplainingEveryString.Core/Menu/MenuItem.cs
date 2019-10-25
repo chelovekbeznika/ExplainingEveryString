@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Core.Menu
         internal Boolean Selected { get; set; } = false;
         internal event EventHandler<EventArgs> ItemCommandExecuteRequested;
         internal Func<Boolean> IsVisible { get; set; } = () => true;
+        internal virtual MenuItemsContainer ParentContainer { get; set; }
 
         internal MenuItem(Texture2D sprite)
         {
@@ -21,7 +22,7 @@ namespace ExplainingEveryString.Core.Menu
             return new Point(Sprite.Width, Sprite.Height);
         }
 
-        internal void RequestCommandExecution()
+        internal virtual void RequestCommandExecution()
         {
             ItemCommandExecuteRequested?.Invoke(this, EventArgs.Empty);
         }

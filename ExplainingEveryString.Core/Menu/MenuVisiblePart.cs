@@ -11,11 +11,11 @@ namespace ExplainingEveryString.Core.Menu
         private MenuItemPositionsMapper positionsMapper;
         private MenuItemDisplayer itemDisplayer;
 
-        internal MenuItemsContainer CurrentButtonsContainer { get; private set; }
+        internal MenuItemsContainer CurrentButtonsContainer { get; set; }
 
         internal MenuVisiblePart(MenuBuilder builder, MenuItemPositionsMapper positionsMapper, MenuItemDisplayer itemDisplayer)
         {
-            this.CurrentButtonsContainer = builder.BuildMenu();
+            this.CurrentButtonsContainer = builder.BuildMenu(this);
             this.positionsMapper = positionsMapper;
             this.itemDisplayer = itemDisplayer;
         }
@@ -28,6 +28,13 @@ namespace ExplainingEveryString.Core.Menu
             {
                 itemDisplayer.Draw(pair.Item, pair.Position);
             }
+        }
+
+        internal void TryToGetBack()
+        {
+            MenuItemsContainer parentContainer = CurrentButtonsContainer.ParentContainer;
+            if (parentContainer != null)
+                CurrentButtonsContainer = parentContainer;
         }
     }
 }

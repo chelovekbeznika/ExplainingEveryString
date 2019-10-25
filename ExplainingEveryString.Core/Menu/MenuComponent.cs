@@ -72,6 +72,7 @@ namespace ExplainingEveryString.Core.Menu
             menuInputProcessor.Down.ButtonPressed += (sender, e) => CurrentButtonsContainer.SelectNextButton();
             menuInputProcessor.Up.ButtonPressed += (sender, e) => CurrentButtonsContainer.SelectPreviousButton();
             menuInputProcessor.Accept.ButtonPressed += (sender, e) => Accept();
+            menuInputProcessor.Back.ButtonPressed += (sender, e) => visiblePart.TryToGetBack();
         }
     }
 }
