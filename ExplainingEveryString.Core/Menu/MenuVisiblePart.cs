@@ -35,5 +35,11 @@ namespace ExplainingEveryString.Core.Menu
             if (parentContainer != null)
                 CurrentButtonsContainer = parentContainer;
         }
+
+        internal void ReturnToRoot()
+        {
+            while (CurrentButtonsContainer.ParentContainer != null)
+                CurrentButtonsContainer = CurrentButtonsContainer.ParentContainer;
+        }
     }
 }

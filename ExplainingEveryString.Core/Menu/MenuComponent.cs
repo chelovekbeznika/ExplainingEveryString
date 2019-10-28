@@ -67,6 +67,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void ReturnMenuToDefaultStateAtPause()
         {
+            visiblePart.ReturnToRoot();
             CurrentButtonsContainer.SelectDefaultButton();
         }
 

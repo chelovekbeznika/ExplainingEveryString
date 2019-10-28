@@ -25,10 +25,11 @@ namespace ExplainingEveryString.Core.GameState
             this.gameProgress = GameProgressAccess.Load();
             
             if (gameProgress != null)
-                this.levelSequence = new LevelSequence(levelSequenceSpecification, gameProgress.LevelName);
+                this.levelSequence = new LevelSequence(levelSequenceSpecification, 
+                    gameProgress.CurrentLevelFileName, gameProgress.MaxAchievedLevelName);
             else
             {
-                this.levelSequence = new LevelSequence(levelSequenceSpecification, null);
+                this.levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
                 ProgressToLevelStart();
             }
         }
@@ -62,6 +63,27 @@ namespace ExplainingEveryString.Core.GameState
         internal void ContinueCurrentGame()
         {
             StartCurrentLevel();
+        }
+
+        internal void ContinueFrom(String levelName)
+        {
+            gameProgress = new GameProgress
+            {
+                CurrentLevelFileName = levelName,
+                MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile(),
+                LevelProgress = new LevelProgress
+                {
+                    CurrentCheckPoint = CheckpointsManager.StartCheckpointName,
+                    GameTime = 0
+                }
+            };
+            GameProgressAccess.Save(gameProgress);
+            StartCurrentLevel();
+        }
+
+        internal Boolean LevelAvailable(String levelFileName)
+        {
+            return levelSequence.LevelIsAvailable(levelFileName);
         }
 
         internal void NotableProgressMaid(Object sender, CheckpointReachedEventArgs eventArgs)
@@ -134,7 +156,8 @@ namespace ExplainingEveryString.Core.GameState
         {
             this.gameProgress = new GameProgress
             {
-                LevelName = this.levelSequence.CurrentLevelName,
+                CurrentLevelFileName = this.levelSequence.GetCurrentLevelFile(),
+                MaxAchievedLevelName = this.levelSequence.GetMaxAchievedLevelFile(),
                 LevelProgress = new LevelProgress
                 {
                     CurrentCheckPoint = CheckpointsManager.StartCheckpointName,

@@ -1,27 +1,50 @@
 ﻿using ExplainingEveryString.Data.Level;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.GameState
 {
     internal class LevelSequence
     {
-        private String[] fileNamesSequence;
         private Int32 levelsCompleted = 0;
+        private Int32 currentLevel = 0;
         internal LevelSequnceSpecification Specification { get; private set; }
+        private Dictionary<String, Int32> fileNameToNumberMapping = new Dictionary<String, Int32>();
 
-        internal LevelSequence(LevelSequnceSpecification specification, String startLevel)
+        internal LevelSequence(LevelSequnceSpecification specification, String startLevelName, String maxLevelName)
         {
-            this.fileNamesSequence = specification.Levels.Select(level => level.LevelData).ToArray();
-            foreach (var (index, level) in fileNamesSequence.Select((level, index) => (index, level)))
-                if (level == startLevel)
-                    this.levelsCompleted = index;
+            this.Specification = specification;
+            this.fileNameToNumberMapping = specification.Levels.Select((level, index) => new { level.LevelData, index })
+                .ToDictionary(pair => pair.LevelData, pair => pair.index);
+            if (startLevelName != null)
+                this.currentLevel = fileNameToNumberMapping[startLevelName];
+            if (maxLevelName != null)
+                this.levelsCompleted = fileNameToNumberMapping[maxLevelName];
         }
 
-        internal Boolean GameCompleted => levelsCompleted >= fileNamesSequence.Length;
-        internal String GetCurrentLevelFile() => fileNamesSequence[levelsCompleted];
-        internal void MarkLevelComplete() => levelsCompleted += 1;
-        internal void Reset() => levelsCompleted = 0;
-        internal String CurrentLevelName => fileNamesSequence[levelsCompleted];
+        internal Boolean GameCompleted => levelsCompleted >= Specification.Levels.Length;
+        internal String GetCurrentLevelFile() => Specification.Levels[currentLevel].LevelData;
+        internal String GetMaxAchievedLevelFile() => !GameCompleted 
+            ? Specification.Levels[levelsCompleted].LevelData
+            : Specification.Levels[Specification.Levels.Length - 1].LevelData;
+
+        internal Boolean LevelIsAvailable(String levelFileName)
+        {
+            return levelsCompleted >= fileNameToNumberMapping[levelFileName];
+        }
+
+        internal void MarkLevelComplete()
+        {
+            currentLevel += 1;
+            if (levelsCompleted < currentLevel)
+            {
+                levelsCompleted = currentLevel;
+                if (GameCompleted)
+                    currentLevel -= 1;
+            }   
+        }
+
+        internal void Reset() => currentLevel = 0;
     }
 }

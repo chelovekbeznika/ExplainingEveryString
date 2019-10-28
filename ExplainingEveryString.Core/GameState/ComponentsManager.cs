@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void InitNewGameplayComponent(GameProgress gameProgress)
         {
             CurrentGameplay = new GameplayComponent(
-                game, blueprintsLoader, gameProgress.LevelName, gameProgress.LevelProgress);
+                game, blueprintsLoader, gameProgress.CurrentLevelFileName, gameProgress.LevelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
             game.Components.Insert(ComponentsOrder.Gameplay, CurrentGameplay);
         }

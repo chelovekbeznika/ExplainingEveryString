@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.Menu
 {
@@ -22,6 +23,7 @@ namespace ExplainingEveryString.Core.Menu
         {
             this.container = container;
             this.menuVisiblePart = menuVisiblePart;
+            this.IsVisible = () => container.Items.Any(item => item.IsVisible());
         }
 
         internal void SetParentContainer(MenuItemsContainer parentContainer)
