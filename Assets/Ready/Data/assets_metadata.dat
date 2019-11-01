@@ -212,40 +212,100 @@
       "Name": "Sprites/Doors/Level1X/BridgeLockOpening",
       "AnimationFrames": 3
     },
-	{
-	  "Name": "Sprites/Interface/ActiveDash",
-	  "AnimationFrames": 11,
-	  "DefaultAnimationCycle": 0.4
-	},
-	{
-	  "Name": "Sprites/Interface/EmptyHealthBar",
-	  "AnimationFrames": 2,
-	  "DefaultAnimationCycle": 1.0
-	},
-	{
-	  "Name": "Sprites/FogOfWar/Test/1",
-	  "AnimationFrames": 7,
-	  "DefaultAnimationCycle": 7.0
-	},
-	{
-	  "Name": "Sprites/FogOfWar/Level1X/1",
-	  "AnimationFrames": 14,
-	  "DefaultAnimationCycle": 2.0
-	},
-	{
-	  "Name": "Sprites/FogOfWar/Level1X/2",
-	  "AnimationFrames": 5,
-	  "DefaultAnimationCycle": 1.0
-	},
-	{
-	  "Name": "Sprites/FogOfWar/Level1X/3",
-	  "AnimationFrames": 8,
-	  "DefaultAnimationCycle": 1.0
-	},
-	{
-	  "Name": "Sprites/FogOfWar/Level1X/4",
-	  "AnimationFrames": 12,
-	  "DefaultAnimationCycle": 3.0
-	}
+    {
+      "Name": "Sprites/Enemies/Boss1/Appearance",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/Death",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/FifthFormOff",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/FifthFormOn",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/FirstFormOff",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/FirstFormOn",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/FourthFormOff",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/FourthFormOn",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/SecondFormOff",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/SecondFormOn",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/SeventhFormOff",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/SeventhFormOn",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/SixthFormOff",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/SixthFormOn",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Boss1/ThirdForm",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Interface/ActiveDash",
+      "AnimationFrames": 11,
+      "DefaultAnimationCycle": 0.4
+    },
+    {
+      "Name": "Sprites/Interface/EmptyHealthBar",
+      "AnimationFrames": 2,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Test/1",
+      "AnimationFrames": 7,
+      "DefaultAnimationCycle": 7.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level1X/1",
+      "AnimationFrames": 14,
+      "DefaultAnimationCycle": 2.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level1X/2",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level1X/3",
+      "AnimationFrames": 8,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level1X/4",
+      "AnimationFrames": 12,
+      "DefaultAnimationCycle": 3.0
+    }
   ]
 }
