@@ -38,6 +38,36 @@
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
+#begin Sounds/Bosses/1/Appearance.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/1/Appearance.wav
+
+#begin Sounds/Bosses/1/Death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/1/Death.wav
+
+#begin Sounds/Bosses/1/PhaseOff.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/1/PhaseOff.wav
+
+#begin Sounds/Bosses/1/PhaseOn.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/1/PhaseOn.wav
+
+#begin Sounds/Bosses/1/Spawn.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/1/Spawn.wav
+
 #begin Sounds/Bosses/BreakingIce.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -175,6 +205,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/StandardEnemy/Appearance.wav
+
+#begin Sounds/StandardEnemy/CoolShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/StandardEnemy/CoolShot.wav
 
 #begin Sounds/StandardEnemy/LongShot.wav
 /importer:WavImporter
