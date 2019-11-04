@@ -1,0 +1,43 @@
+{
+  "TileMap": "TileMaps/Level_14",
+  "PlayerPosition": {
+    "BlueprintType": "Player",
+    "TilePosition": {
+      "X": 31,
+      "Y": 45,
+      "Offset": "8.0, -8.0"
+    }
+  },
+  "EnemiesWaves": [
+    {
+      "StartRegion": {
+        "X": 2,
+        "Y": 2,
+        "Height": 60,
+        "Width": 60
+      },
+      "Enemies": [
+        "BlueprintType": "Tank_mk1",
+        "TilePosition": {
+          "X": 31,
+          "Y": 31,
+          "Offset": "8.0, -8.0"
+        }
+      ]
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level1X/0",
+      "Sprites/FogOfWar/Level1X/1",
+      "Sprites/FogOfWar/Level1X/2",
+      "Sprites/FogOfWar/Level1X/3",
+      "Sprites/FogOfWar/Level1X/4"
+    ],
+    "Weights": [1, 1, 1, 1, 1]
+  },
+  "ObstaclesTilePositions": {
+  }
+}

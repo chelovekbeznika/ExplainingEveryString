@@ -979,15 +979,15 @@
   ],
   "FogOfWar": {
     "ParticleWidth": 16,
-	"ParticleHeight": 16,
-	"Sprites": [
-	  "Sprites/FogOfWar/Level1X/0",
-	  "Sprites/FogOfWar/Level1X/1",
-	  "Sprites/FogOfWar/Level1X/2",
-	  "Sprites/FogOfWar/Level1X/3",
-	  "Sprites/FogOfWar/Level1X/4"
-	],
-	"Weights": [6, 1, 1, 1, 1]
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level1X/0",
+      "Sprites/FogOfWar/Level1X/1",
+      "Sprites/FogOfWar/Level1X/2",
+      "Sprites/FogOfWar/Level1X/3",
+      "Sprites/FogOfWar/Level1X/4"
+    ],
+    "Weights": [16, 1, 1, 1, 1]
   },
   "ObstaclesTilePositions": {
   }

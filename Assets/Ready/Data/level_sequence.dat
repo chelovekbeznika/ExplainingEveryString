@@ -20,6 +20,11 @@
       "LevelData": "level_13.dat",
       "ButtonSprite": "Sprites/Menu/LevelSelect/13",
       "LevelsBlockId": "Ice"
+    },
+    {
+      "LevelData": "level_14.dat",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/14",
+      "LevelsBlockId": "Ice"
     }
   ]
 }
