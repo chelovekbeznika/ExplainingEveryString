@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ExplainingEveryString.Core.Tiles;
 using Microsoft.Xna.Framework;
 

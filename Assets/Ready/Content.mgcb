@@ -36,9 +36,7 @@
 /copy:Data/level_13.dat
 
 #begin Data/level_14.dat
-/importer:
-/processor:
-/build:Data/level_14.dat
+/copy:Data/level_14.dat
 
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat

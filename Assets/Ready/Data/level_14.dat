@@ -8,7 +8,7 @@
       "Offset": "8.0, -8.0"
     }
   },
-  "EnemiesWaves": [
+  "EnemyWaves": [
     {
       "StartRegion": {
         "X": 2,
@@ -17,11 +17,13 @@
         "Width": 60
       },
       "Enemies": [
-        "BlueprintType": "Tank_mk1",
-        "TilePosition": {
-          "X": 31,
-          "Y": 31,
-          "Offset": "8.0, -8.0"
+        {
+          "BlueprintType": "Tank_mk1",
+          "TilePosition": {
+            "X": 31,
+            "Y": 31,
+            "Offset": "8.0, -8.0"
+          }
         }
       ]
     }
