@@ -1,6 +1,4 @@
 ﻿using ExplainingEveryString.Data.Specifications;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System;
 using System.ComponentModel;
 
@@ -13,17 +11,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single CollisionDamage { get; set; }
         [DefaultValue(null)]
         public String CollideTag { get; set; }
-        [DefaultValue(null)]
-        public MoverSpecification Mover { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
-        [DefaultValue(MoveTargetSelectType.NoTarget)]
-        public MoveTargetSelectType MoveTargetSelectType { get; set; }
-        [DefaultValue(null)]
-        public WeaponSpecification Weapon { get; set; }
-        [DefaultValue(null)]
-        public SpawnerSpecification Spawner { get; set; }
-        [DefaultValue(null)]
-        public PostMortemSurpriseSpecification PostMortemSurprise { get; set; }
+        public EnemyBehaviorSpecification Behavior { get; set; }
         public SpecEffectSpecification DeathEffect { get; set; }
         [DefaultValue(null)]
         public SpecEffectSpecification BeforeAppearanceEffect { get; set; }

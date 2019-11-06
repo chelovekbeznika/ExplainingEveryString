@@ -8,13 +8,15 @@
     "Hitpoints": 7.0,
     "ActiveTime": 2.5,
     "ShadowTime": 2.5,
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 100.0
-      }
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 100.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList"
     },
-    "MoveTargetSelectType": "TargetsList",
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Mine"
     },
@@ -55,38 +57,41 @@
     "Width": 16.0,
     "Hitpoints": 5.0,
     "CollideTag": "Hunter",
-    "Mover": {
-      "Type": "Acceleration",
-      "Parameters": {
-        "startSpeed": 100.0,
-        "maxSpeed": 300.0,
-        "acceleration": 600.0
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 100.0,
+          "maxSpeed": 300.0,
+          "acceleration": 600.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "PostMortemSurprise": {
+        "Weapon": {
+          "AimType": "AimAtPlayer",
+          "Barrels": [
+            {
+              "Length": 0.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 200.0
+                },
+                "Damage": 0.5,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            }
+          ]
+        }
       }
     },
-    "MoveTargetSelectType": "MoveTowardPlayer",
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Hunter"
     },
-    "PostMortemSurprise": {
-      "Weapon": {
-        "AimType": "AimAtPlayer",
-        "Barrels": [
-          {
-            "Length": 0.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 200.0
-              },
-              "Damage": 0.5,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          }
-        ]
-      }
-    },
+
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Explosion_01",
@@ -135,101 +140,103 @@
       "AnimationCycle": 0.333333
     },
     "DefaultAppearancePhaseDuration": 1.5,
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 5.0,
-        "Ammo": 5,
-        "ReloadTime": 1.5
-      },
-      "Barrels": [
-        {
-          "Length": 13.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 1250.0,
-              "sideSpeed": -200.0,
-              "fallAcceleration": 750.0
-            },
-            "Damage": 0.5,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 5.0,
+          "Ammo": 5,
+          "ReloadTime": 1.5
+        },
+        "Barrels": [
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 1250.0,
+                "sideSpeed": -200.0,
+                "fallAcceleration": 750.0
+              },
+              "Damage": 0.5,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
             }
+          },
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 1250.0,
+                "sideSpeed": -100.0,
+                "fallAcceleration": 750.0
+              },
+              "Damage": 0.5,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 1250.0,
+                "sideSpeed": 0.0,
+                "fallAcceleration": 750.0
+              },
+              "Damage": 0.5,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 1250.0,
+                "sideSpeed": 100.0,
+                "fallAcceleration": 750.0
+              },
+              "Damage": 0.5,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 1250.0,
+                "sideSpeed": 200.0,
+                "fallAcceleration": 750.0
+              },
+              "Damage": 0.5,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/FixedCannonShoot",
+            "Volume": 0.05
           }
         },
-        {
-          "Length": 13.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 1250.0,
-              "sideSpeed": -100.0,
-              "fallAcceleration": 750.0
-            },
-            "Damage": 0.5,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 13.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 1250.0,
-              "sideSpeed": 0.0,
-              "fallAcceleration": 750.0
-            },
-            "Damage": 0.5,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 13.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 1250.0,
-              "sideSpeed": 100.0,
-              "fallAcceleration": 750.0
-            },
-            "Damage": 0.5,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 13.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 1250.0,
-              "sideSpeed": 200.0,
-              "fallAcceleration": 750.0
-            },
-            "Damage": 0.5,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Enemy/FixedCannonShoot",
-          "Volume": 0.05
-        }
-      },
-      "AimType": "FixedFireDirection"
+        "AimType": "FixedFireDirection"
+      }
     }
   },
   "Helicopter": {
@@ -257,98 +264,100 @@
       "AnimationCycle": 0.2
     },
     "DefaultAppearancePhaseDuration": 0.2,
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 2.0
-      }
-    },
-    "MoveTargetSelectType": "TargetsList",
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 10.0,
-        "Ammo": 10,
-        "ReloadTime": 2.0
-      },
-      "Barrels": [
-        {
-          "Length": 36.0,
-          "AngleCorrection": -90.0,
-          "Bullet": {
-            "TrajectoryType": "Parabolic",
-            "TrajectoryParameters": {
-              "speed": 500.0,
-              "outerCoefficient": -5.0,
-              "innerCoefficient": 3.0
-            },
-            "Damage": 2.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HelicopterBullet"
-            }
-          }
-        },
-        {
-          "Length": 36.0,
-          "AngleCorrection": -90.0,
-          "Bullet": {
-            "TrajectoryType": "Parabolic",
-            "TrajectoryParameters": {
-              "speed": 500.0,
-              "outerCoefficient": 5.0,
-              "innerCoefficient": 3.0
-            },
-            "Damage": 2.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HelicopterBullet"
-            }
-          }
-        },
-        {
-          "Length": 36.0,
-          "AngleCorrection": -90.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 500.0
-            },
-            "Damage": 2.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HelicopterBullet"
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Bosses/HelicopterShoot",
-          "Volume": 0.15
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 2.0
         }
       },
-      "AimType": "FixedFireDirection"
-    },
-    "Spawner": {
-      "MaxSpawned": 4,
-      "Reloader": {
-        "FireRate": 1
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 10.0,
+          "Ammo": 10,
+          "ReloadTime": 2.0
+        },
+        "Barrels": [
+          {
+            "Length": 36.0,
+            "AngleCorrection": -90.0,
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 500.0,
+                "outerCoefficient": -5.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 2.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "Length": 36.0,
+            "AngleCorrection": -90.0,
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 500.0,
+                "outerCoefficient": 5.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 2.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "Length": 36.0,
+            "AngleCorrection": -90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 500.0
+              },
+              "Damage": 2.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/HelicopterShoot",
+            "Volume": 0.15
+          }
+        },
+        "AimType": "FixedFireDirection"
       },
-      "PositionSelector" : {
-        "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
-      },
-      "BlueprintType": "Hunter"
-    },
-    "PostMortemSurprise": {
-      "Spawn": {
-        "AvengersAmount": 3,
-        "AvengersType": "Hunter",
+      "Spawner": {
+        "MaxSpawned": 4,
+        "Reloader": {
+          "FireRate": 1
+        },
         "PositionSelector" : {
-          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
-          "SpawnPositions": [
-            "-150.0, 150.0",
-            "150.0, 150.0",
-            "0.0, -150.0"
-          ]
+          "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
+        },
+        "BlueprintType": "Hunter"
+      },
+      "PostMortemSurprise": {
+        "Spawn": {
+          "AvengersAmount": 3,
+          "AvengersType": "Hunter",
+          "PositionSelector" : {
+            "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+            "SpawnPositions": [
+              "-150.0, 150.0",
+              "150.0, 150.0",
+              "0.0, -150.0"
+            ]
+          }
         }
       }
     }
@@ -377,47 +386,49 @@
       "AnimationCycle": 0.3333333
     },
     "DefaultAppearancePhaseDuration": 1.5,
-    "Mover": {
-      "Type": "Acceleration",
-      "Parameters": {
-        "startSpeed": 300.0,
-        "maxSpeed": 300.0,
-        "acceleration": 450.0
-      }
-    },
-    "MoveTargetSelectType": "RandomTargets",
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 0.3333333333
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 300.0,
+          "maxSpeed": 300.0,
+          "acceleration": 450.0
+        }
       },
-      "AimType": "AimAtPlayer",
-      "Barrels": [
-        {
-          "Length": 0.0,
-          "Bullet": {
-            "TrajectoryType": "Sinus",
-            "TrajectoryParameters": {
-              "speed": 300.0,
-              "amplitude": 10.0,
-              "angularVelocity": 20.0
-            },
-            "TimeToLive": 5.0,
-            "HomingSpeed": 5.0,
-            "Damage": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+      "MoveTargetSelectType": "RandomTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.3333333333
+        },
+        "AimType": "AimAtPlayer",
+        "Barrels": [
+          {
+            "Length": 0.0,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "amplitude": 10.0,
+                "angularVelocity": 20.0
+              },
+              "TimeToLive": 5.0,
+              "HomingSpeed": 5.0,
+              "Damage": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
             }
           }
-        }
-      ],
-      "Sprite": {
-        "Name": "Sprites/Enemies/EvilEyeCannon",
-        "AnimationCycle": 1.5
-      },
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Enemy/TripleCannonShoot",
-          "Volume": 0.05
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/EvilEyeCannon",
+          "AnimationCycle": 1.5
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/TripleCannonShoot",
+            "Volume": 0.05
+          }
         }
       }
     }
@@ -446,94 +457,96 @@
       "AnimationCycle": 0.333333
     },
     "DefaultAppearancePhaseDuration": 1.0,
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 0.666666667
-      },
-      "Barrels": [
-        {
-          "Length": 13.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 200.0
-            },
-            "Damage": 1.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.666666667
+        },
+        "Barrels": [
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 1.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
             }
+          },
+          {
+            "Length": 13.5,
+            "AngleCorrection": 10.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 1.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 13.5,
+            "AngleCorrection": -10.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 1.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 18.0,
+            "AngleCorrection": 45.0,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 200.0,
+                "amplitude": 100.0,
+                "angularVelocity": 10.0
+              },
+              "Damage": 1.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 18.0,
+            "AngleCorrection": -45.0,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 200.0,
+                "amplitude": 100.0,
+                "angularVelocity": 10.0
+              },
+              "Damage": 1.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/TripleCannonShoot",
+            "Volume": 0.05
           }
         },
-        {
-          "Length": 13.5,
-          "AngleCorrection": 10.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 200.0
-            },
-            "Damage": 1.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 13.5,
-          "AngleCorrection": -10.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 200.0
-            },
-            "Damage": 1.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 18.0,
-          "AngleCorrection": 45.0,
-          "Bullet": {
-            "TrajectoryType": "Sinus",
-            "TrajectoryParameters": {
-              "speed": 200.0,
-              "amplitude": 100.0,
-              "angularVelocity": 10.0
-            },
-            "Damage": 1.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 18.0,
-          "AngleCorrection": -45.0,
-          "Bullet": {
-            "TrajectoryType": "Sinus",
-            "TrajectoryParameters": {
-              "speed": 200.0,
-              "amplitude": 100.0,
-              "angularVelocity": 10.0
-            },
-            "Damage": 1.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Enemy/TripleCannonShoot",
-          "Volume": 0.05
-        }
-      },
-      "AimType": "AimAtPlayer"
+        "AimType": "AimAtPlayer"
+      }
     }
   },
   "Player": {
@@ -728,32 +741,34 @@
         "Volume": 0.25
       }
     },
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 0.3333333
-      },
-      "Barrels": [
-        {
-          "Length": 12.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 320.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.3333333
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 320.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
             }
           }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/StandardEnemy/LongShot",
-          "Volume": 0.2
-        }
-      },
-      "AimType": "AimAtPlayer"
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
     }
   },
   "Tank_mk1": {
@@ -788,44 +803,46 @@
         "Volume": 0.25
       }
     },
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 50.0
-      }
-    },
-    "MoveTargetSelectType": "MoveTowardPlayer",
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 20,
-        "Ammo": 5,
-        "ReloadTime": 2
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 50.0
+        }
       },
-      "Barrels": [
-        {
-          "Length": 13.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 240.0
-            },
-            "Damage": 10.0,
-            "TimeToLive": 10.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HelicopterBullet"
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 20,
+          "Ammo": 5,
+          "ReloadTime": 2
+        },
+        "Barrels": [
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 240.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
             }
           }
-        }
-      ],
-      "Sprite": {
-        "Name": "Sprites/Enemies/Level1X/TankCannon"
-      },
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/StandardEnemy/Shot",
-          "Volume": 0.15
-        }
-      },
-      "AimType": "AimAtPlayer"
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level1X/TankCannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.15
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
     }
   },
   "FixedCannon_mk1": {
@@ -858,35 +875,37 @@
         "Volume": 0.25
       }
     },
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 0.5
-      },
-      "Barrels": [
-        {
-          "Length": 12.0,
-          "Bullet": {
-            "TrajectoryType": "Sinus",
-            "TrajectoryParameters": {
-              "speed": 240.0,
-              "amplitude": 16.0,
-              "angularVelocity": 10.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 240.0,
+                "amplitude": 16.0,
+                "angularVelocity": 10.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
             }
           }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/StandardEnemy/LongShot",
-          "Volume": 0.2
-        }
-      },
-      "AimType": "FixedFireDirection"
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
     }
   },
   "Hunter_mk1": {
@@ -896,15 +915,17 @@
     "Width": 16.0,
     "Hitpoints": 8.0,
     "CollideTag": "Hunter",
-    "Mover": {
-      "Type": "Acceleration",
-      "Parameters": {
-        "startSpeed": 100.0,
-        "maxSpeed": 300.0,
-        "acceleration": 750.0
-      }
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 100.0,
+          "maxSpeed": 300.0,
+          "acceleration": 750.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer"
     },
-    "MoveTargetSelectType": "MoveTowardPlayer",
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level1X/Hunter"
     },
@@ -960,60 +981,62 @@
       }
     },
     "DefaultAppearancePhaseDuration": 1.0,
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 0.333333
-      },
-      "Barrels": [
-        {
-          "Length": 24.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 240.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.333333
+        },
+        "Barrels": [
+          {
+            "Length": 24.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 240.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
             }
+          },
+          {
+            "Length": 29.0,
+            "AngleCorrection": 36.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 240.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 29.0,
+            "AngleCorrection": -36.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 240.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.15
           }
         },
-        {
-          "Length": 29.0,
-          "AngleCorrection": 36.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 240.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 29.0,
-          "AngleCorrection": -36.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 240.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/StandardEnemy/LongShot",
-          "Volume": 0.15
-        }
-      },
-      "AimType": "AimAtPlayer"
+        "AimType": "AimAtPlayer"
+      }
     }
   },
   "MonorailCannon": {
@@ -1047,154 +1070,21 @@
         "Volume": 0.25
       }
     },
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 100.0
-      }
-    },
-    "MoveTargetSelectType": "TargetsList",
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 0.66666667
-      },
-      "Barrels": [
-        {
-          "Length": 8.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 320.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/StandardEnemy/LongShot",
-          "Volume": 0.2
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 100.0
         }
       },
-      "AimType": "AimAtPlayer"
-    }
-  },
-  "Mine_mk1": {
-    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
-    "CollisionDamage": 100.0,
-    "Height": 16.0,
-    "Width": 16.0,
-    "Hitpoints": 7.0,
-    "DefaultSprite": {
-      "Name": "Sprites/Enemies/Level1X/Mine"
-    },
-    "PostMortemSurprise": {
+      "MoveTargetSelectType": "TargetsList",
       "Weapon": {
+        "Reloader": {
+          "FireRate": 0.66666667
+        },
         "Barrels": [
           {
-            "Length": 0.0,
-            "AngleCorrection": 0.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 320.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          },
-          {
-            "Length": 0.0,
-            "AngleCorrection": 45.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 320.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          },
-          {
-            "Length": 0.0,
-            "AngleCorrection": 90.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 320.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          },
-          {
-            "Length": 0.0,
-            "AngleCorrection": 135.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 320.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          },
-          {
-            "Length": 0.0,
-            "AngleCorrection": 180.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 320.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          },
-          {
-            "Length": 0.0,
-            "AngleCorrection": 225.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 320.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          },
-          {
-            "Length": 0.0,
-            "AngleCorrection": 270.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 320.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
-              }
-            }
-          },
-          {
-            "Length": 0.0,
-            "AngleCorrection": 315.0,
+            "Length": 8.0,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 320.0
@@ -1207,7 +1097,144 @@
             }
           }
         ],
-        "AimType": "FixedFireDirection"
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
+  "Mine_mk1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 7.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level1X/Mine"
+    },
+    "Behavior": {
+      "PostMortemSurprise": {
+        "Weapon": {
+          "Barrels": [
+            {
+              "Length": 0.0,
+              "AngleCorrection": 0.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 45.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 90.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 135.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 180.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 225.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 270.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 315.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 320.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            }
+          ],
+          "AimType": "FixedFireDirection"
+        }
       }
     },
     "DefaultAppearancePhaseDuration": 1.5,
@@ -1257,27 +1284,29 @@
       "AnimationCycle": 0.66667
     },
     "DefaultAppearancePhaseDuration": 0.66667,
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 200.0
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 200.0
+        }
+      },
+      "MoveTargetSelectType": "RandomTargets",
+      "Spawner": {
+        "MaxSpawned": 15,
+        "Reloader": {
+          "FireRate": 6.0,
+          "Ammo": 3,
+          "ReloadTime": 2.0
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "0.0, 0.0"
+          ]
+        },
+        "BlueprintType": "Mine_mk1"
       }
-    },
-    "MoveTargetSelectType": "RandomTargets",
-    "Spawner": {
-      "MaxSpawned": 15,
-      "Reloader": {
-        "FireRate": 6.0,
-        "Ammo": 3,
-        "ReloadTime": 2.0
-      },
-      "PositionSelector" : {
-        "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
-        "SpawnPositions": [
-          "0.0, 0.0"
-        ]
-      },
-      "BlueprintType": "Mine_mk1"
     }
   },
   "Miniboss_mk11": {
@@ -1323,86 +1352,88 @@
         "AnimationCycle": 0.15
       }
     },
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 100.0
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 100.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 10.0,
+          "Ammo": 10,
+          "ReloadTime": 3.0
+        },
+        "Barrels": [
+          {
+            "Length": 36.0,
+            "AngleCorrection": -90.0,
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 500.0,
+                "outerCoefficient": -5.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "Length": 36.0,
+            "AngleCorrection": -90.0,
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 500.0,
+                "outerCoefficient": 5.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "Length": 36.0,
+            "AngleCorrection": -90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 500.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "FixedFireDirection"
+      },
+      "Spawner": {
+        "MaxSpawned": 2,
+        "Reloader": {
+          "FireRate": 0.2
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
+        },
+        "BlueprintType": "Hunter_mk1"
       }
-    },
-    "MoveTargetSelectType": "TargetsList",
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 10.0,
-        "Ammo": 10,
-        "ReloadTime": 3.0
-      },
-      "Barrels": [
-        {
-          "Length": 36.0,
-          "AngleCorrection": -90.0,
-          "Bullet": {
-            "TrajectoryType": "Parabolic",
-            "TrajectoryParameters": {
-              "speed": 500.0,
-              "outerCoefficient": -5.0,
-              "innerCoefficient": 3.0
-            },
-            "Damage": 10.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HelicopterBullet"
-            }
-          }
-        },
-        {
-          "Length": 36.0,
-          "AngleCorrection": -90.0,
-          "Bullet": {
-            "TrajectoryType": "Parabolic",
-            "TrajectoryParameters": {
-              "speed": 500.0,
-              "outerCoefficient": 5.0,
-              "innerCoefficient": 3.0
-            },
-            "Damage": 10.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HelicopterBullet"
-            }
-          }
-        },
-        {
-          "Length": 36.0,
-          "AngleCorrection": -90.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 500.0
-            },
-            "Damage": 10.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HelicopterBullet"
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/StandardEnemy/Shot",
-          "Volume": 0.25
-        }
-      },
-      "AimType": "FixedFireDirection"
-    },
-    "Spawner": {
-      "MaxSpawned": 2,
-      "Reloader": {
-        "FireRate": 0.2
-      },
-      "PositionSelector" : {
-        "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
-      },
-      "BlueprintType": "Hunter_mk1"
     }
   },
   "Miniboss_mk12": {
@@ -1435,111 +1466,113 @@
       "AnimationCycle": 1.5
     },
     "DefaultAppearancePhaseDuration": 1.5,
-    "Mover": {
-      "Type": "Linear",
-      "Parameters": {
-        "speed": 125.0
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 125.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.33333
+        },
+        "Barrels": [
+          {
+            "Length": 40.0,
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 800.0,
+                "sideSpeed": -200.0,
+                "fallAcceleration": 350.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 40.0,
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 800.0,
+                "sideSpeed": -100.0,
+                "fallAcceleration": 350.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 40.0,
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 800.0,
+                "sideSpeed": 0.0,
+                "fallAcceleration": 350.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 40.0,
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 800.0,
+                "sideSpeed": 100.0,
+                "fallAcceleration": 350.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 40.0,
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryType": "Gravitational",
+              "TrajectoryParameters": {
+                "startFlySpeed": 800.0,
+                "sideSpeed": 200.0,
+                "fallAcceleration": 350.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/SwanShot",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "FixedFireDirection"
       }
-    },
-    "MoveTargetSelectType": "TargetsList",
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 0.33333
-      },
-      "Barrels": [
-        {
-          "Length": 40.0,
-          "AngleCorrection": 90.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 800.0,
-              "sideSpeed": -200.0,
-              "fallAcceleration": 350.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 40.0,
-          "AngleCorrection": 90.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 800.0,
-              "sideSpeed": -100.0,
-              "fallAcceleration": 350.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 40.0,
-          "AngleCorrection": 90.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 800.0,
-              "sideSpeed": 0.0,
-              "fallAcceleration": 350.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 40.0,
-          "AngleCorrection": 90.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 800.0,
-              "sideSpeed": 100.0,
-              "fallAcceleration": 350.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        },
-        {
-          "Length": 40.0,
-          "AngleCorrection": 90.0,
-          "Bullet": {
-            "TrajectoryType": "Gravitational",
-            "TrajectoryParameters": {
-              "startFlySpeed": 800.0,
-              "sideSpeed": 200.0,
-              "fallAcceleration": 350.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Bosses/SwanShot",
-          "Volume": 0.25
-        }
-      },
-      "AimType": "FixedFireDirection"
     }
   },
   "Miniboss_mk13": {
@@ -1579,192 +1612,194 @@
       }
     },
     "DefaultAppearancePhaseDuration": 3.0,
-    "Mover": {
-      "Type": "Acceleration",
-      "Parameters": {
-        "startSpeed": 300.0,
-        "maxSpeed": 300.0,
-        "acceleration": 600.0
-      }
-    },
-    "MoveTargetSelectType": "RandomFromListTargets",
-    "Weapon": {
-      "Reloader": {
-        "FireRate": 2.0,
-        "Ammo": 3,
-        "ReloadTime": 4.0
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 300.0,
+          "maxSpeed": 300.0,
+          "acceleration": 600.0
+        }
       },
-      "AimType": "AimAtPlayer",
-      "Barrels": [
-        {
-          "Length": 16.0,
-          "AngleCorrection": -0.52085637450195765,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 550.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 2.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+      "MoveTargetSelectType": "RandomFromListTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 2.0,
+          "Ammo": 3,
+          "ReloadTime": 4.0
+        },
+        "AimType": "AimAtPlayer",
+        "Barrels": [
+          {
+            "Length": 16.0,
+            "AngleCorrection": -0.52085637450195765,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 550.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 2.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": -0.2064703837890759,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 555.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 2.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 560.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 2.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": 0.20281607151463135,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 565.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 2.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": 0.40206904570558361,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 570.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 7.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": 0.49821161261364399,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 575.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 7.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": 0.39513704250749049,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 580.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 7.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": 0.1958822437133316,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 585.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 7.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 590.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 7.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": -0.19259013017301566,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 595.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 7.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+              }
+            }
+          },
+          {
+            "Length": 16.0,
+            "AngleCorrection": -0.57293869768348371,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 600.0
+              },
+              "TimeToLive": 2.5,
+              "Damage": 7.5,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
+              }
             }
           }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": -0.2064703837890759,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 555.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 2.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 560.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 2.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": 0.20281607151463135,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 565.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 2.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiHandle"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": 0.40206904570558361,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 570.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 7.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": 0.49821161261364399,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 575.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 7.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": 0.39513704250749049,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 580.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 7.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": 0.1958822437133316,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 585.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 7.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 590.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 7.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": -0.19259013017301566,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 595.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 7.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
-            }
-          }
-        },
-        {
-          "Length": 16.0,
-          "AngleCorrection": -0.57293869768348371,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 600.0
-            },
-            "TimeToLive": 2.5,
-            "Damage": 7.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Level1X/VakidzasiBlade"
-            }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/VakidzasiHit",
+            "Volume": 0.2
           }
         }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Bosses/VakidzasiHit",
-          "Volume": 0.2
-        }
+      },
+      "Spawner": {
+        "MaxSpawned": 2,
+        "Reloader": {
+          "FireRate": 0.1
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
+        },
+        "BlueprintType": "Tank_mk1"
       }
-    },
-    "Spawner": {
-      "MaxSpawned": 2,
-      "Reloader": {
-        "FireRate": 0.1
-      },
-      "PositionSelector" : {
-        "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
-      },
-      "BlueprintType": "Tank_mk1"
     }
   },
   "IceDoor": {

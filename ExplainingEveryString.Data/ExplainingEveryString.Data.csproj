@@ -82,6 +82,7 @@
     <Compile Include="Blueprints\JsonBlueprintsLoader.cs" />
     <Compile Include="Blueprints\PlayerBlueprint.cs" />
     <Compile Include="Specifications\DashSpecification.cs" />
+    <Compile Include="Specifications\EnemyBehaviorSpecification.cs" />
     <Compile Include="Specifications\MoverSpecification.cs" />
     <Compile Include="Specifications\MoveTargetSelectType.cs" />
     <Compile Include="Specifications\PostMortemSurpriseSpecification.cs" />

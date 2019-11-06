@@ -1,10 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.GameModel.Movement;
 using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +14,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private EpicEvent death;
         private EpicEvent beforeAppearance;
         private EpicEvent afterAppearance;
-        public SpawnedActorsController SpawnedActors { get; private set; }
-        public List<IEnemy> Avengers => postMortemSurprise?.Avengers;
+        public SpawnedActorsController SpawnedActors => behavior.SpawnedActors;
+        public List<IEnemy> Avengers => behavior.PostMortemSurprise?.Avengers;
 
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
@@ -30,13 +27,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public String CollideTag => collideTag;
         public Single CollisionDamage { get; set; }
 
-        private Weapon weapon;
-        private PostMortemSurprise postMortemSurprise;
-        protected IMoveTargetSelector MoveTargetSelector { private get; set; }
-        protected IMover Mover { private get; set; }
-        protected Func<Vector2> PlayerLocator { get; private set; }
-        private Func<Vector2> CurrentPositionLocator => () => this.Position;
-        protected Vector2 PlayerPosition => PlayerLocator();
+        private EnemyBehavior behavior;
 
         public override Single HitPoints
         {
@@ -47,7 +38,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 if (value < Constants.Epsilon)
                 {
                     death.TryHandle();
-                    postMortemSurprise?.TryTrigger();
+                    behavior.PostMortemSurprise?.TryTrigger();
                 }
             }
         }
@@ -57,7 +48,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            this.PlayerLocator = () => level.Player.Position;
+            this.behavior = new EnemyBehavior(this, () => level.Player.Position);
             base.Construct(blueprint, startInfo, level, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
@@ -69,39 +60,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 ? startInfo.AppearancePhaseDuration
                 : blueprint.DefaultAppearancePhaseDuration;
             this.collideTag = blueprint.CollideTag;
-            ConstructMovement(blueprint, startInfo);
-            ConstructWeaponry(blueprint, startInfo, level, factory);
-        }
 
-        private void ConstructMovement(TBlueprint blueprint, ActorStartInfo startInfo)
-        {
-            this.MoveTargetSelector = MoveTargetSelectorFactory.Get(
-                blueprint.MoveTargetSelectType, startInfo.TrajectoryParameters, PlayerLocator, this);
-            this.Mover = MoverFactory.Get(blueprint.Mover);
-        }
-
-        private void ConstructWeaponry(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
-        {
-            if (blueprint.Weapon != null)
-            {
-                IAimer aimer = AimersFactory.Get(
-                    blueprint.Weapon.AimType, startInfo.Angle, CurrentPositionLocator, PlayerLocator);
-                weapon = new Weapon(blueprint.Weapon, aimer, CurrentPositionLocator, PlayerLocator, level);
-                weapon.Shoot += level.EnemyShoot;
-            }
-            if (blueprint.PostMortemSurprise != null)
-            {
-                postMortemSurprise = new PostMortemSurprise(blueprint.PostMortemSurprise, CurrentPositionLocator, 
-                    PlayerLocator, level, startInfo.LevelSpawnPoints, factory);
-            }
-            if (blueprint.Spawner != null)
-                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, this, startInfo.LevelSpawnPoints, factory);
+            behavior.Construct(blueprint.Behavior, startInfo, level, factory);
         }
 
         public override IEnumerable<IDisplayble> GetParts()
         {
-            if (weapon != null && !IsInAppearancePhase)
-                return new IDisplayble[] { weapon };
+            if (!IsInAppearancePhase)
+                return behavior.GetPartsToDisplay();
             else
                 return Enumerable.Empty<IDisplayble>();
         }
@@ -116,35 +82,16 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             else
             {
                 afterAppearance.TryHandle();
-                Move(elapsedSeconds);
-                UseWeapon(elapsedSeconds);
+                behavior.Update(elapsedSeconds);
+                if (behavior.EnemyAngle != null)
+                    SpriteState.Angle = behavior.EnemyAngle.Value;
             }
             base.Update(elapsedSeconds);
         }
 
-        private void Move(Single elapsedSeconds)
-        {
-            Vector2 target = MoveTargetSelector.GetTarget();
-            Vector2 lineToTarget = target - Position;
-            Vector2 positionChange = Mover.GetPositionChange(lineToTarget, elapsedSeconds, out Boolean goalReached);
-            Position += positionChange;
-            if (goalReached)
-                MoveTargetSelector.SwitchToNextTarget();
-        }
-
-        private void UseWeapon(Single elapsedSeconds)
-        {
-            if (weapon != null)
-            {
-                weapon.Update(elapsedSeconds);
-                if (weapon.IsFiring() && !weapon.IsVisible)
-                    SpriteState.Angle = AngleConverter.ToRadians(weapon.GetFireDirection());
-            }
-        }
-
         public void Crash()
         {
-            postMortemSurprise?.Cancel();
+            behavior.PostMortemSurprise?.Cancel();
             Destroy();
         }
     }
