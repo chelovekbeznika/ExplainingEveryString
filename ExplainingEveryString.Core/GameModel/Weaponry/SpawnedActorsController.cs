@@ -57,7 +57,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             {
                 BlueprintType = enemyType,
                 Position = spawnPositionSelector.GetNextSpawnPosition(),
-                LevelSpawnPoints = levelSpawnPoints
+                BehaviorParameters = new BehaviorParameters
+                {
+                    LevelSpawnPoints = levelSpawnPoints
+                }
             };
             IEnemy enemy = factory.ConstructEnemy(asi);
             enemy.Update(firstUpdateTime);

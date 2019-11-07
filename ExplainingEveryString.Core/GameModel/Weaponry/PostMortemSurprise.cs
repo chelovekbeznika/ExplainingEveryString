@@ -86,7 +86,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 {
                     BlueprintType = avengerType,
                     Position = positionSelector.GetNextSpawnPosition(),
-                    LevelSpawnPoints = levelSpawnPoints
+                    BehaviorParameters = new BehaviorParameters
+                    {
+                        LevelSpawnPoints = levelSpawnPoints
+                    }
                 };
                 IEnemy enemy = factory.ConstructEnemy(asi);
                 Avengers.Add(enemy);

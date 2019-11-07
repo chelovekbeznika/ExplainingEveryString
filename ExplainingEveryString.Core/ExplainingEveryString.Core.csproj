@@ -72,6 +72,7 @@
     <Compile Include="Displaying\FogOfWar\ILevelFogOfWarExtractor.cs" />
     <Compile Include="Displaying\ICoordinatesMaster.cs" />
     <Compile Include="Displaying\ScreenCoordinatesMaster.cs" />
+    <Compile Include="GameModel\BehaviorParameters.cs" />
     <Compile Include="GameModel\Enemies\EnemyBehavior.cs" />
     <Compile Include="GameModel\Enemies\EnemyBehaviorChangedEventArgs.cs" />
     <Compile Include="GameModel\Enemies\FirstBoss.cs" />

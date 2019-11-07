@@ -95,10 +95,13 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 BlueprintType = dataLayerStartInfo.BlueprintType,
                 Position = map.GetPosition(dataLayerStartInfo.TilePosition),
-                Angle = AngleConverter.ToRadians(dataLayerStartInfo.Angle),
-                TrajectoryParameters = dataLayerStartInfo.TrajectoryParameters,
-                AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration,
-                LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray()
+                BehaviorParameters = new BehaviorParameters
+                {
+                    Angle = AngleConverter.ToRadians(dataLayerStartInfo.Angle),
+                    TrajectoryParameters = dataLayerStartInfo.TrajectoryParameters.ToArray(),
+                    LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray()
+                },
+                AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration
             };
         }
     }

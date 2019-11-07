@@ -2,6 +2,7 @@
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,14 +29,22 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.minPhaseDuration = blueprint.MinPhaseDuration;
             this.maxPhaseDuration = blueprint.MaxPhaseDuration;
             this.phaseSprite = blueprint.Phases.Select(phase => new SpriteState(phase.Phase)).ToArray();
-            this.phaseBehavior = blueprint.Phases.Select(phase => 
-            {
-                EnemyBehavior result = new EnemyBehavior(this, () => level.Player.Position);
-                result.Construct(phase.Behavior, startInfo, level, factory);
-                return result;
-            }).ToArray();
+            this.phaseBehavior = blueprint.Phases.Select(phase => ConstructBehavior(phase, startInfo, level, factory)).ToArray();
             Single tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
             TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => PhaseOn());
+        }
+
+        private EnemyBehavior ConstructBehavior(FirstBossPhaseSpecification phase,
+            ActorStartInfo startInfo, Level level, ActorsFactory factory)
+        {
+            EnemyBehavior result = new EnemyBehavior(this, () => level.Player.Position);
+            BehaviorParameters behaviorParameters = new BehaviorParameters
+            {
+                LevelSpawnPoints = startInfo.BehaviorParameters.LevelSpawnPoints,
+                TrajectoryParameters = phase.TrajectoryParameters
+            };
+            result.Construct(phase.Behavior, behaviorParameters, level, factory);
+            return result;
         }
 
         protected override EnemyBehavior Behavior

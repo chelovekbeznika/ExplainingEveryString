@@ -8,9 +8,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal String BlueprintType { get; set; }
         internal Vector2 Position { get; set; }
-        internal Single Angle { get; set; }
-        internal List<Vector2> TrajectoryParameters { get; set; }
-        internal Single AppearancePhaseDuration { get; set; }
-        internal Vector2[] LevelSpawnPoints { get; set; }
+        internal BehaviorParameters BehaviorParameters { get; set; }
+        internal Single AppearancePhaseDuration { get; set; }     
     }
 }

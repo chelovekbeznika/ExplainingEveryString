@@ -11,7 +11,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
         private Vector2 startPosition;
         private Int32 currentTargetNumber;
 
-        internal RandomFromListTargetsSelector(List<Vector2> targetsList, Vector2 startPosition)
+        internal RandomFromListTargetsSelector(Vector2[] targetsList, Vector2 startPosition)
         {
             this.targets = new List<Vector2>(targetsList);
             this.startPosition = startPosition;

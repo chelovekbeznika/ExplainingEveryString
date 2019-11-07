@@ -31,35 +31,35 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.playerLocator = playerLocator;
         }
 
-        internal void Construct(EnemyBehaviorSpecification specification, ActorStartInfo startInfo, Level level, ActorsFactory factory)
+        internal void Construct(EnemyBehaviorSpecification specification, BehaviorParameters startInfo, Level level, ActorsFactory factory)
         {
             ConstructMovement(specification, startInfo);
             ConstructWeaponry(specification, startInfo, level, factory);
         }
 
-        private void ConstructMovement(EnemyBehaviorSpecification specification, ActorStartInfo startInfo)
+        private void ConstructMovement(EnemyBehaviorSpecification specification, BehaviorParameters startInfo)
         {
             this.moveTargetSelector = MoveTargetSelectorFactory.Get(
                 specification.MoveTargetSelectType, startInfo.TrajectoryParameters, playerLocator, enemy);
             this.mover = MoverFactory.Get(specification.Mover);
         }
 
-        private void ConstructWeaponry(EnemyBehaviorSpecification blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
+        private void ConstructWeaponry(EnemyBehaviorSpecification blueprint, BehaviorParameters parameters, Level level, ActorsFactory factory)
         {
             if (blueprint.Weapon != null)
             {
                 IAimer aimer = AimersFactory.Get(
-                    blueprint.Weapon.AimType, startInfo.Angle, CurrentPositionLocator, playerLocator);
+                    blueprint.Weapon.AimType, parameters.Angle, CurrentPositionLocator, playerLocator);
                 weapon = new Weapon(blueprint.Weapon, aimer, CurrentPositionLocator, playerLocator, level);
                 weapon.Shoot += level.EnemyShoot;
             }
             if (blueprint.PostMortemSurprise != null)
             {
                 PostMortemSurprise = new PostMortemSurprise(blueprint.PostMortemSurprise, CurrentPositionLocator,
-                    playerLocator, level, startInfo.LevelSpawnPoints, factory);
+                    playerLocator, level, parameters.LevelSpawnPoints, factory);
             }
             if (blueprint.Spawner != null)
-                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, enemy, startInfo.LevelSpawnPoints, factory);
+                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, enemy, parameters.LevelSpawnPoints, factory);
         }
 
         internal void Update(Single elapsedSeconds)

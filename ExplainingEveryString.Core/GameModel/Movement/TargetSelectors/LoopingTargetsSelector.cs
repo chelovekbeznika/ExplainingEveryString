@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
         private Queue<Vector2> targets;
         private Vector2 startPosition;
 
-        internal LoopingTargetSelector(List<Vector2> targetsList, Vector2 startPosition)
+        internal LoopingTargetSelector(Vector2[] targetsList, Vector2 startPosition)
         {
             this.targets = new Queue<Vector2>(targetsList);
             this.startPosition = startPosition;

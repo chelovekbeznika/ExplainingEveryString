@@ -1982,6 +1982,13 @@
     "Phases": [
       {
         "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 300.0
+            }
+          },
+          "MoveTargetSelectType": "TargetsList",
           "Weapon": {
             "Reloader": {
               "FireRate": 10.0,
@@ -2059,6 +2066,12 @@
             "AimType": "FixedFireDirection"
           }
         },
+        "TrajectoryParameters": [
+          "-256.0, 256.0",
+          "256.0, 256.0",
+          "256.0, -256.0",
+          "-256.0, -256.0"
+        ],
         "Phase": {
           "Name": "Sprites/Enemies/Boss1/FirstForm"
         },
@@ -2073,6 +2086,13 @@
       },
       {
         "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 200.0
+            }
+          },
+          "MoveTargetSelectType": "RandomTargets",
           "Spawner": {
             "MaxSpawned": 5,
             "Reloader": {
@@ -2087,6 +2107,10 @@
             }
           }
         },
+        "TrajectoryParameters": [
+          "-416.0, 416.0",
+          "416.0, -416.0"
+        ],
         "Phase": {
           "Name": "Sprites/Enemies/Boss1/SecondForm"
         },

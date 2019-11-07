@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement
 {
     internal static class MoveTargetSelectorFactory
     {
-        internal static IMoveTargetSelector Get(MoveTargetSelectType type, List<Vector2> parameters, 
+        internal static IMoveTargetSelector Get(MoveTargetSelectType type, Vector2[] parameters, 
             Func<Vector2> playerLocator, ICollidable actor)
         {
             Vector2 actorLocator() => actor.Position;

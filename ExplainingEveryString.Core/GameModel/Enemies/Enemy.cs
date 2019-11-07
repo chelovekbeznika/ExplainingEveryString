@@ -56,13 +56,16 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.death = new EpicEvent(level, blueprint.DeathEffect, true, this, true);
             this.afterAppearance = new EpicEvent(level, blueprint.AfterAppearanceEffect, true, this, false);
             this.beforeAppearance = new EpicEvent(level, blueprint.BeforeAppearanceEffect, true, this, false);
-            this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite) { Angle = startInfo.Angle };
+            this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite)
+            {
+                Angle = startInfo.BehaviorParameters.Angle
+            };
             this.appearancePhaseRemained = startInfo.AppearancePhaseDuration > 0 
                 ? startInfo.AppearancePhaseDuration
                 : blueprint.DefaultAppearancePhaseDuration;
             this.collideTag = blueprint.CollideTag;
 
-            Behavior.Construct(blueprint.Behavior, startInfo, level, factory);
+            Behavior.Construct(blueprint.Behavior, startInfo.BehaviorParameters, level, factory);
         }
 
         public override IEnumerable<IDisplayble> GetParts()

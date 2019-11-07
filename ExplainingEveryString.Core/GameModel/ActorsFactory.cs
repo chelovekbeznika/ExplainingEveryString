@@ -39,7 +39,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<Obstacle> ConstructObstacles(String name, IEnumerable<Vector2> positions)
         {
             return Construct<Obstacle, Blueprint>(name, 
-                positions.Select(pos => new ActorStartInfo { BlueprintType = name, Position = pos, Angle = 0 }));
+                positions.Select(pos => new ActorStartInfo { BlueprintType = name, Position = pos }));
         }
 
         internal List<IEnemy> ConstructEnemies(IEnumerable<ActorStartInfo> positions)
