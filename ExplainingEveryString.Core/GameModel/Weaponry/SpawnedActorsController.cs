@@ -14,6 +14,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private ISpawnPositionSelector spawnPositionSelector;
         private ActorsFactory factory;
         private IActor spawner;
+        private Boolean active = true;
+
         internal List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
 
         internal SpawnedActorsController(SpawnerSpecification specification, IActor spawner, 
@@ -39,6 +41,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             SpawnedEnemies = EnemyDeathProcessor.SendDeadToHeaven(SpawnedEnemies, avengers);
         }
 
+        internal void TurnOn()
+        {
+            active = true;
+        }
+
+        internal void TurnOff()
+        {
+            active = false;
+        }
+
         private void SpawnEnemy(Single firstUpdateTime)
         {
             ActorStartInfo asi = new ActorStartInfo
@@ -52,6 +64,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             SpawnedEnemies.Add(enemy);
         }
 
-        private Boolean CanSpawnEnemy() => spawner.IsAlive() && SpawnedEnemies.Count < maxSpawned;
+        private Boolean CanSpawnEnemy() => active && spawner.IsAlive() && SpawnedEnemies.Count < maxSpawned;
     }
 }

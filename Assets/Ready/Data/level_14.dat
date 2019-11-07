@@ -18,12 +18,15 @@
       },
       "Enemies": [
         {
-          "BlueprintType": "Tank_mk1",
+          "BlueprintType": "Boss_mk1",
           "TilePosition": {
             "X": 31,
             "Y": 31,
             "Offset": "8.0, -8.0"
-          }
+          },
+          "TrajectoryParameters": [
+            "0.0, 0.0"
+          ]
         }
       ]
     }

@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core
         }
 
         private List<Timer> timers = new List<Timer>();
+        private List<Timer> scheduledTimers = new List<Timer>();
 
         private TimersComponent(Game game) : base(game)
         {
@@ -25,13 +26,15 @@ namespace ExplainingEveryString.Core
         public Timer ScheduleEvent(Single seconds, Action atTimerElapsed)
         {
             Timer timer = new Timer(seconds, atTimerElapsed);
-            timers.Add(timer);
+            scheduledTimers.Add(timer);
             return timer;
         }
 
         public override void Update(GameTime gameTime)
         {
             Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            timers.AddRange(scheduledTimers);
+            scheduledTimers.Clear();
             foreach (Timer timer in timers)
             {
                 timer.Update(elapsedSeconds);

@@ -53,10 +53,12 @@
     <Compile Include="Blueprints\AssetsExtraction.cs\BlueprintAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\DoorAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\EnemyAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\FirstBossAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\IAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\PlayerAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\ShadowEnemyAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtractor.cs" />
+    <Compile Include="Blueprints\FirstBossBlueprint.cs" />
     <Compile Include="Blueprints\DoorBlueprint.cs" />
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
     <Compile Include="Configuration\CameraConfiguration.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Blueprints\PlayerBlueprint.cs" />
     <Compile Include="Specifications\DashSpecification.cs" />
     <Compile Include="Specifications\EnemyBehaviorSpecification.cs" />
+    <Compile Include="Specifications\FirstBossPhaseSpecification.cs" />
     <Compile Include="Specifications\MoverSpecification.cs" />
     <Compile Include="Specifications\MoveTargetSelectType.cs" />
     <Compile Include="Specifications\PostMortemSurpriseSpecification.cs" />

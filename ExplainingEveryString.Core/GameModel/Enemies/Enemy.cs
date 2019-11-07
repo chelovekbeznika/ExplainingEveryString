@@ -14,8 +14,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private EpicEvent death;
         private EpicEvent beforeAppearance;
         private EpicEvent afterAppearance;
-        public SpawnedActorsController SpawnedActors => behavior.SpawnedActors;
-        public List<IEnemy> Avengers => behavior.PostMortemSurprise?.Avengers;
+        public SpawnedActorsController SpawnedActors => Behavior.SpawnedActors;
+        public List<IEnemy> Avengers => Behavior.PostMortemSurprise?.Avengers;
+        public event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
 
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
@@ -27,7 +28,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public String CollideTag => collideTag;
         public Single CollisionDamage { get; set; }
 
-        private EnemyBehavior behavior;
+        protected virtual EnemyBehavior Behavior { get; set; }
 
         public override Single HitPoints
         {
@@ -38,7 +39,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 if (value < Constants.Epsilon)
                 {
                     death.TryHandle();
-                    behavior.PostMortemSurprise?.TryTrigger();
+                    Behavior.PostMortemSurprise?.TryTrigger();
                 }
             }
         }
@@ -48,7 +49,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            this.behavior = new EnemyBehavior(this, () => level.Player.Position);
+            this.Behavior = new EnemyBehavior(this, () => level.Player.Position);
             base.Construct(blueprint, startInfo, level, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
@@ -61,13 +62,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 : blueprint.DefaultAppearancePhaseDuration;
             this.collideTag = blueprint.CollideTag;
 
-            behavior.Construct(blueprint.Behavior, startInfo, level, factory);
+            Behavior.Construct(blueprint.Behavior, startInfo, level, factory);
         }
 
         public override IEnumerable<IDisplayble> GetParts()
         {
             if (!IsInAppearancePhase)
-                return behavior.GetPartsToDisplay();
+                return Behavior.GetPartsToDisplay();
             else
                 return Enumerable.Empty<IDisplayble>();
         }
@@ -82,17 +83,26 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             else
             {
                 afterAppearance.TryHandle();
-                behavior.Update(elapsedSeconds);
-                if (behavior.EnemyAngle != null)
-                    SpriteState.Angle = behavior.EnemyAngle.Value;
+                Behavior.Update(elapsedSeconds);
+                if (Behavior.EnemyAngle != null)
+                    SpriteState.Angle = Behavior.EnemyAngle.Value;
             }
             base.Update(elapsedSeconds);
         }
 
         public void Crash()
         {
-            behavior.PostMortemSurprise?.Cancel();
+            Behavior.PostMortemSurprise?.Cancel();
             Destroy();
+        }
+
+        protected void OnBehaviorChanged(SpawnedActorsController oldSpawner, SpawnedActorsController newSpawner)
+        {
+            EnemyBehaviorChanged?.Invoke(this, new EnemyBehaviorChangedEventArgs()
+            {
+                OldSpawner = oldSpawner,
+                NewSpawner = newSpawner
+            });
         }
     }
 }

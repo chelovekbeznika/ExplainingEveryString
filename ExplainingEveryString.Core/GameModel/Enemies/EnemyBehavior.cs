@@ -31,17 +31,17 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.playerLocator = playerLocator;
         }
 
-        internal void Construct(EnemyBehaviorSpecification blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
+        internal void Construct(EnemyBehaviorSpecification specification, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            ConstructMovement(blueprint, startInfo);
-            ConstructWeaponry(blueprint, startInfo, level, factory);
+            ConstructMovement(specification, startInfo);
+            ConstructWeaponry(specification, startInfo, level, factory);
         }
 
-        private void ConstructMovement(EnemyBehaviorSpecification blueprint, ActorStartInfo startInfo)
+        private void ConstructMovement(EnemyBehaviorSpecification specification, ActorStartInfo startInfo)
         {
             this.moveTargetSelector = MoveTargetSelectorFactory.Get(
-                blueprint.MoveTargetSelectType, startInfo.TrajectoryParameters, playerLocator, enemy);
-            this.mover = MoverFactory.Get(blueprint.Mover);
+                specification.MoveTargetSelectType, startInfo.TrajectoryParameters, playerLocator, enemy);
+            this.mover = MoverFactory.Get(specification.Mover);
         }
 
         private void ConstructWeaponry(EnemyBehaviorSpecification blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)

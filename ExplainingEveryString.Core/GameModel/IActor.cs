@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using System;
 using System.Collections.Generic;
@@ -19,5 +20,6 @@ namespace ExplainingEveryString.Core.GameModel
     {
         SpawnedActorsController SpawnedActors { get; }
         List<IEnemy> Avengers { get; }
+        event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
     }
 }

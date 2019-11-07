@@ -64,6 +64,11 @@ namespace ExplainingEveryString.Core.GameModel
             return result;
         }
 
+        internal Int32 MaxEnemiesAtOnce(Int32 waveNumber)
+        {
+            return levelData.EnemyWaves[waveNumber].MaxEnemiesAtOnce;
+        }
+
         internal ICollidable[] InitializeWalls()
         {
             return wallsFactory.ConstructWalls().OfType<ICollidable>().ToArray();
@@ -76,13 +81,12 @@ namespace ExplainingEveryString.Core.GameModel
             return map.GetHitbox(levelData.EnemyWaves[waveNumber].StartRegion);
         }
 
-        internal ValueTuple<List<IEnemy>, Queue<IEnemy>> InitializeEnemies(Int32 waveNumber)
+        internal Queue<IEnemy> InitializeEnemies(Int32 waveNumber)
         {
             EnemyWave wave = levelData.EnemyWaves[waveNumber];
             IEnumerable<ActorStartInfo> enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi, wave));
             IEnumerable<IEnemy> enemies = actorsFactory.ConstructEnemies(enemiesStartInfos);
-            return (new List<IEnemy>(enemies.Take(wave.MaxEnemiesAtOnce)), 
-                new Queue<IEnemy>(enemies.Skip(wave.MaxEnemiesAtOnce)));
+            return new Queue<IEnemy>(enemies);
         }
 
         private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo, EnemyWave enemyWave = null)

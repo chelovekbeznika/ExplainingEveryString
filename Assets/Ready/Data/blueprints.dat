@@ -1935,5 +1935,170 @@
       "Name": "Sprites/Walls/Level1X/TopLamp",
       "AnimationCycle": 6.0
     }
+  },
+  "Boss_mk1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FirstBossBlueprint, ExplainingEveryString.Data",
+    "Type": "FirstBoss",
+    "Width": 96,
+    "Height": 96,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss1/DefaultForm"
+    },
+    "Hitpoints": 1000.0,
+    "CollisionDamage": 100.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 500.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList"
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss1/Death",
+        "AnimationCycle": 0.1
+      },
+      "Sound": {
+        "Name": "Sounds/Bosses/1/Death",
+        "Volume": 0.4
+      }
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/1/Appearance",
+        "Volume": 0.4
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss1/Appearance",
+      "AnimationCycle": 0.05
+    },
+    "DefaultAppearancePhaseDuration": 2.0,
+    "TimeBetweenPhases": 3.0,
+    "MinPhaseDuration": 10.0,
+    "MaxPhaseDuration": 20.0,
+    "Phases": [
+      {
+        "Behavior": {
+          "Weapon": {
+            "Reloader": {
+              "FireRate": 10.0,
+              "Ammo": 50,
+              "ReloadTime": 2.5
+            },
+            "Barrels": [
+              {
+                "Length": 14.0,
+                "AngleCorrection": 0.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Length": 14.0,
+                "AngleCorrection": 90.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Length": 14.0,
+                "AngleCorrection": 180.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Length": 14.0,
+                "AngleCorrection": 270.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              }
+            ],
+            "ShootingEffect": {
+              "Sound": {
+                "Name": "Sounds/StandardEnemy/Shot",
+                "Volume": 0.25
+              }
+            },
+            "AimType": "FixedFireDirection"
+          }
+        },
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/FirstForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/FirstFormOn",
+          "AnimationCycle": "0.5"
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/FirstFormOff",
+          "AnimationCycle": "0.5"
+        }
+      },
+      {
+        "Behavior": {
+          "Spawner": {
+            "MaxSpawned": 5,
+            "Reloader": {
+              "FireRate": 0.5
+            },
+            "BlueprintType": "Tank_mk1",
+            "PositionSelector": {
+              "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+              "SpawnPositions": [
+                "0.0, 0.0"
+              ]
+            }
+          }
+        },
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/SecondForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/SecondFormOn",
+          "AnimationCycle": "0.5"
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/SecondFormOff",
+          "AnimationCycle": "0.5"
+        }
+      }
+    ]
   }
 }

@@ -19,7 +19,8 @@ namespace ExplainingEveryString.Core.GameModel
             this.enemyConstruction = new Dictionary<String, Func<ActorStartInfo, IEnemy>>
             {
                 { "Enemy", (pos) => Construct<Enemy<EnemyBlueprint>, EnemyBlueprint>(pos) },
-                { "ShadowEnemy", (pos) => Construct<ShadowEnemy, ShadowEnemyBlueprint>(pos) }
+                { "ShadowEnemy", (pos) => Construct<ShadowEnemy, ShadowEnemyBlueprint>(pos) },
+                { "FirstBoss", (pos) => Construct<FirstBoss, FirstBossBlueprint>(pos) }
             };
         }
 

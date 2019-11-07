@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,14 @@ namespace ExplainingEveryString.Core.GameModel
         internal Hitbox CurrentWaveStartRegion { get; private set; }
         internal List<IEnemy> Enemies => currentWaveEnemies
             .Concat(avengers)
-            .Concat(activeEnemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
+            .Concat(enemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
       
         private List<IActor> obstacles;
         private List<Door> doors;
         private ICollidable[] walls;
         private List<IEnemy> currentWaveEnemies = new List<IEnemy>();
         private List<IEnemy> avengers = new List<IEnemy>();
-        private List<SpawnedActorsController> activeEnemySpawners = new List<SpawnedActorsController>();
+        private List<SpawnedActorsController> enemySpawners = new List<SpawnedActorsController>();
         private Int32 maxEnemiesAtOnce;
         private Queue<IEnemy> enemiesQueue = new Queue<IEnemy>();
 
@@ -47,7 +48,7 @@ namespace ExplainingEveryString.Core.GameModel
             return PlayerBullets
                 .Concat(EnemyBullets)
                 .Concat(Player.IsAlive() ? new List<IUpdateable> { Player } : Enumerable.Empty<IUpdateable>())
-                .Concat(activeEnemySpawners.OfType<IUpdateable>())
+                .Concat(enemySpawners.OfType<IUpdateable>())
                 .Concat(Enemies.OfType<IUpdateable>())
                 .Concat(obstacles.OfType<IUpdateable>())
                 .Concat(doors.OfType<IUpdateable>());
@@ -65,8 +66,23 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 IEnemy enemy = enemiesQueue.Dequeue();
                 currentWaveEnemies.Add(enemy);
+                enemy.EnemyBehaviorChanged += EnemyBehaviorChanged;
                 if (enemy.SpawnedActors != null)
-                    activeEnemySpawners.Add(enemy.SpawnedActors);
+                    enemySpawners.Add(enemy.SpawnedActors);
+            }
+        }
+
+        private void EnemyBehaviorChanged(Object sender, EnemyBehaviorChangedEventArgs args)
+        {
+            SpawnedActorsController oldSpawner = args.OldSpawner;
+            SpawnedActorsController newSpawner = args.NewSpawner;
+            if (oldSpawner != null)
+                oldSpawner.TurnOff();
+            if (newSpawner != null)
+            {
+                if (!enemySpawners.Contains(newSpawner))
+                    enemySpawners.Add(newSpawner);
+                newSpawner.TurnOn();
             }
         }
 
@@ -77,7 +93,7 @@ namespace ExplainingEveryString.Core.GameModel
             doors = doors.Where(door => door.IsAlive()).ToList();
 
             currentWaveEnemies = EnemyDeathProcessor.SendDeadToHeaven(currentWaveEnemies, avengers);
-            foreach (SpawnedActorsController spawnedActorsController in activeEnemySpawners)
+            foreach (SpawnedActorsController spawnedActorsController in enemySpawners)
                 spawnedActorsController.SendDeadToHeaven(avengers);
             avengers = EnemyDeathProcessor.SendDeadToHeaven(avengers, avengers);
         }
@@ -110,11 +126,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void StartEnemyWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
         {
-            (currentWaveEnemies, enemiesQueue) = actorsInitializer.InitializeEnemies(waveNumber);
-            activeEnemySpawners = currentWaveEnemies
-                .Where(e => e.SpawnedActors != null)
-                .Select(e => e.SpawnedActors).ToList();
-            maxEnemiesAtOnce = currentWaveEnemies.Count;
+            enemiesQueue = actorsInitializer.InitializeEnemies(waveNumber);
+            maxEnemiesAtOnce = actorsInitializer.MaxEnemiesAtOnce(waveNumber);
             doors.AddRange(actorsInitializer.InitializeClosingDoors(waveNumber));
         }
     }
