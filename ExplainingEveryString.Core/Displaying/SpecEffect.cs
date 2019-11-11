@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal SpecEffect(Vector2 position, Single angle, SpriteSpecification sprite)
         {
-            this.SpriteState = new SpriteState(sprite) { Angle = angle };
+            this.SpriteState = new SpriteState(sprite) { Angle = angle, Looping = false };
             this.Position = position;
         }
 

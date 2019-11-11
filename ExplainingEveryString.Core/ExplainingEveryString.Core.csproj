@@ -76,6 +76,7 @@
     <Compile Include="GameModel\Enemies\EnemyBehavior.cs" />
     <Compile Include="GameModel\Enemies\EnemyBehaviorChangedEventArgs.cs" />
     <Compile Include="GameModel\Enemies\FirstBoss.cs" />
+    <Compile Include="GameModel\Enemies\FirstBossPhase.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFromListTargetsSelector.cs" />
     <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\DashStateDisplayer.cs" />

@@ -2089,11 +2089,11 @@
         },
         "On": {
           "Name": "Sprites/Enemies/Boss1/FirstFormOn",
-          "AnimationCycle": "0.5"
+          "AnimationCycle": 1.0
         },
         "Off": {
           "Name": "Sprites/Enemies/Boss1/FirstFormOff",
-          "AnimationCycle": "0.5"
+          "AnimationCycle": 1.0
         }
       },
       {
@@ -2128,11 +2128,11 @@
         },
         "On": {
           "Name": "Sprites/Enemies/Boss1/SecondFormOn",
-          "AnimationCycle": "0.5"
+          "AnimationCycle": 1.0
         },
         "Off": {
           "Name": "Sprites/Enemies/Boss1/SecondFormOff",
-          "AnimationCycle": "0.5"
+          "AnimationCycle": 1.0
         }
       }
     ]

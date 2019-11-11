@@ -13,16 +13,18 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 {
     internal class FirstBoss : Enemy<FirstBossBlueprint>
     {
+        private enum BossState { BetweenPhases, TurningOnPhase, InPhase, TurningOffPhase }
+
         private Int32 currentPhase;
-        private bool betweenPhases = true;
+        private Int32 nextPhase;
+        private BossState state = BossState.BetweenPhases;
         private Single betweenPhasesDuration;
         private Single minPhaseDuration;
         private Single maxPhaseDuration;
         private EpicEvent phaseOn;
         private EpicEvent phaseOff;
 
-        private SpriteState[] phaseSprite;
-        private EnemyBehavior[] phaseBehavior;
+        private FirstBossPhase[] phases;
 
         protected override void Construct(FirstBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -32,55 +34,100 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.maxPhaseDuration = blueprint.MaxPhaseDuration;
             this.phaseOn = new EpicEvent(level, blueprint.PhaseOnEffect, false, this, true);
             this.phaseOff = new EpicEvent(level, blueprint.PhaseOffEffect, false, this, true);
-            this.phaseSprite = blueprint.Phases.Select(phase => new SpriteState(phase.Phase)).ToArray();
-            this.phaseBehavior = blueprint.Phases.Select(phase => ConstructBehavior(phase, startInfo, level, factory)).ToArray();
+            this.phases = blueprint.Phases.Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray();
             Single tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
-            TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => PhaseOn());
+            TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => TurningOnPhase());
+            nextPhase = SelectNextPhase();
         }
 
-        private EnemyBehavior ConstructBehavior(FirstBossPhaseSpecification phase,
+        private FirstBossPhase ConstructPhase(FirstBossPhaseSpecification phase,
             ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            EnemyBehavior result = new EnemyBehavior(this, () => level.Player.Position);
+            EnemyBehavior behavior = new EnemyBehavior(this, () => level.Player.Position);
             BehaviorParameters behaviorParameters = new BehaviorParameters
             {
                 LevelSpawnPoints = startInfo.BehaviorParameters.LevelSpawnPoints,
                 TrajectoryParameters = phase.TrajectoryParameters
             };
-            result.Construct(phase.Behavior, behaviorParameters, level, factory);
-            return result;
+            behavior.Construct(phase.Behavior, behaviorParameters, level, factory);
+            return new FirstBossPhase
+            {
+                Sprite = new SpriteState(phase.Phase),
+                OnSprite = new SpriteState(phase.On) { Looping = false },
+                OffSprite = new SpriteState(phase.Off) { Looping = false },
+                Behavior = behavior
+            };
         }
 
         protected override EnemyBehavior Behavior
         {
-            get => betweenPhases ? base.Behavior : phaseBehavior[currentPhase];
+            get => state == BossState.InPhase ? phases[currentPhase].Behavior : base.Behavior;
             set => base.Behavior = value;
         }
 
-        public override SpriteState SpriteState => betweenPhases ? base.SpriteState : phaseSprite[currentPhase];
+        public override SpriteState SpriteState
+        {
+            get
+            {
+                switch (state)
+                {
+                    case BossState.BetweenPhases: return base.SpriteState;
+                    case BossState.TurningOnPhase: return phases[currentPhase].OnSprite;
+                    case BossState.InPhase: return phases[currentPhase].Sprite;
+                    case BossState.TurningOffPhase: return phases[currentPhase].OffSprite;
+                    default: return base.SpriteState;
+                }
+            }
+        }
+        private void TurningOnPhase()
+        {
+            currentPhase = nextPhase;
+            state = BossState.TurningOnPhase;
+            SpriteState.StartOver();
 
-        private void PhaseOn()
+            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOnTime, () => InPhase());
+        }
+
+        private void InPhase()
         {
             SpawnedActorsController oldSpawner = Behavior.SpawnedActors;
-            betweenPhases = false;
-            currentPhase = RandomUtility.NextInt(phaseBehavior.Length);
+            state = BossState.InPhase;
+            SpriteState.StartOver();
             SpawnedActorsController newSpawner = Behavior.SpawnedActors;
 
             phaseOn.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
             Single phaseDuration = minPhaseDuration + RandomUtility.Next() * (maxPhaseDuration - minPhaseDuration);
-            TimersComponent.Instance.ScheduleEvent(phaseDuration, () => PhaseOff());
+            TimersComponent.Instance.ScheduleEvent(phaseDuration, () => TurningOffPhase());
         }
 
-        private void PhaseOff()
+        private void TurningOffPhase()
         {
             SpawnedActorsController oldSpawner = Behavior.SpawnedActors;
-            betweenPhases = true;
+            state = BossState.TurningOffPhase;
+            SpriteState.StartOver();
             SpawnedActorsController newSpawner = Behavior.SpawnedActors;
 
             phaseOff.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
-            TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => PhaseOn());
+            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOffTime, () => BetweenPhase());
+        }
+
+        private void BetweenPhase()
+        {                    
+            state = BossState.BetweenPhases;
+            SpriteState.StartOver();
+
+            nextPhase = SelectNextPhase();
+            Single tillNextState = betweenPhasesDuration 
+                - phases[currentPhase].TurningOffTime
+                - phases[nextPhase].TurningOnTime;
+            TimersComponent.Instance.ScheduleEvent(tillNextState, () => TurningOnPhase());
+        }
+
+        private Int32 SelectNextPhase()
+        {
+            return RandomUtility.NextInt(phases.Length);
         }
     }
 }
