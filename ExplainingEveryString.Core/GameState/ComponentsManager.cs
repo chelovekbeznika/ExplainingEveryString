@@ -57,6 +57,7 @@ namespace ExplainingEveryString.Core.GameState
             Interface.Visible = active;
             CurrentGameplay.Enabled = active;
             CurrentGameplay.Visible = active;
+            TimersComponent.Instance.Enabled = active;
         }
 
         internal void SwitchMenuRelatedComponents(Boolean active)
