@@ -14,7 +14,8 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
                 .Select(phase => phase.Behavior.Weapon)
                 .Where(weapon => weapon != null)
                 .Select(weapon => weapon.ShootingEffect);
-            return baseSpecEffects.Concat(phasesSpeceffects);
+            return baseSpecEffects.Concat(phasesSpeceffects)
+                .Concat(new SpecEffectSpecification[] { blueprint.PhaseOnEffect, blueprint.PhaseOffEffect });
         }
 
         public IEnumerable<SpriteSpecification> GetSprites(FirstBossBlueprint blueprint)

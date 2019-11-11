@@ -18,6 +18,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Single betweenPhasesDuration;
         private Single minPhaseDuration;
         private Single maxPhaseDuration;
+        private EpicEvent phaseOn;
+        private EpicEvent phaseOff;
 
         private SpriteState[] phaseSprite;
         private EnemyBehavior[] phaseBehavior;
@@ -28,6 +30,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.betweenPhasesDuration = blueprint.TimeBetweenPhases;
             this.minPhaseDuration = blueprint.MinPhaseDuration;
             this.maxPhaseDuration = blueprint.MaxPhaseDuration;
+            this.phaseOn = new EpicEvent(level, blueprint.PhaseOnEffect, false, this, true);
+            this.phaseOff = new EpicEvent(level, blueprint.PhaseOffEffect, false, this, true);
             this.phaseSprite = blueprint.Phases.Select(phase => new SpriteState(phase.Phase)).ToArray();
             this.phaseBehavior = blueprint.Phases.Select(phase => ConstructBehavior(phase, startInfo, level, factory)).ToArray();
             Single tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
@@ -62,6 +66,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             currentPhase = RandomUtility.NextInt(phaseBehavior.Length);
             SpawnedActorsController newSpawner = Behavior.SpawnedActors;
 
+            phaseOn.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
             Single phaseDuration = minPhaseDuration + RandomUtility.Next() * (maxPhaseDuration - minPhaseDuration);
             TimersComponent.Instance.ScheduleEvent(phaseDuration, () => PhaseOff());
@@ -73,6 +78,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             betweenPhases = true;
             SpawnedActorsController newSpawner = Behavior.SpawnedActors;
 
+            phaseOff.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
             TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => PhaseOn());
         }
