@@ -14,12 +14,14 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Func<Vector2> findOutWhereIAm;
         private readonly Func<Vector2> targetLocator;
         private readonly BulletSpecification bulletSpecification;
+        private readonly Vector2 offset;
         private readonly Single length;
         private readonly Single angleCorrection;
         private readonly Single accuracy;
 
         internal Barrel(IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
         {
+            this.offset = specification.Offset;
             this.length = specification.Length;
             this.aimer = aimer;
             this.findOutWhereIAm = findOutWhereIAm;
@@ -32,7 +34,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal void OnShoot(Single bulletFirstFrameUpdateTime)
         {
             Vector2 direction = GetFireDirection();
-            Vector2 position = findOutWhereIAm() + direction * length;
+            Vector2 position = findOutWhereIAm() + offset + direction * length;
             Bullet bullet = new Bullet(position, direction, bulletSpecification, targetLocator);
             ShootEventArgs eventArgs = new ShootEventArgs
             {

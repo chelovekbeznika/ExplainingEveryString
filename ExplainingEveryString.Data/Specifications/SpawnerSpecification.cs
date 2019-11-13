@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Specifications
 {
@@ -7,6 +8,8 @@ namespace ExplainingEveryString.Data.Specifications
         public Int32 MaxSpawned { get; set; }
         public ReloaderSpecification Reloader { get; set; }
         public String BlueprintType { get; set; }
+        [DefaultValue(0.0)]
+        public Single AppearancePhase { get; set; }
         public SpawnPositionSelectorSpecification PositionSelector { get; set; }
     }
 }

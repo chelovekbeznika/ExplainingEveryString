@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     {
         private String enemyType;
         private readonly Int32 maxSpawned;
+        private readonly Single appearancePhase;
         private Reloader reloader;
         private Vector2[] levelSpawnPoints;
         private ISpawnPositionSelector spawnPositionSelector;
@@ -23,6 +24,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             this.enemyType = specification.BlueprintType;
             this.maxSpawned = specification.MaxSpawned;
+            this.appearancePhase = specification.AppearancePhase;
             this.reloader = new Reloader(specification.Reloader, CanSpawnEnemy, SpawnEnemy);
             this.spawner = spawner;
             this.levelSpawnPoints = spawnPoints;
@@ -60,7 +62,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 BehaviorParameters = new BehaviorParameters
                 {
                     LevelSpawnPoints = levelSpawnPoints
-                }
+                },
+                AppearancePhaseDuration = appearancePhase
             };
             IEnemy enemy = factory.ConstructEnemy(asi);
             enemy.Update(firstUpdateTime);
