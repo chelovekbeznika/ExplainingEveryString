@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core
         private DashStateDisplayer dashStateDisplayer;
         private GameTimeDisplayer gameTimeDisplayer;
         private EnemyInfoDisplayer enemiesInfoDisplayer;
+        private BossInfoDisplayer bossInfoDisplayer;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
         {
@@ -52,6 +53,7 @@ namespace ExplainingEveryString.Core
             healthBarDisplayer = new HealthBarDisplayer(interfaceSpritesDisplayer, sprites);
             dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer, sprites);
             enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer, sprites);
+            bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites);
             SpriteFont timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
 
@@ -66,6 +68,7 @@ namespace ExplainingEveryString.Core
             {
                 HealthBarDisplayer.HealthBarTexture, HealthBarDisplayer.EmptyHealthBarTexture,
                 EnemyInfoDisplayer.HealthBarTexture,
+                BossInfoDisplayer.HealthBarTexture, BossInfoDisplayer.EmptyHealthBarTexture,
                 DashStateDisplayer.ActiveTexture, DashStateDisplayer.AvailableTexture,
                 DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture
             }.Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();           
@@ -88,6 +91,8 @@ namespace ExplainingEveryString.Core
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
                 gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
+                if (interfaceInfo.Boss != null)
+                    bossInfoDisplayer.Draw(interfaceInfo.Boss);
                 spriteBatch.End();
             }
             base.Draw(gameTime);

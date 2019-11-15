@@ -17,6 +17,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<IEnemy> Enemies => currentWaveEnemies
             .Concat(avengers)
             .Concat(enemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
+        internal IEnemy Boss { get; private set; } = null;
       
         private List<IActor> obstacles;
         private List<Door> doors;
@@ -127,6 +128,9 @@ namespace ExplainingEveryString.Core.GameModel
         internal void StartEnemyWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
         {
             enemiesQueue = actorsInitializer.InitializeEnemies(waveNumber);
+            Boss = actorsInitializer.InitializeBoss(waveNumber);
+            if (Boss != null)
+                enemiesQueue.Enqueue(Boss);
             maxEnemiesAtOnce = actorsInitializer.MaxEnemiesAtOnce(waveNumber);
             doors.AddRange(actorsInitializer.InitializeClosingDoors(waveNumber));
         }

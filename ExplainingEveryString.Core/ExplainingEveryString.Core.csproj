@@ -78,6 +78,7 @@
     <Compile Include="GameModel\Enemies\FirstBoss.cs" />
     <Compile Include="GameModel\Enemies\FirstBossPhase.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFromListTargetsSelector.cs" />
+    <Compile Include="Interface\BossInfoDisplayer.cs" />
     <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\DashStateDisplayer.cs" />
     <Compile Include="Interface\InterfaceInfoExtractor.cs" />

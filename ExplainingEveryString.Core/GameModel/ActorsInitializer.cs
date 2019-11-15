@@ -89,6 +89,15 @@ namespace ExplainingEveryString.Core.GameModel
             return new Queue<IEnemy>(enemies);
         }
 
+        internal IEnemy InitializeBoss(Int32 waveNumber)
+        {
+            EnemyWave wave = levelData.EnemyWaves[waveNumber];
+            if (wave.Boss != null)
+                return actorsFactory.ConstructEnemy(Convert(wave.Boss, wave));
+            else
+                return null;
+        }
+
         private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo, EnemyWave enemyWave = null)
         {
             return new ActorStartInfo

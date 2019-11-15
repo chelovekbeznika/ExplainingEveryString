@@ -16,19 +16,19 @@
         "Height": 60,
         "Width": 60
       },
-      "Enemies": [
-        {
-          "BlueprintType": "Boss_mk1",
-          "TilePosition": {
-            "X": 31,
-            "Y": 31,
-            "Offset": "8.0, -8.0"
-          },
-          "TrajectoryParameters": [
-            "0.0, 0.0"
-          ]
-        }
-      ]
+      "Enemies": [   
+      ],
+      "Boss": {
+        "BlueprintType": "Boss_mk1",
+        "TilePosition": {
+          "X": 31,
+          "Y": 31,
+          "Offset": "8.0, -8.0"
+        },
+        "TrajectoryParameters": [
+          "0.0, 0.0"
+        ]
+      }
     }
   ],
   "FogOfWar": {

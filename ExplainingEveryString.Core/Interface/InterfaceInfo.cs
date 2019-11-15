@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Core.Interface
     {
         internal Single GameTime { get; set; }
         internal List<EnemyInterfaceInfo> Enemies { get; set; }
+        internal EnemyInterfaceInfo Boss { get; set; }
         internal PlayerInterfaceInfo Player { get; set; }
     }
 

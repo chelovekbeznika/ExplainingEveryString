@@ -15,6 +15,8 @@ namespace ExplainingEveryString.Data.Level
         public Int32 MaxEnemiesAtOnce { get; set; }
         public ActorStartInfo[] Enemies { get; set; }
         [DefaultValue(null)]
+        public ActorStartInfo Boss { get; set; }
+        [DefaultValue(null)]
         public PositionOnTileMap[] SpawnPoints { get; set; }
     }
 }

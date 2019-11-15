@@ -1,0 +1,1007 @@
+      {
+        "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 250.0
+            }
+          },
+          "MoveTargetSelectType": "TargetsList",
+          "Weapon": {
+            "Reloader": {
+              "FireRate": 10.0,
+              "Ammo": 50,
+              "ReloadTime": 2.5
+            },
+            "Barrels": [
+              {
+                "Length": 14.0,
+                "AngleCorrection": 0.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Length": 14.0,
+                "AngleCorrection": 90.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Length": 14.0,
+                "AngleCorrection": 180.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Length": 14.0,
+                "AngleCorrection": 270.0,
+                "Accuracy": 30.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              }
+            ],
+            "ShootingEffect": {
+              "Sound": {
+                "Name": "Sounds/StandardEnemy/Shot",
+                "Volume": 0.25
+              }
+            },
+            "AimType": "FixedFireDirection"
+          }
+        },
+        "TrajectoryParameters": [
+          "-256.0, 256.0",
+          "256.0, 256.0",
+          "256.0, -256.0",
+          "-256.0, -256.0"
+        ],
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/FirstForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/FirstFormOn",
+          "AnimationCycle": 0.5
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/FirstFormOff",
+          "AnimationCycle": 0.5
+        }
+      },
+      {
+        "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 200.0
+            }
+          },
+          "MoveTargetSelectType": "RandomTargets",
+          "Spawner": {
+            "MaxSpawned": 5,
+            "Reloader": {
+              "FireRate": 0.5
+            },
+            "BlueprintType": "Tank_mk1",
+            "AppearancePhase": 0.01,
+            "PositionSelector": {
+              "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+              "SpawnPositions": [
+                "0.0, 0.0"
+              ]
+            }
+          }
+        },
+        "TrajectoryParameters": [
+          "-416.0, 416.0",
+          "416.0, -416.0"
+        ],
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/SecondForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/SecondFormOn",
+          "AnimationCycle": 0.5
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/SecondFormOff",
+          "AnimationCycle": 0.5
+        }
+      },
+      {
+        "Behavior": {
+          "Mover": {
+            "Type": "Acceleration",
+            "Parameters": {
+              "startSpeed": 200.0,
+              "maxSpeed": 350.0,
+              "acceleration": 900.0
+            }
+          },
+          "MoveTargetSelectType": "MoveTowardPlayer",
+          "Spawner": {
+            "MaxSpawned": 4,
+            "Reloader": {
+              "FireRate": 0.3333
+            },
+            "BlueprintType": "TripleCannon_mk1",
+            "AppearancePhase": 0.01,
+            "PositionSelector": {
+              "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+              "SpawnPositions": [
+                "40.0, -40.0",
+                "40.0, 40.0",
+                "-40.0, -40.0",
+                "-40.0, 40.0"
+              ]
+            }
+          }
+        },
+        "TrajectoryParameters": [
+        ],
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/ThirdForm",
+          "AnimationCycle": 0.1
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/ThirdFormOnOff",
+          "AnimationCycle": 0.5
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/ThirdFormOnOff",
+          "AnimationCycle": 0.5
+        }
+      },
+      {
+        "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 250.0
+            }
+          },
+          "MoveTargetSelectType": "TargetsList",
+          "Weapon": {
+            "Reloader": {
+              "FireRate": 10.0,
+              "Ammo": 25,
+              "ReloadTime": 1.0
+            },
+            "Barrels": [
+              {
+                "Offset": "-40.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-32.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-24.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-16.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-8.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "8.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "16.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "24.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "32.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "40.0, 0.0",
+                "AngleCorrection": -90.0,
+                "Accuracy": 15.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 10,                  
+                  "HomingSpeed": 7.5,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/HelicopterBullet"
+                  }
+                }
+              }
+            ],
+            "ShootingEffect": {
+              "Sound": {
+                "Name": "Sounds/StandardEnemy/Shot",
+                "Volume": 0.25
+              }
+            },
+            "AimType": "FixedFireDirection"
+          }
+        },
+        "TrajectoryParameters": [
+          "-416.0, 416.0",
+          "416.0, 416.0"
+        ],
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/FourthForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/FourthFormOn",
+          "AnimationCycle": 0.5
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/FourthFormOff",
+          "AnimationCycle": 0.5
+        }
+      },
+      {
+        "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 350.0
+            }
+          },
+          "MoveTargetSelectType": "RandomTargets",
+          "Weapon": {
+            "Reloader": {
+              "FireRate": 0.333
+            },
+            "Barrels": [
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 90.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 80.72739,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 397.19012
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 70.82099,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 389.62544
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 60.94539,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 370.642684
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 49.39870,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 295.02542
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 43.45184,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 209.38
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 39.80557,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 124.964
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, 6.0",
+                "AngleCorrection": 41.98721,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 53.81448
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": 0.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": -9.27261,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 397.19012
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": -19.17901,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 389.62544
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": -29.05461,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 370.642684
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": -40.6013,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 295.02542
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": -46.54816,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 209.38
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": -50.19443,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 124.964
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "6.0, 0.0",
+                "AngleCorrection": -48.01279,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 53.81448
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 270.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 260.72739,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 397.19012
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 250.82099,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 389.62544
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 240.94539,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 370.642684
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 229.39870,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 295.02542
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 223.45184,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 209.38
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 219.80557,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 124.964
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "0.0, -6.0",
+                "AngleCorrection": 221.98721,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 53.81448
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 180.0,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 400.0
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 170.72739,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 397.19012
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 160.82099,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 389.62544
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 150.94539,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 370.642684
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 139.39870,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 295.02542
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 133.45184,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 209.38
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 129.80557,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 124.964
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+              {
+                "Offset": "-6.0, 0.0",
+                "AngleCorrection": 131.98721,
+                "Bullet": {
+                  "TrajectoryParameters": {
+                    "speed": 53.81448
+                  },
+                  "Damage": 25.0,
+                  "TimeToLive": 5.0,
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/EnemyBullet"
+                  }
+                }
+              },
+            ],
+            "ShootingEffect": {
+              "Sound": {
+                "Name": "Sounds/StandardEnemy/LongShot",
+                "Volume": 0.2
+              }
+            },
+            "AimType": "FixedFireDirection"
+          }
+        },
+        "TrajectoryParameters": [
+          "-336.0, 336.0",
+          "336.0, -336.0"
+        ],
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/FifthForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/FifthFormOn",
+          "AnimationCycle": 0.5
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/FifthFormOff",
+          "AnimationCycle": 0.5
+        }
+      },
+      {
+        "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 400.0
+            }
+          },
+          "MoveTargetSelectType": "RandomFromListTargets",
+          "Spawner": {
+            "MaxSpawned": 7,
+            "Reloader": {
+              "FireRate": 0.5
+            },
+            "BlueprintType": "Hunter_mk1",
+            "AppearancePhase": 0.01,
+            "PositionSelector": {
+              "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+              "SpawnPositions": [
+                "48.0, 48.0",
+                "-48.0, 48.0",
+                "48.0, -48.0",
+                "-48.0, -48.0"
+              ]
+            }
+          }
+        },
+        "TrajectoryParameters": [
+          "-416.0, 416.0",
+          "-288.0, 416.0",
+          "288.0, 416.0",
+          "416.0, 416.0",
+          "-416.0, 288.0",
+          "416.0, 288.0",
+          "-256.0, 256.0",
+          "256.0, 256.0",
+          "-96.0, 224.0",
+          "96.0, 224.0",
+          "-224.0, 96.0",
+          "224.0, 96",
+          "-416.0, -416.0",
+          "-288.0, -416.0",
+          "288.0, -416.0",
+          "416.0, -416.0",
+          "-416.0, -288.0",
+          "416.0, -288.0",
+          "-256.0, -256.0",
+          "256.0, -256.0",
+          "-96.0, -224.0",
+          "96.0, -224.0",
+          "-224.0, -96.0",
+          "224.0, -96"
+        ],
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/SixthForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/SixthFormOn",
+          "AnimationCycle": 0.5
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/SixthFormOff",
+          "AnimationCycle": 0.5
+        }
+      },
+      {
+        "Behavior": {
+          "Mover": {
+            "Type": "Linear",
+            "Parameters": {
+              "speed": 800.0
+            }
+          },
+          "MoveTargetSelectType": "TargetsList",
+          "Spawner": {
+            "MaxSpawned": 7,
+            "Reloader": {
+              "FireRate": 0.5
+            },
+            "BlueprintType": "SimpleCannon_mk1",
+            "PositionSelector": {
+              "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+              "SpawnPositions": [
+                "34.0, 34.0",
+                "-34.0, 34.0",
+                "34.0, -34.0",
+                "-34.0, -34.0"
+              ]
+            }
+          }
+        },
+        "TrajectoryParameters": [
+          "0.0, 416.0",
+          "0.0, 0.0",
+          "416.0, 0.0",
+          "0.0, 0.0",
+          "0.0, -416.0",
+          "0.0, 0.0",
+          "-416.0, 0.0",
+          "0.0, 0.0"
+        ],
+        "Phase": {
+          "Name": "Sprites/Enemies/Boss1/SeventhForm"
+        },
+        "On": {
+          "Name": "Sprites/Enemies/Boss1/SeventhFormOn",
+          "AnimationCycle": 0.5
+        },
+        "Off": {
+          "Name": "Sprites/Enemies/Boss1/SeventhFormOff",
+          "AnimationCycle": 0.5
+        }
+      }

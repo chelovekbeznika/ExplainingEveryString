@@ -15,7 +15,9 @@ namespace ExplainingEveryString.Core.Interface
                 GameTime = levelProgress.GameTime,
                 Enemies = activeActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
-                            .Where(e => e.ShowInterfaceInfo).Select(e => GetInterfaceInfo(e, camera)).ToList()
+                            .Where(e => e.ShowInterfaceInfo && e != activeActors.Boss)
+                            .Select(e => GetInterfaceInfo(e, camera)).ToList(),
+                Boss = activeActors.Boss != null ? GetInterfaceInfo(activeActors.Boss, camera) : null
             };
         }
 
