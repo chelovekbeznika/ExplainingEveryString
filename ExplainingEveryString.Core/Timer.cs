@@ -8,15 +8,19 @@ namespace ExplainingEveryString.Core
         private readonly Action atTimerElapsed;
         internal Boolean Happened { get; private set; } = false;
         internal Single SecondsTillEvent { get; private set; }
+        private Func<Boolean> isActive;
 
-        internal Timer(Single secondsTillEvent, Action atTimerElapsed)
+        internal Timer(Single secondsTillEvent, Action atTimerElapsed, Func<Boolean> isActive)
         {
             this.SecondsTillEvent = secondsTillEvent;
             this.atTimerElapsed = atTimerElapsed;
+            this.isActive = isActive;
         }
 
         public void Update(Single elapsedSeconds)
         {
+            if (!isActive())
+                Cancel();
             if (!Happened)
             {
                 SecondsTillEvent -= elapsedSeconds;
@@ -26,6 +30,11 @@ namespace ExplainingEveryString.Core
                     Happened = true;
                 }
             }
+        }
+
+        private void Cancel()
+        {
+            Happened = true;
         }
     }
 }

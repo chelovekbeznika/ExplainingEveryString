@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.GameModel;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,19 @@ namespace ExplainingEveryString.Core
             UpdateOrder = ComponentsOrder.Timers;
         }
 
+        public Timer ScheduleEvent(Single seconds, Action atTimerElapsed, IActor eventProducer)
+        {
+            return ScheduleEvent(seconds, atTimerElapsed, () => eventProducer.IsAlive());
+        }
+
         public Timer ScheduleEvent(Single seconds, Action atTimerElapsed)
         {
-            Timer timer = new Timer(seconds, atTimerElapsed);
+            return ScheduleEvent(seconds, atTimerElapsed, () => true);
+        }
+
+        private Timer ScheduleEvent(Single seconds, Action atTimerElapsed, Func<Boolean> isActive)
+        {
+            Timer timer = new Timer(seconds, atTimerElapsed, isActive);
             scheduledTimers.Add(timer);
             return timer;
         }

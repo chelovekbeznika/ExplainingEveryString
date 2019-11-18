@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.phaseOff = new EpicEvent(level, blueprint.PhaseOffEffect, false, this, true);
             this.phases = blueprint.Phases.Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray();
             Single tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
-            TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => TurningOnPhase());
+            TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => TurningOnPhase(), this);
             nextPhase = SelectNextPhase();
         }
 
@@ -85,7 +85,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             state = BossState.TurningOnPhase;
             SpriteState.StartOver();
 
-            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOnTime, () => InPhase());
+            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOnTime, () => InPhase(), this);
         }
 
         private void InPhase()
@@ -98,7 +98,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             phaseOn.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
             Single phaseDuration = minPhaseDuration + RandomUtility.Next() * (maxPhaseDuration - minPhaseDuration);
-            TimersComponent.Instance.ScheduleEvent(phaseDuration, () => TurningOffPhase());
+            TimersComponent.Instance.ScheduleEvent(phaseDuration, () => TurningOffPhase(), this);
         }
 
         private void TurningOffPhase()
@@ -110,7 +110,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
             phaseOff.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
-            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOffTime, () => BetweenPhase());
+            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOffTime, () => BetweenPhase(), this);
         }
 
         private void BetweenPhase()
@@ -122,7 +122,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             Single tillNextState = betweenPhasesDuration 
                 - phases[currentPhase].TurningOffTime
                 - phases[nextPhase].TurningOnTime;
-            TimersComponent.Instance.ScheduleEvent(tillNextState, () => TurningOnPhase());
+            TimersComponent.Instance.ScheduleEvent(tillNextState, () => TurningOnPhase(), this);
         }
 
         private Int32 SelectNextPhase()
