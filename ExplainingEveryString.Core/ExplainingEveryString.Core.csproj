@@ -96,6 +96,9 @@
     <Compile Include="Menu\MenuItemsContainer.cs" />
     <Compile Include="Menu\MenuItemWithContainer.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
+    <Compile Include="Music\Constants.cs" />
+    <Compile Include="Music\MusicComponent.cs" />
+    <Compile Include="Music\PulseChannel.cs" />
     <Compile Include="SpriteDataBuilder.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="GameModel\Weaponry\LevelPointsSpawner.cs" />

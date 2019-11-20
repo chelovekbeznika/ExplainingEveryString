@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Core
         internal static void Init(Game game)
         {
             Instance = new TimersComponent(game);
-            game.Components.Insert(ComponentsOrder.Timers, Instance);
+            game.Components.Add(Instance);
         }
 
         private List<Timer> timers = new List<Timer>();

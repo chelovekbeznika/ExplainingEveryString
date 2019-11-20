@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Menu;
+using ExplainingEveryString.Core.Music;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
@@ -14,6 +15,7 @@ namespace ExplainingEveryString.Core.GameState
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
+        internal MusicComponent Music { get; private set; }
 
         internal ComponentsManager(EesGame game, 
             LevelSequnceSpecification levelSequenceSpecification, IBlueprintsLoader blueprintsLoader)
@@ -22,6 +24,7 @@ namespace ExplainingEveryString.Core.GameState
             this.blueprintsLoader = blueprintsLoader;
             Interface = new InterfaceComponent(game);
             Menu = new MenuComponent(game, levelSequenceSpecification);
+            Music = new MusicComponent(game);
         }
 
         internal void InitNewGameplayComponent(GameProgress gameProgress)
@@ -29,7 +32,7 @@ namespace ExplainingEveryString.Core.GameState
             CurrentGameplay = new GameplayComponent(
                 game, blueprintsLoader, gameProgress.CurrentLevelFileName, gameProgress.LevelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
-            game.Components.Insert(ComponentsOrder.Gameplay, CurrentGameplay);
+            game.Components.Add(CurrentGameplay);
         }
 
         internal void DeleteCurrentGameplayComponent()
@@ -48,6 +51,7 @@ namespace ExplainingEveryString.Core.GameState
             TimersComponent.Init(game);
             components.Add(Interface);
             components.Add(Menu);
+            components.Add(Music);
             SwitchMenuRelatedComponents(true);
         }
 
