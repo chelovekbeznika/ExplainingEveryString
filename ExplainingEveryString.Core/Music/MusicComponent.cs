@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.Music
 {
@@ -20,7 +21,9 @@ namespace ExplainingEveryString.Core.Music
         {
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
             sound.Volume = 0.2F;
-            this.buffer = new PulseChannel().GetMusic();
+            PulseChannel pulse = new PulseChannel();
+            UInt16[] notes = new UInt16[] { 427, 380, 338, 319, 284, 253, 225 };
+            this.buffer = notes.SelectMany(note => pulse.GetNote(15, 0, note, Constants.SampleRate / 4)).ToArray();
             base.Initialize();
         }
 

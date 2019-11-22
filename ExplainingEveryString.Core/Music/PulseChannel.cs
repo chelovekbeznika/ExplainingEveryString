@@ -5,37 +5,47 @@ namespace ExplainingEveryString.Core.Music
 {
     internal class PulseChannel
     {
-        private Boolean[] waveForm = new Boolean[] { false, false, false, false, true, true, true, true };
+        private const Int16 oneVolumeLevelAmplitude = (Int16.MaxValue - Int16.MinValue) / 15;
+        private const Byte clockWaveGeneratorCycleStart = 7;
 
-        public Byte[] GetMusic()
+        private readonly Boolean[][] waveForms = new Boolean[][] {
+            new [] { false, false, false, false, false, false, false, true },
+            new [] { false, false, false, false, false, false, true, true },
+            new [] { false, false, false, false, true, true, true, true },
+            new [] { true, true, true, true, true, true, false, false }
+        };
+
+        public Byte[] GetNote(Byte volume, Byte duty, UInt16 timer, Int32 durationInSamples)
         {
-            Byte[] result = new Byte[Constants.SampleRate * 2];
-            Int32 timer = 253;
+            Byte[] result = new Byte[durationInSamples * 2];
             Int32 currentTimerValue = timer;
             Int32 currentWavePhase = 0;
-            foreach (Int32 bufferIndex in Enumerable.Range(0, Constants.SampleRate))
+            foreach (Int32 bufferIndex in Enumerable.Range(0, durationInSamples))
             {
-                if (waveForm[currentWavePhase])
-                    PutSample(result, bufferIndex, Int16.MaxValue);
+                Int16 outputValue;
+                if (waveForms[duty][currentWavePhase])
+                    outputValue = (Int16)(Int16.MinValue + volume * oneVolumeLevelAmplitude);
                 else
-                    PutSample(result, bufferIndex, Int16.MinValue);
+                    outputValue = Int16.MinValue;
+                PutSample(result, bufferIndex, outputValue);
 
-                if (Countdown(ref currentTimerValue, Constants.RarifiyngRate, timer))
-                    Countdown(ref currentWavePhase, 1, 7);
+                Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.RarifiyngRate, timer);
+                if (waveGeneratorClockCyclesSwitched > 0)
+                    Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
             }
             return result;
         }
 
-        private Boolean Countdown(ref Int32 currentValue, Int32 step, Int32 startCycleAt)
+        private Byte Countdown(ref Int32 currentValue, Int32 step, Int32 startCycleAt)
         {
             currentValue -= step;
-            if (currentValue < 0)
+            Byte result = 0;
+            while (currentValue < 0)
             {
                 currentValue += (startCycleAt + 1);
-                return true;
+                result += 1;
             }
-            else
-                return false;
+            return result;
         }
 
         private void PutSample(Byte[] buffer, Int32 position, Int16 value)
