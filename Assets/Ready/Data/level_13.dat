@@ -1487,7 +1487,7 @@
           "BlueprintType": "QuarterDelimiterVertical",
           "ClosesAt": 3,
           "TilePosition": {
-            "X": 47,
+            "X": 46,
             "Y": 59
           }
         },
@@ -1495,7 +1495,7 @@
           "BlueprintType": "QuarterDelimiterVertical",
           "ClosesAt": 3,
           "TilePosition": {
-            "X": 47,
+            "X": 46,
             "Y": 70
           }
         },
@@ -1503,7 +1503,7 @@
           "BlueprintType": "QuarterDelimiterVertical",
           "ClosesAt": 3,
           "TilePosition": {
-            "X": 47,
+            "X": 46,
             "Y": 81
           }
         },
@@ -1511,7 +1511,7 @@
           "BlueprintType": "QuarterDelimiterVertical",
           "ClosesAt": 3,
           "TilePosition": {
-            "X": 47,
+            "X": 46,
             "Y": 92
           }
         },
