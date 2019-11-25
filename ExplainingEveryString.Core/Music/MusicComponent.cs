@@ -9,8 +9,9 @@ namespace ExplainingEveryString.Core.Music
 {
     internal class MusicComponent : GameComponent
     {
-        DynamicSoundEffectInstance sound;
-        Byte[] buffer;
+        private DynamicSoundEffectInstance sound;
+        private Byte[] buffer;
+        private Byte[] triangleBuffer;
 
         public MusicComponent(Game game) : base(game)
         {
@@ -31,20 +32,21 @@ namespace ExplainingEveryString.Core.Music
                 Value = note,
                 Parameter = SoundChannelParameter.Timer
             }).ToList();
-            //events.Insert(0, new SoundDirectingEvent
-            //{
-            //    Position = 0,
-            //    Value = 3,
-            //    Parameter = SoundChannelParameter.Duty
-            //});
-            //events.Insert(0, new SoundDirectingEvent
-            //{
-            //    Position = 0,
-            //    Value = 7,
-            //    Parameter = SoundChannelParameter.Volume
-            //});
-            //this.buffer = pulse.GetMusic(events, Constants.SampleRate * 7 / 2);
-            this.buffer = triangle.GetMusic(events, Constants.SampleRate * 7 / 2);
+            this.triangleBuffer = triangle.GetMusic(events, Constants.SampleRate * 7 / 2);
+
+            events.Insert(0, new SoundDirectingEvent
+            {
+                Position = 0,
+                Value = 3,
+                Parameter = SoundChannelParameter.Duty
+            });
+            events.Insert(0, new SoundDirectingEvent
+            {
+                Position = 0,
+                Value = 7,
+                Parameter = SoundChannelParameter.Volume
+            });
+            this.buffer = pulse.GetMusic(events, Constants.SampleRate * 7 / 2);
             base.Initialize();
         }
 
@@ -55,7 +57,10 @@ namespace ExplainingEveryString.Core.Music
             {
                 if (sound.PendingBufferCount < 1)
                 {
-                    sound.SubmitBuffer(buffer);
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
+                        sound.SubmitBuffer(triangleBuffer);
+                    else
+                        sound.SubmitBuffer(buffer);
                     sound.Play();
                 }
             }
