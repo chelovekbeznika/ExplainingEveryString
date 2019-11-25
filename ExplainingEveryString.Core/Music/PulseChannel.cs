@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.Music
@@ -14,25 +15,38 @@ namespace ExplainingEveryString.Core.Music
             new [] { true, true, true, true, true, true, false, false }
         };
 
-        public Byte[] GetNote(Byte volume, Byte duty, UInt16 timer, Int32 durationInSamples)
-        {
-            Byte[] result = new Byte[durationInSamples * 2];
-            Int32 currentTimerValue = timer;
-            Int32 currentWavePhase = 0;
-            foreach (Int32 bufferIndex in Enumerable.Range(0, durationInSamples))
-            {
-                Int16 outputValue;
-                if (waveForms[duty][currentWavePhase])
-                    outputValue = (Int16)(Int16.MinValue + volume * OneVolumeLevelAmplitude);
-                else
-                    outputValue = Int16.MinValue;
-                PutSample(result, bufferIndex, outputValue);
+        private Int32 currentTimerValue = 0;
+        private Int32 currentWavePhase = 0;
 
-                Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.RarifiyngRate, timer);
-                if (waveGeneratorClockCyclesSwitched > 0)
-                    Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
-            }
-            return result;
+        internal PulseChannel()
+        {
+            ChannelParameters = new Dictionary<SoundChannelParameter, Int32>()
+            {
+                { SoundChannelParameter.Duty, 2 },
+                { SoundChannelParameter.Timer, 0 },
+                { SoundChannelParameter.Volume, 0 }
+            };
+        }
+
+        private Int16 Timer => (Int16)ChannelParameters[SoundChannelParameter.Timer];
+
+        private Byte Volume => (Byte)ChannelParameters[SoundChannelParameter.Volume];
+
+        private Byte Duty => (Byte)ChannelParameters[SoundChannelParameter.Duty];
+
+        protected override Int16 GetOutputValue()
+        {
+            if (Timer >= 8 && waveForms[Duty][currentWavePhase])
+                return (Int16)(Int16.MinValue + Volume * OneVolumeLevelAmplitude);
+            else
+                return Int16.MinValue;
+        }
+
+        protected override void MoveEmulationTowardNextSample()
+        {
+            Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.RarifiyngRate, Timer);
+            if (waveGeneratorClockCyclesSwitched > 0)
+                Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
         }
     }
 }

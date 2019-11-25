@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.Music
@@ -13,23 +14,30 @@ namespace ExplainingEveryString.Core.Music
             0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
         };
 
-        public Byte[] GetNote(UInt16 timer, Int32 durationInSamples)
+        private Int32 currentWavePhase = clockWaveGeneratorCycleStart;
+        private Int32 currentTimerValue = 0;
+
+        internal TriangleChannel()
         {
-            Byte[] result = new Byte[durationInSamples * 2];
-            Int32 currentTimerValue = timer;
-            Int32 currentWavePhase = clockWaveGeneratorCycleStart;
-
-            foreach (Int32 bufferIndex in Enumerable.Range(0, durationInSamples))
+            ChannelParameters = new Dictionary<SoundChannelParameter, Int32>
             {
-                Int16 outputValue = (Int16)(OneVolumeLevelAmplitude * lookupTable[currentWavePhase]);
-                PutSample(result, bufferIndex, outputValue);
+                { SoundChannelParameter.Timer, 0 }
+            };
+        }
 
-                Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.RarifiyngRate * 2, timer);
-                if (waveGeneratorClockCyclesSwitched > 0)
-                    Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
-            }
+        internal Int16 Timer => (Int16)ChannelParameters[SoundChannelParameter.Timer];
 
-            return result;
+        protected override Int16 GetOutputValue()
+        {
+            Byte currentValue = Timer > 0 ? lookupTable[currentWavePhase] : (Byte)0;
+            return (Int16)(Int16.MinValue + OneVolumeLevelAmplitude * currentValue);
+        }
+
+        protected override void MoveEmulationTowardNextSample()
+        {
+            Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.RarifiyngRate * 2, Timer);
+            if (waveGeneratorClockCyclesSwitched > 0)
+                Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
         }
     }
 }
