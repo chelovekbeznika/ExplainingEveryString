@@ -3,9 +3,8 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.Music
 {
-    internal class PulseChannel
+    internal class PulseChannel : SoundChannel
     {
-        private const Int16 oneVolumeLevelAmplitude = (Int16.MaxValue - Int16.MinValue) / 15;
         private const Byte clockWaveGeneratorCycleStart = 7;
 
         private readonly Boolean[][] waveForms = new Boolean[][] {
@@ -24,7 +23,7 @@ namespace ExplainingEveryString.Core.Music
             {
                 Int16 outputValue;
                 if (waveForms[duty][currentWavePhase])
-                    outputValue = (Int16)(Int16.MinValue + volume * oneVolumeLevelAmplitude);
+                    outputValue = (Int16)(Int16.MinValue + volume * OneVolumeLevelAmplitude);
                 else
                     outputValue = Int16.MinValue;
                 PutSample(result, bufferIndex, outputValue);
@@ -34,25 +33,6 @@ namespace ExplainingEveryString.Core.Music
                     Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
             }
             return result;
-        }
-
-        private Byte Countdown(ref Int32 currentValue, Int32 step, Int32 startCycleAt)
-        {
-            currentValue -= step;
-            Byte result = 0;
-            while (currentValue < 0)
-            {
-                currentValue += (startCycleAt + 1);
-                result += 1;
-            }
-            return result;
-        }
-
-        private void PutSample(Byte[] buffer, Int32 position, Int16 value)
-        {
-            (Byte, Byte) amplitude = ((Byte)value, (Byte)(value >> 8));
-            buffer[position * 2] = amplitude.Item1;
-            buffer[position * 2 + 1] = amplitude.Item2;
         }
     }
 }

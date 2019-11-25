@@ -22,8 +22,10 @@ namespace ExplainingEveryString.Core.Music
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
             sound.Volume = 0.2F;
             PulseChannel pulse = new PulseChannel();
+            TriangleChannel triangle = new TriangleChannel();
             UInt16[] notes = new UInt16[] { 427, 380, 338, 319, 284, 253, 225 };
-            this.buffer = notes.SelectMany(note => pulse.GetNote(15, 0, note, Constants.SampleRate / 4)).ToArray();
+            //this.buffer = notes.SelectMany(note => pulse.GetNote(15, 0, note, Constants.SampleRate / 4)).ToArray();
+            this.buffer = notes.SelectMany(note => triangle.GetNote(note, Constants.SampleRate / 4)).ToArray();
             base.Initialize();
         }
 
