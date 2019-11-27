@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.Music
         private DynamicSoundEffectInstance sound;
         private Byte[] buffer;
         private Byte[] triangleBuffer;
+        private Byte[] noiseBuffer;
 
         public MusicComponent(Game game) : base(game)
         {
@@ -25,6 +26,7 @@ namespace ExplainingEveryString.Core.Music
             sound.Volume = 0.2F;
             PulseChannel pulse = new PulseChannel();
             TriangleChannel triangle = new TriangleChannel();
+            NoiseChannel noise = new NoiseChannel();
             UInt16[] notes = new UInt16[] { 427, 380, 338, 319, 284, 253, 225 };
             List<SoundDirectingEvent> events = notes.Select((note, index) => new SoundDirectingEvent
             {
@@ -47,6 +49,13 @@ namespace ExplainingEveryString.Core.Music
                 Parameter = SoundChannelParameter.Volume
             });
             this.buffer = pulse.GetMusic(events, Constants.SampleRate * 7 / 2);
+
+            List<SoundDirectingEvent> noiseEvents = new List<SoundDirectingEvent>
+            {
+                new SoundDirectingEvent { Parameter = SoundChannelParameter.Timer, Value = 0, Position = 0 },
+                new SoundDirectingEvent { Parameter = SoundChannelParameter.Mode, Value = 1, Position = Constants.SampleRate / 2 }
+            };
+            this.noiseBuffer = noise.GetMusic(noiseEvents, Constants.SampleRate);
             base.Initialize();
         }
 
@@ -57,7 +66,9 @@ namespace ExplainingEveryString.Core.Music
             {
                 if (sound.PendingBufferCount < 1)
                 {
-                    if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftAlt))
+                        sound.SubmitBuffer(noiseBuffer);
+                    else if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                         sound.SubmitBuffer(triangleBuffer);
                     else
                         sound.SubmitBuffer(buffer);
