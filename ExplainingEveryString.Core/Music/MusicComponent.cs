@@ -50,12 +50,18 @@ namespace ExplainingEveryString.Core.Music
             });
             this.buffer = pulse.GetMusic(events, Constants.SampleRate * 7 / 2);
 
-            List<SoundDirectingEvent> noiseEvents = new List<SoundDirectingEvent>
+            List<SoundDirectingEvent> noiseEvents = Enumerable.Range(0, 16).SelectMany(timer =>
             {
-                new SoundDirectingEvent { Parameter = SoundChannelParameter.Timer, Value = 0, Position = 0 },
-                new SoundDirectingEvent { Parameter = SoundChannelParameter.Mode, Value = 1, Position = Constants.SampleRate / 2 }
-            };
-            this.noiseBuffer = noise.GetMusic(noiseEvents, Constants.SampleRate);
+                Int32 basePosition = Constants.SampleRate * timer;
+                Int32 halfSecondPosition = basePosition + Constants.SampleRate / 2;
+                return new List<SoundDirectingEvent>
+                {
+                    new SoundDirectingEvent { Parameter = SoundChannelParameter.Mode, Value = 0, Position = basePosition },
+                    new SoundDirectingEvent { Parameter = SoundChannelParameter.Timer, Value = timer, Position = basePosition },
+                    new SoundDirectingEvent { Parameter = SoundChannelParameter.Mode, Value = 1, Position = halfSecondPosition }
+                };
+            }).ToList();
+            this.noiseBuffer = noise.GetMusic(noiseEvents, Constants.SampleRate * 16);
             base.Initialize();
         }
 
