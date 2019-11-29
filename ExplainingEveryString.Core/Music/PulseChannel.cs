@@ -24,27 +24,30 @@ namespace ExplainingEveryString.Core.Music
             {
                 { SoundChannelParameter.Duty, 2 },
                 { SoundChannelParameter.Timer, 0 },
-                { SoundChannelParameter.Volume, 0 }
+                { SoundChannelParameter.Volume, 0 },
+                { SoundChannelParameter.LengthCounter, 0 },
+                { SoundChannelParameter.HaltFlag, 1 },
+                { SoundChannelParameter.EnvelopeConstant, 1 }
             };
+            FrameCounter.HalfFrame += LengthCounterDecrement;
+            FrameCounter.QuarterFrame += DividerDecrement;
         }
 
         private Int16 Timer => (Int16)ChannelParameters[SoundChannelParameter.Timer];
-
-        private Byte Volume => (Byte)ChannelParameters[SoundChannelParameter.Volume];
 
         private Byte Duty => (Byte)ChannelParameters[SoundChannelParameter.Duty];
 
         protected override Int16 GetOutputValue()
         {
-            if (Timer >= 8 && waveForms[Duty][currentWavePhase])
-                return (Int16)(Int16.MinValue + Volume * OneVolumeLevelAmplitude);
+            if (Timer >= 8 && waveForms[Duty][currentWavePhase] && !SilencedByLengthCounter)
+                return (Int16)(Int16.MinValue + EnvelopeOutput * OneVolumeLevelAmplitude);
             else
                 return Int16.MinValue;
         }
 
         protected override void MoveEmulationTowardNextSample()
         {
-            Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.RarifiyngRate, Timer);
+            Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
             if (waveGeneratorClockCyclesSwitched > 0)
                 Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
         }

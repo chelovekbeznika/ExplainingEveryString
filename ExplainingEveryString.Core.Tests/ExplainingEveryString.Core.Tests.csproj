@@ -58,6 +58,7 @@
     <Compile Include="HitboxesCollisionsTests.cs" />
     <Compile Include="FrictionTests.cs" />
     <Compile Include="MenuItemsPositioningTests.cs" />
+    <Compile Include="Music\FrameCounterTests.cs" />
     <Compile Include="SimpleReloadTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LimitedAmmoReloadTests.cs" />

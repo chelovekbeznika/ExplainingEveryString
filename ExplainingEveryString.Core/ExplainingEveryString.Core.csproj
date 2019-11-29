@@ -97,6 +97,7 @@
     <Compile Include="Menu\MenuItemWithContainer.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="Music\Constants.cs" />
+    <Compile Include="Music\FrameCounter.cs" />
     <Compile Include="Music\MusicComponent.cs" />
     <Compile Include="Music\NoiseChannel.cs" />
     <Compile Include="Music\PulseChannel.cs" />

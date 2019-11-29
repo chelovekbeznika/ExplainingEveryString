@@ -23,21 +23,27 @@ namespace ExplainingEveryString.Core.Music
             ChannelParameters = new Dictionary<SoundChannelParameter, Int32>()
             {
                 { SoundChannelParameter.Timer, 0 },
-                { SoundChannelParameter.Mode, 0 }
+                { SoundChannelParameter.Mode, 0 },
+                { SoundChannelParameter.Volume, 0 },
+                { SoundChannelParameter.LengthCounter, 0 },
+                { SoundChannelParameter.HaltFlag, 1 },
+                { SoundChannelParameter.EnvelopeConstant, 1 }
             };
+            FrameCounter.HalfFrame += LengthCounterDecrement;
+            FrameCounter.QuarterFrame += DividerDecrement;
         }
 
         protected override Int16 GetOutputValue()
         {
-            if ((lfsrValue & 0b1) != 0)
+            if ((lfsrValue & 0b1) != 0 && !SilencedByLengthCounter)
                 return Int16.MinValue;
             else
-                return Int16.MaxValue;
+                return (Int16)(Int16.MinValue + EnvelopeOutput * OneVolumeLevelAmplitude);
         }
 
         protected override void MoveEmulationTowardNextSample()
         {
-            Int32 shiftBetweenSamples = Countdown(ref currentTimerValue, Constants.RarifiyngRate, Timer);
+            Int32 shiftBetweenSamples = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
             foreach (var shiftNumber in Enumerable.Range(0, shiftBetweenSamples))
             {
                 ShiftLfsr();

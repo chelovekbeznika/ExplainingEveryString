@@ -61,6 +61,12 @@ namespace ExplainingEveryString.Core.Music
                     new SoundDirectingEvent { Parameter = SoundChannelParameter.Mode, Value = 1, Position = halfSecondPosition }
                 };
             }).ToList();
+            noiseEvents.Insert(0, new SoundDirectingEvent
+            {
+                Position = 0,
+                Parameter = SoundChannelParameter.Volume,
+                Value = 7
+            });
             this.noiseBuffer = noise.GetMusic(noiseEvents, Constants.SampleRate * 16);
             base.Initialize();
         }

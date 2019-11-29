@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core.Music
 
         protected override void MoveEmulationTowardNextSample()
         {
-            Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.RarifiyngRate * 2, Timer);
+            Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples * 2, Timer);
             if (waveGeneratorClockCyclesSwitched > 0)
                 Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
         }

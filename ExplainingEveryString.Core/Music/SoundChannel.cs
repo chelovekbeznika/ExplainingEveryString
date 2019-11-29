@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Core.Music
     {
         protected const Int16 OneVolumeLevelAmplitude = (Int16.MaxValue - Int16.MinValue) / 15;
         protected Dictionary<SoundChannelParameter, Int32> ChannelParameters { get; set; }
+        protected FrameCounter FrameCounter { get; set; } = new FrameCounter();
 
         internal Byte[] GetMusic(List<SoundDirectingEvent> soundEvents, Int32 durationInSamples)
         {
@@ -31,6 +32,7 @@ namespace ExplainingEveryString.Core.Music
                 }
 
                 PutSample(result, bufferIndex, GetOutputValue());
+                FrameCounter.MoveEmulationForward(Constants.ApuTicksBetweenSamples);
                 MoveEmulationTowardNextSample();
             }
 
@@ -59,5 +61,50 @@ namespace ExplainingEveryString.Core.Music
             buffer[position * 2] = amplitude.Item1;
             buffer[position * 2 + 1] = amplitude.Item2;
         }
+
+        #region Pulse and noise common section with length counter and envelope
+        private Byte divider = 0;
+        protected Byte Decay { get; set; } = 15;
+
+        protected Boolean HaltFlag => ChannelParameters[SoundChannelParameter.HaltFlag] != 0;
+
+        protected Int32 LengthCounter
+        {
+            get => ChannelParameters[SoundChannelParameter.LengthCounter];
+            set => ChannelParameters[SoundChannelParameter.LengthCounter] = value;
+        }
+
+        protected Boolean SilencedByLengthCounter => !HaltFlag && LengthCounter == 0;
+
+        protected Boolean EnvelopeLoopFlag => HaltFlag;
+
+        protected Boolean EnvelopeConstant => ChannelParameters[SoundChannelParameter.EnvelopeConstant] != 0;
+
+        protected Byte Volume => (Byte)ChannelParameters[SoundChannelParameter.Volume];
+
+        protected Byte EnvelopeOutput => EnvelopeConstant ? Volume : Decay;
+
+        protected void LengthCounterDecrement(Object sender, EventArgs e)
+        {
+            if (!HaltFlag && LengthCounter > 0)
+                LengthCounter -= 1;
+        }
+
+        protected void DividerDecrement(Object sender, EventArgs e)
+        {
+            divider -= 1;
+            if (divider < 0)
+            {
+                divider = Volume;
+            }
+        }
+
+        protected void DecrementDecay()
+        {
+            Decay -= 1;
+            if (Decay == 0 && EnvelopeLoopFlag)
+                Decay = 15;
+        }
+        #endregion
     }
 }
