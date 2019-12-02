@@ -17,8 +17,9 @@ namespace ExplainingEveryString.Core.Music
 
         private Int32[] StepsCycles => ModeFlag ? StepsCyclesModeSet : StepsCyclesModeClear;
 
-        internal void MoveEmulationForward(Int32 apuCycles)
+        internal void MoveEmulationForward()
         {
+            Int32 apuCycles = Constants.ApuTicksBetweenSamples;
             currentApuCyclesValue += apuCycles;
             if (currentApuCyclesValue >= StepsCycles[stepsEvaluated])
             {

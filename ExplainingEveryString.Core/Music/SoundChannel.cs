@@ -8,13 +8,19 @@ namespace ExplainingEveryString.Core.Music
     {
         protected const Int16 OneVolumeLevelAmplitude = (Int16.MaxValue - Int16.MinValue) / 15;
         protected Dictionary<SoundChannelParameter, Int32> ChannelParameters { get; set; }
-        protected FrameCounter FrameCounter { get; set; } = new FrameCounter();
+        protected FrameCounter FrameCounter { get; set; }
 
-        internal Byte[] GetMusic(List<SoundDirectingEvent> soundEvents, Int32 durationInSamples)
+        protected SoundChannel(FrameCounter frameCounter)
         {
+            this.FrameCounter = frameCounter;
+        }
+
+        internal Byte[] GetMusic(List<SoundDirectingEvent> soundEvents, Single durationInSeconds)
+        {
+            Int32 durationInSamples = (Int32)System.Math.Floor(durationInSeconds * Constants.SampleRate);
             SoundDirectingEvent barrierEvent = new SoundDirectingEvent
             {
-                Position = Int32.MaxValue,
+                Seconds = Int32.MaxValue / Constants.SampleRate,
                 Value = 0,
                 Parameter = SoundChannelParameter.Timer
             };
@@ -32,16 +38,20 @@ namespace ExplainingEveryString.Core.Music
                 }
 
                 PutSample(result, bufferIndex, GetOutputValue());
-                FrameCounter.MoveEmulationForward(Constants.ApuTicksBetweenSamples);
                 MoveEmulationTowardNextSample();
             }
 
             return result;
         }
 
-        protected abstract Int16 GetOutputValue();
+        internal void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        {
+            ChannelParameters[soundEvent.Parameter] = soundEvent.Value;
+        }
 
-        protected abstract void MoveEmulationTowardNextSample();
+        internal abstract Byte GetOutputValue();
+
+        internal abstract void MoveEmulationTowardNextSample();
 
         protected Byte Countdown(ref Int32 currentValue, Int32 step, Int32 startCycleAt)
         {

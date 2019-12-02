@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.Music
 
         private Boolean ModeFlagSet => ChannelParameters[SoundChannelParameter.Mode] != 0;
 
-        internal NoiseChannel()
+        internal NoiseChannel(FrameCounter frameCounter) : base(frameCounter)
         {
             ChannelParameters = new Dictionary<SoundChannelParameter, Int32>()
             {
@@ -33,15 +33,15 @@ namespace ExplainingEveryString.Core.Music
             FrameCounter.QuarterFrame += DividerDecrement;
         }
 
-        protected override Int16 GetOutputValue()
+        internal override Byte GetOutputValue()
         {
             if ((lfsrValue & 0b1) != 0 && !SilencedByLengthCounter)
-                return Int16.MinValue;
+                return 0;
             else
-                return (Int16)(Int16.MinValue + EnvelopeOutput * OneVolumeLevelAmplitude);
+                return EnvelopeOutput;
         }
 
-        protected override void MoveEmulationTowardNextSample()
+        internal override void MoveEmulationTowardNextSample()
         {
             Int32 shiftBetweenSamples = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
             foreach (var shiftNumber in Enumerable.Range(0, shiftBetweenSamples))

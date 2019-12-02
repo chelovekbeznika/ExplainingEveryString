@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.Music
         private Int32 currentWavePhase = clockWaveGeneratorCycleStart;
         private Int32 currentTimerValue = 0;
 
-        internal TriangleChannel()
+        internal TriangleChannel(FrameCounter frameCounter) : base(frameCounter)
         {
             ChannelParameters = new Dictionary<SoundChannelParameter, Int32>
             {
@@ -27,13 +27,12 @@ namespace ExplainingEveryString.Core.Music
 
         internal Int16 Timer => (Int16)ChannelParameters[SoundChannelParameter.Timer];
 
-        protected override Int16 GetOutputValue()
+        internal override Byte GetOutputValue()
         {
-            Byte currentValue = Timer > 0 ? lookupTable[currentWavePhase] : (Byte)0;
-            return (Int16)(Int16.MinValue + OneVolumeLevelAmplitude * currentValue);
+            return Timer > 0 ? lookupTable[currentWavePhase] : (Byte)0;
         }
 
-        protected override void MoveEmulationTowardNextSample()
+        internal override void MoveEmulationTowardNextSample()
         {
             Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples * 2, Timer);
             if (waveGeneratorClockCyclesSwitched > 0)

@@ -4,8 +4,12 @@ namespace ExplainingEveryString.Core.Music
 {
     internal class SoundDirectingEvent
     {
-        internal Int32 Position { get; set; }
-        internal Int32 Value { get; set; }
+        internal Int32 Seconds { get; set; }
+        internal Int32 SamplesOffset { get; set; }
+        internal Int32 Position => Seconds * Constants.SampleRate + SamplesOffset;
+
+        internal SoundChannelType SoundChannel { get; set; }
         internal SoundChannelParameter Parameter { get; set; }
+        internal Int32 Value { get; set; }
     }
 }
