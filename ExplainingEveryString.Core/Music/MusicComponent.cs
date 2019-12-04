@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.Music
         private DynamicSoundEffectInstance sound;
         private Byte[] buffer;
         private Byte[] lengthTest;
+        private Byte[] envelopeTest;
 
         public MusicComponent(Game game) : base(game)
         {
@@ -23,6 +24,7 @@ namespace ExplainingEveryString.Core.Music
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
             this.buffer = new Mixer().GetMusic(GetTestSong(), 20);
             this.lengthTest = new Mixer().GetMusic(GetLengthCounterTest(), 16);
+            this.envelopeTest = new Mixer().GetMusic(GetEnvelopeTestLength(), 16);
             base.Initialize();
         }
 
@@ -33,7 +35,9 @@ namespace ExplainingEveryString.Core.Music
             {
                 if (sound.PendingBufferCount < 1)
                 {
-                    if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
+                    if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
+                        sound.SubmitBuffer(envelopeTest);
+                    else if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
                         sound.SubmitBuffer(lengthTest);
                     else
                         sound.SubmitBuffer(buffer);
@@ -186,6 +190,73 @@ namespace ExplainingEveryString.Core.Music
                 }
             }))
             .ToList();
+        }
+
+        private List<SoundDirectingEvent> GetEnvelopeTestLength()
+        {
+            List<SoundDirectingEvent> result = new List<SoundDirectingEvent>
+            {
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.FrameCounter,
+                    Parameter = SoundChannelParameter.FrameCounterMode,
+                    Value = 0
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.HaltLoopFlag,
+                    Value = 0
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.Duty,
+                    Value = 2
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.EnvelopeConstant,
+                    Value = 0
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.Timer,
+                    Value = 427
+                }
+            };
+            result.AddRange(Enumerable.Range(0, 15).Reverse().SelectMany((volume, index) => new SoundDirectingEvent[]
+            {
+                new SoundDirectingEvent
+                {
+                    Seconds = index,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.Volume,
+                    Value = volume
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = index,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.Timer,
+                    Value = 427
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = index,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.LengthCounter,
+                    Value = 120,
+                }
+            }));
+            return result;
         }
     }
 }

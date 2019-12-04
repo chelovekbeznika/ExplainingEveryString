@@ -18,6 +18,8 @@ namespace ExplainingEveryString.Core.Music
         public void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
         {
             ChannelParameters[soundEvent.Parameter] = soundEvent.Value;
+            if (soundEvent.Parameter == SoundChannelParameter.Timer || soundEvent.Parameter == SoundChannelParameter.LengthCounter)
+                startFlag = true;
         }
 
         internal abstract Byte GetOutputValue();
@@ -37,6 +39,7 @@ namespace ExplainingEveryString.Core.Music
         }
 
         #region Pulse and noise common section with length counter and envelope
+        private Boolean startFlag = false;
         private Byte divider = 0;
         protected Byte Decay { get; set; } = 15;
 
@@ -66,18 +69,26 @@ namespace ExplainingEveryString.Core.Music
 
         protected void DividerDecrement(Object sender, EventArgs e)
         {
-            divider -= 1;
-            if (divider < 0)
+            if (startFlag)
             {
-                divider = Volume;
+                divider = (Byte)(Volume + 1);
+                Decay = 15;
+                startFlag = false;
             }
+            if (divider == 0)
+            {
+                DecrementDecay();
+                divider = (Byte)(Volume + 1);
+            }
+            divider -= 1;
         }
 
         protected void DecrementDecay()
         {
-            Decay -= 1;
             if (Decay == 0 && EnvelopeLoopFlag)
                 Decay = 15;
+            if (Decay > 0)
+                Decay -= 1;
         }
         #endregion
     }
