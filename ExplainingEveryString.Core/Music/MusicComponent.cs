@@ -13,6 +13,7 @@ namespace ExplainingEveryString.Core.Music
         private Byte[] buffer;
         private Byte[] lengthTest;
         private Byte[] envelopeTest;
+        private Byte[] sweepTest;
 
         public MusicComponent(Game game) : base(game)
         {
@@ -25,6 +26,7 @@ namespace ExplainingEveryString.Core.Music
             this.buffer = new Mixer().GetMusic(GetTestSong(), 20);
             this.lengthTest = new Mixer().GetMusic(GetLengthCounterTest(), 16);
             this.envelopeTest = new Mixer().GetMusic(GetEnvelopeTestLength(), 16);
+            this.sweepTest = new Mixer().GetMusic(GetSweepTest(), 12);
             base.Initialize();
         }
 
@@ -35,7 +37,9 @@ namespace ExplainingEveryString.Core.Music
             {
                 if (sound.PendingBufferCount < 1)
                 {
-                    if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.RightAlt))
+                        sound.SubmitBuffer(sweepTest);
+                    else if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
                         sound.SubmitBuffer(envelopeTest);
                     else if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
                         sound.SubmitBuffer(lengthTest);
@@ -257,6 +261,55 @@ namespace ExplainingEveryString.Core.Music
                 }
             }));
             return result;
+        }
+
+        private List<SoundDirectingEvent> GetSweepTest()
+        {
+            return new List<SoundDirectingEvent>()
+            {
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Pulse2,
+                    Parameter = SoundChannelParameter.Timer,
+                    Value = 8
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Pulse2,
+                    Parameter = SoundChannelParameter.Volume,
+                    Value = 15
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 1,
+                    SoundComponent = SoundComponentType.Pulse2,
+                    Parameter = SoundChannelParameter.SweepPeriod,
+                    Value = 7
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 1,
+                    SoundComponent = SoundComponentType.Pulse2,
+                    Parameter = SoundChannelParameter.SweepAmount,
+                    Value = 3
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 1,
+                    SoundComponent = SoundComponentType.Pulse2,
+                    Parameter = SoundChannelParameter.SweepEnabled,
+                    Value = 1
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 6,
+                    SoundComponent = SoundComponentType.Pulse2,
+                    Parameter = SoundChannelParameter.SweepNegate,
+                    Value = 1
+                }
+            };
         }
     }
 }

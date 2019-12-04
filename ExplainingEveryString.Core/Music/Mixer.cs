@@ -24,8 +24,8 @@ namespace ExplainingEveryString.Core.Music
             this.components = new Dictionary<SoundComponentType, ISoundComponent>()
             {
                 { SoundComponentType.FrameCounter, frameCounter },
-                { SoundComponentType.Pulse1, new PulseChannel(frameCounter) },
-                { SoundComponentType.Pulse2, new PulseChannel(frameCounter) },
+                { SoundComponentType.Pulse1, new PulseChannel(frameCounter, true) },
+                { SoundComponentType.Pulse2, new PulseChannel(frameCounter, false) },
                 { SoundComponentType.Triangle, new TriangleChannel(frameCounter) },
                 { SoundComponentType.Noise, new NoiseChannel(frameCounter) }
             };
