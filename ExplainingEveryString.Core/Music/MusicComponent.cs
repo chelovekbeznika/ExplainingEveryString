@@ -11,6 +11,7 @@ namespace ExplainingEveryString.Core.Music
     {
         private DynamicSoundEffectInstance sound;
         private Byte[] buffer;
+        private Byte[] lengthTest;
 
         public MusicComponent(Game game) : base(game)
         {
@@ -21,6 +22,7 @@ namespace ExplainingEveryString.Core.Music
         {
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
             this.buffer = new Mixer().GetMusic(GetTestSong(), 20);
+            this.lengthTest = new Mixer().GetMusic(GetLengthCounterTest(), 16);
             base.Initialize();
         }
 
@@ -31,7 +33,10 @@ namespace ExplainingEveryString.Core.Music
             {
                 if (sound.PendingBufferCount < 1)
                 {
-                    sound.SubmitBuffer(buffer);
+                    if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
+                        sound.SubmitBuffer(lengthTest);
+                    else
+                        sound.SubmitBuffer(buffer);
                     sound.Play();
                 }
             }
@@ -127,6 +132,53 @@ namespace ExplainingEveryString.Core.Music
             }));
             events.Sort((x, y) => x.Position - y.Position);
             return events;
+        }
+
+        private List<SoundDirectingEvent> GetLengthCounterTest()
+        {
+            Int32[] testLengthsBase10 = new Int32[] { 192, 96, 48, 24, 12, 72, 32, 16 };
+            return new SoundDirectingEvent[]
+            {
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundChannel = SoundChannelType.Pulse1,
+                    Parameter = SoundChannelParameter.Volume,
+                    Value = 15
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundChannel = SoundChannelType.Pulse1,
+                    Parameter = SoundChannelParameter.Duty,
+                    Value = 2
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundChannel = SoundChannelType.Pulse1,
+                    Parameter = SoundChannelParameter.Timer,
+                    Value = 253
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0, 
+                    SoundChannel = SoundChannelType.Pulse1,
+                    Parameter = SoundChannelParameter.HaltFlag,
+                    Value = 0
+                }
+            }
+            .Concat(testLengthsBase10.SelectMany((length, index) => new SoundDirectingEvent[]
+            {
+                new SoundDirectingEvent
+                {
+                    Seconds = index * 2,
+                    SoundChannel = SoundChannelType.Pulse1,
+                    Parameter = SoundChannelParameter.LengthCounter,
+                    Value = length
+                }
+            }))
+            .ToList();
         }
     }
 }
