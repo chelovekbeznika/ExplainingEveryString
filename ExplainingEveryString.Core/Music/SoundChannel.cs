@@ -15,35 +15,6 @@ namespace ExplainingEveryString.Core.Music
             this.FrameCounter = frameCounter;
         }
 
-        internal Byte[] GetMusic(List<SoundDirectingEvent> soundEvents, Single durationInSeconds)
-        {
-            Int32 durationInSamples = (Int32)System.Math.Floor(durationInSeconds * Constants.SampleRate);
-            SoundDirectingEvent barrierEvent = new SoundDirectingEvent
-            {
-                Seconds = Int32.MaxValue / Constants.SampleRate,
-                Value = 0,
-                Parameter = SoundChannelParameter.Timer
-            };
-            soundEvents.Add(barrierEvent);
-            Byte[] result = new Byte[durationInSamples * 2];
-            Int32 nextEvent = 0;
-
-            foreach (Int32 bufferIndex in Enumerable.Range(0, durationInSamples))
-            {
-                while (soundEvents[nextEvent].Position == bufferIndex)
-                {
-                    SoundDirectingEvent soundEvent = soundEvents[nextEvent];
-                    ChannelParameters[soundEvent.Parameter] = soundEvent.Value;
-                    nextEvent += 1;
-                }
-
-                PutSample(result, bufferIndex, GetOutputValue());
-                MoveEmulationTowardNextSample();
-            }
-
-            return result;
-        }
-
         internal void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
         {
             ChannelParameters[soundEvent.Parameter] = soundEvent.Value;
@@ -63,13 +34,6 @@ namespace ExplainingEveryString.Core.Music
                 result += 1;
             }
             return result;
-        }
-
-        protected void PutSample(Byte[] buffer, Int32 position, Int16 value)
-        {
-            (Byte, Byte) amplitude = ((Byte)value, (Byte)(value >> 8));
-            buffer[position * 2] = amplitude.Item1;
-            buffer[position * 2 + 1] = amplitude.Item2;
         }
 
         #region Pulse and noise common section with length counter and envelope
