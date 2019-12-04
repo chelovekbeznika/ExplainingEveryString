@@ -8,25 +8,26 @@ namespace ExplainingEveryString.Core.Music
     {
         private Single[] pulseTable;
         private Single[] tndTable;
-        private Dictionary<SoundChannelType, SoundChannel> channels;
+        private Dictionary<SoundComponentType, ISoundComponent> components;
         private FrameCounter frameCounter;
 
-        private Byte FirstPulseOutput => channels[SoundChannelType.Pulse1].GetOutputValue();
-        private Byte SecondPulseOutput => channels[SoundChannelType.Pulse2].GetOutputValue();
-        private Byte TriangleOutput => channels[SoundChannelType.Triangle].GetOutputValue();
-        private Byte NoiseOutput => channels[SoundChannelType.Noise].GetOutputValue();
+        private Byte FirstPulseOutput => (components[SoundComponentType.Pulse1] as SoundChannel).GetOutputValue();
+        private Byte SecondPulseOutput => (components[SoundComponentType.Pulse2] as SoundChannel).GetOutputValue();
+        private Byte TriangleOutput => (components[SoundComponentType.Triangle] as SoundChannel).GetOutputValue();
+        private Byte NoiseOutput => (components[SoundComponentType.Noise] as SoundChannel).GetOutputValue();
 
         internal Mixer()
         {
             this.pulseTable = Enumerable.Range(0, 31).Select(index => 95.52f / (8128.0f / index + 100.0f)).ToArray();
             this.tndTable = Enumerable.Range(0, 203).Select(index => 163.67f / (24329.0f / index + 100.0f)).ToArray();
             this.frameCounter = new FrameCounter();
-            this.channels = new Dictionary<SoundChannelType, SoundChannel>()
+            this.components = new Dictionary<SoundComponentType, ISoundComponent>()
             {
-                { SoundChannelType.Pulse1, new PulseChannel(frameCounter) },
-                { SoundChannelType.Pulse2, new PulseChannel(frameCounter) },
-                { SoundChannelType.Triangle, new TriangleChannel(frameCounter) },
-                { SoundChannelType.Noise, new NoiseChannel(frameCounter) }
+                { SoundComponentType.FrameCounter, frameCounter },
+                { SoundComponentType.Pulse1, new PulseChannel(frameCounter) },
+                { SoundComponentType.Pulse2, new PulseChannel(frameCounter) },
+                { SoundComponentType.Triangle, new TriangleChannel(frameCounter) },
+                { SoundComponentType.Noise, new NoiseChannel(frameCounter) }
             };
         }
 
@@ -48,7 +49,7 @@ namespace ExplainingEveryString.Core.Music
                 while (soundEvents[nextEvent].Position == bufferIndex)
                 {
                     SoundDirectingEvent soundEvent = soundEvents[nextEvent];
-                    channels[soundEvent.SoundChannel].ProcessSoundDirectingEvent(soundEvent);
+                    components[soundEvent.SoundComponent].ProcessSoundDirectingEvent(soundEvent);
                     nextEvent += 1;
                 }
 
@@ -61,8 +62,7 @@ namespace ExplainingEveryString.Core.Music
 
         private void MoveEmulationTowardNextSample()
         {
-            frameCounter.MoveEmulationForward();
-            foreach (SoundChannel channel in channels.Values)
+            foreach (ISoundComponent channel in components.Values)
             {
                 channel.MoveEmulationTowardNextSample();
             }

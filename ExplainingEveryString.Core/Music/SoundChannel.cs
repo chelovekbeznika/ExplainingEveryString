@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.Music
 {
-    internal abstract class SoundChannel
+    internal abstract class SoundChannel : ISoundComponent
     {
         protected const Int16 OneVolumeLevelAmplitude = (Int16.MaxValue - Int16.MinValue) / 15;
         protected Dictionary<SoundChannelParameter, Int32> ChannelParameters { get; set; }
@@ -15,14 +15,14 @@ namespace ExplainingEveryString.Core.Music
             this.FrameCounter = frameCounter;
         }
 
-        internal void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        public void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
         {
             ChannelParameters[soundEvent.Parameter] = soundEvent.Value;
         }
 
         internal abstract Byte GetOutputValue();
 
-        internal abstract void MoveEmulationTowardNextSample();
+        public abstract void MoveEmulationTowardNextSample();
 
         protected Byte Countdown(ref Int32 currentValue, Int32 step, Int32 startCycleAt)
         {
@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.Music
         private Byte divider = 0;
         protected Byte Decay { get; set; } = 15;
 
-        protected Boolean HaltFlag => ChannelParameters[SoundChannelParameter.HaltFlag] != 0;
+        protected Boolean HaltFlag => ChannelParameters[SoundChannelParameter.HaltLoopFlag] != 0;
 
         protected Int32 LengthCounter
         {
@@ -50,7 +50,7 @@ namespace ExplainingEveryString.Core.Music
 
         protected Boolean SilencedByLengthCounter => !HaltFlag && LengthCounter == 0;
 
-        protected Boolean EnvelopeLoopFlag => HaltFlag;
+        protected Boolean EnvelopeLoopFlag => ChannelParameters[SoundChannelParameter.HaltLoopFlag] != 0;
 
         protected Boolean EnvelopeConstant => ChannelParameters[SoundChannelParameter.EnvelopeConstant] != 0;
 

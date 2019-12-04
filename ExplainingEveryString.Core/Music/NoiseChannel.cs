@@ -16,17 +16,17 @@ namespace ExplainingEveryString.Core.Music
 
         private Int16 Timer => timerLookupTable[ChannelParameters[SoundChannelParameter.Timer]];
 
-        private Boolean ModeFlagSet => ChannelParameters[SoundChannelParameter.Mode] != 0;
+        private Boolean ModeFlagSet => ChannelParameters[SoundChannelParameter.NoiseMode] != 0;
 
         internal NoiseChannel(FrameCounter frameCounter) : base(frameCounter)
         {
             ChannelParameters = new Dictionary<SoundChannelParameter, Int32>()
             {
                 { SoundChannelParameter.Timer, 0 },
-                { SoundChannelParameter.Mode, 0 },
+                { SoundChannelParameter.NoiseMode, 0 },
                 { SoundChannelParameter.Volume, 0 },
                 { SoundChannelParameter.LengthCounter, 0 },
-                { SoundChannelParameter.HaltFlag, 1 },
+                { SoundChannelParameter.HaltLoopFlag, 1 },
                 { SoundChannelParameter.EnvelopeConstant, 1 }
             };
             FrameCounter.HalfFrame += LengthCounterDecrement;
@@ -41,7 +41,7 @@ namespace ExplainingEveryString.Core.Music
                 return EnvelopeOutput;
         }
 
-        internal override void MoveEmulationTowardNextSample()
+        public override void MoveEmulationTowardNextSample()
         {
             Int32 shiftBetweenSamples = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
             foreach (var shiftNumber in Enumerable.Range(0, shiftBetweenSamples))

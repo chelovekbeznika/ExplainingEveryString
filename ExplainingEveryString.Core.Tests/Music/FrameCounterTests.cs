@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Core.Tests.Music
             frameCounter.HalfFrame += (sender, e) => halfFrames += 1;
             foreach (Int32 sampleNumber in Enumerable.Range(0, 1000))
             {
-                frameCounter.MoveEmulationForward();
+                frameCounter.MoveEmulationTowardNextSample();
             }
             Assert.AreEqual(4, quarterFrames);
             Assert.AreEqual(2, halfFrames);
@@ -37,7 +37,7 @@ namespace ExplainingEveryString.Core.Tests.Music
             frameCounter.HalfFrame += (sender, e) => halfFrames += 1;
             foreach (Int32 sampleNumber in Enumerable.Range(0, 1000))
             {
-                frameCounter.MoveEmulationForward();
+                frameCounter.MoveEmulationTowardNextSample();
             }
             Assert.AreEqual(5, quarterFrames);
             Assert.AreEqual(2, halfFrames);

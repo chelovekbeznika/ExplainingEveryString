@@ -98,6 +98,7 @@
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="Music\Constants.cs" />
     <Compile Include="Music\FrameCounter.cs" />
+    <Compile Include="Music\ISoundComponent.cs" />
     <Compile Include="Music\Mixer.cs" />
     <Compile Include="Music\MusicComponent.cs" />
     <Compile Include="Music\NoiseChannel.cs" />

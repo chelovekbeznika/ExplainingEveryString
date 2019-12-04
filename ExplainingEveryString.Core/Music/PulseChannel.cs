@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Core.Music
                 { SoundChannelParameter.Timer, 0 },
                 { SoundChannelParameter.Volume, 0 },
                 { SoundChannelParameter.LengthCounter, 0 },
-                { SoundChannelParameter.HaltFlag, 1 },
+                { SoundChannelParameter.HaltLoopFlag, 1 },
                 { SoundChannelParameter.EnvelopeConstant, 1 }
             };
             FrameCounter.HalfFrame += LengthCounterDecrement;
@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Core.Music
                 return 0;
         }
 
-        internal override void MoveEmulationTowardNextSample()
+        public override void MoveEmulationTowardNextSample()
         {
             Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
             if (waveGeneratorClockCyclesSwitched > 0)

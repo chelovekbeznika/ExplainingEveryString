@@ -50,14 +50,14 @@ namespace ExplainingEveryString.Core.Music
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
-                    SoundChannel = SoundChannelType.Pulse1,
+                    SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Duty,
                     Value = 3
                 },
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
-                    SoundChannel = SoundChannelType.Pulse1,
+                    SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Volume,
                     Value = 15
                 }
@@ -66,7 +66,7 @@ namespace ExplainingEveryString.Core.Music
             {
                 Seconds = index / 2,
                 SamplesOffset = index % 2 == 1 ? Constants.SampleRate / 2 : 0,
-                SoundChannel = SoundChannelType.Pulse1,
+                SoundComponent = SoundComponentType.Pulse1,
                 Parameter = SoundChannelParameter.Timer,
                 Value = note,
             }));
@@ -74,7 +74,7 @@ namespace ExplainingEveryString.Core.Music
             {
                 Seconds = 3,
                 SamplesOffset = Constants.SampleRate / 2,
-                SoundChannel = SoundChannelType.Pulse1,
+                SoundComponent = SoundComponentType.Pulse1,
                 Parameter = SoundChannelParameter.Volume,
                 Value = 0
             });
@@ -82,7 +82,7 @@ namespace ExplainingEveryString.Core.Music
             {
                 Seconds = index / 2 + 1,
                 SamplesOffset = index % 2 == 1 ? Constants.SampleRate / 2 : 0,
-                SoundChannel = SoundChannelType.Triangle,
+                SoundComponent = SoundComponentType.Triangle,
                 Parameter = SoundChannelParameter.Timer,
                 Value = note
             }));
@@ -90,14 +90,14 @@ namespace ExplainingEveryString.Core.Music
             {
                 Seconds = 3,
                 SamplesOffset = Constants.SampleRate / 2,
-                SoundChannel = SoundChannelType.Triangle,
+                SoundComponent = SoundComponentType.Triangle,
                 Parameter = SoundChannelParameter.Timer,
                 Value = 0
             });
             events.Add(new SoundDirectingEvent
             {
                 Seconds = 4,
-                SoundChannel = SoundChannelType.Noise,
+                SoundComponent = SoundComponentType.Noise,
                 Parameter = SoundChannelParameter.Volume,
                 Value = 15
             });
@@ -109,23 +109,23 @@ namespace ExplainingEveryString.Core.Music
                     new SoundDirectingEvent
                     {
                         Seconds = seconds,
-                        SoundChannel = SoundChannelType.Noise,
-                        Parameter = SoundChannelParameter.Mode,
+                        SoundComponent = SoundComponentType.Noise,
+                        Parameter = SoundChannelParameter.NoiseMode,
                         Value = 0
                     },
                     new SoundDirectingEvent
                     {
                         Value = timer,
                         Seconds = seconds,
-                        SoundChannel = SoundChannelType.Noise,
+                        SoundComponent = SoundComponentType.Noise,
                         Parameter = SoundChannelParameter.Timer
                     },
                     new SoundDirectingEvent
                     {
                         Seconds = seconds,
                         SamplesOffset = Constants.SampleRate / 2,
-                        SoundChannel = SoundChannelType.Noise,
-                        Parameter = SoundChannelParameter.Mode,
+                        SoundComponent = SoundComponentType.Noise,
+                        Parameter = SoundChannelParameter.NoiseMode,
                         Value = 1             
                     }
                 };
@@ -142,29 +142,36 @@ namespace ExplainingEveryString.Core.Music
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
-                    SoundChannel = SoundChannelType.Pulse1,
+                    SoundComponent = SoundComponentType.FrameCounter,
+                    Parameter = SoundChannelParameter.FrameCounterMode,
+                    Value = 1
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Volume,
                     Value = 15
                 },
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
-                    SoundChannel = SoundChannelType.Pulse1,
+                    SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Duty,
                     Value = 2
                 },
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
-                    SoundChannel = SoundChannelType.Pulse1,
+                    SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Timer,
                     Value = 253
                 },
                 new SoundDirectingEvent
                 {
                     Seconds = 0, 
-                    SoundChannel = SoundChannelType.Pulse1,
-                    Parameter = SoundChannelParameter.HaltFlag,
+                    SoundComponent = SoundComponentType.Pulse1,
+                    Parameter = SoundChannelParameter.HaltLoopFlag,
                     Value = 0
                 }
             }
@@ -173,7 +180,7 @@ namespace ExplainingEveryString.Core.Music
                 new SoundDirectingEvent
                 {
                     Seconds = index * 2,
-                    SoundChannel = SoundChannelType.Pulse1,
+                    SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.LengthCounter,
                     Value = length
                 }

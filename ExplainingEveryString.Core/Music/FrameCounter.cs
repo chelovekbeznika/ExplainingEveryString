@@ -2,7 +2,7 @@
 
 namespace ExplainingEveryString.Core.Music
 {
-    internal class FrameCounter
+    internal class FrameCounter : ISoundComponent
     {
         private readonly Int32[] StepsCyclesModeSet = new Int32[] { 3729, 7457, 11185, 18641 };
         private readonly Int32[] StepsCyclesModeClear = new Int32[] { 3729, 7457, 11185, 14915 };
@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.Music
 
         private Int32[] StepsCycles => ModeFlag ? StepsCyclesModeSet : StepsCyclesModeClear;
 
-        internal void MoveEmulationForward()
+        public void MoveEmulationTowardNextSample()
         {
             Int32 apuCycles = Constants.ApuTicksBetweenSamples;
             currentApuCyclesValue += apuCycles;
@@ -53,6 +53,14 @@ namespace ExplainingEveryString.Core.Music
                 stepsEvaluated = 0;
                 currentApuCyclesValue -= StepsCycles[3];
             }
+        }
+
+        public void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        {
+            if (soundEvent.Parameter == SoundChannelParameter.FrameCounterMode)
+                ModeFlag = soundEvent.Value != 0;
+            else
+                throw new InvalidOperationException();
         }
     }
 }

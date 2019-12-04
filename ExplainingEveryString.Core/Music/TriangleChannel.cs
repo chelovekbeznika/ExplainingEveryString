@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.Music
             return Timer > 0 ? lookupTable[currentWavePhase] : (Byte)0;
         }
 
-        internal override void MoveEmulationTowardNextSample()
+        public override void MoveEmulationTowardNextSample()
         {
             Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples * 2, Timer);
             if (waveGeneratorClockCyclesSwitched > 0)
