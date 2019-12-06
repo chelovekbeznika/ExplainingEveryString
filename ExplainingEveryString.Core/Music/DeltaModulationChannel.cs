@@ -9,48 +9,61 @@ namespace ExplainingEveryString.Core.Music
         private Int16[] timerLookupTable = new Int16[] { 428, 380, 340, 320, 286, 254, 226, 214, 190, 160, 142, 128, 106, 84, 72, 54 };
         private Int32 currentTimerValue = 0;
 
-        private Int32 currentByte = 0;
-        private Int32 currentBit = 0;
         private Byte[] bitMasks = new Byte[]
         {
             0b0000_0001, 0b0000_0010, 0b0000_0100, 0b0000_1000, 0b0001_0000, 0b0010_0000, 0b0100_0000, 0b1000_0000
         };
 
-        private Byte[] currentDeltaSample = new Byte[]
-        {
-            0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111,
-            0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000,
-            0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000
-        };
+        internal List<Byte[]> DeltaSamplesLibrary { get; } = new List<Byte[]>();
+
+        private Int32 currentByte = 0;
+        private Int32 currentBit = 0;
+        private Boolean sampleIsPlaying = false;
 
         private Int16 Timer => timerLookupTable[ChannelParameters[SoundChannelParameter.Timer]];
+
+        private Byte[] CurrentSample => DeltaSamplesLibrary[ChannelParameters[SoundChannelParameter.CurrentSample]];
 
         internal DeltaModulationChannel(FrameCounter frameCounter) : base(frameCounter)
         {
             ChannelParameters = new Dictionary<SoundChannelParameter, Int32>
             {
                 { SoundChannelParameter.Volume, 0 },
-                { SoundChannelParameter.Timer, 0 }
+                { SoundChannelParameter.Timer, 0 },
+                { SoundChannelParameter.CurrentSample, 0 }
             };
         }
 
+        public override void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        {
+            base.ProcessSoundDirectingEvent(soundEvent);
+            if (soundEvent.Parameter == SoundChannelParameter.CurrentSample)
+            {
+                currentBit = 0;
+                currentByte = 0;
+                sampleIsPlaying = true;
+            }
+        }
 
         public override void MoveEmulationTowardNextSample()
         {
             Int32 sampleBitsToProcess = Countdown(ref currentTimerValue, Constants.CpuTicksBetweenSamples, Timer);
-            foreach (Int32 sampleBitIndex in Enumerable.Range(0, sampleBitsToProcess))
+            if (sampleIsPlaying)
             {
-                if (CurrentDeltaSampleBit())
-                    VolumeUp();
-                else
-                    VolumeDown();
-                ToNextDeltaSampleBit();
+                foreach (Int32 sampleBitIndex in Enumerable.Range(0, sampleBitsToProcess))
+                {
+                    if (CurrentDeltaSampleBit())
+                        VolumeUp();
+                    else
+                        VolumeDown();
+                    ToNextDeltaSampleBit();
+                }
             }
         }
 
         internal override Byte GetOutputValue()
         {
-            return Volume;
+            return sampleIsPlaying ? Volume : (Byte)0;
         }
 
         private void ToNextDeltaSampleBit()
@@ -60,14 +73,17 @@ namespace ExplainingEveryString.Core.Music
             {
                 currentBit = 0;
                 currentByte += 1;
-                if (currentByte >= currentDeltaSample.Length)
+                if (currentByte >= CurrentSample.Length)
+                {
                     currentByte = 0;
+                    sampleIsPlaying = false;
+                }    
             } 
         }
 
         private Boolean CurrentDeltaSampleBit()
         {
-            return (currentDeltaSample[currentByte] & bitMasks[currentBit]) != 0;
+            return (CurrentSample[currentByte] & bitMasks[currentBit]) != 0;
         }
 
         private void VolumeUp()

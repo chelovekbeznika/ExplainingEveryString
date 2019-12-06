@@ -23,6 +23,9 @@ namespace ExplainingEveryString.Core.Music
         private Byte DmcOutput => statusController.DeltaEnabled
             ? (components[SoundComponentType.DeltaModulation] as SoundChannel).GetOutputValue() : (Byte)0;
 
+        internal List<Byte[]> DeltaSamplesLibrary => 
+            ((DeltaModulationChannel)components[SoundComponentType.DeltaModulation]).DeltaSamplesLibrary;
+
         internal Mixer()
         {
             this.pulseTable = Enumerable.Range(0, 31).Select(index => 95.52f / (8128.0f / index + 100.0f)).ToArray();

@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.Music
             this.FrameCounter = frameCounter;
         }
 
-        public void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        public virtual void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
         {
             ChannelParameters[soundEvent.Parameter] = soundEvent.Value;
             if (soundEvent.Parameter == SoundChannelParameter.Timer || soundEvent.Parameter == SoundChannelParameter.LengthCounter)

@@ -14,6 +14,7 @@
         SweepPeriod,
         SweepAmount,
         SweepNegate,
+        CurrentSample,
         Pulse1Enabled,
         Pulse2Enabled,
         TriangleEnabled,

@@ -28,7 +28,9 @@ namespace ExplainingEveryString.Core.Music
             this.lengthTest = new Mixer().GetMusic(GetLengthCounterTest(), 16);
             this.envelopeTest = new Mixer().GetMusic(GetEnvelopeTestLength(), 16);
             this.sweepTest = new Mixer().GetMusic(GetSweepTest(), 12);
-            this.deltaTest = new Mixer().GetMusic(GetDeltaTest(), 2);
+            Mixer mixerWithSamples = new Mixer();
+            mixerWithSamples.DeltaSamplesLibrary.Add(GetTestDeltaSample());
+            this.deltaTest = mixerWithSamples.GetMusic(GetDeltaTest(), 16);
             base.Initialize();
         }
 
@@ -369,7 +371,33 @@ namespace ExplainingEveryString.Core.Music
                     Parameter = SoundChannelParameter.DeltaEnabled,
                     Value = 1
                 }
-            };
+            }.Concat(Enumerable.Range(0, 15).SelectMany((timer, index) => new SoundDirectingEvent[]
+            {
+                new SoundDirectingEvent
+                {
+                    Seconds = index,
+                    SoundComponent = SoundComponentType.DeltaModulation,
+                    Parameter = SoundChannelParameter.CurrentSample,
+                    Value = 0
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = index,
+                    SoundComponent = SoundComponentType.DeltaModulation,
+                    Parameter = SoundChannelParameter.Timer,
+                    Value = timer
+                }
+            })).ToList();
+        }
+
+        private Byte[] GetTestDeltaSample()
+        {
+            return Enumerable.Repeat(new Byte[]
+            {
+                0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111,
+                0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000,
+                0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000
+            }, 8).SelectMany(samplePart => samplePart).ToArray();
         }
     }
 }
