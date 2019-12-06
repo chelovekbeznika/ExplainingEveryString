@@ -84,8 +84,10 @@ namespace ExplainingEveryString.Core.Music
 
         private Single GetOutputValue()
         {
-            Single pulseOutput = pulseTable[FirstPulseOutput + SecondPulseOutput];
-            Single tndOutput = tndTable[3 * TriangleOutput + 2 * NoiseOutput + DmcOutput];
+            Single pulseOutput = FirstPulseOutput + SecondPulseOutput > 0 
+                ? (Single)(95.88 / (8128 / (FirstPulseOutput + SecondPulseOutput) + 100)) : 0;
+            Single tndOutput = TriangleOutput + NoiseOutput + DmcOutput > 0
+                ? (Single)(159.79 / (1 / (TriangleOutput / 8227.0 + NoiseOutput / 12241.0 + DmcOutput / 22638.0) + 100)): 0;
             return pulseOutput + tndOutput;
         }
 
