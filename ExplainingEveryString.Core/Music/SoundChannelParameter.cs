@@ -13,6 +13,11 @@
         SweepEnabled,
         SweepPeriod,
         SweepAmount,
-        SweepNegate
+        SweepNegate,
+        Pulse1Enabled,
+        Pulse2Enabled,
+        TriangleEnabled,
+        NoiseEnabled,
+        DeltaEnabled
     }
 }

@@ -10,24 +10,35 @@ namespace ExplainingEveryString.Core.Music
         private Single[] tndTable;
         private Dictionary<SoundComponentType, ISoundComponent> components;
         private FrameCounter frameCounter;
+        private StatusController statusController;
 
-        private Byte FirstPulseOutput => (components[SoundComponentType.Pulse1] as SoundChannel).GetOutputValue();
-        private Byte SecondPulseOutput => (components[SoundComponentType.Pulse2] as SoundChannel).GetOutputValue();
-        private Byte TriangleOutput => (components[SoundComponentType.Triangle] as SoundChannel).GetOutputValue();
-        private Byte NoiseOutput => (components[SoundComponentType.Noise] as SoundChannel).GetOutputValue();
+        private Byte FirstPulseOutput => statusController.Pulse1Enabled 
+            ? (components[SoundComponentType.Pulse1] as SoundChannel).GetOutputValue() : (Byte)0;
+        private Byte SecondPulseOutput => statusController.Pulse2Enabled 
+            ? (components[SoundComponentType.Pulse2] as SoundChannel).GetOutputValue() : (Byte)0;
+        private Byte TriangleOutput => statusController.TriangleEnabled
+            ? (components[SoundComponentType.Triangle] as SoundChannel).GetOutputValue() : (Byte)0;
+        private Byte NoiseOutput => statusController.NoiseEnabled
+            ? (components[SoundComponentType.Noise] as SoundChannel).GetOutputValue() : (Byte)0;
+        private Byte DmcOutput => statusController.DeltaEnabled
+            ? (components[SoundComponentType.DeltaModulation] as SoundChannel).GetOutputValue() : (Byte)0;
 
         internal Mixer()
         {
             this.pulseTable = Enumerable.Range(0, 31).Select(index => 95.52f / (8128.0f / index + 100.0f)).ToArray();
             this.tndTable = Enumerable.Range(0, 203).Select(index => 163.67f / (24329.0f / index + 100.0f)).ToArray();
+
             this.frameCounter = new FrameCounter();
+            this.statusController = new StatusController();
             this.components = new Dictionary<SoundComponentType, ISoundComponent>()
             {
                 { SoundComponentType.FrameCounter, frameCounter },
+                { SoundComponentType.Status, statusController },
                 { SoundComponentType.Pulse1, new PulseChannel(frameCounter, true) },
                 { SoundComponentType.Pulse2, new PulseChannel(frameCounter, false) },
                 { SoundComponentType.Triangle, new TriangleChannel(frameCounter) },
-                { SoundComponentType.Noise, new NoiseChannel(frameCounter) }
+                { SoundComponentType.Noise, new NoiseChannel(frameCounter) },
+                { SoundComponentType.DeltaModulation, new DeltaModulationChannel(frameCounter) }
             };
         }
 
@@ -71,7 +82,7 @@ namespace ExplainingEveryString.Core.Music
         private Single GetOutputValue()
         {
             Single pulseOutput = pulseTable[FirstPulseOutput + SecondPulseOutput];
-            Single tndOutput = tndTable[3 * TriangleOutput + 2 * NoiseOutput];
+            Single tndOutput = tndTable[3 * TriangleOutput + 2 * NoiseOutput + DmcOutput];
             return pulseOutput + tndOutput;
         }
 

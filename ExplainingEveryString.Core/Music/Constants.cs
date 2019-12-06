@@ -8,5 +8,6 @@ namespace ExplainingEveryString.Core.Music
         internal const Int32 ApuFrequency = SampleRate * ApuTicksBetweenSamples;
         internal const Int32 SampleRate = 47100;
         internal const Int32 ApuTicksBetweenSamples = 19;
+        internal const Int32 CpuTicksBetweenSamples = ApuTicksBetweenSamples * 2;
     }
 }

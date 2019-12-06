@@ -97,6 +97,7 @@
     <Compile Include="Menu\MenuItemWithContainer.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="Music\Constants.cs" />
+    <Compile Include="Music\DeltaModulationChannel.cs" />
     <Compile Include="Music\FrameCounter.cs" />
     <Compile Include="Music\ISoundComponent.cs" />
     <Compile Include="Music\Mixer.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Music\SoundChannelParameter.cs" />
     <Compile Include="Music\SoundChannelType.cs" />
     <Compile Include="Music\SoundDirectingEvent.cs" />
+    <Compile Include="Music\StatusController.cs" />
     <Compile Include="Music\TriangleChannel.cs" />
     <Compile Include="SpriteDataBuilder.cs" />
     <Compile Include="Timer.cs" />

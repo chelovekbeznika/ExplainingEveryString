@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Core.Music
         private Byte[] lengthTest;
         private Byte[] envelopeTest;
         private Byte[] sweepTest;
+        private Byte[] deltaTest;
 
         public MusicComponent(Game game) : base(game)
         {
@@ -27,6 +28,7 @@ namespace ExplainingEveryString.Core.Music
             this.lengthTest = new Mixer().GetMusic(GetLengthCounterTest(), 16);
             this.envelopeTest = new Mixer().GetMusic(GetEnvelopeTestLength(), 16);
             this.sweepTest = new Mixer().GetMusic(GetSweepTest(), 12);
+            this.deltaTest = new Mixer().GetMusic(GetDeltaTest(), 2);
             base.Initialize();
         }
 
@@ -43,6 +45,8 @@ namespace ExplainingEveryString.Core.Music
                         sound.SubmitBuffer(envelopeTest);
                     else if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
                         sound.SubmitBuffer(lengthTest);
+                    else if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                        sound.SubmitBuffer(deltaTest);
                     else
                         sound.SubmitBuffer(buffer);
                     sound.Play();
@@ -55,6 +59,27 @@ namespace ExplainingEveryString.Core.Music
             UInt16[] notes = new UInt16[] { 427, 380, 338, 319, 284, 253, 225 };
             List<SoundDirectingEvent> events = new List<SoundDirectingEvent>
             {
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Status,
+                    Parameter = SoundChannelParameter.Pulse1Enabled,
+                    Value = 1
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Status,
+                    Parameter = SoundChannelParameter.TriangleEnabled,
+                    Value = 1
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Status,
+                    Parameter = SoundChannelParameter.NoiseEnabled,
+                    Value = 1
+                },
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
@@ -150,6 +175,13 @@ namespace ExplainingEveryString.Core.Music
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
+                    SoundComponent = SoundComponentType.Status,
+                    Parameter = SoundChannelParameter.Pulse1Enabled,
+                    Value = 1
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
                     SoundComponent = SoundComponentType.FrameCounter,
                     Parameter = SoundChannelParameter.FrameCounterMode,
                     Value = 1
@@ -200,6 +232,13 @@ namespace ExplainingEveryString.Core.Music
         {
             List<SoundDirectingEvent> result = new List<SoundDirectingEvent>
             {
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Status,
+                    Parameter = SoundChannelParameter.Pulse1Enabled,
+                    Value = 1
+                },
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
@@ -270,6 +309,13 @@ namespace ExplainingEveryString.Core.Music
                 new SoundDirectingEvent
                 {
                     Seconds = 0,
+                    SoundComponent = SoundComponentType.Status,
+                    Parameter = SoundChannelParameter.Pulse2Enabled,
+                    Value = 1
+                },
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse2,
                     Parameter = SoundChannelParameter.Timer,
                     Value = 8
@@ -307,6 +353,20 @@ namespace ExplainingEveryString.Core.Music
                     Seconds = 6,
                     SoundComponent = SoundComponentType.Pulse2,
                     Parameter = SoundChannelParameter.SweepNegate,
+                    Value = 1
+                }
+            };
+        }
+
+        private List<SoundDirectingEvent> GetDeltaTest()
+        {
+            return new List<SoundDirectingEvent>
+            {
+                new SoundDirectingEvent
+                {
+                    Seconds = 0,
+                    SoundComponent = SoundComponentType.Status,
+                    Parameter = SoundChannelParameter.DeltaEnabled,
                     Value = 1
                 }
             };
