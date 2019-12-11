@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Core.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace ExplainingEveryString.Core.Music
         {
         }
 
-        public void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        public void ProcessSoundDirectingEvent(RawSoundDirectingEvent soundEvent)
         {
             switch (soundEvent.Parameter)
             {

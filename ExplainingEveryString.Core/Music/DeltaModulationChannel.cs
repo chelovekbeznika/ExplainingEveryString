@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Core.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,7 +35,7 @@ namespace ExplainingEveryString.Core.Music
             };
         }
 
-        public override void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        public override void ProcessSoundDirectingEvent(RawSoundDirectingEvent soundEvent)
         {
             base.ProcessSoundDirectingEvent(soundEvent);
             if (soundEvent.Parameter == SoundChannelParameter.CurrentSample)

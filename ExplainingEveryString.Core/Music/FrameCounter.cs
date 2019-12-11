@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Core.Music.Model;
+using System;
 
 namespace ExplainingEveryString.Core.Music
 {
@@ -55,7 +56,7 @@ namespace ExplainingEveryString.Core.Music
             }
         }
 
-        public void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        public void ProcessSoundDirectingEvent(RawSoundDirectingEvent soundEvent)
         {
             if (soundEvent.Parameter == SoundChannelParameter.FrameCounterMode)
                 ModeFlag = soundEvent.Value != 0;

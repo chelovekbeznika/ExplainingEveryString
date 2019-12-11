@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ExplainingEveryString.Core.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.Music
 {
-    internal class Mixer
+    internal class NesSoundChipReplica
     {
         private Single[] pulseTable;
         private Single[] tndTable;
@@ -26,7 +27,7 @@ namespace ExplainingEveryString.Core.Music
         internal List<Byte[]> DeltaSamplesLibrary => 
             ((DeltaModulationChannel)components[SoundComponentType.DeltaModulation]).DeltaSamplesLibrary;
 
-        internal Mixer()
+        internal NesSoundChipReplica()
         {
             this.pulseTable = Enumerable.Range(0, 31).Select(index => 95.52f / (8128.0f / index + 100.0f)).ToArray();
             this.tndTable = Enumerable.Range(0, 203).Select(index => 163.67f / (24329.0f / index + 100.0f)).ToArray();
@@ -45,16 +46,10 @@ namespace ExplainingEveryString.Core.Music
             };
         }
 
-        internal Byte[] GetMusic(List<SoundDirectingEvent> soundEvents, Single durationInSeconds)
+        internal Byte[] GetMusic(List<ISoundDirectingSequence> soundSequences, Single durationInSeconds)
         {
+            List<RawSoundDirectingEvent> soundEvents = GetRawEvents(soundSequences);
             Int32 durationInSamples = (Int32)System.Math.Floor(durationInSeconds * Constants.SampleRate);
-            SoundDirectingEvent barrierEvent = new SoundDirectingEvent
-            {
-                Seconds = Int32.MaxValue / Constants.SampleRate,
-                Value = 0,
-                Parameter = SoundChannelParameter.Timer
-            };
-            soundEvents.Add(barrierEvent);
             Byte[] result = new Byte[durationInSamples * 2];
             Int32 nextEvent = 0;
 
@@ -62,7 +57,7 @@ namespace ExplainingEveryString.Core.Music
             {
                 while (soundEvents[nextEvent].Position == bufferIndex)
                 {
-                    SoundDirectingEvent soundEvent = soundEvents[nextEvent];
+                    RawSoundDirectingEvent soundEvent = soundEvents[nextEvent];
                     components[soundEvent.SoundComponent].ProcessSoundDirectingEvent(soundEvent);
                     nextEvent += 1;
                 }
@@ -72,6 +67,24 @@ namespace ExplainingEveryString.Core.Music
             }
 
             return result;
+        }
+
+        private List<RawSoundDirectingEvent> GetRawEvents(List<ISoundDirectingSequence> soundSequences)
+        {
+            List<RawSoundDirectingEvent> soundEvents = soundSequences
+                .SelectMany(sequence => sequence.GetEvents())
+                .OrderBy(soundEvent => soundEvent.Position)
+                .ToList();
+
+            RawSoundDirectingEvent barrierEvent = new RawSoundDirectingEvent
+            {
+                Seconds = Int32.MaxValue / Constants.SampleRate,
+                Value = 0,
+                Parameter = SoundChannelParameter.Timer
+            };
+            soundEvents.Add(barrierEvent);
+
+            return soundEvents;
         }
 
         private void MoveEmulationTowardNextSample()

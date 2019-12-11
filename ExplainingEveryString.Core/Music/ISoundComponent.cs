@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Core.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace ExplainingEveryString.Core.Music
 {
     internal interface ISoundComponent
     {
-        void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent);
+        void ProcessSoundDirectingEvent(RawSoundDirectingEvent soundEvent);
         void MoveEmulationTowardNextSample();
     }
 }

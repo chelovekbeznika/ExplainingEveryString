@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Core.Music.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,7 +16,7 @@ namespace ExplainingEveryString.Core.Music
             this.FrameCounter = frameCounter;
         }
 
-        public virtual void ProcessSoundDirectingEvent(SoundDirectingEvent soundEvent)
+        public virtual void ProcessSoundDirectingEvent(RawSoundDirectingEvent soundEvent)
         {
             ChannelParameters[soundEvent.Parameter] = soundEvent.Value;
             if (soundEvent.Parameter == SoundChannelParameter.Timer || soundEvent.Parameter == SoundChannelParameter.LengthCounter)

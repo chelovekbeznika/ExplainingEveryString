@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Music.Model;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -24,13 +25,13 @@ namespace ExplainingEveryString.Core.Music
         public override void Initialize()
         {
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
-            this.buffer = new Mixer().GetMusic(GetTestSong(), 20);
-            this.lengthTest = new Mixer().GetMusic(GetLengthCounterTest(), 16);
-            this.envelopeTest = new Mixer().GetMusic(GetEnvelopeTestLength(), 16);
-            this.sweepTest = new Mixer().GetMusic(GetSweepTest(), 12);
-            Mixer mixerWithSamples = new Mixer();
+            this.buffer = new NesSoundChipReplica().GetMusic(GetTestSong(), 10);
+            this.lengthTest = new NesSoundChipReplica().GetMusic(GetLengthCounterTest().Cast<ISoundDirectingSequence>().ToList(), 16);
+            this.envelopeTest = new NesSoundChipReplica().GetMusic(GetEnvelopeTestLength().Cast<ISoundDirectingSequence>().ToList(), 16);
+            this.sweepTest = new NesSoundChipReplica().GetMusic(GetSweepTest().Cast<ISoundDirectingSequence>().ToList(), 12);
+            NesSoundChipReplica mixerWithSamples = new NesSoundChipReplica();
             mixerWithSamples.DeltaSamplesLibrary.Add(GetTestDeltaSample());
-            this.deltaTest = mixerWithSamples.GetMusic(GetDeltaTest(), 16);
+            this.deltaTest = mixerWithSamples.GetMusic(GetDeltaTest().Cast<ISoundDirectingSequence>().ToList(), 16);
             base.Initialize();
         }
 
@@ -56,160 +57,69 @@ namespace ExplainingEveryString.Core.Music
             }
         }
 
-        private List<SoundDirectingEvent> GetTestSong()
+        private List<ISoundDirectingSequence> GetTestSong()
         {
-            UInt16[] notes = new UInt16[] { 427, 380, 338, 319, 284, 253, 225 };
-            List<SoundDirectingEvent> events = new List<SoundDirectingEvent>
+            NoteType[] notes = new NoteType[] { NoteType.C, NoteType.D, NoteType.E, NoteType.F, NoteType.G, NoteType.A, NoteType.H };
+            List<ISoundDirectingSequence> result = new List<ISoundDirectingSequence>
             {
-                new SoundDirectingEvent
+                new SwitchChannel
                 {
                     Seconds = 0,
-                    SoundComponent = SoundComponentType.Status,
-                    Parameter = SoundChannelParameter.Pulse1Enabled,
-                    Value = 1
-                },
-                new SoundDirectingEvent
-                {
-                    Seconds = 0,
-                    SoundComponent = SoundComponentType.Status,
-                    Parameter = SoundChannelParameter.TriangleEnabled,
-                    Value = 1
-                },
-                new SoundDirectingEvent
-                {
-                    Seconds = 0,
-                    SoundComponent = SoundComponentType.Status,
-                    Parameter = SoundChannelParameter.NoiseEnabled,
-                    Value = 1
-                },
-                new SoundDirectingEvent
-                {
-                    Seconds = 0,
-                    SoundComponent = SoundComponentType.Pulse1,
-                    Parameter = SoundChannelParameter.Duty,
-                    Value = 3
-                },
-                new SoundDirectingEvent
-                {
-                    Seconds = 0,
-                    SoundComponent = SoundComponentType.Pulse1,
-                    Parameter = SoundChannelParameter.Volume,
-                    Value = 15
+                    SamplesOffset = 0,
+                    ChannelToTurn = SoundComponentType.Pulse1,
+                    TurnOn = true
                 }
             };
-            events.AddRange(notes.Select((note, index) => new SoundDirectingEvent
+            result.AddRange(notes.Select((note, index) => new PulseNote
             {
-                Seconds = index / 2,
-                SamplesOffset = index % 2 == 1 ? Constants.SampleRate / 2 : 0,
-                SoundComponent = SoundComponentType.Pulse1,
-                Parameter = SoundChannelParameter.Timer,
-                Value = note,
+                Note = new Note(Octave.OneLine, note),
+                Length = NoteLength.Half,
+                SamplesOffset = (Constants.SampleRate * 4 / 3) * index
             }));
-            events.Add(new SoundDirectingEvent
-            {
-                Seconds = 3,
-                SamplesOffset = Constants.SampleRate / 2,
-                SoundComponent = SoundComponentType.Pulse1,
-                Parameter = SoundChannelParameter.Volume,
-                Value = 0
-            });
-            events.AddRange(notes.Skip(2).Select((note, index) => new SoundDirectingEvent
-            {
-                Seconds = index / 2 + 1,
-                SamplesOffset = index % 2 == 1 ? Constants.SampleRate / 2 : 0,
-                SoundComponent = SoundComponentType.Triangle,
-                Parameter = SoundChannelParameter.Timer,
-                Value = note
-            }));
-            events.Add(new SoundDirectingEvent
-            {
-                Seconds = 3,
-                SamplesOffset = Constants.SampleRate / 2,
-                SoundComponent = SoundComponentType.Triangle,
-                Parameter = SoundChannelParameter.Timer,
-                Value = 0
-            });
-            events.Add(new SoundDirectingEvent
-            {
-                Seconds = 4,
-                SoundComponent = SoundComponentType.Noise,
-                Parameter = SoundChannelParameter.Volume,
-                Value = 15
-            });
-            events.AddRange(Enumerable.Range(0, 16).SelectMany(timer =>
-            {
-                Int32 seconds = 4 + timer;
-                return new List<SoundDirectingEvent>
-                {
-                    new SoundDirectingEvent
-                    {
-                        Seconds = seconds,
-                        SoundComponent = SoundComponentType.Noise,
-                        Parameter = SoundChannelParameter.NoiseMode,
-                        Value = 0
-                    },
-                    new SoundDirectingEvent
-                    {
-                        Value = timer,
-                        Seconds = seconds,
-                        SoundComponent = SoundComponentType.Noise,
-                        Parameter = SoundChannelParameter.Timer
-                    },
-                    new SoundDirectingEvent
-                    {
-                        Seconds = seconds,
-                        SamplesOffset = Constants.SampleRate / 2,
-                        SoundComponent = SoundComponentType.Noise,
-                        Parameter = SoundChannelParameter.NoiseMode,
-                        Value = 1             
-                    }
-                };
-            }));
-            events.Sort((x, y) => x.Position - y.Position);
-            return events;
+            return result;
         }
 
-        private List<SoundDirectingEvent> GetLengthCounterTest()
+        private List<RawSoundDirectingEvent> GetLengthCounterTest()
         {
             Int32[] testLengthsBase10 = new Int32[] { 192, 96, 48, 24, 12, 72, 32, 16 };
-            return new SoundDirectingEvent[]
+            return new RawSoundDirectingEvent[]
             {
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Status,
                     Parameter = SoundChannelParameter.Pulse1Enabled,
                     Value = 1
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.FrameCounter,
                     Parameter = SoundChannelParameter.FrameCounterMode,
                     Value = 1
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Volume,
                     Value = 15
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Duty,
                     Value = 2
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Timer,
                     Value = 253
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0, 
                     SoundComponent = SoundComponentType.Pulse1,
@@ -217,9 +127,9 @@ namespace ExplainingEveryString.Core.Music
                     Value = 0
                 }
             }
-            .Concat(testLengthsBase10.SelectMany((length, index) => new SoundDirectingEvent[]
+            .Concat(testLengthsBase10.SelectMany((length, index) => new RawSoundDirectingEvent[]
             {
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = index * 2,
                     SoundComponent = SoundComponentType.Pulse1,
@@ -230,46 +140,46 @@ namespace ExplainingEveryString.Core.Music
             .ToList();
         }
 
-        private List<SoundDirectingEvent> GetEnvelopeTestLength()
+        private List<RawSoundDirectingEvent> GetEnvelopeTestLength()
         {
-            List<SoundDirectingEvent> result = new List<SoundDirectingEvent>
+            List<RawSoundDirectingEvent> result = new List<RawSoundDirectingEvent>
             {
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Status,
                     Parameter = SoundChannelParameter.Pulse1Enabled,
                     Value = 1
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.FrameCounter,
                     Parameter = SoundChannelParameter.FrameCounterMode,
                     Value = 0
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.HaltLoopFlag,
                     Value = 0
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Duty,
                     Value = 2
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.EnvelopeConstant,
                     Value = 0
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
@@ -277,23 +187,23 @@ namespace ExplainingEveryString.Core.Music
                     Value = 427
                 }
             };
-            result.AddRange(Enumerable.Range(0, 15).Reverse().SelectMany((volume, index) => new SoundDirectingEvent[]
+            result.AddRange(Enumerable.Range(0, 15).Reverse().SelectMany((volume, index) => new RawSoundDirectingEvent[]
             {
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = index,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Volume,
                     Value = volume
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = index,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.Timer,
                     Value = 427
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = index,
                     SoundComponent = SoundComponentType.Pulse1,
@@ -304,53 +214,53 @@ namespace ExplainingEveryString.Core.Music
             return result;
         }
 
-        private List<SoundDirectingEvent> GetSweepTest()
+        private List<RawSoundDirectingEvent> GetSweepTest()
         {
-            return new List<SoundDirectingEvent>()
+            return new List<RawSoundDirectingEvent>()
             {
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Status,
                     Parameter = SoundChannelParameter.Pulse2Enabled,
                     Value = 1
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse2,
                     Parameter = SoundChannelParameter.Timer,
                     Value = 8
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse2,
                     Parameter = SoundChannelParameter.Volume,
                     Value = 15
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 1,
                     SoundComponent = SoundComponentType.Pulse2,
                     Parameter = SoundChannelParameter.SweepPeriod,
                     Value = 7
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 1,
                     SoundComponent = SoundComponentType.Pulse2,
                     Parameter = SoundChannelParameter.SweepAmount,
                     Value = 3
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 1,
                     SoundComponent = SoundComponentType.Pulse2,
                     Parameter = SoundChannelParameter.SweepEnabled,
                     Value = 1
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 6,
                     SoundComponent = SoundComponentType.Pulse2,
@@ -360,27 +270,27 @@ namespace ExplainingEveryString.Core.Music
             };
         }
 
-        private List<SoundDirectingEvent> GetDeltaTest()
+        private List<RawSoundDirectingEvent> GetDeltaTest()
         {
-            return new List<SoundDirectingEvent>
+            return new List<RawSoundDirectingEvent>
             {
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = 0,
                     SoundComponent = SoundComponentType.Status,
                     Parameter = SoundChannelParameter.DeltaEnabled,
                     Value = 1
                 }
-            }.Concat(Enumerable.Range(0, 15).SelectMany((timer, index) => new SoundDirectingEvent[]
+            }.Concat(Enumerable.Range(0, 15).SelectMany((timer, index) => new RawSoundDirectingEvent[]
             {
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = index,
                     SoundComponent = SoundComponentType.DeltaModulation,
                     Parameter = SoundChannelParameter.CurrentSample,
                     Value = 0
                 },
-                new SoundDirectingEvent
+                new RawSoundDirectingEvent
                 {
                     Seconds = index,
                     SoundComponent = SoundComponentType.DeltaModulation,
