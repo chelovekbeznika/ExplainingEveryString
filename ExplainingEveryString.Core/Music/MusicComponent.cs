@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.Music
         public override void Initialize()
         {
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
-            this.buffer = new NesSoundChipReplica().GetMusic(GetTestSong(), 10);
+            this.buffer = new NesSoundChipReplica().GetMusic(GetTestSong(), 12);
             this.lengthTest = new NesSoundChipReplica().GetMusic(GetLengthCounterTest().Cast<ISoundDirectingSequence>().ToList(), 16);
             this.envelopeTest = new NesSoundChipReplica().GetMusic(GetEnvelopeTestLength().Cast<ISoundDirectingSequence>().ToList(), 16);
             this.sweepTest = new NesSoundChipReplica().GetMusic(GetSweepTest().Cast<ISoundDirectingSequence>().ToList(), 12);
@@ -68,13 +68,27 @@ namespace ExplainingEveryString.Core.Music
                     SamplesOffset = 0,
                     ChannelToTurn = SoundComponentType.Pulse1,
                     TurnOn = true
+                },
+                new SwitchChannel
+                {
+                    Seconds = 2,
+                    SamplesOffset = 0,
+                    ChannelToTurn = SoundComponentType.Triangle,
+                    TurnOn = true
                 }
             };
             result.AddRange(notes.Select((note, index) => new DecayingPulseNote
             {
+                SamplesOffset = (Constants.SampleRate * 4 / (3 * 16)) * index,
                 Note = new Note(Octave.OneLine, note),
                 Length = NoteLength.Sixteenth,
-                SamplesOffset = (Constants.SampleRate * 4 / 6) * index
+            }));
+            result.AddRange(notes.Select((note, index) => new TriangleNote
+            {
+                Seconds = 2,
+                SamplesOffset = index * (Constants.SampleRate * 4 / 3),
+                Note = new Note(Octave.OneLine, note),
+                Length = NoteLength.Half
             }));
             return result;
         }

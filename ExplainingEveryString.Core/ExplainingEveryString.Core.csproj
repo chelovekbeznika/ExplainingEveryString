@@ -100,7 +100,7 @@
     <Compile Include="Music\DeltaModulationChannel.cs" />
     <Compile Include="Music\FrameCounter.cs" />
     <Compile Include="Music\ISoundComponent.cs" />
-    <Compile Include="Music\Model\DecayingPulseNote.cs" />
+    <Compile Include="Music\Model\TriangleNote.cs" />
     <Compile Include="Music\NesSoundChipReplica.cs" />
     <Compile Include="Music\Model\ISoundDirectingSequence.cs" />
     <Compile Include="Music\Model\Note.cs" />
