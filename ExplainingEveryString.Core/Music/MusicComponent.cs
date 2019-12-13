@@ -70,11 +70,11 @@ namespace ExplainingEveryString.Core.Music
                     TurnOn = true
                 }
             };
-            result.AddRange(notes.Select((note, index) => new PulseNote
+            result.AddRange(notes.Select((note, index) => new DecayingPulseNote
             {
                 Note = new Note(Octave.OneLine, note),
-                Length = NoteLength.Half,
-                SamplesOffset = (Constants.SampleRate * 4 / 3) * index
+                Length = NoteLength.Sixteenth,
+                SamplesOffset = (Constants.SampleRate * 4 / 6) * index
             }));
             return result;
         }
