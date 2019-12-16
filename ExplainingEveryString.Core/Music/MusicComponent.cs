@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.Music
         public override void Initialize()
         {
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
-            this.buffer = new NesSoundChipReplica().GetMusic(GetTestSong(), 12);
+            this.buffer = new NesSoundChipReplica().GetMusic(GetTestSong(), 20);
             this.lengthTest = new NesSoundChipReplica().GetMusic(GetLengthCounterTest().Cast<ISoundDirectingSequence>().ToList(), 16);
             this.envelopeTest = new NesSoundChipReplica().GetMusic(GetEnvelopeTestLength().Cast<ISoundDirectingSequence>().ToList(), 16);
             this.sweepTest = new NesSoundChipReplica().GetMusic(GetSweepTest().Cast<ISoundDirectingSequence>().ToList(), 12);
@@ -64,31 +64,32 @@ namespace ExplainingEveryString.Core.Music
             {
                 new SwitchChannel
                 {
-                    Seconds = 0,
-                    SamplesOffset = 0,
+                    BeatNumber = 0,
                     ChannelToTurn = SoundComponentType.Pulse1,
                     TurnOn = true
                 },
                 new SwitchChannel
                 {
-                    Seconds = 2,
-                    SamplesOffset = 0,
+                    BeatNumber = 0,
                     ChannelToTurn = SoundComponentType.Triangle,
                     TurnOn = true
                 }
             };
-            result.AddRange(notes.Select((note, index) => new DecayingPulseNote
+            result.AddRange(notes.Select((note, index) => new PulseNote
             {
-                SamplesOffset = (Constants.SampleRate * 4 / (3 * 16)) * index,
+                BeatNumber = index / 4.0f,
+                BeatsPerMinute = 120,
                 Note = new Note(Octave.OneLine, note),
                 Length = NoteLength.Sixteenth,
+                Volume = 8,
+                Decaying = true
             }));
             result.AddRange(notes.Select((note, index) => new TriangleNote
             {
-                Seconds = 2,
-                SamplesOffset = index * (Constants.SampleRate * 4 / 3),
+                BeatNumber = 4 + index,
+                BeatsPerMinute = 120,
                 Note = new Note(Octave.OneLine, note),
-                Length = NoteLength.Half
+                Length = NoteLength.Quarter
             }));
             return result;
         }

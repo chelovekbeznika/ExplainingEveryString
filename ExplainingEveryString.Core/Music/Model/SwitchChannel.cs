@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.Music.Model
 {
-    internal class SwitchChannel : SoundDirectingEvent
+    internal class SwitchChannel : BpmSoundDirectingEvent
     {
         internal SoundComponentType ChannelToTurn { get; set; }
         internal Boolean TurnOn { get; set; }

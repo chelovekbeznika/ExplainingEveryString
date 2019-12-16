@@ -83,13 +83,13 @@ namespace ExplainingEveryString.Core.Music.Model
         internal static Int32 PulseTimer(Note note, Alteration alteration)
         {
             Single frequency = GetFrequency(note, alteration);
-            return (Int32)System.Math.Floor(Constants.CpuFrequency / (16 * frequency) - 1);
+            return (Int32)System.Math.Round(Constants.CpuFrequency / (16 * frequency) - 1);
         }
 
         internal static Int32 TriangleTimer(Note note, Alteration alteration)
         {
             Single frequency = GetFrequency(note, alteration);
-            return (Int32)System.Math.Floor(Constants.CpuFrequency / (32 * frequency) - 1);
+            return (Int32)System.Math.Round(Constants.CpuFrequency / (32 * frequency) - 1);
         }
 
         internal static Single GetFrequency(Note note, Alteration alteration = Alteration.None)

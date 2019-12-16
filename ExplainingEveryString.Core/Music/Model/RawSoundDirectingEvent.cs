@@ -3,13 +3,17 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.Music.Model
 {
-    internal class RawSoundDirectingEvent : SoundDirectingEvent
+    internal class RawSoundDirectingEvent : ISoundDirectingSequence
     {
+        internal Int32 Seconds { get; set; }
+        internal Int32 SamplesOffset { get; set; }
+        public Int32 Position => Seconds * Constants.SampleRate + SamplesOffset;
+
         internal SoundComponentType SoundComponent { get; set; }
         internal SoundChannelParameter Parameter { get; set; }
         internal Int32 Value { get; set; }
 
-        public override IEnumerable<RawSoundDirectingEvent> GetEvents()
+        public IEnumerable<RawSoundDirectingEvent> GetEvents()
         {
             yield return this;
             yield break;
