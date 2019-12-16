@@ -65,32 +65,42 @@ namespace ExplainingEveryString.Core.Music
                 new SwitchChannel
                 {
                     BeatNumber = 0,
+                    BeatsPerMinute = 90,
                     ChannelToTurn = SoundComponentType.Pulse1,
                     TurnOn = true
                 },
                 new SwitchChannel
                 {
                     BeatNumber = 0,
+                    BeatsPerMinute = 90,
                     ChannelToTurn = SoundComponentType.Triangle,
                     TurnOn = true
                 }
             };
-            result.AddRange(notes.Select((note, index) => new PulseNote
+            result.Add(new BpmSequence
             {
-                BeatNumber = index / 4.0f,
-                BeatsPerMinute = 120,
-                Note = new Note(Octave.OneLine, note),
-                Length = NoteLength.Sixteenth,
-                Volume = 8,
-                Decaying = true
-            }));
-            result.AddRange(notes.Select((note, index) => new TriangleNote
+                BeatsPerMinute = 90,
+                BpmNotes = notes.Select((note, index) => new PulseNote
+                {
+                    BeatNumber = index,
+                    Note = new Note(Octave.OneLine, note),
+                    Length = NoteLength.Quarter,
+                    Volume = 15,
+                    Decaying = true
+                })
+            });
+            result.Add(new BpmSequence
             {
-                BeatNumber = 4 + index,
-                BeatsPerMinute = 120,
-                Note = new Note(Octave.OneLine, note),
-                Length = NoteLength.Quarter
-            }));
+                BeatsPerMinute = 140,
+                Seconds = 5,
+                BpmNotes = notes.Select((note, index) => new TriangleNote
+                {
+                    BeatNumber = index,
+                    BeatsPerMinute = 120,
+                    Note = new Note(Octave.OneLine, note),
+                    Length = NoteLength.Quarter
+                })
+            });
             return result;
         }
 
