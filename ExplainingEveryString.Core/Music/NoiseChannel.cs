@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Core.Music
                 { SoundChannelParameter.NoiseMode, 0 },
                 { SoundChannelParameter.Volume, 0 },
                 { SoundChannelParameter.LengthCounter, 0 },
-                { SoundChannelParameter.HaltLoopFlag, 0 },
+                { SoundChannelParameter.HaltLoopFlag, 1 },
                 { SoundChannelParameter.EnvelopeConstant, 1 }
             };
             FrameCounter.HalfFrame += LengthCounterDecrement;

@@ -65,13 +65,19 @@ namespace ExplainingEveryString.Core.Music
                 new SwitchChannel
                 {
                     Seconds = 0,
-                    ChannelToTurn = SoundComponentType.Pulse1,
+                    Channel = SoundComponentType.Pulse1,
                     TurnOn = true
                 },
                 new SwitchChannel
                 {
                     Seconds = 5,
-                    ChannelToTurn = SoundComponentType.Triangle,
+                    Channel = SoundComponentType.Triangle,
+                    TurnOn = true
+                },
+                new SwitchChannel
+                {
+                    Seconds = 5,
+                    Channel = SoundComponentType.Noise,
                     TurnOn = true
                 }
             };
@@ -94,9 +100,21 @@ namespace ExplainingEveryString.Core.Music
                 BpmNotes = notes.Select((note, index) => new TriangleNote
                 {
                     BeatNumber = index,
-                    BeatsPerMinute = 120,
                     Note = new Note(Octave.OneLine, note),
                     Length = NoteLength.Quarter
+                })
+            });
+            result.Add(new BpmSequence
+            {
+                BeatsPerMinute = 140,
+                Seconds = 5,
+                BpmNotes = Enumerable.Range(0, 7).Select(index => new NoiseNote
+                {
+                    NoiseType = 8,
+                    LoopedNoise = true,
+                    BeatNumber = index,
+                    Volume = 7,
+                    Length = NoteLength.Sixteenth
                 })
             });
             return result;

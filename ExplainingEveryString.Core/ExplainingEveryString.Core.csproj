@@ -101,6 +101,7 @@
     <Compile Include="Music\FrameCounter.cs" />
     <Compile Include="Music\ISoundComponent.cs" />
     <Compile Include="Music\Model\BpmSequence.cs" />
+    <Compile Include="Music\Model\NoiseNote.cs" />
     <Compile Include="Music\Model\TriangleNote.cs" />
     <Compile Include="Music\NesSoundChipReplica.cs" />
     <Compile Include="Music\Model\ISoundDirectingSequence.cs" />
