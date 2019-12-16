@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.Music.Model
 {
-    internal class SwitchChannel : BpmSoundDirectingEvent
+    internal class SwitchChannel : ISoundDirectingSequence
     {
+        internal Int32 Seconds { get; set; }
+        internal Int32 SamplesOffset { get; set; }
         internal SoundComponentType ChannelToTurn { get; set; }
         internal Boolean TurnOn { get; set; }
 
-        public override IEnumerable<RawSoundDirectingEvent> GetEvents()
+        public IEnumerable<RawSoundDirectingEvent> GetEvents()
         {
             SoundChannelParameter channelParameter;
             switch (ChannelToTurn)

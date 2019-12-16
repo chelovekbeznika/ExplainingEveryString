@@ -64,15 +64,13 @@ namespace ExplainingEveryString.Core.Music
             {
                 new SwitchChannel
                 {
-                    BeatNumber = 0,
-                    BeatsPerMinute = 90,
+                    Seconds = 0,
                     ChannelToTurn = SoundComponentType.Pulse1,
                     TurnOn = true
                 },
                 new SwitchChannel
                 {
-                    BeatNumber = 0,
-                    BeatsPerMinute = 90,
+                    Seconds = 5,
                     ChannelToTurn = SoundComponentType.Triangle,
                     TurnOn = true
                 }
