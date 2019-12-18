@@ -7,11 +7,11 @@ namespace ExplainingEveryString.Data.Specifications
 {
     public class MoverSpecification
     { 
-        [JsonConverter(typeof(StringEnumConverter))]
         public MoveType Type { get; set; }
         public Dictionary<String, Single> Parameters { get; set; }
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MoveType
     {
         StayingStill,

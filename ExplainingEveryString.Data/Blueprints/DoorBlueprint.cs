@@ -8,8 +8,7 @@ namespace ExplainingEveryString.Data.Blueprints
     public class DoorBlueprint : Blueprint
     {
         public SpriteSpecification OpeningSprite { get; set; }
-        [DefaultValue(DoorOpeningMode.Instant)]
-        [JsonConverter(typeof(StringEnumConverter))]
+        [DefaultValue(DoorOpeningMode.Instant)]       
         public DoorOpeningMode OpeningMode { get; set; }
         [DefaultValue(null)]
         public SpecEffectSpecification OpeningStartedEffect { get; set; }
@@ -17,5 +16,6 @@ namespace ExplainingEveryString.Data.Blueprints
         public SpecEffectSpecification CompletelyOpenedEffect { get; set; }
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DoorOpeningMode { Instant, Up, Down, Left, Right }
 }

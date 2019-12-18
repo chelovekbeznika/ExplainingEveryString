@@ -1,5 +1,9 @@
-﻿namespace ExplainingEveryString.Data.Specifications
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ExplainingEveryString.Data.Specifications
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum MoveTargetSelectType
     {
         NoTarget,

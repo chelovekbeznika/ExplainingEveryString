@@ -4,14 +4,14 @@ using System.ComponentModel;
 
 namespace ExplainingEveryString.Music.Model
 {
-    internal abstract class BpmSoundDirectingEvent : ISoundDirectingSequence
+    public abstract class BpmSoundDirectingEvent : ISoundDirectingSequence
     {
         [DefaultValue(90)]
-        internal Int32 BeatsPerMinute { get; set; }
-        internal Single BeatNumber { get; set; }
+        public Int32 BeatsPerMinute { get; set; }
+        public Single BeatNumber { get; set; }
 
         protected Int32 SamplesPerBeat => Constants.SampleRate * 60 / BeatsPerMinute;
-        private Int32 Position => (Int32)System.Math.Round(SamplesPerBeat * BeatNumber);
+        private Int32 Position => (Int32)Math.Round(SamplesPerBeat * BeatNumber);
         internal Int32 Seconds => Position / Constants.SampleRate;
         internal Int32 SamplesOffset => Position % Constants.SampleRate;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Music.Model
 {
-    internal class NoiseNote : BpmSoundDirectingEvent
+    public class NoiseNote : BpmSoundDirectingEvent
     {
         public Int32 NoiseType { get; set; }
         public Boolean LoopedNoise { get; set; }

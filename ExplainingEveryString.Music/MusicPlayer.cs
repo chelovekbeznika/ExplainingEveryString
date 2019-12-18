@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Music.Model;
+﻿using ExplainingEveryString.Data;
+using ExplainingEveryString.Music.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
@@ -12,11 +13,9 @@ namespace ExplainingEveryString.Music
     {
         private DynamicSoundEffectInstance sound;
         private List<Byte[]> deltaSamplesLibrary;
-        private Byte[] buffer;
-        private Byte[] lengthTest;
-        private Byte[] envelopeTest;
-        private Byte[] sweepTest;
-        private Byte[] deltaTest;
+        private NesSoundChipReplica soundChipReplica;
+        private Byte[] currentSong;
+        private Boolean isPlaying = false;
 
         public MusicPlayer()
         {
@@ -25,37 +24,42 @@ namespace ExplainingEveryString.Music
         public void Initialize()
         {
             this.deltaSamplesLibrary = DeltaSamplesLibraryLoader.Load(@"Content/Data/Music/deltasamples.dat");
-            this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
-            this.buffer = new NesSoundChipReplica(deltaSamplesLibrary).GetMusic(HardcodedSongs.GetTestSong(), 20);
-            this.lengthTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(HardcodedSongs.GetLengthCounterTest().Cast<ISoundDirectingSequence>().ToList(), 16);
-            this.envelopeTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(HardcodedSongs.GetEnvelopeTestLength().Cast<ISoundDirectingSequence>().ToList(), 16);
-            this.sweepTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(HardcodedSongs.GetSweepTest().Cast<ISoundDirectingSequence>().ToList(), 12);
-            this.deltaTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(HardcodedSongs.GetDeltaTest().Cast<ISoundDirectingSequence>().ToList(), 16);
+            this.soundChipReplica = new NesSoundChipReplica(deltaSamplesLibrary);
         }
 
         public void Update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.M))
+            if (sound != null && sound.PendingBufferCount < 1 && isPlaying)
             {
-                if (sound.PendingBufferCount < 1)
-                {
-                    if (Keyboard.GetState().IsKeyDown(Keys.RightAlt))
-                        sound.SubmitBuffer(sweepTest);
-                    else if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
-                        sound.SubmitBuffer(envelopeTest);
-                    else if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
-                        sound.SubmitBuffer(lengthTest);
-                    else if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                        sound.SubmitBuffer(deltaTest);
-                    else
-                        sound.SubmitBuffer(buffer);
-                    sound.Play();
-                }
+                sound.SubmitBuffer(currentSong);
+                sound.Play();
             }
+        }
+
+        public void Start(String songName)
+        {
+            Stop();
+            currentSong = Load(songName);
+            sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
+            sound.SubmitBuffer(currentSong);
+            sound.Play();
+            isPlaying = true;
+        }
+
+        public void Stop()
+        {
+            if (isPlaying)
+            {
+                sound.Stop();
+                isPlaying = false;
+            }
+        }
+
+        private Byte[] Load(String songName)
+        {
+            String fileName = $"Content/Data/Music/{songName}.dat";
+            SongSpecification song = JsonDataAccessor.Instance.Load<SongSpecification>(fileName);
+            return soundChipReplica.GetMusic(song);
         }
     }
 }

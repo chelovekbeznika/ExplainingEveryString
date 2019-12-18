@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Music.Model
 {
-    internal class SwitchChannel : ISoundDirectingSequence
+    public class SwitchChannel : ISoundDirectingSequence
     {
-        internal Int32 Seconds { get; set; }
-        internal Int32 SamplesOffset { get; set; }
-        internal SoundComponentType Channel { get; set; }
-        internal Boolean TurnOn { get; set; }
+        public Int32 Seconds { get; set; }
+        [DefaultValue(0)]
+        public Int32 SamplesOffset { get; set; }
+        public SoundComponentType Channel { get; set; }
+        public Boolean TurnOn { get; set; }
 
         public IEnumerable<RawSoundDirectingEvent> GetEvents()
         {

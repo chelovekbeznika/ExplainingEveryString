@@ -44,6 +44,9 @@
 #begin Data/Music/deltasamples.dat
 /copy:Data/Music/deltasamples.dat
 
+#begin Data/Music/gamma.dat
+/copy:Data/Music/gamma.dat
+
 #begin Sounds/Bosses/1/Appearance.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

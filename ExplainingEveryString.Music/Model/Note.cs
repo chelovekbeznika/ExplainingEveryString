@@ -1,19 +1,26 @@
-﻿namespace ExplainingEveryString.Music.Model
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ExplainingEveryString.Music.Model
 {
-    internal enum Alteration { None, Sharp, Flat }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Alteration { None, Sharp, Flat }
 
-    internal enum NoteLength { Whole = 1, Half = 2, Quarter = 4, Eigth = 8, Sixteenth = 16 }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum NoteLength { Whole = 1, Half = 2, Quarter = 4, Eigth = 8, Sixteenth = 16 }
 
-    internal enum NoteType { C = 1, D = 2, E = 3, F = 4, G = 5, A = 6, H = 7 }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum NoteType { C = 1, D = 2, E = 3, F = 4, G = 5, A = 6, H = 7 }
 
-    internal enum Octave { SubContra, Contra, Great, Small, OneLine, TwoLine, ThreeLine, FourLine, FiveLine }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum Octave { SubContra, Contra, Great, Small, OneLine, TwoLine, ThreeLine, FourLine, FiveLine }
 
-    internal struct Note
+    public struct Note
     {
-        internal NoteType Type { get; set; }
-        internal Octave Octave { get; set; }
+        public NoteType Type { get; set; }
+        public Octave Octave { get; set; }
 
-        internal Note(Octave octave, NoteType note)
+        public Note(Octave octave, NoteType note)
         {
             Octave = octave;
             Type = note;

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Music.Model
 {
     internal class BpmSequence : ISoundDirectingSequence
     {
         public Int32 Seconds { get; set; }
+        [DefaultValue(0)]
         public Int32 SamplesOffset { get; set; }
-
+        [DefaultValue(90)]
         public Int32 BeatsPerMinute { get; set; }
         public IEnumerable<BpmSoundDirectingEvent> BpmNotes { get; set; } 
 

@@ -59,6 +59,7 @@
     <Compile Include="Model\NotesHelper.cs" />
     <Compile Include="Model\PulseNote.cs" />
     <Compile Include="Model\RawSoundDirectingEvent.cs" />
+    <Compile Include="Model\SongSpecification.cs" />
     <Compile Include="Model\SwitchChannel.cs" />
     <Compile Include="Model\TriangleNote.cs" />
     <Compile Include="MusicPlayer.cs" />
@@ -66,14 +67,20 @@
     <Compile Include="NoiseChannel.cs" />
     <Compile Include="PulseChannel.cs" />
     <Compile Include="SoundChannel.cs" />
-    <Compile Include="SoundChannelParameter.cs" />
-    <Compile Include="SoundChannelType.cs" />
+    <Compile Include="Model\SoundChannelParameter.cs" />
+    <Compile Include="Model\SoundChannelType.cs" />
     <Compile Include="StatusController.cs" />
     <Compile Include="TriangleChannel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExplainingEveryString.Data\ExplainingEveryString.Data.csproj">
+      <Project>{9b320fde-6c59-45f9-9dc1-dcafccca63ce}</Project>
+      <Name>ExplainingEveryString.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

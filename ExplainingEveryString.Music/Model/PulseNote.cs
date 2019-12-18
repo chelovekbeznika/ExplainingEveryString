@@ -5,18 +5,18 @@ using System.ComponentModel;
 
 namespace ExplainingEveryString.Music.Model
 {
-    internal class PulseNote : BpmSoundDirectingEvent
+    public class PulseNote : BpmSoundDirectingEvent
     {
-        internal Note Note { get; set; }
+        public Note Note { get; set; }
         [DefaultValue(Alteration.None)]
-        internal Alteration Alteration { get; set; } = Alteration.None;
-        internal NoteLength Length { get; set; }
+        public Alteration Alteration { get; set; } = Alteration.None;
+        public NoteLength Length { get; set; }
         [DefaultValue(15)]
-        internal Int32 Volume { get; set; } = 15;
+        public Int32 Volume { get; set; }
         [DefaultValue(false)]
-        internal Boolean Decaying { get; set; } = false;
+        public Boolean Decaying { get; set; } = false;
         [DefaultValue(true)]
-        internal Boolean FirstChannel { get; set; } = true;
+        public Boolean FirstChannel { get; set; } = true;
 
         private SoundComponentType SoundChannel => FirstChannel ? SoundComponentType.Pulse1 : SoundComponentType.Pulse2;
 

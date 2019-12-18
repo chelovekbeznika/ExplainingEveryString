@@ -1,6 +1,10 @@
-﻿namespace ExplainingEveryString.Music
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace ExplainingEveryString.Music.Model
 {
-    internal enum SoundChannelParameter
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SoundChannelParameter
     {
         Timer,
         Duty,

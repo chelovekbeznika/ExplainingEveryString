@@ -2,7 +2,7 @@
 
 namespace ExplainingEveryString.Music.Model
 {
-    internal interface ISoundDirectingSequence
+    public interface ISoundDirectingSequence
     {
         IEnumerable<RawSoundDirectingEvent> GetEvents();
     }

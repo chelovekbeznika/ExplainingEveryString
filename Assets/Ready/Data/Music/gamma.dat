@@ -1,0 +1,127 @@
+{
+  "Duration": "8.5",
+  "Song": [
+    {
+      "$type": "ExplainingEveryString.Music.Model.SwitchChannel, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "Channel": "Pulse1",
+      "TurnOn": true
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.SwitchChannel, ExplainingEveryString.Music",
+      "Seconds": 5,
+      "Channel": "Pulse1",
+      "TurnOn": false
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.SwitchChannel, ExplainingEveryString.Music",
+      "Seconds": 5,
+      "Channel": "Triangle",
+      "TurnOn": true
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.SwitchChannel, ExplainingEveryString.Music",
+      "Seconds": 5,
+      "Channel": "Noise",
+      "TurnOn": true
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.BpmSequence, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "BeatsPerMinute": 90,
+      "BpmNotes": [
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 0.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 1,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 2,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 3,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 4,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 5,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 6,
+          "Note": { "Octave": "OneLine", "Type": "H" },
+          "Length": "Quarter"
+        }
+      ]
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.BpmSequence, ExplainingEveryString.Music",
+      "Seconds": 5,
+      "BeatsPerMinute": 140,
+      "BpmNotes": [
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 1,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 2,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 3,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 4,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 5,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Length": "Quarter"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 6,
+          "Note": { "Octave": "OneLine", "Type": "H" },
+          "Length": "Quarter"
+        }
+      ]
+    }
+  ]
+}

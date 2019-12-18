@@ -1,17 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace ExplainingEveryString.Music.Model
 {
-    internal class RawSoundDirectingEvent : ISoundDirectingSequence
+    public class RawSoundDirectingEvent : ISoundDirectingSequence
     {
-        internal Int32 Seconds { get; set; }
-        internal Int32 SamplesOffset { get; set; }
+        public Int32 Seconds { get; set; }
+        public Int32 SamplesOffset { get; set; }
+        [JsonIgnore]
         public Int32 Position => Seconds * Constants.SampleRate + SamplesOffset;
 
-        internal SoundComponentType SoundComponent { get; set; }
-        internal SoundChannelParameter Parameter { get; set; }
-        internal Int32 Value { get; set; }
+        public SoundComponentType SoundComponent { get; set; }
+        public SoundChannelParameter Parameter { get; set; }
+        public Int32 Value { get; set; }
 
         public IEnumerable<RawSoundDirectingEvent> GetEvents()
         {

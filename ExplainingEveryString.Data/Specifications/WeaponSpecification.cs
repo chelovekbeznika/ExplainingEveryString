@@ -9,10 +9,10 @@ namespace ExplainingEveryString.Data.Specifications
         public BarrelSpecification[] Barrels { get; set; }
         public SpriteSpecification Sprite { get; set; }
         public SpecEffectSpecification ShootingEffect { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
         public AimType AimType { get; set; }
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum AimType
     {
         FixedFireDirection, AimAtPlayer, ControlledByPlayer

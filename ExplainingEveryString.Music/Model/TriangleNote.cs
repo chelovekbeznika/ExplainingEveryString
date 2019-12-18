@@ -4,12 +4,12 @@ using System.ComponentModel;
 
 namespace ExplainingEveryString.Music.Model
 {
-    internal class TriangleNote : BpmSoundDirectingEvent
+    public class TriangleNote : BpmSoundDirectingEvent
     {
-        internal Note Note { get; set; }
+        public Note Note { get; set; }
         [DefaultValue(Alteration.None)]
-        internal Alteration Alteration { get; set; } = Alteration.None;
-        internal NoteLength Length { get; set; }
+        public Alteration Alteration { get; set; } = Alteration.None;
+        public NoteLength Length { get; set; }
 
         public override IEnumerable<RawSoundDirectingEvent> GetEvents()
         {

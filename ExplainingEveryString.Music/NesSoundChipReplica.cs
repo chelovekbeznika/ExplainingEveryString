@@ -43,10 +43,10 @@ namespace ExplainingEveryString.Music
             };
         }
 
-        internal Byte[] GetMusic(List<ISoundDirectingSequence> soundSequences, Single durationInSeconds)
+        internal Byte[] GetMusic(SongSpecification songSpecification)
         {
-            List<RawSoundDirectingEvent> soundEvents = GetRawEvents(soundSequences);
-            Int32 durationInSamples = (Int32)System.Math.Floor(durationInSeconds * Constants.SampleRate);
+            List<RawSoundDirectingEvent> soundEvents = GetRawEvents(songSpecification.Song);
+            Int32 durationInSamples = (Int32)Math.Round(songSpecification.Duration * Constants.SampleRate);
             Byte[] result = new Byte[durationInSamples * 2];
             Int32 nextEvent = 0;
 

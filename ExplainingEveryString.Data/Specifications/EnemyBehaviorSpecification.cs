@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Specifications
 {
@@ -8,7 +6,6 @@ namespace ExplainingEveryString.Data.Specifications
     {
         [DefaultValue(null)]
         public MoverSpecification Mover { get; set; }
-        [JsonConverter(typeof(StringEnumConverter))]
         [DefaultValue(MoveTargetSelectType.NoTarget)]
         public MoveTargetSelectType MoveTargetSelectType { get; set; }
         [DefaultValue(null)]
