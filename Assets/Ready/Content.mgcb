@@ -41,6 +41,9 @@
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
+#begin Data/Music/deltasamples.dat
+/copy:Data/Music/deltasamples.dat
+
 #begin Sounds/Bosses/1/Appearance.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

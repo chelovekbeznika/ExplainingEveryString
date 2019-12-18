@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.Music
             0b0000_0001, 0b0000_0010, 0b0000_0100, 0b0000_1000, 0b0001_0000, 0b0010_0000, 0b0100_0000, 0b1000_0000
         };
 
-        internal List<Byte[]> DeltaSamplesLibrary { get; } = new List<Byte[]>();
+        private List<Byte[]> deltaSamplesLibrary;
 
         private Int32 currentByte = 0;
         private Int32 currentBit = 0;
@@ -23,10 +23,11 @@ namespace ExplainingEveryString.Core.Music
 
         private Int16 Timer => timerLookupTable[ChannelParameters[SoundChannelParameter.Timer]];
 
-        private Byte[] CurrentSample => DeltaSamplesLibrary[ChannelParameters[SoundChannelParameter.CurrentSample]];
+        private Byte[] CurrentSample => deltaSamplesLibrary[ChannelParameters[SoundChannelParameter.CurrentSample]];
 
-        internal DeltaModulationChannel(FrameCounter frameCounter) : base(frameCounter)
+        internal DeltaModulationChannel(FrameCounter frameCounter, List<Byte[]> deltaSamplesLibrary) : base(frameCounter)
         {
+            this.deltaSamplesLibrary = deltaSamplesLibrary;
             ChannelParameters = new Dictionary<SoundChannelParameter, Int32>
             {
                 { SoundChannelParameter.Volume, 0 },

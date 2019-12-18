@@ -24,10 +24,7 @@ namespace ExplainingEveryString.Core.Music
         private Byte DmcOutput => statusController.DeltaEnabled
             ? (components[SoundComponentType.DeltaModulation] as SoundChannel).GetOutputValue() : (Byte)0;
 
-        internal List<Byte[]> DeltaSamplesLibrary => 
-            ((DeltaModulationChannel)components[SoundComponentType.DeltaModulation]).DeltaSamplesLibrary;
-
-        internal NesSoundChipReplica()
+        internal NesSoundChipReplica(List<Byte[]> deltaSamplesLibrary)
         {
             this.pulseTable = Enumerable.Range(0, 31).Select(index => 95.52f / (8128.0f / index + 100.0f)).ToArray();
             this.tndTable = Enumerable.Range(0, 203).Select(index => 163.67f / (24329.0f / index + 100.0f)).ToArray();
@@ -42,7 +39,7 @@ namespace ExplainingEveryString.Core.Music
                 { SoundComponentType.Pulse2, new PulseChannel(frameCounter, false) },
                 { SoundComponentType.Triangle, new TriangleChannel(frameCounter) },
                 { SoundComponentType.Noise, new NoiseChannel(frameCounter) },
-                { SoundComponentType.DeltaModulation, new DeltaModulationChannel(frameCounter) }
+                { SoundComponentType.DeltaModulation, new DeltaModulationChannel(frameCounter, deltaSamplesLibrary) }
             };
         }
 

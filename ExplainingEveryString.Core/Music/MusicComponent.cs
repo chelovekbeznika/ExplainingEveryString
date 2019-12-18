@@ -11,6 +11,7 @@ namespace ExplainingEveryString.Core.Music
     internal class MusicComponent : GameComponent
     {
         private DynamicSoundEffectInstance sound;
+        private List<Byte[]> deltaSamplesLibrary;
         private Byte[] buffer;
         private Byte[] lengthTest;
         private Byte[] envelopeTest;
@@ -24,14 +25,17 @@ namespace ExplainingEveryString.Core.Music
 
         public override void Initialize()
         {
+            this.deltaSamplesLibrary = DeltaSamplesLibraryLoader.Load(@"Content/Data/Music/deltasamples.dat");
             this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
-            this.buffer = new NesSoundChipReplica().GetMusic(GetTestSong(), 20);
-            this.lengthTest = new NesSoundChipReplica().GetMusic(GetLengthCounterTest().Cast<ISoundDirectingSequence>().ToList(), 16);
-            this.envelopeTest = new NesSoundChipReplica().GetMusic(GetEnvelopeTestLength().Cast<ISoundDirectingSequence>().ToList(), 16);
-            this.sweepTest = new NesSoundChipReplica().GetMusic(GetSweepTest().Cast<ISoundDirectingSequence>().ToList(), 12);
-            NesSoundChipReplica mixerWithSamples = new NesSoundChipReplica();
-            mixerWithSamples.DeltaSamplesLibrary.Add(GetTestDeltaSample());
-            this.deltaTest = mixerWithSamples.GetMusic(GetDeltaTest().Cast<ISoundDirectingSequence>().ToList(), 16);
+            this.buffer = new NesSoundChipReplica(deltaSamplesLibrary).GetMusic(GetTestSong(), 20);
+            this.lengthTest = new NesSoundChipReplica(deltaSamplesLibrary)
+                .GetMusic(GetLengthCounterTest().Cast<ISoundDirectingSequence>().ToList(), 16);
+            this.envelopeTest = new NesSoundChipReplica(deltaSamplesLibrary)
+                .GetMusic(GetEnvelopeTestLength().Cast<ISoundDirectingSequence>().ToList(), 16);
+            this.sweepTest = new NesSoundChipReplica(deltaSamplesLibrary)
+                .GetMusic(GetSweepTest().Cast<ISoundDirectingSequence>().ToList(), 12);
+            this.deltaTest = new NesSoundChipReplica(deltaSamplesLibrary)
+                .GetMusic(GetDeltaTest().Cast<ISoundDirectingSequence>().ToList(), 16);
             base.Initialize();
         }
 
@@ -339,16 +343,6 @@ namespace ExplainingEveryString.Core.Music
                     Value = timer
                 }
             })).ToList();
-        }
-
-        private Byte[] GetTestDeltaSample()
-        {
-            return Enumerable.Repeat(new Byte[]
-            {
-                0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111, 0b1111_1111,
-                0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000,
-                0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000, 0b1000_1000
-            }, 8).SelectMany(samplePart => samplePart).ToArray();
         }
     }
 }

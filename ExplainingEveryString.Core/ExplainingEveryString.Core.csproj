@@ -98,6 +98,7 @@
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="Music\Constants.cs" />
     <Compile Include="Music\DeltaModulationChannel.cs" />
+    <Compile Include="Music\DeltaSamplesLibraryLoader.cs" />
     <Compile Include="Music\FrameCounter.cs" />
     <Compile Include="Music\ISoundComponent.cs" />
     <Compile Include="Music\Model\BpmSequence.cs" />
