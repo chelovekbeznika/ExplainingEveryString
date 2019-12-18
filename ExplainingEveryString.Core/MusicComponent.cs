@@ -27,12 +27,12 @@ namespace ExplainingEveryString.Core
             KeyboardState state = Keyboard.GetState();
             if (state.IsKeyDown(Keys.M) && betweenPresses > 1)
             {
-                musicPlayer.Start("gamma");
-                betweenPresses = 0;
-            }
-            if (state.IsKeyDown(Keys.M) && state.IsKeyDown(Keys.Space) && betweenPresses > 1)
-            {
-                musicPlayer.Stop();
+                if (state.IsKeyDown(Keys.Enter))
+                    musicPlayer.Stop();
+                else if (state.IsKeyDown(Keys.RightShift))
+                    musicPlayer.PauseSwitch();
+                else
+                    musicPlayer.Start("gamma");
                 betweenPresses = 0;
             }
             musicPlayer.Update();

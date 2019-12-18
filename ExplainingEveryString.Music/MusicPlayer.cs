@@ -46,6 +46,17 @@ namespace ExplainingEveryString.Music
             isPlaying = true;
         }
 
+        public void PauseSwitch()
+        {
+            if (isPlaying)
+            {
+                if (sound.State == SoundState.Playing)
+                    sound.Pause();
+                else if (sound.State == SoundState.Paused)
+                    sound.Resume();
+            }
+        }
+
         public void Stop()
         {
             if (isPlaying)
