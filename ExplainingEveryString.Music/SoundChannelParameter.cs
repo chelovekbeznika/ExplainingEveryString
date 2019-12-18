@@ -1,4 +1,4 @@
-﻿namespace ExplainingEveryString.Core.Music
+﻿namespace ExplainingEveryString.Music
 {
     internal enum SoundChannelParameter
     {

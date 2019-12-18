@@ -1,4 +1,4 @@
-﻿namespace ExplainingEveryString.Core.Music.Model
+﻿namespace ExplainingEveryString.Music.Model
 {
     internal enum Alteration { None, Sharp, Flat }
 

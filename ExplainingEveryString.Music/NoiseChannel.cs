@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.Music
+namespace ExplainingEveryString.Music
 {
     internal class NoiseChannel : SoundChannel
     {

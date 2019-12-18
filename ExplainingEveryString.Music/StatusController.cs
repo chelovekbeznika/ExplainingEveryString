@@ -1,11 +1,11 @@
-﻿using ExplainingEveryString.Core.Music.Model;
+﻿using ExplainingEveryString.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.Music
+namespace ExplainingEveryString.Music
 {
     internal class StatusController : ISoundComponent
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Music.Model
+namespace ExplainingEveryString.Music.Model
 {
     internal static class NotesHelper
     {

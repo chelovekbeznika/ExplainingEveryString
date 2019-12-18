@@ -1,7 +1,7 @@
-﻿using ExplainingEveryString.Core.Music.Model;
+﻿using ExplainingEveryString.Music.Model;
 using System;
 
-namespace ExplainingEveryString.Core.Music
+namespace ExplainingEveryString.Music
 {
     internal class FrameCounter : ISoundComponent
     {

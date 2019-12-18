@@ -5,9 +5,9 @@ using System.IO;
 
 namespace ExplainingEveryString.Data
 {
-    internal class JsonDataAccessor
+    public class JsonDataAccessor
     {
-        internal static JsonDataAccessor Instance { get; } = new JsonDataAccessor();
+        public static JsonDataAccessor Instance { get; } = new JsonDataAccessor();
 
         private JsonSerializer serializer = new JsonSerializer()
         {
@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Data
             DefaultValueHandling = DefaultValueHandling.Populate
         };
 
-        internal T Load<T>(String fileName)
+        public T Load<T>(String fileName)
         {
             using (StreamReader streamReader = new StreamReader(fileName))
             using (JsonReader jsonReader = new JsonTextReader(streamReader))
@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Data
             }
         }
 
-        internal void Save<T>(String fileName, T data)
+        public void Save<T>(String fileName, T data)
         {
             using (StreamWriter streamWriter = new StreamWriter(fileName))
             using (JsonWriter writer = new JsonTextWriter(streamWriter))

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace ExplainingEveryString.Core.Music.Model
+namespace ExplainingEveryString.Music.Model
 {
     internal class PulseNote : BpmSoundDirectingEvent
     {

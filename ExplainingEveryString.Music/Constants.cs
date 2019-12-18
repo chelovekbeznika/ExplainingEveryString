@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExplainingEveryString.Core.Music
+namespace ExplainingEveryString.Music
 {
     internal static class Constants
     {

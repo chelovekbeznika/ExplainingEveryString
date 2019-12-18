@@ -1,67 +1,13 @@
-﻿using ExplainingEveryString.Core.Music.Model;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Input;
+﻿using ExplainingEveryString.Music.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core.Music
+namespace ExplainingEveryString.Music
 {
-    internal class MusicComponent : GameComponent
+    internal static class HardcodedSongs
     {
-        private DynamicSoundEffectInstance sound;
-        private List<Byte[]> deltaSamplesLibrary;
-        private Byte[] buffer;
-        private Byte[] lengthTest;
-        private Byte[] envelopeTest;
-        private Byte[] sweepTest;
-        private Byte[] deltaTest;
-
-        public MusicComponent(Game game) : base(game)
-        {
-            this.UpdateOrder = ComponentsOrder.Music;
-        }
-
-        public override void Initialize()
-        {
-            this.deltaSamplesLibrary = DeltaSamplesLibraryLoader.Load(@"Content/Data/Music/deltasamples.dat");
-            this.sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
-            this.buffer = new NesSoundChipReplica(deltaSamplesLibrary).GetMusic(GetTestSong(), 20);
-            this.lengthTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(GetLengthCounterTest().Cast<ISoundDirectingSequence>().ToList(), 16);
-            this.envelopeTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(GetEnvelopeTestLength().Cast<ISoundDirectingSequence>().ToList(), 16);
-            this.sweepTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(GetSweepTest().Cast<ISoundDirectingSequence>().ToList(), 12);
-            this.deltaTest = new NesSoundChipReplica(deltaSamplesLibrary)
-                .GetMusic(GetDeltaTest().Cast<ISoundDirectingSequence>().ToList(), 16);
-            base.Initialize();
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            if (Keyboard.GetState().IsKeyDown(Keys.M))
-            {
-                if (sound.PendingBufferCount < 1)
-                {
-                    if (Keyboard.GetState().IsKeyDown(Keys.RightAlt))
-                        sound.SubmitBuffer(sweepTest);
-                    else if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
-                        sound.SubmitBuffer(envelopeTest);
-                    else if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
-                        sound.SubmitBuffer(lengthTest);
-                    else if (Keyboard.GetState().IsKeyDown(Keys.Space))
-                        sound.SubmitBuffer(deltaTest);
-                    else
-                        sound.SubmitBuffer(buffer);
-                    sound.Play();
-                }
-            }
-        }
-
-        private List<ISoundDirectingSequence> GetTestSong()
+        internal static List<ISoundDirectingSequence> GetTestSong()
         {
             NoteType[] notes = new NoteType[] { NoteType.C, NoteType.D, NoteType.E, NoteType.F, NoteType.G, NoteType.A, NoteType.H };
             List<ISoundDirectingSequence> result = new List<ISoundDirectingSequence>
@@ -124,7 +70,7 @@ namespace ExplainingEveryString.Core.Music
             return result;
         }
 
-        private List<RawSoundDirectingEvent> GetLengthCounterTest()
+        internal static List<RawSoundDirectingEvent> GetLengthCounterTest()
         {
             Int32[] testLengthsBase10 = new Int32[] { 192, 96, 48, 24, 12, 72, 32, 16 };
             return new RawSoundDirectingEvent[]
@@ -166,7 +112,7 @@ namespace ExplainingEveryString.Core.Music
                 },
                 new RawSoundDirectingEvent
                 {
-                    Seconds = 0, 
+                    Seconds = 0,
                     SoundComponent = SoundComponentType.Pulse1,
                     Parameter = SoundChannelParameter.HaltLoopFlag,
                     Value = 0
@@ -185,7 +131,7 @@ namespace ExplainingEveryString.Core.Music
             .ToList();
         }
 
-        private List<RawSoundDirectingEvent> GetEnvelopeTestLength()
+        internal static List<RawSoundDirectingEvent> GetEnvelopeTestLength()
         {
             List<RawSoundDirectingEvent> result = new List<RawSoundDirectingEvent>
             {
@@ -259,7 +205,7 @@ namespace ExplainingEveryString.Core.Music
             return result;
         }
 
-        private List<RawSoundDirectingEvent> GetSweepTest()
+        internal static List<RawSoundDirectingEvent> GetSweepTest()
         {
             return new List<RawSoundDirectingEvent>()
             {
@@ -315,7 +261,7 @@ namespace ExplainingEveryString.Core.Music
             };
         }
 
-        private List<RawSoundDirectingEvent> GetDeltaTest()
+        public static List<RawSoundDirectingEvent> GetDeltaTest()
         {
             return new List<RawSoundDirectingEvent>
             {

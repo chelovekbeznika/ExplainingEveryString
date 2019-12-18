@@ -96,30 +96,7 @@
     <Compile Include="Menu\MenuItemsContainer.cs" />
     <Compile Include="Menu\MenuItemWithContainer.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
-    <Compile Include="Music\Constants.cs" />
-    <Compile Include="Music\DeltaModulationChannel.cs" />
-    <Compile Include="Music\DeltaSamplesLibraryLoader.cs" />
-    <Compile Include="Music\FrameCounter.cs" />
-    <Compile Include="Music\ISoundComponent.cs" />
-    <Compile Include="Music\Model\BpmSequence.cs" />
-    <Compile Include="Music\Model\NoiseNote.cs" />
-    <Compile Include="Music\Model\TriangleNote.cs" />
-    <Compile Include="Music\NesSoundChipReplica.cs" />
-    <Compile Include="Music\Model\ISoundDirectingSequence.cs" />
-    <Compile Include="Music\Model\Note.cs" />
-    <Compile Include="Music\Model\NotesHelper.cs" />
-    <Compile Include="Music\Model\PulseNote.cs" />
-    <Compile Include="Music\Model\BpmSoundDirectingEvent.cs" />
-    <Compile Include="Music\Model\SwitchChannel.cs" />
-    <Compile Include="Music\MusicComponent.cs" />
-    <Compile Include="Music\NoiseChannel.cs" />
-    <Compile Include="Music\PulseChannel.cs" />
-    <Compile Include="Music\SoundChannel.cs" />
-    <Compile Include="Music\SoundChannelParameter.cs" />
-    <Compile Include="Music\SoundChannelType.cs" />
-    <Compile Include="Music\Model\RawSoundDirectingEvent.cs" />
-    <Compile Include="Music\StatusController.cs" />
-    <Compile Include="Music\TriangleChannel.cs" />
+    <Compile Include="MusicComponent.cs" />
     <Compile Include="SpriteDataBuilder.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="GameModel\Weaponry\LevelPointsSpawner.cs" />
@@ -218,6 +195,10 @@
     <ProjectReference Include="..\ExplainingEveryString.Data\ExplainingEveryString.Data.csproj">
       <Project>{9b320fde-6c59-45f9-9dc1-dcafccca63ce}</Project>
       <Name>ExplainingEveryString.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExplainingEveryString.Music\ExplainingEveryString.Music.csproj">
+      <Project>{1b5e024f-a5b0-4c68-bb3c-c3cb455d4945}</Project>
+      <Name>ExplainingEveryString.Music</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

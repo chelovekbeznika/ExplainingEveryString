@@ -1,4 +1,4 @@
-﻿using ExplainingEveryString.Core.Music.Model;
+﻿using ExplainingEveryString.Music.Model;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

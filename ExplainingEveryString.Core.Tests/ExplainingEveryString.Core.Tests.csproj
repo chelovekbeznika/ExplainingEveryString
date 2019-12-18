@@ -77,6 +77,10 @@
       <Project>{9b320fde-6c59-45f9-9dc1-dcafccca63ce}</Project>
       <Name>ExplainingEveryString.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExplainingEveryString.Music\ExplainingEveryString.Music.csproj">
+      <Project>{1b5e024f-a5b0-4c68-bb3c-c3cb455d4945}</Project>
+      <Name>ExplainingEveryString.Music</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

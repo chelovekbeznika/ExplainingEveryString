@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core.Music
+namespace ExplainingEveryString.Music
 {
     internal class TriangleChannel : SoundChannel
     {

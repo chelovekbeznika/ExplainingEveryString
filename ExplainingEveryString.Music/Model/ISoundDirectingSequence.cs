@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Music.Model
+namespace ExplainingEveryString.Music.Model
 {
     internal interface ISoundDirectingSequence
     {
