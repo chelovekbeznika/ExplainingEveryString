@@ -1,11 +1,8 @@
 ﻿using ExplainingEveryString.Data;
 using ExplainingEveryString.Music.Model;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ExplainingEveryString.Music
 {
@@ -15,7 +12,7 @@ namespace ExplainingEveryString.Music
         private List<Byte[]> deltaSamplesLibrary;
         private NesSoundChipReplica soundChipReplica;
         private Byte[] currentSong;
-        private Boolean isPlaying = false;
+        private String nowPlaying = null;
 
         public MusicPlayer()
         {
@@ -29,7 +26,7 @@ namespace ExplainingEveryString.Music
 
         public void Update()
         {
-            if (sound != null && sound.PendingBufferCount < 1 && isPlaying)
+            if (sound != null && sound.PendingBufferCount < 1 && nowPlaying != null)
             {
                 sound.SubmitBuffer(currentSong);
                 sound.Play();
@@ -43,26 +40,27 @@ namespace ExplainingEveryString.Music
             sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
             sound.SubmitBuffer(currentSong);
             sound.Play();
-            isPlaying = true;
+            nowPlaying = songName;
         }
 
-        public void PauseSwitch()
+        public void TryPause()
         {
-            if (isPlaying)
-            {
-                if (sound.State == SoundState.Playing)
-                    sound.Pause();
-                else if (sound.State == SoundState.Paused)
-                    sound.Resume();
-            }
+            if (nowPlaying != null)
+                sound.Pause();
+        }
+
+        public void TryResume()
+        {
+            if (nowPlaying != null)
+                sound.Resume();
         }
 
         public void Stop()
         {
-            if (isPlaying)
+            if (nowPlaying != null)
             {
                 sound.Stop();
-                isPlaying = false;
+                nowPlaying = null;
             }
         }
 

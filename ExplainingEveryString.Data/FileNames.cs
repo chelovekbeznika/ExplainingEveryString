@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Data
         internal static String AssetsMetadata => GetJsonDataPath("assets_metadata.dat");
         internal static String LevelSequence => GetJsonDataPath("level_sequence.dat");
         internal static String GameProgress => GetJsonDataPath("game_progress.dat");
+        internal static String MusicTestMenu => GetJsonDataPath("music_menu.dat");
 
         internal static String GetJsonDataPath(String fileName)
         {

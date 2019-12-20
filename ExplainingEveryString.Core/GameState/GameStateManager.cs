@@ -130,6 +130,16 @@ namespace ExplainingEveryString.Core.GameState
             }
         }
 
+        internal void SongInMenuSelected(String songName)
+        {
+            componentsManager.Music.PlaySong(songName);
+        }
+
+        internal void StopMusicInMenu()
+        {
+            componentsManager.Music.Stop();
+        }
+
         private void SwitchToInGameState()
         {
             componentsManager.SwitchGameplayRelatedComponents(true);

@@ -1,5 +1,5 @@
 {
-  "ControlDevice": "KeyBoard",
+  "ControlDevice": "Keyboard",
   "Camera": {
     "PlayerFramePercentageWidth": 60,
     "PlayerFramePercentageHeight": 40,

@@ -47,6 +47,9 @@
 #begin Data/Music/gamma.dat
 /copy:Data/Music/gamma.dat
 
+#begin Data/music_menu.dat
+/copy:Data/music_menu.dat
+
 #begin Sounds/Bosses/1/Appearance.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -1643,6 +1646,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/LevelSelect/1X.png
 
+#begin Sprites/Menu/MusicTest.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/MusicTest.png
+
 #begin Sprites/Menu/NewGame.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1666,6 +1681,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/SelectedButtonBorder.png
+
+#begin Sprites/Menu/Songs/Winter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Songs/Winter.png
+
+#begin Sprites/Menu/StopMusic.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/StopMusic.png
 
 #begin Sprites/Menu/Unpause.png
 /importer:TextureImporter

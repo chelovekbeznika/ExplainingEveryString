@@ -4,6 +4,7 @@ using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
+using ExplainingEveryString.Data.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -39,9 +40,10 @@ namespace ExplainingEveryString.Core
             blueprintsLoader.Load();
 
             LevelSequnceSpecification levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
+            MusicTestButtonSpecification[] musicTestSpecification = MusicTestSpecificationAccess.Load();
 
-            ComponentsManager componentsManager = 
-                new ComponentsManager(this, levelSequenceSpecification, blueprintsLoader);
+            ComponentsManager componentsManager =  new ComponentsManager(this, levelSequenceSpecification, 
+                musicTestSpecification, blueprintsLoader);
 
             this.GameState = new GameStateManager(this, levelSequenceSpecification, componentsManager);
             this.menuInputProcessor = new OuterMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());

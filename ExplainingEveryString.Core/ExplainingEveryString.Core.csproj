@@ -95,6 +95,7 @@
     <Compile Include="Menu\LevelSelectMenuBuilder.cs" />
     <Compile Include="Menu\MenuItemsContainer.cs" />
     <Compile Include="Menu\MenuItemWithContainer.cs" />
+    <Compile Include="Menu\MusicTestMenuBuilder.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="MusicComponent.cs" />
     <Compile Include="SpriteDataBuilder.cs" />

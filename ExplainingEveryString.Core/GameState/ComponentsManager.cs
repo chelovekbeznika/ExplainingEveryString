@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
+using ExplainingEveryString.Data.Menu;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -16,13 +17,13 @@ namespace ExplainingEveryString.Core.GameState
         internal GameplayComponent CurrentGameplay { get; private set; }
         internal MusicComponent Music { get; private set; }
 
-        internal ComponentsManager(EesGame game, 
-            LevelSequnceSpecification levelSequenceSpecification, IBlueprintsLoader blueprintsLoader)
+        internal ComponentsManager(EesGame game, LevelSequnceSpecification levelSequenceSpecification,
+            MusicTestButtonSpecification[] musicTestSpecification, IBlueprintsLoader blueprintsLoader)
         {
             this.game = game;
             this.blueprintsLoader = blueprintsLoader;
             Interface = new InterfaceComponent(game);
-            Menu = new MenuComponent(game, levelSequenceSpecification);
+            Menu = new MenuComponent(game, levelSequenceSpecification, musicTestSpecification);
             Music = new MusicComponent(game);
         }
 
@@ -67,6 +68,7 @@ namespace ExplainingEveryString.Core.GameState
         {
             Menu.Enabled = active;
             Menu.Visible = active;
+            Music.Enabled = active;
         }
     }
 }
