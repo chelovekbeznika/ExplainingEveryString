@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace ExplainingEveryString.Music.Model
 {
@@ -11,19 +12,47 @@ namespace ExplainingEveryString.Music.Model
         public Int32 SamplesOffset { get; set; }
         [DefaultValue(90)]
         public Int32 BeatsPerMinute { get; set; }
-        public IEnumerable<BpmSoundDirectingEvent> BpmNotes { get; set; } 
+        [DefaultValue(null)]
+        public Alteration? Alteration { get; set; }
+        public IEnumerable<BpmSoundDirectingEvent> CommonPart { get; set; }
+        [DefaultValue(1)]
+        public Int32 RepeatTimes { get; set; }
+        public Single OneRepeatBeats { get; set; }
+        [DefaultValue(0)]
+        public Single StartingBeat { get; set; }
+        [DefaultValue(null)]
+        public Dictionary<Int32, IEnumerable<BpmSoundDirectingEvent>> UnderRepeatSign { get; set; }
 
         public IEnumerable<RawSoundDirectingEvent> GetEvents()
         {
-            foreach (BpmSoundDirectingEvent Note in BpmNotes)
+            foreach (Int32 timeToRepeat in Enumerable.Range(0, RepeatTimes))
             {
-                Note.BeatsPerMinute = BeatsPerMinute;
-                foreach (RawSoundDirectingEvent rawSoundDirectingEvent in Note.GetEvents())
-                {
-                    rawSoundDirectingEvent.Seconds += Seconds;
-                    rawSoundDirectingEvent.SamplesOffset += SamplesOffset;
-                    yield return rawSoundDirectingEvent;
-                }
+                foreach (BpmSoundDirectingEvent note in CommonPart)
+                    foreach (RawSoundDirectingEvent directingEvent in GetEventsFromNote(note, timeToRepeat))
+                        yield return directingEvent;
+
+                if (UnderRepeatSign != null && UnderRepeatSign.ContainsKey(timeToRepeat))
+                    foreach (BpmSoundDirectingEvent note in UnderRepeatSign[timeToRepeat])
+                        foreach (RawSoundDirectingEvent directingEvent in GetEventsFromNote(note, timeToRepeat))
+                            yield return directingEvent;
+            }
+            yield break;
+        }
+
+        private IEnumerable<RawSoundDirectingEvent> GetEventsFromNote(BpmSoundDirectingEvent note, Int32 timeToRepeat)
+        {
+            note.BeatsPerMinute = BeatsPerMinute;
+            note.StartingBeat = StartingBeat;
+            note.OneRepeatBeats = OneRepeatBeats;
+            note.TimeToRepeat = timeToRepeat;
+            if (Alteration.HasValue && note is INote actuallyNote)
+                actuallyNote.Alteration = Alteration.Value;
+
+            foreach (RawSoundDirectingEvent rawSoundDirectingEvent in note.GetEvents())
+            {
+                rawSoundDirectingEvent.Seconds += Seconds;
+                rawSoundDirectingEvent.SamplesOffset += SamplesOffset;
+                yield return rawSoundDirectingEvent;
             }
             yield break;
         }

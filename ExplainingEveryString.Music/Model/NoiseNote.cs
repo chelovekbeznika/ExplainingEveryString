@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Music.Model
 {
@@ -12,37 +13,22 @@ namespace ExplainingEveryString.Music.Model
 
         public override IEnumerable<RawSoundDirectingEvent> GetEvents()
         {
-            yield return new RawSoundDirectingEvent
+            yield return GetNoiseChannelEvent(SoundChannelParameter.Timer, NoiseType);
+            yield return GetNoiseChannelEvent(SoundChannelParameter.NoiseMode, LoopedNoise ? 1 : 0);
+            yield return GetNoiseChannelEvent(SoundChannelParameter.Volume, Volume);
+            yield return GetNoiseChannelEvent(SoundChannelParameter.Volume, 0, false);
+            yield break;
+        }
+
+        private RawSoundDirectingEvent GetNoiseChannelEvent(SoundChannelParameter parameter, Int32 value, Boolean inBeginning = true)
+        {
+            return new RawSoundDirectingEvent
             {
                 Seconds = Seconds,
-                SamplesOffset = SamplesOffset,
+                SamplesOffset = inBeginning ? SamplesOffset : SamplesOffset + NoteLengthInSamples(Length),
                 SoundComponent = SoundComponentType.Noise,
-                Parameter = SoundChannelParameter.Timer,
-                Value = NoiseType
-            };
-            yield return new RawSoundDirectingEvent
-            {
-                Seconds = Seconds,
-                SamplesOffset = SamplesOffset,
-                SoundComponent = SoundComponentType.Noise,
-                Parameter = SoundChannelParameter.NoiseMode,
-                Value = LoopedNoise ? 1 : 0
-            };
-            yield return new RawSoundDirectingEvent
-            {
-                Seconds = Seconds,
-                SamplesOffset = SamplesOffset,
-                SoundComponent = SoundComponentType.Noise,
-                Parameter = SoundChannelParameter.Volume,
-                Value = Volume
-            };
-            yield return new RawSoundDirectingEvent
-            {
-                Seconds = Seconds,
-                SamplesOffset = SamplesOffset + NoteLengthInSamples(Length),
-                SoundComponent = SoundComponentType.Noise,
-                Parameter = SoundChannelParameter.Volume,
-                Value = 0
+                Parameter = parameter,
+                Value = value
             };
         }
     }

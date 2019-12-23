@@ -41,6 +41,9 @@
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
+#begin Data/Music/christmas_tree_was_born_in_forest.dat
+/copy:Data/Music/christmas_tree_was_born_in_forest.dat
+
 #begin Data/Music/deltasamples.dat
 /copy:Data/Music/deltasamples.dat
 

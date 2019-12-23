@@ -53,6 +53,7 @@
     <Compile Include="ISoundComponent.cs" />
     <Compile Include="Model\BpmSequence.cs" />
     <Compile Include="Model\BpmSoundDirectingEvent.cs" />
+    <Compile Include="Model\INote.cs" />
     <Compile Include="Model\ISoundDirectingSequence.cs" />
     <Compile Include="Model\NoiseNote.cs" />
     <Compile Include="Model\Note.cs" />

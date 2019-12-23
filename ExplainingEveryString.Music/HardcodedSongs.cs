@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Music
             result.Add(new BpmSequence
             {
                 BeatsPerMinute = 90,
-                BpmNotes = notes.Select((note, index) => new PulseNote
+                CommonPart = notes.Select((note, index) => new PulseNote
                 {
                     BeatNumber = index,
                     Note = new Note(Octave.OneLine, note),
@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Music
             {
                 BeatsPerMinute = 140,
                 Seconds = 5,
-                BpmNotes = notes.Select((note, index) => new TriangleNote
+                CommonPart = notes.Select((note, index) => new TriangleNote
                 {
                     BeatNumber = index,
                     Note = new Note(Octave.OneLine, note),
@@ -58,7 +58,7 @@ namespace ExplainingEveryString.Music
             {
                 BeatsPerMinute = 140,
                 Seconds = 5,
-                BpmNotes = Enumerable.Range(0, 7).Select(index => new NoiseNote
+                CommonPart = Enumerable.Range(0, 7).Select(index => new NoiseNote
                 {
                     NoiseType = 8,
                     LoopedNoise = true,
