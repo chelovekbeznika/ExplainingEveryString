@@ -5,6 +5,8 @@ namespace ExplainingEveryString.Music.Model
 {
     internal static class NotesHelper
     {
+        private const Single Semitone = 1.059463094F;
+
         private static readonly Dictionary<Note, Single> notesFrequencies = new Dictionary<Note, Single>
         {
             { new Note(Octave.SubContra, NoteType.C), 16.352F },
@@ -97,24 +99,10 @@ namespace ExplainingEveryString.Music.Model
             switch (alteration)
             {
                 case Alteration.None: return notesFrequencies[note];
-                case Alteration.Sharp: return (Single)System.Math.Sqrt(notesFrequencies[note] * notesFrequencies[GetNextNote(note)]);
-                case Alteration.Flat: return (Single)System.Math.Sqrt(notesFrequencies[note] * notesFrequencies[GetPreviousNote(note)]);
+                case Alteration.Sharp: return notesFrequencies[note] * Semitone;
+                case Alteration.Flat: return notesFrequencies[note] / Semitone;
                 default: throw new ArgumentException(nameof(alteration));
             }
-        }
-
-        internal static Note GetNextNote(Note note)
-        {
-            NoteType noteType = note.Type == NoteType.H ? NoteType.C : (NoteType)((Int32)note.Type + 1);
-            Octave octave = note.Type == NoteType.H ? (Octave)((Int32)note.Octave + 1) : note.Octave;
-            return new Note(octave, noteType);
-        }
-
-        internal static Note GetPreviousNote(Note note)
-        {
-            NoteType noteType = note.Type == NoteType.C ? NoteType.H : (NoteType)((Int32)note.Type - 1);
-            Octave octave = note.Type == NoteType.C ? (Octave)((Int32)note.Octave - 1) : note.Octave;
-            return new Note(octave, noteType);
         }
     }
 }
