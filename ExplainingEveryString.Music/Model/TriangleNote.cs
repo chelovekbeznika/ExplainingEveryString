@@ -7,8 +7,8 @@ namespace ExplainingEveryString.Music.Model
     public class TriangleNote : BpmSoundDirectingEvent, INote
     {
         public Note Note { get; set; }
-        [DefaultValue(Alteration.None)]
-        public Alteration Alteration { get; set; }
+        [DefaultValue(Accidental.None)]
+        public Accidental Accidental { get; set; }
         public NoteLength Length { get; set; }
 
         public override IEnumerable<RawSoundDirectingEvent> GetEvents()
@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Music.Model
                 SamplesOffset = SamplesOffset,
                 SoundComponent = SoundComponentType.Triangle,
                 Parameter = SoundChannelParameter.Timer,
-                Value = NotesHelper.TriangleTimer(Note, Alteration)
+                Value = NotesHelper.TriangleTimer(Note, Accidental)
             };
             yield return new RawSoundDirectingEvent
             {

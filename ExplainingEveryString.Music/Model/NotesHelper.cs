@@ -82,26 +82,26 @@ namespace ExplainingEveryString.Music.Model
             { new Note(Octave.FiveLine, NoteType.H), 7902.1F },
         };
 
-        internal static Int32 PulseTimer(Note note, Alteration alteration)
+        internal static Int32 PulseTimer(Note note, Accidental accidental)
         {
-            Single frequency = GetFrequency(note, alteration);
-            return (Int32)System.Math.Round(Constants.CpuFrequency / (16 * frequency) - 1);
+            Single frequency = GetFrequency(note, accidental);
+            return (Int32)Math.Round(Constants.CpuFrequency / (16 * frequency) - 1);
         }
 
-        internal static Int32 TriangleTimer(Note note, Alteration alteration)
+        internal static Int32 TriangleTimer(Note note, Accidental accidental)
         {
-            Single frequency = GetFrequency(note, alteration);
-            return (Int32)System.Math.Round(Constants.CpuFrequency / (32 * frequency) - 1);
+            Single frequency = GetFrequency(note, accidental);
+            return (Int32)Math.Round(Constants.CpuFrequency / (32 * frequency) - 1);
         }
 
-        internal static Single GetFrequency(Note note, Alteration alteration = Alteration.None)
+        internal static Single GetFrequency(Note note, Accidental accidental = Accidental.None)
         {
-            switch (alteration)
+            switch (accidental)
             {
-                case Alteration.None: return notesFrequencies[note];
-                case Alteration.Sharp: return notesFrequencies[note] * Semitone;
-                case Alteration.Flat: return notesFrequencies[note] / Semitone;
-                default: throw new ArgumentException(nameof(alteration));
+                case Accidental.None: return notesFrequencies[note];
+                case Accidental.Sharp: return notesFrequencies[note] * Semitone;
+                case Accidental.Flat: return notesFrequencies[note] / Semitone;
+                default: throw new ArgumentException(nameof(accidental));
             }
         }
     }

@@ -8,8 +8,8 @@ namespace ExplainingEveryString.Music.Model
     public class PulseNote : BpmSoundDirectingEvent, INote
     {
         public Note Note { get; set; }
-        [DefaultValue(Alteration.None)]
-        public Alteration Alteration { get; set; }
+        [DefaultValue(Accidental.None)]
+        public Accidental Accidental { get; set; }
         public NoteLength Length { get; set; }
         [DefaultValue(15)]
         public Int32 Volume { get; set; }
@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Music.Model
 
         public override IEnumerable<RawSoundDirectingEvent> GetEvents()
         {
-            yield return GetPulseChannelEvent(SoundChannelParameter.Timer, NotesHelper.PulseTimer(Note, Alteration));
+            yield return GetPulseChannelEvent(SoundChannelParameter.Timer, NotesHelper.PulseTimer(Note, Accidental));
             yield return GetPulseChannelEvent(SoundChannelParameter.Volume, Volume);
             if (Duty.HasValue)
                 yield return GetPulseChannelEvent(SoundChannelParameter.Duty, Duty.Value);

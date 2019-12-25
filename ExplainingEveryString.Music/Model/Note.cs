@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace ExplainingEveryString.Music.Model
 {
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Alteration { None, Sharp, Flat }
+    public enum Accidental { None, Sharp, Flat }
 
     [JsonConverter(typeof(StringEnumConverter))]
     [Flags]

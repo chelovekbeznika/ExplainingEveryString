@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Music.Model
         [DefaultValue(90)]
         public Int32 BeatsPerMinute { get; set; }
         [DefaultValue(null)]
-        public Alteration? Alteration { get; set; }
+        public Dictionary<NoteType, Accidental> SequenceAccidental { get; set; }
         public IEnumerable<BpmSoundDirectingEvent> CommonPart { get; set; }
         [DefaultValue(1)]
         public Int32 RepeatTimes { get; set; }
@@ -45,8 +45,8 @@ namespace ExplainingEveryString.Music.Model
             note.StartingBeat = StartingBeat;
             note.OneRepeatBeats = OneRepeatBeats;
             note.TimeToRepeat = timeToRepeat;
-            if (Alteration.HasValue && note is INote actuallyNote)
-                actuallyNote.Alteration = Alteration.Value;
+            if (SequenceAccidental != null && note is INote)
+                ApplySequenceAccidental(note as INote);      
 
             foreach (RawSoundDirectingEvent rawSoundDirectingEvent in note.GetEvents())
             {
@@ -55,6 +55,15 @@ namespace ExplainingEveryString.Music.Model
                 yield return rawSoundDirectingEvent;
             }
             yield break;
+        }
+
+        private void ApplySequenceAccidental(INote note)
+        {
+            NoteType noteType = note.Note.Type;
+            Accidental currentAccidental = SequenceAccidental.ContainsKey(noteType)
+                ? SequenceAccidental[noteType] : Accidental.None;
+            if (currentAccidental != Accidental.None)
+                note.Accidental = currentAccidental;
         }
     }
 }
