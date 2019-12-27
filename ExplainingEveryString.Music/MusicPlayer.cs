@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Music
     public class MusicPlayer
     {
         private DynamicSoundEffectInstance sound;
+        private Single volume;
         private List<Byte[]> deltaSamplesLibrary;
         private NesSoundChipReplica soundChipReplica;
         private Byte[] currentSong;
@@ -18,8 +19,9 @@ namespace ExplainingEveryString.Music
         {
         }
 
-        public void Initialize()
+        public void Initialize(Single volume)
         {
+            this.volume = volume;
             this.deltaSamplesLibrary = DeltaSamplesLibraryLoader.Load(@"Content/Data/Music/deltasamples.dat");
             this.soundChipReplica = new NesSoundChipReplica(deltaSamplesLibrary);
         }
@@ -37,7 +39,7 @@ namespace ExplainingEveryString.Music
         {
             Stop();
             currentSong = Load(songName);
-            sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono);
+            sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono) { Volume = volume };
             sound.SubmitBuffer(currentSong);
             sound.Play();
             nowPlaying = songName;

@@ -27,10 +27,9 @@ namespace ExplainingEveryString.Core
         private TiledMapDisplayer mapDisplayer;
         private FogOfWarRuler fogOfWarRuler;
         private SpriteBatch spriteBatch;
+
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
-
-
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
 
@@ -68,6 +67,7 @@ namespace ExplainingEveryString.Core
             this.mapDisplayer = new TiledMapDisplayer(map, eesGame, screenCoordinatesMaster);
             EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);
             this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);
+            eesGame.GameState.StartMusicInGame(levelData.MusicName);
             base.LoadContent();
         }
 

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Configuration
 {
@@ -10,5 +11,7 @@ namespace ExplainingEveryString.Data.Configuration
         public ScreenConfiguration Screen { get; set; }
         public Single InterfaceAlpha { get; set; }
         public Single SoundFadingOut { get; set; }
+        [DefaultValue(0.25)]
+        public Single MusicVolume { get; set; }
     }
 }

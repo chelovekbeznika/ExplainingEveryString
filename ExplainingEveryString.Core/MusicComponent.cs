@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using ExplainingEveryString.Music;
 using System;
+using ExplainingEveryString.Data.Configuration;
 
 namespace ExplainingEveryString.Core
 {
@@ -23,7 +24,7 @@ namespace ExplainingEveryString.Core
 
         public override void Initialize()
         {
-            musicPlayer.Initialize();
+            musicPlayer.Initialize(ConfigurationAccess.GetCurrentConfig().MusicVolume);
             base.Initialize();
         }
 

@@ -15,7 +15,8 @@ namespace ExplainingEveryString.Core.GameState
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
-        internal MusicComponent Music { get; private set; }
+        internal MusicComponent MenuMusic { get; private set; }
+        internal MusicComponent GameMusic { get; private set; }
 
         internal ComponentsManager(EesGame game, LevelSequnceSpecification levelSequenceSpecification,
             MusicTestButtonSpecification[] musicTestSpecification, IBlueprintsLoader blueprintsLoader)
@@ -24,7 +25,8 @@ namespace ExplainingEveryString.Core.GameState
             this.blueprintsLoader = blueprintsLoader;
             Interface = new InterfaceComponent(game);
             Menu = new MenuComponent(game, levelSequenceSpecification, musicTestSpecification);
-            Music = new MusicComponent(game);
+            MenuMusic = new MusicComponent(game);
+            GameMusic = new MusicComponent(game);
         }
 
         internal void InitNewGameplayComponent(GameProgress gameProgress)
@@ -51,7 +53,8 @@ namespace ExplainingEveryString.Core.GameState
             TimersComponent.Init(game);
             components.Add(Interface);
             components.Add(Menu);
-            components.Add(Music);
+            components.Add(MenuMusic);
+            components.Add(GameMusic);
             SwitchMenuRelatedComponents(true);
         }
 
@@ -61,6 +64,7 @@ namespace ExplainingEveryString.Core.GameState
             Interface.Visible = active;
             CurrentGameplay.Enabled = active;
             CurrentGameplay.Visible = active;
+            GameMusic.Enabled = active;
             TimersComponent.Instance.Enabled = active;
         }
 
@@ -68,7 +72,7 @@ namespace ExplainingEveryString.Core.GameState
         {
             Menu.Enabled = active;
             Menu.Visible = active;
-            Music.Enabled = active;
+            MenuMusic.Enabled = active;
         }
     }
 }
