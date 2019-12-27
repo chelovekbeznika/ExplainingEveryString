@@ -2,16 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Music
 {
     internal class NesSoundChipReplica
     {
-        private Single[] pulseTable;
-        private Single[] tndTable;
+        private const Int32 OnePartLength = Constants.SampleRate * 5;
         private Dictionary<SoundComponentType, ISoundComponent> components;
         private FrameCounter frameCounter;
         private StatusController statusController;
+
+        private Queue<Byte[]> generatedSongParts = new Queue<Byte[]>();
+        private readonly Object generatedSongPartsLock = new Object();
+        private AutoResetEvent firstPartGenerated = new AutoResetEvent(false);
 
         private Byte FirstPulseOutput => statusController.Pulse1Enabled 
             ? (components[SoundComponentType.Pulse1] as SoundChannel).GetOutputValue() : (Byte)0;
@@ -26,9 +31,6 @@ namespace ExplainingEveryString.Music
 
         internal NesSoundChipReplica(List<Byte[]> deltaSamplesLibrary)
         {
-            this.pulseTable = Enumerable.Range(0, 31).Select(index => 95.52f / (8128.0f / index + 100.0f)).ToArray();
-            this.tndTable = Enumerable.Range(0, 203).Select(index => 163.67f / (24329.0f / index + 100.0f)).ToArray();
-
             this.frameCounter = new FrameCounter();
             this.statusController = new StatusController();
             this.components = new Dictionary<SoundComponentType, ISoundComponent>()
@@ -43,27 +45,46 @@ namespace ExplainingEveryString.Music
             };
         }
 
-        internal Byte[] GetMusic(SongSpecification songSpecification)
+        internal List<Byte[]> GetGeneratedParts()
         {
+            lock (generatedSongPartsLock)
+            {
+                if (generatedSongParts.Count == 0)
+                    return null;
+
+                List<Byte[]> parts = new List<Byte[]>();
+                while (generatedSongParts.Count > 0)
+                    parts.Add(generatedSongParts.Dequeue());
+                return parts;
+            }
+        }
+
+        internal Byte[] StartMusicGeneration(SongSpecification songSpecification)
+        {
+            ThreadPool.QueueUserWorkItem(MusicGeneration, songSpecification);
+            firstPartGenerated.WaitOne();
+            lock (generatedSongPartsLock)
+                return generatedSongParts.Dequeue();
+        }
+
+        private void MusicGeneration(Object songSpecificationObject)
+        {
+            SongSpecification songSpecification = songSpecificationObject as SongSpecification;
             List<RawSoundDirectingEvent> soundEvents = GetRawEvents(songSpecification.Song);
             Int32 durationInSamples = (Int32)Math.Round(songSpecification.Duration * Constants.SampleRate);
-            Byte[] result = new Byte[durationInSamples * 2];
+            Byte[] currentPart = null;
             Int32 nextEvent = 0;
 
-            foreach (Int32 bufferIndex in Enumerable.Range(0, durationInSamples))
+            foreach (Int32 sampleIndex in Enumerable.Range(0, durationInSamples))
             {
-                while (soundEvents[nextEvent].Position == bufferIndex)
-                {
-                    RawSoundDirectingEvent soundEvent = soundEvents[nextEvent];
-                    components[soundEvent.SoundComponent].ProcessSoundDirectingEvent(soundEvent);
-                    nextEvent += 1;
-                }
-
-                PutSample(result, bufferIndex, GetOutputValue());
+                currentPart = GetCurrentSongPart(currentPart, sampleIndex, durationInSamples);
+                nextEvent = MoveEventsQueue(soundEvents, nextEvent, sampleIndex);
+                PutSample(currentPart, sampleIndex % OnePartLength, GetOutputValue());
                 MoveEmulationTowardNextSample();
             }
 
-            return result;
+            lock (generatedSongPartsLock)
+                generatedSongParts.Enqueue(currentPart);        
         }
 
         private List<RawSoundDirectingEvent> GetRawEvents(List<ISoundDirectingSequence> soundSequences)
@@ -84,12 +105,33 @@ namespace ExplainingEveryString.Music
             return soundEvents;
         }
 
-        private void MoveEmulationTowardNextSample()
+        private Byte[] GetCurrentSongPart(Byte[] currentPart, Int32 sampleIndex, Int32 durationInSamples)
         {
-            foreach (ISoundComponent channel in components.Values)
+            if (sampleIndex % OnePartLength == 0)
             {
-                channel.MoveEmulationTowardNextSample();
+                if (currentPart != null)
+                {
+                    lock (generatedSongPartsLock)
+                    {
+                        generatedSongParts.Enqueue(currentPart);
+                    }
+                    if (sampleIndex <= OnePartLength)
+                        firstPartGenerated.Set();
+                }
+                currentPart = new Byte[Math.Min(durationInSamples - sampleIndex, OnePartLength) * 2];
             }
+            return currentPart;
+        }
+
+        private Int32 MoveEventsQueue(List<RawSoundDirectingEvent> soundEvents, Int32 nextEvent, Int32 sampleIndex)
+        {
+            while (soundEvents[nextEvent].Position == sampleIndex)
+            {
+                RawSoundDirectingEvent soundEvent = soundEvents[nextEvent];
+                components[soundEvent.SoundComponent].ProcessSoundDirectingEvent(soundEvent);
+                nextEvent += 1;
+            }
+            return nextEvent;
         }
 
         private Single GetOutputValue()
@@ -107,6 +149,14 @@ namespace ExplainingEveryString.Music
             (Byte, Byte) amplitude = ((Byte)value, (Byte)(pcmValue >> 8));
             buffer[position * 2] = amplitude.Item1;
             buffer[position * 2 + 1] = amplitude.Item2;
+        }
+
+        private void MoveEmulationTowardNextSample()
+        {
+            foreach (ISoundComponent channel in components.Values)
+            {
+                channel.MoveEmulationTowardNextSample();
+            }
         }
     }
 }

@@ -10,9 +10,11 @@ namespace ExplainingEveryString.Music
     {
         private DynamicSoundEffectInstance sound;
         private Single volume;
+        private Single Volume { get { return volume; } set { volume = value; if (sound != null) sound.Volume = value; } }
         private List<Byte[]> deltaSamplesLibrary;
         private NesSoundChipReplica soundChipReplica;
-        private Byte[] currentSong;
+        private List<Byte[]> songParts;
+        private Int32 songPartsPlaying;
         private String nowPlaying = null;
 
         public MusicPlayer()
@@ -21,26 +23,45 @@ namespace ExplainingEveryString.Music
 
         public void Initialize(Single volume)
         {
-            this.volume = volume;
+            this.Volume = volume;
             this.deltaSamplesLibrary = DeltaSamplesLibraryLoader.Load(@"Content/Data/Music/deltasamples.dat");
             this.soundChipReplica = new NesSoundChipReplica(deltaSamplesLibrary);
         }
 
         public void Update()
         {
-            if (sound != null && sound.PendingBufferCount < 1 && nowPlaying != null)
+            if (sound != null && nowPlaying != null)
             {
-                sound.SubmitBuffer(currentSong);
-                sound.Play();
+                List<Byte[]> newSongParts = soundChipReplica.GetGeneratedParts();
+                if (newSongParts != null)
+                    songParts.AddRange(newSongParts);
+
+                while (songParts.Count > songPartsPlaying)
+                {
+                    sound.SubmitBuffer(songParts[songPartsPlaying]);
+                    songPartsPlaying += 1;
+                }
+
+                if (sound.PendingBufferCount < 1)
+                {
+                    foreach (Byte[] buffer in songParts)
+                        sound.SubmitBuffer(buffer);
+                    songPartsPlaying = songParts.Count;
+                    sound.Play();
+                }
             }
         }
 
         public void Start(String songName)
         {
             Stop();
-            currentSong = Load(songName);
-            sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono) { Volume = volume };
-            sound.SubmitBuffer(currentSong);
+            songParts = new List<Byte[]>
+            {
+                Load(songName)
+            };
+            sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono) { Volume = Volume };
+            sound.SubmitBuffer(songParts[0]);
+            songPartsPlaying = 1;
             sound.Play();
             nowPlaying = songName;
         }
@@ -62,6 +83,8 @@ namespace ExplainingEveryString.Music
             if (nowPlaying != null)
             {
                 sound.Stop();
+                songPartsPlaying = 0;
+                soundChipReplica = new NesSoundChipReplica(deltaSamplesLibrary);
                 nowPlaying = null;
             }
         }
@@ -70,7 +93,7 @@ namespace ExplainingEveryString.Music
         {
             String fileName = $"Content/Data/Music/{songName}.dat";
             SongSpecification song = JsonDataAccessor.Instance.Load<SongSpecification>(fileName);
-            return soundChipReplica.GetMusic(song);
+            return soundChipReplica.StartMusicGeneration(song);
         }
     }
 }
