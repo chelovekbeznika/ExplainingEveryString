@@ -36,17 +36,17 @@ namespace ExplainingEveryString.Core
 
         private Timer ScheduleEvent(Single seconds, Action atTimerElapsed, Func<Boolean> isActive)
         {
-            Timer timer = new Timer(seconds, atTimerElapsed, isActive);
+            var timer = new Timer(seconds, atTimerElapsed, isActive);
             scheduledTimers.Add(timer);
             return timer;
         }
 
         public override void Update(GameTime gameTime)
         {
-            Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            var elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
             timers.AddRange(scheduledTimers);
             scheduledTimers.Clear();
-            foreach (Timer timer in timers)
+            foreach (var timer in timers)
             {
                 timer.Update(elapsedSeconds);
             }

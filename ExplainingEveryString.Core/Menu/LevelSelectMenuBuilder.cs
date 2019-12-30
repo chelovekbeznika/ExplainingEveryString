@@ -23,10 +23,10 @@ namespace ExplainingEveryString.Core.Menu
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
         {
-            List<MenuItem> items = new List<MenuItem>();
-            foreach (LevelsBlockSpecification levelsBlock in levelSequenceSpecification.LevelsBlocks)
+            var items = new List<MenuItem>();
+            foreach (var levelsBlock in levelSequenceSpecification.LevelsBlocks)
             {
-                MenuItem item = new MenuItemWithContainer(Content.Load<Texture2D>(levelsBlock.ButtonSprite),
+                var item = new MenuItemWithContainer(Content.Load<Texture2D>(levelsBlock.ButtonSprite),
                     GetMenuContainerForBlock(levelsBlock), menuVisiblePart);
                 items.Add(item);
             }
@@ -35,12 +35,12 @@ namespace ExplainingEveryString.Core.Menu
 
         private MenuItemsContainer GetMenuContainerForBlock(LevelsBlockSpecification levelsBlock)
         {
-            List<MenuItem> items = new List<MenuItem>();
-            IEnumerable<LevelSpecification> levels = levelSequenceSpecification.Levels
+            var items = new List<MenuItem>();
+            var levels = levelSequenceSpecification.Levels
                 .Where(l => l.LevelsBlockId == levelsBlock.Id);
-            foreach (LevelSpecification level in levels)
+            foreach (var level in levels)
             {
-                MenuItem item = new MenuItem(Content.Load<Texture2D>(level.ButtonSprite));
+                var item = new MenuItem(Content.Load<Texture2D>(level.ButtonSprite));
                 item.ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueFrom(level.LevelData);
                 item.IsVisible = () => game.GameState.LevelAvailable(level.LevelData);
                 items.Add(item);

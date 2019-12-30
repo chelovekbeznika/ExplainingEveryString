@@ -65,7 +65,7 @@ namespace ExplainingEveryString.Core.GameModel
             SendDeadToHeaven();
             while (enemiesQueue.Count > 0 && currentWaveEnemies.Count < maxEnemiesAtOnce)
             {
-                IEnemy enemy = enemiesQueue.Dequeue();
+                var enemy = enemiesQueue.Dequeue();
                 currentWaveEnemies.Add(enemy);
                 enemy.EnemyBehaviorChanged += EnemyBehaviorChanged;
                 if (enemy.SpawnedActors != null)
@@ -75,8 +75,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void EnemyBehaviorChanged(Object sender, EnemyBehaviorChangedEventArgs args)
         {
-            SpawnedActorsController oldSpawner = args.OldSpawner;
-            SpawnedActorsController newSpawner = args.NewSpawner;
+            var oldSpawner = args.OldSpawner;
+            var newSpawner = args.NewSpawner;
             if (oldSpawner != null)
                 oldSpawner.TurnOff();
             if (newSpawner != null)
@@ -94,7 +94,7 @@ namespace ExplainingEveryString.Core.GameModel
             doors = doors.Where(door => door.IsAlive()).ToList();
 
             currentWaveEnemies = EnemyDeathProcessor.SendDeadToHeaven(currentWaveEnemies, avengers);
-            foreach (SpawnedActorsController spawnedActorsController in enemySpawners)
+            foreach (var spawnedActorsController in enemySpawners)
                 spawnedActorsController.SendDeadToHeaven(avengers);
             avengers = EnemyDeathProcessor.SendDeadToHeaven(avengers, avengers);
         }
@@ -102,7 +102,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer, 
             CheckpointsManager checkpointsManager, String startCheckpoint)
         {
-            Int32 startWave = checkpointsManager.GetStartWave(startCheckpoint);
+            var startWave = checkpointsManager.GetStartWave(startCheckpoint);
 
             Player = actorsInitializer.InitializePlayer(checkpointsManager.GetPlayerPosition(startCheckpoint));
             obstacles = actorsInitializer.InitializeObstacles();
@@ -116,7 +116,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void EndWave(Int32 waveNumber)
         {
-            foreach (Door door in doors.Where(d => d.OpeningWaveNumber == waveNumber))
+            foreach (var door in doors.Where(d => d.OpeningWaveNumber == waveNumber))
                 door.Open();
         }
 

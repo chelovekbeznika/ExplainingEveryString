@@ -24,8 +24,8 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void Draw()
         {
-            Vector2 renderPosition = screenCoordinatesMaster.ConvertToScreenPosition(new Vector2(0, map.Bounds.Height));
-            Matrix viewMatrix = Matrix.CreateTranslation(renderPosition.X, renderPosition.Y, 0);
+            var renderPosition = screenCoordinatesMaster.ConvertToScreenPosition(new Vector2(0, map.Bounds.Height));
+            var viewMatrix = Matrix.CreateTranslation(renderPosition.X, renderPosition.Y, 0);
             renderer.Draw(map.TiledMap, viewMatrix, null);
         }
     }

@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Music
 
         public void MoveEmulationTowardNextSample()
         {
-            Int32 apuCycles = Constants.ApuTicksBetweenSamples;
+            var apuCycles = Constants.ApuTicksBetweenSamples;
             currentApuCyclesValue += apuCycles;
             if (currentApuCyclesValue >= StepsCycles[stepsEvaluated])
             {

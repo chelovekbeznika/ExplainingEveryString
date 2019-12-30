@@ -24,8 +24,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Constants.Epsilon;
         public override SpriteState SpriteState => IsInAppearancePhase ? appearanceSprite : base.SpriteState;
         public override CollidableMode CollidableMode => IsInAppearancePhase ? CollidableMode.Ghost : base.CollidableMode;
-        private String collideTag;
-        public String CollideTag => collideTag;
+        public String CollideTag { get; private set; }
         public Single CollisionDamage { get; set; }
 
         protected virtual EnemyBehavior Behavior { get; set; }
@@ -63,7 +62,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.appearancePhaseRemained = startInfo.AppearancePhaseDuration > 0 
                 ? startInfo.AppearancePhaseDuration
                 : blueprint.DefaultAppearancePhaseDuration;
-            this.collideTag = blueprint.CollideTag;
+            this.CollideTag = blueprint.CollideTag;
 
             Behavior.Construct(blueprint.Behavior, startInfo.BehaviorParameters, level, factory);
         }

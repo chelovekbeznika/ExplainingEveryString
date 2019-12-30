@@ -23,8 +23,8 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void Update(GameTime gameTime)
         {
-            Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
-            foreach (MenuButtonHandler button in Buttons)
+            var elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            foreach (var button in Buttons)
                 button.Update(elapsedSeconds);
         }
 

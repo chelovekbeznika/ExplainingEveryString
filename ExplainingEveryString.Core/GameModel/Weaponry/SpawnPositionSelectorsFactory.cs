@@ -14,10 +14,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 case SpawnPositionSelectionType.LevelSpawnPoints:
                     return new LevelSpawnPositionSelector(levelSpawnPoints);
                 case SpawnPositionSelectionType.RandomInCircle:
-                    Single maxRadius = (specification as RandomSpawnPositionSelectorSpecification).SpawnRadius;
+                    var maxRadius = (specification as RandomSpawnPositionSelectorSpecification).SpawnRadius;
                     return new RandomSpawnPositionSelector(spawnerLocator, maxRadius);
                 case SpawnPositionSelectionType.RelativeToSpawner:
-                    Vector2[] spawnPositions = (specification as RelativeSpawnPositionSelectorSpecificaton).SpawnPositions;
+                    var spawnPositions = (specification as RelativeSpawnPositionSelectorSpecificaton).SpawnPositions;
                     return new RelativeSpawnPositionSelector(spawnerLocator, spawnPositions);
                 default:
                     throw new ArgumentException("Unknown SpawnPositionSelectionType");

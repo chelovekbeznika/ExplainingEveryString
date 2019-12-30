@@ -15,12 +15,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             add
             {
-                foreach (Barrel barrel in barrels)
+                foreach (var barrel in barrels)
                     barrel.Shoot += value;
             }
             remove
             {
-                foreach (Barrel barrel in barrels)
+                foreach (var barrel in barrels)
                     barrel.Shoot -= value;
             }
         }
@@ -48,9 +48,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.aimer = aimer;
             barrels = specification.Barrels
                 .Select(bs => new Barrel(aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
-            void onShoot(float seconds)
+            void onShoot(Single seconds)
             {
-                foreach (Barrel barrel in barrels)
+                foreach (var barrel in barrels)
                     barrel.OnShoot(seconds);
             }
             reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), onShoot);

@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void Draw(SpriteBatch spriteBatch, IEnumerable<IDisplayble> thingsToDraw)
         {
-            foreach (IDisplayble toDraw in thingsToDraw)
+            foreach (var toDraw in thingsToDraw)
             {
                 Draw(spriteBatch, toDraw);
             }   
@@ -36,13 +36,13 @@ namespace ExplainingEveryString.Core.Displaying
             if (!toDraw.IsVisible)
                 return;
 
-            SpriteState spriteState = toDraw.SpriteState;
-            SpriteData spriteData = AssetsStorage.GetSprite(spriteState.Name);
-            Vector2 position = toDraw.Position;
-            Vector2 drawPosition = screenCoordinatesMaster.ConvertToScreenPosition(position);
-            Rectangle? drawPart = AnimationHelp.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);
-            Single angle = -spriteState.Angle;
-            Vector2 spriteCenter = new Vector2
+            var spriteState = toDraw.SpriteState;
+            var spriteData = AssetsStorage.GetSprite(spriteState.Name);
+            var position = toDraw.Position;
+            var drawPosition = screenCoordinatesMaster.ConvertToScreenPosition(position);
+            var drawPart = AnimationHelp.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);
+            var angle = -spriteState.Angle;
+            var spriteCenter = new Vector2
             {
                 X = spriteData.Width / 2,
                 Y = spriteData.Height / 2
@@ -51,7 +51,7 @@ namespace ExplainingEveryString.Core.Displaying
             spriteBatch.Draw(spriteData.Sprite, drawPosition, drawPart, Color.White, angle, 
                 spriteCenter, 1, SpriteEffects.None, 0);
 
-            foreach (IDisplayble part in toDraw.GetParts())
+            foreach (var part in toDraw.GetParts())
                 Draw(spriteBatch, part);
         }
 
@@ -62,13 +62,13 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal Rectangle PositionOnScreen(IDisplayble displayble)
         {
-            SpriteData sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
+            var sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
             return screenCoordinatesMaster.PositionOnScreen(displayble.Position, sprite);
         }
 
         internal Boolean IsVisibleOnScreen(IDisplayble displayble)
         {
-            SpriteData sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
+            var sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
             return screenCoordinatesMaster.IsVisibleOnScreen(displayble.Position, sprite);
         }
     }

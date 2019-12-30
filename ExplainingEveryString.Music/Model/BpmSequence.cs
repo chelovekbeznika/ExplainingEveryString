@@ -25,15 +25,15 @@ namespace ExplainingEveryString.Music.Model
 
         public IEnumerable<RawSoundDirectingEvent> GetEvents()
         {
-            foreach (Int32 timeToRepeat in Enumerable.Range(0, RepeatTimes))
+            foreach (var timeToRepeat in Enumerable.Range(0, RepeatTimes))
             {
-                foreach (BpmSoundDirectingEvent note in CommonPart)
-                    foreach (RawSoundDirectingEvent directingEvent in GetEventsFromNote(note, timeToRepeat))
+                foreach (var note in CommonPart)
+                    foreach (var directingEvent in GetEventsFromNote(note, timeToRepeat))
                         yield return directingEvent;
 
                 if (UnderRepeatSign != null && UnderRepeatSign.ContainsKey(timeToRepeat))
-                    foreach (BpmSoundDirectingEvent note in UnderRepeatSign[timeToRepeat])
-                        foreach (RawSoundDirectingEvent directingEvent in GetEventsFromNote(note, timeToRepeat))
+                    foreach (var note in UnderRepeatSign[timeToRepeat])
+                        foreach (var directingEvent in GetEventsFromNote(note, timeToRepeat))
                             yield return directingEvent;
             }
             yield break;
@@ -48,7 +48,7 @@ namespace ExplainingEveryString.Music.Model
             if (SequenceAccidental != null && note is INote)
                 ApplySequenceAccidental(note as INote);      
 
-            foreach (RawSoundDirectingEvent rawSoundDirectingEvent in note.GetEvents())
+            foreach (var rawSoundDirectingEvent in note.GetEvents())
             {
                 rawSoundDirectingEvent.Seconds += Seconds;
                 rawSoundDirectingEvent.SamplesOffset += SamplesOffset;
@@ -59,8 +59,8 @@ namespace ExplainingEveryString.Music.Model
 
         private void ApplySequenceAccidental(INote note)
         {
-            NoteType noteType = note.Note.Type;
-            Accidental currentAccidental = SequenceAccidental.ContainsKey(noteType)
+            var noteType = note.Note.Type;
+            var currentAccidental = SequenceAccidental.ContainsKey(noteType)
                 ? SequenceAccidental[noteType] : Accidental.None;
             if (currentAccidental != Accidental.None)
                 note.Accidental = currentAccidental;

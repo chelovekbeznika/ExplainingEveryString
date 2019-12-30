@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Music
         {
             if (sound != null && nowPlaying != null)
             {
-                List<Byte[]> newSongParts = soundChipReplica.GetGeneratedParts();
+                var newSongParts = soundChipReplica.GetGeneratedParts();
                 if (newSongParts != null)
                     songParts.AddRange(newSongParts);
 
@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Music
 
                 if (sound.PendingBufferCount < 1)
                 {
-                    foreach (Byte[] buffer in songParts)
+                    foreach (var buffer in songParts)
                         sound.SubmitBuffer(buffer);
                     songPartsPlaying = songParts.Count;
                     sound.Play();
@@ -91,8 +91,8 @@ namespace ExplainingEveryString.Music
 
         private Byte[] Load(String songName)
         {
-            String fileName = $"Content/Data/Music/{songName}.dat";
-            SongSpecification song = JsonDataAccessor.Instance.Load<SongSpecification>(fileName);
+            var fileName = $"Content/Data/Music/{songName}.dat";
+            var song = JsonDataAccessor.Instance.Load<SongSpecification>(fileName);
             return soundChipReplica.StartMusicGeneration(song);
         }
     }

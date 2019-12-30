@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private void UpdateShadowPhase(Single elapsedSeconds)
         {
             phaseCountingTime += elapsedSeconds;
-            Single currentPhaseTimeToLive = inShadow ? shadowTime : activeTime;
+            var currentPhaseTimeToLive = inShadow ? shadowTime : activeTime;
             if (phaseCountingTime > currentPhaseTimeToLive + Math.Constants.Epsilon)
             {
                 ChangePhase();

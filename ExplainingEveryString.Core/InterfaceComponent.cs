@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Core
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
         {
-            Configuration config = ConfigurationAccess.GetCurrentConfig();
+            var config = ConfigurationAccess.GetCurrentConfig();
             this.eesGame = eesGame;
             this.alphaMask = new Color(Color.White, config.InterfaceAlpha);
             this.SetGameplayComponentToDraw(null);
@@ -46,7 +46,7 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            Dictionary<String, SpriteData> sprites = GetSprites();
+            var sprites = GetSprites();
             spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
             interfaceSpritesDisplayer = new InterfaceSpriteDisplayer(spriteBatch, alphaMask);
 
@@ -54,7 +54,7 @@ namespace ExplainingEveryString.Core
             dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer, sprites);
             enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer, sprites);
             bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites);
-            SpriteFont timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
+            var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
 
             base.LoadContent();
@@ -62,8 +62,8 @@ namespace ExplainingEveryString.Core
 
         private Dictionary<String, SpriteData> GetSprites()
         {
-            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
-            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
+            var metadataLoader = AssetsMetadataAccess.GetLoader();
+            var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
             String[] animatedSprites = new String[] 
             {
                 HealthBarDisplayer.HealthBarTexture, HealthBarDisplayer.EmptyHealthBarTexture,

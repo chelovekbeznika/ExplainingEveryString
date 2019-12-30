@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void HalfSecondStep()
         {
-            Single halfSecondSpeed = 100 * (Single)(1 / System.Math.Sqrt(2));
+            var halfSecondSpeed = 100 * (Single)(1 / System.Math.Sqrt(2));
             AssertSlowing(100, halfSecondSpeed, 0.5F);
             AssertSlowing(halfSecondSpeed, 50, 0.5F);
         }
@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.Tests
 
         private void AssertSlowing(Single before, Single after, Single elapsedTime)
         {
-            Vector2 start = new Vector2(before, 0);
+            var start = new Vector2(before, 0);
             Assert.That(FrictionCorrector.Correct(start, elapsedTime), Is.EqualTo(new Vector2(after, 0)));
         }
     }

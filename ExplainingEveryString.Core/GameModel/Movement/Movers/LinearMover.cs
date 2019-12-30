@@ -16,8 +16,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
         {
             if (lineToTarget.Length() >= Math.Constants.Epsilon)
             {
-                Vector2 speed = lineToTarget / lineToTarget.Length() * scalarSpeed;
-                Vector2 positionChange = speed * elapsedSeconds;
+                var speed = lineToTarget / lineToTarget.Length() * scalarSpeed;
+                var positionChange = speed * elapsedSeconds;
                 goalReached = lineToTarget.Length() <= positionChange.Length();
                 if (goalReached)
                     return lineToTarget;

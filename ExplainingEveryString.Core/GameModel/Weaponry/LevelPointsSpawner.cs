@@ -37,9 +37,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public Vector2 GetNextSpawnPosition()
         {
-            Single angle = RandomUtility.Next() * MathHelper.TwoPi;
-            Single radius = RandomUtility.Next() * maxRadius;
-            Vector2 relativeSpawnPosition = AngleConverter.ToVector(angle) * radius;
+            var angle = RandomUtility.Next() * MathHelper.TwoPi;
+            var radius = RandomUtility.Next() * maxRadius;
+            var relativeSpawnPosition = AngleConverter.ToVector(angle) * radius;
             return spawnerPositionLocator() + relativeSpawnPosition;
         }
     }
@@ -58,7 +58,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public Vector2 GetNextSpawnPosition()
         {
-            Vector2 relativeSpawnPosition = relativeSpawnPoints[currentEnemySpawned % relativeSpawnPoints.Length];
+            var relativeSpawnPosition = relativeSpawnPoints[currentEnemySpawned % relativeSpawnPoints.Length];
             currentEnemySpawned += 1;
             return spawnerPositionLocator() + relativeSpawnPosition;
         }

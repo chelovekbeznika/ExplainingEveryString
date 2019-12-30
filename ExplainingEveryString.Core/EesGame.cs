@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core
         public EesGame()
         {
             ConfigurationAccess.InitializeConfig();
-            ScreenConfiguration screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
+            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
             graphics = new GraphicsDeviceManager(this)
             {
                 PreferredBackBufferHeight = screenConfig.ScreenHeight,
@@ -39,10 +39,10 @@ namespace ExplainingEveryString.Core
             blueprintsLoader = BlueprintsAccess.GetLoader();
             blueprintsLoader.Load();
 
-            LevelSequnceSpecification levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
-            MusicTestButtonSpecification[] musicTestSpecification = MusicTestSpecificationAccess.Load();
+            var levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
+            var musicTestSpecification = MusicTestSpecificationAccess.Load();
 
-            ComponentsManager componentsManager =  new ComponentsManager(this, levelSequenceSpecification, 
+            var componentsManager =  new ComponentsManager(this, levelSequenceSpecification, 
                 musicTestSpecification, blueprintsLoader);
 
             this.GameState = new GameStateManager(this, levelSequenceSpecification, componentsManager);
@@ -53,7 +53,7 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            IAssetsMetadataLoader metadataLoader = AssetsMetadataAccess.GetLoader();
+            var metadataLoader = AssetsMetadataAccess.GetLoader();
             AssetsStorage = new AssetsStorage();
             AssetsStorage.FillAssetsStorages(blueprintsLoader, metadataLoader, Content);
             base.LoadContent();

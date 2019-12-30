@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Core.Displaying
         {
             if (!handled || !oneTimeEvent)
             {
-                SpriteState sprite = eventSource.SpriteState;
+                var sprite = eventSource.SpriteState;
                 handled = true;
                 if (specEffect != null)
                     Event?.Invoke(eventSource, new EpicEventArgs

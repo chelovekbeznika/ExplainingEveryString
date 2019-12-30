@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="CheckpointsManagerTests.cs" />
     <Compile Include="ClosestArcTests.cs" />
-    <Compile Include="HardCodeBlueprintsLoader.cs" />
     <Compile Include="HitboxBulletCollisionsTests.cs" />
     <Compile Include="HitboxesCollisionsTests.cs" />
     <Compile Include="FrictionTests.cs" />

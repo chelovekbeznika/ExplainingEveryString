@@ -83,8 +83,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void Move(Single elapsedSeconds)
         {
-            Vector2 speed = GetCurrentSpeed(elapsedSeconds);
-            Vector2 positionChange = speed * elapsedSeconds;
+            var speed = GetCurrentSpeed(elapsedSeconds);
+            var positionChange = speed * elapsedSeconds;
             Position += positionChange;
         }
 
@@ -96,12 +96,12 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Vector2 GetCurrentSpeed(Single elapsedSeconds)
         {
-            Vector2 acceleration = GetAcceleration();
+            var acceleration = GetAcceleration();
             speed += acceleration;
-            Single speedLimit = DashController.IsActive ? maxSpeed * dashAcceleration.MaxSpeedIncrease : maxSpeed;
+            var speedLimit = DashController.IsActive ? maxSpeed * dashAcceleration.MaxSpeedIncrease : maxSpeed;
             if (speed.Length() > speedLimit)
             {
-                Single overcharge = speed.Length() / speedLimit;
+                var overcharge = speed.Length() / speedLimit;
                 speed /= overcharge;
             }
             if (acceleration.Length() == 0)
@@ -114,8 +114,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Vector2 GetAcceleration()
         {
-            Vector2 direction = Input.GetMoveDirection();
-            Vector2 acceleration = direction * maxAcceleration;
+            var direction = Input.GetMoveDirection();
+            var acceleration = direction * maxAcceleration;
             if (DashController.IsActive)
                 return acceleration * dashAcceleration.AccelerationIncrease;
             else

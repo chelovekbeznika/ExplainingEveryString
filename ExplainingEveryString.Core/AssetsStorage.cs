@@ -15,10 +15,10 @@ namespace ExplainingEveryString.Core
         internal void FillAssetsStorages(IBlueprintsLoader blueprintsLoader, 
             IAssetsMetadataLoader metadataLoader, ContentManager contentManager)
         {
-            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(contentManager, metadataLoader);
-            IEnumerable<String> sprites = AssetsExtractor.GetNeccessarySprites(blueprintsLoader);
+            var spriteDataBuilder = new SpriteDataBuilder(contentManager, metadataLoader);
+            var sprites = AssetsExtractor.GetNeccessarySprites(blueprintsLoader);
             spritesStorage = spriteDataBuilder.Build(sprites);
-            foreach (String soundName in AssetsExtractor.GetNecessarySounds(blueprintsLoader))
+            foreach (var soundName in AssetsExtractor.GetNecessarySounds(blueprintsLoader))
             {
                 soundsStorage[soundName] = contentManager.Load<SoundEffect>(soundName);
             }

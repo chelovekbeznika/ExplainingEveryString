@@ -17,16 +17,16 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         public FogOfWarScreenRegion[] GetFogOfWarRegions(Rectangle[] levelFogOfWarRegions)
         {
-            Rectangle levelScreenBounds = levelCoordinatesMaster.ScreenCovers;
-            Rectangle screenBounds = screenCoordinatesMaster.ScreenCovers;
-            List<FogOfWarScreenRegion> result = new List<FogOfWarScreenRegion>();
-            foreach(Rectangle levelRegion in levelFogOfWarRegions)
+            var levelScreenBounds = levelCoordinatesMaster.ScreenCovers;
+            var screenBounds = screenCoordinatesMaster.ScreenCovers;
+            var result = new List<FogOfWarScreenRegion>();
+            foreach(var levelRegion in levelFogOfWarRegions)
             {
-                Rectangle coveredByScreenRegion = Rectangle.Intersect(levelRegion, levelScreenBounds);
+                var coveredByScreenRegion = Rectangle.Intersect(levelRegion, levelScreenBounds);
                 if (!coveredByScreenRegion.IsEmpty)
                 {
-                    Rectangle onScreenRegion = GetOnScreenRegion(coveredByScreenRegion);
-                    FogOfWarScreenRegion fogOfWarScreenRegion = new FogOfWarScreenRegion
+                    var onScreenRegion = GetOnScreenRegion(coveredByScreenRegion);
+                    var fogOfWarScreenRegion = new FogOfWarScreenRegion
                     {
                         Rectangle = onScreenRegion,
                         TouchesScreenAtBottom = Touches(onScreenRegion.Bottom, screenBounds.Bottom),
@@ -48,9 +48,9 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         private Rectangle GetOnScreenRegion(Rectangle coveredByScreenRegion)
         {
-            Vector2 bottomLeftCorner = screenCoordinatesMaster.ConvertToScreenPosition(
+            var bottomLeftCorner = screenCoordinatesMaster.ConvertToScreenPosition(
                 new Vector2(coveredByScreenRegion.Left, coveredByScreenRegion.Top));
-            Vector2 topRightCorner = screenCoordinatesMaster.ConvertToScreenPosition(
+            var topRightCorner = screenCoordinatesMaster.ConvertToScreenPosition(
                 new Vector2(coveredByScreenRegion.Right, coveredByScreenRegion.Bottom));
             return new Rectangle
             {

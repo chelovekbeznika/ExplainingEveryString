@@ -10,7 +10,7 @@ namespace ExplainingEveryString.Core.Input
 
         public override Vector2 GetMoveDirection()
         {
-            Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
+            var direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
             return CutDirectionVector(direction);
         }
 
@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.Input
         {
             if (IsFiring())
             {
-                Vector2 direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Right;
+                var direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Right;
                 direction = NormalizeDirectionVector(direction);
                 lastDirection = direction;
                 return direction;

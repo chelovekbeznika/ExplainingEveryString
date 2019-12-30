@@ -26,8 +26,8 @@ namespace ExplainingEveryString.Core.Tiles
 
         public Vector2 GetPosition(PositionOnTileMap tilePosition)
         {
-            Vector2 upperLeftCorner = TileCoordinatesToLevelCoordinates(tilePosition.X, tilePosition.Y);
-            Vector2 center = upperLeftCorner + new Vector2 { X = TiledMap.TileWidth / 2, Y = -TiledMap.TileHeight / 2 };
+            var upperLeftCorner = TileCoordinatesToLevelCoordinates(tilePosition.X, tilePosition.Y);
+            var center = upperLeftCorner + new Vector2 { X = TiledMap.TileWidth / 2, Y = -TiledMap.TileHeight / 2 };
             return center + tilePosition.Offset;
         }
 
@@ -43,15 +43,15 @@ namespace ExplainingEveryString.Core.Tiles
 
         private List<Point> GetSpecificTiles(String layerName, String property)
         {
-            List<Point> result = new List<Point>();
-            TiledMapTileLayer layer = TiledMap.TileLayers.FirstOrDefault(tl => tl.Name == layerName);
+            var result = new List<Point>();
+            var layer = TiledMap.TileLayers.FirstOrDefault(tl => tl.Name == layerName);
             if (layer != null)
-                foreach (Int32 row in Enumerable.Range(0, TiledMap.Height))
-                    foreach (Int32 column in Enumerable.Range(0, TiledMap.Width))
+                foreach (var row in Enumerable.Range(0, TiledMap.Height))
+                    foreach (var column in Enumerable.Range(0, TiledMap.Width))
                     {
                         if (layer.TryGetTile(column, row, out TiledMapTile? wallTile))
                         {
-                            Int32 tileId = wallTile.Value.GlobalIdentifier;
+                            var tileId = wallTile.Value.GlobalIdentifier;
                             if (ContainsProperty(TiledMap, tileId, property))
                                 result.Add(new Point { X = column, Y = row });
                         }
@@ -61,10 +61,10 @@ namespace ExplainingEveryString.Core.Tiles
 
         private Boolean ContainsProperty(TiledMap map, Int32 tileId, String property)
         {
-            TiledMapTileset tileset = map.GetTilesetByTileGlobalIdentifier(tileId);
+            var tileset = map.GetTilesetByTileGlobalIdentifier(tileId);
             if (tileset != null)
             {
-                TiledMapTilesetTile tilesetTile = tileset.Tiles.FirstOrDefault
+                var tilesetTile = tileset.Tiles.FirstOrDefault
                     (tst => tst.LocalTileIdentifier == tileId - tileset.FirstGlobalIdentifier);
                 if (tilesetTile != null && tilesetTile.Properties.ContainsKey(property))
                     return Boolean.Parse(tilesetTile.Properties[property]);
@@ -77,7 +77,7 @@ namespace ExplainingEveryString.Core.Tiles
 
         internal Hitbox GetHitbox(Rectangle wall)
         {
-            Vector2 hitboxUpperLeftCorner = TileCoordinatesToLevelCoordinates(wall.X, wall.Y);
+            var hitboxUpperLeftCorner = TileCoordinatesToLevelCoordinates(wall.X, wall.Y);
             return new Hitbox
             {
                 Top = hitboxUpperLeftCorner.Y,

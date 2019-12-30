@@ -55,7 +55,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private void SpawnEnemy(Single firstUpdateTime)
         {
-            ActorStartInfo asi = new ActorStartInfo
+            var asi = new ActorStartInfo
             {
                 BlueprintType = enemyType,
                 Position = spawnPositionSelector.GetNextSpawnPosition(),
@@ -65,7 +65,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 },
                 AppearancePhaseDuration = appearancePhase
             };
-            IEnemy enemy = factory.ConstructEnemy(asi);
+            var enemy = factory.ConstructEnemy(asi);
             enemy.Update(firstUpdateTime);
             SpawnedEnemies.Add(enemy);
         }

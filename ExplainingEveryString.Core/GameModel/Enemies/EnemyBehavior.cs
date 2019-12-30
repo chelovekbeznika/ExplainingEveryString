@@ -14,10 +14,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
     internal class EnemyBehavior
     {
         private IEnemy enemy;
-        private Weapon weapon;
-        internal PostMortemSurprise PostMortemSurprise { get; private set; }
+        private Weapon weapon;      
         private IMoveTargetSelector moveTargetSelector;
         private IMover mover;
+
+        internal PostMortemSurprise PostMortemSurprise { get; private set; }
         internal SpawnedActorsController SpawnedActors { get; private set; }
         internal Single? EnemyAngle { get; private set; } = null;
 
@@ -48,7 +49,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         {
             if (blueprint.Weapon != null)
             {
-                IAimer aimer = AimersFactory.Get(
+                var aimer = AimersFactory.Get(
                     blueprint.Weapon.AimType, parameters.Angle, CurrentPositionLocator, playerLocator);
                 weapon = new Weapon(blueprint.Weapon, aimer, CurrentPositionLocator, playerLocator, level);
                 weapon.Shoot += level.EnemyShoot;
@@ -78,9 +79,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         private void Move(Single elapsedSeconds)
         {
-            Vector2 target = moveTargetSelector.GetTarget();
-            Vector2 lineToTarget = target - Position;
-            Vector2 positionChange = mover.GetPositionChange(lineToTarget, elapsedSeconds, out Boolean goalReached);
+            var target = moveTargetSelector.GetTarget();
+            var lineToTarget = target - Position;
+            var positionChange = mover.GetPositionChange(lineToTarget, elapsedSeconds, out Boolean goalReached);
             Position += positionChange;
             if (goalReached)
                 moveTargetSelector.SwitchToNextTarget();

@@ -18,8 +18,8 @@ namespace ExplainingEveryString.Core.Menu
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
         {
-            ContentManager content = game.Content;
-            MenuItem[] items = new MenuItem[]
+            var content = game.Content;
+            var items = new MenuItem[]
             {
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/Unpause")),
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/NewGame")),

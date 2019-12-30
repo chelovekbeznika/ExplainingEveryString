@@ -22,22 +22,22 @@ namespace ExplainingEveryString.Data.Blueprints
 
         public static List<String> GetNeccessarySprites(IBlueprintsLoader loader)
         {
-            IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
+            var blueprints = loader.GetBlueprints().Values;
             return blueprints.SelectMany(blueprint => GetSprites(blueprint)).Where(ss => ss != null)
                 .Select(ss => ss.Name).Distinct().ToList();
         }
 
         public static List<String> GetNecessarySounds(IBlueprintsLoader loader)
         {
-            IEnumerable<Blueprint> blueprints = loader.GetBlueprints().Values;
+            var blueprints = loader.GetBlueprints().Values;
             return blueprints.SelectMany(blueprint => GetSpecEffects(blueprint)).Where(se => se != null && se.Sound != null)
                 .Select(se => se.Sound.Name).Distinct().ToList();
         }
 
         private static IEnumerable<SpriteSpecification> GetSprites(Blueprint blueprint)
         {
-            Type blueprintType = blueprint.GetType();
-            MethodInfo getSpritesMethod = typeof(AssetsExtractor)
+            var blueprintType = blueprint.GetType();
+            var getSpritesMethod = typeof(AssetsExtractor)
                 .GetMethod(nameof(GetFromCertainTypeSprites), BindingFlags.NonPublic | BindingFlags.Static)
                 .MakeGenericMethod(blueprintType);
             return getSpritesMethod.Invoke(null, new Object[] { blueprint }) as IEnumerable<SpriteSpecification>;
@@ -45,8 +45,8 @@ namespace ExplainingEveryString.Data.Blueprints
 
         private static IEnumerable<SpecEffectSpecification> GetSpecEffects(Blueprint blueprint)
         {
-            Type blueprintType = blueprint.GetType();
-            MethodInfo getSpecEffectsMethod = typeof(AssetsExtractor)
+            var blueprintType = blueprint.GetType();
+            var getSpecEffectsMethod = typeof(AssetsExtractor)
                 .GetMethod(nameof(GetFromCertainTypeSpecEffects), BindingFlags.NonPublic | BindingFlags.Static)
                 .MakeGenericMethod(blueprintType);
             return getSpecEffectsMethod.Invoke(null, new Object[] { blueprint }) as IEnumerable<SpecEffectSpecification>;
@@ -55,8 +55,8 @@ namespace ExplainingEveryString.Data.Blueprints
         private static IEnumerable<SpriteSpecification> GetFromCertainTypeSprites<T>(T blueprint) 
             where T : Blueprint
         {
-            IAssetsExtractor<T> extractor = GetAssetsExtractor<T>();
-            IEnumerable<SpriteSpecification> specEffectSprites = extractor.GetSpecEffects(blueprint)
+            var extractor = GetAssetsExtractor<T>();
+            var specEffectSprites = extractor.GetSpecEffects(blueprint)
                 .Where(ses => ses != null && ses.Sprite != null).Select(ses => ses.Sprite);
             return extractor.GetSprites(blueprint).Concat(specEffectSprites);
         }
@@ -64,7 +64,7 @@ namespace ExplainingEveryString.Data.Blueprints
         private static IEnumerable<SpecEffectSpecification> GetFromCertainTypeSpecEffects<T>(T blueprint) 
             where T : Blueprint
         {
-            IAssetsExtractor<T> extractor = GetAssetsExtractor<T>();
+            var extractor = GetAssetsExtractor<T>();
             return extractor.GetSpecEffects(blueprint);
         }
 

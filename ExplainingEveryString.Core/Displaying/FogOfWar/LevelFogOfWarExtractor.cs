@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         public Rectangle[] GetFogOfWarRegions()
         {
-            Rectangle levelBounds = tileCoordinatesMaster.Bounds;
+            var levelBounds = tileCoordinatesMaster.Bounds;
             //0  1  2
             //7 L_B 3
             //6  5  4

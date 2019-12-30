@@ -11,7 +11,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void SimpleCounterClockTest()
         {
-            Single arc = AngleConverter.ClosestArc(MathHelper.Pi / 6, MathHelper.PiOver2);
+            var arc = AngleConverter.ClosestArc(MathHelper.Pi / 6, MathHelper.PiOver2);
             Assert.That(arc, Is.EqualTo(MathHelper.Pi / 3).Within(Constants.Epsilon));
             arc = AngleConverter.ClosestArc(-MathHelper.PiOver2, MathHelper.PiOver4);
             Assert.That(arc, Is.EqualTo(MathHelper.Pi / 4 * 3).Within(Constants.Epsilon));
@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void SimpleClockwiseTest()
         {
-            Single arc = AngleConverter.ClosestArc(MathHelper.PiOver2, MathHelper.Pi / 6);
+            var arc = AngleConverter.ClosestArc(MathHelper.PiOver2, MathHelper.Pi / 6);
             Assert.That(arc, Is.EqualTo(-MathHelper.Pi / 3).Within(Constants.Epsilon));
             arc = AngleConverter.ClosestArc(MathHelper.PiOver2, -MathHelper.PiOver4);
             Assert.That(arc, Is.EqualTo(-MathHelper.Pi / 4 * 3).Within(Constants.Epsilon));
@@ -29,7 +29,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void DifferentSidesCounterClockTest()
         {
-            Single arc = AngleConverter.ClosestArc(MathHelper.Pi / 6 * 5, -MathHelper.Pi / 6 * 5);
+            var arc = AngleConverter.ClosestArc(MathHelper.Pi / 6 * 5, -MathHelper.Pi / 6 * 5);
             Assert.That(arc, Is.EqualTo(MathHelper.Pi / 3).Within(Constants.Epsilon));
             arc = AngleConverter.ClosestArc(MathHelper.Pi, -MathHelper.PiOver2);
             Assert.That(arc, Is.EqualTo(MathHelper.PiOver2).Within(Constants.Epsilon));
@@ -38,7 +38,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void DifferentSidesClockwise()
         {
-            Single arc = AngleConverter.ClosestArc(-MathHelper.Pi / 6 * 5, MathHelper.Pi / 6 * 5);
+            var arc = AngleConverter.ClosestArc(-MathHelper.Pi / 6 * 5, MathHelper.Pi / 6 * 5);
             Assert.That(arc, Is.EqualTo(-MathHelper.Pi / 3).Within(Constants.Epsilon));
             arc = AngleConverter.ClosestArc(-MathHelper.PiOver2, MathHelper.Pi);
             Assert.That(arc, Is.EqualTo(-MathHelper.PiOver2).Within(Constants.Epsilon));
@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void SamePoint()
         {
-            Single arc = AngleConverter.ClosestArc(-MathHelper.Pi, MathHelper.Pi);
+            var arc = AngleConverter.ClosestArc(-MathHelper.Pi, MathHelper.Pi);
             Assert.That(arc, Is.EqualTo(0).Within(Constants.Epsilon));
         }
     }

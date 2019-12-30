@@ -29,10 +29,10 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
         {
             foreach (FogOfWarSpriteEntry spriteEntry in fogOfWarSpriteEntries)
             {
-                SpriteData sprite = fogParticles[spriteEntry.SpriteNumber];
-                Rectangle? drawPart = AnimationHelp.GetDrawPart(sprite, timeElapsed);
-                Vector2 origin = new Vector2(sprite.Width / 2, sprite.Height / 2);
-                Vector2 position = new Vector2(spriteEntry.ScreenPosition.X, spriteEntry.ScreenPosition.Y);
+                var sprite = fogParticles[spriteEntry.SpriteNumber];
+                var drawPart = AnimationHelp.GetDrawPart(sprite, timeElapsed);
+                var origin = new Vector2(sprite.Width / 2, sprite.Height / 2);
+                var position = new Vector2(spriteEntry.ScreenPosition.X, spriteEntry.ScreenPosition.Y);
                 spriteBatch.Draw(sprite.Sprite, position, drawPart, Color.White, 0, origin, 1, SpriteEffects.None, 0);
             }
         }

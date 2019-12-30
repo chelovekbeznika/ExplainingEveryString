@@ -17,10 +17,10 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal ICollidable[] ConstructWalls()
         {
-            List<Point> wallsTiles = map.GetWallTiles();
-            List<Rectangle> walls = wallsOptimizer.GetWalls(wallsTiles);
-            List<Point> pitTiles = map.GetPitTiles();
-            List<Rectangle> pits = wallsOptimizer.GetWalls(pitTiles);
+            var wallsTiles = map.GetWallTiles();
+            var walls = wallsOptimizer.GetWalls(wallsTiles);
+            var pitTiles = map.GetPitTiles();
+            var pits = wallsOptimizer.GetWalls(pitTiles);
             return walls.Select(w => new Wall(map.GetHitbox(w), CollidableMode.Solid))
                 .Concat(pits.Select(p => new Wall(map.GetHitbox(p), CollidableMode.Pit)))
                 .Cast<ICollidable>().ToArray();

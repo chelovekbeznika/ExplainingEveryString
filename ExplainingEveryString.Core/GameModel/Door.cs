@@ -69,8 +69,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Hitbox OpenUp(Single openingCoefficient)
         {
-            Hitbox wholeHitbox = base.GetCurrentHitbox();
-            Single toCut = (wholeHitbox.Top - wholeHitbox.Bottom) * openingCoefficient;
+            var wholeHitbox = base.GetCurrentHitbox();
+            var toCut = (wholeHitbox.Top - wholeHitbox.Bottom) * openingCoefficient;
             return new Hitbox
             {
                 Top = wholeHitbox.Top,
@@ -82,8 +82,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Hitbox OpenDown(Single openingCoefficient)
         {
-            Hitbox wholeHitbox = base.GetCurrentHitbox();
-            Single toCut = (wholeHitbox.Top - wholeHitbox.Bottom) * openingCoefficient;
+            var wholeHitbox = base.GetCurrentHitbox();
+            var toCut = (wholeHitbox.Top - wholeHitbox.Bottom) * openingCoefficient;
             return new Hitbox
             {
                 Top = wholeHitbox.Top - toCut,
@@ -95,8 +95,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Hitbox OpenRight(Single openingCoefficient)
         {
-            Hitbox wholeHitbox = base.GetCurrentHitbox();
-            Single toCut = (wholeHitbox.Right - wholeHitbox.Left) * openingCoefficient;
+            var wholeHitbox = base.GetCurrentHitbox();
+            var toCut = (wholeHitbox.Right - wholeHitbox.Left) * openingCoefficient;
             return new Hitbox
             {
                 Top = wholeHitbox.Top,
@@ -108,8 +108,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Hitbox OpenLeft(Single openingCoefficient)
         {
-            Hitbox wholeHitbox = base.GetCurrentHitbox();
-            Single toCut = (wholeHitbox.Right - wholeHitbox.Left) * openingCoefficient;
+            var wholeHitbox = base.GetCurrentHitbox();
+            var toCut = (wholeHitbox.Right - wholeHitbox.Left) * openingCoefficient;
             return new Hitbox
             {
                 Top = wholeHitbox.Top,

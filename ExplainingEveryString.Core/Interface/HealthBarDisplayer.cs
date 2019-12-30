@@ -27,8 +27,8 @@ namespace ExplainingEveryString.Core.Interface
 
         internal void Draw(PlayerInterfaceInfo interfaceInfo)
         {
-            Single healthRemained = interfaceInfo.Health / interfaceInfo.MaxHealth;
-            Vector2 position = new Vector2(pixelsFromLeft, interfaceSpriteDisplayer.ScreenHeight - pixelsFromBottom - healthBar.Height);
+            var healthRemained = interfaceInfo.Health / interfaceInfo.MaxHealth;
+            var position = new Vector2(pixelsFromLeft, interfaceSpriteDisplayer.ScreenHeight - pixelsFromBottom - healthBar.Height);
             interfaceSpriteDisplayer.Draw(healthBar, position, new LeftPartDisplayer(), healthRemained);
             interfaceSpriteDisplayer.Draw(emptyHealthBar, position, new RightPartDisplayer(), 1 - healthRemained);
         }

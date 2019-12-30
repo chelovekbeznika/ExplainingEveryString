@@ -41,8 +41,8 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         private Int32[] GetEnds(Int32[] weights)
         {
-            Int32 spritesNumber = weights.Length;
-            Int32[] ends = new Int32[spritesNumber];
+            var spritesNumber = weights.Length;
+            var ends = new Int32[spritesNumber];
             foreach (Int32 index in Enumerable.Range(0, spritesNumber))
             {
                 Int32 previousEnd = index == 0 ? -1 : ends[index - 1];
@@ -93,11 +93,11 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         private List<FogOfWarSpriteEntry> PopulateList(Int32 startX, Int32 startY, Int32 finishX, Int32 finishY, Int32 xStep, Int32 yStep)
         {
-            Int32 currentX = startX;
-            List<FogOfWarSpriteEntry> result = new List<FogOfWarSpriteEntry>();
+            var currentX = startX;
+            var result = new List<FogOfWarSpriteEntry>();
             while (xStep > 0 ? currentX <= finishX : currentX >= finishX)
             {
-                Int32 currentY = startY;
+                var currentY = startY;
                 while (yStep > 0 ? currentY <= finishY : currentY >= finishY)
                 {
                     AddSprite(result, currentX, currentY);
@@ -134,8 +134,8 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         private Int32 GetSpriteNumber()
         {
-            Int32 currentNumber = random.Next(proportionsSum);
-            Int32 spriteNumber = 0;
+            var currentNumber = random.Next(proportionsSum);
+            var spriteNumber = 0;
             while (currentNumber > ends[spriteNumber])
                 spriteNumber += 1;
             return spriteNumber;

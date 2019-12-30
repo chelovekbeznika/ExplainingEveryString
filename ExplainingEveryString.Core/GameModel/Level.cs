@@ -35,9 +35,9 @@ namespace ExplainingEveryString.Core.GameModel
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
 
-            ActorsInitializer actorsInitializer = new ActorsInitializer(map, factory, levelData);
-            ActiveActorsStorage activeActors = new ActiveActorsStorage();
-            CheckpointsManager checkpointsManager = new CheckpointsManager(map, levelData);
+            var actorsInitializer = new ActorsInitializer(map, factory, levelData);
+            var activeActors = new ActiveActorsStorage();
+            var checkpointsManager = new CheckpointsManager(map, levelData);
             this.levelState = new LevelState(activeActors, actorsInitializer, checkpointsManager, 
                 levelData.EnemyWaves.Length, levelProgress.CurrentCheckPoint);
 
@@ -46,8 +46,8 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Update(Single elapsedSeconds)
         {
-            Boolean levelEndedBeforeUpdate = levelState.LevelIsEnded;
-            foreach (IUpdateable updatable in levelState.ActiveActors.GetObjectsToUpdate())
+            var levelEndedBeforeUpdate = levelState.LevelIsEnded;
+            foreach (var updatable in levelState.ActiveActors.GetObjectsToUpdate())
                 updatable.Update(elapsedSeconds);
             collisionsController.CheckCollisions();
             levelState.Update(elapsedSeconds);
@@ -60,7 +60,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             if (!levelState.LevelIsEnded)
                 levelProgress.GameTime += elapsedSeconds;
-            Boolean checkpointReached = levelProgress.CurrentCheckPoint != levelState.CurrentCheckpoint;
+            var checkpointReached = levelProgress.CurrentCheckPoint != levelState.CurrentCheckpoint;
             levelProgress.CurrentCheckPoint = levelState.CurrentCheckpoint;
             if (checkpointReached)
                 CheckpointReached?.Invoke(this, new CheckpointReachedEventArgs { LevelProgress = levelProgress });
@@ -73,21 +73,21 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal IEnumerable<EpicEventArgs> CollectEpicEvents()
         {
-            IEnumerable<EpicEventArgs> result = epicEventsHappened;
+            var result = epicEventsHappened;
             epicEventsHappened = new List<EpicEventArgs>();
             return result;
         }
 
         internal void PlayerShoot(Object sender, ShootEventArgs args)
         {
-            Bullet bullet = args.Bullet;
+            var bullet = args.Bullet;
             bullet.Update(args.FirstUpdateTime);
             levelState.ActiveActors.PlayerBullets.Add(bullet);
         }
 
         internal void EnemyShoot(Object sender, ShootEventArgs args)
         {
-            Bullet bullet = args.Bullet;
+            var bullet = args.Bullet;
             bullet.Update(args.FirstUpdateTime);
             levelState.ActiveActors.EnemyBullets.Add(bullet);
         }
@@ -104,7 +104,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void PlanLevelEndDelay()
         {
-            Single levelEndDelay = levelState.Won ? wonDelay : defeatDelay;
+            var levelEndDelay = levelState.Won ? wonDelay : defeatDelay;
             TimersComponent.Instance.ScheduleEvent(levelEndDelay, () => levelEndDelayPassed = true);
         }
     }

@@ -16,8 +16,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
         protected override void AssignParameters(Dictionary<String, Single> parameters)
         {
             this.speed = parameters["speed"];
-            if (parameters.ContainsKey("outerCoefficient")) this.outerCoefficient = parameters["outerCoefficient"];
-            if (parameters.ContainsKey("innerCoefficient")) this.innerCoefficient = parameters["innerCoefficient"];
+            if (parameters.ContainsKey("outerCoefficient"))
+                this.outerCoefficient = parameters["outerCoefficient"];
+            if (parameters.ContainsKey("innerCoefficient"))
+                this.innerCoefficient = parameters["innerCoefficient"];
         }
 
         protected override Vector2 GetTrajectoryOffset(Single time)

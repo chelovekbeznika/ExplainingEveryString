@@ -60,7 +60,7 @@ namespace ExplainingEveryString.Music
 
         public override void MoveEmulationTowardNextSample()
         {
-            Byte waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
+            var waveGeneratorClockCyclesSwitched = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
             if (waveGeneratorClockCyclesSwitched > 0)
                 Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
         }
@@ -89,10 +89,10 @@ namespace ExplainingEveryString.Music
                     if (currentPeriodValue == 0)
                     {
                         currentPeriodValue = (Byte)(Period + 1);
-                        Int16 change = (Int16)((timer >> Amount) & 0b0111_1111_1111);
+                        var change = (Int16)((timer >> Amount) & 0b0111_1111_1111);
                         if (Negate)
                             change = (Int16)(firstChannel ? -change - 1 : -change);
-                        Int16 result = (Int16)(timer + change);
+                        var result = (Int16)(timer + change);
 
                         currentPeriodValue -= 1;
                         return result > 7 && result < 2048 ? result : timer;

@@ -80,7 +80,7 @@
     <Compile Include="Specifications\BarrelSpecification.cs" />
     <Compile Include="Blueprints\Blueprint.cs" />
     <Compile Include="Blueprints\BlueprintsAccess.cs" />
-    <Compile Include="Blueprints\BlueprintsLoader.cs" />
+    <Compile Include="Blueprints\IBlueprintsLoader.cs" />
     <Compile Include="Specifications\BulletSpecification.cs" />
     <Compile Include="Blueprints\EnemyBlueprint.cs" />
     <Compile Include="Blueprints\JsonBlueprintsLoader.cs" />

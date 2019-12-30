@@ -47,8 +47,8 @@ namespace ExplainingEveryString.Core
 
         public override void Initialize()
         {
-            ActorsFactory factory = new ActorsFactory(blueprintsLoader);
-            ILevelLoader levelLoader = LevelDataAccess.GetLevelLoader();
+            var factory = new ActorsFactory(blueprintsLoader);
+            var levelLoader = LevelDataAccess.GetLevelLoader();
             this.levelData = levelLoader.Load(levelFileName);
             map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
             level = new Level(factory, map, new PlayerInputFactory(this), levelData, levelStart);
@@ -59,10 +59,10 @@ namespace ExplainingEveryString.Core
         protected override void LoadContent()
         {
             this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
-            Configuration config = ConfigurationAccess.GetCurrentConfig();
-            Viewport viewport = Game.GraphicsDevice.Viewport;
-            ILevelCoordinatesMaster levelCoordinatesMaster = new CameraObjectGlass(level, viewport, config.Camera);
-            IScreenCoordinatesMaster screenCoordinatesMaster = new ScreenCoordinatesMaster(viewport, levelCoordinatesMaster);
+            var config = ConfigurationAccess.GetCurrentConfig();
+            var viewport = Game.GraphicsDevice.Viewport;
+            var levelCoordinatesMaster = new CameraObjectGlass(level, viewport, config.Camera);
+            var screenCoordinatesMaster = new ScreenCoordinatesMaster(viewport, levelCoordinatesMaster);
             Camera = new Camera(level, eesGame, screenCoordinatesMaster);   
             this.mapDisplayer = new TiledMapDisplayer(map, eesGame, screenCoordinatesMaster);
             EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);
@@ -74,12 +74,12 @@ namespace ExplainingEveryString.Core
         private FogOfWarRuler ConstructFogOfWarRuler(
             ILevelCoordinatesMaster levelCoordinatesMaster, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
-            ILevelFogOfWarExtractor extractor = new LevelFogOfWarExtractor(map);
-            IScreenFogOfWarDetector screenDetector = new ScreenFogOfWarDetector(levelCoordinatesMaster, screenCoordinatesMaster);
-            IFogOfWarFiller filler = new FogOfWarFiller();
+            var extractor = new LevelFogOfWarExtractor(map);
+            var screenDetector = new ScreenFogOfWarDetector(levelCoordinatesMaster, screenCoordinatesMaster);
+            var filler = new FogOfWarFiller();
 
-            IFogOfWarDisplayer displayer = new FogOfWarDisplayer();
-            SpriteDataBuilder spriteDataBuilder = new SpriteDataBuilder(Game.Content, AssetsMetadataAccess.GetLoader());
+            var displayer = new FogOfWarDisplayer();
+            var spriteDataBuilder = new SpriteDataBuilder(Game.Content, AssetsMetadataAccess.GetLoader());
             displayer.Construct(levelData.FogOfWar, spriteDataBuilder);
 
             return new FogOfWarRuler(extractor, screenDetector, filler, displayer);
@@ -87,7 +87,7 @@ namespace ExplainingEveryString.Core
 
         public override void Update(GameTime gameTime)
         {
-            Single elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            var elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
             level.Update(elapsedSeconds);
             Camera.Update(elapsedSeconds);
             mapDisplayer.Update(gameTime);

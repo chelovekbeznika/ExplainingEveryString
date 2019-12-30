@@ -7,6 +7,10 @@ namespace ExplainingEveryString.Core.Displaying
     internal class SpriteState
     {
         internal String Name { get; private set; }
+        internal Single AnimationCycle { get; private set; }
+        internal Single Angle { get; set; }
+        internal Boolean Looping { get; set; } = true;
+
         private Single elapsedTime;
         internal Single ElapsedTime
         {
@@ -22,9 +26,6 @@ namespace ExplainingEveryString.Core.Displaying
                 elapsedTime = value;
             }
         }
-        internal Single AnimationCycle { get; private set; }
-        internal Single Angle { get; set; }
-        internal Boolean Looping { get; set; } = true;
 
         internal SpriteState(SpriteSpecification spriteSpecification)
         {

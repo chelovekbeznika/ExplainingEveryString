@@ -15,10 +15,10 @@ namespace ExplainingEveryString.Core.Math
             if (spriteData.AnimationFrames == 1)
                 return null;
 
-            Int32 frameWidth = spriteData.Width;
-            Single frameTime = animationCycle / spriteData.AnimationFrames;
-            Int32 globalFrameNumber = (Int32)(elapsedTime / frameTime);
-            Int32 frameNumber = globalFrameNumber % spriteData.AnimationFrames;
+            var frameWidth = spriteData.Width;
+            var frameTime = animationCycle / spriteData.AnimationFrames;
+            var globalFrameNumber = (Int32)(elapsedTime / frameTime);
+            var frameNumber = globalFrameNumber % spriteData.AnimationFrames;
             return new Rectangle
             {
                 X = frameNumber * frameWidth,

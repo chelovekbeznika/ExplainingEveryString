@@ -15,8 +15,8 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void MovingTowardToWall()
         {
-            Hitbox oldPosition = new Hitbox { Left = 0, Right = 20, Bottom = 0, Top = 20 };
-            Hitbox newPosition = new Hitbox { Left = 5, Right = 25, Bottom = 5, Top = 25 };
+            var oldPosition = new Hitbox { Left = 0, Right = 20, Bottom = 0, Top = 20 };
+            var newPosition = new Hitbox { Left = 5, Right = 25, Bottom = 5, Top = 25 };
             AssertWallIsNotAffectingMovement(oldPosition, newPosition);
 
             oldPosition = new Hitbox { Left = -20, Right = 0, Bottom = 0, Top = 20 };
@@ -27,24 +27,24 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void MovingFromWall()
         {
-            Hitbox oldPosition = new Hitbox { Left = 0, Right = 20, Bottom = 0, Top = 20 };
-            Hitbox newPosition = new Hitbox { Left = -10, Right = 10, Bottom = -5, Top = 15 };
+            var oldPosition = new Hitbox { Left = 0, Right = 20, Bottom = 0, Top = 20 };
+            var newPosition = new Hitbox { Left = -10, Right = 10, Bottom = -5, Top = 15 };
             AssertWallIsNotAffectingMovement(oldPosition, newPosition);
         }
 
         [Test]
         public void TouchingWall()
         {
-            Hitbox oldPosition = new Hitbox { Left = 0, Right = 20, Bottom = 0, Top = 20 };
-            Hitbox newPosition = new Hitbox { Left = 10, Right = 30, Bottom = 20, Top = 40 };
+            var oldPosition = new Hitbox { Left = 0, Right = 20, Bottom = 0, Top = 20 };
+            var newPosition = new Hitbox { Left = 10, Right = 30, Bottom = 20, Top = 40 };
             AssertWallIsNotAffectingMovement(oldPosition, newPosition);
         }
 
         [Test]
         public void TryToRideThroughWallFromBottom()
         {
-            Hitbox oldPosition = new Hitbox { Left = 10, Right = 40, Bottom = -40, Top = -10 };
-            Hitbox newPosition = new Hitbox { Left = 50, Right = 80, Bottom = 70, Top = 100 };
+            var oldPosition = new Hitbox { Left = 10, Right = 40, Bottom = -40, Top = -10 };
+            var newPosition = new Hitbox { Left = 50, Right = 80, Bottom = 70, Top = 100 };
             Vector2? actualPosition = null;
             Boolean corner;
             collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
@@ -55,8 +55,8 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TryToRideThroughWallFromRight()
         { 
-            Hitbox oldPosition = new Hitbox { Left = 70, Right = 100, Bottom = 25, Top = 55 };
-            Hitbox newPosition = new Hitbox { Left = 40, Right = 70, Bottom = 25, Top = 55 };
+            var oldPosition = new Hitbox { Left = 70, Right = 100, Bottom = 25, Top = 55 };
+            var newPosition = new Hitbox { Left = 40, Right = 70, Bottom = 25, Top = 55 };
             Vector2? actualPosition = null;
             Boolean corner;
             collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
@@ -67,8 +67,8 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TryToRideThroughWallFromLeftWhileTouchingIt()
         {
-            Hitbox oldPosition = new Hitbox { Left = 0, Right = 30, Bottom = 20, Top = 50 };
-            Hitbox newPosition = new Hitbox { Left = 90, Right = 120, Bottom = 50, Top = 80 };
+            var oldPosition = new Hitbox { Left = 0, Right = 30, Bottom = 20, Top = 50 };
+            var newPosition = new Hitbox { Left = 90, Right = 120, Bottom = 50, Top = 80 };
             Vector2? actualPosition = null;
             Boolean corner;
             collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
@@ -79,8 +79,8 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TryToRideThroughWallFromRightWhileTouchingIt()
         {
-            Hitbox oldPosition = new Hitbox { Left = 50, Right = 80, Bottom = 20, Top = 50 };
-            Hitbox newPosition = new Hitbox { Left = -20, Right = 10, Bottom = 50, Top = 80 };
+            var oldPosition = new Hitbox { Left = 50, Right = 80, Bottom = 20, Top = 50 };
+            var newPosition = new Hitbox { Left = -20, Right = 10, Bottom = 50, Top = 80 };
             Vector2? actualPosition = null;
             Boolean corner;
             collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
@@ -91,8 +91,8 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TryToRideThroughWallFromTop()
         {
-            Hitbox oldPosition = new Hitbox { Left = 10, Right = 40, Bottom = 60, Top = 90 };
-            Hitbox newPosition = new Hitbox { Left = 20, Right = 50, Bottom = 30, Top = 60 };
+            var oldPosition = new Hitbox { Left = 10, Right = 40, Bottom = 60, Top = 90 };
+            var newPosition = new Hitbox { Left = 20, Right = 50, Bottom = 30, Top = 60 };
             Vector2? actualPosition = null;
             Boolean corner;
             collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);
@@ -103,8 +103,8 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TryToRideThroughWallFromBottomWhileTouchingIt()
         {
-            Hitbox oldPosition = new Hitbox { Left = 0, Right = 30, Bottom = 0, Top = 30 };
-            Hitbox newPosition = new Hitbox { Left = 40, Right = 70, Bottom = 10, Top = 40 };
+            var oldPosition = new Hitbox { Left = 0, Right = 30, Bottom = 0, Top = 30 };
+            var newPosition = new Hitbox { Left = 40, Right = 70, Bottom = 10, Top = 40 };
             Vector2? actualPosition = null;
             Boolean corner;
             collisionsChecker.TryToBypassWall(oldPosition, newPosition, wall, out actualPosition, true, out corner);

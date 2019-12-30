@@ -33,10 +33,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal void OnShoot(Single bulletFirstFrameUpdateTime)
         {
-            Vector2 direction = GetFireDirection();
-            Vector2 position = findOutWhereIAm() + offset + direction * length;
-            Bullet bullet = new Bullet(position, direction, bulletSpecification, targetLocator);
-            ShootEventArgs eventArgs = new ShootEventArgs
+            var direction = GetFireDirection();
+            var position = findOutWhereIAm() + offset + direction * length;
+            var bullet = new Bullet(position, direction, bulletSpecification, targetLocator);
+            var eventArgs = new ShootEventArgs
             {
                 Bullet = bullet,
                 FirstUpdateTime = bulletFirstFrameUpdateTime
@@ -46,8 +46,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private Vector2 GetFireDirection()
         {
-            Vector2 direction = aimer.GetFireDirection();
-            Single angle = AngleConverter.ToRadians(direction);
+            var direction = aimer.GetFireDirection();
+            var angle = AngleConverter.ToRadians(direction);
             if (angleCorrection != 0)
                 angle += angleCorrection;
             if (accuracy != 0)

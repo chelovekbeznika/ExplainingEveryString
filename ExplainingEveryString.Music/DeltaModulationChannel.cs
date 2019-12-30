@@ -49,10 +49,10 @@ namespace ExplainingEveryString.Music
 
         public override void MoveEmulationTowardNextSample()
         {
-            Int32 sampleBitsToProcess = Countdown(ref currentTimerValue, Constants.CpuTicksBetweenSamples, Timer);
+            var sampleBitsToProcess = Countdown(ref currentTimerValue, Constants.CpuTicksBetweenSamples, Timer);
             if (sampleIsPlaying)
             {
-                foreach (Int32 sampleBitIndex in Enumerable.Range(0, sampleBitsToProcess))
+                foreach (var sampleBitIndex in Enumerable.Range(0, sampleBitsToProcess))
                 {
                     if (CurrentDeltaSampleBit())
                         VolumeUp();

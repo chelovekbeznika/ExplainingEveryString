@@ -28,14 +28,14 @@ namespace ExplainingEveryString.Core.Interface
 
         private void Draw(EnemyInterfaceInfo enemyInterfaceInfo)
         {
-            Single healthRemained = enemyInterfaceInfo.Health / enemyInterfaceInfo.MaxHealth;
-            Vector2 healthBarPosition = GetHealthBarPosition(enemyInterfaceInfo.PositionOnScreen);
+            var healthRemained = enemyInterfaceInfo.Health / enemyInterfaceInfo.MaxHealth;
+            var healthBarPosition = GetHealthBarPosition(enemyInterfaceInfo.PositionOnScreen);
             interfaceSpriteDisplayer.Draw(healthBar, healthBarPosition, new CenterPartDisplayer(), healthRemained);
         }
 
         private Vector2 GetHealthBarPosition(Rectangle positionOnScreen)
         {
-            Vector2 healthBarPosition = new Vector2
+            var healthBarPosition = new Vector2
             {
                 X = positionOnScreen.Center.X - healthBar.Width / 2,
                 Y = positionOnScreen.Top - healthBar.Height / 2 - pixelsBetweenEnemyAndHealthBar

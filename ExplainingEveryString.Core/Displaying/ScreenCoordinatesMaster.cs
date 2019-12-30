@@ -21,12 +21,12 @@ namespace ExplainingEveryString.Core.Displaying
 
         public Rectangle PositionOnScreen(Vector2 position, SpriteData sprite)
         {
-            Point visibleSize = new Point
+            var visibleSize = new Point
             {
                 X = sprite.Width,
                 Y = sprite.Height
             };
-            Vector2 centerOnScreen = ConvertToScreenPosition(position);
+            var centerOnScreen = ConvertToScreenPosition(position);
             return new Rectangle
             {
                 X = (Int32)(centerOnScreen.X - visibleSize.X / 2),
@@ -39,15 +39,15 @@ namespace ExplainingEveryString.Core.Displaying
 
         public Boolean IsVisibleOnScreen(Vector2 position, SpriteData sprite)
         {
-            Rectangle displaybleOnScreen = PositionOnScreen(position, sprite);
-            Rectangle screen = viewport.Bounds;
+            var displaybleOnScreen = PositionOnScreen(position, sprite);
+            var screen = viewport.Bounds;
             return screen.Intersects(displaybleOnScreen);
         }
 
         public Vector2 ConvertToScreenPosition(Vector2 position)
         {
-            Vector2 cameraOffset = levelCoordinatesMaster.CameraOffset;
-            Vector2 centerOfSpriteOnScreen = position - cameraOffset;
+            var cameraOffset = levelCoordinatesMaster.CameraOffset;
+            var centerOfSpriteOnScreen = position - cameraOffset;
             centerOfSpriteOnScreen.X = (Int32)centerOfSpriteOnScreen.X;
             centerOfSpriteOnScreen.Y = (Int32)(viewport.Height - centerOfSpriteOnScreen.Y);
             return centerOfSpriteOnScreen;

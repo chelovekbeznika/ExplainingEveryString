@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Data.Configuration
 
         public static void InitializeConfig()
         {
-            String fileName = FileNames.Configuration;
+            var fileName = FileNames.Configuration;
             try
             {
                 if (File.Exists(fileName))

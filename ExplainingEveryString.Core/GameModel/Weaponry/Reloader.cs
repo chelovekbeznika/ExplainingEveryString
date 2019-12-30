@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.isOn = isOn;
             this.onReloadEnd = onReloadEnd;
             this.maxAmmo = specification.Ammo;
-            shootCooldown = 1 / specification.FireRate;
+            this.shootCooldown = 1 / specification.FireRate;
             this.reloadTime = specification.ReloadTime;
             this.currentAmmo = 0;
 
@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     nextBulletFirstUpdateTime += elapsedSeconds;
                 while (timeTillNextShoot <= Constants.Epsilon)
                 {
-                    Single betweenShoots = shootCooldown;
+                    var betweenShoots = shootCooldown;
                     if (AmmoLimited)
                         ProcessReloadForLimitedAmmo(ref betweenShoots);
 
@@ -58,7 +58,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private void ProcessReloadForLimitedAmmo(ref Single betweenShoots)
         {
-            Boolean reloadAfterThisBullet = false;
+            var reloadAfterThisBullet = false;
             if (currentAmmo == 1)
                 reloadAfterThisBullet = true;
             if (currentAmmo == 0)

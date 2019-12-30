@@ -18,10 +18,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
 
         internal Vector2 GetBulletPosition(Single time)
         {
-            Vector2 rawPosition = GetTrajectoryOffset(time);
-            Single sinus = FireDirection.Y;
-            Single cosinus = FireDirection.X;
-            Vector2 rotatedPosition = new Vector2
+            var rawPosition = GetTrajectoryOffset(time);
+            var sinus = FireDirection.Y;
+            var cosinus = FireDirection.X;
+            var rotatedPosition = new Vector2
             {
                 X = rawPosition.X * cosinus - rawPosition.Y * sinus,
                 Y = rawPosition.X * sinus + rawPosition.Y * cosinus

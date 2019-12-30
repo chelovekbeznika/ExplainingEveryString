@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Core.Menu
         internal MenuItemsContainer(MenuItem[] items, Int32 defaultButton = 0)
         {
             this.Items = items;
-            foreach (MenuItem item in Items)
+            foreach (var item in Items)
                 item.ParentContainer = this;
             this.defaultButton = defaultButton;
             SelectDefaultButton();
@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Core.Menu
 
         private Int32 FindVisibleButton(Int32 step)
         {
-            Int32 currentButton = SelectedIndex + step;
+            var currentButton = SelectedIndex + step;
             while (IsValidButtonIndex(currentButton) && !Items[currentButton].IsVisible())
             {
                 currentButton += step;

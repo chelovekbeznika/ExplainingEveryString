@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TestGetStartWave()
         {
-            CheckpointsManager checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
+            var checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
             checkpointsManager.InitializeCheckpoints();
             Assert.That(checkpointsManager.GetStartWave(CheckpointsManager.StartCheckpointName), Is.EqualTo(0));
             Assert.That(checkpointsManager.GetStartWave("SecondCheckpoint"), Is.EqualTo(1));
@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TestCheckForCheckpoint()
         {
-            CheckpointsManager checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
+            var checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
             checkpointsManager.InitializeCheckpoints();
             Assert.That(checkpointsManager.CheckForCheckpoint(0), Is.EqualTo(CheckpointsManager.StartCheckpointName));
             Assert.That(checkpointsManager.CheckForCheckpoint(1), Is.EqualTo("SecondCheckpoint"));
@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TestGetPlayerPosition()
         {
-            CheckpointsManager checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
+            var checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
             checkpointsManager.InitializeCheckpoints();
             AssertPlayerPositionAt(checkpointsManager, CheckpointsManager.StartCheckpointName, 0);
             AssertPlayerPositionAt(checkpointsManager, "SecondCheckpoint", 1);
@@ -63,22 +63,22 @@ namespace ExplainingEveryString.Core.Tests
 
         private static LevelData InitLevelData()
         {
-            CheckpointSpecification phonyDefaultCheckpoint = new CheckpointSpecification
+            var phonyDefaultCheckpoint = new CheckpointSpecification
             {
                 Name = PhonyCheckpoint,
                 PlayerPosition = new PositionOnTileMap { X = Int32.MaxValue, Y = Int32.MaxValue }
             };
-            CheckpointSpecification secondWaveCheckpoint = new CheckpointSpecification
+            var secondWaveCheckpoint = new CheckpointSpecification
             {
                 Name = "SecondCheckpoint",
                 PlayerPosition = new PositionOnTileMap { X = 1, Y = 1 }
             };
-            CheckpointSpecification fifthWaveCheckpoint = new CheckpointSpecification
+            var fifthWaveCheckpoint = new CheckpointSpecification
             {
                 Name = "ThirdCheckpoint",
                 PlayerPosition = new PositionOnTileMap { X = 2, Y = 2 }
             };
-            CheckpointSpecification seventhWaveCheckpont = new CheckpointSpecification
+            var seventhWaveCheckpont = new CheckpointSpecification
             {
                 Name = "LastCheckpoint",
                 PlayerPosition = new PositionOnTileMap { X = 3, Y = 3 }

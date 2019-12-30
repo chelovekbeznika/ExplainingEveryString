@@ -33,10 +33,10 @@ namespace ExplainingEveryString.Core.Displaying
 
         private void PlaySounds()
         {
-            foreach (KeyValuePair<String, Single> soundPair in soundsToPlay)
+            foreach (var soundPair in soundsToPlay)
             {
-                String soundName = soundPair.Key;
-                Single volume = soundPair.Value;
+                var soundName = soundPair.Key;
+                var volume = soundPair.Value;
                 assetsStorage.GetSound(soundName).Play(volume, 0, 0);
             }
             soundsToPlay.Clear();
@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void Update(Single elapsedSeconds)
         {
-            foreach(SpecEffect specEffect in activeSpecEffects)
+            foreach(var specEffect in activeSpecEffects)
             {
                 specEffect.Update(elapsedSeconds);
             }

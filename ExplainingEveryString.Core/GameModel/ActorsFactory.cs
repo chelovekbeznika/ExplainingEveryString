@@ -31,7 +31,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal Door ConstructDoor(ActorStartInfo position, Int32 openingWaveNumber)
         {
-            Door door = Construct<Door, DoorBlueprint>(position);
+            var door = Construct<Door, DoorBlueprint>(position);
             door.OpeningWaveNumber = openingWaveNumber;
             return door;
         }
@@ -49,7 +49,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal IEnemy ConstructEnemy(ActorStartInfo position)
         {
-            String type = (blueprintsStorage[position.BlueprintType] as EnemyBlueprint).Type;
+            var type = (blueprintsStorage[position.BlueprintType] as EnemyBlueprint).Type;
             return enemyConstruction[type](position);
         }
 
@@ -64,9 +64,9 @@ namespace ExplainingEveryString.Core.GameModel
             where TActor : Actor<TBlueprint>, new()
             where TBlueprint : Blueprint
         {
-            String name = position.BlueprintType;
-            TBlueprint blueprint = blueprintsStorage[name] as TBlueprint;
-            TActor actor = new TActor();
+            var name = position.BlueprintType;
+            var blueprint = blueprintsStorage[name] as TBlueprint;
+            var actor = new TActor();
             actor.Initialize(blueprint, Level, position, this);
             return actor;
         }

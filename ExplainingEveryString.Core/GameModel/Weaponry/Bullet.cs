@@ -66,10 +66,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private Vector2 CorrectFireDirection(Vector2 fireDirection, Single elapsedSeconds)
         {
-            Vector2 directionToTarget = targetLocator() - Position;
-            Single targetAngle = AngleConverter.ToRadians(directionToTarget);
-            Single currentAngle = AngleConverter.ToRadians(fireDirection);
-            Single arcToTarget = AngleConverter.ClosestArc(currentAngle, targetAngle);
+            var directionToTarget = targetLocator() - Position;
+            var targetAngle = AngleConverter.ToRadians(directionToTarget);
+            var currentAngle = AngleConverter.ToRadians(fireDirection);
+            var arcToTarget = AngleConverter.ClosestArc(currentAngle, targetAngle);
             Single resultAngle;
             if (System.Math.Abs(arcToTarget) < homingSpeed * elapsedSeconds)
                 resultAngle = targetAngle;

@@ -11,18 +11,18 @@ namespace ExplainingEveryString.Core.Tiles
         {
             if (wallTiles.Count == 0)
                 return new List<Rectangle>();
-            Dictionary<Int32, List<Rectangle>> stripes = GetStripes(wallTiles);
+            var stripes = GetStripes(wallTiles);
             return GlueStripes(stripes);
         }
 
         private Dictionary<Int32, List<Rectangle>> GetStripes(List<Point> wallTiles)
         {
-            Dictionary<Int32, List<Rectangle>> stripes = new Dictionary<Int32, List<Rectangle>>();
-            Point previousTile = wallTiles[0];
-            Point lastStripeStart = wallTiles[0];
-            Int32 lastStripeLength = 1;
+            var stripes = new Dictionary<Int32, List<Rectangle>>();
+            var previousTile = wallTiles[0];
+            var lastStripeStart = wallTiles[0];
+            var lastStripeLength = 1;
 
-            foreach (Point wallTile in wallTiles.Skip(1))
+            foreach (var wallTile in wallTiles.Skip(1))
             {
                 if (previousTile.X == wallTile.X - 1 && previousTile.Y == wallTile.Y)
                 {
@@ -43,14 +43,14 @@ namespace ExplainingEveryString.Core.Tiles
 
         private void AddStripe(Dictionary<Int32, List<Rectangle>> stripes, Point start, Int32 length)
         {
-            Rectangle stripe = new Rectangle
+            var stripe = new Rectangle
             {
                 X = start.X,
                 Y = start.Y,
                 Width = length,
                 Height = 1
             };
-            Int32 key = stripe.X;
+            var key = stripe.X;
             if (stripes.ContainsKey(key))
                 stripes[key].Add(stripe);
             else
@@ -59,17 +59,17 @@ namespace ExplainingEveryString.Core.Tiles
 
         private List<Rectangle> GlueStripes(Dictionary<Int32, List<Rectangle>> stripes)
         {
-            List<Rectangle> gluedRectangles = new List<Rectangle>();
-            foreach (Int32 startXPosition in stripes.Keys)
+            var gluedRectangles = new List<Rectangle>();
+            foreach (var startXPosition in stripes.Keys)
             {
-                IEnumerable<Rectangle> rectanglesAtCurrentX = stripes[startXPosition].Skip(1)
+                var rectanglesAtCurrentX = stripes[startXPosition].Skip(1)
                     .Aggregate(seed: new { List = new List<Rectangle>(), PreviousValue = stripes[startXPosition][0] },
                                func: (acc, stripe) =>
                                {
                                    if (stripe.Y == acc.PreviousValue.Y + acc.PreviousValue.Height
                                        && acc.PreviousValue.Width == stripe.Width)
                                    {
-                                       Rectangle extendedRectangle = acc.PreviousValue;
+                                       var extendedRectangle = acc.PreviousValue;
                                        extendedRectangle.Height += 1;
                                        return new { acc.List, PreviousValue = extendedRectangle };
                                    }

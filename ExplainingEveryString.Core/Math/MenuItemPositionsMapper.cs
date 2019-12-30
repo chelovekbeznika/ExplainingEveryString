@@ -18,8 +18,8 @@ namespace ExplainingEveryString.Core.Math
 
         internal Point[] GetItemsPositions(Point[] itemsSize)
         {
-            Int32 menuHeight = itemsSize.Select(p => p.Y).Sum() + pixelsBetweenItems * (itemsSize.Length - 1);
-            List<Int32> heights = itemsSize
+            var menuHeight = itemsSize.Select(p => p.Y).Sum() + pixelsBetweenItems * (itemsSize.Length - 1);
+            var heights = itemsSize
                 .Take(itemsSize.Length - 1)
                 .Aggregate(
                     new List<Int32>(itemsSize.Length) { 0 },
@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.Math
                         acc.Add(acc[acc.Count - 1] + size.Y + pixelsBetweenItems);
                         return acc;
                     });
-            IEnumerable<Point> result = heights.Zip(
+            var result = heights.Zip(
                 itemsSize,
                 (height, size) => new Point
                 {

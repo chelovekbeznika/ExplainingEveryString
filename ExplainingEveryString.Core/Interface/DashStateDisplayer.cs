@@ -33,12 +33,12 @@ namespace ExplainingEveryString.Core.Interface
 
         internal void Draw(PlayerInterfaceInfo interfaceInfo)
         {
-            Vector2 barPosition = new Vector2
+            var barPosition = new Vector2
             {
                 X = PixelsFromLeft,
                 Y = interfaceSpriteDisplayer.ScreenHeight - PixelsFromBottom - available.Height
             };
-            Single cooldownRemained = interfaceInfo.TillDashRecharge / interfaceInfo.DashCooldown;
+            var cooldownRemained = interfaceInfo.TillDashRecharge / interfaceInfo.DashCooldown;
             switch (interfaceInfo.DashState)
             {
                 case DashState.Active:

@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         internal void MakeConsistent(Rectangle screenBounds)
         {
-            Rectangle rectangle = Rectangle;
+            var rectangle = Rectangle;
             if (TouchesScreenAtLeft)
             {
                 rectangle.Width += screenBounds.Left - rectangle.Left;

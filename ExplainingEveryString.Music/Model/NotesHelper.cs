@@ -84,13 +84,13 @@ namespace ExplainingEveryString.Music.Model
 
         internal static Int32 PulseTimer(Note note, Accidental accidental)
         {
-            Single frequency = GetFrequency(note, accidental);
+            var frequency = GetFrequency(note, accidental);
             return (Int32)Math.Round(Constants.CpuFrequency / (16 * frequency) - 1);
         }
 
         internal static Int32 TriangleTimer(Note note, Accidental accidental)
         {
-            Single frequency = GetFrequency(note, accidental);
+            var frequency = GetFrequency(note, accidental);
             return (Int32)Math.Round(Constants.CpuFrequency / (32 * frequency) - 1);
         }
 

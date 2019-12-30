@@ -21,8 +21,8 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void Draw()
         {
-            IEnumerable<MenuItem> items = CurrentButtonsContainer.Items.Where(item => item.IsVisible());
-            Point[] positions = positionsMapper.GetItemsPositions(items.Select(item => item.GetSize()).ToArray());
+            var items = CurrentButtonsContainer.Items.Where(item => item.IsVisible());
+            var positions = positionsMapper.GetItemsPositions(items.Select(item => item.GetSize()).ToArray());
             foreach (var pair in items.Zip(positions, (Item, Position) => new { Item, Position }))
             {
                 itemDisplayer.Draw(pair.Item, pair.Position);
@@ -31,7 +31,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void TryToGetBack()
         {
-            MenuItemsContainer parentContainer = CurrentButtonsContainer.ParentContainer;
+            var parentContainer = CurrentButtonsContainer.ParentContainer;
             if (parentContainer != null)
                 CurrentButtonsContainer = parentContainer;
         }

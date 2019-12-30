@@ -20,8 +20,8 @@ namespace ExplainingEveryString.Data
 
         public T Load<T>(String fileName)
         {
-            using (StreamReader streamReader = new StreamReader(fileName))
-            using (JsonReader jsonReader = new JsonTextReader(streamReader))
+            using (var streamReader = new StreamReader(fileName))
+            using (var jsonReader = new JsonTextReader(streamReader))
             {
                 return serializer.Deserialize<T>(jsonReader);
             }
@@ -29,8 +29,8 @@ namespace ExplainingEveryString.Data
 
         public void Save<T>(String fileName, T data)
         {
-            using (StreamWriter streamWriter = new StreamWriter(fileName))
-            using (JsonWriter writer = new JsonTextWriter(streamWriter))
+            using (var streamWriter = new StreamWriter(fileName))
+            using (var writer = new JsonTextWriter(streamWriter))
             {
                 serializer.Serialize(writer, data);
             }

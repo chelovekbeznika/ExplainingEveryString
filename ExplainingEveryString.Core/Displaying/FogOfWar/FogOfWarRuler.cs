@@ -23,9 +23,9 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         internal void DrawFogOfWar(SpriteBatch spriteBatch)
         {
-            Rectangle[] levelFogOfWar = extractor.GetFogOfWarRegions();
-            FogOfWarScreenRegion[] screenFogOfWar = screenDetector.GetFogOfWarRegions(levelFogOfWar);
-            FogOfWarSpriteEntry[] fogOfWarSprites = screenFogOfWar
+            var levelFogOfWar = extractor.GetFogOfWarRegions();
+            var screenFogOfWar = screenDetector.GetFogOfWarRegions(levelFogOfWar);
+            var fogOfWarSprites = screenFogOfWar
                 .Select(region => filler.Fill(region, displayer.Specification))
                 .SelectMany(spriteEntries => spriteEntries).ToArray();
             displayer.Draw(spriteBatch, fogOfWarSprites);

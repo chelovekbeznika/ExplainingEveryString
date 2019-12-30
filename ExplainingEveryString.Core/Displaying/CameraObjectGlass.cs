@@ -44,8 +44,8 @@ namespace ExplainingEveryString.Core.Displaying
 
         public void Update(Single elapsedSeconds)
         {
-            Vector2 desiredCenter = CalculateDesiredCenter();
-            Single maxFrameCameraMove = cameraMoveSpeed * elapsedSeconds;
+            var desiredCenter = CalculateDesiredCenter();
+            var maxFrameCameraMove = cameraMoveSpeed * elapsedSeconds;
             if ((desiredCenter - cameraCenter).Length() < maxFrameCameraMove)
                 cameraCenter = desiredCenter;
             else
@@ -58,12 +58,12 @@ namespace ExplainingEveryString.Core.Displaying
 
         private Vector2 CalculateDesiredCenter()
         {
-            Vector2 screenFrameArrow = -playerInfo.FireDirection;
-            Single targetXPosition = screenFrameArrow.X < 0 ? -playerFrame.X : playerFrame.X;
-            Single targetYPosition = screenFrameArrow.Y < 0 ? -playerFrame.Y : playerFrame.Y;
-            Single distanceToFrameX = targetYPosition / screenFrameArrow.Y;
-            Single distanceToFrameY = targetXPosition / screenFrameArrow.X;
-            Vector2 desiredPlayerPositionRelativeToCenter =
+            var screenFrameArrow = -playerInfo.FireDirection;
+            var targetXPosition = screenFrameArrow.X < 0 ? -playerFrame.X : playerFrame.X;
+            var targetYPosition = screenFrameArrow.Y < 0 ? -playerFrame.Y : playerFrame.Y;
+            var distanceToFrameX = targetYPosition / screenFrameArrow.Y;
+            var distanceToFrameY = targetXPosition / screenFrameArrow.X;
+            var desiredPlayerPositionRelativeToCenter =
                 (!Single.IsInfinity(distanceToFrameX) && distanceToFrameX < distanceToFrameY) || Single.IsInfinity(distanceToFrameY)
                     ? screenFrameArrow * distanceToFrameX
                     : screenFrameArrow * distanceToFrameY;
@@ -72,7 +72,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         private Single CalculateCameraMoveSpeed(Single timeFromAngleToAngle)
         {
-            Single distanceFromAngleToAngle = playerFrame.Length() * 2;
+            var distanceFromAngleToAngle = playerFrame.Length() * 2;
             return distanceFromAngleToAngle / timeFromAngleToAngle;
         }
     }

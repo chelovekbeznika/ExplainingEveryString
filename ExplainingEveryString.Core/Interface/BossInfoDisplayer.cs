@@ -27,8 +27,8 @@ namespace ExplainingEveryString.Core.Interface
 
         public void Draw(EnemyInterfaceInfo bossInfo)
         {
-            Single healthRemained = bossInfo.Health / bossInfo.MaxHealth;
-            Vector2 healthBarPosition = new Vector2
+            var healthRemained = bossInfo.Health / bossInfo.MaxHealth;
+            var healthBarPosition = new Vector2
             {
                 X = (interfaceSpriteDisplayer.ScreenWidth - healthBar.Width) / 2,
                 Y = pixelsFromTop

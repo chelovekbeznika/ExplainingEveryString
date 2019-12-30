@@ -49,7 +49,7 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void InitComponents()
         {
-            GameComponentCollection components = game.Components;
+            var components = game.Components;
             TimersComponent.Init(game);
             components.Add(Interface);
             components.Add(Menu);

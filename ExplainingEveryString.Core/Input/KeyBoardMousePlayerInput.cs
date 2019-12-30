@@ -19,8 +19,8 @@ namespace ExplainingEveryString.Core.Input
 
         public override Vector2 GetMoveDirection()
         {
-            Vector2 direction = new Vector2(0, 0);
-            KeyboardState keyboard = Keyboard.GetState();
+            var direction = new Vector2(0, 0);
+            var keyboard = Keyboard.GetState();
             if (keyboard.IsKeyDown(Keys.S))
                 direction += down;
             if (keyboard.IsKeyDown(Keys.W))
@@ -39,10 +39,10 @@ namespace ExplainingEveryString.Core.Input
 
         public override Vector2 GetFireDirection()
         {
-            Point mousePoint = Mouse.GetState().Position;
-            Vector2 mousePosition = new Vector2(mousePoint.X, mousePoint.Y);
-            Vector2 fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
-            Vector2 fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
+            var mousePoint = Mouse.GetState().Position;
+            var mousePosition = new Vector2(mousePoint.X, mousePoint.Y);
+            var fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
+            var fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
             return NormalizeDirectionVector(fireDirectionOnLevel);
         }
 

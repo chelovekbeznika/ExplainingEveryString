@@ -52,7 +52,7 @@ namespace ExplainingEveryString.Music
                 if (generatedSongParts.Count == 0)
                     return null;
 
-                List<Byte[]> parts = new List<Byte[]>();
+                var parts = new List<Byte[]>();
                 while (generatedSongParts.Count > 0)
                     parts.Add(generatedSongParts.Dequeue());
                 return parts;
@@ -69,13 +69,13 @@ namespace ExplainingEveryString.Music
 
         private void MusicGeneration(Object songSpecificationObject)
         {
-            SongSpecification songSpecification = songSpecificationObject as SongSpecification;
-            List<RawSoundDirectingEvent> soundEvents = GetRawEvents(songSpecification.Song);
-            Int32 durationInSamples = (Int32)Math.Round(songSpecification.Duration * Constants.SampleRate);
+            var songSpecification = songSpecificationObject as SongSpecification;
+            var soundEvents = GetRawEvents(songSpecification.Song);
+            var durationInSamples = (Int32)Math.Round(songSpecification.Duration * Constants.SampleRate);
             Byte[] currentPart = null;
-            Int32 nextEvent = 0;
+            var nextEvent = 0;
 
-            foreach (Int32 sampleIndex in Enumerable.Range(0, durationInSamples))
+            foreach (var sampleIndex in Enumerable.Range(0, durationInSamples))
             {
                 currentPart = GetCurrentSongPart(currentPart, sampleIndex, durationInSamples);
                 nextEvent = MoveEventsQueue(soundEvents, nextEvent, sampleIndex);
@@ -89,12 +89,12 @@ namespace ExplainingEveryString.Music
 
         private List<RawSoundDirectingEvent> GetRawEvents(List<ISoundDirectingSequence> soundSequences)
         {
-            List<RawSoundDirectingEvent> soundEvents = soundSequences
+            var soundEvents = soundSequences
                 .SelectMany(sequence => sequence.GetEvents())
                 .OrderBy(soundEvent => soundEvent.Position)
                 .ToList();
 
-            RawSoundDirectingEvent barrierEvent = new RawSoundDirectingEvent
+            var barrierEvent = new RawSoundDirectingEvent
             {
                 Seconds = Int32.MaxValue / Constants.SampleRate,
                 Value = 0,
@@ -127,7 +127,7 @@ namespace ExplainingEveryString.Music
         {
             while (soundEvents[nextEvent].Position == sampleIndex)
             {
-                RawSoundDirectingEvent soundEvent = soundEvents[nextEvent];
+                var soundEvent = soundEvents[nextEvent];
                 components[soundEvent.SoundComponent].ProcessSoundDirectingEvent(soundEvent);
                 nextEvent += 1;
             }
@@ -136,24 +136,24 @@ namespace ExplainingEveryString.Music
 
         private Single GetOutputValue()
         {
-            Single pulseOutput = FirstPulseOutput + SecondPulseOutput > 0 
+            var pulseOutput = FirstPulseOutput + SecondPulseOutput > 0 
                 ? (Single)(95.88 / (8128 / (FirstPulseOutput + SecondPulseOutput) + 100)) : 0;
-            Single tndOutput = TriangleOutput + NoiseOutput + DmcOutput > 0
+            var tndOutput = TriangleOutput + NoiseOutput + DmcOutput > 0
                 ? (Single)(159.79 / (1 / (TriangleOutput / 8227.0 + NoiseOutput / 12241.0 + DmcOutput / 22638.0) + 100)): 0;
             return pulseOutput + tndOutput;
         }
 
         private void PutSample(Byte[] buffer, Int32 position, Single value)
         {
-            Int16 pcmValue = (Int16)(Int16.MinValue + (Int16.MaxValue - Int16.MinValue) * value);
-            (Byte, Byte) amplitude = ((Byte)value, (Byte)(pcmValue >> 8));
+            var pcmValue = (Int16)(Int16.MinValue + (Int16.MaxValue - Int16.MinValue) * value);
+            var amplitude = ((Byte)value, (Byte)(pcmValue >> 8));
             buffer[position * 2] = amplitude.Item1;
             buffer[position * 2 + 1] = amplitude.Item2;
         }
 
         private void MoveEmulationTowardNextSample()
         {
-            foreach (ISoundComponent channel in components.Values)
+            foreach (var channel in components.Values)
             {
                 channel.MoveEmulationTowardNextSample();
             }

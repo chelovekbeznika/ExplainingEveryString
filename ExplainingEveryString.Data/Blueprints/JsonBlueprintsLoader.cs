@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Data.Blueprints
 
         public void Load()
         {
-            String fileName = FileNames.Blueprints;
+            var fileName = FileNames.Blueprints;
             blueprints = JsonDataAccessor.Instance.Load<Dictionary<String, Blueprint>>(fileName);
         }
     }

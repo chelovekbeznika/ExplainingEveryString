@@ -19,40 +19,40 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void NotCollides()
         {
-            Hitbox first = new Hitbox { Bottom = 40, Top = 60, Left = 40, Right = 60 };
-            Hitbox second = new Hitbox { Bottom = 0, Top = 10, Left = 0, Right = 10 };
+            var first = new Hitbox { Bottom = 40, Top = 60, Left = 40, Right = 60 };
+            var second = new Hitbox { Bottom = 0, Top = 10, Left = 0, Right = 10 };
             AssertHitboxesRelations(false, first, second);
         }
 
         [Test]
         public void IntersectOnlyOnOneAxis()
         {
-            Hitbox first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
-            Hitbox second = new Hitbox { Bottom = 100, Top = 120, Left = 10, Right = 30 };
+            var first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
+            var second = new Hitbox { Bottom = 100, Top = 120, Left = 10, Right = 30 };
             AssertHitboxesRelations(false, first, second);
         }
 
         [Test]
         public void Collides()
         {
-            Hitbox first = new Hitbox { Bottom = 10, Top = 30, Left = 10, Right = 30 };
-            Hitbox second = new Hitbox { Bottom = 20, Top = 40, Left = 20, Right = 40 };
+            var first = new Hitbox { Bottom = 10, Top = 30, Left = 10, Right = 30 };
+            var second = new Hitbox { Bottom = 20, Top = 40, Left = 20, Right = 40 };
             AssertHitboxesRelations(true, first, second);
         }
 
         [Test]
         public void OneHitboxInsideOfOther()
         {
-            Hitbox first = new Hitbox { Bottom = 0, Top = 40, Left = 0, Right = 40 };
-            Hitbox second = new Hitbox { Bottom = 10, Top = 30, Left = 10, Right = 30 };
+            var first = new Hitbox { Bottom = 0, Top = 40, Left = 0, Right = 40 };
+            var second = new Hitbox { Bottom = 10, Top = 30, Left = 10, Right = 30 };
             AssertHitboxesRelations(true, first, second);
         }
 
         [Test]
         public void TouchingHitboxes()
         {
-            Hitbox first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
-            Hitbox second = new Hitbox { Bottom = 20, Top = 40, Left = 10, Right = 30 };
+            var first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
+            var second = new Hitbox { Bottom = 20, Top = 40, Left = 10, Right = 30 };
             AssertHitboxesRelations(true, first, second);
             second = new Hitbox { Bottom = 10, Top = 30, Left = 20, Right = 40 };
             AssertHitboxesRelations(true, first, second);
@@ -61,24 +61,24 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TouchingByCornerHitboxes()
         {
-            Hitbox first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
-            Hitbox second = new Hitbox { Bottom = 20, Top = 40, Left = 20, Right = 40 };
+            var first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
+            var second = new Hitbox { Bottom = 20, Top = 40, Left = 20, Right = 40 };
             AssertHitboxesRelations(true, first, second);
         }
 
         [Test]
         public void DifferentAxis()
         {
-            Hitbox first = new Hitbox { Bottom = -20, Top = 20, Left = -10, Right = 30 };
-            Hitbox second = new Hitbox { Bottom = -40, Top = -10, Left = -20, Right = 10 };
+            var first = new Hitbox { Bottom = -20, Top = 20, Left = -10, Right = 30 };
+            var second = new Hitbox { Bottom = -40, Top = -10, Left = -20, Right = 10 };
             AssertHitboxesRelations(true, first, second);
         }
 
         [Test]
         public void HitboxLiesAtRight()
         {
-            Hitbox first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
-            Hitbox second = new Hitbox { Bottom = 0, Top = 20, Left = 40, Right = 60 };
+            var first = new Hitbox { Bottom = 0, Top = 20, Left = 0, Right = 20 };
+            var second = new Hitbox { Bottom = 0, Top = 20, Left = 40, Right = 60 };
             AssertHitboxesRelations(false, first, second);
         }
 

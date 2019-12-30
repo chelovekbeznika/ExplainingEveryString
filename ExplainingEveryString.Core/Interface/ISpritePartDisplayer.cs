@@ -31,8 +31,8 @@ namespace ExplainingEveryString.Core.Interface
     {
         public Rectangle GetDrawPart(SpriteData spriteData, Single coeff)
         {
-            Int32 pixelsToDraw = PixelsToDraw(spriteData.Width, coeff);
-            Int32 leftMargin = LeftMargin(spriteData, coeff);
+            var pixelsToDraw = PixelsToDraw(spriteData.Width, coeff);
+            var leftMargin = LeftMargin(spriteData, coeff);
             return new Rectangle(leftMargin, 0, pixelsToDraw, spriteData.Sprite.Height);
         }
 
@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.Interface
 
         private Int32 LeftMargin(SpriteData spriteData, Single coeff)
         {
-            Int32 pixelsToDraw = PixelsToDraw(spriteData.Width, coeff);
+            var pixelsToDraw = PixelsToDraw(spriteData.Width, coeff);
             return spriteData.Width - pixelsToDraw;
         }
 
@@ -57,8 +57,8 @@ namespace ExplainingEveryString.Core.Interface
     {
         public Rectangle GetDrawPart(SpriteData spriteData, Single coeff)
         {
-            Int32 cutXPixels = CutXPixels(spriteData, coeff);
-            Int32 cutYPixels = CutYPixels(spriteData, coeff);
+            var cutXPixels = CutXPixels(spriteData, coeff);
+            var cutYPixels = CutYPixels(spriteData, coeff);
             return new Rectangle(cutXPixels, cutYPixels, spriteData.Width - cutXPixels * 2, spriteData.Height - cutYPixels * 2);
         }
 

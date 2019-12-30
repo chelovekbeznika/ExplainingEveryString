@@ -9,8 +9,8 @@ namespace ExplainingEveryString.Music
     {
         internal static List<ISoundDirectingSequence> GetTestSong()
         {
-            NoteType[] notes = new NoteType[] { NoteType.C, NoteType.D, NoteType.E, NoteType.F, NoteType.G, NoteType.A, NoteType.H };
-            List<ISoundDirectingSequence> result = new List<ISoundDirectingSequence>
+            var notes = new NoteType[] { NoteType.C, NoteType.D, NoteType.E, NoteType.F, NoteType.G, NoteType.A, NoteType.H };
+            var result = new List<ISoundDirectingSequence>
             {
                 new SwitchChannel
                 {
@@ -72,7 +72,7 @@ namespace ExplainingEveryString.Music
 
         internal static List<RawSoundDirectingEvent> GetLengthCounterTest()
         {
-            Int32[] testLengthsBase10 = new Int32[] { 192, 96, 48, 24, 12, 72, 32, 16 };
+            var testLengthsBase10 = new Int32[] { 192, 96, 48, 24, 12, 72, 32, 16 };
             return new RawSoundDirectingEvent[]
             {
                 new RawSoundDirectingEvent
@@ -133,7 +133,7 @@ namespace ExplainingEveryString.Music
 
         internal static List<RawSoundDirectingEvent> GetEnvelopeTestLength()
         {
-            List<RawSoundDirectingEvent> result = new List<RawSoundDirectingEvent>
+            var result = new List<RawSoundDirectingEvent>
             {
                 new RawSoundDirectingEvent
                 {

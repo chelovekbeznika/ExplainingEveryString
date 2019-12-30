@@ -42,7 +42,7 @@ namespace ExplainingEveryString.Music
 
         public override void MoveEmulationTowardNextSample()
         {
-            Int32 shiftBetweenSamples = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
+            var shiftBetweenSamples = Countdown(ref currentTimerValue, Constants.ApuTicksBetweenSamples, Timer);
             foreach (var shiftNumber in Enumerable.Range(0, shiftBetweenSamples))
             {
                 ShiftLfsr();
@@ -51,7 +51,7 @@ namespace ExplainingEveryString.Music
 
         private void ShiftLfsr()
         {
-            Boolean feedback = ((ModeFlagSet ? 0b100_0000 : 0b10) & lfsrValue) != 0 ^ (lfsrValue & 1) != 0;
+            var feedback = ((ModeFlagSet ? 0b100_0000 : 0b10) & lfsrValue) != 0 ^ (lfsrValue & 1) != 0;
             lfsrValue >>= 1;
             if (feedback)
                 lfsrValue |= 0b0100_0000_0000_0000;

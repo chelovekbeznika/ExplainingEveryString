@@ -20,8 +20,8 @@ namespace ExplainingEveryString.Core
 
         internal Dictionary<String, SpriteData> Build(IEnumerable<String> sprites)
         {
-            Dictionary<String, SpriteData> spritesData = new Dictionary<string, SpriteData>();
-            foreach (String spriteName in sprites)
+            var spritesData = new Dictionary<string, SpriteData>();
+            foreach (var spriteName in sprites)
             {
                 spritesData[spriteName] = new SpriteData
                 {
@@ -35,8 +35,8 @@ namespace ExplainingEveryString.Core
 
         private void AddMetadata(Dictionary<String, SpriteData> spritesData, IAssetsMetadataLoader metadataLoader)
         {
-            AssetsMetadata assetsMetadata = metadataLoader.Load();
-            foreach (SpriteMetadata spriteMetadata in assetsMetadata.SpritesMetadata.Where(m => spritesData.ContainsKey(m.Name)))
+            var assetsMetadata = metadataLoader.Load();
+            foreach (var spriteMetadata in assetsMetadata.SpritesMetadata.Where(m => spritesData.ContainsKey(m.Name)))
             {
                 spritesData[spriteMetadata.Name].AnimationFrames = spriteMetadata.AnimationFrames;
                 spritesData[spriteMetadata.Name].DefaultAnimationCycle = spriteMetadata.DefaultAnimationCycle;

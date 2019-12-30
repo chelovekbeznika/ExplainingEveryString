@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.phaseOn = new EpicEvent(level, blueprint.PhaseOnEffect, false, this, true);
             this.phaseOff = new EpicEvent(level, blueprint.PhaseOffEffect, false, this, true);
             this.phases = blueprint.Phases.Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray();
-            Single tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
+            var tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
             TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => TurningOnPhase(), this);
             nextPhase = SelectNextPhase();
         }
@@ -43,8 +43,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private FirstBossPhase ConstructPhase(FirstBossPhaseSpecification phase,
             ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            EnemyBehavior behavior = new EnemyBehavior(this, () => level.Player.Position);
-            BehaviorParameters behaviorParameters = new BehaviorParameters
+            var behavior = new EnemyBehavior(this, () => level.Player.Position);
+            var behaviorParameters = new BehaviorParameters
             {
                 LevelSpawnPoints = startInfo.BehaviorParameters.LevelSpawnPoints,
                 TrajectoryParameters = phase.TrajectoryParameters
@@ -90,23 +90,23 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         private void InPhase()
         {
-            SpawnedActorsController oldSpawner = Behavior.SpawnedActors;
+            var oldSpawner = Behavior.SpawnedActors;
             state = BossState.InPhase;
             SpriteState.StartOver();
-            SpawnedActorsController newSpawner = Behavior.SpawnedActors;
+            var newSpawner = Behavior.SpawnedActors;
 
             phaseOn.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
-            Single phaseDuration = minPhaseDuration + RandomUtility.Next() * (maxPhaseDuration - minPhaseDuration);
+            var phaseDuration = minPhaseDuration + RandomUtility.Next() * (maxPhaseDuration - minPhaseDuration);
             TimersComponent.Instance.ScheduleEvent(phaseDuration, () => TurningOffPhase(), this);
         }
 
         private void TurningOffPhase()
         {
-            SpawnedActorsController oldSpawner = Behavior.SpawnedActors;
+            var oldSpawner = Behavior.SpawnedActors;
             state = BossState.TurningOffPhase;
             SpriteState.StartOver();
-            SpawnedActorsController newSpawner = Behavior.SpawnedActors;
+            var newSpawner = Behavior.SpawnedActors;
 
             phaseOff.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
@@ -119,7 +119,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             SpriteState.StartOver();
 
             nextPhase = SelectNextPhase();
-            Single tillNextState = betweenPhasesDuration 
+            var tillNextState = betweenPhasesDuration 
                 - phases[currentPhase].TurningOffTime
                 - phases[nextPhase].TurningOnTime;
             TimersComponent.Instance.ScheduleEvent(tillNextState, () => TurningOnPhase(), this);

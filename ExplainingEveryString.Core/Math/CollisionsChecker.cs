@@ -8,12 +8,12 @@ namespace ExplainingEveryString.Core.Math
     {
         internal Boolean Collides(Hitbox first, Hitbox second)
         {
-            Boolean secondLiesCompletelyAtLeft = second.Right < first.Left;
-            Boolean secondLiesCompletelyAtRight = second.Left > first.Right;
-            Boolean intersectsOnXAxis = !(secondLiesCompletelyAtLeft || secondLiesCompletelyAtRight);
-            Boolean secondLiesCompletelyAtBottom = second.Top < first.Bottom;
-            Boolean secondLiesCompletelyAtTop = second.Bottom > first.Top;
-            Boolean intersectsOnYAxis = !(secondLiesCompletelyAtBottom || secondLiesCompletelyAtTop);
+            var secondLiesCompletelyAtLeft = second.Right < first.Left;
+            var secondLiesCompletelyAtRight = second.Left > first.Right;
+            var intersectsOnXAxis = !(secondLiesCompletelyAtLeft || secondLiesCompletelyAtRight);
+            var secondLiesCompletelyAtBottom = second.Top < first.Bottom;
+            var secondLiesCompletelyAtTop = second.Bottom > first.Top;
+            var intersectsOnYAxis = !(secondLiesCompletelyAtBottom || secondLiesCompletelyAtTop);
             return intersectsOnXAxis && intersectsOnYAxis;
         }
 
@@ -31,12 +31,12 @@ namespace ExplainingEveryString.Core.Math
         private Boolean TrajectoryCrossesWithVerticalFringe
             (Hitbox hitbox, Boolean left, Vector2 oldPosition, Vector2 newPosition)
         {
-            Single fringeXPosition = left ? hitbox.Left : hitbox.Right;
+            var fringeXPosition = left ? hitbox.Left : hitbox.Right;
             if ((oldPosition.X > fringeXPosition && newPosition.X > fringeXPosition)
                 || (oldPosition.X < fringeXPosition && newPosition.X < fringeXPosition))
                 return false;
 
-            Single? fringeCrossing = GetTrajectoryCrossingWithVerticalFringe
+            var fringeCrossing = GetTrajectoryCrossingWithVerticalFringe
                 (fringeXPosition, newPosition, oldPosition);
 
             if (fringeCrossing != null)
@@ -49,12 +49,12 @@ namespace ExplainingEveryString.Core.Math
         private Boolean TrajectoryCrossesWithHorizontalFringe
             (Hitbox hitbox, Boolean bottom, Vector2 oldPosition, Vector2 newPosition)
         {
-            Single fringeYPosition = bottom ? hitbox.Bottom : hitbox.Top;
+            var fringeYPosition = bottom ? hitbox.Bottom : hitbox.Top;
             if ((oldPosition.Y > fringeYPosition && newPosition.Y > fringeYPosition)
                 || (oldPosition.Y < fringeYPosition && newPosition.Y < fringeYPosition))
                 return false;
 
-            Single? fringeCrossing = GetTrajectoryCrossingWithHorizontalFringe
+            var fringeCrossing = GetTrajectoryCrossingWithHorizontalFringe
                 (fringeYPosition, newPosition, oldPosition);
 
             if (fringeCrossing != null)
@@ -72,10 +72,10 @@ namespace ExplainingEveryString.Core.Math
                 return null;
             }
 
-            Single deltaX = newPosition.X - oldPosition.X;
-            Single deltaY = newPosition.Y - oldPosition.Y;
-            Single deltaXTillFringe = fringeXPosition - oldPosition.X;
-            Single deltaYTillFringe = deltaY * deltaXTillFringe / deltaX;
+            var deltaX = newPosition.X - oldPosition.X;
+            var deltaY = newPosition.Y - oldPosition.Y;
+            var deltaXTillFringe = fringeXPosition - oldPosition.X;
+            var deltaYTillFringe = deltaY * deltaXTillFringe / deltaX;
             return oldPosition.Y + deltaYTillFringe;
         }
 
@@ -87,10 +87,10 @@ namespace ExplainingEveryString.Core.Math
                 return null;
             }
 
-            Single deltaX = newPosition.X - oldPosition.X;
-            Single deltaY = newPosition.Y - oldPosition.Y;
-            Single deltaYTillFringe = fringeYPosition - oldPosition.Y;
-            Single deltaXTillFringe = deltaX * deltaYTillFringe / deltaY;
+            var deltaX = newPosition.X - oldPosition.X;
+            var deltaY = newPosition.Y - oldPosition.Y;
+            var deltaYTillFringe = fringeYPosition - oldPosition.Y;
+            var deltaXTillFringe = deltaX * deltaYTillFringe / deltaY;
             return oldPosition.X + deltaXTillFringe;
         }
 

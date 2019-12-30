@@ -24,14 +24,14 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
 
         public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
         {
-            Single currentDistance = lineToTarget.Length();
+            var currentDistance = lineToTarget.Length();
             if (currentDistance <= approachedMinimum)
             {
-                Vector2 unitVectorTowardTarget = lineToTarget / currentDistance;
+                var unitVectorTowardTarget = lineToTarget / currentDistance;
                 if (!moving)
                     StartMove(unitVectorTowardTarget);
 
-                Vector2 positionChange = CalculatePositionChange(unitVectorTowardTarget, elapsedSeconds);
+                var positionChange = CalculatePositionChange(unitVectorTowardTarget, elapsedSeconds);
 
                 goalReached = currentDistance <= positionChange.Length();
                 if (goalReached)
@@ -58,8 +58,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
 
         private Vector2 CalculatePositionChange(Vector2 unitVectorTowardTarget, Single elapsedSeconds)
         {
-            Vector2 oneSecondSpeedChange = unitVectorTowardTarget * acceleration;
-            Vector2 speedChange = oneSecondSpeedChange * elapsedSeconds;
+            var oneSecondSpeedChange = unitVectorTowardTarget * acceleration;
+            var speedChange = oneSecondSpeedChange * elapsedSeconds;
             currentSpeed += speedChange;
             if (currentSpeed.Length() > maxSpeed)
                 currentSpeed = currentSpeed / currentSpeed.Length() * maxSpeed;

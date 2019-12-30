@@ -35,11 +35,11 @@ namespace ExplainingEveryString.Core.GameModel
 
         private List<Door> InitializeDoors(Int32 startWave, Func<DoorStartInfo, Boolean> dsiFilter)
         {
-            List<Door> result = new List<Door>();
-            foreach (Int32 waveNumber in Enumerable.Range(startWave, levelData.EnemyWaves.Length - startWave))
+            var result = new List<Door>();
+            foreach (var waveNumber in Enumerable.Range(startWave, levelData.EnemyWaves.Length - startWave))
             {
-                EnemyWave wave = levelData.EnemyWaves[waveNumber];
-                DoorStartInfo[] doorsInfo = wave.Doors;
+                var wave = levelData.EnemyWaves[waveNumber];
+                var doorsInfo = wave.Doors;
                 if (doorsInfo != null)
                 {
                     IEnumerable<Door> waveDoors = doorsInfo
@@ -54,10 +54,10 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal List<IActor> InitializeObstacles()
         {
-            List<IActor> result = new List<IActor>();
-            foreach (String obstacleType in levelData.ObstaclesTilePositions.Keys)
+            var result = new List<IActor>();
+            foreach (var obstacleType in levelData.ObstaclesTilePositions.Keys)
             {
-                List<Vector2> obstaclePositions = levelData.ObstaclesTilePositions[obstacleType]
+                var obstaclePositions = levelData.ObstaclesTilePositions[obstacleType]
                     .Select(t => map.GetPosition(t)).ToList();
                 result.AddRange(actorsFactory.ConstructObstacles(obstacleType, obstaclePositions));
             }
@@ -83,15 +83,15 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal Queue<IEnemy> InitializeEnemies(Int32 waveNumber)
         {
-            EnemyWave wave = levelData.EnemyWaves[waveNumber];
-            IEnumerable<ActorStartInfo> enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi, wave));
-            IEnumerable<IEnemy> enemies = actorsFactory.ConstructEnemies(enemiesStartInfos);
+            var wave = levelData.EnemyWaves[waveNumber];
+            var enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi, wave));
+            var enemies = actorsFactory.ConstructEnemies(enemiesStartInfos);
             return new Queue<IEnemy>(enemies);
         }
 
         internal IEnemy InitializeBoss(Int32 waveNumber)
         {
-            EnemyWave wave = levelData.EnemyWaves[waveNumber];
+            var wave = levelData.EnemyWaves[waveNumber];
             if (wave.Boss != null)
                 return actorsFactory.ConstructEnemy(Convert(wave.Boss, wave));
             else

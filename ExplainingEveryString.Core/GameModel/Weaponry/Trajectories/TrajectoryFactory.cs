@@ -12,16 +12,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
         internal BulletTrajectory GetTrajectory
             (String type, Vector2 startPosition, Vector2 fireDirection, Dictionary<String, Single> parameters)
         {
-            ConstructorInfo constructor = GetTrajectoryConstructor(type);
+            var constructor = GetTrajectoryConstructor(type);
             return constructor.Invoke(new Object[] { startPosition, fireDirection, parameters }) as BulletTrajectory;
         }
 
         private ConstructorInfo GetTrajectoryConstructor(String type)
         {
-            String trajectoryClassName = $"ExplainingEveryString.Core.GameModel.Weaponry.Trajectories.{type}Trajectory";
-            Type trajectoryClass = Type.GetType(trajectoryClassName);
-            BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
-            ConstructorInfo constructor = trajectoryClass.GetConstructor(bindingFlags, null, new Type[]
+            var trajectoryClassName = $"ExplainingEveryString.Core.GameModel.Weaponry.Trajectories.{type}Trajectory";
+            var trajectoryClass = Type.GetType(trajectoryClassName);
+            var bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
+            var constructor = trajectoryClass.GetConstructor(bindingFlags, null, new Type[]
             {
                 typeof(Vector2),
                 typeof(Vector2),

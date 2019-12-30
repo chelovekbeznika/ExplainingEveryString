@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
 
         public void SwitchToNextTarget()
         {
-            Vector2 formerTarget = targets.Dequeue();
+            var formerTarget = targets.Dequeue();
             targets.Enqueue(formerTarget);
         }
     }

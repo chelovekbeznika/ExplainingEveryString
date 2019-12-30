@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.Tests
         public void NoShoot()
         {
             aimer.StopFire();
-            Boolean weaponFired = false;
+            var weaponFired = false;
             reloader.TryReload(20, out weaponFired);
             aimer.StopFire();
             Assert.That(shots, Is.EqualTo(0));
@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.Tests
         public void OneShoot()
         {
             aimer.StartFire();
-            Boolean weaponFired = false;
+            var weaponFired = false;
             reloader.TryReload(1, out weaponFired);
             aimer.StopFire();
             Assert.That(shots, Is.EqualTo(1));
@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Core.Tests
         public void BulletAccumulatingError()
         {
             aimer.StopFire();
-            Boolean weaponFired = false;
+            var weaponFired = false;
             reloader.TryReload(1, out weaponFired);
             reloader.TryReload(1, out weaponFired);
             aimer.StartFire();
@@ -48,7 +48,7 @@ namespace ExplainingEveryString.Core.Tests
         public void FirerateHigherThanFramerate()
         {
             aimer.StartFire();
-            Boolean weaponFired = false;
+            var weaponFired = false;
             reloader.TryReload(5, out weaponFired);
             Assert.That(shots, Is.EqualTo(5));
             Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 4, 3, 2, 1, 0 }));
@@ -57,7 +57,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TwoFramesInRow()
         {
-            Boolean weaponFired = false;
+            var weaponFired = false;
             aimer.StartFire();
             reloader.TryReload(2.5F, out weaponFired);
             Assert.That(shots, Is.EqualTo(2));
@@ -71,15 +71,15 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void RareShooting()
         {
-            Boolean weaponFired = false;
+            var weaponFired = false;
             reloader.TryReload(2, out weaponFired);
             aimer.StartFire();
-            foreach (Int32 index in Enumerable.Range(0, 5))
+            foreach (var index in Enumerable.Range(0, 5))
                 reloader.TryReload(0.2F, out weaponFired);
             Assert.That(shots, Is.EqualTo(2));
             Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 0, 0 }));
             bulletUpdateTimes.Clear();
-            foreach (Int32 index in Enumerable.Range(0, 5))
+            foreach (var index in Enumerable.Range(0, 5))
                 reloader.TryReload(0.2F, out weaponFired);
             Assert.That(shots, Is.EqualTo(3));
             Assert.That(bulletUpdateTimes, Is.EquivalentTo(new List<Single> { 0 }));

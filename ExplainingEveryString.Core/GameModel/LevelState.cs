@@ -73,7 +73,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void TrySwitchCheckpoint()
         {
-            String possibleCheckpoint = checkpointsManager.CheckForCheckpoint(currentEnemyWaveNumber);
+            var possibleCheckpoint = checkpointsManager.CheckForCheckpoint(currentEnemyWaveNumber);
             if (possibleCheckpoint != null)
                 CurrentCheckpoint = possibleCheckpoint;
         }

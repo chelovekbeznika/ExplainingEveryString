@@ -32,8 +32,8 @@ namespace ExplainingEveryString.Core.Interface
 
         internal void Draw(SpriteData spriteData, Vector2 position, ISpritePartDisplayer partDisplayer, Single coeff)
         {
-            Rectangle? animationFrame = AnimationHelp.GetDrawPart(spriteData, elapsedTime);
-            Rectangle drawPart = partDisplayer.GetDrawPart(spriteData, coeff);
+            var animationFrame = AnimationHelp.GetDrawPart(spriteData, elapsedTime);
+            var drawPart = partDisplayer.GetDrawPart(spriteData, coeff);
             if (animationFrame != null)
                 drawPart = new Rectangle
                 {
@@ -42,7 +42,7 @@ namespace ExplainingEveryString.Core.Interface
                     Width = drawPart.Width,
                     Height = drawPart.Height
                 };
-            Vector2 positionOfSpritePart = partDisplayer.GetDrawPosition(spriteData, coeff, position);
+            var positionOfSpritePart = partDisplayer.GetDrawPosition(spriteData, coeff, position);
             spriteBatch.Draw(spriteData.Sprite, positionOfSpritePart, drawPart, colorMask);
         }
     }

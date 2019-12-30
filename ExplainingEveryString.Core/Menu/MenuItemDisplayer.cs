@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void Draw(MenuItem item, Point pointPosition)
         {
-            Vector2 position = new Vector2(pointPosition.X, pointPosition.Y);
+            var position = new Vector2(pointPosition.X, pointPosition.Y);
             spriteBatch.Draw(item.Sprite, position, Color.White);
             if (item.Selected)
                 DrawBorder(item, pointPosition);
@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void DrawHorizontallBorder(Int32 from, Int32 to, Int32 yLineCoord)
         {
-            Int32 currentX = from;
+            var currentX = from;
             while (currentX < to)
             {
                 spriteBatch.Draw(borderPart, new Vector2(currentX, yLineCoord), Color.White);
@@ -55,7 +55,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void DrawVerticalBorder(Int32 from, Int32 to, Int32 xLineCoord)
         {
-            Int32 currentY = from;
+            var currentY = from;
             while (currentY < to)
             {
                 spriteBatch.Draw(borderPart, new Vector2(xLineCoord, currentY), Color.White);

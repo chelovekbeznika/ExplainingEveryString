@@ -13,15 +13,15 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void EmptyLevelTest()
         {
-            List<Point> points = new List<Point>();
-            List<Rectangle> walls = new WallsOptimizer().GetWalls(points);
+            var points = new List<Point>();
+            var walls = new WallsOptimizer().GetWalls(points);
             Assert.That(walls.Count == 0);
         }
 
         [Test]
         public void OneRectangleTest()
         {
-            List<Point> wallTiles = new List<Point>
+            var wallTiles = new List<Point>
             {
                 new Point(1, 1), new Point(2, 1), new Point(3, 1),
                 new Point(1, 2), new Point(2, 2), new Point(3, 2)
@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TwoRectanglesTest()
         {
-            List<Point> wallTiles = Enumerable.Range(0, 100)
+            var wallTiles = Enumerable.Range(0, 100)
                 .Select(y => Enumerable.Range(0, 100).Select(x => new Point(x, y))).SelectMany(p => p)
                 .Concat(new Point[] { new Point(100, 0) }).ToList();
             AssertWallsOptimizedSuccessfully(wallTiles, 2);
@@ -41,7 +41,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void FewPointsTest()
         {
-            List<Point> wallTiles = new List<Point>
+            var wallTiles = new List<Point>
             {
                 new Point(2, 0), new Point(6, 0), new Point(5, 1), new Point(10, 1),
                 new Point(3, 3), new Point(5, 3), new Point(10, 10)
@@ -52,7 +52,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void RealDataAlikeTest()
         {
-            List<Point> wallTiles = new List<Point>
+            var wallTiles = new List<Point>
             {
                 new Point(1, 1), new Point(4, 1), new Point(5, 1), new Point(6, 1),
                     new Point(7, 1), new Point(8, 1), new Point(9, 1),
@@ -69,7 +69,7 @@ namespace ExplainingEveryString.Core.Tests
 
         private void AssertWallsOptimizedSuccessfully(List<Point> wallTiles, Int32 optimumWallsCount)
         {
-            List<Rectangle> walls = new WallsOptimizer().GetWalls(wallTiles);
+            var walls = new WallsOptimizer().GetWalls(wallTiles);
             Assert.That(RectanglesCoversEveryTile(wallTiles, walls));
             Assert.That(walls.Count, Is.LessThanOrEqualTo(optimumWallsCount));
         }
@@ -77,13 +77,13 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void TestingTest()
         {
-            List<Point> wallTiles = new List<Point>
+            var wallTiles = new List<Point>
             {
                 new Point(1, 1), new Point(2, 1), new Point(3, 1),
                 new Point(1, 2), new Point(2, 2), new Point(3, 2),
                 new Point(6, 3), new Point(3, 6), new Point(4, 6)
             };
-            List<Rectangle> walls = new List<Rectangle>
+            var walls = new List<Rectangle>
             {
                 new Rectangle(1, 1, 3, 2), new Rectangle(6, 3, 1, 1), new Rectangle(3, 6, 2, 1)
             };
@@ -94,12 +94,12 @@ namespace ExplainingEveryString.Core.Tests
 
         private Boolean RectanglesCoversEveryTile(IEnumerable<Point> wallTiles, IEnumerable<Rectangle> walls)
         {
-            List<Point> tilesFromWallsArray = new List<Point>();
+            var tilesFromWallsArray = new List<Point>();
             foreach (Rectangle wall in walls)
             {
-                foreach (Int32 x in Enumerable.Range(wall.X, wall.Width))
+                foreach (var x in Enumerable.Range(wall.X, wall.Width))
                 {
-                    foreach (Int32 y in Enumerable.Range(wall.Y, wall.Height))
+                    foreach (var y in Enumerable.Range(wall.Y, wall.Height))
                     {
                         tilesFromWallsArray.Add(new Point(x, y));
                     }

@@ -37,15 +37,15 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
 
         private Single GetNextTargetX()
         {
-            Hitbox hitbox = actor.GetCurrentHitbox();
-            Single width = hitbox.Right - hitbox.Left;
+            var hitbox = actor.GetCurrentHitbox();
+            var width = hitbox.Right - hitbox.Left;
             return startPosition.X + tillLeft + width / 2 + RandomUtility.Next() * (tillRight - tillLeft - width);
         }
 
         private Single GetNextTargetY()
         {
-            Hitbox hitbox = actor.GetCurrentHitbox();
-            Single height = hitbox.Top - hitbox.Bottom;
+            var hitbox = actor.GetCurrentHitbox();
+            var height = hitbox.Top - hitbox.Bottom;
             return startPosition.Y + tillBottom + height / 2 + RandomUtility.Next() * (tillTop - tillBottom - height);
         }
     }
