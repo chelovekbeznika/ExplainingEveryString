@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 using ExplainingEveryString.Core.GameModel.Movement.TargetSelectors;
 
 namespace ExplainingEveryString.Core.GameModel.Movement

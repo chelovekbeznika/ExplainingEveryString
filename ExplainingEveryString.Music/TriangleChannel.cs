@@ -1,10 +1,13 @@
 ﻿using ExplainingEveryString.Music.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ExplainingEveryString.Music
 {
+    /// <summary>
+    /// https://wiki.nesdev.com/w/index.php/APU_Triangle
+    /// Without linear lenght counter (too short and no point in usage of it)
+    /// </summary>
     internal class TriangleChannel : SoundChannel
     {
         private const Byte clockWaveGeneratorCycleStart = 31;

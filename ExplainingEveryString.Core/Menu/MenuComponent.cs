@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Core.GameState;
-using ExplainingEveryString.Core.Math;
+﻿using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;

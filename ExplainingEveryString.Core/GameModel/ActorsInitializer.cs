@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

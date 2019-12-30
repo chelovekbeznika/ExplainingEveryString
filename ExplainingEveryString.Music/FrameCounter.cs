@@ -3,6 +3,10 @@ using System;
 
 namespace ExplainingEveryString.Music
 {
+    /// <summary>
+    /// Frame counter used by NES sound chip as 120/240 HZ clock (or 96/192 HZ clock).
+    /// https://wiki.nesdev.com/w/index.php/APU_Frame_Counter
+    /// </summary>
     internal class FrameCounter : ISoundComponent
     {
         private readonly Int32[] StepsCyclesModeSet = new Int32[] { 3729, 7457, 11185, 18641 };

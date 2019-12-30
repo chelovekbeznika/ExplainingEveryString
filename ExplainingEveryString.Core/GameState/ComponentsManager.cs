@@ -2,7 +2,6 @@
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace ExplainingEveryString.Core.GameState

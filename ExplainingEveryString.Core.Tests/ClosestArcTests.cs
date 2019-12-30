@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.Math;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
-using System;
 
 namespace ExplainingEveryString.Core.Tests
 {

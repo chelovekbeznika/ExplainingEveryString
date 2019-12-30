@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Music.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ExplainingEveryString.Music
 {
@@ -40,6 +39,8 @@ namespace ExplainingEveryString.Music
         }
 
         #region Pulse and noise common section with length counter and envelope
+        //https://wiki.nesdev.com/w/index.php/APU_Envelope
+        //https://wiki.nesdev.com/w/index.php/APU_Length_Counter
         private Boolean startFlag = false;
         private Byte divider = 0;
         protected Byte Decay { get; set; } = 15;

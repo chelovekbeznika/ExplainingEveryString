@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ExplainingEveryString.Data.Level
+﻿namespace ExplainingEveryString.Data.Level
 {
     public static class LevelSequenceAccess
     {

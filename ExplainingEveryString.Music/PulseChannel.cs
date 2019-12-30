@@ -1,10 +1,12 @@
 ﻿using ExplainingEveryString.Music.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ExplainingEveryString.Music
 {
+    /// <summary>
+    /// https://wiki.nesdev.com/w/index.php/APU_Pulse
+    /// </summary>
     internal class PulseChannel : SoundChannel
     {
         private const Byte clockWaveGeneratorCycleStart = 7;
@@ -65,6 +67,9 @@ namespace ExplainingEveryString.Music
                 Countdown(ref currentWavePhase, waveGeneratorClockCyclesSwitched, clockWaveGeneratorCycleStart);
         }
 
+        /// <summary>
+        /// https://wiki.nesdev.com/w/index.php/APU_Sweep
+        /// </summary>
         private class Sweeper
         {
             private Dictionary<SoundChannelParameter, Int32> channelParameters;

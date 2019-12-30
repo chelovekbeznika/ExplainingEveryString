@@ -3,10 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Music
 {
+    /// <summary>
+    /// This class creates music in 16-bit format which replicates principles and work of NES sound chip.
+    /// See more info here <see cref="https://wiki.nesdev.com/w/index.php/APU"/>
+    /// </summary>
     internal class NesSoundChipReplica
     {
         private const Int32 OnePartLength = Constants.SampleRate * 5;
@@ -134,6 +137,10 @@ namespace ExplainingEveryString.Music
             return nextEvent;
         }
 
+        /// <summary>
+        /// https://wiki.nesdev.com/w/index.php/APU_Mixer
+        /// </summary>
+        /// <returns>NES chip output in 0.0 - 1.0 diaposone.</returns>
         private Single GetOutputValue()
         {
             var pulseOutput = FirstPulseOutput + SecondPulseOutput > 0 

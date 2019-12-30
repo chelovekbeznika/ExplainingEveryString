@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace ExplainingEveryString.Music
 {
+    /// <summary>
+    /// https://wiki.nesdev.com/w/index.php/APU_DMC
+    /// </summary>
     internal class DeltaModulationChannel : SoundChannel
     {
         private Int16[] timerLookupTable = new Int16[] { 428, 380, 340, 320, 286, 254, 226, 214, 190, 160, 142, 128, 106, 84, 72, 54 };

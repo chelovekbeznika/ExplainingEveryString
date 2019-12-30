@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace ExplainingEveryString.Music
 {
+    /// <summary>
+    /// https://wiki.nesdev.com/w/index.php/APU_Noise
+    /// </summary>
     internal class NoiseChannel : SoundChannel
     {
         private readonly Int16[] timerLookupTable = 
