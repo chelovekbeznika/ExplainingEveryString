@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Music
 {
@@ -19,6 +20,8 @@ namespace ExplainingEveryString.Music
 
         private Queue<Byte[]> generatedSongParts = new Queue<Byte[]>();
         private readonly Object generatedSongPartsLock = new Object();
+        private Task musicGenerationTask;
+        private CancellationTokenSource cancellation;
         private AutoResetEvent firstPartGenerated = new AutoResetEvent(false);
 
         private Byte FirstPulseOutput => statusController.Pulse1Enabled 
@@ -64,10 +67,16 @@ namespace ExplainingEveryString.Music
 
         internal Byte[] StartMusicGeneration(SongSpecification songSpecification)
         {
-            ThreadPool.QueueUserWorkItem(MusicGeneration, songSpecification);
+            cancellation = new CancellationTokenSource();
+            musicGenerationTask = Task.Run(() => MusicGeneration(songSpecification));
             firstPartGenerated.WaitOne();
             lock (generatedSongPartsLock)
                 return generatedSongParts.Dequeue();
+        }
+
+        internal void StopMusicGeneration()
+        {
+            cancellation.Cancel();
         }
 
         private void MusicGeneration(Object songSpecificationObject)
@@ -84,6 +93,8 @@ namespace ExplainingEveryString.Music
                 nextEvent = MoveEventsQueue(soundEvents, nextEvent, sampleIndex);
                 PutSample(currentPart, sampleIndex % OnePartLength, GetOutputValue());
                 MoveEmulationTowardNextSample();
+                if (cancellation.IsCancellationRequested)
+                    return;
             }
 
             lock (generatedSongPartsLock)

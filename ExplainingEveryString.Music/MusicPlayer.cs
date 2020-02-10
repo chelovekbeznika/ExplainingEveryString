@@ -84,6 +84,7 @@ namespace ExplainingEveryString.Music
             {
                 sound.Stop();
                 songPartsPlaying = 0;
+                soundChipReplica.StopMusicGeneration();
                 soundChipReplica = new NesSoundChipReplica(deltaSamplesLibrary);
                 nowPlaying = null;
             }
