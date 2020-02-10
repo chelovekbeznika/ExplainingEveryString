@@ -3,6 +3,7 @@ using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies
@@ -10,17 +11,22 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
     internal class FirstBoss : Enemy<FirstBossBlueprint>
     {
         private enum BossState { BetweenPhases, TurningOnPhase, InPhase, TurningOffPhase }
+        private enum PhaseType { Start, Shoot, Spawn }
 
         private Int32 currentPhase;
-        private Int32 nextPhase;
         private BossState state = BossState.BetweenPhases;
+        private PhaseType phaseType = PhaseType.Start;
         private Single betweenPhasesDuration;
         private Single minPhaseDuration;
         private Single maxPhaseDuration;
         private EpicEvent phaseOn;
         private EpicEvent phaseOff;
 
-        private FirstBossPhase[] phases;
+        private Dictionary<PhaseType, FirstBossPhase[]> phases;
+
+        private FirstBossPhase CurrentPhase => phaseType != PhaseType.Start 
+            ? phases[phaseType][currentPhase] 
+            : throw new InvalidOperationException("There is not phase in this state!");
 
         protected override void Construct(FirstBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -30,10 +36,22 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.maxPhaseDuration = blueprint.MaxPhaseDuration;
             this.phaseOn = new EpicEvent(level, blueprint.PhaseOnEffect, false, this, true);
             this.phaseOff = new EpicEvent(level, blueprint.PhaseOffEffect, false, this, true);
-            this.phases = blueprint.Phases.Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray();
+            this.phases = new Dictionary<PhaseType, FirstBossPhase[]>
+            {
+                {
+                    PhaseType.Shoot,
+                    blueprint.Phases.Where(phaseSpec => phaseSpec.Behavior.Spawner == null)
+                        .Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray()
+                },
+                {
+                    PhaseType.Spawn,
+                    blueprint.Phases.Where(phase => phase.Behavior.Spawner != null)
+                        .Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray()
+                }
+            };
             var tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
             TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => TurningOnPhase(), this);
-            nextPhase = SelectNextPhase();
+            SwitchToNextPhase();
         }
 
         private FirstBossPhase ConstructPhase(FirstBossPhaseSpecification phase,
@@ -57,7 +75,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         protected override EnemyBehavior Behavior
         {
-            get => state == BossState.InPhase ? phases[currentPhase].Behavior : base.Behavior;
+            get => state == BossState.InPhase ? CurrentPhase.Behavior : base.Behavior;
             set => base.Behavior = value;
         }
 
@@ -68,20 +86,19 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 switch (state)
                 {
                     case BossState.BetweenPhases: return base.SpriteState;
-                    case BossState.TurningOnPhase: return phases[currentPhase].OnSprite;
-                    case BossState.InPhase: return phases[currentPhase].Sprite;
-                    case BossState.TurningOffPhase: return phases[currentPhase].OffSprite;
+                    case BossState.TurningOnPhase: return CurrentPhase.OnSprite;
+                    case BossState.InPhase: return CurrentPhase.Sprite;
+                    case BossState.TurningOffPhase: return CurrentPhase.OffSprite;
                     default: return base.SpriteState;
                 }
             }
         }
         private void TurningOnPhase()
         {
-            currentPhase = nextPhase;
             state = BossState.TurningOnPhase;
             SpriteState.StartOver();
 
-            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOnTime, () => InPhase(), this);
+            TimersComponent.Instance.ScheduleEvent(CurrentPhase.TurningOnTime, () => InPhase(), this);
         }
 
         private void InPhase()
@@ -106,7 +123,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
             phaseOff.TryHandle();
             OnBehaviorChanged(oldSpawner, newSpawner);
-            TimersComponent.Instance.ScheduleEvent(phases[currentPhase].TurningOffTime, () => BetweenPhase(), this);
+            TimersComponent.Instance.ScheduleEvent(CurrentPhase.TurningOffTime, () => BetweenPhase(), this);
         }
 
         private void BetweenPhase()
@@ -114,16 +131,20 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             state = BossState.BetweenPhases;
             SpriteState.StartOver();
 
-            nextPhase = SelectNextPhase();
-            var tillNextState = betweenPhasesDuration 
-                - phases[currentPhase].TurningOffTime
-                - phases[nextPhase].TurningOnTime;
+            var tillNextState = betweenPhasesDuration - CurrentPhase.TurningOffTime - CurrentPhase.TurningOnTime;
+            SwitchToNextPhase();
             TimersComponent.Instance.ScheduleEvent(tillNextState, () => TurningOnPhase(), this);
         }
 
-        private Int32 SelectNextPhase()
+        private void SwitchToNextPhase()
         {
-            return RandomUtility.NextInt(phases.Length);
+            switch (phaseType)
+            {
+                case PhaseType.Start: phaseType = PhaseType.Shoot; break;
+                case PhaseType.Shoot: phaseType = PhaseType.Spawn; break;
+                case PhaseType.Spawn: phaseType = PhaseType.Shoot; break;
+            }
+            currentPhase = RandomUtility.NextInt(phases[phaseType].Length);
         }
     }
 }
