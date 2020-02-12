@@ -98,7 +98,7 @@ namespace ExplainingEveryString.Music.Model
         {
             switch (accidental)
             {
-                case Accidental.None: return notesFrequencies[note];
+                case Accidental.None: case Accidental.Natural: return notesFrequencies[note];
                 case Accidental.Sharp: return notesFrequencies[note] * Semitone;
                 case Accidental.Flat: return notesFrequencies[note] / Semitone;
                 default: throw new ArgumentException(nameof(accidental));

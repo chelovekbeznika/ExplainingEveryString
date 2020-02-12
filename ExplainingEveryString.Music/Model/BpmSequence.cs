@@ -62,8 +62,8 @@ namespace ExplainingEveryString.Music.Model
             var noteType = note.Note.Type;
             var currentAccidental = SequenceAccidental.ContainsKey(noteType)
                 ? SequenceAccidental[noteType] : Accidental.None;
-            if (currentAccidental != Accidental.None)
-                note.Accidental = currentAccidental;
+            if (currentAccidental != Accidental.None && note.Accidental != Accidental.Natural)
+                note.Accidental = currentAccidental; 
         }
     }
 }

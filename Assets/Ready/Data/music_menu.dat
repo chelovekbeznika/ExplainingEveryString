@@ -2,5 +2,9 @@
   {
     "Sprite": "Sprites/Menu/Songs/Winter",
     "SongName": "christmas_tree_was_born_in_forest"
-  }
+  },
+  {
+    "Sprite": "Sprites/Menu/Songs/BossFight",
+    "SongName": "liberty_bell"
+  },
 ]
