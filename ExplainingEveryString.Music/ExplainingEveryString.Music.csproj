@@ -51,6 +51,7 @@
     <Compile Include="FrameCounter.cs" />
     <Compile Include="HardcodedSongs.cs" />
     <Compile Include="ISoundComponent.cs" />
+    <Compile Include="Model\BpmDutySwitch.cs" />
     <Compile Include="Model\BpmSequence.cs" />
     <Compile Include="Model\BpmSoundDirectingEvent.cs" />
     <Compile Include="Model\INote.cs" />
