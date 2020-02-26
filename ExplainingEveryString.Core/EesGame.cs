@@ -13,12 +13,9 @@ namespace ExplainingEveryString.Core
     public class EesGame : Game
     {
         private readonly GraphicsDeviceManager graphics;
-        private IBlueprintsLoader blueprintsLoader;
         private OuterMenuInputProcessor menuInputProcessor;
 
         internal GameStateManager GameState { get; private set; }
-
-        internal AssetsStorage AssetsStorage { get; private set; }
 
         public EesGame()
         {
@@ -36,14 +33,11 @@ namespace ExplainingEveryString.Core
 
         protected override void Initialize()
         {
-            blueprintsLoader = BlueprintsAccess.GetLoader();
-            blueprintsLoader.Load();
-
             var levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
             var musicTestSpecification = MusicTestSpecificationAccess.Load();
 
             var componentsManager =  new ComponentsManager(this, levelSequenceSpecification, 
-                musicTestSpecification, blueprintsLoader);
+                musicTestSpecification);
 
             this.GameState = new GameStateManager(this, levelSequenceSpecification, componentsManager);
             this.menuInputProcessor = new OuterMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
@@ -53,9 +47,6 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            var metadataLoader = AssetsMetadataAccess.GetLoader();
-            AssetsStorage = new AssetsStorage();
-            AssetsStorage.FillAssetsStorages(blueprintsLoader, metadataLoader, Content);
             base.LoadContent();
         }
 

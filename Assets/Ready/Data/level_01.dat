@@ -1,4 +1,8 @@
 {
+  "Blueprints": [
+    "player",
+    "blueprints"
+  ],
   "MusicName": "christmas_tree_was_born_in_forest",
   "TileMap": "TileMaps/level_01",
   "PlayerPosition": {
@@ -17,20 +21,6 @@
         "Height": 1
       },
       "Doors": [
-        {
-          "BlueprintType": "QuarterDelimiterHorizontal",
-          "TilePosition": {
-            "X": 57,
-            "Y": 0
-          }
-        },
-        {
-          "BlueprintType": "QuarterDelimiterVertical",
-          "TilePosition": {
-            "X": 68,
-            "Y": 0
-          }
-        }
       ],
       "MaxEnemiesAtOnce": 2,
       "Enemies": [

@@ -30,12 +30,12 @@ namespace ExplainingEveryString.Core.Menu
             InitMenuInput(menuInputProcessor);
         }
 
-        public override void Initialize()
+        protected override void LoadContent()
         {
             this.background = Game.Content.Load<Texture2D>(@"Sprites/Menu/Background");
             this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             this.visiblePart = InitializeVisiblePart();
-            base.Initialize();
+            base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)

@@ -1,10 +1,12 @@
-﻿namespace ExplainingEveryString.Data.Blueprints
+﻿using System;
+
+namespace ExplainingEveryString.Data.Blueprints
 {
     public static class BlueprintsAccess
     {
-        public static IBlueprintsLoader GetLoader()
+        public static IBlueprintsLoader GetLoader(String[] blueprintsFiles)
         {
-            return new JsonBlueprintsLoader();
+            return new JsonBlueprintsLoader(blueprintsFiles);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core
 {
     internal class GameplayComponent : DrawableGameComponent
     {
-        private readonly IBlueprintsLoader blueprintsLoader;
+        private IBlueprintsLoader blueprintsLoader;
         private Level level;
         private readonly String levelFileName;
         private readonly LevelProgress levelStart;
@@ -33,11 +33,10 @@ namespace ExplainingEveryString.Core
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
 
-        internal GameplayComponent(EesGame game, IBlueprintsLoader blueprintsLoader, String levelFileName, LevelProgress levelStart) 
+        internal GameplayComponent(EesGame game, String levelFileName, LevelProgress levelStart) 
             : base(game)
         {
             this.eesGame = game;
-            this.blueprintsLoader = blueprintsLoader;
             this.levelFileName = levelFileName;
             this.levelStart = levelStart;
 
@@ -47,9 +46,11 @@ namespace ExplainingEveryString.Core
 
         public override void Initialize()
         {
-            var factory = new ActorsFactory(blueprintsLoader);
             var levelLoader = LevelDataAccess.GetLevelLoader();
             this.levelData = levelLoader.Load(levelFileName);
+            this.blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
+            blueprintsLoader.Load();
+            var factory = new ActorsFactory(blueprintsLoader);
             map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
             level = new Level(factory, map, new PlayerInputFactory(this), levelData, levelStart);
             level.CheckpointReached += eesGame.GameState.NotableProgressMaid;
@@ -63,12 +64,21 @@ namespace ExplainingEveryString.Core
             var viewport = Game.GraphicsDevice.Viewport;
             var levelCoordinatesMaster = new CameraObjectGlass(level, viewport, config.Camera);
             var screenCoordinatesMaster = new ScreenCoordinatesMaster(viewport, levelCoordinatesMaster);
-            Camera = new Camera(level, eesGame, screenCoordinatesMaster);   
+            var assetsStorage = CreateFilledAssetsStorage();
+            Camera = new Camera(level, assetsStorage, screenCoordinatesMaster);
             this.mapDisplayer = new TiledMapDisplayer(map, eesGame, screenCoordinatesMaster);
-            EpicEventsProcessor = new EpicEventsProcessor(eesGame.AssetsStorage, level, config);
+            EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level, config);
             this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);
             eesGame.GameState.StartMusicInGame(levelData.MusicName);
             base.LoadContent();
+        }
+
+        private AssetsStorage CreateFilledAssetsStorage()
+        {
+            var metadataLoader = AssetsMetadataAccess.GetLoader();
+            var assetsStorage = new AssetsStorage();
+            assetsStorage.FillAssetsStorages(blueprintsLoader, metadataLoader, eesGame.Content);
+            return assetsStorage;
         }
 
         private FogOfWarRuler ConstructFogOfWarRuler(

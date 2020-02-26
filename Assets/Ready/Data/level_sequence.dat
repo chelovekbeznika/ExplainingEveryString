@@ -7,22 +7,27 @@
   ],
   "Levels": [
     {
-      "LevelData": "level_11.dat",
+      "LevelData": "level_01",
       "ButtonSprite": "Sprites/Menu/LevelSelect/11",
       "LevelsBlockId": "Ice"
     },
     {
-      "LevelData": "level_12.dat",
+      "LevelData": "level_11",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/11",
+      "LevelsBlockId": "Ice"
+    },
+    {
+      "LevelData": "level_12",
       "ButtonSprite": "Sprites/Menu/LevelSelect/12",
       "LevelsBlockId": "Ice"
     },
     {
-      "LevelData": "level_13.dat",
+      "LevelData": "level_13",
       "ButtonSprite": "Sprites/Menu/LevelSelect/13",
       "LevelsBlockId": "Ice"
     },
     {
-      "LevelData": "level_14.dat",
+      "LevelData": "level_14",
       "ButtonSprite": "Sprites/Menu/LevelSelect/14",
       "LevelsBlockId": "Ice"
     }

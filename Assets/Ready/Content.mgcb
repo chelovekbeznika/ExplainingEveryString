@@ -17,8 +17,17 @@
 #begin Data/assets_metadata.dat
 /copy:Data/assets_metadata.dat
 
-#begin Data/blueprints.dat
-/copy:Data/blueprints.dat
+#begin Data/Blueprints/1x.dat
+/copy:Data/Blueprints/1x.dat
+
+#begin Data/Blueprints/blueprints.dat
+/copy:Data/Blueprints/blueprints.dat
+
+#begin Data/Blueprints/first_boss.dat
+/copy:Data/Blueprints/first_boss.dat
+
+#begin Data/Blueprints/player.dat
+/copy:Data/Blueprints/player.dat
 
 #begin Data/config.dat
 /copy:Data/config.dat

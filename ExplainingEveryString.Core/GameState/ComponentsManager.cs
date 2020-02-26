@@ -9,7 +9,6 @@ namespace ExplainingEveryString.Core.GameState
     internal class ComponentsManager
     {
         private EesGame game;
-        private readonly IBlueprintsLoader blueprintsLoader;
 
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
@@ -18,10 +17,9 @@ namespace ExplainingEveryString.Core.GameState
         internal MusicComponent GameMusic { get; private set; }
 
         internal ComponentsManager(EesGame game, LevelSequnceSpecification levelSequenceSpecification,
-            MusicTestButtonSpecification[] musicTestSpecification, IBlueprintsLoader blueprintsLoader)
+            MusicTestButtonSpecification[] musicTestSpecification)
         {
             this.game = game;
-            this.blueprintsLoader = blueprintsLoader;
             Interface = new InterfaceComponent(game);
             Menu = new MenuComponent(game, levelSequenceSpecification, musicTestSpecification);
             MenuMusic = new MusicComponent(game);
@@ -31,7 +29,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void InitNewGameplayComponent(GameProgress gameProgress)
         {
             CurrentGameplay = new GameplayComponent(
-                game, blueprintsLoader, gameProgress.CurrentLevelFileName, gameProgress.LevelProgress);
+                game, gameProgress.CurrentLevelFileName, gameProgress.LevelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
             game.Components.Add(CurrentGameplay);
         }

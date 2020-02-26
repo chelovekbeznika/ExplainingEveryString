@@ -1,4 +1,8 @@
 {
+  "Blueprints": [
+    "player",
+    "1x"
+  ],
   "MusicName": "christmas_tree_was_born_in_forest",
   "TileMap": "TileMaps/Level_11",
   "PlayerPosition": {

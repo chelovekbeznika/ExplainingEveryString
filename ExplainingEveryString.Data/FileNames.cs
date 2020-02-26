@@ -5,16 +5,13 @@ namespace ExplainingEveryString.Data
 {
     internal static class FileNames
     {
-        internal static String Configuration => GetJsonDataPath("config.dat");
-        internal static String Blueprints => GetJsonDataPath("blueprints.dat");
-        internal static String AssetsMetadata => GetJsonDataPath("assets_metadata.dat");
-        internal static String LevelSequence => GetJsonDataPath("level_sequence.dat");
-        internal static String GameProgress => GetJsonDataPath("game_progress.dat");
-        internal static String MusicTestMenu => GetJsonDataPath("music_menu.dat");
+        internal static String Configuration => GetJsonDataPath("config");
+        internal static String AssetsMetadata => GetJsonDataPath("assets_metadata");
+        internal static String LevelSequence => GetJsonDataPath("level_sequence");
+        internal static String GameProgress => GetJsonDataPath("game_progress");
+        internal static String MusicTestMenu => GetJsonDataPath("music_menu");
 
-        internal static String GetJsonDataPath(String fileName)
-        {
-            return Path.Combine("Content", "Data", fileName);
-        }
+        internal static String GetJsonDataPath(String fileName) => Path.Combine("Content", "Data", $"{fileName}.dat");
+        internal static String GetJsonBlueprintsPath(String fileName) => Path.Combine("Content", "Data", "Blueprints", $"{fileName}.dat");
     }
 }

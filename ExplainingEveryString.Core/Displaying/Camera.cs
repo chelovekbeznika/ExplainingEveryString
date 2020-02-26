@@ -9,17 +9,14 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class Camera
     {
-        private AssetsStorage AssetsStorage => game.AssetsStorage;     
-        private readonly Single screenHeight;
+        private AssetsStorage assetsStorage;
         private IScreenCoordinatesMaster screenCoordinatesMaster;
-        private EesGame game;
 
         internal Vector2 PlayerPositionOnScreen => screenCoordinatesMaster.PlayerPosition;
 
-        internal Camera(Level level, EesGame game, IScreenCoordinatesMaster screenCoordinatesMaster)
+        internal Camera(Level level, AssetsStorage assetsStorage, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
-            this.game = game;
-            this.screenHeight = game.GraphicsDevice.Viewport.Height;
+            this.assetsStorage = assetsStorage;
             this.screenCoordinatesMaster = screenCoordinatesMaster;
         }
 
@@ -37,7 +34,7 @@ namespace ExplainingEveryString.Core.Displaying
                 return;
 
             var spriteState = toDraw.SpriteState;
-            var spriteData = AssetsStorage.GetSprite(spriteState.Name);
+            var spriteData = assetsStorage.GetSprite(spriteState.Name);
             var position = toDraw.Position;
             var drawPosition = screenCoordinatesMaster.ConvertToScreenPosition(position);
             var drawPart = AnimationHelp.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);
@@ -62,13 +59,13 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal Rectangle PositionOnScreen(IDisplayble displayble)
         {
-            var sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
+            var sprite = assetsStorage.GetSprite(displayble.SpriteState.Name);
             return screenCoordinatesMaster.PositionOnScreen(displayble.Position, sprite);
         }
 
         internal Boolean IsVisibleOnScreen(IDisplayble displayble)
         {
-            var sprite = AssetsStorage.GetSprite(displayble.SpriteState.Name);
+            var sprite = assetsStorage.GetSprite(displayble.SpriteState.Name);
             return screenCoordinatesMaster.IsVisibleOnScreen(displayble.Position, sprite);
         }
     }
