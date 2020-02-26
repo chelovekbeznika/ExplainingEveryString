@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core
 
         internal Dictionary<String, SpriteData> Build(IEnumerable<String> sprites)
         {
-            var spritesData = new Dictionary<string, SpriteData>();
+            var spritesData = new Dictionary<String, SpriteData>();
             foreach (var spriteName in sprites)
             {
                 spritesData[spriteName] = new SpriteData

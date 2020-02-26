@@ -7,11 +7,6 @@
   ],
   "Levels": [
     {
-      "LevelData": "level_01",
-      "ButtonSprite": "Sprites/Menu/LevelSelect/11",
-      "LevelsBlockId": "Ice"
-    },
-    {
       "LevelData": "level_11",
       "ButtonSprite": "Sprites/Menu/LevelSelect/11",
       "LevelsBlockId": "Ice"
