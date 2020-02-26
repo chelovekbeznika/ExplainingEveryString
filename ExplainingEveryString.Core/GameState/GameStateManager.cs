@@ -94,6 +94,7 @@ namespace ExplainingEveryString.Core.GameState
 
         private void StartCurrentLevel()
         {
+            levelSequence.MarkLevelAsCurrentContinuePoint(gameProgress.CurrentLevelFileName);
             componentsManager.DeleteCurrentGameplayComponent();
             componentsManager.InitNewGameplayComponent(gameProgress);
             SwitchToInGameState();

@@ -29,9 +29,14 @@ namespace ExplainingEveryString.Core.GameState
             ? Specification.Levels[levelsCompleted].LevelData
             : Specification.Levels[Specification.Levels.Length - 1].LevelData;
 
-        internal Boolean LevelIsAvailable(String levelFileName)
+        internal Boolean LevelIsAvailable(String levelName)
         {
-            return levelsCompleted >= fileNameToNumberMapping[levelFileName];
+            return levelsCompleted >= fileNameToNumberMapping[levelName];
+        }
+
+        internal void MarkLevelAsCurrentContinuePoint(String levelName)
+        {
+            currentLevel = fileNameToNumberMapping[levelName];
         }
 
         internal void MarkLevelComplete()
