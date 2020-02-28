@@ -6,9 +6,13 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class EnemyInfoDisplayer
     {
+        
         internal const String HealthBarTexture = "EnemyHealthBar";
+        internal const String RecentlyHitHealthBarTexture = "RecentlyHitEnemyHealthBar";
 
+        private const Single RecentHitThreshold = 0.2f;
         private readonly SpriteData healthBar;
+        private readonly SpriteData recentlyHitHealthBar;
         private readonly Int32 pixelsBetweenEnemyAndHealthBar = 8;
         private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
 
@@ -16,6 +20,7 @@ namespace ExplainingEveryString.Core.Interface
         {
             this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
             this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
+            this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, RecentlyHitHealthBarTexture);
         }
 
         internal void Draw(List<EnemyInterfaceInfo> enemiesInterfaceInfo)
@@ -28,21 +33,22 @@ namespace ExplainingEveryString.Core.Interface
 
         private void Draw(EnemyInterfaceInfo enemyInterfaceInfo)
         {
+            var currentHealthBar = enemyInterfaceInfo.SecondsFromLastHit > RecentHitThreshold ? healthBar : recentlyHitHealthBar;
             var healthRemained = enemyInterfaceInfo.Health / enemyInterfaceInfo.MaxHealth;
-            var healthBarPosition = GetHealthBarPosition(enemyInterfaceInfo.PositionOnScreen);
-            interfaceSpriteDisplayer.Draw(healthBar, healthBarPosition, new CenterPartDisplayer(), healthRemained);
+            var healthBarPosition = GetHealthBarPosition(enemyInterfaceInfo.PositionOnScreen, currentHealthBar);
+            interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new CenterPartDisplayer(), healthRemained);
         }
 
-        private Vector2 GetHealthBarPosition(Rectangle positionOnScreen)
+        private Vector2 GetHealthBarPosition(Rectangle positionOnScreen, SpriteData currentHealthBar)
         {
             var healthBarPosition = new Vector2
             {
-                X = positionOnScreen.Center.X - healthBar.Width / 2,
-                Y = positionOnScreen.Top - healthBar.Height / 2 - pixelsBetweenEnemyAndHealthBar
+                X = positionOnScreen.Center.X - currentHealthBar.Width / 2,
+                Y = positionOnScreen.Top - currentHealthBar.Height / 2 - pixelsBetweenEnemyAndHealthBar
             };
             if (healthBarPosition.Y <= 0)
             {
-                healthBarPosition.Y = positionOnScreen.Bottom + healthBar.Height / 2 + pixelsBetweenEnemyAndHealthBar;
+                healthBarPosition.Y = positionOnScreen.Bottom + currentHealthBar.Height / 2 + pixelsBetweenEnemyAndHealthBar;
             }
             return healthBarPosition;
         }

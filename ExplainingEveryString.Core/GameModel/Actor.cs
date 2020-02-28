@@ -22,9 +22,20 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
         public Vector2 OldPosition { get; private set; }
-        private Single Width { get; set; }
-        private Single Height { get; set; }
-        public virtual Single HitPoints { get; set; }
+        private Single width;
+        private Single height;
+        private Single hitPoints;
+        public virtual Single HitPoints
+        {
+            get => hitPoints;
+            set
+            {
+                if (value < hitPoints)
+                    FromLastHit = 0;
+                hitPoints = value;
+            }
+        }
+        public Single FromLastHit { get; private set; } = Single.MaxValue;
 
         public virtual SpriteState SpriteState { get; private set; }
         public virtual IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
@@ -46,13 +57,15 @@ namespace ExplainingEveryString.Core.GameModel
         protected virtual void Construct(TBlueprint blueprint, ActorStartInfo info, Level level, ActorsFactory factory)
         {
             this.SpriteState = new SpriteState(blueprint.DefaultSprite);
-            this.Height = blueprint.Height;
-            this.Width = blueprint.Width;
+            this.height = blueprint.Height;
+            this.width = blueprint.Width;
             this.HitPoints = blueprint.Hitpoints;
         }
 
         public virtual void Update(Single elapsedSeconds)
         {
+            if (FromLastHit < Single.MaxValue)
+                FromLastHit += elapsedSeconds;
             SpriteState.Update(elapsedSeconds);
         }
 
@@ -90,10 +103,10 @@ namespace ExplainingEveryString.Core.GameModel
         {
             return new Hitbox
             {
-                Bottom = center.Y - Height / 2,
-                Top = center.Y + Height / 2,
-                Left = center.X - Width / 2,
-                Right = center.X + Width / 2
+                Bottom = center.Y - height / 2,
+                Top = center.Y + height / 2,
+                Left = center.X - width / 2,
+                Right = center.X + width / 2
             };
         }
     }

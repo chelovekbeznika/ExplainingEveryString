@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core.Displaying
     {
         Single HitPoints { get; }
         Single MaxHitPoints { get; }
+        Single FromLastHit { get; }
         Boolean ShowInterfaceInfo { get; }
     }
 }

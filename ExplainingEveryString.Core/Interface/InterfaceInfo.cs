@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core.Interface
     {
         internal Single MaxHealth { get; set; }
         internal Single Health { get; set; }
+        internal Single SecondsFromLastHit { get; set; }
         internal Rectangle PositionOnScreen { get; set; }
     }
 

@@ -67,8 +67,9 @@ namespace ExplainingEveryString.Core
             String[] animatedSprites = new String[] 
             {
                 HealthBarDisplayer.HealthBarTexture, HealthBarDisplayer.EmptyHealthBarTexture,
-                EnemyInfoDisplayer.HealthBarTexture,
+                EnemyInfoDisplayer.HealthBarTexture, EnemyInfoDisplayer.RecentlyHitHealthBarTexture,
                 BossInfoDisplayer.HealthBarTexture, BossInfoDisplayer.EmptyHealthBarTexture,
+                BossInfoDisplayer.RecentlyHitHealthBarTexture, BossInfoDisplayer.RecentlyHitEmptyHealthBarTexture,
                 DashStateDisplayer.ActiveTexture, DashStateDisplayer.AvailableTexture,
                 DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture
             }.Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();           

@@ -43,6 +43,7 @@ namespace ExplainingEveryString.Core.Interface
             {
                 Health = interfaceAccessable.HitPoints,
                 MaxHealth = interfaceAccessable.MaxHitPoints,
+                SecondsFromLastHit = interfaceAccessable.FromLastHit,
                 PositionOnScreen = camera.PositionOnScreen(interfaceAccessable)
             };
         }
