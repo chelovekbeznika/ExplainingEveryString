@@ -33,7 +33,7 @@ namespace ExplainingEveryString.Core.Interface
 
         private void Draw(EnemyInterfaceInfo enemyInterfaceInfo)
         {
-            var currentHealthBar = enemyInterfaceInfo.SecondsFromLastHit > RecentHitThreshold ? healthBar : recentlyHitHealthBar;
+            var currentHealthBar = enemyInterfaceInfo.FromLastHit > RecentHitThreshold ? healthBar : recentlyHitHealthBar;
             var healthRemained = enemyInterfaceInfo.Health / enemyInterfaceInfo.MaxHealth;
             var healthBarPosition = GetHealthBarPosition(enemyInterfaceInfo.PositionOnScreen, currentHealthBar);
             interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new CenterPartDisplayer(), healthRemained);

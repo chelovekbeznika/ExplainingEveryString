@@ -27,6 +27,7 @@ namespace ExplainingEveryString.Core.Interface
             {
                 Health = player.HitPoints,
                 MaxHealth = player.MaxHitPoints,
+                FromLastHit = player.FromLastHit,
                 DashCooldown = player.DashController.RechargeTime,
                 TillDashRecharge = player.DashController.TillRecharge,
                 DashState = player.DashController.IsActive 
@@ -43,7 +44,7 @@ namespace ExplainingEveryString.Core.Interface
             {
                 Health = interfaceAccessable.HitPoints,
                 MaxHealth = interfaceAccessable.MaxHitPoints,
-                SecondsFromLastHit = interfaceAccessable.FromLastHit,
+                FromLastHit = interfaceAccessable.FromLastHit,
                 PositionOnScreen = camera.PositionOnScreen(interfaceAccessable)
             };
         }

@@ -31,8 +31,8 @@ namespace ExplainingEveryString.Core.Interface
 
         public void Draw(EnemyInterfaceInfo bossInfo)
         {
-            var currentHealthBar = bossInfo.SecondsFromLastHit > RecentHitThreshold ? healthBar : recentlyHitHealthBar;
-            var currentEmptyHealthBar = bossInfo.SecondsFromLastHit > RecentHitThreshold ? emptyHealthBar : recentlyHitEmptyHealthBar;
+            var currentHealthBar = bossInfo.FromLastHit > RecentHitThreshold ? healthBar : recentlyHitHealthBar;
+            var currentEmptyHealthBar = bossInfo.FromLastHit > RecentHitThreshold ? emptyHealthBar : recentlyHitEmptyHealthBar;
             var healthRemained = bossInfo.Health / bossInfo.MaxHealth;
             var healthBarPosition = new Vector2
             {

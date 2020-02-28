@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Interface
     {
         internal Single MaxHealth { get; set; }
         internal Single Health { get; set; }
-        internal Single SecondsFromLastHit { get; set; }
+        internal Single FromLastHit { get; set; }
         internal Rectangle PositionOnScreen { get; set; }
     }
 
@@ -25,6 +25,7 @@ namespace ExplainingEveryString.Core.Interface
         private Single health;
         internal Single MaxHealth { get; set; }
         internal Single Health { get => health; set => health = value > 0 ? value : 0; }
+        internal Single FromLastHit { get; set; }
         internal Single DashCooldown { get; set; }
         internal Single TillDashRecharge { get; set; }
         internal DashState DashState { get; set; }
