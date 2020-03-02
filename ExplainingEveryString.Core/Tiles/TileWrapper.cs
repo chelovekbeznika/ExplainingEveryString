@@ -46,8 +46,8 @@ namespace ExplainingEveryString.Core.Tiles
             var result = new List<Point>();
             var layer = TiledMap.TileLayers.FirstOrDefault(tl => tl.Name == layerName);
             if (layer != null)
-                foreach (var row in Enumerable.Range(0, TiledMap.Height))
-                    foreach (var column in Enumerable.Range(0, TiledMap.Width))
+                foreach (UInt16 row in Enumerable.Range(0, TiledMap.Height))
+                    foreach (UInt16 column in Enumerable.Range(0, TiledMap.Width))
                     {
                         if (layer.TryGetTile(column, row, out TiledMapTile? wallTile))
                         {
@@ -64,8 +64,9 @@ namespace ExplainingEveryString.Core.Tiles
             var tileset = map.GetTilesetByTileGlobalIdentifier(tileId);
             if (tileset != null)
             {
+                var firstGlobalIdentifier = map.GetTilesetFirstGlobalIdentifier(tileset);
                 var tilesetTile = tileset.Tiles.FirstOrDefault
-                    (tst => tst.LocalTileIdentifier == tileId - tileset.FirstGlobalIdentifier);
+                    (tst => tst.LocalTileIdentifier == tileId - firstGlobalIdentifier);
                 if (tilesetTile != null && tilesetTile.Properties.ContainsKey(property))
                     return Boolean.Parse(tilesetTile.Properties[property]);
                 else

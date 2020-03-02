@@ -120,8 +120,13 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)packages\NUnit.ConsoleRunner.3.10.0\tools\NUNIT3-CONSOLE.exe $(SolutionDir)ExplainingEveryString.Core.Tests/bin/$(ConfigurationName)/ExplainingEveryString.Core.Tests.dll
-"%25ProgramFiles(x86)%25\MSBuild\MonoGame\v3.0\Tools\mgcb.exe" /w:$(SolutionDir)Assets/Ready /@:../../Assets/Ready/Content.mgcb /config:$(ConfigurationName)</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)packages\NUnit.ConsoleRunner.3.11.1\tools\NUNIT3-CONSOLE.exe $(SolutionDir)ExplainingEveryString.Core.Tests/bin/$(ConfigurationName)/ExplainingEveryString.Core.Tests.dll
+if not exist $(SolutionDir)build\PipelineImporters md $(SolutionDir)build\PipelineImporters
+copy /Y $(SolutionDir)packages\MonoGame.Extended.3.7.0\lib\netstandard2.0\MonoGame.Extended.dll $(SolutionDir)build\PipelineImporters\
+copy /Y $(SolutionDir)packages\MonoGame.Extended.Tiled.3.7.0\lib\netstandard2.0\MonoGame.Extended.Tiled.dll $(SolutionDir)build\PipelineImporters\
+copy /Y $(SolutionDir)packages\MonoGame.Extended.Content.Pipeline.3.7.0\lib\netstandard2.0\MonoGame.Extended.Content.Pipeline.dll $(SolutionDir)build\PipelineImporters\
+"%25ProgramFiles(x86)%25\MSBuild\MonoGame\v3.0\Tools\mgcb.exe" /w:$(SolutionDir)Assets/Ready /@:../../Assets/Ready/Content.mgcb /config:$(ConfigurationName)
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

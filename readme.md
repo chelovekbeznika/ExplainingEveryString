@@ -15,6 +15,6 @@ Open your VS studio solution and build solution. It should find, build and copy 
 # How to add/edit other assets
 1. Create and save "source" or "preexported" version in "Raw" folder if necessary.
 2. Export/save ready for adding to mgcb project assets in "Ready" folder.
-3. Add it to mgcb project
+3. Add it to mgcb project. WARNING! mgcb project will work after first build (game postbuild events should be executed).
 # History info
 Some time I stored assets [here](https://github.com/chelovekbeznika/ExplainingEveryStringAssets). Now this repository in archive mode.
