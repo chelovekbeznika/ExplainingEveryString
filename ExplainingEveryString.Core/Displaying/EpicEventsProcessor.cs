@@ -9,11 +9,13 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class EpicEventsProcessor
     {
-        private AssetsStorage assetsStorage;
-        private Level level;
+        private readonly AssetsStorage assetsStorage;
+        private readonly Level level;
         private List<SpecEffect> activeSpecEffects = new List<SpecEffect>();
-        private Dictionary<String, Single> soundsToPlay = new Dictionary<String, Single>();
+        private readonly Dictionary<String, Single> soundsToPlay = new Dictionary<String, Single>();
+        private readonly HashSet<String> soundsRecentlyPlayed = new HashSet<String>();
         private readonly Single fadingOutDistance;
+        private const Single SameSoundTimeout = 1.0F / 15;
 
         internal EpicEventsProcessor(AssetsStorage assetsStorage, Level level, Configuration config)
         {
@@ -34,10 +36,15 @@ namespace ExplainingEveryString.Core.Displaying
         private void PlaySounds()
         {
             foreach (var soundPair in soundsToPlay)
-            {
+            {   
                 var soundName = soundPair.Key;
-                var volume = soundPair.Value;
-                assetsStorage.GetSound(soundName).Play(volume, 0, 0);
+                var volume = soundPair.Value; 
+                if (!soundsRecentlyPlayed.Contains(soundName))
+                {
+                    assetsStorage.GetSound(soundName).Play(volume, 0, 0);
+                    soundsRecentlyPlayed.Add(soundName);
+                    TimersComponent.Instance.ScheduleEvent(SameSoundTimeout, () => soundsRecentlyPlayed.Remove(soundName));
+                }
             }
             soundsToPlay.Clear();
         }
