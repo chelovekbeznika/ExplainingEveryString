@@ -2010,6 +2010,11 @@
 /processorParam:TextureFormat=Color
 /build:TileSets/level_11.png
 
+#begin TileSets/level_11.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:TileSets/level_11.tsx
+
 #begin Time.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
