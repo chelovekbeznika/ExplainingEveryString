@@ -284,8 +284,8 @@
     },
     {
       "Name": "Sprites/Interface/EnemyBehindScreen",
-      "AnimationFrames": 2,
-      "DefaultAnimationCycle": 0.5
+      "AnimationFrames": 4,
+      "DefaultAnimationCycle": 0.8
     },
     {
       "Name": "Sprites/FogOfWar/Test/1",
