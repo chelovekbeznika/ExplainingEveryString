@@ -1,7 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Menu;
-using ExplainingEveryString.Data.AssetsMetadata;
-using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;

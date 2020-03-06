@@ -1,9 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Level;
-using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.Interface
