@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.2" tiledversion="1.3.1" name="level_11" tilewidth="16" tileheight="16" tilecount="256" columns="16">
- <image source="level_11.png" width="256" height="256"/>
+ <image source="1x_tiles.png" width="256" height="256"/>
  <tile id="5">
   <properties>
    <property name="Wall" type="bool" value="true"/>
