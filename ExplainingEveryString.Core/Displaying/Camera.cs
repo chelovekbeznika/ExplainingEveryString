@@ -65,8 +65,18 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal Boolean IsVisibleOnScreen(IDisplayble displayble)
         {
+            if (!displayble.IsVisible)
+                return false;
             var sprite = assetsStorage.GetSprite(displayble.SpriteState.Name);
             return screenCoordinatesMaster.IsVisibleOnScreen(displayble.Position, sprite);
+        }
+
+        internal Vector2 GetScreenBorderDangerDirection(IDisplayble displaybleEnemy)
+        {
+            var sprite = assetsStorage.GetSprite(displaybleEnemy.SpriteState.Name);
+            var enemyPosition = screenCoordinatesMaster.ConvertToScreenPosition(displaybleEnemy.Position);
+            return ScreenCoordinatesHelper.GetScreenBorderDangerDirection(
+                screenCoordinatesMaster.ScreenCovers, PlayerPositionOnScreen, enemyPosition);
         }
     }
 }

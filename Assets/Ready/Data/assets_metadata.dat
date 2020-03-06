@@ -283,6 +283,11 @@
       "DefaultAnimationCycle": 1.0
     },
     {
+      "Name": "Sprites/Interface/EnemyBehindScreen",
+      "AnimationFrames": 2,
+      "DefaultAnimationCycle": 0.5
+    },
+    {
       "Name": "Sprites/FogOfWar/Test/1",
       "AnimationFrames": 7,
       "DefaultAnimationCycle": 7.0

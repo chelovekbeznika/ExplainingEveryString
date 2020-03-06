@@ -23,6 +23,7 @@ namespace ExplainingEveryString.Core
         private GameTimeDisplayer gameTimeDisplayer;
         private EnemyInfoDisplayer enemiesInfoDisplayer;
         private BossInfoDisplayer bossInfoDisplayer;
+        private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
         {
@@ -54,6 +55,7 @@ namespace ExplainingEveryString.Core
             dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer, sprites);
             enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer, sprites);
             bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites);
+            enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer, sprites);
             var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
 
@@ -71,7 +73,8 @@ namespace ExplainingEveryString.Core
                 BossInfoDisplayer.HealthBarTexture, BossInfoDisplayer.EmptyHealthBarTexture,
                 BossInfoDisplayer.RecentlyHitHealthBarTexture, BossInfoDisplayer.RecentlyHitEmptyHealthBarTexture,
                 DashStateDisplayer.ActiveTexture, DashStateDisplayer.AvailableTexture,
-                DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture
+                DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture,
+                EnemiesBehindScreenDisplayer.DangerSign
             }.Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();           
             return spriteDataBuilder.Build(animatedSprites);
         }
@@ -89,6 +92,7 @@ namespace ExplainingEveryString.Core
             {
                 spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp);
                 enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);
+                enemiesBehindScreenDisplayer.Draw(interfaceInfo.HiddenEnemies);
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
                 gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);

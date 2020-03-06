@@ -15,16 +15,16 @@ namespace ExplainingEveryString.Core.Interface
         private readonly SpriteData nonAvailable;
         private readonly SpriteData cooldown;
         private readonly SpriteData active;
-        private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
+        private readonly InterfaceSpriteDisplayer spriteDisplayer;
         private readonly HealthBarDisplayer healthBarDisplayer;
         private Int32 PixelsFromLeft => healthBarDisplayer.MarginOfLeftEdge - 16;
         private Int32 PixelsFromBottom => healthBarDisplayer.HeightOfTopEdge;
 
-        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, InterfaceSpriteDisplayer animationController,
+        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, InterfaceSpriteDisplayer spriteDisplayer,
             Dictionary<String, SpriteData> sprites)
         {
             this.healthBarDisplayer = healthBarDisplayer;
-            this.interfaceSpriteDisplayer = animationController;
+            this.spriteDisplayer = spriteDisplayer;
             this.available = TexturesHelper.GetSprite(sprites, AvailableTexture);
             this.nonAvailable = TexturesHelper.GetSprite(sprites, NonAvailableTexture);
             this.cooldown = TexturesHelper.GetSprite(sprites, CooldownTexture);
@@ -36,21 +36,21 @@ namespace ExplainingEveryString.Core.Interface
             var barPosition = new Vector2
             {
                 X = PixelsFromLeft,
-                Y = interfaceSpriteDisplayer.ScreenHeight - PixelsFromBottom - available.Height
+                Y = spriteDisplayer.ScreenHeight - PixelsFromBottom - available.Height
             };
             var cooldownRemained = interfaceInfo.TillDashRecharge / interfaceInfo.DashCooldown;
             switch (interfaceInfo.DashState)
             {
                 case DashState.Active:
-                    interfaceSpriteDisplayer.Draw(active, barPosition);
+                    spriteDisplayer.Draw(active, barPosition);
                     break;
                 case DashState.Nonavailable:
-                    interfaceSpriteDisplayer.Draw(cooldown, barPosition, new LeftPartDisplayer(), cooldownRemained);
-                    interfaceSpriteDisplayer.Draw(nonAvailable, barPosition, new RightPartDisplayer(), 1 - cooldownRemained);
+                    spriteDisplayer.Draw(cooldown, barPosition, new LeftPartDisplayer(), cooldownRemained);
+                    spriteDisplayer.Draw(nonAvailable, barPosition, new RightPartDisplayer(), 1 - cooldownRemained);
                     break;
                 case DashState.Available:
-                    interfaceSpriteDisplayer.Draw(cooldown, barPosition, new LeftPartDisplayer(), cooldownRemained);
-                    interfaceSpriteDisplayer.Draw(available, barPosition, new RightPartDisplayer(), 1 - cooldownRemained);
+                    spriteDisplayer.Draw(cooldown, barPosition, new LeftPartDisplayer(), cooldownRemained);
+                    spriteDisplayer.Draw(available, barPosition, new RightPartDisplayer(), 1 - cooldownRemained);
                     break;
             }
         }

@@ -14,11 +14,11 @@ namespace ExplainingEveryString.Core.Interface
         private readonly SpriteData healthBar;
         private readonly SpriteData recentlyHitHealthBar;
         private readonly Int32 pixelsBetweenEnemyAndHealthBar = 8;
-        private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
+        private readonly InterfaceSpriteDisplayer spriteDisplayer;
 
-        internal EnemyInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, Dictionary<String, SpriteData> sprites)
+        internal EnemyInfoDisplayer(InterfaceSpriteDisplayer spriteDisplayer, Dictionary<String, SpriteData> sprites)
         {
-            this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
+            this.spriteDisplayer = spriteDisplayer;
             this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
             this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, RecentlyHitHealthBarTexture);
         }
@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.Interface
             var currentHealthBar = enemyInterfaceInfo.FromLastHit > RecentHitThreshold ? healthBar : recentlyHitHealthBar;
             var healthRemained = enemyInterfaceInfo.Health / enemyInterfaceInfo.MaxHealth;
             var healthBarPosition = GetHealthBarPosition(enemyInterfaceInfo.PositionOnScreen, currentHealthBar);
-            interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new CenterPartDisplayer(), healthRemained);
+            spriteDisplayer.Draw(currentHealthBar, healthBarPosition, new CenterPartDisplayer(), healthRemained);
         }
 
         private Vector2 GetHealthBarPosition(Rectangle positionOnScreen, SpriteData currentHealthBar)

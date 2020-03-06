@@ -1,6 +1,9 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Level;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.Interface
@@ -17,6 +20,9 @@ namespace ExplainingEveryString.Core.Interface
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
                             .Where(e => e.ShowInterfaceInfo && e != activeActors.Boss)
                             .Select(e => GetInterfaceInfo(e, camera)).ToList(),
+                HiddenEnemies = activeActors.Enemies
+                            .Where(e => e.IsVisible && !camera.IsVisibleOnScreen(e))
+                            .Select(e => camera.GetScreenBorderDangerDirection(e)).ToList(),
                 Boss = activeActors.Boss != null ? GetInterfaceInfo(activeActors.Boss, camera) : null
             };
         }

@@ -87,6 +87,7 @@
     <Compile Include="GameModel\Enemies\FirstBossPhase.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFromListTargetsSelector.cs" />
     <Compile Include="Interface\BossInfoDisplayer.cs" />
+    <Compile Include="Interface\EnemiesBehindScreenDisplayer.cs" />
     <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\DashStateDisplayer.cs" />
     <Compile Include="Interface\InterfaceInfoExtractor.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="Interface\ISpritePartDisplayer.cs" />
     <Compile Include="Interface\TextureLoadingHelper.cs" />
     <Compile Include="Math\AnimationHelp.cs" />
+    <Compile Include="Math\GeometryHelper.cs" />
+    <Compile Include="Math\ScreenCoordinatesHelper.cs" />
     <Compile Include="Menu\IMenuItemsContainerBuilder.cs" />
     <Compile Include="Menu\InnerMenuInputProcessor.cs" />
     <Compile Include="Menu\LevelSelectMenuBuilder.cs" />

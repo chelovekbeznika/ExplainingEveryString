@@ -10,7 +10,7 @@ namespace ExplainingEveryString.Core.Interface
         internal const String HealthBarTexture = "HealthBar";
         internal const String EmptyHealthBarTexture = "EmptyHealthBar";
 
-        private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
+        private readonly InterfaceSpriteDisplayer spriteDisplayer;
         private readonly SpriteData healthBar;
         private readonly SpriteData emptyHealthBar;
         private readonly Int32 pixelsFromLeft = 32;
@@ -22,9 +22,9 @@ namespace ExplainingEveryString.Core.Interface
         internal Int32 MarginOfLeftEdge => pixelsFromLeft;
         internal Int32 HeightOfTopEdge => pixelsFromBottom + healthBar.Height;
 
-        internal HealthBarDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, Dictionary<String, SpriteData> sprites)
+        internal HealthBarDisplayer(InterfaceSpriteDisplayer spriteDisplayer, Dictionary<String, SpriteData> sprites)
         {
-            this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
+            this.spriteDisplayer = spriteDisplayer;
             this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
             this.emptyHealthBar = TexturesHelper.GetSprite(sprites, EmptyHealthBarTexture);
         }
@@ -32,10 +32,10 @@ namespace ExplainingEveryString.Core.Interface
         internal void Draw(PlayerInterfaceInfo interfaceInfo)
         {
             var healthRemained = interfaceInfo.Health / interfaceInfo.MaxHealth;
-            var basePosition = new Vector2(pixelsFromLeft, interfaceSpriteDisplayer.ScreenHeight - pixelsFromBottom - healthBar.Height);
+            var basePosition = new Vector2(pixelsFromLeft, spriteDisplayer.ScreenHeight - pixelsFromBottom - healthBar.Height);
             var position = basePosition + CalculateRecentHitShake(interfaceInfo.FromLastHit);
-            interfaceSpriteDisplayer.Draw(healthBar, position, new LeftPartDisplayer(), healthRemained);
-            interfaceSpriteDisplayer.Draw(emptyHealthBar, position, new RightPartDisplayer(), 1 - healthRemained);
+            spriteDisplayer.Draw(healthBar, position, new LeftPartDisplayer(), healthRemained);
+            spriteDisplayer.Draw(emptyHealthBar, position, new RightPartDisplayer(), 1 - healthRemained);
         }
 
         private Vector2 CalculateRecentHitShake(Single fromLastHit)
