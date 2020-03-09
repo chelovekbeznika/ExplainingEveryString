@@ -311,6 +311,58 @@
       "Name": "Sprites/FogOfWar/Level1X/4",
       "AnimationFrames": 12,
       "DefaultAnimationCycle": 3.0
+    },
+    {
+      "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Doors/Level2X/MediumWhirlwind",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Doors/Level2X/BigWhirlwind",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/0",
+      "AnimationFrames": 3,
+      "DefaultAnimationCycle": 0.23
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/1",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 0.98
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/2",
+      "AnimationFrames": 7,
+      "DefaultAnimationCycle": 0.55
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/3",
+      "AnimationFrames": 7,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/4",
+      "AnimationFrames": 8,
+      "DefaultAnimationCycle": 0.57
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/5",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 0.32
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/6",
+      "AnimationFrames": 3,
+      "DefaultAnimationCycle": 0.63
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level2X/7",
+      "AnimationFrames": 4,
+      "DefaultAnimationCycle": 0.33
     }
   ]
 }
