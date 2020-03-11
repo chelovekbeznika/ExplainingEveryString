@@ -21,5 +21,10 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
             return new SpriteSpecification[] { specification.Sprite }
                 .Concat(specification.Barrels.Select(b => b.Bullet.Sprite));
         }
+
+        public IEnumerable<SpriteSpecification> GetSpritesFromWeapon(PostMortemWeaponSpecification specification)
+        {
+            return specification.Barrels.Select(b => b.Bullet.Sprite);
+        }
     }
 }

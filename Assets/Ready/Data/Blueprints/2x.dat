@@ -1,0 +1,97 @@
+{
+  "Hunter_mk2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 25.0,
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 8.0,
+    "CollideTag": "Hunter",
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 150.0,
+          "maxSpeed": 350.0,
+          "acceleration": 800.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+          "PostMortemSurprise": {
+            "Weapon": {
+              "AimType": "AimAtPlayer",
+              "Barrels": [
+                {
+                  "Length": 0.0,
+                  "AngleCorrection": 0.0,
+                  "Accuracy": 5.0,
+                  "Bullet": {
+                    "TrajectoryParameters": {
+                      "speed": 200.0
+                    },
+                    "Damage": 10.0,
+                    "TimeToLive": 5.0,
+                    "Sprite": {
+                      "Name": "Sprites/Enemies/HelicopterBullet"
+                    }
+                  }
+                },
+                {
+                  "Length": 0.0,
+                  "AngleCorrection": -5.0,
+                  "Accuracy": 5.0,
+                  "Bullet": {
+                    "TrajectoryParameters": {
+                      "speed": 200.0
+                    },
+                    "Damage": 10.0,
+                    "TimeToLive": 5.0,
+                    "Sprite": {
+                      "Name": "Sprites/Enemies/HelicopterBullet"
+                    }
+                  }
+                },
+                {
+                  "Length": 0.0,
+                  "AngleCorrection": 10.0,
+                  "Accuracy": 5.0,
+                  "Bullet": {
+                    "TrajectoryParameters": {
+                      "speed": 200.0
+                    },
+                    "Damage": 10.0,
+                    "TimeToLive": 5.0,
+                    "Sprite": {
+                      "Name": "Sprites/Enemies/HelicopterBullet"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/Hunter"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/SmallExplosion",
+        "Volume": 0.25
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/Hunter",
+        "AnimationCycle": 0.2
+      }
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/16_16",
+      "AnimationCycle": 0.15
+    },
+    "DefaultAppearancePhaseDuration": 0.6666667
+  }
+}

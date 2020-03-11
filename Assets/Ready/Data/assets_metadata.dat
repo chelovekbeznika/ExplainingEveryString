@@ -313,6 +313,10 @@
       "DefaultAnimationCycle": 3.0
     },
     {
+      "Name": "Sprites/Enemies/Level2X/Death/Hunter",
+      "AnimationFrames": 5
+    },
+    {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
       "AnimationFrames": 7
     },

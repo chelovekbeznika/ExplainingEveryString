@@ -1,0 +1,66 @@
+{
+  "Blueprints": [
+    "player",
+    "2x"
+  ],
+  "MusicName": "christmas_tree_was_born_in_forest",
+  "TileMap": "TileMaps/Level_21",
+  "PlayerPosition": {
+    "BlueprintType": "Player",
+    "TilePosition": {
+      "X": 27,
+      "Y": 105,
+      "Offset": "8.0, 0.0"
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 16,
+        "Y": 78,
+        "Width": 39,
+        "Height": 22
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 18,
+            "Y": 80
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 33,
+            "Y": 80
+          }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 51,
+            "Y": 80
+          }
+        }
+      ]
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level2X/0",
+      "Sprites/FogOfWar/Level2X/1",
+      "Sprites/FogOfWar/Level2X/2",
+      "Sprites/FogOfWar/Level2X/3",
+      "Sprites/FogOfWar/Level2X/4",
+      "Sprites/FogOfWar/Level2X/5",
+      "Sprites/FogOfWar/Level2X/6",
+      "Sprites/FogOfWar/Level2X/7"
+    ],
+    "Weights": [1, 1, 1, 1, 1, 1, 1, 1]
+  },
+  "ObstaclesTilePositions": {
+  }
+}

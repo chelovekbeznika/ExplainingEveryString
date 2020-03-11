@@ -10,7 +10,11 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
         {
             IEnumerable<SpriteSpecification> sprites = 
                 base.GetSprites(blueprint).Concat( new SpriteSpecification[] { blueprint.AppearancePhaseSprite});
-            return blueprint.Behavior.Weapon != null ? sprites.Concat(GetSpritesFromWeapon(blueprint.Behavior.Weapon)) : sprites;
+            if (blueprint.Behavior.PostMortemSurprise.Weapon != null)
+                sprites = sprites.Concat(GetSpritesFromWeapon(blueprint.Behavior.PostMortemSurprise.Weapon));
+            if (blueprint.Behavior.Weapon != null)
+                sprites = sprites.Concat(GetSpritesFromWeapon(blueprint.Behavior.Weapon));
+            return sprites;
         }
 
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(EnemyBlueprint blueprint)

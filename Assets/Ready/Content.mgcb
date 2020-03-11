@@ -20,6 +20,9 @@
 #begin Data/Blueprints/1x.dat
 /copy:Data/Blueprints/1x.dat
 
+#begin Data/Blueprints/2x.dat
+/copy:Data/Blueprints/2x.dat
+
 #begin Data/Blueprints/blueprints.dat
 /copy:Data/Blueprints/blueprints.dat
 
@@ -46,6 +49,9 @@
 
 #begin Data/level_14.dat
 /copy:Data/level_14.dat
+
+#begin Data/level_21.dat
+/copy:Data/level_21.dat
 
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
@@ -1312,6 +1318,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/VakidzasiHandle.png
+
+#begin Sprites/Enemies/Level2X/Death/Hunter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Death/Hunter.png
+
+#begin Sprites/Enemies/Level2X/Hunter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Hunter.png
 
 #begin Sprites/Enemies/Mine.png
 /importer:TextureImporter
