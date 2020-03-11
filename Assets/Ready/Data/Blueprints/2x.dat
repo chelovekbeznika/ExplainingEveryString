@@ -93,5 +93,32 @@
       "AnimationCycle": 0.15
     },
     "DefaultAppearancePhaseDuration": 0.6666667
+  },
+  "LittleWhirlwind": {
+    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "Height": 16.0,
+    "Width": 16.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
+      "AnimationCycle": 0.3333
+    }
+  },
+  "MediumWhirlwind": {
+    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "Height": 24.0,
+    "Width": 24.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level2X/MediumWhirlwind",
+      "AnimationCycle": 0.3333
+    }
+  },
+  "BigWhirlwind": {
+    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "Height": 32.0,
+    "Width": 32.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level2X/BigWhirlwind",
+      "AnimationCycle": 0.3333
+    }
   }
 }
