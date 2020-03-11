@@ -21,27 +21,27 @@
         "Width": 39,
         "Height": 22
       },
+      "MaxEnemiesAtOnce": 4,
       "Enemies": [
         {
           "BlueprintType": "Hunter_mk2",
-          "TilePosition": {
-            "X": 18,
-            "Y": 80
-          }
+          "TilePosition": { "X": 18, "Y": 80 }
         },
         {
           "BlueprintType": "Hunter_mk2",
-          "TilePosition": {
-            "X": 33,
-            "Y": 80
-          }
+          "TilePosition": { "X": 33, "Y": 80 }
         },
         {
           "BlueprintType": "Hunter_mk2",
-          "TilePosition": {
-            "X": 51,
-            "Y": 80
-          }
+          "TilePosition": { "X": 51, "Y": 80 }
+        },
+        {
+          "BlueprintType": "Tank_mk2",
+          "TilePosition": { "X": 18, "Y": 90, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "Tank_mk2",
+          "TilePosition": { "X": 26, "Y": 97, "Offset": "8.0, -8.0 "}
         }
       ]
     }
