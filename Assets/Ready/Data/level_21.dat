@@ -43,27 +43,113 @@
           "TilePosition": { "X": 24, "Y": 76, "Offset": "8.0, -8.0" }
         }
       ],
-      "MaxEnemiesAtOnce": 4,
+      "MaxEnemiesAtOnce": 6,
       "Enemies": [
         {
-          "BlueprintType": "Hunter_mk2",
-          "TilePosition": { "X": 18, "Y": 80 }
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 28, "Y": 105 }
         },
         {
-          "BlueprintType": "Hunter_mk2",
-          "TilePosition": { "X": 33, "Y": 80 }
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 17, "Y": 79, "Offset": "8.0, -8.0" }
         },
         {
-          "BlueprintType": "Hunter_mk2",
-          "TilePosition": { "X": 51, "Y": 80 }
+          "BlueprintType": "FixedCannon_mk2",
+          "Angle": -120.0,
+          "TilePosition": { "X": 53, "Y": 78, "Offset": "8.0, -8.0" }
         },
         {
-          "BlueprintType": "Tank_mk2",
-          "TilePosition": { "X": 18, "Y": 90, "Offset": "8.0, -8.0" }
+          "BlueprintType": "FixedCannon_mk2",
+          "Angle": 20.0,
+          "TilePosition": { "X": 28, "Y": 97, "Offset": "8.0, -8.0" }
         },
         {
-          "BlueprintType": "Tank_mk2",
-          "TilePosition": { "X": 26, "Y": 97, "Offset": "8.0, -8.0 "}
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 51, "Y": 109, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 10, "Y": 110 }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 28, "Y": 105 }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 23, "Y": 86, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 53, "Y": 92 }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "Angle": 0.0,
+          "TilePosition": { "X": 25, "Y": 111 }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "Angle": 180.0,
+          "TilePosition": { "X": 29, "Y": 111 }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 17, "Y": 95 }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 22, "Y": 95 }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 35, "Y": 82, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 37, "Y": 88, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 34, "Y": 94, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "Angle": -150.0,
+          "TilePosition": { "X": 53, "Y": 85, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 12, "Y": 102 }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 23, "Y": 79, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 21, "Y": 110, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "Angle": -75.0,
+          "TilePosition": { "X": 43, "Y": 84, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 50, "Y": 100, "Offset": "0.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 22, "Y": 83, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 19, "Y": 101, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 50, "Y": 82, "Offset": "8.0, -8.0" }
         }
       ]
     }

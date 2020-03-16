@@ -169,6 +169,263 @@
       }
     }
   },
+  "SimpleCannon_mk2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 30.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 16.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/Cannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/Cannon",
+        "AnimationCycle": 0.33333333
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.25
+      }
+    },
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.4
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "AngleCorrection": -2.5,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 12.0,
+            "AngleCorrection": 2.5,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
+  "FixedCannon_mk2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 25.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/FixedCannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/FixedCannon",
+        "AnimationCycle": 0.33333333
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.25
+      }
+    },
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.666667
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "amplitude": 32.0,
+                "angularVelocity": 10.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    }
+  },
+  "TripleCannon_mk2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 25.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/TripleCannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/TripleCannon",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level2X/Appearance/TripleCannon",
+      "AnimationCycle": 0.1666666
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.25
+      }
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.333333
+        },
+        "Barrels": [
+          {
+            "Length": 24.0,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "amplitude": 24.0,
+                "angularVelocity": 10.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 23.0,
+            "Offset": "0.0, 4.5",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 23.0,
+            "Offset": "0.0, -4.5",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 29.0,
+            "AngleCorrection": 36.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 29.0,
+            "AngleCorrection": -36.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.15
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
   "LittleWindDoor": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,

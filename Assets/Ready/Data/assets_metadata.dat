@@ -325,6 +325,26 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level2X/TripleCannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/Cannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/FixedCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/TripleCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Appearance/TripleCannon",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
       "AnimationFrames": 7
     },
