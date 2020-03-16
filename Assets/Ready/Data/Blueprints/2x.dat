@@ -169,6 +169,63 @@
       }
     }
   },
+  "LittleWindDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 16,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
+      "AnimationCycle": 0.3333
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level2X/LittleWhirlwindOpen",
+      "AnimationCycle": 1.5
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/Whirlwind",
+        "Volume": 0.4
+      }
+    }
+  },
+  "MediumWindDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 24,
+    "Width": 24,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level2X/MediumWhirlwind",
+      "AnimationCycle": 0.3333
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level2X/MediumWhirlwindOpen",
+      "AnimationCycle": 1.5
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/Whirlwind",
+        "Volume": 0.4
+      }
+    }
+  },
+  "BigWindDoor": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 32,
+    "Width": 32,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level2X/BigWhirlwind",
+      "AnimationCycle": 0.3333
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level2X/BigWhirlwindOpen",
+      "AnimationCycle": 1.5
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/Whirlwind",
+        "Volume": 0.4
+      }
+    }
+  },
   "LittleWhirlwind": {
     "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
     "Height": 16.0,

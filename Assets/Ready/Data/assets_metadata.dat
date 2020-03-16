@@ -337,6 +337,18 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Doors/Level2X/LittleWhirlwindOpen",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Doors/Level2X/MediumWhirlwindOpen",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Doors/Level2X/BigWhirlwindOpen",
+      "AnimationFrames": 10
+    },
+    {
       "Name": "Sprites/FogOfWar/Level2X/0",
       "AnimationFrames": 3,
       "DefaultAnimationCycle": 0.23

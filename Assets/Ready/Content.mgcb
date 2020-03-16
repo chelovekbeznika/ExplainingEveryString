@@ -173,6 +173,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Doors/QuarterDelimiterOpening.wav
 
+#begin Sounds/Doors/WhirlWind.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Doors/WhirlWind.wav
+
 #begin Sounds/Enemy/Explosion_01.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -479,6 +485,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Doors/Level2X/BigWhirlwind.png
 
+#begin Sprites/Doors/Level2X/BigWhirlwindOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Doors/Level2X/BigWhirlwindOpen.png
+
 #begin Sprites/Doors/Level2X/LittleWhirlwind.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -491,6 +509,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Doors/Level2X/LittleWhirlwind.png
 
+#begin Sprites/Doors/Level2X/LittleWhirlwindOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Doors/Level2X/LittleWhirlwindOpen.png
+
 #begin Sprites/Doors/Level2X/MediumWhirlwind.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -502,6 +532,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Doors/Level2X/MediumWhirlwind.png
+
+#begin Sprites/Doors/Level2X/MediumWhirlwindOpen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Doors/Level2X/MediumWhirlwindOpen.png
 
 #begin Sprites/Doors/TestDoor.png
 /importer:TextureImporter

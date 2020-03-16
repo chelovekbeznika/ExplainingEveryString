@@ -21,6 +21,28 @@
         "Width": 39,
         "Height": 22
       },
+      "Doors": [
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 16, "Y": 76, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 18, "Y": 76, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 20, "Y": 76, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 22, "Y": 76, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 24, "Y": 76, "Offset": "8.0, -8.0" }
+        }
+      ],
       "MaxEnemiesAtOnce": 4,
       "Enemies": [
         {
