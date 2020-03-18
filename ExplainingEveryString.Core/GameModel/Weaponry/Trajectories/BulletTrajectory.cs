@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Math;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -19,13 +20,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
         internal Vector2 GetBulletPosition(Single time)
         {
             var rawPosition = GetTrajectoryOffset(time);
-            var sinus = FireDirection.Y;
-            var cosinus = FireDirection.X;
-            var rotatedPosition = new Vector2
-            {
-                X = rawPosition.X * cosinus - rawPosition.Y * sinus,
-                Y = rawPosition.X * sinus + rawPosition.Y * cosinus
-            };
+            var rotatedPosition = GeometryHelper.RotateVector(rawPosition, FireDirection.Y, FireDirection.X);
             return startPosition + rotatedPosition;
         }
 

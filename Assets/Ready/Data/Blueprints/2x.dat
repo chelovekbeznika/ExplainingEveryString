@@ -426,6 +426,174 @@
       }
     }
   },
+  "Mine_mk2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 7.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/Mine"
+    },
+    "Behavior": {
+      "PostMortemSurprise": {
+        "Weapon": {
+          "Barrels": [
+            {
+              "Length": 0.0,
+              "AngleCorrection": 0.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 45.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 90.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 135.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 180.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 225.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 270.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            },
+            {
+              "Length": 0.0,
+              "AngleCorrection": 315.0,
+              "Bullet": {
+                "TrajectoryType": "Spiral",
+                "TrajectoryParameters": {
+                  "speed": 320.0,
+                  "angularVelocity": 45
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            }
+          ],
+          "AimType": "FixedFireDirection"
+        }
+      }
+    },
+    "DefaultAppearancePhaseDuration": 1.375,
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/MineDiggingUp",
+      "AnimationCycle": 1.375
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/MineDiggingUp",
+        "Volume": 0.5
+      }
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/Mine",
+        "AnimationCycle": 0.33333
+      },
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/SmallExplosion",
+        "Volume": 0.4
+      }
+    }
+  },
   "LittleWindDoor": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,

@@ -34,5 +34,14 @@ namespace ExplainingEveryString.Core.Math
             var deltaXTillFringe = deltaX * deltaYTillFringe / deltaY;
             return lineEnd.X + deltaXTillFringe;
         }
+
+        internal static Vector2 RotateVector(Vector2 rawPosition, Single sinus, Single cosinus)
+        {
+            return new Vector2
+            {
+                X = rawPosition.X * cosinus - rawPosition.Y * sinus,
+                Y = rawPosition.X * sinus + rawPosition.Y * cosinus
+            };
+        }
     }
 }

@@ -164,7 +164,7 @@
       "Name": "Sprites/Enemies/Level1X/Death/Mine",
       "AnimationFrames": 7
     },
-	{
+    {
       "Name": "Sprites/Enemies/Level1X/Death/MineSpawner",
       "AnimationFrames": 6
     },
@@ -343,6 +343,10 @@
     {
       "Name": "Sprites/Enemies/Level2X/Appearance/TripleCannon",
       "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/Mine",
+      "AnimationFrames": 7
     },
     {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwind",

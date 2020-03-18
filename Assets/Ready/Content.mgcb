@@ -1421,6 +1421,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/Death/Hunter.png
 
+#begin Sprites/Enemies/Level2X/Death/Mine.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Death/Mine.png
+
 #begin Sprites/Enemies/Level2X/Death/Tank.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1468,6 +1480,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/Hunter.png
+
+#begin Sprites/Enemies/Level2X/Mine.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Mine.png
 
 #begin Sprites/Enemies/Level2X/TankBase.png
 /importer:TextureImporter
