@@ -25,6 +25,10 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                     Single startSpeed = specification.Parameters["startSpeed"];
                     Single acceleration = specification.Parameters["acceleration"];
                     return new AccelerationMover(acceleration, startSpeed, maxSpeed);
+                case MoveType.Teleportation:
+                    Single minTillTeleport = specification.Parameters["min"];
+                    Single maxTillTeleport = specification.Parameters["max"];
+                    return new TeleportationMover(minTillTeleport, maxTillTeleport);
                 default:
                     throw new ArgumentException("Unknown MoveType");
             }

@@ -594,6 +594,128 @@
       }
     }
   },
+  "DesertGhost": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 24.0,
+    "Width": 24.0,
+    "Hitpoints": 15.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Teleportation",
+        "Parameters": {
+          "min": 1.0,
+          "max": 5.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.5
+        },
+        "Barrels": [
+          {
+            "AngleCorrection": 45.0,
+            "Offset": "4.0, 4.0",
+            "Accuracy": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "AngleCorrection": 135.0,
+            "Offset": "-4.0, 4.0",
+            "Accuracy": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "AngleCorrection": -135.0,
+            "Offset": "-4.0, -4.0",
+            "Accuracy": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "AngleCorrection": -45.0,
+            "Offset": "-4.0, -4.0",
+            "Accuracy": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/DesertGhost",
+      "AnimationCycle": 0.66667
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/MineDiggingUp",
+      "AnimationCycle": 0.125
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/DesertGhost",
+        "Volume": 0.6
+      }
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/DesertGhost",
+        "AnimationCycle": 0.33333
+      },
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.35
+      }
+    },
+    "GoalAchievedEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/DesertGhost",
+        "Volume": 0.5
+      }
+    }
+  },
   "LittleWindDoor": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,

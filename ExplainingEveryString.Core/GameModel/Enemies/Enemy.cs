@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private EpicEvent death;
         private EpicEvent beforeAppearance;
         private EpicEvent afterAppearance;
+        private EpicEvent goalAchieved;
         public SpawnedActorsController SpawnedActors => Behavior.SpawnedActors;
         public List<IEnemy> Avengers => Behavior.PostMortemSurprise?.Avengers;
         public event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
@@ -52,9 +53,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             base.Construct(blueprint, startInfo, level, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
+            
             this.death = new EpicEvent(level, blueprint.DeathEffect, true, this, true);
             this.afterAppearance = new EpicEvent(level, blueprint.AfterAppearanceEffect, true, this, false);
             this.beforeAppearance = new EpicEvent(level, blueprint.BeforeAppearanceEffect, true, this, false);
+            this.goalAchieved = new EpicEvent(level, blueprint.GoalAchievedEffect, false, this, false);
+            Behavior.MoveGoalReached += (sender, e) => goalAchieved.TryHandle();
+
             this.appearanceSprite = new SpriteState(blueprint.AppearancePhaseSprite)
             {
                 Angle = startInfo.BehaviorParameters.Angle

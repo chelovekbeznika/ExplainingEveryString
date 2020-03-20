@@ -11,6 +11,11 @@ namespace ExplainingEveryString.Core.Math
             return (Single)random.NextDouble();
         }
 
+        internal static Single Next(Single min, Single max)
+        {
+            return (Single)random.NextDouble() * (max - min) + min;
+        }
+
         internal static Int32 NextInt(Int32 range)
         {
             return random.Next(range);

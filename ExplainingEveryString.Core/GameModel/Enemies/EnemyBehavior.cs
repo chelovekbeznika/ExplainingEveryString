@@ -18,6 +18,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private IMoveTargetSelector moveTargetSelector;
         private IMover mover;
 
+        internal EventHandler MoveGoalReached;
+
         internal PostMortemSurprise PostMortemSurprise { get; private set; }
         internal SpawnedActorsController SpawnedActors { get; private set; }
         internal Single? EnemyAngle { get; private set; } = null;
@@ -84,7 +86,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             var positionChange = mover.GetPositionChange(lineToTarget, elapsedSeconds, out Boolean goalReached);
             Position += positionChange;
             if (goalReached)
+            {
                 moveTargetSelector.SwitchToNextTarget();
+                MoveGoalReached?.Invoke(enemy, EventArgs.Empty);
+            }
         }
 
         private void UseWeapon(Single elapsedSeconds)

@@ -349,6 +349,18 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Level2X/Appearance/DesertGhost",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/DesertGhost",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/DesertGhost",
+      "AnimationFrames": 5
+    },
+    {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
       "AnimationFrames": 7
     },

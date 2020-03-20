@@ -17,6 +17,8 @@ namespace ExplainingEveryString.Data.Blueprints
         public SpecEffectSpecification BeforeAppearanceEffect { get; set; }
         [DefaultValue(null)]
         public SpecEffectSpecification AfterAppearanceEffect { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification GoalAchievedEffect { get; set; }
         public SpriteSpecification AppearancePhaseSprite { get; set; }
         public Single DefaultAppearancePhaseDuration { get; set; }
     }

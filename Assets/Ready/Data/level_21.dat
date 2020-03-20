@@ -651,6 +651,29 @@
         }
       ]
     },
+    {
+      "StartRegion": {
+        "X": 128,
+        "Y": 53,
+        "Width": 70,
+        "Height": 50
+      },
+      "Checkpoint": {
+        "Name": "FourthRoom",
+        "PlayerPosition": { "X": 130, "Y": 66, "Offset": "8.0, -8.0" }
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "DesertGhost",
+          "TilePosition": { "X": 147, "Y": 56, "Offset": "8.0, -8.0" },
+          "TrajectoryParameters": [
+            "0.0, 0.0",
+            "-240.0, -32.0",
+            "-240.0, -234.0"
+          ]
+        }
+      ]
+    }
   ],
   "FogOfWar": {
     "ParticleWidth": 16,

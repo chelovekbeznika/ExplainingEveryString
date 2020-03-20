@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
         {
             List<SpecEffectSpecification> specEffects = new List<SpecEffectSpecification>
             {
-                blueprint.DeathEffect, blueprint.BeforeAppearanceEffect, blueprint.AfterAppearanceEffect
+                blueprint.DeathEffect, blueprint.BeforeAppearanceEffect, blueprint.AfterAppearanceEffect, blueprint.GoalAchievedEffect
             };
             if (blueprint.Behavior.Weapon != null)
                 specEffects.Add(blueprint.Behavior.Weapon.ShootingEffect);
