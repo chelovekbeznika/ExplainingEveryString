@@ -14,14 +14,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Func<Vector2> findOutWhereIAm;
         private readonly Func<Vector2> targetLocator;
         private readonly BulletSpecification bulletSpecification;
-        private readonly Vector2 offset;
+        private readonly Vector2 baseOffset;
+        private readonly Vector2 muzzleOffset;
         private readonly Single length;
         private readonly Single angleCorrection;
         private readonly Single accuracy;
 
         internal Barrel(IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
         {
-            this.offset = specification.Offset;
+            this.baseOffset = specification.BaseOffset;
+            this.muzzleOffset = specification.MuzzleOffset;
             this.length = specification.Length;
             this.aimer = aimer;
             this.findOutWhereIAm = findOutWhereIAm;
@@ -34,7 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal void OnShoot(Single bulletFirstFrameUpdateTime)
         {
             var direction = GetFireDirection();
-            var position = findOutWhereIAm() + offset + direction * length;
+            var position = findOutWhereIAm() + baseOffset + direction * length + GetMuzzleOffset();
             var bullet = new Bullet(position, direction, bulletSpecification, targetLocator);
             var eventArgs = new ShootEventArgs
             {
@@ -42,6 +44,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 FirstUpdateTime = bulletFirstFrameUpdateTime
             };
             Shoot?.Invoke(this, eventArgs);
+        }
+
+        private Vector2 GetMuzzleOffset()
+        {
+            var direction = aimer.GetFireDirection();
+            return GeometryHelper.RotateVector(muzzleOffset, direction.Y, direction.X);
         }
 
         private Vector2 GetFireDirection()
