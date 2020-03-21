@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
+using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
@@ -15,7 +16,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private String avengerType;
         private ISpawnPositionSelector positionSelector;
         private Vector2[] levelSpawnPoints;
+        private SpawnSpecification[] customSpawns;
         private ActorsFactory factory;
+        private Func<Vector2> currentPositionLocator;
+        private Func<Vector2> playerLocator;
 
         private Boolean triggered = false;
 
@@ -28,18 +32,19 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             this.levelSpawnPoints = levelSpawnPoints;
             this.factory = factory;
+            this.currentPositionLocator = currentPositionLocator;
+            this.playerLocator = playerLocator;
             if (specification.Weapon != null)
             {
-                InitializeWeapon(specification.Weapon, currentPositionLocator, playerLocator, level);
+                InitializeWeapon(specification.Weapon, level);
             }
             if (specification.Spawn != null)
             {
-                InitializeSpawn(specification.Spawn, currentPositionLocator);
+                InitializeSpawn(specification.Spawn);
             }
         }
 
-        private void InitializeWeapon(PostMortemWeaponSpecification specification,
-            Func<Vector2> currentPositionLocator, Func<Vector2> playerLocator, Level level)
+        private void InitializeWeapon(PostMortemWeaponSpecification specification, Level level)
         {
             var aimer = AimersFactory.Get(specification.AimType, 0, currentPositionLocator, playerLocator);
             barrels = specification.Barrels
@@ -48,12 +53,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 barrel.Shoot += level.EnemyShoot;
         }
 
-        private void InitializeSpawn(PostMortemSpawnSpecificaton specification, Func<Vector2> currentPositionLocator)
+        private void InitializeSpawn(PostMortemSpawnSpecificaton specification)
         {
             howMuchToSpawn = specification.AvengersAmount;
             avengerType = specification.AvengersType;
             positionSelector = SpawnPositionSelectorsFactory.Get(
-                specification.PositionSelector, currentPositionLocator, levelSpawnPoints);
+                specification.PositionSelector, currentPositionLocator, levelSpawnPoints, customSpawns);
         }
 
         internal void TryTrigger()
@@ -82,13 +87,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             Avengers = new List<IEnemy>();
             foreach (var index in Enumerable.Range(0, howMuchToSpawn))
             {
+                var spawnSpecification = positionSelector.GetNextSpawnSpecification();
                 var asi = new ActorStartInfo
                 {
                     BlueprintType = avengerType,
-                    Position = positionSelector.GetNextSpawnPosition(),
+                    Position = spawnSpecification.SpawnPoint + currentPositionLocator(),
                     BehaviorParameters = new BehaviorParameters
                     {
-                        LevelSpawnPoints = levelSpawnPoints
+                        LevelSpawnPoints = levelSpawnPoints,
+                        TrajectoryParameters = spawnSpecification.TrajectoryParameters,
+                        Angle = spawnSpecification.Angle
                     }
                 };
                 var enemy = factory.ConstructEnemy(asi);

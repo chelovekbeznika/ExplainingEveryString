@@ -64,6 +64,7 @@
     <Compile Include="Configuration\CameraConfiguration.cs" />
     <Compile Include="Configuration\ScreenConfiguration.cs" />
     <Compile Include="Level\CheckpointSpecification.cs" />
+    <Compile Include="Level\SpawnSpecification.cs" />
     <Compile Include="Level\DoorStartInfo.cs" />
     <Compile Include="Level\FogOfWarSpecification.cs" />
     <Compile Include="Level\GameProgress.cs" />

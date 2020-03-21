@@ -179,6 +179,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Doors/WhirlWind.wav
 
+#begin Sounds/Enemy/AltarAppears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/AltarAppears.wav
+
+#begin Sounds/Enemy/AltarDissappears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/AltarDissappears.wav
+
 #begin Sounds/Enemy/DesertGhost.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -1367,6 +1379,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/VakidzasiHandle.png
 
+#begin Sprites/Enemies/Level2X/Appearance/DesertAltar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Appearance/DesertAltar.png
+
 #begin Sprites/Enemies/Level2X/Appearance/DesertGhost.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1414,6 +1438,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/Death/Cannon.png
+
+#begin Sprites/Enemies/Level2X/Death/DesertAltar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Death/DesertAltar.png
 
 #begin Sprites/Enemies/Level2X/Death/DesertGhost.png
 /importer:TextureImporter
@@ -1486,6 +1522,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/Death/TripleCannon.png
+
+#begin Sprites/Enemies/Level2X/DesertAltar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/DesertAltar.png
 
 #begin Sprites/Enemies/Level2X/DesertGhost.png
 /importer:TextureImporter

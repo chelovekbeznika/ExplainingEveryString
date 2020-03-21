@@ -664,12 +664,51 @@
       },
       "Enemies": [
         {
-          "BlueprintType": "DesertGhost",
-          "TilePosition": { "X": 147, "Y": 56, "Offset": "8.0, -8.0" },
-          "TrajectoryParameters": [
-            "0.0, 0.0",
-            "-240.0, -32.0",
-            "-240.0, -234.0"
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 147, "Y": 64, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "0.0, 128.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-96.0, -336.0"
+              ]
+            },
+            {
+              "SpawnPoint": "160.0, 128.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-256.0, -304.0"
+              ]
+            },
+            {
+              "SpawnPoint": "240.0, 0.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, -96.0"
+              ]
+            },
+            {
+              "SpawnPoint": "240.0, -112.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, 112.0"
+              ]
+            },
+            {
+              "SpawnPoint": "128.0, -240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-368.0, 336.0"
+              ]
+            },
+            {
+              "SpawnPoint": "16.0, -240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-144.0, 368.0"
+              ]
+            }
           ]
         }
       ]

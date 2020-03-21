@@ -107,7 +107,8 @@ namespace ExplainingEveryString.Core.GameModel
                 {
                     Angle = AngleConverter.ToRadians(dataLayerStartInfo.Angle),
                     TrajectoryParameters = dataLayerStartInfo.TrajectoryParameters?.ToArray(),
-                    LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray()
+                    LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray(),
+                    CustomSpawns = dataLayerStartInfo.CustomSpawns
                 },
                 AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration
             };

@@ -361,6 +361,18 @@
       "AnimationFrames": 5
     },
     {
+      "Name": "Sprites/Enemies/Level2X/Appearance/DesertAltar",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/DesertAltar",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/DesertAltar",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
       "AnimationFrames": 7
     },

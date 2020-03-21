@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Data.Level;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel
@@ -8,5 +9,6 @@ namespace ExplainingEveryString.Core.GameModel
         internal Single Angle { get; set; }
         internal Vector2[] TrajectoryParameters { get; set; }
         internal Vector2[] LevelSpawnPoints { get; set; }
+        internal SpawnSpecification[] CustomSpawns { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Specifications;
+﻿using ExplainingEveryString.Data.Level;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -20,17 +21,17 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
 
         internal SpawnedActorsController(SpawnerSpecification specification, IActor spawner, 
-            Vector2[] spawnPoints, ActorsFactory factory)
+            BehaviorParameters spawnerBehaviorParameters, ActorsFactory factory)
         {
             this.enemyType = specification.BlueprintType;
             this.maxSpawned = specification.MaxSpawned;
             this.appearancePhase = specification.AppearancePhase;
             this.reloader = new Reloader(specification.Reloader, CanSpawnEnemy, SpawnEnemy);
             this.spawner = spawner;
-            this.levelSpawnPoints = spawnPoints;
+            this.levelSpawnPoints = spawnerBehaviorParameters.LevelSpawnPoints;
             this.factory = factory;
-            this.spawnPositionSelector = SpawnPositionSelectorsFactory.Get(
-                specification.PositionSelector, () => (spawner as ICollidable).Position, levelSpawnPoints);
+            this.spawnPositionSelector = SpawnPositionSelectorsFactory.Get(specification.PositionSelector, 
+                () => (spawner as ICollidable).Position, levelSpawnPoints, spawnerBehaviorParameters.CustomSpawns);
         }
 
         public void Update(Single elapsedSeconds)
@@ -55,13 +56,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private void SpawnEnemy(Single firstUpdateTime)
         {
+            var spawnSpecification = spawnPositionSelector.GetNextSpawnSpecification();
             var asi = new ActorStartInfo
             {
                 BlueprintType = enemyType,
-                Position = spawnPositionSelector.GetNextSpawnPosition(),
+                Position = spawnSpecification.SpawnPoint + (spawner as ICollidable).Position,
                 BehaviorParameters = new BehaviorParameters
                 {
-                    LevelSpawnPoints = levelSpawnPoints
+                    LevelSpawnPoints = levelSpawnPoints,
+                    TrajectoryParameters = spawnSpecification.TrajectoryParameters,
+                    Angle = spawnSpecification.Angle
                 },
                 AppearancePhaseDuration = appearancePhase
             };

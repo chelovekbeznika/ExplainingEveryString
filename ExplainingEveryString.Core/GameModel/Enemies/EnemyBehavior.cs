@@ -62,7 +62,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                     playerLocator, level, parameters.LevelSpawnPoints, factory);
             }
             if (blueprint.Spawner != null)
-                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, enemy, parameters.LevelSpawnPoints, factory);
+                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, enemy, parameters, factory);
         }
 
         internal void Update(Single elapsedSeconds)

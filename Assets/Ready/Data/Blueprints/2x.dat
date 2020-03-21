@@ -596,7 +596,7 @@
   },
   "DesertGhost": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
-    "CollisionDamage": 100.0,
+    "CollisionDamage": 50.0,
     "Height": 24.0,
     "Width": 24.0,
     "Hitpoints": 15.0,
@@ -690,7 +690,7 @@
     },
     "DefaultAppearancePhaseDuration": 0.5,
     "AppearancePhaseSprite": {
-      "Name": "Sprites/Enemies/Appearance/MineDiggingUp",
+      "Name": "Sprites/Enemies/Level2X/Appearance/DesertGhost",
       "AnimationCycle": 0.125
     },
     "BeforeAppearanceEffect": {
@@ -713,6 +713,51 @@
       "Sound": {
         "Name": "Sounds/Enemy/DesertGhost",
         "Volume": 0.5
+      }
+    }
+  },
+  "DesertAltar": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 100.0,
+    "Behavior": {
+      "Spawner": {
+        "MaxSpawned": 4,
+        "Reloader": {
+          "FireRate": 0.25
+        },
+        "BlueprintType": "DesertGhost",
+        "PositionSelector": {
+          "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
+          "BetweenRepeats": 4
+        }
+      }
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/DesertAltar",
+      "AnimationCycle": 0.05
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level2X/Appearance/DesertAltar",
+      "AnimationCycle": 0.125
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/AltarAppears",
+        "Volume": 0.6
+      }
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/DesertAltar",
+        "AnimationCycle": 1.0
+      },
+      "Sound": {
+        "Name": "Sounds/Enemy/AltarDissappears",
+        "Volume": 0.35
       }
     }
   },
