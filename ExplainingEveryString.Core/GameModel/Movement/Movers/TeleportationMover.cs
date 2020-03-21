@@ -17,6 +17,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
             tillNextTeleport = RandomUtility.Next(minTillTeleport, maxTillTeleport);
         }
 
+        public Boolean IsTeleporting => true;
+
         public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
         {
             if (DoTeleportNow(elapsedSeconds))

@@ -90,6 +90,9 @@ namespace ExplainingEveryString.Core.GameModel
         private void AdjustObjectToWalls(IMovableCollidable movingObject, Boolean ridesThroughPit,
             ICollidable tryVerticalMovePriorityForThis, Hitbox? previousOldHitbox)
         {
+            if (movingObject.CollidableMode == CollidableMode.Teleporter)
+                return;
+
             var oldHitbox = previousOldHitbox == null ? movingObject.GetOldHitbox() : previousOldHitbox.Value;
             var savedMovingObjectPosition = movingObject.Position;
             var bumpIntoThisWall = ridesThroughPit
@@ -144,7 +147,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void CheckBulletForCollisions(Bullet bullet, IEnumerable<ICollidable> collidables)
         {
-            foreach (var collidable in collidables.Where(c => c.CollidableMode == CollidableMode.Solid))
+            foreach (var collidable in collidables.Where(c => c.CollidableMode == CollidableMode.Solid || c.CollidableMode == CollidableMode.Teleporter))
             {
                 var hitbox = collidable is ITouchableByBullets
                     ? (collidable as ITouchableByBullets).GetBulletsHitbox()

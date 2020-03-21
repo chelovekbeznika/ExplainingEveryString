@@ -22,6 +22,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
             this.maxSpeed = maxSpeed;
         }
 
+        public Boolean IsTeleporting => false;
+
         public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
         {
             var currentDistance = lineToTarget.Length();

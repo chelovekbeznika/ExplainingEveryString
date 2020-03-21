@@ -12,6 +12,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
             this.scalarSpeed = scalarSpeed;
         }
 
+        public Boolean IsTeleporting => false;
+
         public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
         {
             if (lineToTarget.Length() >= Math.Constants.Epsilon)

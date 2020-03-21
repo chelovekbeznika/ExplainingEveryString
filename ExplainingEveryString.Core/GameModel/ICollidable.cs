@@ -29,5 +29,5 @@ namespace ExplainingEveryString.Core.GameModel
         void Crash();
     }
 
-    internal enum CollidableMode { Solid, Pit, Shadow, Ghost }
+    internal enum CollidableMode { Solid, Pit, Shadow, Ghost, Teleporter }
 }

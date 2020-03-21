@@ -24,7 +24,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Constants.Epsilon;
         public override SpriteState SpriteState => IsInAppearancePhase ? appearanceSprite : base.SpriteState;
-        public override CollidableMode CollidableMode => IsInAppearancePhase ? CollidableMode.Ghost : base.CollidableMode;
+        public override CollidableMode CollidableMode => IsInAppearancePhase 
+            ? CollidableMode.Ghost 
+            : Behavior.IsTeleporter 
+                ? CollidableMode.Teleporter 
+                : base.CollidableMode;
         public String CollideTag { get; private set; }
         public Single CollisionDamage { get; set; }
 

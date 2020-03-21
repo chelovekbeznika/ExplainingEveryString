@@ -23,6 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         internal PostMortemSurprise PostMortemSurprise { get; private set; }
         internal SpawnedActorsController SpawnedActors { get; private set; }
         internal Single? EnemyAngle { get; private set; } = null;
+        internal Boolean IsTeleporter => mover.IsTeleporting;
 
         private Vector2 CurrentPositionLocator() => (enemy as ICollidable).Position;
         private Vector2 Position { get => (enemy as ICollidable).Position; set => (enemy as ICollidable).Position = value; }

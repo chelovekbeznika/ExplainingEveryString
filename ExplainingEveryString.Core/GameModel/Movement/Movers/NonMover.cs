@@ -5,6 +5,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
 {
     internal class NonMover : IMover
     {
+        public Boolean IsTeleporting => false;
         public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
         {
             goalReached = lineToTarget.Length() >= Math.Constants.Epsilon;
