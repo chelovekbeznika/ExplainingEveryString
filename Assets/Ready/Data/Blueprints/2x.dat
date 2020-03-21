@@ -611,7 +611,7 @@
       "MoveTargetSelectType": "RandomFromListTargets",
       "Weapon": {
         "Reloader": {
-          "FireRate": 1.5
+          "FireRate": 0.75
         },
         "Barrels": [
           {
