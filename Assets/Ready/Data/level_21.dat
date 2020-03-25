@@ -874,28 +874,7 @@
         "Width": 70,
         "Height": 55
       },
-      "Doors": [
-        {
-          "ClosesAt": 6,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": { "X": 126, "Y": 65, "Offset": "8.0, -8.0" }
-        },
-        {
-          "ClosesAt": 6,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": { "X": 126, "Y": 67, "Offset": "8.0, -8.0" }
-        },
-        {
-          "ClosesAt": 6,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": { "X": 126, "Y": 68, "Offset": "8.0, -8.0" }
-        },
-        {
-          "ClosesAt": 6,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": { "X": 126, "Y": 70, "Offset": "8.0, -8.0" }
-        },
-        
+      "Doors": [        
         {
           "BlueprintType": "BigWindDoor",
           "TilePosition": { "X": 193, "Y": 53, "Offset": "8.0, -8.0" }
@@ -1167,6 +1146,350 @@
           ]
         }
       ]
+    },
+    {
+      "StartRegion": {
+        "X": 203,
+        "Y": 6,
+        "Width": 33,
+        "Height": 26
+      },
+      "Checkpoint": {
+        "Name": "FifthRoom",
+        "PlayerPosition": { "X": 217, "Y": 34, "Offset": "8.0, 0.0" }
+      },
+      "Doors": [
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 65, "Offset": "8.0, -8.0" }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 67, "Offset": "8.0, -8.0" }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 68, "Offset": "8.0, -8.0" }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 70, "Offset": "8.0, -8.0" }
+        },
+        
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 202, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 203, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 204, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 205, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 206, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 207, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 208, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 209, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 210, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 211, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 212, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 213, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 214, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 215, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 216, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 217, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 218, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 219, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 220, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 221, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 222, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 223, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 224, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 225, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 226, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 227, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 228, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 229, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 230, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 231, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 232, "Y": 52 }
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": { "X": 233, "Y": 52 }
+        },
+        
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 30 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 31 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 32 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 33 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 34 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 35 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 36 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 37 }
+        }
+      ],
+      "MaxEnemiesAtOnce": 6,
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "TilePosition": { "X": 205, "Y": 6, "Offset": "8.0, -8.0" },
+          "Angle": -90.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "TilePosition": { "X": 211, "Y": 6, "Offset": "8.0, -8.0" },
+          "Angle": -90.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "TilePosition": { "X": 216, "Y": 6, "Offset": "8.0, -8.0" },
+          "Angle": -90.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "TilePosition": { "X": 218, "Y": 6, "Offset": "8.0, -8.0" },
+          "Angle": -90.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "TilePosition": { "X": 223, "Y": 6, "Offset": "8.0, -8.0" },
+          "Angle": -90.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk2",
+          "TilePosition": { "X": 229, "Y": 6, "Offset": "8.0, -8.0" },
+          "Angle": -90.0
+        },
+        
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": { "X": 215, "Y": 8 }
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": { "X": 219, "Y": 12 }
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": { "X": 215, "Y": 16 }
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": { "X": 219, "Y": 20 }
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": { "X": 215, "Y": 24 }
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": { "X": 219, "Y": 28 }
+        },
+        
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 205, "Y": 48 }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 230, "Y": 48 }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 208, "Y": 48 }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 227, "Y": 48 }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 211, "Y": 48 }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 224, "Y": 48 }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 214, "Y": 48 }
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": { "X": 221, "Y": 48 }
+        },
+        
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 207, "Y": 47 }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 228, "Y": 47 }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 212, "Y": 47 }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 223, "Y": 47 }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 216, "Y": 44, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": { "X": 218, "Y": 44, "Offset": "8.0, -8.0" }
+        }
+      ],
     }
   ],
   "FogOfWar": {
