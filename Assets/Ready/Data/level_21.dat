@@ -43,7 +43,7 @@
           "TilePosition": { "X": 24, "Y": 76, "Offset": "8.0, -8.0" }
         }
       ],
-      "MaxEnemiesAtOnce": 5,
+      "MaxEnemiesAtOnce": 4,
       "Enemies": [
         {
           "BlueprintType": "TripleCannon_mk2",
