@@ -25,7 +25,10 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
 
         public void SwitchToNextTarget()
         {
-            currentTargetNumber = RandomUtility.NextInt(targets.Count);
+            Int32 previousTarget = currentTargetNumber;
+            currentTargetNumber = RandomUtility.NextInt(targets.Count - 1);
+            if (currentTargetNumber >= previousTarget)
+                currentTargetNumber += 1;
         }
     }
 }

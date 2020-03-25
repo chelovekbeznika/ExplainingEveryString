@@ -653,10 +653,10 @@
     },
     {
       "StartRegion": {
-        "X": 128,
+        "X": 138,
         "Y": 53,
-        "Width": 70,
-        "Height": 50
+        "Width": 60,
+        "Height": 55
       },
       "Checkpoint": {
         "Name": "FourthRoom",
@@ -678,7 +678,7 @@
               "SpawnPoint": "160.0, 128.0",
               "TrajectoryParameters": [
                 "0.0, 0.0",
-                "-256.0, -304.0"
+                "-352.0, -304.0"
               ]
             },
             {
@@ -707,6 +707,461 @@
               "TrajectoryParameters": [
                 "0.0, 0.0",
                 "-144.0, 368.0"
+              ]
+            }
+          ]
+        },
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 147, "Y": 94, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "128.0, 240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-288.0, -400.0"
+              ]
+            },
+            {
+              "SpawnPoint": "224.0, 160.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, -208.0"
+              ]
+            },
+            {
+              "SpawnPoint": "208.0, 64.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-464.0, -112.0"
+              ]
+            },
+            {
+              "SpawnPoint": "208.0, -48.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-416.0, 160.0"
+              ]
+            },
+            {
+              "SpawnPoint": "112.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-224.0, 336.0"
+              ]
+            },
+            {
+              "SpawnPoint": "-16.0, -160.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "32.0, 400.0"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 128,
+        "Y": 53,
+        "Width": 70,
+        "Height": 55
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 177, "Y": 64, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "16.0, 144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-128.0, -384.0"
+              ]
+            },
+            {
+              "SpawnPoint": "112.0, 128.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-304.0, -320.0"
+              ]
+            },
+            {
+              "SpawnPoint": "160.0, 48.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-400.0, -160.0"
+              ]
+            },
+            {
+              "SpawnPoint": "176.0, -64.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-416.0, 64.0"
+              ]
+            },
+            {
+              "SpawnPoint": "144.0, -160.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-352.0, 256.0"
+              ]
+            },
+            {
+              "SpawnPoint": "-16.0, -240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-80.0, 384.0"
+              ]
+            }
+          ]
+        },
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 177, "Y": 94, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "-16.0, 240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-80.0, -384.0"
+              ]
+            },
+            {
+              "SpawnPoint": "128.0, 208.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-352.0, -352.0"
+              ]
+            },
+            {
+              "SpawnPoint": "192.0, 96.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-464.0, -144.0"
+              ]
+            },
+            {
+              "SpawnPoint": "208.0, -48.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, 112.0"
+              ]
+            },
+            {
+              "SpawnPoint": "176.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-432.0, 304.0"
+              ]
+            },
+            {
+              "SpawnPoint": "48.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-160.0, 384.0"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "StartRegion": {
+        "X": 128,
+        "Y": 53,
+        "Width": 70,
+        "Height": 55
+      },
+      "Doors": [
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 65, "Offset": "8.0, -8.0" }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 67, "Offset": "8.0, -8.0" }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 68, "Offset": "8.0, -8.0" }
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 126, "Y": 70, "Offset": "8.0, -8.0" }
+        },
+        
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 193, "Y": 53, "Offset": "8.0, -8.0" }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 55 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 56 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 57 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 58 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 59 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 60 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 61 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 62 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 63 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 64 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 65 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 66 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 67 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 68 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 69 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 70 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 193, "Y": 71 }
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": { "X": 193, "Y": 72, "Offset": "8.0, -8.0" }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 153, "Y": 70, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "-96.0, 224.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-96.0, -336.0"
+              ]
+            },
+            {
+              "SpawnPoint": "64.0, 224.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-352.0, -304.0"
+              ]
+            },
+            {
+              "SpawnPoint": "144.0, 96.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, -96.0"
+              ]
+            },
+            {
+              "SpawnPoint": "144.0, -16.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, 112.0"
+              ]
+            },
+            {
+              "SpawnPoint": "32.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-368.0, 336.0"
+              ]
+            },
+            {
+              "SpawnPoint": "-80.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-144.0, 368.0"
+              ]
+            }
+          ]
+        },
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 153, "Y": 88, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "32.0, 144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-288.0, -400.0"
+              ]
+            },
+            {
+              "SpawnPoint": "128.0, 64.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, -208.0"
+              ]
+            },
+            {
+              "SpawnPoint": "112.0, -32.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-464.0, -112.0"
+              ]
+            },
+            {
+              "SpawnPoint": "112.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-416.0, 160.0"
+              ]
+            },
+            {
+              "SpawnPoint": "16.0, -240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-224.0, 336.0"
+              ]
+            },
+            {
+              "SpawnPoint": "-112.0, -256.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "32.0, 400.0"
+              ]
+            }
+          ]
+        },
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 171, "Y": 70, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "112.0, 240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-128.0, -384.0"
+              ]
+            },
+            {
+              "SpawnPoint": "208.0, 224.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-304.0, -320.0"
+              ]
+            },
+            {
+              "SpawnPoint": "256.0, 144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-400.0, -160.0"
+              ]
+            },
+            {
+              "SpawnPoint": "272.0, 32.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-416.0, 64.0"
+              ]
+            },
+            {
+              "SpawnPoint": "240.0, -64.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-352.0, 256.0"
+              ]
+            },
+            {
+              "SpawnPoint": "80.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-80.0, 384.0"
+              ]
+            }
+          ]
+        },
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": { "X": 171, "Y": 88, "Offset": "8.0, -8.0" },
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "80.0, 144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-80.0, -384.0"
+              ]
+            },
+            {
+              "SpawnPoint": "224.0, 112.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-352.0, -352.0"
+              ]
+            },
+            {
+              "SpawnPoint": "288.0, 0.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-464.0, -144.0"
+              ]
+            },
+            {
+              "SpawnPoint": "304.0, -144.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-480.0, 112.0"
+              ]
+            },
+            {
+              "SpawnPoint": "272.0, -240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-432.0, 304.0"
+              ]
+            },
+            {
+              "SpawnPoint": "144.0, -240.0",
+              "TrajectoryParameters": [
+                "0.0, 0.0",
+                "-160.0, 384.0"
               ]
             }
           ]

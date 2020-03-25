@@ -611,13 +611,12 @@
       "MoveTargetSelectType": "RandomFromListTargets",
       "Weapon": {
         "Reloader": {
-          "FireRate": 0.75
+          "FireRate": 0.5
         },
         "Barrels": [
           {
             "AngleCorrection": 45.0,
             "BaseOffset": "4.0, 4.0",
-            "Accuracy": 90.0,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
@@ -632,7 +631,6 @@
           {
             "AngleCorrection": 135.0,
             "BaseOffset": "-4.0, 4.0",
-            "Accuracy": 90.0,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
@@ -647,7 +645,6 @@
           {
             "AngleCorrection": -135.0,
             "BaseOffset": "-4.0, -4.0",
-            "Accuracy": 90.0,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
@@ -662,7 +659,6 @@
           {
             "AngleCorrection": -45.0,
             "BaseOffset": "-4.0, -4.0",
-            "Accuracy": 90.0,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
@@ -724,14 +720,14 @@
     "Hitpoints": 100.0,
     "Behavior": {
       "Spawner": {
-        "MaxSpawned": 4,
+        "MaxSpawned": 3,
         "Reloader": {
           "FireRate": 0.25
         },
         "BlueprintType": "DesertGhost",
         "PositionSelector": {
           "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
-          "BetweenRepeats": 4
+          "BetweenRepeats": 3
         }
       }
     },
@@ -742,7 +738,7 @@
     "DefaultAppearancePhaseDuration": 1.5,
     "AppearancePhaseSprite": {
       "Name": "Sprites/Enemies/Level2X/Appearance/DesertAltar",
-      "AnimationCycle": 0.125
+      "AnimationCycle": 1.5
     },
     "BeforeAppearanceEffect": {
       "Sound": {
