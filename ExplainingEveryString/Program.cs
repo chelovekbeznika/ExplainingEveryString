@@ -9,7 +9,7 @@ namespace ExplainingEveryString
         [STAThread]
         static void Main()
         {
-#if RELEASE
+#if !DEBUG
             try
             {
 #endif
@@ -17,7 +17,7 @@ namespace ExplainingEveryString
                 {
                     game.Run();
                 }
-#if RELEASE
+#if !DEBUG
             }
             catch (Exception ex)
             {

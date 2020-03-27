@@ -25,7 +25,8 @@ namespace ExplainingEveryString.Core.Menu
                 Items[SelectedIndex].Selected = false;
             this.SelectedIndex = defaultButton - 1;
             this.SelectedIndex = FindVisibleButton(+1);
-            this.Items[SelectedIndex].Selected = true;
+            if (IsValidButtonIndex(SelectedIndex))
+                this.Items[SelectedIndex].Selected = true;
         }
 
         internal void SelectNextButton()
