@@ -1490,6 +1490,70 @@
           "TilePosition": { "X": 218, "Y": 44, "Offset": "8.0, -8.0" }
         }
       ],
+    },
+    {
+      "StartRegion": {
+        "X": 60,
+        "Y": 22,
+        "Width": 52,
+        "Height": 29
+      },
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": { "X": 130, "Y": 36, "Offset": "8.0, 0.0" }
+      },
+      "Doors": [
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 30 }
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 31 }
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 32 }
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 33 }
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 34 }
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 35 }
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 36 }
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 202, "Y": 37 }
+        }
+      ],
+      "Enemies": [
+        {
+          "BlueprintType": "Miniboss_mk21",
+          "TilePosition": { "X": 95, "Y": 36},
+          "TrajectoryParameters": [
+            "0.0, 176.0",
+            "0.0, -176.0"
+          ]
+        }
+      ]
     }
   ],
   "FogOfWar": {

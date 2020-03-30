@@ -1379,6 +1379,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level1X/VakidzasiHandle.png
 
+#begin Sprites/Enemies/Level2X/Appearance/ArmedEgg.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Appearance/ArmedEgg.png
+
 #begin Sprites/Enemies/Level2X/Appearance/DesertAltar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1415,6 +1427,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/Appearance/TripleCannon.png
 
+#begin Sprites/Enemies/Level2X/ArmedEgg.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/ArmedEgg.png
+
 #begin Sprites/Enemies/Level2X/Cannon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1426,6 +1450,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/Cannon.png
+
+#begin Sprites/Enemies/Level2X/Death/ArmedEgg.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Death/ArmedEgg.png
 
 #begin Sprites/Enemies/Level2X/Death/Cannon.png
 /importer:TextureImporter

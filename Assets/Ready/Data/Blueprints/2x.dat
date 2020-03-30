@@ -594,6 +594,88 @@
       }
     }
   },
+  "Miniboss_mk21": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 80.0,
+    "Width": 128.0,
+    "Hitpoints": 250.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/ArmedEgg"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/HelicopterExplosion",
+        "Volume": 0.2
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/ArmedEgg",
+        "AnimationCycle": 0.33
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level2X/Appearance/ArmedEgg",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 150.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 10,
+          "Ammo": 5,
+          "ReloadTime": 2.5
+        },
+        "Barrels": [
+          {
+            "Length": 51.0,
+            "MuzzleOffset": "0.0, 16.0",
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "amplitude": 4.0,
+                "angularVelocity": 26.1799
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "FixedFireDirection"
+      },
+      "Spawner": {
+        "MaxSpawned": 2,
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "AppearancePhase": 0.01,
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "0.0, 48.0",
+            "0.0, -48.0"
+          ]
+        },
+        "BlueprintType": "Hunter_mk2"
+      }
+    }
+  },
   "DesertGhost": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 50.0,
