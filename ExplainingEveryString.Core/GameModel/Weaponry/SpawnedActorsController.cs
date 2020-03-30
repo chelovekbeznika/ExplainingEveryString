@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private ISpawnPositionSelector spawnPositionSelector;
         private ActorsFactory factory;
         private IActor spawner;
-        private Boolean active = true;
+        private Boolean active = false;
 
         internal List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
 
@@ -36,7 +36,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public void Update(Single elapsedSeconds)
         {
-            reloader.TryReload(elapsedSeconds, out Boolean enemySpawned);
+            if (active)
+                reloader.TryReload(elapsedSeconds, out Boolean enemySpawned);
         }
 
         internal void SendDeadToHeaven(List<IEnemy> avengers)
