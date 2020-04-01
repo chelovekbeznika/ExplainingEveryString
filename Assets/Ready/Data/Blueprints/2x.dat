@@ -629,7 +629,7 @@
       "Weapon": {
         "Reloader": {
           "FireRate": 10,
-          "Ammo": 5,
+          "Ammo": 10,
           "ReloadTime": 2.5
         },
         "Barrels": [
@@ -644,9 +644,135 @@
                 "angularVelocity": 26.1799
               },
               "Damage": 10.0,
-              "TimeToLive": 5.0,
+              "TimeToLive": 10.0,
               "Sprite": {
                 "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "Length": 51.0,
+            "MuzzleOffset": "0.0, 0.0",
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "amplitude": 4.0,
+                "angularVelocity": 26.1799
+              },
+              "Damage": 10.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "Length": 51.0,
+            "MuzzleOffset": "0.0, -16.0",
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "amplitude": 4.0,
+                "angularVelocity": 26.1799
+              },
+              "Damage": 10.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          
+          {
+            "Length": 36.4,
+            "MuzzleOffset": "-32.0, 5.0",
+            "AngleCorrection": 105.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 750.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 34.1,
+            "MuzzleOffset": "-32.0, 5.0",
+            "AngleCorrection": 140.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 750.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 33.7,
+            "MuzzleOffset": "-32.0, 5.0",
+            "AngleCorrection": 168.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 750.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          
+          {
+            "Length": 36.4,
+            "MuzzleOffset": "-32.0, -5.0",
+            "AngleCorrection": -105.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 750.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 34.1,
+            "MuzzleOffset": "-32.0, -5.0",
+            "AngleCorrection": -140.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 750.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 33.7,
+            "MuzzleOffset": "-32.0, -5.0",
+            "AngleCorrection": -168.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 750.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
               }
             }
           }

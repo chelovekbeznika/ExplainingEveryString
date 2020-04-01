@@ -489,31 +489,6 @@
         },
         
         {
-          "BlueprintType": "LittleWindDoor",
-          "TilePosition": { "X": 58, "Y": 23 }
-        },
-        {
-          "BlueprintType": "LittleWindDoor",
-          "TilePosition": { "X": 58, "Y": 24 }
-        },
-        {
-          "BlueprintType": "LittleWindDoor",
-          "TilePosition": { "X": 58, "Y": 25 }
-        },
-        {
-          "BlueprintType": "LittleWindDoor",
-          "TilePosition": { "X": 59, "Y": 23 }
-        },
-        {
-          "BlueprintType": "LittleWindDoor",
-          "TilePosition": { "X": 59, "Y": 24 }
-        },
-        {
-          "BlueprintType": "LittleWindDoor",
-          "TilePosition": { "X": 59, "Y": 25 }
-        },
-        
-        {
           "ClosesAt": 3,
           "BlueprintType": "MediumWindDoor",
           "TilePosition": { "X": 57, "Y": 72 }
@@ -1504,6 +1479,31 @@
       },
       "Doors": [
         {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 58, "Y": 23 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 58, "Y": 24 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 58, "Y": 25 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 59, "Y": 23 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 59, "Y": 24 }
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": { "X": 59, "Y": 25 }
+        },
+      
+        {
           "ClosesAt": 10,
           "BlueprintType": "LittleWindDoor",
           "TilePosition": { "X": 202, "Y": 30 }
@@ -1547,12 +1547,21 @@
       "Enemies": [
         {
           "BlueprintType": "Miniboss_mk21",
-          "TilePosition": { "X": 95, "Y": 36},
+          "TilePosition": { "X": 95, "Y": 36 },
           "TrajectoryParameters": [
             "0.0, 176.0",
             "0.0, -176.0"
           ]
-        }
+        },
+        {
+          "BlueprintType": "Miniboss_mk21",
+          "TilePosition": { "X": 166, "Y": 36 },
+          "Angle": 180.0,
+          "TrajectoryParameters": [
+            "0.0, -176.0",
+            "0.0, 176.0"
+          ]
+        },
       ]
     }
   ],
