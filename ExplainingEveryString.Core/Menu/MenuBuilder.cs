@@ -21,8 +21,8 @@ namespace ExplainingEveryString.Core.Menu
             var items = new MenuItem[]
             {
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/Unpause")),
-                new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/NewGame")),
                 new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/Continue")),
+                new MenuItem(content.Load<Texture2D>(@"Sprites/Menu/NewGame")),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect"),
                     levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest"),
@@ -31,8 +31,9 @@ namespace ExplainingEveryString.Core.Menu
             };
 
             items[0].ItemCommandExecuteRequested += (sender, e) => game.GameState.TryPauseSwitch();
-            items[1].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
-            items[2].ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueCurrentGame();
+            items[1].ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueCurrentGame();
+            items[2].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
+            
             items[5].ItemCommandExecuteRequested += (sender, e) => game.Exit();
 
             items[0].IsVisible = () => game.GameState.IsPaused;
