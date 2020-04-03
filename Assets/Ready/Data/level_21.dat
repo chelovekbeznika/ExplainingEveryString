@@ -1547,7 +1547,7 @@
       "Enemies": [
         {
           "BlueprintType": "Miniboss_mk21",
-          "TilePosition": { "X": 95, "Y": 36 },
+          "TilePosition": { "X": 108, "Y": 36 },
           "TrajectoryParameters": [
             "0.0, 176.0",
             "0.0, -176.0"
@@ -1555,7 +1555,7 @@
         },
         {
           "BlueprintType": "Miniboss_mk21",
-          "TilePosition": { "X": 166, "Y": 36 },
+          "TilePosition": { "X": 153, "Y": 36 },
           "Angle": 180.0,
           "TrajectoryParameters": [
             "0.0, -176.0",
