@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Collisions;
+using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;

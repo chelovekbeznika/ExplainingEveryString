@@ -1,5 +1,5 @@
-﻿using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Core.Math;
+﻿using ExplainingEveryString.Core.Collisions;
+using ExplainingEveryString.Core.GameModel;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System;

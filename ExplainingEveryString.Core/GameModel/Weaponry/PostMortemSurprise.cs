@@ -16,7 +16,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private String avengerType;
         private ISpawnPositionSelector positionSelector;
         private Vector2[] levelSpawnPoints;
-        private SpawnSpecification[] customSpawns;
         private ActorsFactory factory;
         private Func<Vector2> currentPositionLocator;
         private Func<Vector2> playerLocator;
@@ -58,7 +57,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             howMuchToSpawn = specification.AvengersAmount;
             avengerType = specification.AvengersType;
             positionSelector = SpawnPositionSelectorsFactory.Get(
-                specification.PositionSelector, currentPositionLocator, levelSpawnPoints, customSpawns);
+                specification.PositionSelector, currentPositionLocator, levelSpawnPoints, null);
         }
 
         internal void TryTrigger()

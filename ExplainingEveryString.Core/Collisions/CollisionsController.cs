@@ -1,11 +1,12 @@
-﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Math;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core.GameModel
+namespace ExplainingEveryString.Core.Collisions
 {
     internal class CollisionsController
     {
@@ -140,8 +141,8 @@ namespace ExplainingEveryString.Core.GameModel
         {
             foreach (var bullet in bullets)
             {
-                CheckBulletForCollisions(bullet,
-                    targets.Concat(activeObjects.GetWalls()));
+                var sector = SpatialPartioningHelper.GetSector(bullet.Position);
+                CheckBulletForCollisions(bullet, targets.Concat(activeObjects.GetWalls(sector)));
             }
         }
 

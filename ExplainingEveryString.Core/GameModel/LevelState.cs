@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Math;
+﻿using ExplainingEveryString.Core.Collisions;
+using ExplainingEveryString.Core.Math;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel

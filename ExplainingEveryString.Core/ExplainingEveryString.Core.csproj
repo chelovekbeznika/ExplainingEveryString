@@ -111,6 +111,7 @@
     <Compile Include="Menu\MusicTestMenuBuilder.cs" />
     <Compile Include="Menu\OuterMenuInputProcessor.cs" />
     <Compile Include="MusicComponent.cs" />
+    <Compile Include="Collisions\SpatialPartioningHelper.cs" />
     <Compile Include="SpriteDataBuilder.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="GameModel\Weaponry\LevelPointsSpawner.cs" />
@@ -170,13 +171,13 @@
     <Compile Include="Interface\HealthBarDisplayer.cs" />
     <Compile Include="Interface\InterfaceInfo.cs" />
     <Compile Include="Math\AngleConverter.cs" />
-    <Compile Include="Math\CollisionsChecker.cs" />
+    <Compile Include="Collisions\CollisionsChecker.cs" />
     <Compile Include="Displaying\EpicEventsProcessor.cs" />
     <Compile Include="Displaying\SpecEffect.cs" />
     <Compile Include="Displaying\SpriteState.cs" />
     <Compile Include="EesGame.cs" />
     <Compile Include="GameModel\ActiveActorsStorage.cs" />
-    <Compile Include="GameModel\CollisionsController.cs" />
+    <Compile Include="Collisions\CollisionsController.cs" />
     <Compile Include="GameModel\Enemies\Enemy.cs" />
     <Compile Include="Displaying\EpicEventArgs.cs" />
     <Compile Include="GameModel\FrictionCorrector.cs" />

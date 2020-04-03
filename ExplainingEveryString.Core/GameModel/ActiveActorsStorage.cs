@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Collisions;
+using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using System;
@@ -22,6 +23,7 @@ namespace ExplainingEveryString.Core.GameModel
         private List<IActor> obstacles;
         private List<Door> doors;
         private ICollidable[] walls;
+        private Dictionary<String, List<ICollidable>> wallsPerSectors = new Dictionary<String, List<ICollidable>>();
         private List<IEnemy> currentWaveEnemies = new List<IEnemy>();
         private List<IEnemy> avengers = new List<IEnemy>();
         private List<SpawnedActorsController> enemySpawners = new List<SpawnedActorsController>();
@@ -55,10 +57,9 @@ namespace ExplainingEveryString.Core.GameModel
                 .Concat(doors.OfType<IUpdateable>());
         }
 
-        internal IEnumerable<ICollidable> GetWalls()
-        {
-            return obstacles.Concat(doors).OfType<ICollidable>().Concat(walls);
-        }
+        internal IEnumerable<ICollidable> GetWalls() => obstacles.Concat(doors).OfType<ICollidable>().Concat(walls);
+
+        internal IEnumerable<ICollidable> GetWalls(string sector) => wallsPerSectors.ContainsKey(sector) ? wallsPerSectors[sector] : new List<ICollidable>();
 
         internal void Update()
         {
@@ -91,7 +92,11 @@ namespace ExplainingEveryString.Core.GameModel
         {
             PlayerBullets = PlayerBullets.Where(bullet => bullet.IsAlive()).ToList();
             EnemyBullets = EnemyBullets.Where(bullet => bullet.IsAlive()).ToList();
-            doors = doors.Where(door => door.IsAlive()).ToList();
+            var sortedDoors = doors.ToLookup(door => door.IsAlive());
+            doors = sortedDoors[true].ToList();
+            foreach (var openedDoor in sortedDoors[false])
+                foreach (var sector in wallsPerSectors.Keys)
+                    wallsPerSectors[sector].Remove(openedDoor);
 
             currentWaveEnemies = EnemyDeathProcessor.SendDeadToHeaven(currentWaveEnemies, avengers);
             foreach (var spawnedActorsController in enemySpawners)
@@ -108,6 +113,7 @@ namespace ExplainingEveryString.Core.GameModel
             obstacles = actorsInitializer.InitializeObstacles();
             walls = actorsInitializer.InitializeWalls();
             doors = actorsInitializer.InitializeCommonDoors(startWave);
+            SortWallsBySectors(GetWalls());
 
             SwitchStartRegion(actorsInitializer, startWave);
             PlayerBullets = new List<Bullet>();
@@ -132,7 +138,22 @@ namespace ExplainingEveryString.Core.GameModel
             if (Boss != null)
                 enemiesQueue.Enqueue(Boss);
             maxEnemiesAtOnce = actorsInitializer.MaxEnemiesAtOnce(waveNumber);
-            doors.AddRange(actorsInitializer.InitializeClosingDoors(waveNumber));
+            var newDoors = actorsInitializer.InitializeClosingDoors(waveNumber);
+            doors.AddRange(newDoors);
+            SortWallsBySectors(newDoors);
+        }
+
+        private void SortWallsBySectors(IEnumerable<ICollidable> walls)
+        {
+            foreach (var wall in walls)
+            {
+                foreach (var sector in SpatialPartioningHelper.GetSectors(wall.GetCurrentHitbox()))
+                {
+                    if (!wallsPerSectors.ContainsKey(sector))
+                        wallsPerSectors.Add(sector, new List<ICollidable>());
+                    wallsPerSectors[sector].Add(wall);
+                }
+            }
         }
     }
 }

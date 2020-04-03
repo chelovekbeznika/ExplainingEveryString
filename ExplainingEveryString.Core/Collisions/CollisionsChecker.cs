@@ -1,8 +1,9 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Math;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace ExplainingEveryString.Core.Math
+namespace ExplainingEveryString.Core.Collisions
 {
     internal class CollisionsChecker
     {
