@@ -30,9 +30,9 @@ namespace ExplainingEveryString.Core.GameModel
             this.checkpointsManager = checkpointsManager;
             this.wavesAmount = wavesAmount;
             checkpointsManager.InitializeCheckpoints();
-            TrySwitchCheckpoint();
             activeActors.InitializeActorsOnLevelStart(actorsInitializer, checkpointsManager, startCheckpoint);
             currentEnemyWaveNumber = checkpointsManager.GetStartWave(startCheckpoint);
+            TrySwitchCheckpoint();
         }
 
         internal void Update(Single elapsedSeconds)
