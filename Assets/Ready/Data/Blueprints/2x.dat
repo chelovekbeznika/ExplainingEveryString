@@ -951,9 +951,9 @@
       "Spawner": {
         "MaxSpawned": 1,
         "Reloader": {
-          "FireRate": 0.25
+          "FireRate": 0.2
         },
-        "AppearancePhase": 0.01,
+        "AppearancePhase": 0.25,
         "PositionSelector" : {
           "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
           "SpawnPositions": [

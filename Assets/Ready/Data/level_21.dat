@@ -541,7 +541,7 @@
           "TilePosition": { "X": 126, "Y": 70, "Offset": "8.0, -8.0" }
         },
       ],
-      "MaxEnemiesAtOnce": 8,
+      "MaxEnemiesAtOnce": 6,
       "Enemies": [
         {
           "BlueprintType": "Hunter_mk2",
@@ -1349,7 +1349,7 @@
           "TilePosition": { "X": 202, "Y": 37 }
         }
       ],
-      "MaxEnemiesAtOnce": 6,
+      "MaxEnemiesAtOnce": 4,
       "Enemies": [
         {
           "BlueprintType": "FixedCannon_mk2",
@@ -1359,16 +1359,6 @@
         {
           "BlueprintType": "FixedCannon_mk2",
           "TilePosition": { "X": 211, "Y": 6, "Offset": "8.0, -8.0" },
-          "Angle": -90.0
-        },
-        {
-          "BlueprintType": "FixedCannon_mk2",
-          "TilePosition": { "X": 216, "Y": 6, "Offset": "8.0, -8.0" },
-          "Angle": -90.0
-        },
-        {
-          "BlueprintType": "FixedCannon_mk2",
-          "TilePosition": { "X": 218, "Y": 6, "Offset": "8.0, -8.0" },
           "Angle": -90.0
         },
         {
@@ -1455,14 +1445,6 @@
         {
           "BlueprintType": "SimpleCannon_mk2",
           "TilePosition": { "X": 223, "Y": 47 }
-        },
-        {
-          "BlueprintType": "SimpleCannon_mk2",
-          "TilePosition": { "X": 216, "Y": 44, "Offset": "8.0, -8.0" }
-        },
-        {
-          "BlueprintType": "SimpleCannon_mk2",
-          "TilePosition": { "X": 218, "Y": 44, "Offset": "8.0, -8.0" }
         }
       ],
     },
@@ -1470,7 +1452,7 @@
       "StartRegion": {
         "X": 60,
         "Y": 22,
-        "Width": 52,
+        "Width": 65,
         "Height": 29
       },
       "Checkpoint": {
