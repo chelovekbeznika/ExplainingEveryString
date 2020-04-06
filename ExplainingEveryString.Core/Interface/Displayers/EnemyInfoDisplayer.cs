@@ -2,28 +2,33 @@
 using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Interface
+namespace ExplainingEveryString.Core.Interface.Displayers
 {
-    internal class EnemyInfoDisplayer
+    internal class EnemyInfoDisplayer : IDisplayer
     {
-        
-        internal const String HealthBarTexture = "EnemyHealthBar";
-        internal const String RecentlyHitHealthBarTexture = "RecentlyHitEnemyHealthBar";
+        private const String HealthBarTexture = "EnemyHealthBar";
+        private const String RecentlyHitHealthBarTexture = "RecentlyHitEnemyHealthBar";
 
         private const Single RecentHitThreshold = 0.2f;
-        private readonly SpriteData healthBar;
-        private readonly SpriteData recentlyHitHealthBar;
+        private SpriteData healthBar;
+        private SpriteData recentlyHitHealthBar;
         private readonly Int32 pixelsBetweenEnemyAndHealthBar = 8;
         private readonly InterfaceSpriteDisplayer spriteDisplayer;
 
-        internal EnemyInfoDisplayer(InterfaceSpriteDisplayer spriteDisplayer, Dictionary<String, SpriteData> sprites)
+        internal EnemyInfoDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
         {
             this.spriteDisplayer = spriteDisplayer;
+        }
+
+        public String[] GetSpritesNames() => new[] { HealthBarTexture, RecentlyHitHealthBarTexture };
+
+        public void InitSprites(Dictionary<String, SpriteData> sprites)
+        {
             this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
             this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, RecentlyHitHealthBarTexture);
         }
 
-        internal void Draw(List<EnemyInterfaceInfo> enemiesInterfaceInfo)
+        public void Draw(IEnumerable<EnemyInterfaceInfo> enemiesInterfaceInfo)
         {
             foreach (EnemyInterfaceInfo enemyInterfaceInfo in enemiesInterfaceInfo)
             {

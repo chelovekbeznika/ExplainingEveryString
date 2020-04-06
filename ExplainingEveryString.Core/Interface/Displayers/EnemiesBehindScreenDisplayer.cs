@@ -2,22 +2,29 @@
 using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Interface
+namespace ExplainingEveryString.Core.Interface.Displayers
 {
-    internal class EnemiesBehindScreenDisplayer
+    internal class EnemiesBehindScreenDisplayer : IDisplayer
     {
-        internal const String DangerSign = "EnemyBehindScreen";
+        private const String DangerSign = "EnemyBehindScreen";
 
         private readonly InterfaceSpriteDisplayer spriteDisplayer;
-        private readonly SpriteData dangerSign;
+        private SpriteData dangerSign;
 
-        internal EnemiesBehindScreenDisplayer(InterfaceSpriteDisplayer spriteDisplayer, Dictionary<String, SpriteData> sprites)
+        internal EnemiesBehindScreenDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
         {
             this.spriteDisplayer = spriteDisplayer;
+            
+        }
+
+        public String[] GetSpritesNames() => new[] { DangerSign };
+
+        public void InitSprites(Dictionary<String, SpriteData> sprites)
+        {
             this.dangerSign = TexturesHelper.GetSprite(sprites, DangerSign);
         }
 
-        internal void Draw(List<Vector2> hiddenEnemies)
+        public void Draw(List<Vector2> hiddenEnemies)
         {
             foreach (var hiddenEnemyPosition in hiddenEnemies)
             {

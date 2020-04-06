@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Core.Collisions;
 using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Core.Math;
 using NUnit.Framework;
 using System;
 

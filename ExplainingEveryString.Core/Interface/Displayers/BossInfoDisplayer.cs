@@ -2,40 +2,51 @@
 using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Interface
+namespace ExplainingEveryString.Core.Interface.Displayers
 {
-    internal class BossInfoDisplayer
+    internal class BossInfoDisplayer : IDisplayer
     {
         internal const String OneBossPrefix = "";
         internal const String LeftBossPrefix = "LeftDouble";
         internal const String RightBossPrefix = "RightDouble";
 
-        internal const String HealthBarTexture = "{0}BossHealthBar";
-        internal const String EmptyHealthBarTexture = "Empty{0}BossHealthBar";
-        internal const String RecentlyHitHealthBarTexture = "RecentlyHit{0}BossHealthBar";
-        internal const String RecentlyHitEmptyHealthBarTexture = "RecentlyHitEmpty{0}BossHealthBar";
+        private const String HealthBarTexture = "{0}BossHealthBar";
+        private const String EmptyHealthBarTexture = "Empty{0}BossHealthBar";
+        private const String RecentlyHitHealthBarTexture = "RecentlyHit{0}BossHealthBar";
+        private const String RecentlyHitEmptyHealthBarTexture = "RecentlyHitEmpty{0}BossHealthBar";
 
         private const Single RecentHitThreshold = 0.33333F;
         private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
-        private readonly SpriteData healthBar;
-        private readonly SpriteData emptyHealthBar;
-        private readonly SpriteData recentlyHitHealthBar;
-        private readonly SpriteData recentlyHitEmptyHealthBar;
+        private SpriteData healthBar;
+        private SpriteData emptyHealthBar;
+        private SpriteData recentlyHitHealthBar;
+        private SpriteData recentlyHitEmptyHealthBar;
 
         private readonly Int32 pixelsFromTop = 16;
         private readonly Int32 offset;
+        private readonly String spritesPrefix;
         private readonly Boolean reversedDrain;
 
-        public BossInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, Dictionary<String, SpriteData> sprites,
-            String spritesPrefix, Int32 offset)
+        internal BossInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, String spritesPrefix, Int32 offset)
         {
             this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
+            this.reversedDrain = spritesPrefix == RightBossPrefix;
+            this.spritesPrefix = spritesPrefix;
+            this.offset = offset;
+        }
+
+        public String[] GetSpritesNames() => new[]
+        {
+            String.Format(HealthBarTexture, spritesPrefix), String.Format(EmptyHealthBarTexture, spritesPrefix),
+            String.Format(RecentlyHitHealthBarTexture, spritesPrefix), String.Format(RecentlyHitEmptyHealthBarTexture, spritesPrefix)
+        };
+
+        public void InitSprites(Dictionary<String, SpriteData> sprites)
+        {
             this.healthBar = TexturesHelper.GetSprite(sprites, String.Format(HealthBarTexture, spritesPrefix));
             this.emptyHealthBar = TexturesHelper.GetSprite(sprites, String.Format(EmptyHealthBarTexture, spritesPrefix));
             this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, String.Format(RecentlyHitHealthBarTexture, spritesPrefix));
             this.recentlyHitEmptyHealthBar = TexturesHelper.GetSprite(sprites, String.Format(RecentlyHitEmptyHealthBarTexture, spritesPrefix));
-            this.reversedDrain = spritesPrefix == RightBossPrefix;
-            this.offset = offset;
         }
 
         public void Draw(EnemyInterfaceInfo bossInfo)

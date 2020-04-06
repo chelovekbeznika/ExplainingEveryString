@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace ExplainingEveryString.Core.Interface
+namespace ExplainingEveryString.Core.Interface.Displayers
 {
     internal class GameTimeDisplayer
     {

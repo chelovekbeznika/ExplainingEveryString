@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Interface;
+using ExplainingEveryString.Core.Interface.Displayers;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
@@ -49,47 +50,41 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            var sprites = GetSprites();
             spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
             interfaceSpritesDisplayer = new InterfaceSpriteDisplayer(spriteBatch, alphaMask);
 
-            healthBarDisplayer = new HealthBarDisplayer(interfaceSpritesDisplayer, sprites);
-            dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer, sprites);
-            enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer, sprites);
-            bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites, BossInfoDisplayer.OneBossPrefix, 0);
-            leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites, BossInfoDisplayer.LeftBossPrefix, -160);
-            rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites, BossInfoDisplayer.RightBossPrefix, 160);
-            enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer, sprites);
-            var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
-            gameTimeDisplayer = new GameTimeDisplayer(timeFont);
+            var displayers = InitDisplayers();
+
+            var metadataLoader = AssetsMetadataAccess.GetLoader();
+            var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
+            var animatedSprites = displayers
+                .SelectMany(displayer => displayer.GetSpritesNames())
+                .Select(spriteName => TexturesHelper.GetFullName(spriteName));
+            var sprites = spriteDataBuilder.Build(animatedSprites);
+            foreach (var displayer in displayers)
+                displayer.InitSprites(sprites);
 
             base.LoadContent();
         }
 
-        private Dictionary<String, SpriteData> GetSprites()
+        private IEnumerable<IDisplayer> InitDisplayers()
         {
-            var metadataLoader = AssetsMetadataAccess.GetLoader();
-            var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
-            var bossDisplayerPrefixes = new String[] 
-            { 
-                BossInfoDisplayer.OneBossPrefix, BossInfoDisplayer.LeftBossPrefix, BossInfoDisplayer.RightBossPrefix 
-            };
-            var bossDisplayerSprites = new String[]
+            healthBarDisplayer = new HealthBarDisplayer(interfaceSpritesDisplayer);
+            dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer);
+            enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer);
+            bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.OneBossPrefix, 0);
+            leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.LeftBossPrefix, -160);
+            rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightBossPrefix, 160);
+            enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
+            var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
+            gameTimeDisplayer = new GameTimeDisplayer(timeFont);
+
+            return new IDisplayer[]
             {
-                BossInfoDisplayer.HealthBarTexture, BossInfoDisplayer.EmptyHealthBarTexture,
-                BossInfoDisplayer.RecentlyHitEmptyHealthBarTexture, BossInfoDisplayer.RecentlyHitHealthBarTexture,
+                healthBarDisplayer, dashStateDisplayer, enemiesInfoDisplayer,
+                bossInfoDisplayer, leftBossInfoDisplayer, rightBossInfoDisplayer,
+                enemiesBehindScreenDisplayer
             };
-            var allBossDisplayerSprites = bossDisplayerPrefixes
-                .SelectMany(prefix => bossDisplayerSprites.Select(sprite => String.Format(sprite, prefix)));
-            String[] animatedSprites = new String[] 
-            {
-                HealthBarDisplayer.HealthBarTexture, HealthBarDisplayer.EmptyHealthBarTexture,
-                EnemyInfoDisplayer.HealthBarTexture, EnemyInfoDisplayer.RecentlyHitHealthBarTexture,
-                DashStateDisplayer.ActiveTexture, DashStateDisplayer.AvailableTexture,
-                DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture,
-                EnemiesBehindScreenDisplayer.DangerSign
-            }.Concat(allBossDisplayerSprites).Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();           
-            return spriteDataBuilder.Build(animatedSprites);
         }
 
         public override void Update(GameTime gameTime)
@@ -108,7 +103,6 @@ namespace ExplainingEveryString.Core
                 enemiesBehindScreenDisplayer.Draw(interfaceInfo.HiddenEnemies);
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
-                gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
                 if (interfaceInfo.Bosses != null)
                 {
                     if (interfaceInfo.Bosses.Count == 1)
@@ -119,6 +113,7 @@ namespace ExplainingEveryString.Core
                         rightBossInfoDisplayer.Draw(interfaceInfo.Bosses[1]);
                     }
                 }
+                gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
                 spriteBatch.End();
             }
             base.Draw(gameTime);

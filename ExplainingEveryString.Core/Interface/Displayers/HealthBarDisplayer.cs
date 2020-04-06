@@ -3,33 +3,40 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Interface
+namespace ExplainingEveryString.Core.Interface.Displayers
 {
-    internal class HealthBarDisplayer
+    internal class HealthBarDisplayer : IDisplayer
     {
-        internal const String HealthBarTexture = "HealthBar";
-        internal const String EmptyHealthBarTexture = "EmptyHealthBar";
+        private const String HealthBarTexture = "HealthBar";
+        private const String EmptyHealthBarTexture = "EmptyHealthBar";
 
-        private readonly InterfaceSpriteDisplayer spriteDisplayer;
-        private readonly SpriteData healthBar;
-        private readonly SpriteData emptyHealthBar;
         private readonly Int32 pixelsFromLeft = 32;
         private readonly Int32 pixelsFromBottom = 32;
         private const Single ShakeCooldown = 0.5F;
         private const Single ShakeAmplitudeHorizontal = 8;
         private const Single ShakeAmplitudeVertical = 4;
 
+        private readonly InterfaceSpriteDisplayer spriteDisplayer;
+        private SpriteData healthBar;
+        private SpriteData emptyHealthBar;
+
         internal Int32 MarginOfLeftEdge => pixelsFromLeft;
         internal Int32 HeightOfTopEdge => pixelsFromBottom + healthBar.Height;
 
-        internal HealthBarDisplayer(InterfaceSpriteDisplayer spriteDisplayer, Dictionary<String, SpriteData> sprites)
+        internal HealthBarDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
         {
             this.spriteDisplayer = spriteDisplayer;
+        }
+
+        public String[] GetSpritesNames() => new[] { HealthBarTexture, EmptyHealthBarTexture };
+
+        public void InitSprites(Dictionary<String, SpriteData> sprites)
+        {
             this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
             this.emptyHealthBar = TexturesHelper.GetSprite(sprites, EmptyHealthBarTexture);
         }
 
-        internal void Draw(PlayerInterfaceInfo interfaceInfo)
+        public void Draw(PlayerInterfaceInfo interfaceInfo)
         {
             var healthRemained = interfaceInfo.Health / interfaceInfo.MaxHealth;
             var basePosition = new Vector2(pixelsFromLeft, spriteDisplayer.ScreenHeight - pixelsFromBottom - healthBar.Height);

@@ -2,36 +2,40 @@
 using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Interface
+namespace ExplainingEveryString.Core.Interface.Displayers
 {
-    internal class DashStateDisplayer
+    internal class DashStateDisplayer : IDisplayer
     {
-        internal const String AvailableTexture = "FullDash";
-        internal const String NonAvailableTexture = "FullDashNotReady";
-        internal const String CooldownTexture = "EmptyDash";
-        internal const String ActiveTexture = "ActiveDash";
+        private const String AvailableTexture = "FullDash";
+        private const String NonAvailableTexture = "FullDashNotReady";
+        private const String CooldownTexture = "EmptyDash";
+        private const String ActiveTexture = "ActiveDash";
 
-        private readonly SpriteData available;
-        private readonly SpriteData nonAvailable;
-        private readonly SpriteData cooldown;
-        private readonly SpriteData active;
+        private SpriteData available;
+        private SpriteData nonAvailable;
+        private SpriteData cooldown;
+        private SpriteData active;
         private readonly InterfaceSpriteDisplayer spriteDisplayer;
         private readonly HealthBarDisplayer healthBarDisplayer;
         private Int32 PixelsFromLeft => healthBarDisplayer.MarginOfLeftEdge - 16;
         private Int32 PixelsFromBottom => healthBarDisplayer.HeightOfTopEdge;
 
-        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, InterfaceSpriteDisplayer spriteDisplayer,
-            Dictionary<String, SpriteData> sprites)
+        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, InterfaceSpriteDisplayer spriteDisplayer)
         {
             this.healthBarDisplayer = healthBarDisplayer;
             this.spriteDisplayer = spriteDisplayer;
+        }
+
+        public String[] GetSpritesNames() => new[] { AvailableTexture, NonAvailableTexture, CooldownTexture, ActiveTexture };
+
+        public void InitSprites(Dictionary<String, SpriteData> sprites)
+        {
             this.available = TexturesHelper.GetSprite(sprites, AvailableTexture);
             this.nonAvailable = TexturesHelper.GetSprite(sprites, NonAvailableTexture);
             this.cooldown = TexturesHelper.GetSprite(sprites, CooldownTexture);
             this.active = TexturesHelper.GetSprite(sprites, ActiveTexture);
         }
-
-        internal void Draw(PlayerInterfaceInfo interfaceInfo)
+        public void Draw(PlayerInterfaceInfo interfaceInfo)
         {
             var barPosition = new Vector2
             {

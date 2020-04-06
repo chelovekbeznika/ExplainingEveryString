@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Core.Math;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
