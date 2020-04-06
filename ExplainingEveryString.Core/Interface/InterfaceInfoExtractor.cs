@@ -15,12 +15,12 @@ namespace ExplainingEveryString.Core.Interface
                 GameTime = levelProgress.GameTime,
                 Enemies = activeActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
-                            .Where(e => e.ShowInterfaceInfo && e != activeActors.Boss)
+                            .Where(e => e.ShowInterfaceInfo && !(activeActors.Bosses?.Contains(e) ?? false))
                             .Select(e => GetInterfaceInfo(e, camera)).ToList(),
                 HiddenEnemies = activeActors.Enemies
                             .Where(e => e.IsVisible && !camera.IsVisibleOnScreen(e))
                             .Select(e => camera.GetScreenBorderDangerDirection(e)).ToList(),
-                Boss = activeActors.Boss != null ? GetInterfaceInfo(activeActors.Boss, camera) : null
+                Bosses = activeActors.Bosses?.Select(boss => GetInterfaceInfo(boss, camera)).ToList()
             };
         }
 

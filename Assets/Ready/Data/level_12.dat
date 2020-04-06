@@ -969,17 +969,19 @@
       ],
       "Enemies": [
       ],
-      "Boss": {
-        "BlueprintType": "Miniboss_mk12",
-        "TilePosition": {
-          "X": 317,
-          "Y": 54
-        },
-        "TrajectoryParameters": [
-          "-240.0, 0.0",
-          "240.0, 0.0"
-        ]         
-      }
+      "Bosses": [ 
+        {
+          "BlueprintType": "Miniboss_mk12",
+          "TilePosition": {
+            "X": 317,
+            "Y": 54
+          },
+          "TrajectoryParameters": [
+            "-240.0, 0.0",
+            "240.0, 0.0"
+          ]         
+        } 
+      ]
     }
   ],
   "FogOfWar": {

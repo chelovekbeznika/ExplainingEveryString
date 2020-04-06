@@ -1979,6 +1979,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/EmptyHealthBar.png
 
+#begin Sprites/Interface/EmptyLeftDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/EmptyLeftDoubleBossHealthBar.png
+
+#begin Sprites/Interface/EmptyRightDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/EmptyRightDoubleBossHealthBar.png
+
 #begin Sprites/Interface/EnemyBehindScreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2039,6 +2063,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/HealthBar.png
 
+#begin Sprites/Interface/LeftDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/LeftDoubleBossHealthBar.png
+
 #begin Sprites/Interface/RecentlyHitBossHealthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2063,6 +2099,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/RecentlyHitEmptyBossHealthBar.png
 
+#begin Sprites/Interface/RecentlyHitEmptyLeftDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/RecentlyHitEmptyLeftDoubleBossHealthBar.png
+
+#begin Sprites/Interface/RecentlyHitEmptyRightDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/RecentlyHitEmptyRightDoubleBossHealthBar.png
+
 #begin Sprites/Interface/RecentlyHitEnemyHealthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2074,6 +2134,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/RecentlyHitEnemyHealthBar.png
+
+#begin Sprites/Interface/RecentlyHitLeftDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/RecentlyHitLeftDoubleBossHealthBar.png
+
+#begin Sprites/Interface/RecentlyHitRightDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/RecentlyHitRightDoubleBossHealthBar.png
+
+#begin Sprites/Interface/RightDoubleBossHealthBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/RightDoubleBossHealthBar.png
 
 #begin Sprites/Menu/Background.png
 /importer:TextureImporter

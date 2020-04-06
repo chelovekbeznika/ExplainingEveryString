@@ -1527,6 +1527,8 @@
         }
       ],
       "Enemies": [
+      ],
+      "Bosses": [
         {
           "BlueprintType": "Miniboss_mk21",
           "TilePosition": { "X": 108, "Y": 36 },

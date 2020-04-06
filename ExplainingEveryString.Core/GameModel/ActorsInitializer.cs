@@ -88,11 +88,11 @@ namespace ExplainingEveryString.Core.GameModel
             return new Queue<IEnemy>(enemies);
         }
 
-        internal IEnemy InitializeBoss(Int32 waveNumber)
+        internal IEnumerable<IEnemy> InitializeBosses(Int32 waveNumber)
         {
             var wave = levelData.EnemyWaves[waveNumber];
-            if (wave.Boss != null)
-                return actorsFactory.ConstructEnemy(Convert(wave.Boss, wave));
+            if (wave.Bosses != null)
+                return wave.Bosses.Select(boss => actorsFactory.ConstructEnemy(Convert(boss, wave)));
             else
                 return null;
         }

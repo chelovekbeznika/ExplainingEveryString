@@ -6,10 +6,14 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class BossInfoDisplayer
     {
-        internal const String HealthBarTexture = "BossHealthBar";
-        internal const String EmptyHealthBarTexture = "EmptyBossHealthBar";
-        internal const String RecentlyHitHealthBarTexture = "RecentlyHitBossHealthBar";
-        internal const String RecentlyHitEmptyHealthBarTexture = "RecentlyHitEmptyBossHealthBar";
+        internal const String OneBossPrefix = "";
+        internal const String LeftBossPrefix = "LeftDouble";
+        internal const String RightBossPrefix = "RightDouble";
+
+        internal const String HealthBarTexture = "{0}BossHealthBar";
+        internal const String EmptyHealthBarTexture = "Empty{0}BossHealthBar";
+        internal const String RecentlyHitHealthBarTexture = "RecentlyHit{0}BossHealthBar";
+        internal const String RecentlyHitEmptyHealthBarTexture = "RecentlyHitEmpty{0}BossHealthBar";
 
         private const Single RecentHitThreshold = 0.33333F;
         private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
@@ -19,14 +23,19 @@ namespace ExplainingEveryString.Core.Interface
         private readonly SpriteData recentlyHitEmptyHealthBar;
 
         private readonly Int32 pixelsFromTop = 16;
+        private readonly Int32 offset;
+        private readonly Boolean reversedDrain;
 
-        public BossInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, Dictionary<String, SpriteData> sprites)
+        public BossInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, Dictionary<String, SpriteData> sprites,
+            String spritesPrefix, Int32 offset)
         {
             this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
-            this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
-            this.emptyHealthBar = TexturesHelper.GetSprite(sprites, EmptyHealthBarTexture);
-            this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, RecentlyHitHealthBarTexture);
-            this.recentlyHitEmptyHealthBar = TexturesHelper.GetSprite(sprites, RecentlyHitEmptyHealthBarTexture);
+            this.healthBar = TexturesHelper.GetSprite(sprites, String.Format(HealthBarTexture, spritesPrefix));
+            this.emptyHealthBar = TexturesHelper.GetSprite(sprites, String.Format(EmptyHealthBarTexture, spritesPrefix));
+            this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, String.Format(RecentlyHitHealthBarTexture, spritesPrefix));
+            this.recentlyHitEmptyHealthBar = TexturesHelper.GetSprite(sprites, String.Format(RecentlyHitEmptyHealthBarTexture, spritesPrefix));
+            this.reversedDrain = spritesPrefix == RightBossPrefix;
+            this.offset = offset;
         }
 
         public void Draw(EnemyInterfaceInfo bossInfo)
@@ -36,11 +45,19 @@ namespace ExplainingEveryString.Core.Interface
             var healthRemained = bossInfo.Health / bossInfo.MaxHealth;
             var healthBarPosition = new Vector2
             {
-                X = (interfaceSpriteDisplayer.ScreenWidth - currentHealthBar.Width) / 2,
+                X = (interfaceSpriteDisplayer.ScreenWidth - currentHealthBar.Width) / 2 + offset,
                 Y = pixelsFromTop
             };
-            interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new LeftPartDisplayer(), healthRemained);
-            interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new RightPartDisplayer(), 1 - healthRemained);
+            if (!reversedDrain)
+            {
+                interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new LeftPartDisplayer(), healthRemained);
+                interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new RightPartDisplayer(), 1 - healthRemained);
+            }
+            else
+            {
+                interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new RightPartDisplayer(), healthRemained);
+                interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new LeftPartDisplayer(), 1 - healthRemained);
+            }
         }
     }
 }

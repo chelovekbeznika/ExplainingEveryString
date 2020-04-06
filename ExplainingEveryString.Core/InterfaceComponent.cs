@@ -23,6 +23,8 @@ namespace ExplainingEveryString.Core
         private GameTimeDisplayer gameTimeDisplayer;
         private EnemyInfoDisplayer enemiesInfoDisplayer;
         private BossInfoDisplayer bossInfoDisplayer;
+        private BossInfoDisplayer leftBossInfoDisplayer;
+        private BossInfoDisplayer rightBossInfoDisplayer;
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
@@ -54,7 +56,9 @@ namespace ExplainingEveryString.Core
             healthBarDisplayer = new HealthBarDisplayer(interfaceSpritesDisplayer, sprites);
             dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer, sprites);
             enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer, sprites);
-            bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites);
+            bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites, BossInfoDisplayer.OneBossPrefix, 0);
+            leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites, BossInfoDisplayer.LeftBossPrefix, -160);
+            rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, sprites, BossInfoDisplayer.RightBossPrefix, 160);
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer, sprites);
             var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");           
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
@@ -66,16 +70,25 @@ namespace ExplainingEveryString.Core
         {
             var metadataLoader = AssetsMetadataAccess.GetLoader();
             var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
+            var bossDisplayerPrefixes = new String[] 
+            { 
+                BossInfoDisplayer.OneBossPrefix, BossInfoDisplayer.LeftBossPrefix, BossInfoDisplayer.RightBossPrefix 
+            };
+            var bossDisplayerSprites = new String[]
+            {
+                BossInfoDisplayer.HealthBarTexture, BossInfoDisplayer.EmptyHealthBarTexture,
+                BossInfoDisplayer.RecentlyHitEmptyHealthBarTexture, BossInfoDisplayer.RecentlyHitHealthBarTexture,
+            };
+            var allBossDisplayerSprites = bossDisplayerPrefixes
+                .SelectMany(prefix => bossDisplayerSprites.Select(sprite => String.Format(sprite, prefix)));
             String[] animatedSprites = new String[] 
             {
                 HealthBarDisplayer.HealthBarTexture, HealthBarDisplayer.EmptyHealthBarTexture,
                 EnemyInfoDisplayer.HealthBarTexture, EnemyInfoDisplayer.RecentlyHitHealthBarTexture,
-                BossInfoDisplayer.HealthBarTexture, BossInfoDisplayer.EmptyHealthBarTexture,
-                BossInfoDisplayer.RecentlyHitHealthBarTexture, BossInfoDisplayer.RecentlyHitEmptyHealthBarTexture,
                 DashStateDisplayer.ActiveTexture, DashStateDisplayer.AvailableTexture,
                 DashStateDisplayer.CooldownTexture, DashStateDisplayer.NonAvailableTexture,
                 EnemiesBehindScreenDisplayer.DangerSign
-            }.Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();           
+            }.Concat(allBossDisplayerSprites).Select(textureName => TexturesHelper.GetFullName(textureName)).ToArray();           
             return spriteDataBuilder.Build(animatedSprites);
         }
 
@@ -96,8 +109,16 @@ namespace ExplainingEveryString.Core
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
                 gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
-                if (interfaceInfo.Boss != null)
-                    bossInfoDisplayer.Draw(interfaceInfo.Boss);
+                if (interfaceInfo.Bosses != null)
+                {
+                    if (interfaceInfo.Bosses.Count == 1)
+                        bossInfoDisplayer.Draw(interfaceInfo.Bosses[0]);
+                    else
+                    {
+                        leftBossInfoDisplayer.Draw(interfaceInfo.Bosses[0]);
+                        rightBossInfoDisplayer.Draw(interfaceInfo.Bosses[1]);
+                    }
+                }
                 spriteBatch.End();
             }
             base.Draw(gameTime);
