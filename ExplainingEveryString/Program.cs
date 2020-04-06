@@ -20,7 +20,7 @@ namespace ExplainingEveryString
             }
             catch (Exception ex)
             {
-                File.WriteAllText("last_crash.txt",
+                System.IO.File.WriteAllText("last_crash.txt",
                     $"Game crushed with {ex.GetType().Name} exception\nError message:\n{ex.Message}\nStacktrace:\n{ex.StackTrace}");
                 throw;
             }
