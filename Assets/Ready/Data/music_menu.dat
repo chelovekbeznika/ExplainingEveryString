@@ -7,4 +7,8 @@
     "Sprite": "Sprites/Menu/Songs/BossFight",
     "SongName": "liberty_bell"
   },
+  {
+    "Sprite": "Sprites/Menu/Songs/Desert",
+    "SongName": "rondo_alla_turca"
+  }
 ]

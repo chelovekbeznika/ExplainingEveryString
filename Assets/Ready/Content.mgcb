@@ -68,6 +68,9 @@
 #begin Data/Music/liberty_bell.dat
 /copy:Data/Music/liberty_bell.dat
 
+#begin Data/Music/rondo_alla_turca.dat
+/copy:Data/Music/rondo_alla_turca.dat
+
 #begin Data/music_menu.dat
 /copy:Data/music_menu.dat
 

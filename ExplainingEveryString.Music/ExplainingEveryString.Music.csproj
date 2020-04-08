@@ -59,6 +59,7 @@
     <Compile Include="Model\NoiseNote.cs" />
     <Compile Include="Model\Note.cs" />
     <Compile Include="Model\NotesHelper.cs" />
+    <Compile Include="Model\PulseFluteNote.cs" />
     <Compile Include="Model\PulseNote.cs" />
     <Compile Include="Model\RawSoundDirectingEvent.cs" />
     <Compile Include="Model\SongSpecification.cs" />

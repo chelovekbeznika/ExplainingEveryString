@@ -1,0 +1,458 @@
+{
+  "Duration": 15.0,
+  "Song": [
+    {
+      "$type": "ExplainingEveryString.Music.Model.SwitchChannel, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "Channel": "Pulse1",
+      "TurnOn": true
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.SwitchChannel, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "Channel": "Pulse2",
+      "TurnOn": true
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.SwitchChannel, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "Channel": "Triangle",
+      "TurnOn": true
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.RawSoundDirectingEvent, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "SoundComponent": "Pulse1",
+      "Parameter": "Duty",
+      "Value": 1
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.RawSoundDirectingEvent, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "SoundComponent": "Pulse2",
+      "Parameter": "Duty",
+      "Value": 1
+    },
+    {
+      "$type": "ExplainingEveryString.Music.Model.BpmSequence, ExplainingEveryString.Music",
+      "Seconds": 0,
+      "OneRepeatBeats": 64.0,
+      "BeatsPerMinute": 105,
+      "CommonPart": [
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 1.0,
+          "Note": { "Type": "H", "Octave": "OneLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 1.25,
+          "Note": { "Type": "A", "Octave": "OneLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 1.5,
+          "Note": { "Type": "G", "Octave": "OneLine" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 1.75,
+          "Note": { "Type": "A", "Octave": "OneLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 2.0,
+          "Note": { "Type": "H", "Octave": "OneLine" },
+          "Length": "Eigth",
+          "Stressed": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 3.0,
+          "Note": { "Type": "D", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 3.25,
+          "Note": { "Type": "C", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 3.5,
+          "Note": { "Type": "H", "Octave": "OneLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 3.75,
+          "Note": { "Type": "C", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 4.0,
+          "Note": { "Type": "E", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 5.0,
+          "Note": { "Type": "F", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 5.25,
+          "Note": { "Type": "E", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 5.5,
+          "Note": { "Type": "D", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 5.75,
+          "Note": { "Type": "E", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 6.0,
+          "Note": { "Type": "H", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": true,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 6.25,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": true,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 6.5,
+          "Note": { "Type": "G", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "Stressed": true,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 6.75,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": true,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 7.0,
+          "Note": { "Type": "H", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 7.25,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 7.5,
+          "Note": { "Type": "G", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 7.75,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Sixteenth",
+          "Stressed": false,
+          "Articulation": "Legato"
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 8.0,
+          "Note": { "Type": "C", "Octave": "ThreeLine" },
+          "Length": "Eigth",
+          "Stressed": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 9.0,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto"
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 9.5,
+          "Note": { "Type": "C", "Octave": "ThreeLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto"
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 10.0,
+          "Note": { "Type": "H", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 10.5,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 10.5,
+          "Note": { "Type": "F", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 11.0,
+          "Note": { "Type": "G", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 11.0,
+          "Note": { "Type": "E", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 11.5,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 11.5,
+          "Note": { "Type": "F", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 12.0,
+          "Note": { "Type": "H", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 12.5,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 12.5,
+          "Note": { "Type": "F", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 13.0,
+          "Note": { "Type": "G", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 13.0,
+          "Note": { "Type": "E", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 13.5,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 13.5,
+          "Note": { "Type": "F", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 14.0,
+          "Note": { "Type": "H", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 14.5,
+          "Note": { "Type": "A", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 14.5,
+          "Note": { "Type": "F", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "Stressed": true,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 15.0,
+          "Note": { "Type": "G", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 15.0,
+          "Note": { "Type": "E", "Octave": "TwoLine" },
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 15.5,
+          "Note": { "Type": "F", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": true
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 15.5,
+          "Note": { "Type": "D", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "Stressed": false,
+          "Articulation": "Stacatto",
+          "FirstChannel": false
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseFluteNote, ExplainingEveryString.Music",
+          "BeatNumber": 16.0,
+          "Note": { "Type": "E", "Octave": "TwoLine" },
+          "Accidental": "Sharp",
+          "Length": "Quarter",
+          "Stressed": true
+        }
+      ]
+    }
+  ]
+}
