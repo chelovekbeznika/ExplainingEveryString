@@ -33,6 +33,7 @@ namespace ExplainingEveryString.Music.Model
             else if (noteLength.HasFlag(NoteLength.Quarter)) result = SamplesPerBeat;
             else if (noteLength.HasFlag(NoteLength.Eigth)) result = SamplesPerBeat / 2;
             else if (noteLength.HasFlag(NoteLength.Sixteenth)) result = SamplesPerBeat / 4;
+            else if (noteLength.HasFlag(NoteLength.ThirtySecond)) result = SamplesPerBeat / 8;
             else throw new ArgumentException(nameof(noteLength));
 
             if (noteLength.HasFlag(NoteLength.Dotted)) result = result * 3 / 2;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace ExplainingEveryString.Music.Model
@@ -9,6 +10,8 @@ namespace ExplainingEveryString.Music.Model
         [DefaultValue(Accidental.None)]
         public Accidental Accidental { get; set; }
         public NoteLength Length { get; set; }
+        [DefaultValue(false)]
+        public Boolean PartOfLegato { get; set; }
 
         public override IEnumerable<RawSoundDirectingEvent> GetEvents()
         {
@@ -20,10 +23,11 @@ namespace ExplainingEveryString.Music.Model
                 Parameter = SoundChannelParameter.Timer,
                 Value = NotesHelper.TriangleTimer(Note, Accidental)
             };
+            var endAt = PartOfLegato ? SamplesOffset + NoteLengthInSamples(Length) * 19 / 20 : SamplesOffset + NoteLengthInSamples(Length);
             yield return new RawSoundDirectingEvent
             {
                 Seconds = Seconds,
-                SamplesOffset = SamplesOffset + NoteLengthInSamples(Length),
+                SamplesOffset = SamplesOffset + endAt,
                 SoundComponent = SoundComponentType.Triangle,
                 Parameter = SoundChannelParameter.Timer,
                 Value = 0
