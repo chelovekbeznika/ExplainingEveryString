@@ -1619,7 +1619,7 @@
       ],
       "Enemies": [
       ],
-      "Boss": [ 
+      "Bosses": [ 
         {
           "BlueprintType": "Miniboss_mk13",
           "Angle": -90.0,
