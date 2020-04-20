@@ -10,7 +10,6 @@ namespace ExplainingEveryString.Core.Displaying
     {
         private readonly Vector2 playerFrame;
         private readonly Single cameraMoveSpeed;
-        private readonly Single screenHeight;
         private readonly Viewport viewport;
 
         private PlayerInfoForCameraExtractor playerInfo;
@@ -31,7 +30,6 @@ namespace ExplainingEveryString.Core.Displaying
         {
             this.viewport = viewport;
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
-            this.screenHeight = viewport.Height;
             this.playerInfo = new PlayerInfoForCameraExtractor(level);
             this.cameraCenter = playerInfo.Position;
             this.playerFrame = new Vector2()
@@ -46,14 +44,12 @@ namespace ExplainingEveryString.Core.Displaying
         {
             var desiredCenter = CalculateDesiredCenter();
             var maxFrameCameraMove = cameraMoveSpeed * elapsedSeconds;
-            if ((desiredCenter - cameraCenter).Length() < maxFrameCameraMove)
+            var cameraMoveDirection = desiredCenter - cameraCenter;
+            if (cameraMoveDirection.Length() < maxFrameCameraMove)
                 cameraCenter = desiredCenter;
             else
-            {
-                Vector2 normalizedCameraMoveDirection = (desiredCenter - cameraCenter);
-                normalizedCameraMoveDirection.Normalize();
-                cameraCenter += normalizedCameraMoveDirection * maxFrameCameraMove + 0.5F * playerInfo.CurrentMoveSpeed;
-            }
+                cameraCenter += cameraMoveDirection / cameraMoveDirection.Length() * maxFrameCameraMove;
+            cameraCenter = AdjustToPlayerFrame(cameraCenter);
         }
 
         private Vector2 CalculateDesiredCenter()
@@ -68,6 +64,19 @@ namespace ExplainingEveryString.Core.Displaying
                     ? screenFrameArrow * distanceToFrameX
                     : screenFrameArrow * distanceToFrameY;
             return playerInfo.Position - desiredPlayerPositionRelativeToCenter;
+        }
+
+        private Vector2 AdjustToPlayerFrame(Vector2 cameraCenter)
+        {
+            if (cameraCenter.X < playerInfo.Position.X - playerFrame.X)
+                cameraCenter.X = playerInfo.Position.X - playerFrame.X;
+            if (cameraCenter.X > playerInfo.Position.X + playerFrame.X)
+                cameraCenter.X = playerInfo.Position.X + playerFrame.X;
+            if (cameraCenter.Y < playerInfo.Position.Y - playerFrame.Y)
+                cameraCenter.Y = playerInfo.Position.Y - playerFrame.Y;
+            if (cameraCenter.Y > playerInfo.Position.Y + playerFrame.Y)
+                cameraCenter.Y = playerInfo.Position.Y + playerFrame.Y;
+            return cameraCenter;
         }
 
         private Single CalculateCameraMoveSpeed(Single timeFromAngleToAngle)

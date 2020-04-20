@@ -65,7 +65,7 @@ namespace ExplainingEveryString.Core
             var levelCoordinatesMaster = new CameraObjectGlass(level, viewport, config.Camera);
             var screenCoordinatesMaster = new ScreenCoordinatesMaster(viewport, levelCoordinatesMaster);
             var assetsStorage = CreateFilledAssetsStorage();
-            Camera = new Camera(level, assetsStorage, screenCoordinatesMaster);
+            Camera = new Camera(assetsStorage, screenCoordinatesMaster);
             this.mapDisplayer = new TiledMapDisplayer(map, eesGame, screenCoordinatesMaster);
             EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level, config);
             this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);

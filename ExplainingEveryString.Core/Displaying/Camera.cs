@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal Vector2 PlayerPositionOnScreen => screenCoordinatesMaster.PlayerPosition;
 
-        internal Camera(Level level, AssetsStorage assetsStorage, IScreenCoordinatesMaster screenCoordinatesMaster)
+        internal Camera(AssetsStorage assetsStorage, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
             this.assetsStorage = assetsStorage;
             this.screenCoordinatesMaster = screenCoordinatesMaster;
@@ -73,7 +73,6 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal Vector2 GetScreenBorderDangerDirection(IDisplayble displaybleEnemy)
         {
-            var sprite = assetsStorage.GetSprite(displaybleEnemy.SpriteState.Name);
             var enemyPosition = screenCoordinatesMaster.ConvertToScreenPosition(displaybleEnemy.Position);
             return ScreenCoordinatesHelper.GetScreenBorderDangerDirection(
                 screenCoordinatesMaster.ScreenCovers, PlayerPositionOnScreen, enemyPosition);
