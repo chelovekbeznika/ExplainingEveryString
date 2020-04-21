@@ -76,6 +76,7 @@ namespace ExplainingEveryString.Core.GameModel
         public override void Update(Single elapsedSeconds)
         {
             base.Update(elapsedSeconds);
+            Input.Update(elapsedSeconds);
             Weapon.Update(elapsedSeconds);
             DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);

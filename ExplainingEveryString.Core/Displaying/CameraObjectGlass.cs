@@ -1,20 +1,25 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Security.Cryptography;
 
 namespace ExplainingEveryString.Core.Displaying
 {
     internal class CameraObjectGlass : ILevelCoordinatesMaster
     {
-        private readonly Vector2 playerFrame;
-        private readonly Single cameraMoveSpeed;
+        private readonly Vector2 playerWindowEllips;
         private readonly Viewport viewport;
 
         private PlayerInfoForCameraExtractor playerInfo;
         private Vector2 screenHalf;
         private Vector2 cameraCenter;
+        private Single focusAngle;
+        private Single desiredFocusAngle;
+        private Single timeToReverseFocus;
+        private Vector2 FocusDirection => AngleConverter.ToVector(focusAngle);
       
         public Vector2 CameraOffset => cameraCenter - screenHalf;
         public Rectangle ScreenCovers => new Rectangle
@@ -32,57 +37,39 @@ namespace ExplainingEveryString.Core.Displaying
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
             this.playerInfo = new PlayerInfoForCameraExtractor(level);
             this.cameraCenter = playerInfo.Position;
-            this.playerFrame = new Vector2()
+            this.playerWindowEllips = new Vector2()
             {
                 X = screenHalf.X * config.PlayerFramePercentageWidth / 100,
                 Y = screenHalf.Y * config.PlayerFramePercentageHeight / 100
             };
-            this.cameraMoveSpeed = CalculateCameraMoveSpeed(config.CameraMoveTimeFromAngleToAngle);
+            this.timeToReverseFocus = config.TimeToReverseFocusDirection;
         }
 
         public void Update(Single elapsedSeconds)
         {
-            var desiredCenter = CalculateDesiredCenter();
-            var maxFrameCameraMove = cameraMoveSpeed * elapsedSeconds;
-            var cameraMoveDirection = desiredCenter - cameraCenter;
-            if (cameraMoveDirection.Length() < maxFrameCameraMove)
-                cameraCenter = desiredCenter;
+            UpdateFocusAngle(elapsedSeconds);
+            UpdateCameraCenter(elapsedSeconds);
+        }
+
+        private void UpdateCameraCenter(Single elapsedSeconds)
+        {
+            var focusOffset = AngleConverter.ToVector(focusAngle);
+            focusOffset.X *= playerWindowEllips.X * playerInfo.Focused;
+            focusOffset.Y *= playerWindowEllips.Y * playerInfo.Focused;
+            cameraCenter = playerInfo.Position + focusOffset;
+        }
+
+        private void UpdateFocusAngle(Single elapsedSeconds)
+        {
+            desiredFocusAngle = AngleConverter.ToRadians(playerInfo.FireDirection);
+            var maxAngleChange = (Single)System.Math.PI / timeToReverseFocus * elapsedSeconds;
+            var arcToTarget = AngleConverter.ClosestArc(focusAngle, desiredFocusAngle);
+            if (System.Math.Abs(arcToTarget) < maxAngleChange)
+                focusAngle = desiredFocusAngle;
+            else if (arcToTarget > 0)
+                focusAngle += maxAngleChange;
             else
-                cameraCenter += cameraMoveDirection / cameraMoveDirection.Length() * maxFrameCameraMove;
-            cameraCenter = AdjustToPlayerFrame(cameraCenter);
-        }
-
-        private Vector2 CalculateDesiredCenter()
-        {
-            var screenFrameArrow = -playerInfo.FireDirection;
-            var targetXPosition = screenFrameArrow.X < 0 ? -playerFrame.X : playerFrame.X;
-            var targetYPosition = screenFrameArrow.Y < 0 ? -playerFrame.Y : playerFrame.Y;
-            var distanceToFrameX = targetYPosition / screenFrameArrow.Y;
-            var distanceToFrameY = targetXPosition / screenFrameArrow.X;
-            var desiredPlayerPositionRelativeToCenter =
-                (!Single.IsInfinity(distanceToFrameX) && distanceToFrameX < distanceToFrameY) || Single.IsInfinity(distanceToFrameY)
-                    ? screenFrameArrow * distanceToFrameX
-                    : screenFrameArrow * distanceToFrameY;
-            return playerInfo.Position - desiredPlayerPositionRelativeToCenter;
-        }
-
-        private Vector2 AdjustToPlayerFrame(Vector2 cameraCenter)
-        {
-            if (cameraCenter.X < playerInfo.Position.X - playerFrame.X)
-                cameraCenter.X = playerInfo.Position.X - playerFrame.X;
-            if (cameraCenter.X > playerInfo.Position.X + playerFrame.X)
-                cameraCenter.X = playerInfo.Position.X + playerFrame.X;
-            if (cameraCenter.Y < playerInfo.Position.Y - playerFrame.Y)
-                cameraCenter.Y = playerInfo.Position.Y - playerFrame.Y;
-            if (cameraCenter.Y > playerInfo.Position.Y + playerFrame.Y)
-                cameraCenter.Y = playerInfo.Position.Y + playerFrame.Y;
-            return cameraCenter;
-        }
-
-        private Single CalculateCameraMoveSpeed(Single timeFromAngleToAngle)
-        {
-            var distanceFromAngleToAngle = playerFrame.Length() * 2;
-            return distanceFromAngleToAngle / timeFromAngleToAngle;
+                focusAngle -= maxAngleChange;
         }
     }
 }

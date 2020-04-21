@@ -4,14 +4,17 @@ using System;
 
 namespace ExplainingEveryString.Core.Input
 {
-    internal interface IPlayerInput : IAimer
+    internal interface IPlayerInput : IAimer, GameModel.IUpdateable
     {
         Vector2 GetMoveDirection();
         Boolean IsTryingToDash();
+        Single Focus { get; }
     }
 
     internal abstract class PlayerInput : IPlayerInput
     {
+        public abstract Single Focus { get; }
+
         protected Vector2 CutDirectionVector(Vector2 direction)
         {
             if (direction.Length() > 1)
@@ -32,5 +35,9 @@ namespace ExplainingEveryString.Core.Input
         public abstract Vector2 GetMoveDirection();
         public abstract Vector2 GetFireDirection();
         public abstract Boolean IsTryingToDash();
+
+        public virtual void Update(Single elapsedSeconds)
+        {
+        }
     }
 }

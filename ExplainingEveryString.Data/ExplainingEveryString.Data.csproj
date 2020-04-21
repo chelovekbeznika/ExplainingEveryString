@@ -62,6 +62,7 @@
     <Compile Include="Blueprints\DoorBlueprint.cs" />
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
     <Compile Include="Configuration\CameraConfiguration.cs" />
+    <Compile Include="Configuration\InputConfiguration.cs" />
     <Compile Include="Configuration\ScreenConfiguration.cs" />
     <Compile Include="Level\CheckpointSpecification.cs" />
     <Compile Include="Level\SpawnSpecification.cs" />

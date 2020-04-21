@@ -6,6 +6,6 @@ namespace ExplainingEveryString.Data.Configuration
     {
         public Int32 PlayerFramePercentageWidth { get; set; }
         public Int32 PlayerFramePercentageHeight { get; set; }
-        public Single CameraMoveTimeFromAngleToAngle { get; set; }
+        public Single TimeToReverseFocusDirection { get; set; }
     }
 }

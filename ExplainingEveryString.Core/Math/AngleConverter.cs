@@ -20,17 +20,17 @@ namespace ExplainingEveryString.Core.Math
             return new Vector2 { X = (Single)System.Math.Cos(radians), Y = (Single)System.Math.Sin(radians) };
         }
 
-        internal static Single ClosestArc(Single a, Single b)
+        internal static Single ClosestArc(Single currentAngle, Single targetAngle)
         {
             Single counterclockArc, clockwiseArc;
-            if (a > b)
+            if (currentAngle > targetAngle)
             {
-                clockwiseArc = a - b;
+                clockwiseArc = currentAngle - targetAngle;
                 counterclockArc = MathHelper.TwoPi - clockwiseArc;
             }
             else
             {
-                counterclockArc = b - a;
+                counterclockArc = targetAngle - currentAngle;
                 clockwiseArc = MathHelper.TwoPi - counterclockArc;
             }
             if (counterclockArc < clockwiseArc)

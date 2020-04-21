@@ -10,7 +10,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal MenuInputProcessor(Configuration config)
         {
-            switch (config.ControlDevice)
+            switch (config.Input.ControlDevice)
             {
                 case ControlDevice.GamePad:
                     InitGamepadButtons();

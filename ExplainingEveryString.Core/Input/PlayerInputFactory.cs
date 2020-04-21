@@ -15,14 +15,16 @@ namespace ExplainingEveryString.Core.Input
 
         internal IPlayerInput Create()
         {
-            var config = ConfigurationAccess.GetCurrentConfig();
+            var config = ConfigurationAccess.GetCurrentConfig().Input;
             switch (config.ControlDevice)
             {
-                case ControlDevice.GamePad: return new GamePadPlayerInput();
+                case ControlDevice.GamePad: 
+                    return new GamePadPlayerInput(config.TimeToFocusOnGamepad);
                 case ControlDevice.Keyboard:
                     Func<Vector2> playerScreenPosition = () => gameplayComponent.Camera.PlayerPositionOnScreen;
-                    return new KeyBoardMousePlayerInput(playerScreenPosition);
-                default: throw new Exception("Badly configured input");
+                    return new KeyBoardMousePlayerInput(playerScreenPosition, config.TimeToFocusOnKeyboard);
+                default: 
+                    throw new Exception("Badly configured input");
             }
         }
     }

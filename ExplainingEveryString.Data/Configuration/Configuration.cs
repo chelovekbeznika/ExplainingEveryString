@@ -6,7 +6,7 @@ namespace ExplainingEveryString.Data.Configuration
 {
     public class Configuration
     {
-        public ControlDevice ControlDevice { get; set; }
+        public InputConfiguration Input { get; set; }
         public CameraConfiguration Camera { get; set; }
         public ScreenConfiguration Screen { get; set; }
         public Single InterfaceAlpha { get; set; }

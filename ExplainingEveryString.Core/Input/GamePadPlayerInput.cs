@@ -8,6 +8,28 @@ namespace ExplainingEveryString.Core.Input
     {
         private Vector2 lastDirection = new Vector2(0, 1);
 
+        private readonly Single timeToFocus;
+        public override Single Focus => focus;
+        private Single focus = 0;
+
+
+        public GamePadPlayerInput(Single timeToFocus)
+        {
+            this.timeToFocus = timeToFocus;
+        }
+
+        public override void Update(Single elapsedSeconds)
+        {
+            var desiredFocus = GamePad.GetState(PlayerIndex.One).Triggers.Right;
+            var maxFocusChange = elapsedSeconds / timeToFocus;
+            if (System.Math.Abs(focus - desiredFocus) < maxFocusChange)
+                focus = desiredFocus;
+            else if (focus > desiredFocus)
+                focus -= maxFocusChange;
+            else
+                focus += maxFocusChange;
+        }
+
         public override Vector2 GetMoveDirection()
         {
             var direction = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;

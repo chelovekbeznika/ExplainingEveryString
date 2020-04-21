@@ -1,9 +1,13 @@
 {
-  "ControlDevice": "Gamepad",
+  "Input": {
+    "ControlDevice": "GamePad",
+    "TimeToFocusOnKeyboard": 0.25,
+    "TimeToFocusOnGamepad": 0.375
+  },
   "Camera": {
-    "PlayerFramePercentageWidth": 60,
-    "PlayerFramePercentageHeight": 40,
-    "CameraMoveTimeFromAngleToAngle": 3.0
+    "PlayerFramePercentageWidth": 80,
+    "PlayerFramePercentageHeight": 80,
+    "TimeToReverseFocusDirection": 1.5
   },
   "Screen": {
     "ScreenWidth": 1024,

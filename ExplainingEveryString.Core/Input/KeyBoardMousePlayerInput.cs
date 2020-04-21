@@ -12,9 +12,14 @@ namespace ExplainingEveryString.Core.Input
         private static readonly Vector2 right = new Vector2(1, 0);
         private readonly Func<Vector2> playerPositionOnScreen;
 
-        internal KeyBoardMousePlayerInput(Func<Vector2> playerPositionOnScreen)
+        private Single focused = 0;
+        private Single timeToFocus = 0.25F;
+        public override Single Focus => focused * focused;
+
+        internal KeyBoardMousePlayerInput(Func<Vector2> playerPositionOnScreen, Single timeToFocus)
         {
             this.playerPositionOnScreen = playerPositionOnScreen;
+            this.timeToFocus = timeToFocus;
         }
 
         public override Vector2 GetMoveDirection()
@@ -48,7 +53,18 @@ namespace ExplainingEveryString.Core.Input
 
         public override Boolean IsTryingToDash()
         {
-            return Keyboard.GetState().IsKeyDown(Keys.LeftShift);
+            return Keyboard.GetState().IsKeyDown(Keys.Space);
+        }
+
+        public override void Update(Single elapsedSeconds)
+        {
+            var focusButtonPressed = Keyboard.GetState().IsKeyDown(Keys.LeftShift);
+            var focusChange = elapsedSeconds / timeToFocus;
+            focused += focusButtonPressed ? focusChange : -focusChange;
+            if (focused < 0)
+                focused = 0;
+            if (focused > 1)
+                focused = 1;
         }
     }
 }

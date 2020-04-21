@@ -37,12 +37,17 @@ namespace ExplainingEveryString.Data.Configuration
         {
             return new Configuration()
             {
-                ControlDevice = ControlDevice.Keyboard,
+                Input = new InputConfiguration
+                {
+                    ControlDevice = ControlDevice.Keyboard,
+                    TimeToFocusOnKeyboard = 0.25F,
+                    TimeToFocusOnGamepad = 0.25F
+                },
                 Camera = new CameraConfiguration
                 {
                     PlayerFramePercentageWidth = 60,
                     PlayerFramePercentageHeight = 60,
-                    CameraMoveTimeFromAngleToAngle = 3
+                    TimeToReverseFocusDirection = 0.5F
                 },
                 Screen = new ScreenConfiguration
                 {
