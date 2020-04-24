@@ -1,18 +1,20 @@
 ﻿using System;
 using ExplainingEveryString.Core;
+using ExplainingEveryString.Editor;
+using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString
 {
     public static class Program
     {
         [STAThread]
-        static void Main()
+        public static void Main(String[] args)
         {
 #if !DEBUG
             try
             {
 #endif
-                using (var game = new EesGame())
+                using (var game = GetAppToStart(args))
                 {
                     game.Run();
                 }
@@ -25,6 +27,14 @@ namespace ExplainingEveryString
                 throw;
             }
 #endif
+        }
+
+        private static Game GetAppToStart(String[] args)
+        {
+            if (args.Length > 0 && args[0] == "-e")
+                return new EesEditor();
+            else
+                return new EesGame();
         }
     }
 }
