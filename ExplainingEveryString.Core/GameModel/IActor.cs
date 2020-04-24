@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal interface IUpdateable
+    public interface IUpdateable
     {
         void Update(Single elapsedSeconds);
     }

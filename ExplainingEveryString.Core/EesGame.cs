@@ -8,25 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ExplainingEveryString.Core
 {
-    public class EesGame : Game
+    public class EesGame : EesApp
     {
-        private readonly GraphicsDeviceManager graphics;
         private OuterMenuInputProcessor menuInputProcessor;
 
         internal GameStateManager GameState { get; private set; }
 
         public EesGame()
         {
-            ConfigurationAccess.InitializeConfig();
-            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
-            graphics = new GraphicsDeviceManager(this)
-            {
-                PreferredBackBufferHeight = screenConfig.ScreenHeight,
-                PreferredBackBufferWidth = screenConfig.ScreenWidth,
-                IsFullScreen = screenConfig.FullScreen
-            };
-            Content.RootDirectory = "Content";
-            this.IsMouseVisible = true;
+            PreInit();
         }
 
         protected override void Initialize()

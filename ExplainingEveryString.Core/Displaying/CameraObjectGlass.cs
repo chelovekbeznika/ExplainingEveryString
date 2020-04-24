@@ -13,14 +13,13 @@ namespace ExplainingEveryString.Core.Displaying
         private readonly Vector2 playerWindowEllips;
         private readonly Viewport viewport;
 
-        private PlayerInfoForCameraExtractor playerInfo;
+        private IMainCharacterInfoForCameraExtractor playerInfo;
         private Vector2 screenHalf;
         private Vector2 cameraCenter;
         private Single focusAngle;
         private Single desiredFocusAngle;
         private Single timeToReverseFocus;
-        private Vector2 FocusDirection => AngleConverter.ToVector(focusAngle);
-      
+
         public Vector2 CameraOffset => cameraCenter - screenHalf;
         public Rectangle ScreenCovers => new Rectangle
         {
@@ -31,11 +30,11 @@ namespace ExplainingEveryString.Core.Displaying
         };
         public Vector2 PlayerPosition => playerInfo.Position;
 
-        internal CameraObjectGlass(Level level, Viewport viewport, CameraConfiguration config)
+        internal CameraObjectGlass(IMainCharacterInfoForCameraExtractor playerInfo, Viewport viewport, CameraConfiguration config)
         {
             this.viewport = viewport;
             this.screenHalf = new Vector2 { X = viewport.Width / 2, Y = viewport.Height / 2 };
-            this.playerInfo = new PlayerInfoForCameraExtractor(level);
+            this.playerInfo = playerInfo;
             this.cameraCenter = playerInfo.Position;
             this.playerWindowEllips = new Vector2()
             {

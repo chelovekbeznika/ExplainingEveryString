@@ -29,10 +29,10 @@ namespace ExplainingEveryString
 #endif
         }
 
-        private static Game GetAppToStart(String[] args)
+        private static EesApp GetAppToStart(String[] args)
         {
-            if (args.Length > 0 && args[0] == "-e")
-                return new EesEditor();
+            if (args.Length > 1 && args[0] == "-e")
+                return new EesEditor(args[1]);
             else
                 return new EesGame();
         }

@@ -4,7 +4,7 @@ using System;
 
 namespace ExplainingEveryString.Core.Displaying
 {
-    internal class PlayerInfoForCameraExtractor
+    internal class PlayerInfoForCameraExtractor : IMainCharacterInfoForCameraExtractor
     {
         private Player player;
 
@@ -13,9 +13,8 @@ namespace ExplainingEveryString.Core.Displaying
             this.player = level.Player;
         }
 
-        internal Vector2 Position => player.Position;
-        internal Vector2 FireDirection => player.Input.GetFireDirection();
-        internal Vector2 CurrentMoveSpeed => player.Position - player.OldPosition;
-        internal Single Focused => player.Input.Focus;
+        public Vector2 Position => player.Position;
+        public Vector2 FireDirection => player.Input.GetFireDirection();
+        public Single Focused => player.Input.Focus;
     }
 }

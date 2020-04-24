@@ -62,7 +62,7 @@ namespace ExplainingEveryString.Core
             this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             var config = ConfigurationAccess.GetCurrentConfig();
             var viewport = Game.GraphicsDevice.Viewport;
-            var levelCoordinatesMaster = new CameraObjectGlass(level, viewport, config.Camera);
+            var levelCoordinatesMaster = new CameraObjectGlass(new PlayerInfoForCameraExtractor(level), viewport, config.Camera);
             var screenCoordinatesMaster = new ScreenCoordinatesMaster(viewport, levelCoordinatesMaster);
             var assetsStorage = CreateFilledAssetsStorage();
             Camera = new Camera(assetsStorage, screenCoordinatesMaster);

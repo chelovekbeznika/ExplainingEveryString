@@ -79,7 +79,9 @@
     <Compile Include="Displaying\FogOfWar\FogOfWarFiller.cs" />
     <Compile Include="Displaying\FogOfWar\ILevelFogOfWarExtractor.cs" />
     <Compile Include="Displaying\ICoordinatesMaster.cs" />
+    <Compile Include="Displaying\IMainCharacterInfoForCameraExtractor.cs" />
     <Compile Include="Displaying\ScreenCoordinatesMaster.cs" />
+    <Compile Include="EesApp.cs" />
     <Compile Include="GameModel\BehaviorParameters.cs" />
     <Compile Include="GameModel\Enemies\EnemyBehavior.cs" />
     <Compile Include="GameModel\Enemies\EnemyBehaviorChangedEventArgs.cs" />

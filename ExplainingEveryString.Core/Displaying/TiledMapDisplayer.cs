@@ -6,14 +6,14 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class TiledMapDisplayer
     {
-        private TileWrapper map;
-        private TiledMapRenderer renderer;
-        private IScreenCoordinatesMaster screenCoordinatesMaster;
+        private readonly TileWrapper map;
+        private readonly TiledMapRenderer renderer;
+        private readonly IScreenCoordinatesMaster screenCoordinatesMaster;
 
-        internal TiledMapDisplayer(TileWrapper map, EesGame eesGame, IScreenCoordinatesMaster screenCoordinatesMaster)
+        public TiledMapDisplayer(TileWrapper map, EesApp app, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
             this.map = map;
-            this.renderer = new TiledMapRenderer(eesGame.GraphicsDevice, map.TiledMap);
+            this.renderer = new TiledMapRenderer(app.GraphicsDevice, map.TiledMap);
             this.screenCoordinatesMaster = screenCoordinatesMaster;
         }
 
