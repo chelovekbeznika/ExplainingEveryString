@@ -53,6 +53,9 @@
 #begin Data/level_21.dat
 /copy:Data/level_21.dat
 
+#begin Data/level_22.dat
+/copy:Data/level_22.dat
+
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
@@ -2647,6 +2650,11 @@
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /build:TileMaps/Level_21.tmx
+
+#begin TileMaps/Level_22.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_22.tmx
 
 #begin TileSets/1x.tsx
 /importer:TiledMapTilesetImporter

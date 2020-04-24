@@ -1,0 +1,49 @@
+{
+  "Blueprints": [
+    "player",
+    "2x"
+  ],
+  "MusicName": "rondo_alla_turca",
+  "TileMap": "TileMaps/Level_22",
+  "PlayerPosition": {
+    "BlueprintType": "Player",
+    "TilePosition": {
+      "X": 41,
+      "Y": 83,
+      "Offset": "8.0, -8.0"
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 0,
+        "Y": 0,
+        "Width": 120,
+        "Height": 120
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk2",
+          "TilePosition": { "X": 52, "Y": 10 }
+        }
+      ]
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level2X/0",
+      "Sprites/FogOfWar/Level2X/1",
+      "Sprites/FogOfWar/Level2X/2",
+      "Sprites/FogOfWar/Level2X/3",
+      "Sprites/FogOfWar/Level2X/4",
+      "Sprites/FogOfWar/Level2X/5",
+      "Sprites/FogOfWar/Level2X/6",
+      "Sprites/FogOfWar/Level2X/7"
+    ],
+    "Weights": [1, 1, 1, 1, 1, 1, 1, 1]
+  },
+  "ObstaclesTilePositions": {
+  }
+}
