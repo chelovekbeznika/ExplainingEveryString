@@ -62,6 +62,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 0.0,
           "Note": { "Octave": "Small", "Type": "F" },
+          "PartOfLegato": true,
           "Length": "Quarter",
         },
         {
@@ -86,6 +87,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 1.0,
           "Note": { "Octave": "Small", "Type": "E" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         {
@@ -110,6 +112,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 1.5,
           "Note": { "Octave": "Small", "Type": "D" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         {
@@ -137,6 +140,7 @@
           "BeatNumber": 2.5,
           "Note": { "Octave": "Small", "Type": "D" },
           "Accidental": "Flat",
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         {
@@ -161,6 +165,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 3.0,
           "Note": { "Octave": "Small", "Type": "C" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         {
@@ -188,6 +193,7 @@
           "BeatNumber": 4.0,
           "Note": { "Octave": "Great", "Type": "H" },
           "Accidental": "Natural",
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         {
@@ -212,6 +218,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 4.5,
           "Note": { "Octave": "Great", "Type": "H" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         {
@@ -638,6 +645,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 6.0,
           "Note": { "Octave": "Great", "Type": "E" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
@@ -661,6 +669,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 7.0,
           "Note": { "Octave": "Great", "Type": "F" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         
@@ -684,6 +693,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 7.5,
           "Note": { "Octave": "Great", "Type": "G" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
@@ -707,6 +717,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 8.5,
           "Note": { "Octave": "Great", "Type": "F" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         
@@ -732,12 +743,14 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 9.0,
           "Note": { "Octave": "Great", "Type": "E" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         {
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 10.0,
           "Note": { "Octave": "Great", "Type": "D" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
 
@@ -996,6 +1009,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 18.0,
           "Note": { "Octave": "Great", "Type": "F" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
@@ -1019,6 +1033,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 19.0,
           "Note": { "Octave": "Great", "Type": "G" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         
@@ -1042,6 +1057,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 19.5,
           "Note": { "Octave": "Great", "Type": "A" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
@@ -1065,6 +1081,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 20.5,
           "Note": { "Octave": "Great", "Type": "G" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         
@@ -1090,12 +1107,14 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 21.0,
           "Note": { "Octave": "Great", "Type": "F" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         {
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 22.0,
           "Note": { "Octave": "Great", "Type": "E" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
 
@@ -1121,6 +1140,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 22.5,
           "Note": { "Octave": "Great", "Type": "D" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
@@ -1361,6 +1381,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 30.0,
           "Note": { "Octave": "Great", "Type": "D" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
@@ -1376,6 +1397,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 31.0,
           "Note": { "Octave": "Great", "Type": "E" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         
@@ -1400,6 +1422,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 31.5,
           "Note": { "Octave": "Great", "Type": "F" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
@@ -1415,6 +1438,7 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 32.5,
           "Note": { "Octave": "Great", "Type": "E" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         
@@ -1441,12 +1465,14 @@
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 33.0,
           "Note": { "Octave": "Great", "Type": "D" },
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         {
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 34.0,
           "Note": { "Octave": "Great", "Type": "C" },
+          "PartOfLegato": true,
           "Length": "Eigth"
         },
         
@@ -1474,6 +1500,7 @@
           "BeatNumber": 34.5,
           "Note": { "Octave": "Contra", "Type": "H" },
           "Accidental": "Natural",
+          "PartOfLegato": true,
           "Length": "Quarter"
         },
         
