@@ -2282,9 +2282,16 @@
         {
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 19.0,
-          "Note": { "Octave": "Small", "Type": "A" },
+          "Note": { "Octave": "Small", "Type": "F" },
           "Accidental": "Sharp",
-          "Length": "Eigth"
+          "PartOfLegato": true,
+          "Length": "ThirtySecond",
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 19.125,
+          "Note": { "Octave": "Small", "Type": "G" },
+          "Length": "Sixteenth, Dotted"
         },
         
         {
@@ -2313,9 +2320,16 @@
         {
           "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
           "BeatNumber": 20.5,
-          "Note": { "Octave": "Small", "Type": "G" },
+          "Note": { "Octave": "Small", "Type": "F" },
           "Accidental": "Sharp",
-          "Length": "Eigth"
+          "PartOfLegato": true,
+          "Length": "ThirtySecond",
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.TriangleNote, ExplainingEveryString.Music",
+          "BeatNumber": 20.625,
+          "Note": { "Octave": "Small", "Type": "G" },
+          "Length": "Sixteenth, Dotted"
         },
         
         {
@@ -2407,8 +2421,17 @@
         {
           "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
           "BeatNumber": 25.5,
+          "Note": { "Octave": "TwoLine", "Type": "E" },
+          "Length": "ThirtySecond",
+          "FirstChannel": true,
+          "Decaying": false,
+          "Volume": 14
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 25.625,
           "Note": { "Octave": "TwoLine", "Type": "D" },
-          "Length": "Eigth",
+          "Length": "Sixteenth, Dotted",
           "FirstChannel": true,
           "Decaying": false,
           "Volume": 14
@@ -2564,8 +2587,17 @@
         {
           "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
           "BeatNumber": 31.5,
+          "Note": { "Octave": "TwoLine", "Type": "A" },
+          "Length": "ThirtySecond",
+          "FirstChannel": true,
+          "Decaying": false,
+          "Volume": 14
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 31.625,
           "Note": { "Octave": "TwoLine", "Type": "G" },
-          "Length": "Quarter",
+          "Length": "Sixteenth, Dotted",
           "FirstChannel": true,
           "Decaying": false,
           "Volume": 14
@@ -2574,7 +2606,7 @@
           "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
           "BeatNumber": 32.0,
           "Note": { "Octave": "TwoLine", "Type": "F" },
-          "Length": "Quarter",
+          "Length": "Eigth",
           "FirstChannel": true,
           "Volume": 13
         },
@@ -2582,7 +2614,7 @@
           "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
           "BeatNumber": 32.5,
           "Note": { "Octave": "TwoLine", "Type": "G" },
-          "Length": "Quarter",
+          "Length": "Eigth",
           "FirstChannel": true,
           "Volume": 11
         },
@@ -2670,8 +2702,16 @@
         {
           "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
           "BeatNumber": 36.0,
+          "Note": { "Octave": "TwoLine", "Type": "A" },
+          "Length": "ThirtySecond",
+          "FirstChannel": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 36.125,
           "Note": { "Octave": "TwoLine", "Type": "G" },
-          "Length": "Eigth",
+          "Length": "Sixteenth, Dotted",
           "FirstChannel": true,
           "Volume": 15
         },
