@@ -12,8 +12,10 @@ namespace ExplainingEveryString.Editor
     public class EesEditor : EesApp
     {
         private readonly String levelToEdit;
+        private IScreenCoordinatesMaster screenCoordinatesMaster;
         private TiledMapDisplayer mapDisplayer;
         private LevelData levelData;
+        private KeyboardInputProcessor keyboardInput = new KeyboardInputProcessor();
 
         public EesEditor(string levelToEdit)
         {
@@ -32,15 +34,18 @@ namespace ExplainingEveryString.Editor
         { 
             var map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
             var config = ConfigurationAccess.GetCurrentConfig().Camera;
-            var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetPosition(levelData.PlayerPosition.TilePosition));
+            var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetPosition(levelData.PlayerPosition.TilePosition), keyboardInput);
             var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, GraphicsDevice.Viewport, config);
-            var screenCoordinatesMaster = new ScreenCoordinatesMaster(GraphicsDevice.Viewport, levelCoordinatesMaster);
+            this.screenCoordinatesMaster = new ScreenCoordinatesMaster(GraphicsDevice.Viewport, levelCoordinatesMaster);
             this.mapDisplayer = new TiledMapDisplayer(map, this, screenCoordinatesMaster);
             base.LoadContent();
         }
 
         protected override void Update(GameTime gameTime)
         {
+            var elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            keyboardInput.Update(elapsedSeconds);
+            screenCoordinatesMaster.Update(elapsedSeconds);
             mapDisplayer.Update(gameTime);
             base.Update(gameTime);
         }
