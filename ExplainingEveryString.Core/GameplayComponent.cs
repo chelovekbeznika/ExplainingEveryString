@@ -108,7 +108,7 @@ namespace ExplainingEveryString.Core
 
         public override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            spriteBatch.Begin();
             mapDisplayer.Draw();
             Camera.Draw(spriteBatch, level.GetObjectsToDraw());
             EpicEventsProcessor.ProcessEpicEvents();

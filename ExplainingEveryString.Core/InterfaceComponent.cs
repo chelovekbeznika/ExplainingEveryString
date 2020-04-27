@@ -98,7 +98,7 @@ namespace ExplainingEveryString.Core
         {
             if (interfaceInfo != null)
             {
-                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp);
+                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
                 enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);
                 enemiesBehindScreenDisplayer.Draw(interfaceInfo.HiddenEnemies);
                 healthBarDisplayer.Draw(interfaceInfo.Player);

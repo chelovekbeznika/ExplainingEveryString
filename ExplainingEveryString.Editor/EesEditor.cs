@@ -4,6 +4,7 @@ using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
 using System;
 
@@ -12,6 +13,7 @@ namespace ExplainingEveryString.Editor
     public class EesEditor : EesApp
     {
         private readonly String levelToEdit;
+        private SpriteBatch spriteBatch;
         private IScreenCoordinatesMaster screenCoordinatesMaster;
         private TiledMapDisplayer mapDisplayer;
         private LevelData levelData;
@@ -31,7 +33,8 @@ namespace ExplainingEveryString.Editor
         }
 
         protected override void LoadContent()
-        { 
+        {
+            this.spriteBatch = new SpriteBatch(GraphicsDevice);
             var map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
             var config = ConfigurationAccess.GetCurrentConfig().Camera;
             var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetPosition(levelData.PlayerPosition.TilePosition), keyboardInput);
@@ -52,8 +55,10 @@ namespace ExplainingEveryString.Editor
 
         protected override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             mapDisplayer.Draw();
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
