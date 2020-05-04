@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Editor
     {
         void Load(LevelData levelData);
         void Draw(SpriteBatch spriteBatch);
-        String CurrentType { get; }
+        String CurrentEditableType { get; }
         String ModeName { get; }
     }
 
@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Editor
         private String[] editableTypes;
         private Int32 selectedEditableIndex;
 
-        public String CurrentType => editableTypes[selectedEditableIndex];
+        public String CurrentEditableType => editableTypes[selectedEditableIndex];
 
         public abstract String ModeName { get; }
 
@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Editor
 
         private void MouseScrolled(Object sender, MouseScrolledEventArgs e)
         {
-            selectedEditableIndex += e.ScrollDifference / 120;
+            selectedEditableIndex += e.ScrollDifference;
             if (selectedEditableIndex < 0)
                 selectedEditableIndex += editableTypes.Length;
             if (selectedEditableIndex >= editableTypes.Length)

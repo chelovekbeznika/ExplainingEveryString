@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Editor
 
             var currentScroll = Mouse.GetState().ScrollWheelValue;
             if (currentScroll != scroolAtPreviousFrame)
-                MouseScrolled?.Invoke(this, new MouseScrolledEventArgs { ScrollDifference = currentScroll - scroolAtPreviousFrame });
+                MouseScrolled?.Invoke(this, new MouseScrolledEventArgs { ScrollDifference = (currentScroll - scroolAtPreviousFrame) / 120 });
             scroolAtPreviousFrame = currentScroll;
         }
     }

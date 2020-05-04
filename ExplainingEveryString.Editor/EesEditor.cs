@@ -7,7 +7,6 @@ using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Tiled;
 using System;
 
@@ -67,7 +66,7 @@ namespace ExplainingEveryString.Editor
             GraphicsDevice.Clear(Color.CornflowerBlue);
             mapDisplayer.Draw();
             spriteBatch.DrawString(font, $"We now in {currentMode?.ModeName} mode", new Vector2(16, 16), Color.White);
-            spriteBatch.DrawString(font, $"{currentMode?.CurrentType}", new Vector2(16, 32), Color.White);
+            spriteBatch.DrawString(font, $"{currentMode?.CurrentEditableType}", new Vector2(16, 32), Color.White);
             currentMode?.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
