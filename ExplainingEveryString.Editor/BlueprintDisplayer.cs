@@ -46,7 +46,7 @@ namespace ExplainingEveryString.Editor
             var partToDraw = new Rectangle { X = frame * width, Y = 0, Width = width, Height = texture.Height };
             var centerOfSprite = new Vector2(width / 2, texture.Height / 2);
             spriteBatch.Draw(texture, positionOnScreen, partToDraw, Color.White, 
-                rotation: 0, centerOfSprite, scale: 1, effects: SpriteEffects.None, layerDepth: 0);
+                rotation: 0, origin: centerOfSprite, scale: 1, effects: SpriteEffects.None, layerDepth: 0);
         }
     }
 }
