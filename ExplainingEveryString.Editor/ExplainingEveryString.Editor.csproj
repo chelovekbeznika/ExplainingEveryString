@@ -49,8 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlueprintDisplayer.cs" />
+    <Compile Include="IEditableDisplayer.cs" />
+    <Compile Include="EditorMode.cs" />
     <Compile Include="EesEditor.cs" />
+    <Compile Include="IEditorMode.cs" />
     <Compile Include="KeyboardInputProcessor.cs" />
+    <Compile Include="ObstaclesEditorMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EditorInfoForCameraExtractor.cs" />
   </ItemGroup>

@@ -110,7 +110,7 @@ namespace ExplainingEveryString.Core.Tests
     {
         public Rectangle Bounds => Rectangle.Empty;
 
-        public Vector2 GetPosition(PositionOnTileMap tilePosition)
+        public Vector2 GetLevelPosition(PositionOnTileMap tilePosition)
         {
             return new Vector2 { X = tilePosition.X, Y = tilePosition.Y };
         }

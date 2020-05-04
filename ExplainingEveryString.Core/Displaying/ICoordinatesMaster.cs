@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Core.Displaying
         Rectangle PositionOnScreen(Vector2 position, SpriteData spriteData);
         Boolean IsVisibleOnScreen(Vector2 position, SpriteData spriteData);
         Vector2 ConvertToScreenPosition(Vector2 position);
+        Vector2 ConvertToLevelPosition(Vector2 position);
     }
 
     internal interface ILevelCoordinatesMaster : ICoordinatesMaster

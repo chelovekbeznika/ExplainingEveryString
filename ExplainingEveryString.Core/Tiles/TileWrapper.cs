@@ -24,11 +24,20 @@ namespace ExplainingEveryString.Core.Tiles
             this.TiledMap = map;
         }
 
-        public Vector2 GetPosition(PositionOnTileMap tilePosition)
+        public Vector2 GetLevelPosition(PositionOnTileMap tilePosition)
         {
-            var upperLeftCorner = TileCoordinatesToLevelCoordinates(tilePosition.X, tilePosition.Y);
-            var center = upperLeftCorner + new Vector2 { X = TiledMap.TileWidth / 2, Y = -TiledMap.TileHeight / 2 };
+            var tileUpperLeftCorner = TileCoordinatesToLevelCoordinates(tilePosition.X, tilePosition.Y);
+            var center = tileUpperLeftCorner + new Vector2 { X = TiledMap.TileWidth / 2, Y = -TiledMap.TileHeight / 2 };
             return center + tilePosition.Offset;
+        }
+
+        public PositionOnTileMap GetTilePosition(Vector2 levelPosition)
+        {
+            var x = (Int32)(levelPosition.X / TiledMap.TileWidth);
+            var y = TiledMap.Height - (Int32)(levelPosition.Y / TiledMap.TileHeight) - 1;
+            var tileCenter = TileCoordinatesToLevelCoordinates(x, y);
+            var offset = levelPosition - tileCenter;
+            return new PositionOnTileMap { X = x, Y = y, Offset = offset };
         }
 
         internal List<Point> GetPitTiles()

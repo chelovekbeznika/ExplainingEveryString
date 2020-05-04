@@ -53,6 +53,14 @@ namespace ExplainingEveryString.Core.Displaying
             return centerOfSpriteOnScreen;
         }
 
+        public Vector2 ConvertToLevelPosition(Vector2 position)
+        {
+            position.Y = viewport.Height - position.Y;
+            var cameraOffset = levelCoordinatesMaster.CameraOffset;
+            var centerOfSpriteOnLevel = cameraOffset + position;
+            return centerOfSpriteOnLevel;
+        }
+
         public void Update(Single elapsedSeconds)
         {
             levelCoordinatesMaster.Update(elapsedSeconds);

@@ -382,15 +382,18 @@
     },
     {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
-      "AnimationFrames": 7
+      "AnimationFrames": 7,
+      "FrameToShowInEditor": 3
     },
     {
       "Name": "Sprites/Doors/Level2X/MediumWhirlwind",
-      "AnimationFrames": 7
+      "AnimationFrames": 7,
+      "FrameToShowInEditor": 3
     },
     {
       "Name": "Sprites/Doors/Level2X/BigWhirlwind",
-      "AnimationFrames": 7
+      "AnimationFrames": 7,
+      "FrameToShowInEditor": 3
     },
     {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwindOpen",

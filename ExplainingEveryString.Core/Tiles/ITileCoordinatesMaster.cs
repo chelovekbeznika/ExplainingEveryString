@@ -6,6 +6,6 @@ namespace ExplainingEveryString.Core.Tiles
     interface ITileCoordinatesMaster
     {
         Rectangle Bounds { get; }
-        Vector2 GetPosition(PositionOnTileMap tilePosition);
+        Vector2 GetLevelPosition(PositionOnTileMap tilePosition);
     }
 }

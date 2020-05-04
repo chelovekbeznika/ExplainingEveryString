@@ -57,7 +57,7 @@ namespace ExplainingEveryString.Core.GameModel
             foreach (var obstacleType in levelData.ObstaclesTilePositions.Keys)
             {
                 var obstaclePositions = levelData.ObstaclesTilePositions[obstacleType]
-                    .Select(t => map.GetPosition(t)).ToList();
+                    .Select(t => map.GetLevelPosition(t)).ToList();
                 result.AddRange(actorsFactory.ConstructObstacles(obstacleType, obstaclePositions));
             }
             return result;
@@ -102,12 +102,12 @@ namespace ExplainingEveryString.Core.GameModel
             return new ActorStartInfo
             {
                 BlueprintType = dataLayerStartInfo.BlueprintType,
-                Position = map.GetPosition(dataLayerStartInfo.TilePosition),
+                Position = map.GetLevelPosition(dataLayerStartInfo.TilePosition),
                 BehaviorParameters = new BehaviorParameters
                 {
                     Angle = AngleConverter.ToRadians(dataLayerStartInfo.Angle),
                     TrajectoryParameters = dataLayerStartInfo.TrajectoryParameters?.ToArray(),
-                    LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetPosition(sp)).ToArray(),
+                    LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetLevelPosition(sp)).ToArray(),
                     CustomSpawns = dataLayerStartInfo.CustomSpawns
                 },
                 AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration

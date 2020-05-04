@@ -1,6 +1,8 @@
 ﻿using ExplainingEveryString.Core;
 using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Tiles;
+using ExplainingEveryString.Data.AssetsMetadata;
+using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
@@ -16,8 +18,10 @@ namespace ExplainingEveryString.Editor
         private SpriteBatch spriteBatch;
         private IScreenCoordinatesMaster screenCoordinatesMaster;
         private TiledMapDisplayer mapDisplayer;
+        private TileWrapper map;
         private LevelData levelData;
         private KeyboardInputProcessor keyboardInput = new KeyboardInputProcessor();
+        private IEditorMode currentMode = null; 
 
         public EesEditor(string levelToEdit)
         {
@@ -35,12 +39,14 @@ namespace ExplainingEveryString.Editor
         protected override void LoadContent()
         {
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
-            var map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
+            this.map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
             var config = ConfigurationAccess.GetCurrentConfig().Camera;
-            var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetPosition(levelData.PlayerPosition.TilePosition), keyboardInput);
+            var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetLevelPosition(levelData.PlayerPosition.TilePosition), keyboardInput);
             var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, GraphicsDevice.Viewport, config);
             this.screenCoordinatesMaster = new ScreenCoordinatesMaster(GraphicsDevice.Viewport, levelCoordinatesMaster);
             this.mapDisplayer = new TiledMapDisplayer(map, this, screenCoordinatesMaster);
+            this.currentMode = InitEditorModes()[0];
+            currentMode.Load(levelData);
             base.LoadContent();
         }
 
@@ -58,8 +64,20 @@ namespace ExplainingEveryString.Editor
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             mapDisplayer.Draw();
+            currentMode?.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        private IEditorMode[] InitEditorModes()
+        {
+            var blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
+            blueprintsLoader.Load();
+            var blueprintsDisplayer = new BlueprintDisplayer(Content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
+            return new IEditorMode[]
+            {
+                new ObstaclesEditorMode(screenCoordinatesMaster, map, blueprintsDisplayer)
+            };
         }
     }
 }

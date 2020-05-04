@@ -69,7 +69,7 @@ namespace ExplainingEveryString.Core.GameModel
                 return new Checkpoint
                 {
                     Name = StartCheckpointName,
-                    StartPosition = tilePositionConverter.GetPosition(playerStartInfo.TilePosition),
+                    StartPosition = tilePositionConverter.GetLevelPosition(playerStartInfo.TilePosition),
                     StartWave = 0
                 };
             }
@@ -78,7 +78,7 @@ namespace ExplainingEveryString.Core.GameModel
                 return new Checkpoint
                 {
                     Name = ew.Checkpoint.Name,
-                    StartPosition = tilePositionConverter.GetPosition(ew.Checkpoint.PlayerPosition),
+                    StartPosition = tilePositionConverter.GetLevelPosition(ew.Checkpoint.PlayerPosition),
                     StartWave = number
                 };
             }
