@@ -54,7 +54,7 @@
     <Compile Include="EditorMode.cs" />
     <Compile Include="EesEditor.cs" />
     <Compile Include="IEditorMode.cs" />
-    <Compile Include="KeyboardInputProcessor.cs" />
+    <Compile Include="InputProcessor.cs" />
     <Compile Include="ObstaclesEditorMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EditorInfoForCameraExtractor.cs" />

@@ -13,6 +13,7 @@ namespace ExplainingEveryString.Data.Blueprints
             new Dictionary<Type, ActorAssetsExtractor>()
         {
             { typeof(Blueprint), new ActorAssetsExtractor() },
+            { typeof(ObstacleBlueprint), new ActorAssetsExtractor() },
             { typeof(DoorBlueprint), new DoorAssetsExtractor() },
             { typeof(PlayerBlueprint), new PlayerAssetsExtractor() },
             { typeof(EnemyBlueprint), new EnemyAssetsExtractor() },

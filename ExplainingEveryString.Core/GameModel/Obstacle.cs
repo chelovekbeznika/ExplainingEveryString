@@ -2,7 +2,7 @@
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal class Obstacle : Actor<Blueprint>
+    internal class Obstacle : Actor<ObstacleBlueprint>
     {
     }
 }

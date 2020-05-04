@@ -21,10 +21,10 @@ namespace ExplainingEveryString.Editor
 
         public Single Focused => 0;
 
-        internal EditorInfoForCameraExtractor(Vector2 startPosition, KeyboardInputProcessor inputProcessor)
+        internal EditorInfoForCameraExtractor(Vector2 startPosition)
         {
             position = startPosition;
-            inputProcessor.KeyPressed += KeyPressed;
+            InputProcessor.Instance.KeyPressed += KeyPressed;
         }
 
         private void KeyPressed(Object sender, KeyPressedEventArgs e)

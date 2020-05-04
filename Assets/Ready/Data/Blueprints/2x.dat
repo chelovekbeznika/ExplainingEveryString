@@ -1023,7 +1023,7 @@
     }
   },
   "LittleWhirlwind": {
-    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
     "Height": 16.0,
     "Width": 16.0,
     "DefaultSprite": {
@@ -1032,7 +1032,7 @@
     }
   },
   "MediumWhirlwind": {
-    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
     "Height": 24.0,
     "Width": 24.0,
     "DefaultSprite": {
@@ -1041,7 +1041,7 @@
     }
   },
   "BigWhirlwind": {
-    "$type": "ExplainingEveryString.Data.Blueprints.Blueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
     "Height": 32.0,
     "Width": 32.0,
     "DefaultSprite": {

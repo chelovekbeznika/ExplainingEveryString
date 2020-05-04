@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Displaying.FogOfWar;
 using ExplainingEveryString.Core.Tiles;
+using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +17,8 @@ namespace ExplainingEveryString.Editor
     {
         void Load(LevelData levelData);
         void Draw(SpriteBatch spriteBatch);
+        String CurrentType { get; }
+        String ModeName { get; }
     }
 
     internal abstract class EditorMode<T> : IEditorMode where T : IEditable
@@ -24,12 +27,31 @@ namespace ExplainingEveryString.Editor
         private IEditableDisplayer editableDisplayer;
         private TileWrapper tileWrapper;
         private List<T> editables;
+        private String[] editableTypes;
+        private Int32 selectedEditableIndex;
 
-        protected EditorMode(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper, IEditableDisplayer editableDisplayer)
+        public String CurrentType => editableTypes[selectedEditableIndex];
+
+        public abstract String ModeName { get; }
+
+        protected EditorMode(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper, 
+            IEditableDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader)
         {
             this.screenCoordinatesMaster = screenCoordinatesMaster;
             this.tileWrapper = tileWrapper;
             this.editableDisplayer = editableDisplayer;
+            this.editableTypes = GetEditableTypes(blueprintsLoader);
+            this.selectedEditableIndex = 0;
+            InputProcessor.Instance.MouseScrolled += MouseScrolled;
+        }
+
+        private void MouseScrolled(Object sender, MouseScrolledEventArgs e)
+        {
+            selectedEditableIndex += e.ScrollDifference / 120;
+            if (selectedEditableIndex < 0)
+                selectedEditableIndex += editableTypes.Length;
+            if (selectedEditableIndex >= editableTypes.Length)
+                selectedEditableIndex -= editableTypes.Length;
         }
 
         public void Load(LevelData levelData)
@@ -57,6 +79,6 @@ namespace ExplainingEveryString.Editor
 
         protected abstract List<T> GetEditables(LevelData levelData);
         //protected abstract List<T> SaveEditables(LevelData levelData);
-        //protected abstract List<String> GetEditableTypes();
+        protected abstract String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader);
     }
 }
