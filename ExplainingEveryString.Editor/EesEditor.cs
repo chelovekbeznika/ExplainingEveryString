@@ -23,6 +23,7 @@ namespace ExplainingEveryString.Editor
         {
             PreInit();
             this.levelToEdit = levelToEdit;
+            this.IsMouseVisible = false;
         }
 
         protected override void Initialize()

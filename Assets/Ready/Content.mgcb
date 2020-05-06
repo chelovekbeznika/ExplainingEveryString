@@ -593,6 +593,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Doors/TestDoorUp.png
 
+#begin Sprites/Editor/Cursor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Editor/Cursor.png
+
 #begin Sprites/Enemies/Appearance/16_16.png
 /importer:TextureImporter
 /processor:TextureProcessor

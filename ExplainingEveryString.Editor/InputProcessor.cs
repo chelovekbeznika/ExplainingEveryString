@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Editor
         private Keys[] pressedAtPreviousFrame = Array.Empty<Keys>();
         private Boolean leftPressedAtPreviousFrame = false;
         private Int32 scroolAtPreviousFrame = Mouse.GetState().ScrollWheelValue;
+        internal Vector2 MousePosition { get; private set; }
 
         internal event EventHandler<KeyPressedEventArgs> KeyPressed;
         internal event EventHandler<MouseScrolledEventArgs> MouseScrolled;
@@ -21,7 +22,7 @@ namespace ExplainingEveryString.Editor
 
         public void Update(Single elapsedSeconds)
         {
-            var currentMousePosition = GetAdjustedMousePosition();
+            MousePosition = GetAdjustedMousePosition();
 
             var pressedCurrently = Keyboard.GetState().GetPressedKeys();
             var released = pressedCurrently.Except(pressedAtPreviousFrame);
@@ -41,7 +42,7 @@ namespace ExplainingEveryString.Editor
                 MouseButtonPressed?.Invoke(this, new MouseButtonPressedEventArgs
                 {
                     PressedButton = MouseButtons.Left,
-                    MouseScreenPosition = currentMousePosition
+                    MouseScreenPosition = MousePosition
                 });
             leftPressedAtPreviousFrame = leftPressed;
         }

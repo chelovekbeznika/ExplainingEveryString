@@ -15,6 +15,7 @@ namespace ExplainingEveryString.Editor
         private IEditorMode currentMode;
         private LevelData levelData;
         private SpriteFont font;
+        private Texture2D cursor;
 
         internal event EventHandler<LevelChangedEventArgs> LevelChanged;
 
@@ -24,6 +25,7 @@ namespace ExplainingEveryString.Editor
             InputProcessor.Instance.MouseScrolled += MouseScrolled;
             InputProcessor.Instance.MouseButtonPressed += MouseButtonPressed;
             this.font = content.Load<SpriteFont>(@"TimeFont");
+            this.cursor = content.Load<Texture2D>(@"Sprites/Editor/Cursor");
 
             currentMode = InitEditorModes(content, screenCoordinatesMaster, map)[0];
             currentMode.Load(levelData);
@@ -44,6 +46,10 @@ namespace ExplainingEveryString.Editor
             spriteBatch.DrawString(font, $"We now in {currentMode?.ModeName} mode", new Vector2(16, 16), Color.White);
             spriteBatch.DrawString(font, $"{currentMode?.CurrentEditableType}", new Vector2(16, 32), Color.White);
             currentMode?.Draw(spriteBatch);
+
+            var mousePosition = InputProcessor.Instance.MousePosition;
+            spriteBatch.Draw(cursor, mousePosition, null, color: Color.White, 0, 
+                new Vector2(cursor.Width / 2, cursor.Height / 2), 1, SpriteEffects.None, 0);
         }
 
         private void MouseScrolled(Object sender, MouseScrolledEventArgs e)
