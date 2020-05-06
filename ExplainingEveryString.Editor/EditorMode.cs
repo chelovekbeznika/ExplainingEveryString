@@ -1,5 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Displaying.FogOfWar;
+using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
@@ -7,9 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Editor
 {
@@ -17,6 +14,9 @@ namespace ExplainingEveryString.Editor
     {
         void Load(LevelData levelData);
         void Draw(SpriteBatch spriteBatch);
+        void EditableTypeChange(Int32 typesSwitched);
+        void Add(Vector2 screenPosition);
+        LevelData SaveChanges(LevelData levelData);
         String CurrentEditableType { get; }
         String ModeName { get; }
     }
@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Editor
         private IScreenCoordinatesMaster screenCoordinatesMaster;
         private IEditableDisplayer editableDisplayer;
         private TileWrapper tileWrapper;
-        private List<T> editables;
+        protected List<T> Editables { get; private set; }
         private String[] editableTypes;
         private Int32 selectedEditableIndex;
 
@@ -42,12 +42,11 @@ namespace ExplainingEveryString.Editor
             this.editableDisplayer = editableDisplayer;
             this.editableTypes = GetEditableTypes(blueprintsLoader);
             this.selectedEditableIndex = 0;
-            InputProcessor.Instance.MouseScrolled += MouseScrolled;
         }
 
-        private void MouseScrolled(Object sender, MouseScrolledEventArgs e)
+        public void EditableTypeChange(Int32 typesSwitched)
         {
-            selectedEditableIndex += e.ScrollDifference;
+            selectedEditableIndex += typesSwitched;
             if (selectedEditableIndex < 0)
                 selectedEditableIndex += editableTypes.Length;
             if (selectedEditableIndex >= editableTypes.Length)
@@ -56,16 +55,16 @@ namespace ExplainingEveryString.Editor
 
         public void Load(LevelData levelData)
         {
-            editables = GetEditables(levelData);
+            Editables = GetEditables(levelData);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var editable in editables)
+            foreach (var editable in Editables)
                 editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), GetScreenPosition(editable.PositionTileMap));
         }
 
-        private PositionOnTileMap GetLevelPosition(Vector2 screenPosition)
+        protected PositionOnTileMap GetLevelPosition(Vector2 screenPosition)
         {
             var levelPosition = screenCoordinatesMaster.ConvertToLevelPosition(screenPosition);
             return tileWrapper.GetTilePosition(levelPosition);
@@ -78,7 +77,9 @@ namespace ExplainingEveryString.Editor
         }
 
         protected abstract List<T> GetEditables(LevelData levelData);
-        //protected abstract List<T> SaveEditables(LevelData levelData);
+        public abstract LevelData SaveChanges(LevelData levelData);
         protected abstract String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader);
+
+        public abstract void Add(Vector2 screenPosition);
     }
 }

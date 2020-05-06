@@ -35,8 +35,9 @@ namespace ExplainingEveryString.Core.Tiles
         {
             var x = (Int32)(levelPosition.X / TiledMap.TileWidth);
             var y = TiledMap.Height - (Int32)(levelPosition.Y / TiledMap.TileHeight) - 1;
-            var tileCenter = TileCoordinatesToLevelCoordinates(x, y);
-            var offset = levelPosition - tileCenter;
+            var tileUpperLeftCorner = TileCoordinatesToLevelCoordinates(x, y);
+            var center = tileUpperLeftCorner + new Vector2 { X = TiledMap.TileWidth / 2, Y = -TiledMap.TileHeight / 2 };
+            var offset = levelPosition - center;
             return new PositionOnTileMap { X = x, Y = y, Offset = offset };
         }
 

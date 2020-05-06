@@ -13,6 +13,7 @@ namespace ExplainingEveryString.Data.Level
     public interface ILevelLoader
     {
         LevelData Load(String fileName);
+        void Save(String fileName, LevelData updatedLevel);
     }
 
     internal class JsonLevelLoader : ILevelLoader
@@ -20,6 +21,11 @@ namespace ExplainingEveryString.Data.Level
         public LevelData Load(String fileName)
         {
             return JsonDataAccessor.Instance.Load<LevelData>(FileNames.GetJsonDataPath(fileName));
+        }
+
+        public void Save(String fileName, LevelData updatedLevel)
+        {
+            JsonDataAccessor.Instance.Save(FileNames.GetJsonDataPath(fileName), updatedLevel);
         }
     }
 }

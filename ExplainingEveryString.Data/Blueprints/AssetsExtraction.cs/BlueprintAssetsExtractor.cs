@@ -4,7 +4,7 @@ using ExplainingEveryString.Data.Specifications;
 
 namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
 {
-    internal class ActorAssetsExtractor : IAssetsExtractor<Blueprint>
+    internal class ActorAssetsExtractor : IAssetsExtractor<Blueprint>, IAssetsExtractor<ObstacleBlueprint>
     {
         public IEnumerable<SpriteSpecification> GetSprites(Blueprint blueprint)
         {
@@ -25,6 +25,16 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
         public IEnumerable<SpriteSpecification> GetSpritesFromWeapon(PostMortemWeaponSpecification specification)
         {
             return specification.Barrels.Select(b => b.Bullet.Sprite);
+        }
+
+        public IEnumerable<SpriteSpecification> GetSprites(ObstacleBlueprint blueprint)
+        {
+            return GetSprites(blueprint as Blueprint);
+        }
+
+        public IEnumerable<SpecEffectSpecification> GetSpecEffects(ObstacleBlueprint blueprint)
+        {
+            return GetSpecEffects(blueprint as Blueprint);
         }
     }
 }

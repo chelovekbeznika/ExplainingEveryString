@@ -2,6 +2,7 @@
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,28 @@ namespace ExplainingEveryString.Editor
         }
 
         public override String ModeName => "Obstacles";
+
+        public override void Add(Vector2 screenPosition)
+        {
+            Editables.Add(new ObstacleInEditor
+            { 
+                ObstacleType = CurrentEditableType, 
+                PositionTileMap = GetLevelPosition(screenPosition) 
+            });
+        }
+
+        public override LevelData SaveChanges(LevelData levelData)
+        {
+            var newObstacles = new Dictionary<String, List<PositionOnTileMap>>();
+            foreach (var obstacle in Editables)
+            {
+                if (!newObstacles.ContainsKey(obstacle.ObstacleType))
+                    newObstacles.Add(obstacle.ObstacleType, new List<PositionOnTileMap>());
+                newObstacles[obstacle.ObstacleType].Add(obstacle.PositionTileMap);
+            }
+            levelData.ObstaclesTilePositions = newObstacles.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
+            return levelData;
+        }
 
         protected override List<ObstacleInEditor> GetEditables(LevelData levelData)
         {

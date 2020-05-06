@@ -1,8 +1,7 @@
 ﻿using ExplainingEveryString.Core;
 using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.AssetsMetadata;
-using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
@@ -18,10 +17,7 @@ namespace ExplainingEveryString.Editor
         private SpriteBatch spriteBatch;
         private IScreenCoordinatesMaster screenCoordinatesMaster;
         private TiledMapDisplayer mapDisplayer;
-        private TileWrapper map;
-        private LevelData levelData;
-        private SpriteFont font;
-        private IEditorMode currentMode = null; 
+        private Editor editor;
 
         public EesEditor(string levelToEdit)
         {
@@ -31,23 +27,25 @@ namespace ExplainingEveryString.Editor
 
         protected override void Initialize()
         {
-            var levelLoader = LevelDataAccess.GetLevelLoader();
-            this.levelData = levelLoader.Load(levelToEdit);
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
-            this.map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
+
+            var levelLoader = LevelDataAccess.GetLevelLoader();
+            var levelData = levelLoader.Load(levelToEdit);
+            var map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
             var config = ConfigurationAccess.GetCurrentConfig().Camera;
             var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetLevelPosition(levelData.PlayerPosition.TilePosition));
             var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, GraphicsDevice.Viewport, config);
+
             this.screenCoordinatesMaster = new ScreenCoordinatesMaster(GraphicsDevice.Viewport, levelCoordinatesMaster);
             this.mapDisplayer = new TiledMapDisplayer(map, this, screenCoordinatesMaster);
-            this.currentMode = InitEditorModes()[0];
-            this.font = Content.Load<SpriteFont>(@"TimeFont");
-            currentMode.Load(levelData);
+            this.editor = new Editor(levelData, Content, screenCoordinatesMaster, map);
+            editor.LevelChanged += LevelChanged;
+
             base.LoadContent();
         }
 
@@ -65,22 +63,14 @@ namespace ExplainingEveryString.Editor
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             mapDisplayer.Draw();
-            spriteBatch.DrawString(font, $"We now in {currentMode?.ModeName} mode", new Vector2(16, 16), Color.White);
-            spriteBatch.DrawString(font, $"{currentMode?.CurrentEditableType}", new Vector2(16, 32), Color.White);
-            currentMode?.Draw(spriteBatch);
+            editor.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
 
-        private IEditorMode[] InitEditorModes()
+        private void LevelChanged(Object sender, LevelChangedEventArgs e)
         {
-            var blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
-            blueprintsLoader.Load();
-            var blueprintsDisplayer = new BlueprintDisplayer(Content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
-            return new IEditorMode[]
-            {
-                new ObstaclesEditorMode(screenCoordinatesMaster, map, blueprintsDisplayer, blueprintsLoader)
-            };
+            LevelDataAccess.GetLevelLoader().Save(levelToEdit, e.UpdatedLevel);
         }
     }
 }
