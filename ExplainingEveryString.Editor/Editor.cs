@@ -48,7 +48,7 @@ namespace ExplainingEveryString.Editor
             currentMode?.Draw(spriteBatch);
 
             var mousePosition = InputProcessor.Instance.MousePosition;
-            spriteBatch.Draw(cursor, mousePosition, null, color: Color.White, 0, 
+            spriteBatch.Draw(cursor, mousePosition, null, Color.White, 0, 
                 new Vector2(cursor.Width / 2, cursor.Height / 2), 1, SpriteEffects.None, 0);
         }
 
