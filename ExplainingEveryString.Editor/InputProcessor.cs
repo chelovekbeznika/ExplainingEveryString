@@ -9,6 +9,8 @@ namespace ExplainingEveryString.Editor
     {
         internal static readonly InputProcessor Instance = new InputProcessor();
 
+        private const Int32 GridSize = 8;
+
         private Keys[] pressedAtPreviousFrame = Array.Empty<Keys>();
         private Boolean leftPressedAtPreviousFrame = false;
         private Int32 scroolAtPreviousFrame = Mouse.GetState().ScrollWheelValue;
@@ -19,6 +21,8 @@ namespace ExplainingEveryString.Editor
 
         public void Update(Single elapsedSeconds)
         {
+            var currentMousePosition = GetAdjustedMousePosition();
+
             var pressedCurrently = Keyboard.GetState().GetPressedKeys();
             var released = pressedCurrently.Except(pressedAtPreviousFrame);
             foreach (var releasedKey in released)
@@ -37,9 +41,24 @@ namespace ExplainingEveryString.Editor
                 MouseButtonPressed?.Invoke(this, new MouseButtonPressedEventArgs
                 {
                     PressedButton = MouseButtons.Left,
-                    MouseScreenPosition = new Vector2(Mouse.GetState().Position.X, Mouse.GetState().Position.Y)
+                    MouseScreenPosition = currentMousePosition
                 });
             leftPressedAtPreviousFrame = leftPressed;
+        }
+
+        private Vector2 GetAdjustedMousePosition()
+        {
+            var rawPosition = Mouse.GetState().Position;
+            return new Vector2(AdjustCoordinate(rawPosition.X), AdjustCoordinate(rawPosition.Y));
+        }
+
+        private Int32 AdjustCoordinate(Int32 currentCoordinate)
+        {
+            var fromPreviousGridLine = currentCoordinate % GridSize;
+            if (fromPreviousGridLine < GridSize / 2)
+                return currentCoordinate - fromPreviousGridLine;
+            else
+                return currentCoordinate - fromPreviousGridLine + GridSize;
         }
     }
 
