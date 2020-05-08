@@ -6,6 +6,7 @@ using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace ExplainingEveryString.Editor
@@ -24,11 +25,28 @@ namespace ExplainingEveryString.Editor
             this.levelData = levelData;
             InputProcessor.Instance.MouseScrolled += MouseScrolled;
             InputProcessor.Instance.MouseButtonPressed += MouseButtonPressed;
+            InputProcessor.Instance.KeyPressed += KeyPressed;
             this.font = content.Load<SpriteFont>(@"TimeFont");
             this.cursor = content.Load<Texture2D>(@"Sprites/Editor/Cursor");
 
             currentMode = InitEditorModes(content, screenCoordinatesMaster, map)[0];
             currentMode.Load(levelData);
+        }
+
+        private void KeyPressed(Object sender, KeyPressedEventArgs e)
+        {
+            if (e.PressedKey == Keys.U)
+                currentMode?.Unselect();
+            if (e.PressedKey == Keys.Q)
+                currentMode?.SelectedEditableChange(-1);
+            if (e.PressedKey == Keys.E)
+                currentMode?.SelectedEditableChange(+1);
+            if (e.PressedKey == Keys.Delete && currentMode != null)
+            {
+                currentMode.DeleteCurrentlySelected();
+                levelData = currentMode.SaveChanges(levelData);
+                LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
+            }
         }
 
         private void MouseButtonPressed(Object sender, MouseButtonPressedEventArgs e)

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Editor
 {
@@ -15,6 +16,9 @@ namespace ExplainingEveryString.Editor
         void Draw(SpriteBatch spriteBatch);
         void EditableTypeChange(Int32 typesSwitched);
         void Add(Vector2 screenPosition);
+        void Unselect();
+        void SelectedEditableChange(Int32 editablesSwitched);
+        void DeleteCurrentlySelected();
         LevelData SaveChanges(LevelData levelData);
         String CurrentEditableType { get; }
         String ModeName { get; }
@@ -26,10 +30,11 @@ namespace ExplainingEveryString.Editor
         private IEditableDisplayer editableDisplayer;
         private TileWrapper tileWrapper;
         protected List<T> Editables { get; private set; }
+        private Int32? selectedEditableIndex = null;
         private String[] editableTypes;
-        private Int32 selectedEditableIndex;
+        private Int32 selectedEditableTypeIndex = 0;
 
-        public String CurrentEditableType => editableTypes[selectedEditableIndex];
+        public String CurrentEditableType => editableTypes[selectedEditableTypeIndex];
 
         public abstract String ModeName { get; }
 
@@ -40,16 +45,40 @@ namespace ExplainingEveryString.Editor
             this.tileWrapper = tileWrapper;
             this.editableDisplayer = editableDisplayer;
             this.editableTypes = GetEditableTypes(blueprintsLoader);
-            this.selectedEditableIndex = 0;
         }
 
         public void EditableTypeChange(Int32 typesSwitched)
         {
-            selectedEditableIndex += typesSwitched;
+            selectedEditableTypeIndex += typesSwitched;
+            if (selectedEditableTypeIndex < 0)
+                selectedEditableTypeIndex += editableTypes.Length;
+            if (selectedEditableTypeIndex >= editableTypes.Length)
+                selectedEditableTypeIndex -= editableTypes.Length;
+        }
+
+        public void Unselect()
+        {
+            selectedEditableIndex = null;
+        }
+
+        public void SelectedEditableChange(Int32 editablesSwitched)
+        {
+            if (Editables.Count == 0)
+                return;
+
+            if (selectedEditableIndex == null)
+            {
+                if (editablesSwitched > 0)
+                    selectedEditableIndex = -1;
+                else
+                    selectedEditableIndex = Editables.Count;
+            }
+
+            selectedEditableIndex += editablesSwitched;
             if (selectedEditableIndex < 0)
-                selectedEditableIndex += editableTypes.Length;
-            if (selectedEditableIndex >= editableTypes.Length)
-                selectedEditableIndex -= editableTypes.Length;
+                selectedEditableIndex += Editables.Count;
+            if (selectedEditableIndex >= Editables.Count)
+                selectedEditableIndex -= Editables.Count;
         }
 
         public void Load(LevelData levelData)
@@ -57,10 +86,22 @@ namespace ExplainingEveryString.Editor
             Editables = GetEditables(levelData);
         }
 
+        public void DeleteCurrentlySelected()
+        {
+            if (selectedEditableIndex == null)
+                return;
+
+            Editables.RemoveAt(selectedEditableIndex.Value);
+            if (selectedEditableIndex >= Editables.Count)
+                selectedEditableIndex = 0;
+            if (Editables.Count == 0)
+                selectedEditableIndex = null;
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var editable in Editables)
-                editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), GetScreenPosition(editable.PositionTileMap));
+            foreach (var (editable, index) in Editables.Select((editable, index) => (editable, index)))
+                editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), GetScreenPosition(editable.PositionTileMap), index == selectedEditableIndex);
         }
 
         protected PositionOnTileMap GetLevelPosition(Vector2 screenPosition)

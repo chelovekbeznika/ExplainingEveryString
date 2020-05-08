@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Editor
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, String type, Vector2 positionOnScreen)
+        public void Draw(SpriteBatch spriteBatch, String type, Vector2 positionOnScreen, Boolean selected)
         {
             var texture = sprites[type];
             var metadata = spritesMetadata[type];
@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Editor
             var width = texture.Width / frames;
             var partToDraw = new Rectangle { X = frame * width, Y = 0, Width = width, Height = texture.Height };
             var centerOfSprite = new Vector2(width / 2, texture.Height / 2);
-            spriteBatch.Draw(texture, positionOnScreen, partToDraw, Color.White, 
+            spriteBatch.Draw(texture, positionOnScreen, partToDraw, selected ? Color.Black : Color.White, 
                 rotation: 0, origin: centerOfSprite, scale: 1, effects: SpriteEffects.None, layerDepth: 0);
         }
     }
