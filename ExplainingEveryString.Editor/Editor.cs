@@ -72,16 +72,27 @@ namespace ExplainingEveryString.Editor
 
         internal void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(font, $"We now in {CurrentMode?.ModeName} mode", new Vector2(16, 16), Color.White);
-            spriteBatch.DrawString(font, $"{CurrentMode?.CurrentEditableType}", new Vector2(16, 32), Color.White);
+            DrawString(spriteBatch, $"We now in {CurrentMode?.ModeName} mode", 1);
+            DrawString(spriteBatch, $"{CurrentMode?.CurrentEditableType}", 2);
             if (CurrentMode?.SelectedEditableIndex != null)
-                spriteBatch.DrawString(font, $"Selected #{CurrentMode.SelectedEditableIndex}", new Vector2(16, 48), Color.White);
-            CurrentMode?.Draw(spriteBatch);
+                DrawString(spriteBatch, $"Selected #{CurrentMode.SelectedEditableIndex}", 3);
 
             var mousePosition = InputProcessor.Instance.MousePosition;
+            if (CurrentMode != null)
+            {
+                var levelPosition = CurrentMode.GetLevelPosition(mousePosition);
+                DrawString(spriteBatch, $"({levelPosition.X}, {levelPosition.Y}) + {levelPosition.Offset})", 4);
+            }
+
+            CurrentMode?.Draw(spriteBatch);
+
+            
             spriteBatch.Draw(cursor, mousePosition, null, Color.White, 0, 
                 new Vector2(cursor.Width / 2, cursor.Height / 2), 1, SpriteEffects.None, 0);
         }
+
+        private void DrawString(SpriteBatch spriteBatch, String message, Int32 line) =>
+            spriteBatch.DrawString(font, message, new Vector2(16, 16 * line), Color.Black);
 
         private void MouseScrolled(Object sender, MouseScrolledEventArgs e)
         {

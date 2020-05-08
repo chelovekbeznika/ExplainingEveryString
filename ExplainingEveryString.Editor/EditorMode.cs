@@ -24,6 +24,7 @@ namespace ExplainingEveryString.Editor
         LevelData SaveChanges(LevelData levelData);
         String CurrentEditableType { get; }
         String ModeName { get; }
+        PositionOnTileMap GetLevelPosition(Vector2 screenPosition);
     }
 
     internal abstract class EditorMode<T> : IEditorMode where T : IEditable
@@ -107,7 +108,7 @@ namespace ExplainingEveryString.Editor
                 editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), GetScreenPosition(editable.PositionTileMap), index == SelectedEditableIndex);
         }
 
-        protected PositionOnTileMap GetLevelPosition(Vector2 screenPosition)
+        public PositionOnTileMap GetLevelPosition(Vector2 screenPosition)
         {
             var levelPosition = screenCoordinatesMaster.ConvertToLevelPosition(screenPosition);
             return tileWrapper.GetTilePosition(levelPosition);
