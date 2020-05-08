@@ -6,8 +6,6 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Editor
 {
@@ -55,6 +53,11 @@ namespace ExplainingEveryString.Editor
             return blueprintsLoader.GetBlueprints()
                 .Where(pair => pair.Value is ObstacleBlueprint)
                 .Select(pair => pair.Key).ToArray();
+        }
+
+        protected override void MoveSelected(ObstacleInEditor editable, PositionOnTileMap positionOnTileMap)
+        {
+            editable.PositionTileMap = positionOnTileMap;
         }
     }
 

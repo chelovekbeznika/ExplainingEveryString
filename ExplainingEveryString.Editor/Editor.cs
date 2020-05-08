@@ -53,7 +53,11 @@ namespace ExplainingEveryString.Editor
         {
             if (e.PressedButton == MouseButtons.Left && currentMode != null)
             {
-                currentMode.Add(e.MouseScreenPosition);
+                if (currentMode.SelectedEditableIndex == null)
+                    currentMode.Add(e.MouseScreenPosition);
+                else
+                    currentMode.MoveSelected(e.MouseScreenPosition);
+
                 levelData = currentMode.SaveChanges(levelData);
                 LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
             }
@@ -63,6 +67,8 @@ namespace ExplainingEveryString.Editor
         {
             spriteBatch.DrawString(font, $"We now in {currentMode?.ModeName} mode", new Vector2(16, 16), Color.White);
             spriteBatch.DrawString(font, $"{currentMode?.CurrentEditableType}", new Vector2(16, 32), Color.White);
+            if (currentMode?.SelectedEditableIndex != null)
+                spriteBatch.DrawString(font, $"Selected #{currentMode.SelectedEditableIndex}", new Vector2(16, 48), Color.White);
             currentMode?.Draw(spriteBatch);
 
             var mousePosition = InputProcessor.Instance.MousePosition;
