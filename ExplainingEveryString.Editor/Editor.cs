@@ -13,7 +13,9 @@ namespace ExplainingEveryString.Editor
 {
     internal class Editor
     {
-        private IEditorMode currentMode;
+        private IEditorMode[] modes;
+        private Int32 modeIndex = 0;
+        private IEditorMode CurrentMode => modes[modeIndex];
         private LevelData levelData;
         private SpriteFont font;
         private Texture2D cursor;
@@ -29,47 +31,52 @@ namespace ExplainingEveryString.Editor
             this.font = content.Load<SpriteFont>(@"TimeFont");
             this.cursor = content.Load<Texture2D>(@"Sprites/Editor/Cursor");
 
-            currentMode = InitEditorModes(content, screenCoordinatesMaster, map)[0];
-            currentMode.Load(levelData);
+            this.modes = InitEditorModes(content, screenCoordinatesMaster, map);
+            foreach (var mode in modes)
+                mode.Load(levelData);
         }
 
         private void KeyPressed(Object sender, KeyPressedEventArgs e)
         {
             if (e.PressedKey == Keys.U)
-                currentMode?.Unselect();
+                CurrentMode?.Unselect();
             if (e.PressedKey == Keys.Q)
-                currentMode?.SelectedEditableChange(-1);
+                CurrentMode?.SelectedEditableChange(-1);
             if (e.PressedKey == Keys.E)
-                currentMode?.SelectedEditableChange(+1);
-            if (e.PressedKey == Keys.Delete && currentMode != null)
+                CurrentMode?.SelectedEditableChange(+1);
+            if (e.PressedKey == Keys.Delete && CurrentMode != null)
             {
-                currentMode.DeleteCurrentlySelected();
-                levelData = currentMode.SaveChanges(levelData);
+                CurrentMode.DeleteCurrentlySelected();
+                levelData = CurrentMode.SaveChanges(levelData);
                 LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
             }
+            if (e.PressedKey == Keys.D0)
+                modeIndex = 0;
+            if (e.PressedKey == Keys.D1)
+                modeIndex = 1;
         }
 
         private void MouseButtonPressed(Object sender, MouseButtonPressedEventArgs e)
         {
-            if (e.PressedButton == MouseButtons.Left && currentMode != null)
+            if (e.PressedButton == MouseButtons.Left && CurrentMode != null)
             {
-                if (currentMode.SelectedEditableIndex == null)
-                    currentMode.Add(e.MouseScreenPosition);
+                if (CurrentMode.SelectedEditableIndex == null)
+                    CurrentMode.Add(e.MouseScreenPosition);
                 else
-                    currentMode.MoveSelected(e.MouseScreenPosition);
+                    CurrentMode.MoveSelected(e.MouseScreenPosition);
 
-                levelData = currentMode.SaveChanges(levelData);
+                levelData = CurrentMode.SaveChanges(levelData);
                 LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
             }
         }
 
         internal void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(font, $"We now in {currentMode?.ModeName} mode", new Vector2(16, 16), Color.White);
-            spriteBatch.DrawString(font, $"{currentMode?.CurrentEditableType}", new Vector2(16, 32), Color.White);
-            if (currentMode?.SelectedEditableIndex != null)
-                spriteBatch.DrawString(font, $"Selected #{currentMode.SelectedEditableIndex}", new Vector2(16, 48), Color.White);
-            currentMode?.Draw(spriteBatch);
+            spriteBatch.DrawString(font, $"We now in {CurrentMode?.ModeName} mode", new Vector2(16, 16), Color.White);
+            spriteBatch.DrawString(font, $"{CurrentMode?.CurrentEditableType}", new Vector2(16, 32), Color.White);
+            if (CurrentMode?.SelectedEditableIndex != null)
+                spriteBatch.DrawString(font, $"Selected #{CurrentMode.SelectedEditableIndex}", new Vector2(16, 48), Color.White);
+            CurrentMode?.Draw(spriteBatch);
 
             var mousePosition = InputProcessor.Instance.MousePosition;
             spriteBatch.Draw(cursor, mousePosition, null, Color.White, 0, 
@@ -78,7 +85,7 @@ namespace ExplainingEveryString.Editor
 
         private void MouseScrolled(Object sender, MouseScrolledEventArgs e)
         {
-            currentMode?.EditableTypeChange(e.ScrollDifference);
+            CurrentMode?.EditableTypeChange(e.ScrollDifference);
         }
 
         private IEditorMode[] InitEditorModes(ContentManager content, IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper map)
@@ -88,7 +95,8 @@ namespace ExplainingEveryString.Editor
             var blueprintsDisplayer = new BlueprintDisplayer(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
             return new IEditorMode[]
             {
-                new ObstaclesEditorMode(screenCoordinatesMaster, map, blueprintsDisplayer, blueprintsLoader)
+                new ObstaclesEditorMode(screenCoordinatesMaster, map, blueprintsDisplayer, blueprintsLoader),
+                new EnemyPositionEditorMode(screenCoordinatesMaster, map, blueprintsDisplayer, blueprintsLoader)
             };
         }
     }

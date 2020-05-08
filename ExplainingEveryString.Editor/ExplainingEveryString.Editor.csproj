@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BlueprintDisplayer.cs" />
     <Compile Include="Editor.cs" />
+    <Compile Include="EnemyPositionEditorMode.cs" />
     <Compile Include="IEditableDisplayer.cs" />
     <Compile Include="EditorMode.cs" />
     <Compile Include="EesEditor.cs" />

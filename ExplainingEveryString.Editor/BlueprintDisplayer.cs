@@ -33,6 +33,8 @@ namespace ExplainingEveryString.Editor
                 var spriteMetadata = assetsMetadata.SpritesMetadata.FirstOrDefault(m => m.Name == blueprint.DefaultSprite.Name);
                 if (spriteMetadata != null)
                     spritesMetadata.Add(type, spriteMetadata);
+                else
+                    spritesMetadata.Add(type, null);
             }
         }
 

@@ -19,15 +19,6 @@ namespace ExplainingEveryString.Editor
 
         public override String ModeName => "Obstacles";
 
-        public override void Add(Vector2 screenPosition)
-        {
-            Editables.Add(new ObstacleInEditor
-            { 
-                ObstacleType = CurrentEditableType, 
-                PositionTileMap = GetLevelPosition(screenPosition) 
-            });
-        }
-
         public override LevelData SaveChanges(LevelData levelData)
         {
             var newObstacles = new Dictionary<String, List<PositionOnTileMap>>();
@@ -55,9 +46,13 @@ namespace ExplainingEveryString.Editor
                 .Select(pair => pair.Key).ToArray();
         }
 
-        protected override void MoveSelected(ObstacleInEditor editable, PositionOnTileMap positionOnTileMap)
+        protected override ObstacleInEditor Create(String editableType, PositionOnTileMap positionOnTileMap)
         {
-            editable.PositionTileMap = positionOnTileMap;
+            return new ObstacleInEditor
+            {
+                ObstacleType = editableType,
+                PositionTileMap = positionOnTileMap
+            };
         }
     }
 

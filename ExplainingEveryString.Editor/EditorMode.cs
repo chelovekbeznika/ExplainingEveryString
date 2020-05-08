@@ -123,7 +123,13 @@ namespace ExplainingEveryString.Editor
         public abstract LevelData SaveChanges(LevelData levelData);
         protected abstract String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader);
 
-        public abstract void Add(Vector2 screenPosition);
+        public void Add(Vector2 screenPosition)
+        {
+            var newEditable = Create(CurrentEditableType, GetLevelPosition(screenPosition));
+            Editables.Add(newEditable);
+        }
+
+        protected abstract T Create(String editableType, PositionOnTileMap positionOnTileMap);
 
         public void MoveSelected(Vector2 screenPosition)
         {
@@ -131,9 +137,7 @@ namespace ExplainingEveryString.Editor
                 return;
 
             var tilePosition = GetLevelPosition(screenPosition);
-            MoveSelected(Editables[SelectedEditableIndex.Value], tilePosition);
+            Editables[SelectedEditableIndex.Value].PositionTileMap = tilePosition;
         }
-
-        protected abstract void MoveSelected(T editable, PositionOnTileMap positionOnTileMap);
     }
 }
