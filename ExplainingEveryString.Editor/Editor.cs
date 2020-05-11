@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Editor
         private IEditorMode[] modes;
         private Int32 modeIndex = 0;
         private IEditorMode CurrentMode => modes[modeIndex];
+        private ScreenTileCoordinatesConverter coordinatesConverter;
         private LevelData levelData;
         private SpriteFont font;
         private Texture2D cursor;
@@ -31,7 +32,8 @@ namespace ExplainingEveryString.Editor
             this.font = content.Load<SpriteFont>(@"TimeFont");
             this.cursor = content.Load<Texture2D>(@"Sprites/Editor/Cursor");
 
-            this.modes = InitEditorModes(content, screenCoordinatesMaster, map);
+            this.coordinatesConverter = new ScreenTileCoordinatesConverter(screenCoordinatesMaster, map);
+            this.modes = InitEditorModes(content);
             foreach (var mode in modes)
                 mode.Load(levelData);
         }
@@ -54,6 +56,8 @@ namespace ExplainingEveryString.Editor
                 modeIndex = 0;
             if (e.PressedKey == Keys.D1)
                 modeIndex = 1;
+            if (e.PressedKey == Keys.D2)
+                modeIndex = 2;
         }
 
         private void MouseButtonPressed(Object sender, MouseButtonPressedEventArgs e)
@@ -80,7 +84,7 @@ namespace ExplainingEveryString.Editor
             var mousePosition = InputProcessor.Instance.MousePosition;
             if (CurrentMode != null)
             {
-                var levelPosition = CurrentMode.GetLevelPosition(mousePosition);
+                var levelPosition = coordinatesConverter.GetLevelPosition(mousePosition);
                 DrawString(spriteBatch, $"({levelPosition.X}, {levelPosition.Y}) + {levelPosition.Offset})", 4);
             }
 
@@ -99,15 +103,17 @@ namespace ExplainingEveryString.Editor
             CurrentMode?.EditableTypeChange(e.ScrollDifference);
         }
 
-        private IEditorMode[] InitEditorModes(ContentManager content, IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper map)
+        private IEditorMode[] InitEditorModes(ContentManager content)
         {
             var blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
             blueprintsLoader.Load();
             var blueprintsDisplayer = new BlueprintDisplayer(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
+            var rectangleCornersDisplayer = new RectangleCornersDisplayer(content);
             return new IEditorMode[]
             {
-                new ObstaclesEditorMode(screenCoordinatesMaster, map, blueprintsDisplayer, blueprintsLoader),
-                new EnemyPositionEditorMode(screenCoordinatesMaster, map, blueprintsDisplayer, blueprintsLoader)
+                new ObstaclesEditorMode(coordinatesConverter, blueprintsDisplayer, blueprintsLoader),
+                new EnemyPositionEditorMode(coordinatesConverter, blueprintsDisplayer, blueprintsLoader),
+                new StartRegionEditorMode(coordinatesConverter, rectangleCornersDisplayer)
             };
         }
     }

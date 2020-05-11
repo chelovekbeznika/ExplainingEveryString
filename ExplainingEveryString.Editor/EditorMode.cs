@@ -1,6 +1,4 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -24,14 +22,12 @@ namespace ExplainingEveryString.Editor
         LevelData SaveChanges(LevelData levelData);
         String CurrentEditableType { get; }
         String ModeName { get; }
-        PositionOnTileMap GetLevelPosition(Vector2 screenPosition);
     }
 
     internal abstract class EditorMode<T> : IEditorMode where T : IEditable
     {
-        private IScreenCoordinatesMaster screenCoordinatesMaster;
         private IEditableDisplayer editableDisplayer;
-        private TileWrapper tileWrapper;
+        private ScreenTileCoordinatesConverter coordinatesConverter;
         protected List<T> Editables { get; private set; }
         private String[] editableTypes;
         private Int32 selectedEditableTypeIndex = 0;
@@ -42,11 +38,10 @@ namespace ExplainingEveryString.Editor
 
         public Int32? SelectedEditableIndex { get; private set; }
 
-        protected EditorMode(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper, 
+        protected EditorMode(ScreenTileCoordinatesConverter coordinatesConverter,
             IEditableDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader)
         {
-            this.screenCoordinatesMaster = screenCoordinatesMaster;
-            this.tileWrapper = tileWrapper;
+            this.coordinatesConverter = coordinatesConverter;
             this.editableDisplayer = editableDisplayer;
             this.editableTypes = GetEditableTypes(blueprintsLoader);
         }
@@ -105,19 +100,8 @@ namespace ExplainingEveryString.Editor
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (var (editable, index) in Editables.Select((editable, index) => (editable, index)))
-                editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), GetScreenPosition(editable.PositionTileMap), index == SelectedEditableIndex);
-        }
-
-        public PositionOnTileMap GetLevelPosition(Vector2 screenPosition)
-        {
-            var levelPosition = screenCoordinatesMaster.ConvertToLevelPosition(screenPosition);
-            return tileWrapper.GetTilePosition(levelPosition);
-        }
-
-        private Vector2 GetScreenPosition(PositionOnTileMap tileMapPosition)
-        {
-            var levelPosition = tileWrapper.GetLevelPosition(tileMapPosition);
-            return screenCoordinatesMaster.ConvertToScreenPosition(levelPosition);
+                editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), 
+                    coordinatesConverter.GetScreenPosition(editable.PositionTileMap), index == SelectedEditableIndex);
         }
 
         protected abstract List<T> GetEditables(LevelData levelData);
@@ -126,7 +110,7 @@ namespace ExplainingEveryString.Editor
 
         public void Add(Vector2 screenPosition)
         {
-            var newEditable = Create(CurrentEditableType, GetLevelPosition(screenPosition));
+            var newEditable = Create(CurrentEditableType, coordinatesConverter.GetLevelPosition(screenPosition));
             Editables.Add(newEditable);
         }
 
@@ -137,7 +121,7 @@ namespace ExplainingEveryString.Editor
             if (SelectedEditableIndex == null)
                 return;
 
-            var tilePosition = GetLevelPosition(screenPosition);
+            var tilePosition = coordinatesConverter.GetLevelPosition(screenPosition);
             Editables[SelectedEditableIndex.Value].PositionTileMap = tilePosition;
         }
     }

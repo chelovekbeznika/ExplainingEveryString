@@ -16,10 +16,10 @@
   "EnemyWaves": [
     {
       "StartRegion": {
-        "X": 0,
-        "Y": 0,
-        "Width": 120,
-        "Height": 120
+        "X": 30,
+        "Y": 60,
+        "Width": 2,
+        "Height": 2
       },
       "Enemies": [
         {

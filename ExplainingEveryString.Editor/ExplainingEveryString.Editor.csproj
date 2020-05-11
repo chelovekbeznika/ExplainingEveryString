@@ -57,9 +57,12 @@
     <Compile Include="EesEditor.cs" />
     <Compile Include="IEditorMode.cs" />
     <Compile Include="InputProcessor.cs" />
+    <Compile Include="ScreenTileCoordinatesConverter.cs" />
     <Compile Include="ObstaclesEditorMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EditorInfoForCameraExtractor.cs" />
+    <Compile Include="RectangleCornersDisplayer.cs" />
+    <Compile Include="StartRegionEditorMode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExplainingEveryString.Core\ExplainingEveryString.Core.csproj">

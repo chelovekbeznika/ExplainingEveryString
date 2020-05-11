@@ -11,9 +11,9 @@ namespace ExplainingEveryString.Editor
 {
     internal class ObstaclesEditorMode : EditorMode<ObstacleInEditor>
     {
-        public ObstaclesEditorMode(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper, 
+        public ObstaclesEditorMode(ScreenTileCoordinatesConverter coordinatesConverter, 
             BlueprintDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader) 
-            : base(screenCoordinatesMaster, tileWrapper, editableDisplayer, blueprintsLoader)
+            : base(coordinatesConverter, editableDisplayer, blueprintsLoader)
         {
         }
 

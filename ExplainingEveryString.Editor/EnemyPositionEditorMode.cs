@@ -10,9 +10,9 @@ namespace ExplainingEveryString.Editor
 {
     internal class EnemyPositionEditorMode : EditorMode<EnemyPositionInEditor>
     {
-        public EnemyPositionEditorMode(IScreenCoordinatesMaster screenCoordinatesMaster, 
-            TileWrapper tileWrapper, BlueprintDisplayer blueprintDisplayer, IBlueprintsLoader blueprintsLoader) 
-            : base(screenCoordinatesMaster, tileWrapper, blueprintDisplayer, blueprintsLoader)
+        public EnemyPositionEditorMode(ScreenTileCoordinatesConverter coordinatesConverter, 
+            BlueprintDisplayer blueprintDisplayer, IBlueprintsLoader blueprintsLoader) 
+            : base(coordinatesConverter, blueprintDisplayer, blueprintsLoader)
         {
         }
 
