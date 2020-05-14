@@ -1,6 +1,4 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using System;
 using System.Collections.Generic;
@@ -10,18 +8,27 @@ namespace ExplainingEveryString.Editor
 {
     internal class EnemyPositionEditorMode : EditorMode<EnemyPositionInEditor>
     {
-        public EnemyPositionEditorMode(ScreenTileCoordinatesConverter coordinatesConverter, 
-            BlueprintDisplayer blueprintDisplayer, IBlueprintsLoader blueprintsLoader) 
-            : base(coordinatesConverter, blueprintDisplayer, blueprintsLoader)
+        private Int32 wave;
+
+        public override String ModeName => $"{wave} wave enemies position";
+
+        public override List<IEditorMode> ParentModes { get; }
+
+        public override List<IEditorMode> CurrentDerivativeModes => null;
+
+        public EnemyPositionEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, CoordinatesConverter coordinatesConverter,
+            BlueprintDisplayer blueprintDisplayer, IBlueprintsLoader blueprintsLoader, Int32 wave)
+            : base(levelData, coordinatesConverter, blueprintDisplayer, blueprintsLoader)
         {
+            this.ParentModes = levelEditorModes;
+            this.wave = wave;
+            Editables = GetEditables(levelData);
         }
 
-        public override String ModeName => "1 enemy wave";
-
-        public override LevelData SaveChanges(LevelData levelData)
+        public override LevelData SaveChanges()
         {
-            levelData.EnemyWaves[0].Enemies = Editables.Select(enemyPosition => enemyPosition.ActorStartInfo).ToArray();
-            return levelData;
+            LevelData.EnemyWaves[wave].Enemies = Editables.Select(enemyPosition => enemyPosition.ActorStartInfo).ToArray();
+            return LevelData;
         }
 
         protected override EnemyPositionInEditor Create(String editableType, PositionOnTileMap positionOnTileMap)
@@ -38,7 +45,7 @@ namespace ExplainingEveryString.Editor
 
         protected override List<EnemyPositionInEditor> GetEditables(LevelData levelData)
         {
-            return levelData.EnemyWaves[0].Enemies.Select(asi => new EnemyPositionInEditor { ActorStartInfo = asi }).ToList();
+            return levelData.EnemyWaves[wave].Enemies.Select(asi => new EnemyPositionInEditor { ActorStartInfo = asi }).ToList();
         }
 
         protected override String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader)

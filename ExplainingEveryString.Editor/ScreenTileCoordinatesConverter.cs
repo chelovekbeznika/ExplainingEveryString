@@ -2,20 +2,15 @@
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Editor
 {
-    internal class ScreenTileCoordinatesConverter
+    internal class CoordinatesConverter
     {
         private IScreenCoordinatesMaster screenCoordinatesMaster;
         private TileWrapper tileWrapper;
 
-        internal ScreenTileCoordinatesConverter(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper)
+        internal CoordinatesConverter(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper)
         {
             this.screenCoordinatesMaster = screenCoordinatesMaster;
             this.tileWrapper = tileWrapper;

@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.GameModel
             var activeActors = new ActiveActorsStorage();
             var checkpointsManager = new CheckpointsManager(map, levelData);
             this.levelState = new LevelState(activeActors, actorsInitializer, checkpointsManager, 
-                levelData.EnemyWaves.Length, levelProgress.CurrentCheckPoint);
+                levelData.EnemyWaves.Count, levelProgress.CurrentCheckPoint);
 
             this.collisionsController = new CollisionsController(activeActors);
         }

@@ -1,23 +1,21 @@
-﻿using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Data.Level;
+﻿using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Editor
 {
     internal class StartRegionEditorMode : IEditorMode
     {
+        private LevelData levelData;
         private IEditableDisplayer displayer;
-        private ScreenTileCoordinatesConverter coordinatesConverter;
+        private CoordinatesConverter coordinatesConverter;
 
         private PositionOnTileMap upperLeftCorner;
         private PositionOnTileMap rightBottomCorner;
         private Boolean upperLeftCornerSelected = true;
-        private Int32 enemyWaveNumber = 0;
-
-
+        private Int32 enemyWaveNumber;
 
         public Int32? SelectedEditableIndex => upperLeftCornerSelected ? 0 : 1;
 
@@ -25,10 +23,26 @@ namespace ExplainingEveryString.Editor
 
         public String ModeName => $"Start region of {enemyWaveNumber} enemy wave";
 
-        internal StartRegionEditorMode(ScreenTileCoordinatesConverter coordinatesConverter, IEditableDisplayer displayer)
+        public List<IEditorMode> ParentModes { get; private set; }
+
+        public List<IEditorMode> CurrentDerivativeModes => null;
+
+        internal StartRegionEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, 
+            CoordinatesConverter coordinatesConverter, IEditableDisplayer displayer, Int32 wave)
         {
+            this.levelData = levelData;
+            this.ParentModes = levelEditorModes;
             this.coordinatesConverter = coordinatesConverter;
             this.displayer = displayer;
+            this.enemyWaveNumber = wave;
+            Load(levelData);
+        }
+
+        private void Load(LevelData levelData)
+        {
+            var startRegion = levelData.EnemyWaves[enemyWaveNumber].StartRegion;
+            upperLeftCorner = new PositionOnTileMap { X = startRegion.X, Y = startRegion.Y };
+            rightBottomCorner = new PositionOnTileMap { X = startRegion.X + startRegion.Width, Y = startRegion.Y + startRegion.Height };
         }
 
         public void Add(Vector2 screenPosition)
@@ -48,13 +62,6 @@ namespace ExplainingEveryString.Editor
         public void EditableTypeChange(Int32 typesSwitched)
         {
             SelectedCornerChange(typesSwitched);
-        }
-
-        public void Load(LevelData levelData)
-        {
-            var startRegion = levelData.EnemyWaves[enemyWaveNumber].StartRegion;
-            upperLeftCorner = new PositionOnTileMap { X = startRegion.X, Y = startRegion.Y };
-            rightBottomCorner = new PositionOnTileMap { X = startRegion.X + startRegion.Width, Y = startRegion.Y + startRegion.Height };
         }
 
         public void MoveSelected(Vector2 screenPosition)
@@ -84,7 +91,7 @@ namespace ExplainingEveryString.Editor
             rightBottomCorner = newRightBottomCorner;
         }
 
-        public LevelData SaveChanges(LevelData levelData)
+        public LevelData SaveChanges()
         {
             var newRegion = new Rectangle(
                 x: upperLeftCorner.X,
@@ -110,18 +117,6 @@ namespace ExplainingEveryString.Editor
                 return;
             else
                 upperLeftCornerSelected = !upperLeftCornerSelected;
-        }
-    }
-
-    public class RectangleCorner : IEditable
-    {
-        public Boolean LeftUpper { get; set; }
-
-        public PositionOnTileMap PositionTileMap { get ; set; }
-
-        public String GetEditableType()
-        {
-            return LeftUpper ? "Left upper corner" : "Right bottom corner";
         }
     }
 }

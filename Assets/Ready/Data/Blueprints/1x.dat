@@ -1207,7 +1207,7 @@
     }
   },
   "BottomLamp": {
-    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprintBlueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
     "Height": 16.0,
     "Width": 32.0,
     "DefaultSprite": {
@@ -1216,7 +1216,7 @@
     }
   },
   "TopLamp": {
-    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprintBlueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
     "Height": 16.0,
     "Width": 32.0,
     "DefaultSprite": {

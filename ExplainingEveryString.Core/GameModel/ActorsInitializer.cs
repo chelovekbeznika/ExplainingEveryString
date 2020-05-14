@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core.GameModel
         private List<Door> InitializeDoors(Int32 startWave, Func<DoorStartInfo, Boolean> dsiFilter)
         {
             var result = new List<Door>();
-            foreach (var waveNumber in Enumerable.Range(startWave, levelData.EnemyWaves.Length - startWave))
+            foreach (var waveNumber in Enumerable.Range(startWave, levelData.EnemyWaves.Count - startWave))
             {
                 var wave = levelData.EnemyWaves[waveNumber];
                 var doorsInfo = wave.Doors;

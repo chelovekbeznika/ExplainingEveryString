@@ -8,15 +8,16 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Editor
 {
     internal class Editor
     {
-        private IEditorMode[] modes;
+        private List<IEditorMode> modes;
         private Int32 modeIndex = 0;
         private IEditorMode CurrentMode => modes[modeIndex];
-        private ScreenTileCoordinatesConverter coordinatesConverter;
+        private CoordinatesConverter coordinatesConverter;
         private LevelData levelData;
         private SpriteFont font;
         private Texture2D cursor;
@@ -32,10 +33,8 @@ namespace ExplainingEveryString.Editor
             this.font = content.Load<SpriteFont>(@"TimeFont");
             this.cursor = content.Load<Texture2D>(@"Sprites/Editor/Cursor");
 
-            this.coordinatesConverter = new ScreenTileCoordinatesConverter(screenCoordinatesMaster, map);
+            this.coordinatesConverter = new CoordinatesConverter(screenCoordinatesMaster, map);
             this.modes = InitEditorModes(content);
-            foreach (var mode in modes)
-                mode.Load(levelData);
         }
 
         private void KeyPressed(Object sender, KeyPressedEventArgs e)
@@ -49,15 +48,22 @@ namespace ExplainingEveryString.Editor
             if (e.PressedKey == Keys.Delete && CurrentMode != null)
             {
                 CurrentMode.DeleteCurrentlySelected();
-                levelData = CurrentMode.SaveChanges(levelData);
+                levelData = CurrentMode.SaveChanges();
                 LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
             }
-            if (e.PressedKey == Keys.D0)
-                modeIndex = 0;
-            if (e.PressedKey == Keys.D1)
-                modeIndex = 1;
-            if (e.PressedKey == Keys.D2)
-                modeIndex = 2;
+
+            if (e.PressedKey == Keys.Up)
+                if (CurrentMode?.ParentModes != null)
+                    modes = CurrentMode.ParentModes;
+            if (e.PressedKey == Keys.Down)
+                if (CurrentMode?.CurrentDerivativeModes != null)
+                    modes = CurrentMode.CurrentDerivativeModes;
+            if (e.PressedKey == Keys.Left)
+                if (modeIndex > 0)
+                    modeIndex -= 1;
+            if (e.PressedKey == Keys.Right)
+                if (modeIndex < modes.Count - 1)
+                    modeIndex += 1;
         }
 
         private void MouseButtonPressed(Object sender, MouseButtonPressedEventArgs e)
@@ -69,7 +75,7 @@ namespace ExplainingEveryString.Editor
                 else
                     CurrentMode.MoveSelected(e.MouseScreenPosition);
 
-                levelData = CurrentMode.SaveChanges(levelData);
+                levelData = CurrentMode.SaveChanges();
                 LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
             }
         }
@@ -103,18 +109,17 @@ namespace ExplainingEveryString.Editor
             CurrentMode?.EditableTypeChange(e.ScrollDifference);
         }
 
-        private IEditorMode[] InitEditorModes(ContentManager content)
+        private List<IEditorMode> InitEditorModes(ContentManager content)
         {
             var blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
             blueprintsLoader.Load();
-            var blueprintsDisplayer = new BlueprintDisplayer(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
+            var blueprintDisplayer = new BlueprintDisplayer(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
             var rectangleCornersDisplayer = new RectangleCornersDisplayer(content);
-            return new IEditorMode[]
-            {
-                new ObstaclesEditorMode(coordinatesConverter, blueprintsDisplayer, blueprintsLoader),
-                new EnemyPositionEditorMode(coordinatesConverter, blueprintsDisplayer, blueprintsLoader),
-                new StartRegionEditorMode(coordinatesConverter, rectangleCornersDisplayer)
-            };
+            var result = new List<IEditorMode>();
+            result.Add(new ObstaclesEditorMode(levelData, coordinatesConverter, blueprintDisplayer, blueprintsLoader));
+            result.Add(new EnemyWavesEditorMode(levelData, result, coordinatesConverter, 
+                rectangleCornersDisplayer, blueprintDisplayer, blueprintsLoader));
+            return result;
         }
     }
 

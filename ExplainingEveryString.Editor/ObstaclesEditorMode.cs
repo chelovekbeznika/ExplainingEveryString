@@ -1,8 +1,5 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +8,20 @@ namespace ExplainingEveryString.Editor
 {
     internal class ObstaclesEditorMode : EditorMode<ObstacleInEditor>
     {
-        public ObstaclesEditorMode(ScreenTileCoordinatesConverter coordinatesConverter, 
+        public ObstaclesEditorMode(LevelData levelData, CoordinatesConverter coordinatesConverter, 
             BlueprintDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader) 
-            : base(coordinatesConverter, editableDisplayer, blueprintsLoader)
+            : base(levelData, coordinatesConverter, editableDisplayer, blueprintsLoader)
         {
+            Editables = GetEditables(levelData);
         }
 
         public override String ModeName => "Obstacles";
 
-        public override LevelData SaveChanges(LevelData levelData)
+        public override List<IEditorMode> ParentModes => null;
+
+        public override List<IEditorMode> CurrentDerivativeModes => null;
+
+        public override LevelData SaveChanges()
         {
             var newObstacles = new Dictionary<String, List<PositionOnTileMap>>();
             foreach (var obstacle in Editables)
@@ -28,8 +30,8 @@ namespace ExplainingEveryString.Editor
                     newObstacles.Add(obstacle.ObstacleType, new List<PositionOnTileMap>());
                 newObstacles[obstacle.ObstacleType].Add(obstacle.PositionTileMap);
             }
-            levelData.ObstaclesTilePositions = newObstacles.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
-            return levelData;
+            LevelData.ObstaclesTilePositions = newObstacles.ToDictionary(pair => pair.Key, pair => pair.Value.ToArray());
+            return LevelData;
         }
 
         protected override List<ObstacleInEditor> GetEditables(LevelData levelData)

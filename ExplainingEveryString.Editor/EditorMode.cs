@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,7 +11,6 @@ namespace ExplainingEveryString.Editor
 {
     internal interface IEditorMode
     {
-        void Load(LevelData levelData);
         void Draw(SpriteBatch spriteBatch);
         void EditableTypeChange(Int32 typesSwitched);
         void Add(Vector2 screenPosition);
@@ -19,18 +19,23 @@ namespace ExplainingEveryString.Editor
         void MoveSelected(Vector2 screenPosition);
         void SelectedEditableChange(Int32 editablesSwitched);
         void DeleteCurrentlySelected();
-        LevelData SaveChanges(LevelData levelData);
+        LevelData SaveChanges();
         String CurrentEditableType { get; }
         String ModeName { get; }
+
+        List<IEditorMode> ParentModes { get; }
+        List<IEditorMode> CurrentDerivativeModes { get; }
     }
 
     internal abstract class EditorMode<T> : IEditorMode where T : IEditable
     {
         private IEditableDisplayer editableDisplayer;
-        private ScreenTileCoordinatesConverter coordinatesConverter;
-        protected List<T> Editables { get; private set; }
+        private CoordinatesConverter coordinatesConverter;       
         private String[] editableTypes;
         private Int32 selectedEditableTypeIndex = 0;
+
+        protected List<T> Editables { get; set; }
+        protected LevelData LevelData { get; private set; }
 
         public String CurrentEditableType => editableTypes[selectedEditableTypeIndex];
 
@@ -38,9 +43,14 @@ namespace ExplainingEveryString.Editor
 
         public Int32? SelectedEditableIndex { get; private set; }
 
-        protected EditorMode(ScreenTileCoordinatesConverter coordinatesConverter,
+        public abstract List<IEditorMode> ParentModes { get; }
+
+        public abstract List<IEditorMode> CurrentDerivativeModes { get; }
+
+        protected EditorMode(LevelData levelData, CoordinatesConverter coordinatesConverter,
             IEditableDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader)
         {
+            this.LevelData = levelData;
             this.coordinatesConverter = coordinatesConverter;
             this.editableDisplayer = editableDisplayer;
             this.editableTypes = GetEditableTypes(blueprintsLoader);
@@ -62,27 +72,7 @@ namespace ExplainingEveryString.Editor
 
         public void SelectedEditableChange(Int32 editablesSwitched)
         {
-            if (Editables.Count == 0)
-                return;
-
-            if (SelectedEditableIndex == null)
-            {
-                if (editablesSwitched > 0)
-                    SelectedEditableIndex = -1;
-                else
-                    SelectedEditableIndex = Editables.Count;
-            }
-
-            SelectedEditableIndex += editablesSwitched;
-            if (SelectedEditableIndex < 0)
-                SelectedEditableIndex += Editables.Count;
-            if (SelectedEditableIndex >= Editables.Count)
-                SelectedEditableIndex -= Editables.Count;
-        }
-
-        public void Load(LevelData levelData)
-        {
-            Editables = GetEditables(levelData);
+            SelectedEditableIndex = EditingHelper.SelectedEditableChange(editablesSwitched, Editables.Count, SelectedEditableIndex);
         }
 
         public void DeleteCurrentlySelected()
@@ -105,7 +95,7 @@ namespace ExplainingEveryString.Editor
         }
 
         protected abstract List<T> GetEditables(LevelData levelData);
-        public abstract LevelData SaveChanges(LevelData levelData);
+        public abstract LevelData SaveChanges();
         protected abstract String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader);
 
         public void Add(Vector2 screenPosition)

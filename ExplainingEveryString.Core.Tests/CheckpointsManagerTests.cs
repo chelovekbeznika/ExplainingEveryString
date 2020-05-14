@@ -90,7 +90,7 @@ namespace ExplainingEveryString.Core.Tests
                     BlueprintType = "Player",
                     TilePosition = new PositionOnTileMap { X = 0, Y = 0 }
                 },
-                EnemyWaves = new EnemyWave[]
+                EnemyWaves = new List<EnemyWave>
                 {
                     new EnemyWave { Checkpoint = phonyDefaultCheckpoint },
                     new EnemyWave { Checkpoint = secondWaveCheckpoint },
