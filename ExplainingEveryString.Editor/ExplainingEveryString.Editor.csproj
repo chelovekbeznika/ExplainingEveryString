@@ -10,6 +10,7 @@
     <RootNamespace>ExplainingEveryString.Editor</RootNamespace>
     <AssemblyName>ExplainingEveryString.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>7.2</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
