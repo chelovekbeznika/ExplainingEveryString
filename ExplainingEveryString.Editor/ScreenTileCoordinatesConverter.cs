@@ -27,5 +27,11 @@ namespace ExplainingEveryString.Editor
             var levelPosition = tileWrapper.GetLevelPosition(tileMapPosition);
             return screenCoordinatesMaster.ConvertToScreenPosition(levelPosition);
         }
+
+        /// <summary>
+        /// This is for position on screen
+        /// </summary>
+        internal Vector2 HalfSpriteOffsetToLeftUpperCorner => 
+            new Vector2(-tileWrapper.TiledMap.TileWidth / 2, -tileWrapper.TiledMap.TileHeight / 2);
     }
 }

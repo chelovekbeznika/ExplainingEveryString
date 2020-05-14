@@ -55,8 +55,10 @@ namespace ExplainingEveryString.Editor
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            displayer.Draw(spriteBatch, "Upper left corner", coordinatesConverter.GetScreenPosition(upperLeftCorner), upperLeftCornerSelected);
-            displayer.Draw(spriteBatch, "Bottom right corner", coordinatesConverter.GetScreenPosition(rightBottomCorner), !upperLeftCornerSelected);
+            var upperLeftPosition = coordinatesConverter.GetScreenPosition(upperLeftCorner) + coordinatesConverter.HalfSpriteOffsetToLeftUpperCorner;
+            var rightBottonPosition = coordinatesConverter.GetScreenPosition(rightBottomCorner) + coordinatesConverter.HalfSpriteOffsetToLeftUpperCorner;
+            displayer.Draw(spriteBatch, "Upper left corner", upperLeftPosition, upperLeftCornerSelected);
+            displayer.Draw(spriteBatch, "Bottom right corner", rightBottonPosition, !upperLeftCornerSelected);
         }
 
         public void EditableTypeChange(Int32 typesSwitched)
@@ -96,8 +98,8 @@ namespace ExplainingEveryString.Editor
             var newRegion = new Rectangle(
                 x: upperLeftCorner.X,
                 y: upperLeftCorner.Y,
-                width: rightBottomCorner.X - rightBottomCorner.Y,
-                height: rightBottomCorner.Y - rightBottomCorner.Y);
+                width: rightBottomCorner.X - upperLeftCorner.X,
+                height: rightBottomCorner.Y - upperLeftCorner.Y);
             levelData.EnemyWaves[enemyWaveNumber].StartRegion = newRegion;
             return levelData;
         }
