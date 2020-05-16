@@ -54,10 +54,16 @@ namespace ExplainingEveryString.Editor
 
             if (e.PressedKey == Keys.Up)
                 if (CurrentMode?.ParentModes != null)
+                {
                     modes = CurrentMode.ParentModes;
+                    modeIndex = 0;
+                }
             if (e.PressedKey == Keys.Down)
                 if (CurrentMode?.CurrentDerivativeModes != null)
+                {
                     modes = CurrentMode.CurrentDerivativeModes;
+                    modeIndex = 0;
+                }
             if (e.PressedKey == Keys.Left)
                 if (modeIndex > 0)
                     modeIndex -= 1;
@@ -116,9 +122,9 @@ namespace ExplainingEveryString.Editor
             var blueprintDisplayer = new BlueprintDisplayer(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
             var rectangleCornersDisplayer = new RectangleCornersDisplayer(content);
             var result = new List<IEditorMode>();
-            result.Add(new ObstaclesEditorMode(levelData, coordinatesConverter, blueprintDisplayer, blueprintsLoader));
-            result.Add(new EnemyWavesEditorMode(levelData, result, coordinatesConverter, 
+            result.Add(new EnemyWavesEditorMode(levelData, result, coordinatesConverter,
                 rectangleCornersDisplayer, blueprintDisplayer, blueprintsLoader));
+            result.Add(new ObstaclesEditorMode(levelData, coordinatesConverter, blueprintDisplayer, blueprintsLoader));
             return result;
         }
     }

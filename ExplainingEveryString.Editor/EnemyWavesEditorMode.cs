@@ -100,11 +100,10 @@ namespace ExplainingEveryString.Editor
 
         private List<IEditorMode> EditorModesForWave(Int32 waveNumber)
         {
-            var result = new List<IEditorMode>
-            {
-                new StartRegionEditorMode(levelData, levelEditorModes, coordinatesConverter, cornersDisplayer, waveNumber),
-                new EnemyPositionEditorMode(levelData, levelEditorModes, coordinatesConverter, blueprintDisplayer, blueprintsLoader, waveNumber)
-            };
+            var result = new List<IEditorMode>();
+            result.Add(new StartRegionEditorMode(levelData, levelEditorModes, coordinatesConverter, cornersDisplayer, waveNumber));
+            result.Add(new EnemyPositionEditorMode(levelData, levelEditorModes, result, coordinatesConverter, 
+                blueprintDisplayer, cornersDisplayer, blueprintsLoader, waveNumber));
             return result;
         }
     }

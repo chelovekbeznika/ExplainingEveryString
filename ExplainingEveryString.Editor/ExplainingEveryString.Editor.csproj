@@ -66,6 +66,7 @@
     <Compile Include="EditorInfoForCameraExtractor.cs" />
     <Compile Include="RectangleCornersDisplayer.cs" />
     <Compile Include="StartRegionEditorMode.cs" />
+    <Compile Include="TrajectoryParametersEditorMode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExplainingEveryString.Core\ExplainingEveryString.Core.csproj">

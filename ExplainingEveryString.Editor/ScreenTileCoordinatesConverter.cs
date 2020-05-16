@@ -8,23 +8,23 @@ namespace ExplainingEveryString.Editor
     internal class CoordinatesConverter
     {
         private IScreenCoordinatesMaster screenCoordinatesMaster;
-        private TileWrapper tileWrapper;
+        internal TileWrapper TileWrapper { get; private set; }
 
         internal CoordinatesConverter(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper)
         {
             this.screenCoordinatesMaster = screenCoordinatesMaster;
-            this.tileWrapper = tileWrapper;
+            this.TileWrapper = tileWrapper;
         }
 
         internal PositionOnTileMap GetLevelPosition(Vector2 screenPosition)
         {
             var levelPosition = screenCoordinatesMaster.ConvertToLevelPosition(screenPosition);
-            return tileWrapper.GetTilePosition(levelPosition);
+            return TileWrapper.GetTilePosition(levelPosition);
         }
 
         internal Vector2 GetScreenPosition(PositionOnTileMap tileMapPosition)
         {
-            var levelPosition = tileWrapper.GetLevelPosition(tileMapPosition);
+            var levelPosition = TileWrapper.GetLevelPosition(tileMapPosition);
             return screenCoordinatesMaster.ConvertToScreenPosition(levelPosition);
         }
 
@@ -32,6 +32,6 @@ namespace ExplainingEveryString.Editor
         /// This is for position on screen
         /// </summary>
         internal Vector2 HalfSpriteOffsetToLeftUpperCorner => 
-            new Vector2(-tileWrapper.TiledMap.TileWidth / 2, -tileWrapper.TiledMap.TileHeight / 2);
+            new Vector2(-TileWrapper.TiledMap.TileWidth / 2, -TileWrapper.TiledMap.TileHeight / 2);
     }
 }

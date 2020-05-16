@@ -10,5 +10,10 @@ namespace ExplainingEveryString.Data.Level
         public Int32 Y { get; set; }
         [DefaultValue(typeof(Vector2), "0.0, 0.0")]
         public Vector2 Offset { get; set; }
+
+        public override String ToString()
+        {
+            return $"{X}, {Y} + ({Offset})";
+        }
     }
 }

@@ -9,20 +9,31 @@ namespace ExplainingEveryString.Editor
     internal class EnemyPositionEditorMode : EditorMode<EnemyPositionInEditor>
     {
         private Int32 wave;
+        private List<List<IEditorMode>> enemiesParametersEditorsModes;
+        private Func<EnemyPositionInEditor, List<IEditorMode>> createEditorModesForEnemy;
 
         public override String ModeName => $"{wave} wave enemies position";
 
         public override List<IEditorMode> ParentModes { get; }
 
-        public override List<IEditorMode> CurrentDerivativeModes => null;
+        public override List<IEditorMode> CurrentDerivativeModes => Editables.Count > 0 && SelectedEditableIndex.HasValue
+            ? enemiesParametersEditorsModes[SelectedEditableIndex.Value]
+            : null;
 
-        public EnemyPositionEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, CoordinatesConverter coordinatesConverter,
-            BlueprintDisplayer blueprintDisplayer, IBlueprintsLoader blueprintsLoader, Int32 wave)
+        public EnemyPositionEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, List<IEditorMode> enemiesEditorModes, 
+            CoordinatesConverter coordinatesConverter, BlueprintDisplayer blueprintDisplayer, RectangleCornersDisplayer cornersDisplayer, 
+            IBlueprintsLoader blueprintsLoader, Int32 wave)
             : base(levelData, coordinatesConverter, blueprintDisplayer, blueprintsLoader)
         {
             this.ParentModes = levelEditorModes;
             this.wave = wave;
-            Editables = GetEditables(levelData);
+            Editables = GetEditables();
+            this.createEditorModesForEnemy = enemy => new List<IEditorMode>
+                {
+                    new TrajectoryParametersEditorMode(enemiesEditorModes, enemy, LevelData,
+                        coordinatesConverter, cornersDisplayer, blueprintDisplayer)
+                };
+            enemiesParametersEditorsModes = Editables.Select(createEditorModesForEnemy).ToList();
         }
 
         public override LevelData SaveChanges()
@@ -33,7 +44,7 @@ namespace ExplainingEveryString.Editor
 
         protected override EnemyPositionInEditor Create(String editableType, PositionOnTileMap positionOnTileMap)
         {
-            return new EnemyPositionInEditor
+            var enemyInEditor = new EnemyPositionInEditor
             {
                 ActorStartInfo = new ActorStartInfo
                 {
@@ -41,11 +52,20 @@ namespace ExplainingEveryString.Editor
                     TilePosition = positionOnTileMap
                 }
             };
+            enemiesParametersEditorsModes.Add(createEditorModesForEnemy(enemyInEditor));
+            return enemyInEditor;
         }
 
-        protected override List<EnemyPositionInEditor> GetEditables(LevelData levelData)
+        public override void DeleteCurrentlySelected()
         {
-            return levelData.EnemyWaves[wave].Enemies.Select(asi => new EnemyPositionInEditor { ActorStartInfo = asi }).ToList();
+            if (SelectedEditableIndex != null)
+                enemiesParametersEditorsModes.RemoveAt(SelectedEditableIndex.Value);
+            base.DeleteCurrentlySelected();
+        }
+
+        protected override List<EnemyPositionInEditor> GetEditables()
+        {
+            return LevelData.EnemyWaves[wave].Enemies.Select(asi => new EnemyPositionInEditor { ActorStartInfo = asi }).ToList();
         }
 
         protected override String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader)

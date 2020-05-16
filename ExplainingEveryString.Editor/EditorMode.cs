@@ -30,11 +30,13 @@ namespace ExplainingEveryString.Editor
     internal abstract class EditorMode<T> : IEditorMode where T : IEditable
     {
         private IEditableDisplayer editableDisplayer;
-        private CoordinatesConverter coordinatesConverter;       
         private String[] editableTypes;
         private Int32 selectedEditableTypeIndex = 0;
 
+        protected CoordinatesConverter CoordinatesConverter { get; private set; }
+
         protected List<T> Editables { get; set; }
+
         protected LevelData LevelData { get; private set; }
 
         public String CurrentEditableType => editableTypes[selectedEditableTypeIndex];
@@ -51,7 +53,7 @@ namespace ExplainingEveryString.Editor
             IEditableDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader)
         {
             this.LevelData = levelData;
-            this.coordinatesConverter = coordinatesConverter;
+            this.CoordinatesConverter = coordinatesConverter;
             this.editableDisplayer = editableDisplayer;
             this.editableTypes = GetEditableTypes(blueprintsLoader);
         }
@@ -75,7 +77,7 @@ namespace ExplainingEveryString.Editor
             SelectedEditableIndex = EditingHelper.SelectedEditableChange(editablesSwitched, Editables.Count, SelectedEditableIndex);
         }
 
-        public void DeleteCurrentlySelected()
+        public virtual void DeleteCurrentlySelected()
         {
             if (SelectedEditableIndex == null)
                 return;
@@ -87,31 +89,31 @@ namespace ExplainingEveryString.Editor
                 SelectedEditableIndex = null;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             foreach (var (editable, index) in Editables.Select((editable, index) => (editable, index)))
                 editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), 
-                    coordinatesConverter.GetScreenPosition(editable.PositionTileMap), index == SelectedEditableIndex);
+                    CoordinatesConverter.GetScreenPosition(editable.PositionTileMap), index == SelectedEditableIndex);
         }
 
-        protected abstract List<T> GetEditables(LevelData levelData);
+        protected abstract List<T> GetEditables();
         public abstract LevelData SaveChanges();
         protected abstract String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader);
 
         public void Add(Vector2 screenPosition)
         {
-            var newEditable = Create(CurrentEditableType, coordinatesConverter.GetLevelPosition(screenPosition));
+            var newEditable = Create(CurrentEditableType, CoordinatesConverter.GetLevelPosition(screenPosition));
             Editables.Add(newEditable);
         }
 
         protected abstract T Create(String editableType, PositionOnTileMap positionOnTileMap);
 
-        public void MoveSelected(Vector2 screenPosition)
+        public virtual void MoveSelected(Vector2 screenPosition)
         {
             if (SelectedEditableIndex == null)
                 return;
 
-            var tilePosition = coordinatesConverter.GetLevelPosition(screenPosition);
+            var tilePosition = CoordinatesConverter.GetLevelPosition(screenPosition);
             Editables[SelectedEditableIndex.Value].PositionTileMap = tilePosition;
         }
     }

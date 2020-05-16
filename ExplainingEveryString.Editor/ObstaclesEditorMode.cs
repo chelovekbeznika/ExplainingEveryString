@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Editor
             BlueprintDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader) 
             : base(levelData, coordinatesConverter, editableDisplayer, blueprintsLoader)
         {
-            Editables = GetEditables(levelData);
+            Editables = GetEditables();
         }
 
         public override String ModeName => "Obstacles";
@@ -34,9 +34,9 @@ namespace ExplainingEveryString.Editor
             return LevelData;
         }
 
-        protected override List<ObstacleInEditor> GetEditables(LevelData levelData)
+        protected override List<ObstacleInEditor> GetEditables()
         {
-            return levelData.ObstaclesTilePositions
+            return LevelData.ObstaclesTilePositions
                 .SelectMany(pair => pair.Value.Select(position => new ObstacleInEditor { ObstacleType = pair.Key, PositionTileMap = position }))
                 .ToList();
         }
