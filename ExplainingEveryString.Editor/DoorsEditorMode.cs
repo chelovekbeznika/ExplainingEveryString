@@ -42,9 +42,6 @@ namespace ExplainingEveryString.Editor
 
         public void ToNextValue()
         {
-            if (SelectedEditableIndex == null)
-                return;
-
             var doorInfo = CurrentEditable.DoorStartInfo;
             if (doorInfo.ClosesAt == null)
                 doorInfo.ClosesAt = 0;
@@ -54,9 +51,6 @@ namespace ExplainingEveryString.Editor
 
         public void ToPreviousValue()
         {
-            if (CurrentEditable == null)
-                return;
-
             var doorInfo = CurrentEditable.DoorStartInfo;
             if (doorInfo.ClosesAt == 0)
                 doorInfo.ClosesAt = null;

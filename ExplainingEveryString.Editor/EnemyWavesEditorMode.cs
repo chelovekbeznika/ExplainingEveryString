@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace ExplainingEveryString.Editor
 {
-    internal class EnemyWavesEditorMode : IEditorMode
+    internal class EnemyWavesEditorMode : ICustomParameterEditor
     {
         private Int32 waves;
         private List<List<IEditorMode>> wavesEditorModes;
@@ -30,6 +30,12 @@ namespace ExplainingEveryString.Editor
         public List<IEditorMode> ParentModes => null;
 
         public List<IEditorMode> CurrentDerivativeModes => SelectedEditableIndex != null ? wavesEditorModes[SelectedEditableIndex.Value] : null;
+
+        public String CurrentParameterValue => SelectedWave.MaxEnemiesAtOnce.ToString();
+
+        public String ParameterName => "Maximum of enemies presenting at screen";
+
+        private EnemyWave SelectedWave => levelData.EnemyWaves[SelectedEditableIndex.Value];
 
         public EnemyWavesEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, CoordinatesConverter coordinatesConverter, 
             RectangleCornersDisplayer cornersDisplayer, BlueprintDisplayer blueprintDisplayer, IBlueprintsLoader blueprintsLoader)
@@ -107,6 +113,24 @@ namespace ExplainingEveryString.Editor
             result.Add(new StartRegionEditorMode(levelData, levelEditorModes, coordinatesConverter, cornersDisplayer, waveNumber));
 
             return result;
+        }
+
+        public void ToNextValue()
+        {
+            if (SelectedWave.MaxEnemiesAtOnce == Int32.MaxValue)
+                SelectedWave.MaxEnemiesAtOnce = 1;
+            else
+                SelectedWave.MaxEnemiesAtOnce += 1;
+        }
+
+        public void ToPreviousValue()
+        {
+            if (SelectedWave.MaxEnemiesAtOnce == Int32.MaxValue)
+                return;
+            if (SelectedWave.MaxEnemiesAtOnce == 1)
+                SelectedWave.MaxEnemiesAtOnce = Int32.MaxValue;
+            else
+                SelectedWave.MaxEnemiesAtOnce -= 1;
         }
     }
 }

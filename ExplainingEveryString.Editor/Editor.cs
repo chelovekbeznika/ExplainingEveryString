@@ -71,7 +71,7 @@ namespace ExplainingEveryString.Editor
 
             if (levelChanged)
             {
-                levelData = CustomParameterEditor.SaveChanges();
+                levelData = EditorMode.SaveChanges();
                 LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
             }
         }
