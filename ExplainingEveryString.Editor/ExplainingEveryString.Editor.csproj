@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlueprintDisplayer.cs" />
+    <Compile Include="CustomParameterEditor.cs" />
     <Compile Include="DoorsEditorMode.cs" />
     <Compile Include="EditingHelper.cs" />
     <Compile Include="Editor.cs" />

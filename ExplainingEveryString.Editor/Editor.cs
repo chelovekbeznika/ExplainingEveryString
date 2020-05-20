@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
@@ -16,7 +17,8 @@ namespace ExplainingEveryString.Editor
     {
         private List<IEditorMode> modes;
         private Int32 modeIndex = 0;
-        private IEditorMode CurrentMode => modes[modeIndex];
+        private IEditorMode EditorMode => modes[modeIndex];
+        private ICustomParameterEditor CustomParameterEditor => EditorMode as ICustomParameterEditor;
         private CoordinatesConverter coordinatesConverter;
         private LevelData levelData;
         private SpriteFont font;
@@ -39,70 +41,72 @@ namespace ExplainingEveryString.Editor
 
         private void KeyPressed(Object sender, KeyPressedEventArgs e)
         {
-            if (e.PressedKey == Keys.U)
-                CurrentMode?.Unselect();
-            if (e.PressedKey == Keys.Q)
-                CurrentMode?.SelectedEditableChange(-1);
-            if (e.PressedKey == Keys.E)
-                CurrentMode?.SelectedEditableChange(+1);
-            if (e.PressedKey == Keys.Delete && CurrentMode != null)
+            var levelChanged = false;
+            switch (e.PressedKey)
             {
-                CurrentMode.DeleteCurrentlySelected();
-                levelData = CurrentMode.SaveChanges();
-                LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
+                case Keys.U: EditorMode?.Unselect(); break;
+                case Keys.Q: EditorMode?.SelectedEditableChange(-1); break;
+                case Keys.E: EditorMode?.SelectedEditableChange(+1); break;
+                case Keys.Delete: EditorMode.DeleteCurrentlySelected(); levelChanged = true; break;
+                case Keys.F: CustomParameterEditor?.ToPreviousValue(); levelChanged = true; break;
+                case Keys.R: CustomParameterEditor?.ToNextValue(); levelChanged = true; break;
+
+                case Keys.Up:
+                    if (EditorMode?.ParentModes != null)
+                    {
+                        modes = EditorMode.ParentModes;
+                        modeIndex = 0;
+                    }
+                    break;
+                case Keys.Down:
+                    if (EditorMode?.CurrentDerivativeModes != null)
+                    {
+                        modes = EditorMode.CurrentDerivativeModes;
+                        modeIndex = 0;
+                    }
+                    break;
+                case Keys.Left: if (modeIndex > 0) modeIndex -= 1; break;
+                case Keys.Right: if (modeIndex < modes.Count - 1) modeIndex += 1; break;
             }
 
-            if (e.PressedKey == Keys.Up)
-                if (CurrentMode?.ParentModes != null)
-                {
-                    modes = CurrentMode.ParentModes;
-                    modeIndex = 0;
-                }
-            if (e.PressedKey == Keys.Down)
-                if (CurrentMode?.CurrentDerivativeModes != null)
-                {
-                    modes = CurrentMode.CurrentDerivativeModes;
-                    modeIndex = 0;
-                }
-            if (e.PressedKey == Keys.Left)
-                if (modeIndex > 0)
-                    modeIndex -= 1;
-            if (e.PressedKey == Keys.Right)
-                if (modeIndex < modes.Count - 1)
-                    modeIndex += 1;
+            if (levelChanged)
+            {
+                levelData = CustomParameterEditor.SaveChanges();
+                LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
+            }
         }
 
         private void MouseButtonPressed(Object sender, MouseButtonPressedEventArgs e)
         {
-            if (e.PressedButton == MouseButtons.Left && CurrentMode != null)
+            if (e.PressedButton == MouseButtons.Left && EditorMode != null)
             {
-                if (CurrentMode.SelectedEditableIndex == null)
-                    CurrentMode.Add(e.MouseScreenPosition);
+                if (EditorMode.SelectedEditableIndex == null)
+                    EditorMode.Add(e.MouseScreenPosition);
                 else
-                    CurrentMode.MoveSelected(e.MouseScreenPosition);
+                    EditorMode.MoveSelected(e.MouseScreenPosition);
 
-                levelData = CurrentMode.SaveChanges();
+                levelData = EditorMode.SaveChanges();
                 LevelChanged?.Invoke(this, new LevelChangedEventArgs { UpdatedLevel = levelData });
             }
         }
 
         internal void Draw(SpriteBatch spriteBatch)
         {
-            DrawString(spriteBatch, $"We now in {CurrentMode?.ModeName} mode", 1);
-            DrawString(spriteBatch, $"{CurrentMode?.CurrentEditableType}", 2);
-            if (CurrentMode?.SelectedEditableIndex != null)
-                DrawString(spriteBatch, $"Selected #{CurrentMode.SelectedEditableIndex}", 3);
+            DrawString(spriteBatch, $"We now in {EditorMode?.ModeName} mode", 1);
+            DrawString(spriteBatch, $"{EditorMode?.CurrentEditableType}", 2);
+            if (EditorMode?.SelectedEditableIndex != null)
+                DrawString(spriteBatch, $"Selected #{EditorMode.SelectedEditableIndex}", 3);
 
             var mousePosition = InputProcessor.Instance.MousePosition;
-            if (CurrentMode != null)
+            if (EditorMode != null)
             {
                 var levelPosition = coordinatesConverter.GetLevelPosition(mousePosition);
                 DrawString(spriteBatch, $"({levelPosition.X}, {levelPosition.Y}) + {levelPosition.Offset})", 4);
             }
+            if (CustomParameterEditor?.SelectedEditableIndex != null)
+                DrawString(spriteBatch, $"{CustomParameterEditor.ParameterName} is {CustomParameterEditor.CurrentParameterValue}", 5);
 
-            CurrentMode?.Draw(spriteBatch);
-
-            
+            EditorMode?.Draw(spriteBatch);        
             spriteBatch.Draw(cursor, mousePosition, null, Color.White, 0, 
                 new Vector2(cursor.Width / 2, cursor.Height / 2), 1, SpriteEffects.None, 0);
         }
@@ -112,7 +116,7 @@ namespace ExplainingEveryString.Editor
 
         private void MouseScrolled(Object sender, MouseScrolledEventArgs e)
         {
-            CurrentMode?.EditableTypeChange(e.ScrollDifference);
+            EditorMode?.EditableTypeChange(e.ScrollDifference);
         }
 
         private List<IEditorMode> InitEditorModes(ContentManager content)

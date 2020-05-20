@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Editor
 {
-    internal class DoorsEditorMode : EditorMode<DoorInEditor>
+    internal class DoorsEditorMode : EditorMode<DoorInEditor>, ICustomParameterEditor
     {
         private Int32 waveNumber;
 
@@ -28,10 +28,40 @@ namespace ExplainingEveryString.Editor
 
         public override List<IEditorMode> CurrentDerivativeModes => null;
 
+        public String CurrentParameterValue => CurrentEditable.DoorStartInfo.ClosesAt.HasValue 
+            ? CurrentEditable.DoorStartInfo.ClosesAt.ToString()
+            : "null, cause door closed at start";
+
+        public String ParameterName => "Wave to close door ";
+
         public override LevelData SaveChanges()
         {
             LevelData.EnemyWaves[waveNumber].Doors = Editables.Select(editable => editable.DoorStartInfo).ToArray();
             return LevelData;
+        }
+
+        public void ToNextValue()
+        {
+            if (SelectedEditableIndex == null)
+                return;
+
+            var doorInfo = CurrentEditable.DoorStartInfo;
+            if (doorInfo.ClosesAt == null)
+                doorInfo.ClosesAt = 0;
+            else
+                doorInfo.ClosesAt += 1;
+        }
+
+        public void ToPreviousValue()
+        {
+            if (CurrentEditable == null)
+                return;
+
+            var doorInfo = CurrentEditable.DoorStartInfo;
+            if (doorInfo.ClosesAt == 0)
+                doorInfo.ClosesAt = null;
+            else if (doorInfo.ClosesAt > 0)
+                doorInfo.ClosesAt -= 1;
         }
 
         protected override DoorInEditor Create(String editableType, PositionOnTileMap positionOnTileMap)

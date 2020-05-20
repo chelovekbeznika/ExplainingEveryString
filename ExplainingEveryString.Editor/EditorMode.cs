@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Editor
         List<IEditorMode> CurrentDerivativeModes { get; }
     }
 
-    internal abstract class EditorMode<T> : IEditorMode where T : IEditable
+    internal abstract class EditorMode<T> : IEditorMode where T : class, IEditable
     {
         private IEditableDisplayer editableDisplayer;
         private String[] editableTypes;
@@ -48,6 +48,8 @@ namespace ExplainingEveryString.Editor
         public abstract List<IEditorMode> ParentModes { get; }
 
         public abstract List<IEditorMode> CurrentDerivativeModes { get; }
+
+        protected T CurrentEditable => SelectedEditableIndex != null ? Editables[SelectedEditableIndex.Value] : null as T;
 
         protected EditorMode(LevelData levelData, CoordinatesConverter coordinatesConverter,
             IEditableDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader)
@@ -110,11 +112,11 @@ namespace ExplainingEveryString.Editor
 
         public virtual void MoveSelected(Vector2 screenPosition)
         {
-            if (SelectedEditableIndex == null)
+            if (CurrentEditable == null)
                 return;
 
             var tilePosition = CoordinatesConverter.GetLevelPosition(screenPosition);
-            Editables[SelectedEditableIndex.Value].PositionTileMap = tilePosition;
+            CurrentEditable.PositionTileMap = tilePosition;
         }
     }
 }
