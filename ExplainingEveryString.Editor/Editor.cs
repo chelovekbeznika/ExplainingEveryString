@@ -1,5 +1,4 @@
 ﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
@@ -26,7 +25,7 @@ namespace ExplainingEveryString.Editor
 
         internal event EventHandler<LevelChangedEventArgs> LevelChanged;
 
-        internal Editor(LevelData levelData, ContentManager content, IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper map)
+        internal Editor(LevelData levelData, ContentManager content, CoordinatesConverter coordinatesConverter)
         {
             this.levelData = levelData;
             InputProcessor.Instance.MouseScrolled += MouseScrolled;
@@ -35,7 +34,7 @@ namespace ExplainingEveryString.Editor
             this.font = content.Load<SpriteFont>(@"TimeFont");
             this.cursor = content.Load<Texture2D>(@"Sprites/Editor/Cursor");
 
-            this.coordinatesConverter = new CoordinatesConverter(screenCoordinatesMaster, map);
+            this.coordinatesConverter = coordinatesConverter;
             this.modes = InitEditorModes(content);
         }
 

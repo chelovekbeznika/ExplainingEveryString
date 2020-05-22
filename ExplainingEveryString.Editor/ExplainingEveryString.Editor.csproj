@@ -57,6 +57,7 @@
     <Compile Include="Editor.cs" />
     <Compile Include="EnemyPositionEditorMode.cs" />
     <Compile Include="EnemyWavesEditorMode.cs" />
+    <Compile Include="GridDisplayer.cs" />
     <Compile Include="IEditableDisplayer.cs" />
     <Compile Include="EditorMode.cs" />
     <Compile Include="EesEditor.cs" />

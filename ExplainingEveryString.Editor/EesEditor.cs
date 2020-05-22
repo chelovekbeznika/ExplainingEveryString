@@ -17,6 +17,7 @@ namespace ExplainingEveryString.Editor
         private SpriteBatch spriteBatch;
         private IScreenCoordinatesMaster screenCoordinatesMaster;
         private TiledMapDisplayer mapDisplayer;
+        private GridDisplayer gridDisplayer;
         private Editor editor;
 
         public EesEditor(string levelToEdit)
@@ -43,8 +44,11 @@ namespace ExplainingEveryString.Editor
             var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, GraphicsDevice.Viewport, config);
 
             this.screenCoordinatesMaster = new ScreenCoordinatesMaster(GraphicsDevice.Viewport, levelCoordinatesMaster);
+            var coordinatesConveter = new CoordinatesConverter(screenCoordinatesMaster, map);
+
             this.mapDisplayer = new TiledMapDisplayer(map, this, screenCoordinatesMaster);
-            this.editor = new Editor(levelData, Content, screenCoordinatesMaster, map);
+            this.gridDisplayer = new GridDisplayer(map, coordinatesConveter, Content);
+            this.editor = new Editor(levelData, Content, coordinatesConveter);
             editor.LevelChanged += LevelChanged;
 
             base.LoadContent();
@@ -65,6 +69,7 @@ namespace ExplainingEveryString.Editor
             GraphicsDevice.Clear(Color.CornflowerBlue);
             mapDisplayer.Draw();
             editor.Draw(spriteBatch);
+            gridDisplayer.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

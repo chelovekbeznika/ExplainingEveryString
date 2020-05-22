@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Editor
     {
         private IScreenCoordinatesMaster screenCoordinatesMaster;
         internal TileWrapper TileWrapper { get; private set; }
+        internal Vector2 ScreenBottomRight => new Vector2(screenCoordinatesMaster.ScreenCovers.Width, screenCoordinatesMaster.ScreenCovers.Height);
 
         internal CoordinatesConverter(IScreenCoordinatesMaster screenCoordinatesMaster, TileWrapper tileWrapper)
         {
