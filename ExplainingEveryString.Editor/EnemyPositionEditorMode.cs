@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace ExplainingEveryString.Editor
 {
-    internal class EnemyPositionEditorMode : EditorMode<EnemyPositionInEditor>
+    internal class EnemyPositionEditorMode : EditorMode<EnemyPositionInEditor>, ICustomParameterEditor
     {
         private Int32 wave;
         private List<List<IEditorMode>> enemiesParametersEditorsModes;
@@ -19,6 +19,10 @@ namespace ExplainingEveryString.Editor
         public override List<IEditorMode> CurrentDerivativeModes => Editables.Count > 0 && SelectedEditableIndex.HasValue
             ? enemiesParametersEditorsModes[SelectedEditableIndex.Value]
             : null;
+
+        public String CurrentParameterValue => CurrentEditable.ActorStartInfo.Angle.ToString();
+
+        public String ParameterName => "Angle";
 
         public EnemyPositionEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, List<IEditorMode> enemiesEditorModes, 
             CoordinatesConverter coordinatesConverter, BlueprintDisplayer blueprintDisplayer, RectangleCornersDisplayer cornersDisplayer, 
@@ -73,6 +77,30 @@ namespace ExplainingEveryString.Editor
             return blueprintsLoader.GetBlueprints()
                 .Where(pair => pair.Value is EnemyBlueprint)
                 .Select(pair => pair.Key).ToArray();
+        }
+
+        public void ToNextValue()
+        {
+            if (CurrentEditable == null)
+                return;
+            CurrentEditable.ActorStartInfo.Angle += 5;
+            NormalizeAngle();
+        }
+
+        public void ToPreviousValue()
+        {
+            if (CurrentEditable == null)
+                return;
+            CurrentEditable.ActorStartInfo.Angle -= 5;
+            NormalizeAngle();
+        }
+
+        private void NormalizeAngle()
+        {
+            while (CurrentEditable.ActorStartInfo.Angle < 0)
+                CurrentEditable.ActorStartInfo.Angle += 360;
+            while (CurrentEditable.ActorStartInfo.Angle >= 360)
+                CurrentEditable.ActorStartInfo.Angle -= 360;
         }
     }
 
