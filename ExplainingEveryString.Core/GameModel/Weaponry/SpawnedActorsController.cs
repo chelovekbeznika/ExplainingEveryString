@@ -9,7 +9,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     {
         private SpawnerSpecification specification;
         private Reloader reloader;
-        private Vector2[] levelSpawnPoints;
         private ISpawnPositionSelector spawnPositionSelector;
         private ActorsFactory factory;
         private IActor spawner;
@@ -25,10 +24,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.reloader = new Reloader(specification.Reloader, CanSpawnEnemy, SpawnEnemy);
             this.spawner = spawner;
             this.spawnerStartPosition = (spawner as ICollidable).Position;
-            this.levelSpawnPoints = spawnerBehaviorParameters.LevelSpawnPoints;
             this.factory = factory;
-            this.spawnPositionSelector = SpawnPositionSelectorsFactory.Get(specification.PositionSelector, 
-                () => (spawner as ICollidable).Position, levelSpawnPoints, spawnerBehaviorParameters.CustomSpawns);
+            this.spawnPositionSelector = SpawnPositionSelectorsFactory.Get(
+                specification.PositionSelector, spawnerBehaviorParameters.CustomSpawns);
         }
 
         public void Update(Single elapsedSeconds)
@@ -63,7 +61,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     : spawnSpecification.SpawnPoint + spawnerStartPosition,
                 BehaviorParameters = new BehaviorParameters
                 {
-                    LevelSpawnPoints = levelSpawnPoints,
                     TrajectoryParameters = spawnSpecification.TrajectoryParameters,
                     Angle = spawnSpecification.Angle
                 },

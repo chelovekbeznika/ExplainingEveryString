@@ -14,7 +14,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Int32 howMuchToSpawn;
         private String avengerType;
         private ISpawnPositionSelector positionSelector;
-        private Vector2[] levelSpawnPoints;
         private ActorsFactory factory;
         private Func<Vector2> currentPositionLocator;
         private Func<Vector2> playerLocator;
@@ -26,9 +25,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Boolean SpawnsEnemies => avengerType != null;
 
         internal PostMortemSurprise(PostMortemSurpriseSpecification specification, Func<Vector2> currentPositionLocator, 
-            Func<Vector2> playerLocator, Level level, Vector2[] levelSpawnPoints, ActorsFactory factory)
+            Func<Vector2> playerLocator, Level level, ActorsFactory factory)
         {
-            this.levelSpawnPoints = levelSpawnPoints;
             this.factory = factory;
             this.currentPositionLocator = currentPositionLocator;
             this.playerLocator = playerLocator;
@@ -55,8 +53,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             howMuchToSpawn = specification.AvengersAmount;
             avengerType = specification.AvengersType;
-            positionSelector = SpawnPositionSelectorsFactory.Get(
-                specification.PositionSelector, currentPositionLocator, levelSpawnPoints, null);
+            positionSelector = SpawnPositionSelectorsFactory.Get(specification.PositionSelector, null);
         }
 
         internal void TryTrigger()
@@ -92,7 +89,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     Position = spawnSpecification.SpawnPoint + currentPositionLocator(),
                     BehaviorParameters = new BehaviorParameters
                     {
-                        LevelSpawnPoints = levelSpawnPoints,
                         TrajectoryParameters = spawnSpecification.TrajectoryParameters,
                         Angle = spawnSpecification.Angle
                     }

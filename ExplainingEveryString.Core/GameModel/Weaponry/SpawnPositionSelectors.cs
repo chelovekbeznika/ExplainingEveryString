@@ -11,23 +11,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         SpawnSpecification GetNextSpawnSpecification();
     }
 
-    internal class LevelSpawnPositionSelector : ISpawnPositionSelector
-    {
-        private Vector2[] spawnPoints;
-        private Func<Vector2> spawnerPositionLocator;
-
-        internal LevelSpawnPositionSelector(Vector2[] levelSpawnPoints, Func<Vector2> spawnerPositionLocator)
-        {
-            this.spawnPoints = levelSpawnPoints;
-            this.spawnerPositionLocator = spawnerPositionLocator;
-        }
-
-        public SpawnSpecification GetNextSpawnSpecification()
-        {
-            return new SpawnSpecification { SpawnPoint = spawnPoints[RandomUtility.NextInt(spawnPoints.Length)] - spawnerPositionLocator() };
-        }
-    }
-
     internal class RandomSpawnPositionSelector : ISpawnPositionSelector
     {
         private Single maxRadius;

@@ -7,13 +7,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
     internal static class SpawnPositionSelectorsFactory
     {
-        internal static ISpawnPositionSelector Get(SpawnPositionSelectorSpecification specification,
-            Func<Vector2> spawnerLocator, Vector2[] levelSpawnPoints, SpawnSpecification[] spawnSpecifications)
+        internal static ISpawnPositionSelector Get(SpawnPositionSelectorSpecification specification, 
+            SpawnSpecification[] spawnSpecifications)
         {
             switch (specification.PositionSelectionType)
             {
-                case SpawnPositionSelectionType.LevelSpawnPoints:
-                    return new LevelSpawnPositionSelector(levelSpawnPoints, spawnerLocator);
                 case SpawnPositionSelectionType.RandomInCircle:
                     var maxRadius = (specification as RandomSpawnPositionSelectorSpecification).SpawnRadius;
                     return new RandomSpawnPositionSelector(maxRadius);

@@ -117,7 +117,7 @@
     <Compile Include="Collisions\SpatialPartioningHelper.cs" />
     <Compile Include="SpriteDataBuilder.cs" />
     <Compile Include="Timer.cs" />
-    <Compile Include="GameModel\Weaponry\LevelPointsSpawner.cs" />
+    <Compile Include="GameModel\Weaponry\SpawnPositionSelectors.cs" />
     <Compile Include="GameModel\Weaponry\PostMortemSurprise.cs" />
     <Compile Include="GameModel\Weaponry\SpawnPositionSelectorsFactory.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\GravitationalTrajectory.cs" />

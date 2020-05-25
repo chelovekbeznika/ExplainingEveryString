@@ -41,12 +41,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 {
                     PhaseType.Shoot,
                     blueprint.Phases.Where(phaseSpec => phaseSpec.Behavior.Spawner == null)
-                        .Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray()
+                        .Select(phase => ConstructPhase(phase, level, factory)).ToArray()
                 },
                 {
                     PhaseType.Spawn,
                     blueprint.Phases.Where(phase => phase.Behavior.Spawner != null)
-                        .Select(phase => ConstructPhase(phase, startInfo, level, factory)).ToArray()
+                        .Select(phase => ConstructPhase(phase, level, factory)).ToArray()
                 }
             };
             var tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
@@ -54,13 +54,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             SwitchToNextPhase();
         }
 
-        private FirstBossPhase ConstructPhase(FirstBossPhaseSpecification phase,
-            ActorStartInfo startInfo, Level level, ActorsFactory factory)
+        private FirstBossPhase ConstructPhase(FirstBossPhaseSpecification phase, Level level, ActorsFactory factory)
         {
             var behavior = new EnemyBehavior(this, () => level.Player.Position);
             var behaviorParameters = new BehaviorParameters
             {
-                LevelSpawnPoints = startInfo.BehaviorParameters.LevelSpawnPoints,
                 TrajectoryParameters = phase.TrajectoryParameters
             };
             behavior.Construct(phase.Behavior, behaviorParameters, level, factory);

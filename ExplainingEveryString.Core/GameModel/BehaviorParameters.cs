@@ -8,7 +8,6 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal Single Angle { get; set; }
         internal Vector2[] TrajectoryParameters { get; set; }
-        internal Vector2[] LevelSpawnPoints { get; set; }
         internal SpawnSpecification[] CustomSpawns { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.GameModel
                 {
                     IEnumerable<Door> waveDoors = doorsInfo
                         .Where(dsiFilter)
-                        .Select(dsi => Convert(dsi, wave))
+                        .Select(dsi => Convert(dsi))
                         .Select(asi => actorsFactory.ConstructDoor(asi, waveNumber));
                     result.AddRange(waveDoors);
                 }
@@ -83,7 +83,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal Queue<IEnemy> InitializeEnemies(Int32 waveNumber)
         {
             var wave = levelData.EnemyWaves[waveNumber];
-            var enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi, wave));
+            var enemiesStartInfos = wave.Enemies.Select(asi => Convert(asi));
             var enemies = actorsFactory.ConstructEnemies(enemiesStartInfos);
             return new Queue<IEnemy>(enemies);
         }
@@ -92,12 +92,12 @@ namespace ExplainingEveryString.Core.GameModel
         {
             var wave = levelData.EnemyWaves[waveNumber];
             if (wave.Bosses != null)
-                return wave.Bosses.Select(boss => actorsFactory.ConstructEnemy(Convert(boss, wave)));
+                return wave.Bosses.Select(boss => actorsFactory.ConstructEnemy(Convert(boss)));
             else
                 return null;
         }
 
-        private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo, EnemyWave enemyWave = null)
+        private ActorStartInfo Convert(Data.Level.ActorStartInfo dataLayerStartInfo)
         {
             return new ActorStartInfo
             {
@@ -107,7 +107,6 @@ namespace ExplainingEveryString.Core.GameModel
                 {
                     Angle = AngleConverter.ToRadians(dataLayerStartInfo.Angle),
                     TrajectoryParameters = dataLayerStartInfo.TrajectoryParameters?.ToArray(),
-                    LevelSpawnPoints = enemyWave?.SpawnPoints?.Select(sp => map.GetLevelPosition(sp)).ToArray(),
                     CustomSpawns = dataLayerStartInfo.CustomSpawns
                 },
                 AppearancePhaseDuration = dataLayerStartInfo.AppearancePhaseDuration

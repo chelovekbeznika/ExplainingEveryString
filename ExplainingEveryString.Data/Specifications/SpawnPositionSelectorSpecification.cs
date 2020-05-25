@@ -11,11 +11,6 @@ namespace ExplainingEveryString.Data.Specifications
         public abstract SpawnPositionSelectionType PositionSelectionType { get; }
     }
 
-    public class LevelSpawnPositionSelectorSpecification : SpawnPositionSelectorSpecification
-    {
-        public override SpawnPositionSelectionType PositionSelectionType => SpawnPositionSelectionType.LevelSpawnPoints;
-    }
-
     public class RandomSpawnPositionSelectorSpecification : SpawnPositionSelectorSpecification
     {
         public override SpawnPositionSelectionType PositionSelectionType => SpawnPositionSelectionType.RandomInCircle;
@@ -35,5 +30,5 @@ namespace ExplainingEveryString.Data.Specifications
         public Int32 BetweenRepeats { get; set; }
     }
 
-    public enum SpawnPositionSelectionType { LevelSpawnPoints, RandomInCircle, RelativeToSpawner, Custom };
+    public enum SpawnPositionSelectionType { RandomInCircle, RelativeToSpawner, Custom };
 }

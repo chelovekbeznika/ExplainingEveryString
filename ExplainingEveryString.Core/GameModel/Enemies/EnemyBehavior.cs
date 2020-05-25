@@ -60,7 +60,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             if (blueprint.PostMortemSurprise != null)
             {
                 PostMortemSurprise = new PostMortemSurprise(blueprint.PostMortemSurprise, CurrentPositionLocator,
-                    playerLocator, level, parameters.LevelSpawnPoints, factory);
+                    playerLocator, level, factory);
             }
             if (blueprint.Spawner != null)
                 this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, enemy, parameters, factory);
