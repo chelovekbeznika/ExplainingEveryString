@@ -35,6 +35,8 @@ namespace ExplainingEveryString.Editor
             this.createEditorModesForEnemy = enemy => new List<IEditorMode>
                 {
                     new TrajectoryParametersEditorMode(enemiesEditorModes, enemy, LevelData,
+                        coordinatesConverter, cornersDisplayer, blueprintDisplayer),
+                    new CustomSpawnPointsEditorMode(enemiesEditorModes, enemy, LevelData,
                         coordinatesConverter, cornersDisplayer, blueprintDisplayer)
                 };
             enemiesParametersEditorsModes = Editables.Select(createEditorModesForEnemy).ToList();
