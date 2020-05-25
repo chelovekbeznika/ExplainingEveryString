@@ -725,6 +725,7 @@
           "FireRate": 0.25
         },
         "BlueprintType": "DesertGhost",
+        "SpawnPositionRelativeToCurrentPosition": false,
         "PositionSelector": {
           "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
           "BetweenRepeats": 3

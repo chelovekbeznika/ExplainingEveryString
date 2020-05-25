@@ -1085,8 +1085,10 @@
         "Reloader": {
           "FireRate": 0.1
         },
-        "PositionSelector" : {
-          "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
+        "SpawnPositionRelativeToCurrentPosition": false,
+        "PositionSelector": {
+          "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
+          "BetweenRepeats": 2
         },
         "BlueprintType": "Tank_mk1"
       }
