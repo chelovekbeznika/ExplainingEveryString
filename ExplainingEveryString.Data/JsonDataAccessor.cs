@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Data
             Culture = CultureInfo.InvariantCulture,
             Formatting = Formatting.Indented,
             MissingMemberHandling = MissingMemberHandling.Error,
-            DefaultValueHandling = DefaultValueHandling.Populate
+            DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate
         };
 
         public T Load<T>(String fileName)

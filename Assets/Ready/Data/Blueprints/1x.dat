@@ -717,8 +717,10 @@
         "Reloader": {
           "FireRate": 0.2
         },
-        "PositionSelector" : {
-          "$type": "ExplainingEveryString.Data.Specifications.LevelSpawnPositionSelectorSpecification, ExplainingEveryString.Data"
+        "SpawnPositionRelativeToCurrentPosition": false,
+        "PositionSelector": {
+          "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
+          "BetweenRepeats": 2
         },
         "BlueprintType": "Hunter_mk1"
       }
