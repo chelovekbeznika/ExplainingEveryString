@@ -44,7 +44,12 @@ namespace ExplainingEveryString.Editor
 
         public override LevelData SaveChanges()
         {
-            LevelData.EnemyWaves[wave].Enemies = Editables.Select(enemyPosition => enemyPosition.ActorStartInfo).ToArray();
+            LevelData.EnemyWaves[wave].Enemies = Editables
+                .Where(enemyPosition => !enemyPosition.IsBoss)
+                .Select(enemyPosition => enemyPosition.ActorStartInfo).ToArray();
+            LevelData.EnemyWaves[wave].Bosses = Editables
+                .Where(enemyPosition => enemyPosition.IsBoss)
+                .Select(enemyPosition => enemyPosition.ActorStartInfo).ToArray();
             return LevelData;
         }
 
@@ -71,7 +76,11 @@ namespace ExplainingEveryString.Editor
 
         protected override List<EnemyPositionInEditor> GetEditables()
         {
-            return LevelData.EnemyWaves[wave].Enemies.Select(asi => new EnemyPositionInEditor { ActorStartInfo = asi }).ToList();
+            var currentWave = LevelData.EnemyWaves[wave];
+            return currentWave.Enemies.Select(asi => new EnemyPositionInEditor { ActorStartInfo = asi, IsBoss = false })
+                .Concat(currentWave.Bosses?.Select(asi => new EnemyPositionInEditor { ActorStartInfo = asi, IsBoss = true }) 
+                    ?? new List<EnemyPositionInEditor>())
+                .ToList();
         }
 
         protected override String[] GetEditableTypes(IBlueprintsLoader blueprintsLoader)
@@ -108,7 +117,9 @@ namespace ExplainingEveryString.Editor
 
     internal class EnemyPositionInEditor : IEditable
     {
-        public ActorStartInfo ActorStartInfo { get; set; }
+        internal ActorStartInfo ActorStartInfo { get; set; }
+
+        internal Boolean IsBoss { get; set; }
 
         public PositionOnTileMap PositionTileMap { get => ActorStartInfo.TilePosition; set => ActorStartInfo.TilePosition = value; }
 
