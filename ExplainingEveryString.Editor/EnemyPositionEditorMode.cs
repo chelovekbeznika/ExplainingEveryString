@@ -25,9 +25,8 @@ namespace ExplainingEveryString.Editor
         public String ParameterName => "Angle";
 
         public EnemyPositionEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, List<IEditorMode> enemiesEditorModes, 
-            CoordinatesConverter coordinatesConverter, BlueprintDisplayer blueprintDisplayer, RectangleCornersDisplayer cornersDisplayer, 
-            IBlueprintsLoader blueprintsLoader, Int32 wave)
-            : base(levelData, coordinatesConverter, blueprintDisplayer, blueprintsLoader)
+            CoordinatesConverter coordinatesConverter, EditableDisplayingCenter editableDisplayingCenter, Int32 wave)
+            : base(levelData, coordinatesConverter, editableDisplayingCenter.Blueprint, editableDisplayingCenter.BlueprintsLoader)
         {
             this.ParentModes = levelEditorModes;
             this.wave = wave;
@@ -35,9 +34,9 @@ namespace ExplainingEveryString.Editor
             this.createEditorModesForEnemy = enemy => new List<IEditorMode>
                 {
                     new TrajectoryParametersEditorMode(enemiesEditorModes, enemy, LevelData,
-                        coordinatesConverter, cornersDisplayer, blueprintDisplayer),
+                        coordinatesConverter, editableDisplayingCenter),
                     new CustomSpawnPointsEditorMode(enemiesEditorModes, enemy, LevelData,
-                        coordinatesConverter, cornersDisplayer, blueprintDisplayer)
+                        coordinatesConverter, editableDisplayingCenter)
                 };
             enemiesParametersEditorsModes = Editables.Select(createEditorModesForEnemy).ToList();
         }

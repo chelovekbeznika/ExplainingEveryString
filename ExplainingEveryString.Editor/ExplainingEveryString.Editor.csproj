@@ -54,6 +54,7 @@
     <Compile Include="CustomParameterEditor.cs" />
     <Compile Include="CustomSpawnPointsEditorMode.cs" />
     <Compile Include="DoorsEditorMode.cs" />
+    <Compile Include="EditableDisplayingCenter.cs" />
     <Compile Include="EditingHelper.cs" />
     <Compile Include="Editor.cs" />
     <Compile Include="EnemyPositionEditorMode.cs" />

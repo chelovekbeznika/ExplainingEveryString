@@ -14,8 +14,8 @@ namespace ExplainingEveryString.Editor
         private Int32 waveNumber;
 
         public DoorsEditorMode(Int32 waveNumber, LevelData levelData, List<IEditorMode> levelEditorModes, 
-            CoordinatesConverter coordinatesConverter, BlueprintDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader) 
-            : base(levelData, coordinatesConverter, editableDisplayer, blueprintsLoader)
+            CoordinatesConverter coordinatesConverter, EditableDisplayingCenter editableDisplayingCenter) 
+            : base(levelData, coordinatesConverter, editableDisplayingCenter.Blueprint, editableDisplayingCenter.BlueprintsLoader)
         {
             this.waveNumber = waveNumber;
             this.ParentModes = levelEditorModes;

@@ -122,12 +122,10 @@ namespace ExplainingEveryString.Editor
         {
             var blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
             blueprintsLoader.Load();
-            var blueprintDisplayer = new BlueprintDisplayer(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
-            var rectangleCornersDisplayer = new RectangleCornersDisplayer(content);
+            var editableDisplayingCenter = new EditableDisplayingCenter(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
             var result = new List<IEditorMode>();
-            result.Add(new EnemyWavesEditorMode(levelData, result, coordinatesConverter,
-                rectangleCornersDisplayer, blueprintDisplayer, blueprintsLoader));
-            result.Add(new ObstaclesEditorMode(levelData, coordinatesConverter, blueprintDisplayer, blueprintsLoader));
+            result.Add(new EnemyWavesEditorMode(levelData, result, coordinatesConverter, editableDisplayingCenter));
+            result.Add(new ObstaclesEditorMode(levelData, coordinatesConverter, editableDisplayingCenter));
             return result;
         }
     }

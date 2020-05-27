@@ -8,9 +8,8 @@ namespace ExplainingEveryString.Editor
 {
     internal class ObstaclesEditorMode : EditorMode<ObstacleInEditor>
     {
-        public ObstaclesEditorMode(LevelData levelData, CoordinatesConverter coordinatesConverter, 
-            BlueprintDisplayer editableDisplayer, IBlueprintsLoader blueprintsLoader) 
-            : base(levelData, coordinatesConverter, editableDisplayer, blueprintsLoader)
+        public ObstaclesEditorMode(LevelData levelData, CoordinatesConverter coordinatesConverter, EditableDisplayingCenter editableDisplayingCenter) 
+            : base(levelData, coordinatesConverter, editableDisplayingCenter.Blueprint, editableDisplayingCenter.BlueprintsLoader)
         {
             Editables = GetEditables();
         }

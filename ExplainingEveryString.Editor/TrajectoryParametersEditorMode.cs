@@ -20,12 +20,12 @@ namespace ExplainingEveryString.Editor
         private TileWrapper TileWrapper => CoordinatesConverter.TileWrapper;
 
         public TrajectoryParametersEditorMode(List<IEditorMode> parentModes, EnemyPositionInEditor enemyPositionInEditor, LevelData levelData, 
-            CoordinatesConverter coordinatesConverter, RectangleCornersDisplayer editableDisplayer, BlueprintDisplayer enemyEditorDisplayer) 
-            : base(levelData, coordinatesConverter, editableDisplayer, null)
+            CoordinatesConverter coordinatesConverter, EditableDisplayingCenter editableDisplayingCenter) 
+            : base(levelData, coordinatesConverter, editableDisplayingCenter.RectangleCorner, null)
         {
             this.ParentModes = parentModes;
             this.enemyPositionInEditor = enemyPositionInEditor;
-            this.enemyEditorDisplayer = enemyEditorDisplayer;
+            this.enemyEditorDisplayer = editableDisplayingCenter.Blueprint;
             this.Editables = GetEditables();
         }
 

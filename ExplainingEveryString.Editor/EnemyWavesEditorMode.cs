@@ -14,9 +14,7 @@ namespace ExplainingEveryString.Editor
         private Int32 waves;
         private List<List<IEditorMode>> wavesEditorModes;
 
-        private BlueprintDisplayer blueprintDisplayer;
-        private IBlueprintsLoader blueprintsLoader;
-        private RectangleCornersDisplayer cornersDisplayer;
+        private EditableDisplayingCenter editableDisplayingCenter;
         private CoordinatesConverter coordinatesConverter;
         private List<IEditorMode> levelEditorModes;
         private LevelData levelData;
@@ -38,14 +36,12 @@ namespace ExplainingEveryString.Editor
         private EnemyWave SelectedWave => levelData.EnemyWaves[SelectedEditableIndex.Value];
 
         public EnemyWavesEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, CoordinatesConverter coordinatesConverter, 
-            RectangleCornersDisplayer cornersDisplayer, BlueprintDisplayer blueprintDisplayer, IBlueprintsLoader blueprintsLoader)
+            EditableDisplayingCenter editableDisplayingCenter)
         {
             this.levelData = levelData;
             this.levelEditorModes = levelEditorModes;
             this.coordinatesConverter = coordinatesConverter;
-            this.cornersDisplayer = cornersDisplayer;
-            this.blueprintDisplayer = blueprintDisplayer;
-            this.blueprintsLoader = blueprintsLoader;
+            this.editableDisplayingCenter = editableDisplayingCenter;
             Load(levelData);
         }
 
@@ -107,10 +103,10 @@ namespace ExplainingEveryString.Editor
         private List<IEditorMode> EditorModesForWave(Int32 waveNumber)
         {
             var result = new List<IEditorMode>();
-            result.Add(new EnemyPositionEditorMode(levelData, levelEditorModes, result, coordinatesConverter,
-                blueprintDisplayer, cornersDisplayer, blueprintsLoader, waveNumber));
-            result.Add(new DoorsEditorMode(waveNumber, levelData, levelEditorModes, coordinatesConverter, blueprintDisplayer, blueprintsLoader));
-            result.Add(new StartRegionEditorMode(levelData, levelEditorModes, coordinatesConverter, cornersDisplayer, waveNumber));
+            result.Add(new EnemyPositionEditorMode(levelData, levelEditorModes, result, 
+                coordinatesConverter, editableDisplayingCenter, waveNumber));
+            result.Add(new DoorsEditorMode(waveNumber, levelData, levelEditorModes, coordinatesConverter, editableDisplayingCenter));
+            result.Add(new StartRegionEditorMode(levelData, levelEditorModes, coordinatesConverter, editableDisplayingCenter.RectangleCorner, waveNumber));
 
             return result;
         }
