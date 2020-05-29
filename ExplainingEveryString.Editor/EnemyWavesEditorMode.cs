@@ -15,7 +15,6 @@ namespace ExplainingEveryString.Editor
         private List<List<IEditorMode>> wavesEditorModes;
 
         private EditableDisplayingCenter editableDisplayingCenter;
-        private CoordinatesConverter coordinatesConverter;
         private List<IEditorMode> levelEditorModes;
         private LevelData levelData;
 
@@ -35,12 +34,10 @@ namespace ExplainingEveryString.Editor
 
         private EnemyWave SelectedWave => levelData.EnemyWaves[SelectedEditableIndex.Value];
 
-        public EnemyWavesEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, CoordinatesConverter coordinatesConverter, 
-            EditableDisplayingCenter editableDisplayingCenter)
+        public EnemyWavesEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, EditableDisplayingCenter editableDisplayingCenter)
         {
             this.levelData = levelData;
             this.levelEditorModes = levelEditorModes;
-            this.coordinatesConverter = coordinatesConverter;
             this.editableDisplayingCenter = editableDisplayingCenter;
             Load(levelData);
         }
@@ -103,10 +100,9 @@ namespace ExplainingEveryString.Editor
         private List<IEditorMode> EditorModesForWave(Int32 waveNumber)
         {
             var result = new List<IEditorMode>();
-            result.Add(new EnemyPositionEditorMode(levelData, levelEditorModes, result, 
-                coordinatesConverter, editableDisplayingCenter, waveNumber));
-            result.Add(new DoorsEditorMode(waveNumber, levelData, levelEditorModes, coordinatesConverter, editableDisplayingCenter));
-            result.Add(new StartRegionEditorMode(levelData, levelEditorModes, coordinatesConverter, editableDisplayingCenter.RectangleCorner, waveNumber));
+            result.Add(new EnemyPositionEditorMode(levelData, levelEditorModes, result, editableDisplayingCenter, waveNumber));
+            result.Add(new DoorsEditorMode(waveNumber, levelData, levelEditorModes, editableDisplayingCenter));
+            result.Add(new StartRegionEditorMode(levelData, levelEditorModes, editableDisplayingCenter, waveNumber));
 
             return result;
         }

@@ -99,7 +99,7 @@ namespace ExplainingEveryString.Editor
             var mousePosition = InputProcessor.Instance.MousePosition;
             if (EditorMode != null)
             {
-                var levelPosition = coordinatesConverter.GetLevelPosition(mousePosition);
+                var levelPosition = coordinatesConverter.ScreenToTile(mousePosition);
                 DrawString(spriteBatch, $"({levelPosition.X}, {levelPosition.Y}) + {levelPosition.Offset})", 4);
             }
             if (CustomParameterEditor?.SelectedEditableIndex != null)
@@ -122,10 +122,11 @@ namespace ExplainingEveryString.Editor
         {
             var blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
             blueprintsLoader.Load();
-            var editableDisplayingCenter = new EditableDisplayingCenter(content, blueprintsLoader, AssetsMetadataAccess.GetLoader().Load());
+            var assetsMetadata = AssetsMetadataAccess.GetLoader().Load();
+            var editableDisplayingCenter = new EditableDisplayingCenter(content, blueprintsLoader, assetsMetadata, coordinatesConverter);
             var result = new List<IEditorMode>();
-            result.Add(new EnemyWavesEditorMode(levelData, result, coordinatesConverter, editableDisplayingCenter));
-            result.Add(new ObstaclesEditorMode(levelData, coordinatesConverter, editableDisplayingCenter));
+            result.Add(new EnemyWavesEditorMode(levelData, result, editableDisplayingCenter));
+            result.Add(new ObstaclesEditorMode(levelData, editableDisplayingCenter));
             return result;
         }
     }

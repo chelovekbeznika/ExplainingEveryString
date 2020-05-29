@@ -95,7 +95,7 @@ namespace ExplainingEveryString.Editor
         {
             foreach (var (editable, index) in Editables.Select((editable, index) => (editable, index)))
                 editableDisplayer.Draw(spriteBatch, editable.GetEditableType(), 
-                    CoordinatesConverter.GetScreenPosition(editable.PositionTileMap), index == SelectedEditableIndex);
+                    CoordinatesConverter.TileToScreen(editable.PositionTileMap), index == SelectedEditableIndex);
         }
 
         protected abstract List<T> GetEditables();
@@ -104,7 +104,7 @@ namespace ExplainingEveryString.Editor
 
         public void Add(Vector2 screenPosition)
         {
-            var newEditable = Create(CurrentEditableType, CoordinatesConverter.GetLevelPosition(screenPosition));
+            var newEditable = Create(CurrentEditableType, CoordinatesConverter.ScreenToTile(screenPosition));
             Editables.Add(newEditable);
         }
 
@@ -115,7 +115,7 @@ namespace ExplainingEveryString.Editor
             if (CurrentEditable == null)
                 return;
 
-            var tilePosition = CoordinatesConverter.GetLevelPosition(screenPosition);
+            var tilePosition = CoordinatesConverter.ScreenToTile(screenPosition);
             CurrentEditable.PositionTileMap = tilePosition;
         }
     }

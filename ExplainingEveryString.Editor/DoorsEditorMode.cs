@@ -13,9 +13,8 @@ namespace ExplainingEveryString.Editor
     {
         private Int32 waveNumber;
 
-        public DoorsEditorMode(Int32 waveNumber, LevelData levelData, List<IEditorMode> levelEditorModes, 
-            CoordinatesConverter coordinatesConverter, EditableDisplayingCenter editableDisplayingCenter) 
-            : base(levelData, coordinatesConverter, editableDisplayingCenter.Blueprint, editableDisplayingCenter.BlueprintsLoader)
+        public DoorsEditorMode(Int32 waveNumber, LevelData levelData, List<IEditorMode> levelEditorModes, EditableDisplayingCenter editableDisplayingCenter) 
+            : base(levelData, editableDisplayingCenter.CoordinatesConverter, editableDisplayingCenter.Blueprint, editableDisplayingCenter.BlueprintsLoader)
         {
             this.waveNumber = waveNumber;
             this.ParentModes = levelEditorModes;

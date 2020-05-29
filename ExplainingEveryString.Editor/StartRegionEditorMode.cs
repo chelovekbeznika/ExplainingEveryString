@@ -28,12 +28,12 @@ namespace ExplainingEveryString.Editor
         public List<IEditorMode> CurrentDerivativeModes => null;
 
         internal StartRegionEditorMode(LevelData levelData, List<IEditorMode> levelEditorModes, 
-            CoordinatesConverter coordinatesConverter, IEditableDisplayer displayer, Int32 wave)
+            EditableDisplayingCenter editableDisplayingCenter, Int32 wave)
         {
             this.levelData = levelData;
             this.ParentModes = levelEditorModes;
-            this.coordinatesConverter = coordinatesConverter;
-            this.displayer = displayer;
+            this.coordinatesConverter = editableDisplayingCenter.CoordinatesConverter;
+            this.displayer = editableDisplayingCenter.RectangleCorner;
             this.enemyWaveNumber = wave;
             Load(levelData);
         }
@@ -55,8 +55,8 @@ namespace ExplainingEveryString.Editor
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            var upperLeftPosition = coordinatesConverter.GetScreenPosition(upperLeftCorner) + coordinatesConverter.HalfSpriteOffsetToLeftUpperCorner;
-            var rightBottonPosition = coordinatesConverter.GetScreenPosition(rightBottomCorner) + coordinatesConverter.HalfSpriteOffsetToLeftUpperCorner;
+            var upperLeftPosition = coordinatesConverter.TileToScreen(upperLeftCorner) + coordinatesConverter.HalfSpriteOffsetToLeftUpperCorner;
+            var rightBottonPosition = coordinatesConverter.TileToScreen(rightBottomCorner) + coordinatesConverter.HalfSpriteOffsetToLeftUpperCorner;
             displayer.Draw(spriteBatch, "Upper left corner", upperLeftPosition, upperLeftCornerSelected);
             displayer.Draw(spriteBatch, "Bottom right corner", rightBottonPosition, !upperLeftCornerSelected);
         }
@@ -68,7 +68,7 @@ namespace ExplainingEveryString.Editor
 
         public void MoveSelected(Vector2 screenPosition)
         {
-            var levelPosition = coordinatesConverter.GetLevelPosition(screenPosition);
+            var levelPosition = coordinatesConverter.ScreenToTile(screenPosition);
             if (upperLeftCornerSelected)
                 upperLeftCorner = new PositionOnTileMap { X = levelPosition.X, Y = levelPosition.Y };
             else

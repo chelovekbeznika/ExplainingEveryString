@@ -6,17 +6,19 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace ExplainingEveryString.Editor
 {
-    internal class CustomSpawnPointsEditorMode : EditorMode<SpawnSpecificationInEditor>
+    internal class SpawnPointsEditorMode : EditorMode<SpawnSpecificationInEditor>
     {
+        internal event EventHandler SpawnSpecsChanged;
+
         private EnemyPositionInEditor enemyPositionInEditor;
         private IEditableDisplayer enemyEditorDisplayer;
         private ActorStartInfo EditedEnemy => enemyPositionInEditor.ActorStartInfo;
-        internal TileWrapper TileWrapper => CoordinatesConverter.TileWrapper;
-        internal Vector2 EnemyPosition => TileWrapper.GetLevelPosition(enemyPositionInEditor.PositionTileMap);
-
+        internal Vector2 EnemyPosition => CoordinatesConverter.TileToLevel(enemyPositionInEditor.PositionTileMap);
+        internal List<SpawnSpecificationInEditor> SpawnSpecsList => Editables;
 
         public override String ModeName => $"custom spawn points for {EditedEnemy.BlueprintType} at {EditedEnemy.TilePosition}";
 
@@ -24,9 +26,9 @@ namespace ExplainingEveryString.Editor
 
         public override List<IEditorMode> CurrentDerivativeModes => null;
 
-        public CustomSpawnPointsEditorMode(List<IEditorMode> parentModes, EnemyPositionInEditor enemyPositionInEditor, LevelData levelData,
-            CoordinatesConverter coordinatesConverter, EditableDisplayingCenter editableDisplayingCenter)
-            : base(levelData, coordinatesConverter, editableDisplayingCenter.SpawnPoint, null)
+        public SpawnPointsEditorMode(List<IEditorMode> parentModes, EnemyPositionInEditor enemyPositionInEditor, LevelData levelData,
+            EditableDisplayingCenter editableDisplayingCenter)
+            : base(levelData, editableDisplayingCenter.CoordinatesConverter, editableDisplayingCenter.SpawnPoint, null)
         {
             this.ParentModes = parentModes;
             this.enemyPositionInEditor = enemyPositionInEditor;
@@ -36,7 +38,7 @@ namespace ExplainingEveryString.Editor
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            var enemyScreenPosition = CoordinatesConverter.GetScreenPosition(EditedEnemy.TilePosition);
+            var enemyScreenPosition = CoordinatesConverter.TileToScreen(EditedEnemy.TilePosition);
             enemyEditorDisplayer.Draw(spriteBatch, EditedEnemy.BlueprintType, enemyScreenPosition, false);
             base.Draw(spriteBatch);
         }
@@ -49,18 +51,19 @@ namespace ExplainingEveryString.Editor
 
         protected override SpawnSpecificationInEditor Create(String editableType, PositionOnTileMap positionOnTileMap)
         {
-            return new SpawnSpecificationInEditor(this, new SpawnSpecification
+            SpawnSpecsChanged?.Invoke(this, EventArgs.Empty);
+            return new SpawnSpecificationInEditor(this, CoordinatesConverter, new SpawnSpecification
             {
                 Angle = 0,
                 TrajectoryParameters = null,
-                SpawnPoint = TileWrapper.GetLevelPosition(positionOnTileMap) - EnemyPosition
+                SpawnPoint = CoordinatesConverter.TileToLevel(positionOnTileMap) - EnemyPosition
             });
         }
 
         protected override List<SpawnSpecificationInEditor> GetEditables()
         {
             return EditedEnemy.CustomSpawns?
-                .Select(spawnSpecification => new SpawnSpecificationInEditor(this, spawnSpecification))
+                .Select(spawnSpecification => new SpawnSpecificationInEditor(this, CoordinatesConverter, spawnSpecification))
                 .ToList() ?? new List<SpawnSpecificationInEditor>();
         }
 
@@ -72,21 +75,23 @@ namespace ExplainingEveryString.Editor
 
     internal class SpawnSpecificationInEditor : IEditable
     {
-        private CustomSpawnPointsEditorMode editor;
+        private SpawnPointsEditorMode editor;
+        private CoordinatesConverter coordinatesConverter;
         internal SpawnSpecification SpawnSpecification { get; private set; }
 
         internal Single Angle { get => SpawnSpecification.Angle; set => SpawnSpecification.Angle = value; }
 
-        internal SpawnSpecificationInEditor(CustomSpawnPointsEditorMode editor, SpawnSpecification spawnSpecification)
+        internal SpawnSpecificationInEditor(SpawnPointsEditorMode editor, CoordinatesConverter coordinatesConverter, SpawnSpecification spawnSpecification)
         {
             this.editor = editor;
+            this.coordinatesConverter = coordinatesConverter;
             this.SpawnSpecification = spawnSpecification;
         }
 
         public PositionOnTileMap PositionTileMap 
         {
-            get => editor.TileWrapper.GetTilePosition(editor.EnemyPosition + SpawnSpecification.SpawnPoint);
-            set => SpawnSpecification.SpawnPoint = editor.TileWrapper.GetLevelPosition(value) - editor.EnemyPosition;
+            get => coordinatesConverter.LevelToTile(editor.EnemyPosition + SpawnSpecification.SpawnPoint);
+            set => SpawnSpecification.SpawnPoint = coordinatesConverter.TileToLevel(value) - editor.EnemyPosition;
         }
 
         public String GetEditableType() => "Spawn Point";

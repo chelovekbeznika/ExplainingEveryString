@@ -29,14 +29,14 @@ namespace ExplainingEveryString.Editor
         internal void Draw(SpriteBatch spriteBatch)
         {
             var oneTileOffset = new Vector2(0, map.TiledMap.TileHeight);
-            var upperLeftScreenTile = coordinatesConverter.GetLevelPosition(Vector2.Zero + oneTileOffset);
-            var bottomRigthScreenTile = coordinatesConverter.GetLevelPosition(coordinatesConverter.ScreenBottomRight + oneTileOffset);
+            var upperLeftScreenTile = coordinatesConverter.ScreenToTile(Vector2.Zero + oneTileOffset);
+            var bottomRigthScreenTile = coordinatesConverter.ScreenToTile(coordinatesConverter.ScreenBottomRight + oneTileOffset);
             var textureCenter = new Vector2(gridCorner.Width / 2, gridCorner.Height / 2);
 
             for (var yTile = upperLeftScreenTile.Y; yTile <= bottomRigthScreenTile.Y; yTile += GridStepInTiles)
                 for (var xTile = upperLeftScreenTile.X; xTile <= bottomRigthScreenTile.X; xTile += GridStepInTiles)
                 {
-                    var screenPosition = coordinatesConverter.GetScreenPosition(new PositionOnTileMap { X = xTile, Y = yTile }) 
+                    var screenPosition = coordinatesConverter.TileToScreen(new PositionOnTileMap { X = xTile, Y = yTile }) 
                         + coordinatesConverter.HalfSpriteOffsetToLeftUpperCorner;
                     spriteBatch.Draw(gridCorner, screenPosition, null, Color.White, 0, textureCenter, Vector2.One, SpriteEffects.None, 0);
                 }

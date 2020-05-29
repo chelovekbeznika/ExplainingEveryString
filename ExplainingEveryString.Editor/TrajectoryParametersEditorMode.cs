@@ -13,15 +13,13 @@ namespace ExplainingEveryString.Editor
     internal class TrajectoryParametersEditorMode : EditorMode<TrajectoryPointInEditor>
     {
         private EnemyPositionInEditor enemyPositionInEditor;
-        private Vector2 BasePoint => TileWrapper.GetLevelPosition(EditedEnemy.TilePosition);
+        private Vector2 BasePoint => CoordinatesConverter.TileToLevel(EditedEnemy.TilePosition);
         private ActorStartInfo EditedEnemy => enemyPositionInEditor.ActorStartInfo;
         private IEditableDisplayer enemyEditorDisplayer;
 
-        private TileWrapper TileWrapper => CoordinatesConverter.TileWrapper;
-
-        public TrajectoryParametersEditorMode(List<IEditorMode> parentModes, EnemyPositionInEditor enemyPositionInEditor, LevelData levelData, 
-            CoordinatesConverter coordinatesConverter, EditableDisplayingCenter editableDisplayingCenter) 
-            : base(levelData, coordinatesConverter, editableDisplayingCenter.RectangleCorner, null)
+        public TrajectoryParametersEditorMode(List<IEditorMode> parentModes, EnemyPositionInEditor enemyPositionInEditor, 
+            LevelData levelData, EditableDisplayingCenter editableDisplayingCenter) 
+            : base(levelData, editableDisplayingCenter.CoordinatesConverter, editableDisplayingCenter.RectangleCorner, null)
         {
             this.ParentModes = parentModes;
             this.enemyPositionInEditor = enemyPositionInEditor;
@@ -38,7 +36,7 @@ namespace ExplainingEveryString.Editor
         public override LevelData SaveChanges()
         {
             var newTrajectoryParameters = Editables
-                .Select(editable => TileWrapper.GetLevelPosition(editable.PositionTileMap))
+                .Select(editable => CoordinatesConverter.TileToLevel(editable.PositionTileMap))
                 .Select(levelPosition => levelPosition - BasePoint)
                 .ToArray();
             EditedEnemy.TrajectoryParameters = newTrajectoryParameters;
@@ -47,7 +45,7 @@ namespace ExplainingEveryString.Editor
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            var enemyScreenPosition = CoordinatesConverter.GetScreenPosition(EditedEnemy.TilePosition);
+            var enemyScreenPosition = CoordinatesConverter.TileToScreen(EditedEnemy.TilePosition);
             enemyEditorDisplayer.Draw(spriteBatch, EditedEnemy.BlueprintType, enemyScreenPosition, false);
             base.Draw(spriteBatch);
         }
@@ -61,7 +59,7 @@ namespace ExplainingEveryString.Editor
         {
             var trajectoryParameters = EditedEnemy.TrajectoryParameters ?? Array.Empty<Vector2>();
             return trajectoryParameters
-                .Select(point => new TrajectoryPointInEditor { PositionTileMap = TileWrapper.GetTilePosition(point + BasePoint) })
+                .Select(point => new TrajectoryPointInEditor { PositionTileMap = CoordinatesConverter.LevelToTile(point + BasePoint) })
                 .ToList();
         }
 

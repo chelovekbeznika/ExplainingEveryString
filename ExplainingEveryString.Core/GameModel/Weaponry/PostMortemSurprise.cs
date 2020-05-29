@@ -89,7 +89,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     Position = spawnSpecification.SpawnPoint + currentPositionLocator(),
                     BehaviorParameters = new BehaviorParameters
                     {
-                        TrajectoryParameters = spawnSpecification.TrajectoryParameters,
+                        TrajectoryParameters = spawnSpecification.TrajectoryParameters.ToArray(),
                         Angle = spawnSpecification.Angle
                     }
                 };

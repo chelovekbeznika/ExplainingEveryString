@@ -103,7 +103,7 @@ namespace ExplainingEveryString.Core
                 enemiesBehindScreenDisplayer.Draw(interfaceInfo.HiddenEnemies);
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
-                if (interfaceInfo.Bosses != null)
+                if (interfaceInfo.Bosses != null && interfaceInfo.Bosses.Count > 0)
                 {
                     if (interfaceInfo.Bosses.Count == 1)
                         bossInfoDisplayer.Draw(interfaceInfo.Bosses[0]);

@@ -61,7 +61,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     : spawnSpecification.SpawnPoint + spawnerStartPosition,
                 BehaviorParameters = new BehaviorParameters
                 {
-                    TrajectoryParameters = spawnSpecification.TrajectoryParameters,
+                    TrajectoryParameters = spawnSpecification.TrajectoryParameters.ToArray(),
                     Angle = spawnSpecification.Angle
                 },
                 AppearancePhaseDuration = specification.AppearancePhase
