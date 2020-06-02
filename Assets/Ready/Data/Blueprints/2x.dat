@@ -594,6 +594,56 @@
       }
     }
   },
+  "MineSpawner_mk2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 87.5,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/MineSpawner",
+      "AnimationCycle": 0.2
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.25
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/MineSpawner",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level2X/Appearance/MineSpawner",
+      "AnimationCycle": 0.66667
+    },
+    "DefaultAppearancePhaseDuration": 0.66667,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 250.0
+        }
+      },
+      "MoveTargetSelectType": "RandomTargets",
+      "Spawner": {
+        "MaxSpawned": 15,
+        "Reloader": {
+          "FireRate": 6.0,
+          "Ammo": 3,
+          "ReloadTime": 2.0
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "0.0, 0.0"
+          ]
+        },
+        "BlueprintType": "Mine_mk2"
+      }
+    }
+  },
   "DesertGhost": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 50.0,

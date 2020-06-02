@@ -329,6 +329,18 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level2X/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Appearance/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/MineSpawner",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/Level2X/Death/Cannon",
       "AnimationFrames": 8
     },
