@@ -439,7 +439,7 @@
         "Width": 35,
         "Height": 35
       },
-      "MaxEnemiesAtOnce": 7,
+      "MaxEnemiesAtOnce": 6,
       "Enemies": [
         {
           "BlueprintType": "TripleCannon_mk2",
@@ -597,199 +597,12 @@
             "Offset": "-8, 0"
           },
           "Angle": 0.0
-        },
-        {
-          "BlueprintType": "DesertAltar",
-          "TilePosition": {
-            "X": 39,
-            "Y": 64,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0,
-          "CustomSpawns": [
-            {
-              "SpawnPoint": "-128, 48",
-              "TrajectoryParameters": [
-                "0, 0",
-                "96, 0",
-                "160, 0",
-                "256, 0"
-              ],
-              "Angle": 0.0
-            },
-            {
-              "SpawnPoint": "0, 128",
-              "TrajectoryParameters": [
-                "0, 0",
-                "32, -80",
-                "48, -144",
-                "80, -240"
-              ],
-              "Angle": 0.0
-            },
-            {
-              "SpawnPoint": "128, 48",
-              "TrajectoryParameters": [
-                "0, 0",
-                "-80, -64",
-                "-128, -96",
-                "-208, -160"
-              ],
-              "Angle": 0.0
-            },
-            {
-              "SpawnPoint": "80, -112",
-              "TrajectoryParameters": [
-                "0, 0",
-                "-80, 64",
-                "-128, 96",
-                "-208, 160"
-              ],
-              "Angle": 0.0
-            },
-            {
-              "SpawnPoint": "-80, -112",
-              "TrajectoryParameters": [
-                "0, 0",
-                "32, 96",
-                "48, 160",
-                "80, 240"
-              ],
-              "Angle": 0.0
-            }
-          ]
         }
       ],
       "Bosses": []
     },
     {
       "Doors": [
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 17,
-            "Y": 58,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 17,
-            "Y": 60,
-            "Offset": "0, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 62,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 64,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 66,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 68,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 70,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 72,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 74,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 76,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 78,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 80,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "MediumWindDoor",
-          "TilePosition": {
-            "X": 18,
-            "Y": 82,
-            "Offset": "0, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": {
-            "X": 19,
-            "Y": 84,
-            "Offset": "0, -8"
-          },
-          "Angle": 0.0
-        },
         {
           "BlueprintType": "BigWindDoor",
           "TilePosition": {
@@ -1102,6 +915,961 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 2,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 40,
+            "Y": 34,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 42,
+            "Y": 36,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 44,
+            "Y": 38,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 41,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 49,
+            "Y": 42,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 51,
+            "Y": 45,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 18,
+        "Y": 34,
+        "Width": 52,
+        "Height": 53
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "MineSpawner_mk2",
+          "TilePosition": {
+            "X": 37,
+            "Y": 60,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-112, 72",
+            "176, -200"
+          ]
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 37,
+            "Y": 39,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 20,
+            "Y": 59,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 26,
+            "Y": 80,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 31,
+            "Y": 48,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 44,
+            "Y": 49
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Checkpoint": {
+        "Name": "Third room",
+        "PlayerPosition": {
+          "X": 28,
+          "Y": 48,
+          "Offset": "8, -8"
+        }
+      },
+      "StartRegion": {
+        "X": 46,
+        "Y": 16,
+        "Width": 43,
+        "Height": 32
+      },
+      "MaxEnemiesAtOnce": 5,
+      "Enemies": [
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": {
+            "X": 58,
+            "Y": 33,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "-128, 48",
+              "TrajectoryParameters": [
+                "0, 0",
+                "96, 0",
+                "160, 0",
+                "256, 0"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "0, 128",
+              "TrajectoryParameters": [
+                "0, 0",
+                "32, -80",
+                "48, -144",
+                "80, -240"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "128, 48",
+              "TrajectoryParameters": [
+                "0, 0",
+                "-80, -64",
+                "-128, -96",
+                "-208, -160"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "80, -112",
+              "TrajectoryParameters": [
+                "0, 0",
+                "-80, 64",
+                "-128, 96",
+                "-208, 160"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-80, -112",
+              "TrajectoryParameters": [
+                "0, 0",
+                "32, 96",
+                "48, 160",
+                "80, 240"
+              ],
+              "Angle": 0.0
+            }
+          ]
+        },
+        {
+          "BlueprintType": "DesertAltar",
+          "TilePosition": {
+            "X": 76,
+            "Y": 24,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "-128, 48",
+              "TrajectoryParameters": [
+                "0, 0",
+                "96, 0",
+                "160, 0",
+                "256, 0"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "0, 128",
+              "TrajectoryParameters": [
+                "0, 0",
+                "32, -80",
+                "48, -144",
+                "80, -240"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "128, 48",
+              "TrajectoryParameters": [
+                "0, 0",
+                "-80, -64",
+                "-128, -96",
+                "-208, -160"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "80, -112",
+              "TrajectoryParameters": [
+                "0, 0",
+                "-80, 64",
+                "-128, 96",
+                "-208, 160"
+              ],
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-80, -112",
+              "TrajectoryParameters": [
+                "0, 0",
+                "32, 96",
+                "48, 160",
+                "80, 240"
+              ],
+              "Angle": 0.0
+            }
+          ]
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 29,
+            "Y": 49,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 34,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 39,
+            "Y": 45,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 32,
+            "Y": 46,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 34,
+            "Y": 49,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 82,
+            "Y": 18,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 65,
+            "Y": 26,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 68,
+            "Y": 34
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 49,
+            "Y": 36,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 69,
+            "Y": 26,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "StartRegion": {
+        "X": 16,
+        "Y": 12,
+        "Width": 74,
+        "Height": 36
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 76,
+            "Y": 16,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 68,
+            "Y": 21,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 71,
+            "Y": 31,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 81,
+            "Y": 31,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk2",
+          "TilePosition": {
+            "X": 84,
+            "Y": 21,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk2",
+          "TilePosition": {
+            "X": 26,
+            "Y": 49,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk2",
+          "TilePosition": {
+            "X": 30,
+            "Y": 47,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk2",
+          "TilePosition": {
+            "X": 37,
+            "Y": 46,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 17,
+            "Y": 58,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 17,
+            "Y": 60,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 62,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 64,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 66,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 68,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 70,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 72,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 74,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 76,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 78,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 80,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "MediumWindDoor",
+          "TilePosition": {
+            "X": 18,
+            "Y": 82,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 39,
+            "Y": 30
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 41,
+            "Y": 27,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 44,
+            "Y": 25,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 23
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 46,
+            "Y": 24,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 53,
+            "Y": 19,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 56,
+            "Y": 17
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 59,
+            "Y": 15
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 62,
+            "Y": 12,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 65,
+            "Y": 11,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 68,
+            "Y": 10
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 71,
+            "Y": 10
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 74,
+            "Y": 10
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 77,
+            "Y": 10
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 80,
+            "Y": 10,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 83,
+            "Y": 11
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 86,
+            "Y": 12
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 90,
+            "Y": 17
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 90,
+            "Y": 19,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 89,
+            "Y": 22,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 88,
+            "Y": 25,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 87,
+            "Y": 28,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 86,
+            "Y": 31,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 84,
+            "Y": 34,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 82,
+            "Y": 36,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 77,
+            "Y": 40,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 75,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 73,
+            "Y": 44,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 71,
+            "Y": 46,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 68,
+            "Y": 47
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 65,
+            "Y": 48
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 62,
+            "Y": 48
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 59,
+            "Y": 48
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 56,
+            "Y": 48
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 50,
+            "Y": 50
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 47,
+            "Y": 50,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 44,
+            "Y": 51
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 41,
+            "Y": 52
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 38,
+            "Y": 52,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 35,
+            "Y": 53
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 32,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 29,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 26,
+            "Y": 55,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 23,
+            "Y": 56
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "BigWindDoor",
+          "TilePosition": {
+            "X": 20,
+            "Y": 56,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
           "BlueprintType": "BigWindDoor",
           "TilePosition": {
             "X": 69,
@@ -1319,66 +2087,6 @@
           "ClosesAt": 2,
           "BlueprintType": "BigWindDoor",
           "TilePosition": {
-            "X": 40,
-            "Y": 34,
-            "Offset": "-8, 0"
-          },
-          "Angle": 0.0
-        },
-        {
-          "ClosesAt": 2,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": {
-            "X": 42,
-            "Y": 36,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "ClosesAt": 2,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": {
-            "X": 44,
-            "Y": 38,
-            "Offset": "0, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "ClosesAt": 2,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": {
-            "X": 47,
-            "Y": 41,
-            "Offset": "-8, 0"
-          },
-          "Angle": 0.0
-        },
-        {
-          "ClosesAt": 2,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": {
-            "X": 49,
-            "Y": 42,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "ClosesAt": 2,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": {
-            "X": 51,
-            "Y": 45,
-            "Offset": "-8, 0"
-          },
-          "Angle": 0.0
-        },
-        {
-          "ClosesAt": 2,
-          "BlueprintType": "BigWindDoor",
-          "TilePosition": {
             "X": 24,
             "Y": 86,
             "Offset": "-8, -8"
@@ -1549,69 +2257,356 @@
             "Y": 70
           },
           "Angle": 0.0
-        }
-      ],
-      "StartRegion": {
-        "X": 18,
-        "Y": 34,
-        "Width": 52,
-        "Height": 53
-      },
-      "Enemies": [
-        {
-          "BlueprintType": "MineSpawner_mk2",
-          "TilePosition": {
-            "X": 37,
-            "Y": 60,
-            "Offset": "-8, 0"
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-240, 120",
-            "272, -264"
-          ]
         },
         {
-          "BlueprintType": "SimpleCannon_mk2",
+          "BlueprintType": "MediumWindDoor",
           "TilePosition": {
-            "X": 37,
-            "Y": 39,
-            "Offset": "-8, 0"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "SimpleCannon_mk2",
-          "TilePosition": {
-            "X": 20,
-            "Y": 59,
-            "Offset": "-8, 0"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "SimpleCannon_mk2",
-          "TilePosition": {
-            "X": 26,
-            "Y": 80,
+            "X": 19,
+            "Y": 84,
             "Offset": "0, -8"
           },
           "Angle": 0.0
         },
         {
-          "BlueprintType": "SimpleCannon_mk2",
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 66,
+            "Y": 10,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 55,
+            "Y": 18,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 88,
+            "Y": 13,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 58,
+            "Y": 16,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 33,
+            "Y": 37,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
           "TilePosition": {
             "X": 31,
+            "Y": 39
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 30,
+            "Y": 41,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 25,
+            "Y": 47,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 43,
+            "Y": 50,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 43,
+            "Y": 52,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 52,
+            "Y": 49,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 52,
+            "Y": 50,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 10,
+        "Y": 12,
+        "Width": 84,
+        "Height": 42
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 53,
+            "Y": 40,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 55,
+            "Y": 34,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 56,
+            "Y": 30,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 58,
+            "Y": 25,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 60,
+            "Y": 30,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 61,
+            "Y": 34,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 63,
+            "Y": 40,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 58,
+            "Y": 36,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 66,
+            "Y": 30,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 50,
+            "Y": 30,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 68,
+            "Y": 21,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 76,
+            "Y": 16,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 74,
+            "Y": 21,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 78,
+            "Y": 21,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 84,
+            "Y": 21,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 73,
+            "Y": 25,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 76,
+            "Y": 27,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 79,
+            "Y": 25,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 81,
+            "Y": 31,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 71,
+            "Y": 31,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 28,
+            "Y": 49
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 32,
+            "Y": 43,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 34,
             "Y": 48,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
         },
         {
-          "BlueprintType": "SimpleCannon_mk2",
+          "BlueprintType": "Hunter_mk2",
           "TilePosition": {
-            "X": 44,
-            "Y": 49
+            "X": 32,
+            "Y": 46,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk2",
+          "TilePosition": {
+            "X": 37,
+            "Y": 43,
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         }

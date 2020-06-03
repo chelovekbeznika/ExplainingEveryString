@@ -50,6 +50,16 @@ namespace ExplainingEveryString.Editor
                 case Keys.F: CustomParameterEditor?.ToPreviousValue(); levelChanged = true; break;
                 case Keys.R: CustomParameterEditor?.ToNextValue(); levelChanged = true; break;
 
+                case Keys.D1: (EditorMode as DoorsEditorMode)?.PushSelectedUp(1); levelChanged = true; break;
+                case Keys.D2: (EditorMode as DoorsEditorMode)?.PushSelectedUp(2); levelChanged = true; break;
+                case Keys.D3: (EditorMode as DoorsEditorMode)?.PushSelectedUp(3); levelChanged = true; break;
+                case Keys.D4: (EditorMode as DoorsEditorMode)?.PushSelectedUp(4); levelChanged = true; break;
+                case Keys.D5: (EditorMode as DoorsEditorMode)?.PushSelectedUp(5); levelChanged = true; break;
+                case Keys.D6: (EditorMode as DoorsEditorMode)?.PushSelectedUp(6); levelChanged = true; break;
+                case Keys.D7: (EditorMode as DoorsEditorMode)?.PushSelectedUp(7); levelChanged = true; break;
+                case Keys.D8: (EditorMode as DoorsEditorMode)?.PushSelectedUp(8); levelChanged = true; break;
+                case Keys.D9: (EditorMode as DoorsEditorMode)?.PushSelectedUp(9); levelChanged = true; break;
+
                 case Keys.Up:
                     if (EditorMode?.ParentModes != null)
                     {

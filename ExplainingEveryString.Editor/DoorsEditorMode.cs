@@ -1,11 +1,8 @@
-﻿using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Editor
 {
@@ -37,6 +34,15 @@ namespace ExplainingEveryString.Editor
         {
             LevelData.EnemyWaves[waveNumber].Doors = Editables.Select(editable => editable.DoorStartInfo).ToArray();
             return LevelData;
+        }
+
+        internal void PushSelectedUp(Int32 wavesToPush)
+        {
+            if (SelectedEditableIndex == null)
+                return;
+            var targetWave = LevelData.EnemyWaves[waveNumber + wavesToPush];
+            targetWave.Doors = targetWave.Doors.Concat(new[] { CurrentEditable.DoorStartInfo }).ToArray();
+            this.DeleteCurrentlySelected();
         }
 
         public void ToNextValue()
