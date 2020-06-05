@@ -41,6 +41,8 @@ namespace ExplainingEveryString.Editor
             if (SelectedEditableIndex == null)
                 return;
             var targetWave = LevelData.EnemyWaves[waveNumber + wavesToPush];
+            if (targetWave.Doors == null)
+                targetWave.Doors = new DoorStartInfo[] { };
             targetWave.Doors = targetWave.Doors.Concat(new[] { CurrentEditable.DoorStartInfo }).ToArray();
             this.DeleteCurrentlySelected();
         }

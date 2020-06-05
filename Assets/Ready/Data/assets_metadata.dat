@@ -400,12 +400,12 @@
     {
       "Name": "Sprites/Doors/Level2X/MediumWhirlwind",
       "AnimationFrames": 7,
-      "FrameToShowInEditor": 3
+      "FrameToShowInEditor": 4
     },
     {
       "Name": "Sprites/Doors/Level2X/BigWhirlwind",
       "AnimationFrames": 7,
-      "FrameToShowInEditor": 3
+      "FrameToShowInEditor": 4
     },
     {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwindOpen",
