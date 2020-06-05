@@ -628,11 +628,11 @@
       },
       "MoveTargetSelectType": "RandomTargets",
       "Spawner": {
-        "MaxSpawned": 15,
+        "MaxSpawned": 9,
         "Reloader": {
           "FireRate": 6.0,
           "Ammo": 3,
-          "ReloadTime": 2.0
+          "ReloadTime": 2.5
         },
         "PositionSelector" : {
           "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
