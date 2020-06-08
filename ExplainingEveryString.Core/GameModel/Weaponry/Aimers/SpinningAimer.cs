@@ -4,13 +4,15 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
 {
-    internal class FixedAimer : IAimer
+    internal class SpinningAimer : IAimer
     {
+        private Single currentAngle;
+        private Single angularVelocity;
         private Vector2 fireDirection;
 
-        public FixedAimer(Single angle)
+        public SpinningAimer(Single angle)
         {
-            fireDirection = AngleConverter.ToVector(angle);
+            this.angularVelocity = angle;
         }
 
         public Vector2 GetFireDirection()
@@ -25,6 +27,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
 
         public void Update(Single elapsedSeconds)
         {
+            currentAngle += angularVelocity * elapsedSeconds;
+            fireDirection = AngleConverter.ToVector(currentAngle);
         }
     }
 }

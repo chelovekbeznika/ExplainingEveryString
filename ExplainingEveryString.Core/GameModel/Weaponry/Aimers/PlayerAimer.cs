@@ -27,5 +27,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
         {
             return true;
         }
+
+        public void Update(Single elapsedSeconds)
+        {
+        }
     }
 }

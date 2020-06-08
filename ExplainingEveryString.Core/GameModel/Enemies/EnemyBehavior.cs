@@ -82,14 +82,18 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         private void Move(Single elapsedSeconds)
         {
-            var target = moveTargetSelector.GetTarget();
-            var lineToTarget = target - Position;
-            var positionChange = mover.GetPositionChange(lineToTarget, elapsedSeconds, out Boolean goalReached);
-            Position += positionChange;
-            if (goalReached)
+            var remainedTime = elapsedSeconds;
+            while (remainedTime > 0)
             {
-                moveTargetSelector.SwitchToNextTarget();
-                MoveGoalReached?.Invoke(enemy, EventArgs.Empty);
+                var target = moveTargetSelector.GetTarget();
+                var lineToTarget = target - Position;
+                var positionChange = mover.GetPositionChange(lineToTarget, ref remainedTime);
+                Position += positionChange;
+                if (remainedTime > 0)
+                {
+                    moveTargetSelector.SwitchToNextTarget();
+                    MoveGoalReached?.Invoke(enemy, EventArgs.Empty);
+                }
             }
         }
 

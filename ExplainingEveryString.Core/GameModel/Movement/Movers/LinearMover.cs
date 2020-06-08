@@ -14,22 +14,27 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
 
         public Boolean IsTeleporting => false;
 
-        public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
+        public Vector2 GetPositionChange(Vector2 lineToTarget, ref Single timeRemained)
         {
             if (lineToTarget.Length() >= Math.Constants.Epsilon)
             {
+                var eta = lineToTarget.Length() / scalarSpeed;
                 var speed = lineToTarget / lineToTarget.Length() * scalarSpeed;
-                var positionChange = speed * elapsedSeconds;
-                goalReached = lineToTarget.Length() <= positionChange.Length();
-                if (goalReached)
-                    return lineToTarget;
-                else
+                if (eta > timeRemained)
+                {
+                    var positionChange = speed * timeRemained;
+                    timeRemained = 0;
                     return positionChange;
+                }
+                else
+                {
+                    timeRemained -= eta;
+                    return lineToTarget;
+                }
             }
             else
             {
-                goalReached = true;
-                return new Vector2(0, 0);
+                return Vector2.Zero;
             }
         }
     }

@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
 
         public Boolean IsTeleporting => false;
 
-        public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
+        public Vector2 GetPositionChange(Vector2 lineToTarget, ref Single timeRemained)
         {
             var currentDistance = lineToTarget.Length();
             if (currentDistance <= approachedMinimum)
@@ -33,12 +33,13 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
                 if (!moving)
                     StartMove(unitVectorTowardTarget);
 
-                var positionChange = CalculatePositionChange(unitVectorTowardTarget, elapsedSeconds);
+                var positionChange = CalculatePositionChange(unitVectorTowardTarget, timeRemained);
 
-                goalReached = currentDistance <= positionChange.Length();
-                if (goalReached)
+                fromLastTargetSwitch += timeRemained;
+                timeRemained = currentDistance <= positionChange.Length() ? timeRemained : 0;
+                if (timeRemained > 0)
                     ResetCounters();
-                fromLastTargetSwitch += elapsedSeconds;
+                
                 if (currentDistance <= approachedMinimum && fromLastTargetSwitch > SecondsTillTargetSwitchAllowed)
                     approachedMinimum = currentDistance;
 
@@ -46,9 +47,10 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
             }
             else
             {
-                goalReached = true;
+                var positionChange = currentSpeed * timeRemained;
+                timeRemained = 0;
                 ResetCounters();
-                return currentSpeed * elapsedSeconds;
+                return positionChange;
             }
         }
 

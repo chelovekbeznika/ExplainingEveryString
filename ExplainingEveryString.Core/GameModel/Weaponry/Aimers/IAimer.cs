@@ -3,7 +3,7 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
 {
-    internal interface IAimer
+    internal interface IAimer : IUpdateable
     {
         Vector2 GetFireDirection();
         Boolean IsFiring();

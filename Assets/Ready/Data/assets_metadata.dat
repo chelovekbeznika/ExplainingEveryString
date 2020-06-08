@@ -393,6 +393,14 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level2X/RoundCannon",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Level2X/Death/RoundCannon",
+      "AnimationFrames": 7
+    },
+    {
       "Name": "Sprites/Doors/Level2X/LittleWhirlwind",
       "AnimationFrames": 7,
       "FrameToShowInEditor": 3

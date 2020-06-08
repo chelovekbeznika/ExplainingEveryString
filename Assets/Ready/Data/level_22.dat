@@ -3942,17 +3942,189 @@
         "Width": 62,
         "Height": 75
       },
-      "Enemies": [
+      "Bosses": [
         {
-          "BlueprintType": "Mine_mk2",
+          "BlueprintType": "Miniboss_mk22",
           "TilePosition": {
-            "X": 75,
-            "Y": 30
+            "X": 84,
+            "Y": 38
           },
-          "Angle": 0.0
+          "Angle": 180.0,
+          "TrajectoryParameters": [
+            "0, 48",
+            "-32, 80",
+            "-128, 80",
+            "-160, 48",
+            "-160, -48",
+            "-128, -80",
+            "-32, -80",
+            "0, -48"
+          ],
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "-136, 344",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-8, 264",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-104, 264",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-168, 264",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-264, 264",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-88, 200",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-184, 200",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-136, 168",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-56, 104",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-216, 104",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-296, 120",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-424, 200",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-392, 120",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-456, 120",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-552, 120",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-376, 56",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-472, 56",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-424, 24",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-344, -40",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-504, -40",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "104, -88",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "264, -88",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "136, 8",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "184, -24",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "232, 8",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "312, 72",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "216, 72",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "152, 72",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "64, 72",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "184, 152",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-40, -120",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-168, -200",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-72, -200",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-8, -200",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "88, -200",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-88, -264",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, -264",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-40, -296",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "-120, -360",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "40, -360",
+              "Angle": 0.0
+            }
+          ]
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {

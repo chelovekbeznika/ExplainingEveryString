@@ -28,5 +28,9 @@ namespace ExplainingEveryString.Core.Tests
         {
             return isFiring;
         }
+
+        public void Update(Single elapsedSeconds)
+        {
+        }
     }
 }

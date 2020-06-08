@@ -15,6 +15,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
                     return new FixedAimer(angle);
                 case AimType.AimAtPlayer:
                     return new PlayerAimer(playerLocator, currentPositionLocator);
+                case AimType.SpinningAim:
+                    return new SpinningAimer(angle);
                 default:
                     throw new ArgumentException("Wrong aimtype in blueprint");
             }

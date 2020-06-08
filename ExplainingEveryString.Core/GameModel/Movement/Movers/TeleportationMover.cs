@@ -19,30 +19,20 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
 
         public Boolean IsTeleporting => true;
 
-        public Vector2 GetPositionChange(Vector2 lineToTarget, Single elapsedSeconds, out Boolean goalReached)
+        public Vector2 GetPositionChange(Vector2 lineToTarget, ref Single timeRemained)
         {
-            if (DoTeleportNow(elapsedSeconds))
+            if (tillNextTeleport > timeRemained)
             {
-                goalReached = true;
-                return lineToTarget;
-            }
-            else
-            {
-                goalReached = false;
+                tillNextTeleport -= timeRemained;
+                timeRemained = 0;
                 return Vector2.Zero;
             }
-        }
-
-        private Boolean DoTeleportNow(Single elapsedSeconds)
-        {
-            tillNextTeleport -= elapsedSeconds;
-            if (tillNextTeleport < 0)
-            {
-                tillNextTeleport += RandomUtility.Next(minTillTeleport, maxTillTeleport);
-                return true;
-            }
             else
-                return false;
+            {
+                timeRemained -= tillNextTeleport;
+                tillNextTeleport = RandomUtility.Next(minTillTeleport, maxTillTeleport);
+                return lineToTarget;
+            }
         }
     }
 }
