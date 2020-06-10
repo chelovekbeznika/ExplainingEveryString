@@ -2896,6 +2896,11 @@
 /processor:TiledMapProcessor
 /build:TileMaps/Level_22.tmx
 
+#begin TileMaps/Level_23.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_23.tmx
+
 #begin TileSets/1x.tsx
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
@@ -2912,6 +2917,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileSets/1x_tiles.png
+
+#begin TileSets/2x.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:TileSets/2x.tsx
 
 #begin TileSets/2x_tiles.png
 /importer:TextureImporter

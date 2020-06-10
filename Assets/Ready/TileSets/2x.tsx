@@ -17,6 +17,21 @@
    <property name="Wall" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="51">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="52">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="53">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="64">
   <properties>
    <property name="Wall" type="bool" value="true"/>
@@ -32,6 +47,21 @@
    <property name="Wall" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="67">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="68">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="69">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="80">
   <properties>
    <property name="Wall" type="bool" value="true"/>
@@ -45,6 +75,51 @@
  <tile id="82">
   <properties>
    <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="83">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="84">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="85">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="86">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="87">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="96">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="97">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="102">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="103">
+  <properties>
+   <property name="Pit" type="bool" value="true"/>
   </properties>
  </tile>
 </tileset>
