@@ -56,6 +56,9 @@
 #begin Data/level_22.dat
 /copy:Data/level_22.dat
 
+#begin Data/level_23.dat
+/copy:Data/level_23.dat
+
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
