@@ -446,7 +446,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -462,7 +462,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -478,7 +478,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -494,7 +494,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -510,7 +510,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -526,7 +526,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -542,7 +542,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -558,7 +558,7 @@
                 "TrajectoryType": "Spiral",
                 "TrajectoryParameters": {
                   "speed": 320.0,
-                  "angularVelocity": 45
+                  "angularVelocity": 22.5
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,

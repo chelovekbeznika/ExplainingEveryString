@@ -13,6 +13,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 {
     internal class EnemyBehavior
     {
+        private const Int32 MaxMoveTargetsPerFrame = 32;
+
         private IEnemy enemy;
         private Weapon weapon;      
         private IMoveTargetSelector moveTargetSelector;
@@ -83,7 +85,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private void Move(Single elapsedSeconds)
         {
             var remainedTime = elapsedSeconds;
-            while (remainedTime > 0)
+            var targetsHitted = 0;
+            while (remainedTime > 0 && targetsHitted < MaxMoveTargetsPerFrame)
             {
                 var target = moveTargetSelector.GetTarget();
                 var lineToTarget = target - Position;
@@ -91,6 +94,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 Position += positionChange;
                 if (remainedTime > 0)
                 {
+                    targetsHitted += 1;
                     moveTargetSelector.SwitchToNextTarget();
                     MoveGoalReached?.Invoke(enemy, EventArgs.Empty);
                 }
