@@ -110,6 +110,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/1/Spawn.wav
 
+#begin Sounds/Bosses/BigBrother.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/BigBrother.wav
+
 #begin Sounds/Bosses/BreakingIce.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -127,6 +133,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Bosses/HelicopterShoot.wav
+
+#begin Sounds/Bosses/SmallBrother.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/SmallBrother.wav
 
 #begin Sounds/Bosses/SwanDyingScream.wav
 /importer:WavImporter
@@ -1640,6 +1652,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/ArmedEgg.png
 
+#begin Sprites/Enemies/Level2X/BigBrother.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/BigBrother.png
+
+#begin Sprites/Enemies/Level2X/BrothersBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/BrothersBase.png
+
 #begin Sprites/Enemies/Level2X/Cannon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1663,6 +1699,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/Death/ArmedEgg.png
+
+#begin Sprites/Enemies/Level2X/Death/Brother.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/Death/Brother.png
 
 #begin Sprites/Enemies/Level2X/Death/Cannon.png
 /importer:TextureImporter
@@ -1867,6 +1915,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/RoundCannon.png
+
+#begin Sprites/Enemies/Level2X/SmallBrother.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level2X/SmallBrother.png
 
 #begin Sprites/Enemies/Level2X/TankBase.png
 /importer:TextureImporter

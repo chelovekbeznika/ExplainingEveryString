@@ -1157,6 +1157,221 @@
       }
     }
   },
+  "Miniboss_mk23_big": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/BrothersBase",
+      "AnimationCycle": 0.166667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.4
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/Brother",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.1666667
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.4
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Teleportation",
+        "Parameters": {
+          "min": 1.5,
+          "max": 3.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.25
+        },
+        "Barrels": [
+          {
+            "Length": 14.0,
+            "Accuracy": 10.0,
+            "AngleCorrection": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 900.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 14.0,
+            "Accuracy": 10.0,
+            "AngleCorrection": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 900.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 14.0,
+            "Accuracy": 10.0,
+            "AngleCorrection": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 900.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 14.0,
+            "Accuracy": 10.0,
+            "AngleCorrection": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 900.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "Length": 14.0,
+            "Accuracy": 10.0,
+            "AngleCorrection": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 900.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level2X/BigBrother"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/BigBrother",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },  
+  "Miniboss_mk23_small": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 125.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level2X/BrothersBase",
+      "AnimationCycle": 0.166667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.4
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level2X/Death/Brother",
+        "AnimationCycle": 0.5
+      }
+    },
+    "GoalAchievedEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/DesertGhost",
+        "Volume": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.1666667
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.4
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Teleportation",
+        "Parameters": {
+          "min": 1.5,
+          "max": 3.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 40,
+          "Ammo": 5,
+          "ReloadTime": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 13.0,
+            "Accuracy": 10.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 240.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level2X/SmallBrother"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/SmallBrother",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },  
   "LittleWindDoor": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,

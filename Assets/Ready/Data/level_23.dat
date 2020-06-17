@@ -2571,6 +2571,7 @@
       "Bosses": []
     },
     {
+      "Doors": [],
       "Checkpoint": {
         "Name": "LastRoom",
         "PlayerPosition": {
@@ -2770,6 +2771,259 @@
         }
       ],
       "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 126,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 127,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 128,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 129,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 130,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 131,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 132,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 133,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 134,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 135,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 54
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 53
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 52
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 51
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 50
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 49
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 48
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 47
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 46
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 45
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "LittleWindDoor",
+          "TilePosition": {
+            "X": 125,
+            "Y": 44
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 127,
+          "Y": 52
+        }
+      },
+      "StartRegion": {
+        "X": 135,
+        "Y": 13,
+        "Width": 32,
+        "Height": 32
+      },
+      "Bosses": [
+        {
+          "BlueprintType": "Miniboss_mk23_big",
+          "TilePosition": {
+            "X": 152,
+            "Y": 27,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "-32, 0",
+            "0, -32",
+            "224, -256",
+            "224, 224",
+            "-256, 224",
+            "352, 352",
+            "-384, 352",
+            "352, -384",
+            "-128, 96",
+            "96, 96",
+            "96, -128"
+          ]
+        },
+        {
+          "BlueprintType": "Miniboss_mk23_small",
+          "TilePosition": {
+            "X": 150,
+            "Y": 29,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "-160, 192",
+            "192, 192",
+            "192, -160",
+            "-48, 80",
+            "80, 80",
+            "80, -48",
+            "320, -288",
+            "320, 320",
+            "-288, 320"
+          ]
+        }
+      ],
+      "Enemies": []
     }
   ],
   "FogOfWar": {
