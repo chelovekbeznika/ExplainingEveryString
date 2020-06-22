@@ -474,6 +474,34 @@
       "Name": "Sprites/FogOfWar/Level2X/7",
       "AnimationFrames": 4,
       "DefaultAnimationCycle": 0.33
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/1",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/2",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/3",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/4",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/5",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/Appearance",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/Death",
+      "AnimationFrames": 8
     }
   ]
 }
