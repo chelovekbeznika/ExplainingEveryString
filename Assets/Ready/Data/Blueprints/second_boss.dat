@@ -1,0 +1,39 @@
+{
+  "Boss_mk2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 88.0,
+    "Width": 160.0,
+    "Hitpoints": 1000.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss2/1",
+      "AnimationCycle": 1.0
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/2/Death",
+        "Volume": 0.25
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss2/Death",
+        "AnimationCycle": 1.0
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss2/Appearance",
+      "AnimationCycle": 1.5
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 0.0,
+          "maxSpeed": 200.0,
+          "acceleration": 300.0
+        }
+      },
+      "MoveTargetSelectType": "RandomTargets",
+    }
+  }
+}

@@ -32,6 +32,9 @@
 #begin Data/Blueprints/player.dat
 /copy:Data/Blueprints/player.dat
 
+#begin Data/Blueprints/second_boss.dat
+/copy:Data/Blueprints/second_boss.dat
+
 #begin Data/config.dat
 /copy:Data/config.dat
 

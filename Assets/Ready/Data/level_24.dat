@@ -1,7 +1,8 @@
 {
   "Blueprints": [
     "player",
-    "2x"
+    "2x",
+    "second_boss"
   ],
   "MusicName": "liberty_bell",
   "TileMap": "TileMaps/Level_24",
