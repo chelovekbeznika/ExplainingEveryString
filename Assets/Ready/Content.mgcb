@@ -110,6 +110,30 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/1/Spawn.wav
 
+#begin Sounds/Bosses/2/Appearance.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/2/Appearance.wav
+
+#begin Sounds/Bosses/2/Death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/2/Death.wav
+
+#begin Sounds/Bosses/2/PhaseChange.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/2/PhaseChange.wav
+
+#begin Sounds/Bosses/2/SupportDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/2/SupportDeath.wav
+
 #begin Sounds/Bosses/BigBrother.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
