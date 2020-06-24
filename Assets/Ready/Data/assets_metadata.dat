@@ -518,6 +518,10 @@
     {
       "Name": "Sprites/Enemies/Boss2/SupportGhostDeath",
       "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/CircleDeathPart",
+      "AnimationFrames": 4
     }
   ]
 }
