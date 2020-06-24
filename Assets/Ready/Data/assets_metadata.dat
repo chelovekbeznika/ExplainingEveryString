@@ -502,6 +502,22 @@
     {
       "Name": "Sprites/Enemies/Boss2/Death",
       "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/SupportGhost1",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/SupportGhost2",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/SupportGhostAppearance",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Boss2/SupportGhostDeath",
+      "AnimationFrames": 4
     }
   ]
 }
