@@ -1,0 +1,63 @@
+{
+  "Blueprints": [
+    "player",
+    "2x"
+  ],
+  "MusicName": "liberty_bell",
+  "TileMap": "TileMaps/Level_24",
+  "PlayerPosition": {
+    "BlueprintType": "Player",
+    "TilePosition": {
+      "X": 59,
+      "Y": 59,
+      "Offset": "8, -8"
+    },
+    "Angle": 0.0
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 0,
+        "Y": 0,
+        "Width": 120,
+        "Height": 120
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Mine_mk2",
+          "TilePosition": {
+            "X": 40,
+            "Y": 40,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ]
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level2X/0",
+      "Sprites/FogOfWar/Level2X/1",
+      "Sprites/FogOfWar/Level2X/2",
+      "Sprites/FogOfWar/Level2X/3",
+      "Sprites/FogOfWar/Level2X/4",
+      "Sprites/FogOfWar/Level2X/5",
+      "Sprites/FogOfWar/Level2X/6",
+      "Sprites/FogOfWar/Level2X/7"
+    ],
+    "Weights": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "ObstaclesTilePositions": {}
+}

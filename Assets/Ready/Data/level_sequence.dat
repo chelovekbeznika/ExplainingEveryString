@@ -44,6 +44,11 @@
       "LevelData": "level_23",
       "ButtonSprite": "Sprites/Menu/LevelSelect/23",
       "LevelsBlockId": "Desert"
+    },
+    {
+      "LevelData": "level_24",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/24",
+      "LevelsBlockId": "Desert"
     }
   ]
 }
