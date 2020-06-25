@@ -87,6 +87,7 @@
     <Compile Include="GameModel\Enemies\EnemyBehaviorChangedEventArgs.cs" />
     <Compile Include="GameModel\Enemies\FirstBoss.cs" />
     <Compile Include="GameModel\Enemies\FirstBossPhase.cs" />
+    <Compile Include="GameModel\Enemies\SecondBoss.cs" />
     <Compile Include="GameModel\Movement\Movers\TeleportationMover.cs" />
     <Compile Include="GameModel\Movement\TargetSelectors\RandomFromListTargetsSelector.cs" />
     <Compile Include="GameModel\Weaponry\Aimers\SpinningAimer.cs" />

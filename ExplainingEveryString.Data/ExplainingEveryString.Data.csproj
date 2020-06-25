@@ -56,11 +56,13 @@
     <Compile Include="Blueprints\AssetsExtraction.cs\FirstBossAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\IAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\PlayerAssetsExtractor.cs" />
+    <Compile Include="Blueprints\AssetsExtraction.cs\SecondBossAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtraction.cs\ShadowEnemyAssetsExtractor.cs" />
     <Compile Include="Blueprints\AssetsExtractor.cs" />
     <Compile Include="Blueprints\FirstBossBlueprint.cs" />
     <Compile Include="Blueprints\DoorBlueprint.cs" />
     <Compile Include="Blueprints\ObstacleBlueprint.cs" />
+    <Compile Include="Blueprints\SecondBossBlueprint.cs" />
     <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
     <Compile Include="Configuration\CameraConfiguration.cs" />
     <Compile Include="Configuration\InputConfiguration.cs" />

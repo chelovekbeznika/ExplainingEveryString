@@ -18,7 +18,8 @@ namespace ExplainingEveryString.Data.Blueprints
             { typeof(PlayerBlueprint), new PlayerAssetsExtractor() },
             { typeof(EnemyBlueprint), new EnemyAssetsExtractor() },
             { typeof(ShadowEnemyBlueprint), new ShadowEnemyAssetsExtractor() },
-            { typeof(FirstBossBlueprint), new FirstBossAssetsExtractor() }
+            { typeof(FirstBossBlueprint), new FirstBossAssetsExtractor() },
+            { typeof(SecondBossBlueprint), new SecondBossAssetsExtractor() }
         };
 
         public static List<String> GetNeccessarySprites(IBlueprintsLoader loader)

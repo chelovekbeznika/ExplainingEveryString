@@ -50,22 +50,22 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.mover = MoverFactory.Get(specification.Mover);
         }
 
-        private void ConstructWeaponry(EnemyBehaviorSpecification blueprint, BehaviorParameters parameters, Level level, ActorsFactory factory)
+        private void ConstructWeaponry(EnemyBehaviorSpecification specification, BehaviorParameters parameters, Level level, ActorsFactory factory)
         {
-            if (blueprint.Weapon != null)
+            if (specification.Weapon != null)
             {
                 var aimer = AimersFactory.Get(
-                    blueprint.Weapon.AimType, parameters.Angle, CurrentPositionLocator, playerLocator);
-                weapon = new Weapon(blueprint.Weapon, aimer, CurrentPositionLocator, playerLocator, level);
+                    specification.Weapon.AimType, parameters.Angle, CurrentPositionLocator, playerLocator);
+                weapon = new Weapon(specification.Weapon, aimer, CurrentPositionLocator, playerLocator, level);
                 weapon.Shoot += level.EnemyShoot;
             }
-            if (blueprint.PostMortemSurprise != null)
+            if (specification.PostMortemSurprise != null)
             {
-                PostMortemSurprise = new PostMortemSurprise(blueprint.PostMortemSurprise, CurrentPositionLocator,
+                PostMortemSurprise = new PostMortemSurprise(specification.PostMortemSurprise, CurrentPositionLocator,
                     playerLocator, level, factory);
             }
-            if (blueprint.Spawner != null)
-                this.SpawnedActors = new SpawnedActorsController(blueprint.Spawner, enemy, parameters, factory);
+            if (specification.Spawner != null)
+                this.SpawnedActors = new SpawnedActorsController(specification.Spawner, enemy, parameters, factory);
         }
 
         internal void Update(Single elapsedSeconds)

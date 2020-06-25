@@ -20,7 +20,8 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 { "Enemy", (pos) => Construct<Enemy<EnemyBlueprint>, EnemyBlueprint>(pos) },
                 { "ShadowEnemy", (pos) => Construct<ShadowEnemy, ShadowEnemyBlueprint>(pos) },
-                { "FirstBoss", (pos) => Construct<FirstBoss, FirstBossBlueprint>(pos) }
+                { "FirstBoss", (pos) => Construct<FirstBoss, FirstBossBlueprint>(pos) },
+                { "SecondBoss", (pos) => Construct<SecondBoss, SecondBossBlueprint>(pos) }
             };
         }
 

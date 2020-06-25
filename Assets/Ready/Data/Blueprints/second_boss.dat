@@ -1,6 +1,7 @@
 {
   "Boss_mk2": {
-    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.SecondBossBlueprint, ExplainingEveryString.Data",
+    "Type": "SecondBoss",
     "CollisionDamage": 100.0,
     "Height": 88.0,
     "Width": 160.0,
@@ -34,6 +35,10 @@
         }
       },
       "MoveTargetSelectType": "RandomTargets",
-    }
+    },
+    
+    "DeathEllipseX": 600.0,
+    "DeathEllipseY": 400.0,
+    "DeathZoneDamage": 20.0
   }
 }

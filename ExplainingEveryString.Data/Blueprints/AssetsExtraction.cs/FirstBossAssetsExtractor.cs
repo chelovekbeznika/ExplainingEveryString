@@ -4,7 +4,7 @@ using ExplainingEveryString.Data.Specifications;
 
 namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
 {
-    class FirstBossAssetsExtractor : EnemyAssetsExtractor, IAssetsExtractor<FirstBossBlueprint>
+    internal class FirstBossAssetsExtractor : EnemyAssetsExtractor, IAssetsExtractor<FirstBossBlueprint>
     {
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(FirstBossBlueprint blueprint)
         {
