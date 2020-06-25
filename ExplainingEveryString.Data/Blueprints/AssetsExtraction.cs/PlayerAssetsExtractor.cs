@@ -17,9 +17,9 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
         {
             return base.GetSpecEffects(blueprint).Concat(new SpecEffectSpecification[]
             {
-                blueprint.Weapon.ShootingEffect, blueprint.DamageEffect,
-                blueprint.BaseDestructionEffect, blueprint.CannonDestructionEffect,
-                blueprint.Dash.SpecEffect
+                blueprint.Weapon.ShootingEffect, blueprint.BaseDestructionEffect, 
+                blueprint.CannonDestructionEffect, blueprint.Dash.SpecEffect,
+                blueprint.DamageEffect, blueprint.SoftDamageEffect,
             });
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Specifications
 {
@@ -7,5 +8,7 @@ namespace ExplainingEveryString.Data.Specifications
         public SoundSpecification Sound { get; set; }
         [DefaultValue(null)]
         public SpriteSpecification Sprite { get; set; }
+        [DefaultValue(null)]
+        public Single? Cooldown { get; set; }
     }
 }

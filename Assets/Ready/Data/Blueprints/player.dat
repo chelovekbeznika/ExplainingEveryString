@@ -74,6 +74,12 @@
         "Volume": 1.0
       }
     },
+    "SoftDamageEffect": {
+      "Sprite": {
+        "Name": "Sprites/Player/SoftDamage",
+        "AnimationCycle": 0.1,
+      }
+    },
     "BaseDestructionEffect": {
       "Sound": {
         "Name": "Sounds/Player/Death",

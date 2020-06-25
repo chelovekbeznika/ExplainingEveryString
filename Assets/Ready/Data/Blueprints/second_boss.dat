@@ -13,7 +13,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/2/Death",
-        "Volume": 0.25
+        "Volume": 1.0
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss2/Death",
@@ -23,6 +23,12 @@
     "AppearancePhaseSprite": {
       "Name": "Sprites/Enemies/Boss2/Appearance",
       "AnimationCycle": 1.5
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/2/Appearance",
+        "Volume": 1.0
+      }
     },
     "DefaultAppearancePhaseDuration": 1.5,
     "Behavior": {

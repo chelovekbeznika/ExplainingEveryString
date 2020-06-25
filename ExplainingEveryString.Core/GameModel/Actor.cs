@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core.GameModel
                 hitPoints = value;
             }
         }
-        public Single FromLastHit { get; private set; } = Single.MaxValue;
+        public Single FromLastHit { get; protected set; } = Single.MaxValue;
 
         public virtual SpriteState SpriteState { get; private set; }
         public virtual IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();

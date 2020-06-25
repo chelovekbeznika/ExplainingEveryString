@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Core.GameModel
         ITouchableByBullets, IInterfaceAccessable
     {
         private EpicEvent damageTaken;
+        private EpicEvent softDamageTaken;
         private EpicEvent baseDestroyed;
         private EpicEvent cannonDestroyed;
 
@@ -60,6 +61,7 @@ namespace ExplainingEveryString.Core.GameModel
             Weapon.Shoot += level.PlayerShoot;
 
             damageTaken = new EpicEvent(level, blueprint.DamageEffect, false, this, true);
+            softDamageTaken = new EpicEvent(level, blueprint.SoftDamageEffect, false, this, true);
             baseDestroyed = new EpicEvent(level, blueprint.BaseDestructionEffect, true, this, false);
             cannonDestroyed = new EpicEvent(level, blueprint.CannonDestructionEffect, true, this.Weapon, true);
             ConstructDash(level, blueprint.Dash);
@@ -93,6 +95,14 @@ namespace ExplainingEveryString.Core.GameModel
         {
             base.TakeDamage(damage);
             damageTaken.TryHandle();
+        }
+
+        internal void TakeDamageSoftly(Single damage)
+        {
+            var savedValue = FromLastHit;
+            base.TakeDamage(damage);
+            softDamageTaken.TryHandle();
+            FromLastHit = savedValue;
         }
 
         private Vector2 GetCurrentSpeed(Single elapsedSeconds)

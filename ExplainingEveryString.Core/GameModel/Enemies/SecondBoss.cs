@@ -39,7 +39,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             {
                 inDeathZone += elapsedSeconds;
                 var damage = deathZoneDamage * (inDeathZone * inDeathZone - (inDeathZone - elapsedSeconds) * (inDeathZone - elapsedSeconds));
-                player.TakeDamage(damage);
+                player.TakeDamageSoftly(damage);
             }
             else
                 inDeathZone = 0;
