@@ -10,7 +10,7 @@
     "BlueprintType": "Player",
     "TilePosition": {
       "X": 59,
-      "Y": 59,
+      "Y": 69,
       "Offset": "8, -8"
     },
     "Angle": 0.0
@@ -18,20 +18,23 @@
   "EnemyWaves": [
     {
       "StartRegion": {
-        "X": 0,
-        "Y": 0,
         "Width": 120,
         "Height": 120
       },
-      "Enemies": [
+      "Enemies": [],
+      "Bosses": [
         {
-          "BlueprintType": "Mine_mk2",
+          "BlueprintType": "Boss_mk2",
           "TilePosition": {
-            "X": 40,
-            "Y": 40,
-            "Offset": "-8, -8"
+            "X": 59,
+            "Y": 59,
+            "Offset": "8, -8"
           },
-          "Angle": 0.0
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-448, 448",
+            "448, -448"
+          ]
         }
       ]
     }
