@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ExplainingEveryString.Data.Specifications;
+using System;
 
 namespace ExplainingEveryString.Data.Blueprints
 {
@@ -11,5 +8,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single DeathEllipseX { get; set; }
         public Single DeathEllipseY { get; set; }
         public Single DeathZoneDamage { get; set; }
+        public SpawnerSpecification DeathZoneBorderSpawner { get; set; }
+        public Single DeathZonePatrolCycleTime { get; set; }
     }
 }

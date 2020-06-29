@@ -45,6 +45,74 @@
     
     "DeathEllipseX": 600.0,
     "DeathEllipseY": 400.0,
-    "DeathZoneDamage": 20.0
-  }
+    "DeathZoneDamage": 20.0,
+    "DeathZonePatrolCycleTime": 15.0,
+    "DeathZoneBorderSpawner": {
+      "MaxSpawned": 10,
+      "Reloader": {
+        "FireRate": 10.0
+      },
+      "PositionSelector" : {
+        "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+        "SpawnPositions": [
+          "0.0, 0.0"
+        ]
+      },
+      "BlueprintType": "DeathZoneBorder"
+    }
+  },
+  "DeathZoneBorder": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 25.0,
+    "Height": 8.0,
+    "Width": 8.0,
+    "Hitpoints": 200000000.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss2/CircleDeathPart"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss2/CircleDeathPart",
+        "AnimationCycle": 0.33333333
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss2/CircleDeathPart",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.1,
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.3333333
+        },
+        "Barrels": [
+          {
+            "Length": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 320.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
 }

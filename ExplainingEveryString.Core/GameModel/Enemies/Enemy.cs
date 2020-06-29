@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private EpicEvent beforeAppearance;
         private EpicEvent afterAppearance;
         private EpicEvent goalAchieved;
-        public SpawnedActorsController SpawnedActors => Behavior.SpawnedActors;
+        public virtual ISpawnedActorsController SpawnedActors => Behavior.SpawnedActors;
         public List<IEnemy> Avengers => Behavior.PostMortemSurprise?.Avengers;
         public event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
 
@@ -95,7 +95,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             {
                 afterAppearance.TryHandle();
                 Behavior.Update(elapsedSeconds);
-                Behavior.SpawnedActors?.TurnOn();
+                SpawnedActors?.TurnOn();
                 if (Behavior.EnemyAngle != null)
                     SpriteState.Angle = Behavior.EnemyAngle.Value;
             }

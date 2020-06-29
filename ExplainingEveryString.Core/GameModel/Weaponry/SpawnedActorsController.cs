@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
-    internal class SpawnedActorsController : IUpdateable
+    internal class SpawnedActorsController : ISpawnedActorsController
     {
         private SpawnerSpecification specification;
         private Reloader reloader;
@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Vector2 spawnerStartPosition;
         private Boolean active = false;
 
-        internal List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
+        public List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
 
         internal SpawnedActorsController(SpawnerSpecification specification, IActor spawner, 
             BehaviorParameters spawnerBehaviorParameters, ActorsFactory factory)
@@ -35,17 +35,17 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 reloader.TryReload(elapsedSeconds, out Boolean enemySpawned);
         }
 
-        internal void SendDeadToHeaven(List<IEnemy> avengers)
+        public void SendDeadToHeaven(List<IEnemy> avengers)
         {
             SpawnedEnemies = EnemyDeathProcessor.SendDeadToHeaven(SpawnedEnemies, avengers);
         }
 
-        internal void TurnOn()
+        public void TurnOn()
         {
             active = true;
         }
 
-        internal void TurnOff()
+        public void TurnOff()
         {
             active = false;
         }

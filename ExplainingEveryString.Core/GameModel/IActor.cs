@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel
 
     internal interface IEnemy : IActor, IInterfaceAccessable, IMovableCollidable, ICrashable, ITouchableByBullets, IDisplayble
     {
-        SpawnedActorsController SpawnedActors { get; }
+        ISpawnedActorsController SpawnedActors { get; }
         List<IEnemy> Avengers { get; }
         event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
     }

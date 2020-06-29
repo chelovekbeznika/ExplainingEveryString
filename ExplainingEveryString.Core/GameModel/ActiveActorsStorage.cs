@@ -26,7 +26,7 @@ namespace ExplainingEveryString.Core.GameModel
         private Dictionary<String, List<ICollidable>> wallsPerSectors = new Dictionary<String, List<ICollidable>>();
         private List<IEnemy> currentWaveEnemies = new List<IEnemy>();
         private List<IEnemy> avengers = new List<IEnemy>();
-        private List<SpawnedActorsController> enemySpawners = new List<SpawnedActorsController>();
+        private List<ISpawnedActorsController> enemySpawners = new List<ISpawnedActorsController>();
         private Int32 maxEnemiesAtOnce;
         private Queue<IEnemy> enemiesQueue = new Queue<IEnemy>();
 

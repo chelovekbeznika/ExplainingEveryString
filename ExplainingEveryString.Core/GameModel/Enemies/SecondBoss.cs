@@ -1,20 +1,21 @@
-﻿using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {
     internal class SecondBoss : Enemy<SecondBossBlueprint>
     {
         private Player player;
-        private Single deathZoneEllipseFocusRadius;
-        private Single deathZoneEllipseFocusDistanceSum;
-        private Single deathZoneDamage;
-        private Single inDeathZone;
+        private DeathZoneParameters deathZone;
+        private CompositeSpawnedActorsController actorsController;
+        private SpawnedActorsController deathZoneBorderActors;
+
+        private Single patrolCycleTime;
+        private Single timePassed;
+
+        public override ISpawnedActorsController SpawnedActors => actorsController;
 
         protected override void Construct(SecondBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -22,34 +23,69 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.player = level.Player;
             var a = blueprint.DeathEllipseX;
             var b = blueprint.DeathEllipseY;
-            this.deathZoneEllipseFocusRadius = (Single)System.Math.Sqrt(a * a - b * b);
-            this.deathZoneEllipseFocusDistanceSum = 2 * a;
-            this.deathZoneDamage = blueprint.DeathZoneDamage;
+            this.deathZone = new DeathZoneParameters
+            {
+                FocusRadius = (Single)System.Math.Sqrt(a * a - b * b),
+                BigHalfAxe = a,
+                SmallHalfAxe = b,
+                FocusDistanceSum = 2 * a,
+                Damage = blueprint.DeathZoneDamage,
+                TimeSpent = 0
+            };
+            this.patrolCycleTime = blueprint.DeathZonePatrolCycleTime;
+            this.deathZoneBorderActors = new SpawnedActorsController(blueprint.DeathZoneBorderSpawner, this, startInfo.BehaviorParameters, factory);
+            this.actorsController = new CompositeSpawnedActorsController();
+            actorsController.AddController(Behavior.SpawnedActors);
+            actorsController.AddController(deathZoneBorderActors);
         }
 
         public override void Update(Single elapsedSeconds)
         {
             DeathZoneControl(elapsedSeconds);
+            DeathZonePatrolMovement(elapsedSeconds);
             base.Update(elapsedSeconds);
         }
 
         private void DeathZoneControl(Single elapsedSeconds)
         {
-            if (PlayerInDeathZone())
+            var focus1 = Position + new Vector2(-deathZone.FocusRadius, 0);
+            var focus2 = Position + new Vector2(deathZone.FocusRadius, 0);
+            var playerInDeathZone = (player.Position - focus1).Length() + (player.Position - focus2).Length() > deathZone.FocusDistanceSum;
+
+            if (playerInDeathZone)
             {
-                inDeathZone += elapsedSeconds;
-                var damage = deathZoneDamage * (inDeathZone * inDeathZone - (inDeathZone - elapsedSeconds) * (inDeathZone - elapsedSeconds));
-                player.TakeDamageSoftly(damage);
+                deathZone.TimeSpent += elapsedSeconds;
+                player.TakeDamageSoftly(deathZone.CurrentFrameDamage(elapsedSeconds));
             }
             else
-                inDeathZone = 0;
+                deathZone.TimeSpent = 0;
         }
 
-        private Boolean PlayerInDeathZone()
+        private void DeathZonePatrolMovement(Single elapsedSeconds)
         {
-            var focus1 = Position + new Vector2(-deathZoneEllipseFocusRadius, 0);
-            var focus2 = Position + new Vector2(deathZoneEllipseFocusRadius, 0);
-            return (player.Position - focus1).Length() + (player.Position - focus2).Length() > deathZoneEllipseFocusDistanceSum;
+            timePassed += elapsedSeconds;
+            var patrolCount = deathZoneBorderActors.SpawnedEnemies.Count;
+            for(var i = 0; i < patrolCount; i++)
+            {
+                ICollidable patrol = deathZoneBorderActors.SpawnedEnemies[i];
+                var patrolAngle = System.Math.PI * 2 * (1.0 / patrolCount * i + timePassed / patrolCycleTime);
+                var patrolX = (Single)(deathZone.BigHalfAxe * System.Math.Cos(patrolAngle));
+                var patrolY = (Single)(deathZone.SmallHalfAxe * System.Math.Sin(patrolAngle));
+                patrol.Position = Position + new Vector2(patrolX, patrolY);
+            }
+        }
+
+        private class DeathZoneParameters
+        {
+            internal Single FocusRadius { get; set; }
+            internal Single BigHalfAxe { get; set; }
+            internal Single SmallHalfAxe { get; set; }
+            internal Single FocusDistanceSum { get; set; }
+            internal Single Damage { get; set; }
+            internal Single TimeSpent { get; set; }
+
+            internal Single CurrentFrameDamage(Single elapsedSeconds) =>
+                Damage * (TimeSpent * TimeSpent - (TimeSpent - elapsedSeconds) * (TimeSpent - elapsedSeconds));
         }
     }
 }
