@@ -13,6 +13,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private SpawnedActorsController deathZoneBorderActors;
 
         private Single patrolCycleTime;
+        private Single patrolCount;
         private Single timePassed;
 
         public override ISpawnedActorsController SpawnedActors => actorsController;
@@ -33,6 +34,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 TimeSpent = 0
             };
             this.patrolCycleTime = blueprint.DeathZonePatrolCycleTime;
+            this.patrolCount = blueprint.DeathZoneBorderSpawner.MaxSpawned;
             this.deathZoneBorderActors = new SpawnedActorsController(blueprint.DeathZoneBorderSpawner, this, startInfo.BehaviorParameters, factory);
             this.actorsController = new CompositeSpawnedActorsController();
             actorsController.AddController(Behavior.SpawnedActors);
@@ -64,8 +66,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private void DeathZonePatrolMovement(Single elapsedSeconds)
         {
             timePassed += elapsedSeconds;
-            var patrolCount = deathZoneBorderActors.SpawnedEnemies.Count;
-            for(var i = 0; i < patrolCount; i++)
+            for(var i = 0; i < deathZoneBorderActors.SpawnedEnemies.Count; i++)
             {
                 ICollidable patrol = deathZoneBorderActors.SpawnedEnemies[i];
                 var patrolAngle = System.Math.PI * 2 * (1.0 / patrolCount * i + timePassed / patrolCycleTime);
