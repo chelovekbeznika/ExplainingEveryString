@@ -11,6 +11,8 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single CollisionDamage { get; set; }
         [DefaultValue(null)]
         public String CollideTag { get; set; }
+        [DefaultValue(false)]
+        public Boolean HideHealthBar { get; set; }
         public EnemyBehaviorSpecification Behavior { get; set; }
         public SpecEffectSpecification DeathEffect { get; set; }
         [DefaultValue(null)]

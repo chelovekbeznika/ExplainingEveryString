@@ -50,7 +50,7 @@
     "DeathZoneBorderSpawner": {
       "MaxSpawned": 10,
       "Reloader": {
-        "FireRate": 10.0
+        "FireRate": 1.0
       },
       "PositionSelector" : {
         "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
@@ -67,6 +67,7 @@
     "Height": 8.0,
     "Width": 8.0,
     "Hitpoints": 200000000.0,
+    "HideHealthBar": true,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss2/CircleDeathPart"
     },
@@ -88,7 +89,10 @@
     "Behavior": {
       "Weapon": {
         "Reloader": {
-          "FireRate": 0.3333333
+          "FireRate": 5.0,
+          "Ammo": 3,
+          "ReloadTime": 7.0,
+          "ReloadScatter": 4.0
         },
         "Barrels": [
           {

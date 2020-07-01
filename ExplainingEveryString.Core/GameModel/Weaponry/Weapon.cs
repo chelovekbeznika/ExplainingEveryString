@@ -48,16 +48,17 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.aimer = aimer;
             barrels = specification.Barrels
                 .Select(bs => new Barrel(aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
-            void onShoot(Single seconds)
-            {
-                foreach (var barrel in barrels)
-                    barrel.OnShoot(seconds);
-            }
-            reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), onShoot);
+            reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot);
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             this.findOutWhereIAm = findOutWhereIAm;
             this.targetLocator = targetLocator;
             this.weaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
+        }
+
+        private void OnShoot(Single seconds)
+        {
+            foreach (var barrel in barrels)
+                barrel.OnShoot(seconds);
         }
 
         internal void Update(Single elapsedSeconds)

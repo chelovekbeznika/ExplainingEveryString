@@ -49,7 +49,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         }
         
         public Single MaxHitPoints { get; private set; }
-        public virtual Boolean ShowInterfaceInfo => !IsInAppearancePhase;
+
+        private Boolean hideHealthBar;
+        public virtual Boolean ShowInterfaceInfo => !IsInAppearancePhase && !hideHealthBar;
 
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -72,6 +74,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 ? startInfo.AppearancePhaseDuration
                 : blueprint.DefaultAppearancePhaseDuration;
             this.CollideTag = blueprint.CollideTag;
+            this.hideHealthBar = blueprint.HideHealthBar;
 
             Behavior.Construct(blueprint.Behavior, startInfo.BehaviorParameters, level, factory);
         }

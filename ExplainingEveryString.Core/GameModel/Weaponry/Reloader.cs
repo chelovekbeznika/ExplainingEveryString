@@ -8,6 +8,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     {
         private Single shootCooldown;
         private Single reloadTime;
+        private Single reloadScatter;
         private Single timeTillNextShoot;
         private Single nextBulletFirstUpdateTime = 0;
         private Int32 maxAmmo;
@@ -24,6 +25,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.maxAmmo = specification.Ammo;
             this.shootCooldown = 1 / specification.FireRate;
             this.reloadTime = specification.ReloadTime;
+            this.reloadScatter = specification.ReloadScatter;
             this.currentAmmo = 0;
 
             timeTillNextShoot = AmmoLimited ? reloadTime : shootCooldown;
@@ -65,7 +67,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 currentAmmo = this.maxAmmo;
             currentAmmo -= 1;
             if (reloadAfterThisBullet)
-                betweenShoots = reloadTime;
+                betweenShoots = reloadTime + RandomUtility.Next(-reloadScatter, reloadScatter);
         }
     }
 }
