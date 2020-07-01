@@ -1,7 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using System;
 
-namespace ExplainingEveryString.Core.GameModel.Enemies
+namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
     internal class FirstBossPhase
     {

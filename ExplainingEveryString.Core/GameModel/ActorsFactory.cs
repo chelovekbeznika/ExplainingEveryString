@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel.Enemies;
+using ExplainingEveryString.Core.GameModel.Enemies.Bosses;
 using ExplainingEveryString.Data.Blueprints;
 using Microsoft.Xna.Framework;
 using System;

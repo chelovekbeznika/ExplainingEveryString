@@ -18,6 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public virtual ISpawnedActorsController SpawnedActors => Behavior.SpawnedActors;
         public List<IEnemy> Avengers => Behavior.PostMortemSurprise?.Avengers;
         public event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
+        public event EventHandler<EventArgs> Died;
 
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
@@ -44,6 +45,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 {
                     death.TryHandle();
                     Behavior.PostMortemSurprise?.TryTrigger();
+                    Died?.Invoke(this, EventArgs.Empty);
                 }
             }
         }

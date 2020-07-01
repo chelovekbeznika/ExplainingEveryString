@@ -4,7 +4,7 @@ using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace ExplainingEveryString.Core.GameModel.Enemies
+namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
     internal class SecondBoss : Enemy<SecondBossBlueprint>
     {
@@ -13,10 +13,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private SecondBossPowerKeepersSpecification powerKeepersMovement;
         private CompositeSpawnedActorsController actorsController;
         private SpawnedActorsController deathZoneBorderActors;
-        private OneTimeSpawnedActorsController powerKeepersActors;
+        private SecondBossPowerKeepersSpawner powerKeepersActors;
 
         private Single patrolCycleTime;
         private Single timePassed;
+
+        public override CollidableMode CollidableMode => CollidableMode.Shadow;
 
         public override ISpawnedActorsController SpawnedActors => actorsController;
 
@@ -37,9 +39,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             };
             this.patrolCycleTime = blueprint.DeathZonePatrolCycleTime;
             this.deathZoneBorderActors = new SpawnedActorsController(blueprint.DeathZoneBorderSpawner, this, startInfo.BehaviorParameters, factory);
-            this.powerKeepersActors = new OneTimeSpawnedActorsController(blueprint.PowerKeepersSpawner, this, factory);
+            this.powerKeepersActors = new SecondBossPowerKeepersSpawner(blueprint.PowerKeepersSpawner, this, factory);
             this.powerKeepersMovement = blueprint.PowerKeepersMovement;
             this.actorsController = new CompositeSpawnedActorsController(Behavior.SpawnedActors, deathZoneBorderActors, powerKeepersActors);
+            this.Died += SecondBoss_Died;
         }
 
         public override void Update(Single elapsedSeconds)
@@ -86,16 +89,23 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             var expandCoeff = heartBeatCyclePart < 0.5 ? heartBeatCyclePart * 2 : (1 - heartBeatCyclePart) * 2;
             var expandBigAxeBy = 1 + expandCoeff * powerKeepersMovement.BigHalfAxeExpand;
             var expandSmallAxeBy = 1 + expandCoeff * powerKeepersMovement.SmallHalfAxeExpand;
-            for (var i = 0; i < powerKeepersActors.SpawnedEnemies.Count; i++)
+            var powerKeepersCount = powerKeepersActors.SpawnedEnemies.Count;
+            for (var i = 0; i < powerKeepersCount; i++)
             {
                 ICollidable powerKeeper = powerKeepersActors.SpawnedEnemies[i];
-                var powerKeepersCount = powerKeepersActors.Specification.MaxSpawned;
                 var powerKeeperAngle = System.Math.PI * 2 * (1.0 / powerKeepersCount * i + timePassed / powerKeepersMovement.PowerKeeperCycleTime);
                 var powerKeeperX = (Single)(powerKeepersMovement.InnerBigHalfAxe * expandBigAxeBy * System.Math.Cos(powerKeeperAngle));
                 var powerKeeperY = (Single)(powerKeepersMovement.InnerSmallHalfAxe * expandSmallAxeBy * System.Math.Sin(powerKeeperAngle));
                 powerKeeper.Position = Position + new Vector2(powerKeeperX, powerKeeperY);
             }
         }
+
+        private void SecondBoss_Died(Object sender, EventArgs e)
+        {
+            foreach (var enemy in deathZoneBorderActors.SpawnedEnemies)
+                enemy.TakeDamage(Single.MaxValue);
+        }
+
 
         private class DeathZoneParameters
         {

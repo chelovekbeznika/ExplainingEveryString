@@ -1,15 +1,16 @@
-﻿using ExplainingEveryString.Data.Specifications;
+﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Data.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExplainingEveryString.Core.GameModel.Weaponry
+namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
-    internal class OneTimeSpawnedActorsController : ISpawnedActorsController
+    internal class SecondBossPowerKeepersSpawner : ISpawnedActorsController
     {
-        private IActor spawner;
+        private SecondBoss spawner;
         private ActorsFactory factory;
         internal OneTimeSpawnerSpecification Specification { get; private set; }
         private Single tillNextSpawn = 0;
@@ -17,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public List<IEnemy> SpawnedEnemies { get; private set; }
 
-        internal OneTimeSpawnedActorsController(OneTimeSpawnerSpecification specification, IActor spawner, ActorsFactory factory)
+        internal SecondBossPowerKeepersSpawner(OneTimeSpawnerSpecification specification, SecondBoss spawner, ActorsFactory factory)
         {
             this.Specification = specification;
             this.spawner = spawner;
@@ -45,12 +46,14 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             {
                 tillNextSpawn += Specification.Interval;
                 alreadySpawned += 1;
-                SpawnedEnemies.Add(factory.ConstructEnemy(new ActorStartInfo
+                var enemy = factory.ConstructEnemy(new ActorStartInfo
                 {
                     Position = (spawner as ICollidable).Position,
                     BlueprintType = Specification.BlueprintType,
                     BehaviorParameters = new BehaviorParameters { }
-                }));
+                });
+                enemy.Died += (sender, e) => spawner.TakeDamage(1);
+                SpawnedEnemies.Add(enemy);
             }
         }
     }

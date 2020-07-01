@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core.GameModel.Enemies
+namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
     internal class FirstBoss : Enemy<FirstBossBlueprint>
     {

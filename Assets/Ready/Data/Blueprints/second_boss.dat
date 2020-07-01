@@ -5,7 +5,7 @@
     "CollisionDamage": 100.0,
     "Height": 88.0,
     "Width": 160.0,
-    "Hitpoints": 1000.0,
+    "Hitpoints": 6.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss2/1",
       "AnimationCycle": 1.0
@@ -138,7 +138,7 @@
     "CollisionDamage": 100.0,
     "Height": 24.0,
     "Width": 24.0,
-    "Hitpoints": 100.0,
+    "Hitpoints": 30.0,
     "Behavior": {
     },
     "DefaultSprite": {
