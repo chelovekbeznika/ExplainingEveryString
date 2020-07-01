@@ -13,6 +13,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public List<IEnemy> SpawnedEnemies => controllers.SelectMany(controller => controller.SpawnedEnemies).ToList();
 
+        internal CompositeSpawnedActorsController(params ISpawnedActorsController[] controllers)
+        {
+            foreach (var controller in controllers)
+                AddController(controller);
+        }
+
         internal void AddController(ISpawnedActorsController controller)
         {
             if (controller == null)

@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -9,11 +10,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
     {
         private Player player;
         private DeathZoneParameters deathZone;
+        private SecondBossPowerKeepersSpecification powerKeepersMovement;
         private CompositeSpawnedActorsController actorsController;
         private SpawnedActorsController deathZoneBorderActors;
+        private OneTimeSpawnedActorsController powerKeepersActors;
 
         private Single patrolCycleTime;
-        private Single patrolCount;
         private Single timePassed;
 
         public override ISpawnedActorsController SpawnedActors => actorsController;
@@ -34,21 +36,22 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 TimeSpent = 0
             };
             this.patrolCycleTime = blueprint.DeathZonePatrolCycleTime;
-            this.patrolCount = blueprint.DeathZoneBorderSpawner.MaxSpawned;
             this.deathZoneBorderActors = new SpawnedActorsController(blueprint.DeathZoneBorderSpawner, this, startInfo.BehaviorParameters, factory);
-            this.actorsController = new CompositeSpawnedActorsController();
-            actorsController.AddController(Behavior.SpawnedActors);
-            actorsController.AddController(deathZoneBorderActors);
+            this.powerKeepersActors = new OneTimeSpawnedActorsController(blueprint.PowerKeepersSpawner, this, factory);
+            this.powerKeepersMovement = blueprint.PowerKeepersMovement;
+            this.actorsController = new CompositeSpawnedActorsController(Behavior.SpawnedActors, deathZoneBorderActors, powerKeepersActors);
         }
 
         public override void Update(Single elapsedSeconds)
         {
-            DeathZoneControl(elapsedSeconds);
+            timePassed += elapsedSeconds;
+            DamagingPlayerInDeathZone(elapsedSeconds);
             DeathZonePatrolMovement(elapsedSeconds);
+            PowerKeepersMovement(elapsedSeconds);
             base.Update(elapsedSeconds);
         }
 
-        private void DeathZoneControl(Single elapsedSeconds)
+        private void DamagingPlayerInDeathZone(Single elapsedSeconds)
         {
             var focus1 = Position + new Vector2(-deathZone.FocusRadius, 0);
             var focus2 = Position + new Vector2(deathZone.FocusRadius, 0);
@@ -65,14 +68,32 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         private void DeathZonePatrolMovement(Single elapsedSeconds)
         {
-            timePassed += elapsedSeconds;
-            for(var i = 0; i < deathZoneBorderActors.SpawnedEnemies.Count; i++)
+            for (var i = 0; i < deathZoneBorderActors.SpawnedEnemies.Count; i++)
             {
                 ICollidable patrol = deathZoneBorderActors.SpawnedEnemies[i];
+                var patrolCount = deathZoneBorderActors.Specification.MaxSpawned;
                 var patrolAngle = System.Math.PI * 2 * (1.0 / patrolCount * i + timePassed / patrolCycleTime);
                 var patrolX = (Single)(deathZone.BigHalfAxe * System.Math.Cos(patrolAngle));
                 var patrolY = (Single)(deathZone.SmallHalfAxe * System.Math.Sin(patrolAngle));
                 patrol.Position = Position + new Vector2(patrolX, patrolY);
+            }
+        }
+
+        private void PowerKeepersMovement(Single elapsedSeconds)
+        {
+            var heartBeatCycles = timePassed / powerKeepersMovement.HeartBeatTime;
+            var heartBeatCyclePart = heartBeatCycles - System.Math.Floor(heartBeatCycles);
+            var expandCoeff = heartBeatCyclePart < 0.5 ? heartBeatCyclePart * 2 : (1 - heartBeatCyclePart) * 2;
+            var expandBigAxeBy = 1 + expandCoeff * powerKeepersMovement.BigHalfAxeExpand;
+            var expandSmallAxeBy = 1 + expandCoeff * powerKeepersMovement.SmallHalfAxeExpand;
+            for (var i = 0; i < powerKeepersActors.SpawnedEnemies.Count; i++)
+            {
+                ICollidable powerKeeper = powerKeepersActors.SpawnedEnemies[i];
+                var powerKeepersCount = powerKeepersActors.Specification.MaxSpawned;
+                var powerKeeperAngle = System.Math.PI * 2 * (1.0 / powerKeepersCount * i + timePassed / powerKeepersMovement.PowerKeeperCycleTime);
+                var powerKeeperX = (Single)(powerKeepersMovement.InnerBigHalfAxe * expandBigAxeBy * System.Math.Cos(powerKeeperAngle));
+                var powerKeeperY = (Single)(powerKeepersMovement.InnerSmallHalfAxe * expandSmallAxeBy * System.Math.Sin(powerKeeperAngle));
+                powerKeeper.Position = Position + new Vector2(powerKeeperX, powerKeeperY);
             }
         }
 

@@ -7,7 +7,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
     internal class SpawnedActorsController : ISpawnedActorsController
     {
-        private SpawnerSpecification specification;
+        internal SpawnerSpecification Specification { get; private set; }
         private Reloader reloader;
         private ISpawnPositionSelector spawnPositionSelector;
         private ActorsFactory factory;
@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal SpawnedActorsController(SpawnerSpecification specification, IActor spawner, 
             BehaviorParameters spawnerBehaviorParameters, ActorsFactory factory)
         {
-            this.specification = specification;
+            this.Specification = specification;
             this.reloader = new Reloader(specification.Reloader, CanSpawnEnemy, SpawnEnemy);
             this.spawner = spawner;
             this.spawnerStartPosition = (spawner as ICollidable).Position;
@@ -55,8 +55,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             var spawnSpecification = spawnPositionSelector.GetNextSpawnSpecification();
             var asi = new ActorStartInfo
             {
-                BlueprintType = specification.BlueprintType,
-                Position = specification.SpawnPositionRelativeToCurrentPosition
+                BlueprintType = Specification.BlueprintType,
+                Position = Specification.SpawnPositionRelativeToCurrentPosition
                     ? spawnSpecification.SpawnPoint + (spawner as ICollidable).Position
                     : spawnSpecification.SpawnPoint + spawnerStartPosition,
                 BehaviorParameters = new BehaviorParameters
@@ -64,13 +64,13 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     TrajectoryParameters = spawnSpecification.TrajectoryParameters?.ToArray(),
                     Angle = spawnSpecification.Angle
                 },
-                AppearancePhaseDuration = specification.AppearancePhase
+                AppearancePhaseDuration = Specification.AppearancePhase
             };
             var enemy = factory.ConstructEnemy(asi);
             enemy.Update(firstUpdateTime);
             SpawnedEnemies.Add(enemy);
         }
 
-        private Boolean CanSpawnEnemy() => active && spawner.IsAlive() && SpawnedEnemies.Count < specification.MaxSpawned;
+        private Boolean CanSpawnEnemy() => active && spawner.IsAlive() && SpawnedEnemies.Count < Specification.MaxSpawned;
     }
 }

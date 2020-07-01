@@ -93,6 +93,7 @@
     <Compile Include="GameModel\Weaponry\Aimers\SpinningAimer.cs" />
     <Compile Include="GameModel\Weaponry\CompositeSpawnedActorsController.cs" />
     <Compile Include="GameModel\Weaponry\ISpawnedActorsController.cs" />
+    <Compile Include="GameModel\Weaponry\OneTimeSpawner.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\SpiralTrajectory.cs" />
     <Compile Include="Interface\Displayers\BossInfoDisplayer.cs" />
     <Compile Include="Interface\Displayers\IDisplayer.cs" />

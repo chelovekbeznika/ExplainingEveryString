@@ -13,11 +13,11 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/2/Death",
-        "Volume": 1.0
+        "Volume": 0.4
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss2/Death",
-        "AnimationCycle": 1.0
+        "AnimationCycle": 0.4
       }
     },
     "AppearancePhaseSprite": {
@@ -59,11 +59,25 @@
         ]
       },
       "BlueprintType": "DeathZoneBorder"
+    },
+    
+    "PowerKeepersSpawner": {
+      "MaxSpawned": 6,
+      "Interval": 1.5,
+      "BlueprintType": "TitanicPowerKeeper"
+    },
+    "PowerKeepersMovement": {
+      "InnerSmallHalfAxe": 100,
+      "InnerBigHalfAxe": 150,
+      "SmallHalfAxeExpand": 0.2,
+      "BigHalfAxeExpand": 0.3,
+      "HeartBeatTime": 1.0,
+      "PowerKeeperCycleTime": 10.0
     }
   },
   "DeathZoneBorder": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
-    "CollisionDamage": 25.0,
+    "CollisionDamage": 100.0,
     "Height": 8.0,
     "Width": 8.0,
     "Hitpoints": 200000000.0,
@@ -119,4 +133,68 @@
       }
     }
   },
+  "TitanicPowerKeeper": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 24.0,
+    "Width": 24.0,
+    "Hitpoints": 100.0,
+    "Behavior": {
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss2/SupportGhost1"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/2/SupportDeath",
+        "Volume": 0.25
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss2/SupportGhostDeath",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss2/SupportGhostAppearance",
+      "AnimationCycle": 0.15
+    },
+    "DefaultAppearancePhaseDuration": 0.5
+  },
+  "SupportGhost": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 25.0,
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 8.0,
+    "CollideTag": "Hunter",
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 300.0,
+          "maxSpeed": 400.0,
+          "acceleration": 400.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer"
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss2/SupportGhost2"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/2/SupportDeath",
+        "Volume": 0.25
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss2/SupportGhostDeath",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss2/SupportGhostAppearance",
+      "AnimationCycle": 0.15
+    },
+    "DefaultAppearancePhaseDuration": 0.5
+  }
 }

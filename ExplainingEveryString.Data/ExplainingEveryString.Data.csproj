@@ -95,8 +95,10 @@
     <Compile Include="Specifications\FirstBossPhaseSpecification.cs" />
     <Compile Include="Specifications\MoverSpecification.cs" />
     <Compile Include="Specifications\MoveTargetSelectType.cs" />
+    <Compile Include="Specifications\OneTimeSpawnerSpecification.cs" />
     <Compile Include="Specifications\PostMortemSurpriseSpecification.cs" />
     <Compile Include="Specifications\ReloaderSpecification.cs" />
+    <Compile Include="Specifications\SecondBossPowerKeepersSpecification.cs" />
     <Compile Include="Specifications\SoundSpecification.cs" />
     <Compile Include="Specifications\SpawnerSpecification.cs" />
     <Compile Include="Specifications\SpawnPositionSelectorSpecification.cs" />
