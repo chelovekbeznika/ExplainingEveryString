@@ -4,6 +4,7 @@ using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
@@ -15,6 +16,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private CompositeSpawnedActorsController actorsController;
         private SpawnedActorsController deathZoneBorderActors;
         private SecondBossPowerKeepersSpawner powerKeepersActors;
+        private SecondBossPhaseSpecification[] phases;
+        private Int32 phasesPassed;
 
         private EllipticMovementControl deathZoneMovement;
         private EllipticMovementControl powerKeepersMovement;
@@ -28,6 +31,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         {
             base.Construct(blueprint, startInfo, level, factory);
             this.player = level.Player;
+            this.phases = blueprint.Phases;
+            this.HitPoints = (phases.Length + 1) * blueprint.PowerKeepersSpawner.MaxSpawned;
+            this.MaxHitPoints = HitPoints;
 
             var a = blueprint.DeathEllipseX;
             var b = blueprint.DeathEllipseY;
@@ -43,7 +49,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             this.deathZoneBorderActors = new SpawnedActorsController(blueprint.DeathZoneBorderSpawner, this, startInfo.BehaviorParameters, factory);
             this.deathZoneMovement = new EllipticMovementControl(this, deathZoneBorderActors, blueprint.DeathZonePatrolCycleTime, a, b);
 
-            this.powerKeepersActors = new SecondBossPowerKeepersSpawner(blueprint.PowerKeepersSpawner, this, factory);
+            this.powerKeepersActors = new SecondBossPowerKeepersSpawner(blueprint.PowerKeepersSpawner, this, factory, PowerKeeperDied);
             this.powerKeepersMovementSpec = blueprint.PowerKeepersMovement;
             this.powerKeepersMovement = new EllipticMovementControl(this, powerKeepersActors, powerKeepersMovementSpec.PowerKeeperCycleTime, 
                 powerKeepersMovementSpec.InnerBigHalfAxe, powerKeepersMovementSpec.InnerSmallHalfAxe);
@@ -90,6 +96,23 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         {
             foreach (var enemy in deathZoneBorderActors.SpawnedEnemies)
                 enemy.TakeDamage(Single.MaxValue);
+        }
+
+        private void PowerKeeperDied(Object sender, EventArgs e)
+        {
+            TakeDamage(1);
+            if (!powerKeepersActors.SpawnedEnemies.Any(powerKeeper => powerKeeper.IsAlive()) 
+                && powerKeepersActors.EveryoneSpawned && IsAlive())
+            {
+                phasesPassed += 1;
+                var currentPhase = phases[phasesPassed - 1];
+
+                base.SpriteState = new Displaying.SpriteState(currentPhase.Sprite);
+                this.Width = currentPhase.Width;
+                this.Height = currentPhase.Height;
+
+                this.powerKeepersActors.Reset();
+            }
         }
 
         private class DeathZoneParameters

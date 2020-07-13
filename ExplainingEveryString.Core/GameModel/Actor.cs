@@ -22,8 +22,8 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
         public Vector2 OldPosition { get; private set; }
-        private Single width;
-        private Single height;
+        protected Single Width { get; set; }
+        protected Single Height { get; set; }
         private Single hitPoints;
         public virtual Single HitPoints
         {
@@ -37,7 +37,7 @@ namespace ExplainingEveryString.Core.GameModel
         }
         public Single FromLastHit { get; protected set; } = Single.MaxValue;
 
-        public virtual SpriteState SpriteState { get; private set; }
+        public virtual SpriteState SpriteState { get; protected set; }
         public virtual IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
         public Boolean IsVisible => IsAlive();
         public virtual CollidableMode CollidableMode => CollidableMode.Solid;
@@ -57,8 +57,8 @@ namespace ExplainingEveryString.Core.GameModel
         protected virtual void Construct(TBlueprint blueprint, ActorStartInfo info, Level level, ActorsFactory factory)
         {
             this.SpriteState = new SpriteState(blueprint.DefaultSprite);
-            this.height = blueprint.Height;
-            this.width = blueprint.Width;
+            this.Height = blueprint.Height;
+            this.Width = blueprint.Width;
             this.HitPoints = blueprint.Hitpoints;
         }
 
@@ -103,10 +103,10 @@ namespace ExplainingEveryString.Core.GameModel
         {
             return new Hitbox
             {
-                Bottom = center.Y - height / 2,
-                Top = center.Y + height / 2,
-                Left = center.X - width / 2,
-                Right = center.X + width / 2
+                Bottom = center.Y - Height / 2,
+                Top = center.Y + Height / 2,
+                Left = center.X - Width / 2,
+                Right = center.X + Width / 2
             };
         }
     }

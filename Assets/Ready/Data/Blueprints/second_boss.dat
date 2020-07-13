@@ -73,7 +73,42 @@
       "BigHalfAxeExpand": 0.3,
       "HeartBeatTime": 1.0,
       "PowerKeeperCycleTime": 10.0
-    }
+    },
+    
+    "Phases": [
+      {
+        "Sprite": {
+          "Name": "Sprites/Enemies/Boss2/2",
+          "AnimationCycle": 1.0
+        },
+        "Width": 160,
+        "Height": 72
+      },
+      {
+        "Sprite": {
+          "Name": "Sprites/Enemies/Boss2/3",
+          "AnimationCycle": 1.0
+        },
+        "Width": 160,
+        "Height": 56
+      },
+      {
+        "Sprite": {
+          "Name": "Sprites/Enemies/Boss2/4",
+          "AnimationCycle": 1.0
+        },
+        "Width": 160,
+        "Height": 40
+      },
+      {
+        "Sprite": {
+          "Name": "Sprites/Enemies/Boss2/5",
+          "AnimationCycle": 1.0
+        },
+        "Width": 160,
+        "Height": 24
+      }
+    ]
   },
   "DeathZoneBorder": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
@@ -105,8 +140,8 @@
         "Reloader": {
           "FireRate": 5.0,
           "Ammo": 3,
-          "ReloadTime": 7.0,
-          "ReloadScatter": 4.0
+          "ReloadTime": 15.0,
+          "ReloadScatter": 10.0
         },
         "Barrels": [
           {
@@ -138,7 +173,7 @@
     "CollisionDamage": 25.0,
     "Height": 24.0,
     "Width": 24.0,
-    "Hitpoints": 30.0,
+    "Hitpoints": 15.0,
     "Behavior": {
     },
     "DefaultSprite": {

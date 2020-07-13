@@ -12,5 +12,6 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single DeathZonePatrolCycleTime { get; set; }
         public OneTimeSpawnerSpecification PowerKeepersSpawner { get; set; }
         public SecondBossPowerKeepersSpecification PowerKeepersMovement { get; set; }
+        public SecondBossPhaseSpecification[] Phases { get; set; }
     }
 }

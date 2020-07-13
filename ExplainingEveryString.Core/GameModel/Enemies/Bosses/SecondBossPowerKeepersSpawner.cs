@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
     {
         private SecondBoss spawner;
         private ActorsFactory factory;
+        private EventHandler powerKeeperDeath;
         internal OneTimeSpawnerSpecification Specification { get; private set; }
         private Single tillNextSpawn = 0;
         private Int32 alreadySpawned = 0;
@@ -19,12 +20,15 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         public List<IEnemy> SpawnedEnemies { get; private set; }
 
         public Int32 MaxSpawned => Specification.MaxSpawned;
+        public Boolean EveryoneSpawned => alreadySpawned == MaxSpawned;
 
-        internal SecondBossPowerKeepersSpawner(OneTimeSpawnerSpecification specification, SecondBoss spawner, ActorsFactory factory)
+        internal SecondBossPowerKeepersSpawner(OneTimeSpawnerSpecification specification, SecondBoss spawner, 
+            ActorsFactory factory, EventHandler powerKeeperDeath)
         {
             this.Specification = specification;
             this.spawner = spawner;
             this.factory = factory;
+            this.powerKeeperDeath = powerKeeperDeath;
             this.SpawnedEnemies = new List<IEnemy>();
         }
 
@@ -54,9 +58,15 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                     BlueprintType = Specification.BlueprintType,
                     BehaviorParameters = new BehaviorParameters { }
                 });
-                enemy.Died += (sender, e) => spawner.TakeDamage(1);
+                enemy.Died += powerKeeperDeath;
                 SpawnedEnemies.Add(enemy);
             }
+        }
+
+        public void Reset()
+        {
+            alreadySpawned = 0;
+            tillNextSpawn = 0;
         }
     }
 }

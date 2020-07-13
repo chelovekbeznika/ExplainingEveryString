@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public virtual ISpawnedActorsController SpawnedActors => Behavior.SpawnedActors;
         public List<IEnemy> Avengers => Behavior.PostMortemSurprise?.Avengers;
         public event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
-        public event EventHandler<EventArgs> Died;
+        public event EventHandler Died;
 
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
@@ -50,7 +50,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             }
         }
         
-        public Single MaxHitPoints { get; private set; }
+        public Single MaxHitPoints { get; protected set; }
 
         private Boolean hideHealthBar;
         public virtual Boolean ShowInterfaceInfo => !IsInAppearancePhase && !hideHealthBar;
