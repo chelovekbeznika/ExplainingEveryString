@@ -77,7 +77,7 @@
   },
   "DeathZoneBorder": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
-    "CollisionDamage": 100.0,
+    "CollisionDamage": 25.0,
     "Height": 8.0,
     "Width": 8.0,
     "Hitpoints": 200000000.0,
@@ -135,7 +135,7 @@
   },
   "TitanicPowerKeeper": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
-    "CollisionDamage": 100.0,
+    "CollisionDamage": 25.0,
     "Height": 24.0,
     "Width": 24.0,
     "Hitpoints": 30.0,

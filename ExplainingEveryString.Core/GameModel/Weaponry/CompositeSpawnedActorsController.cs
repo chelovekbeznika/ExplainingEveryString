@@ -13,6 +13,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public List<IEnemy> SpawnedEnemies => controllers.SelectMany(controller => controller.SpawnedEnemies).ToList();
 
+        public Int32 MaxSpawned => controllers.Select(controller => controller.MaxSpawned).Sum();
+
         internal CompositeSpawnedActorsController(params ISpawnedActorsController[] controllers)
         {
             foreach (var controller in controllers)

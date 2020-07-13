@@ -18,6 +18,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public List<IEnemy> SpawnedEnemies { get; private set; }
 
+        public Int32 MaxSpawned => Specification.MaxSpawned;
+
         internal SecondBossPowerKeepersSpawner(OneTimeSpawnerSpecification specification, SecondBoss spawner, ActorsFactory factory)
         {
             this.Specification = specification;

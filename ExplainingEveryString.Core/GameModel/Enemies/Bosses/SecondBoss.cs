@@ -3,6 +3,7 @@ using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
@@ -10,13 +11,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
     {
         private Player player;
         private DeathZoneParameters deathZone;
-        private SecondBossPowerKeepersSpecification powerKeepersMovement;
+        private SecondBossPowerKeepersSpecification powerKeepersMovementSpec;
         private CompositeSpawnedActorsController actorsController;
         private SpawnedActorsController deathZoneBorderActors;
         private SecondBossPowerKeepersSpawner powerKeepersActors;
 
-        private Single patrolCycleTime;
-        private Single timePassed;
+        private EllipticMovementControl deathZoneMovement;
+        private EllipticMovementControl powerKeepersMovement;
+        private Single timePassed = 0;
 
         public override CollidableMode CollidableMode => CollidableMode.Shadow;
 
@@ -26,6 +28,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         {
             base.Construct(blueprint, startInfo, level, factory);
             this.player = level.Player;
+
             var a = blueprint.DeathEllipseX;
             var b = blueprint.DeathEllipseY;
             this.deathZone = new DeathZoneParameters
@@ -37,10 +40,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 Damage = blueprint.DeathZoneDamage,
                 TimeSpent = 0
             };
-            this.patrolCycleTime = blueprint.DeathZonePatrolCycleTime;
             this.deathZoneBorderActors = new SpawnedActorsController(blueprint.DeathZoneBorderSpawner, this, startInfo.BehaviorParameters, factory);
+            this.deathZoneMovement = new EllipticMovementControl(this, deathZoneBorderActors, blueprint.DeathZonePatrolCycleTime, a, b);
+
             this.powerKeepersActors = new SecondBossPowerKeepersSpawner(blueprint.PowerKeepersSpawner, this, factory);
-            this.powerKeepersMovement = blueprint.PowerKeepersMovement;
+            this.powerKeepersMovementSpec = blueprint.PowerKeepersMovement;
+            this.powerKeepersMovement = new EllipticMovementControl(this, powerKeepersActors, powerKeepersMovementSpec.PowerKeeperCycleTime, 
+                powerKeepersMovementSpec.InnerBigHalfAxe, powerKeepersMovementSpec.InnerSmallHalfAxe);
+
             this.actorsController = new CompositeSpawnedActorsController(Behavior.SpawnedActors, deathZoneBorderActors, powerKeepersActors);
             this.Died += SecondBoss_Died;
         }
@@ -49,7 +56,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         {
             timePassed += elapsedSeconds;
             DamagingPlayerInDeathZone(elapsedSeconds);
-            DeathZonePatrolMovement(elapsedSeconds);
+            deathZoneMovement.MoveEnemiesInEllipse(elapsedSeconds, 1, 1);
             PowerKeepersMovement(elapsedSeconds);
             base.Update(elapsedSeconds);
         }
@@ -69,35 +76,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 deathZone.TimeSpent = 0;
         }
 
-        private void DeathZonePatrolMovement(Single elapsedSeconds)
-        {
-            for (var i = 0; i < deathZoneBorderActors.SpawnedEnemies.Count; i++)
-            {
-                ICollidable patrol = deathZoneBorderActors.SpawnedEnemies[i];
-                var patrolCount = deathZoneBorderActors.Specification.MaxSpawned;
-                var patrolAngle = System.Math.PI * 2 * (1.0 / patrolCount * i + timePassed / patrolCycleTime);
-                var patrolX = (Single)(deathZone.BigHalfAxe * System.Math.Cos(patrolAngle));
-                var patrolY = (Single)(deathZone.SmallHalfAxe * System.Math.Sin(patrolAngle));
-                patrol.Position = Position + new Vector2(patrolX, patrolY);
-            }
-        }
-
         private void PowerKeepersMovement(Single elapsedSeconds)
         {
-            var heartBeatCycles = timePassed / powerKeepersMovement.HeartBeatTime;
+            var heartBeatCycles = timePassed / powerKeepersMovementSpec.HeartBeatTime;
             var heartBeatCyclePart = heartBeatCycles - System.Math.Floor(heartBeatCycles);
             var expandCoeff = heartBeatCyclePart < 0.5 ? heartBeatCyclePart * 2 : (1 - heartBeatCyclePart) * 2;
-            var expandBigAxeBy = 1 + expandCoeff * powerKeepersMovement.BigHalfAxeExpand;
-            var expandSmallAxeBy = 1 + expandCoeff * powerKeepersMovement.SmallHalfAxeExpand;
-            var powerKeepersCount = powerKeepersActors.SpawnedEnemies.Count;
-            for (var i = 0; i < powerKeepersCount; i++)
-            {
-                ICollidable powerKeeper = powerKeepersActors.SpawnedEnemies[i];
-                var powerKeeperAngle = System.Math.PI * 2 * (1.0 / powerKeepersCount * i + timePassed / powerKeepersMovement.PowerKeeperCycleTime);
-                var powerKeeperX = (Single)(powerKeepersMovement.InnerBigHalfAxe * expandBigAxeBy * System.Math.Cos(powerKeeperAngle));
-                var powerKeeperY = (Single)(powerKeepersMovement.InnerSmallHalfAxe * expandSmallAxeBy * System.Math.Sin(powerKeeperAngle));
-                powerKeeper.Position = Position + new Vector2(powerKeeperX, powerKeeperY);
-            }
+            Single expandBigAxeBy = (Single)(1 + expandCoeff * powerKeepersMovementSpec.BigHalfAxeExpand);
+            Single expandSmallAxeBy = (Single)(1 + expandCoeff * powerKeepersMovementSpec.SmallHalfAxeExpand);
+            powerKeepersMovement.MoveEnemiesInEllipse(elapsedSeconds, expandBigAxeBy, expandSmallAxeBy);
         }
 
         private void SecondBoss_Died(Object sender, EventArgs e)
@@ -105,7 +91,6 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             foreach (var enemy in deathZoneBorderActors.SpawnedEnemies)
                 enemy.TakeDamage(Single.MaxValue);
         }
-
 
         private class DeathZoneParameters
         {
@@ -118,6 +103,53 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
             internal Single CurrentFrameDamage(Single elapsedSeconds) =>
                 Damage * (TimeSpent * TimeSpent - (TimeSpent - elapsedSeconds) * (TimeSpent - elapsedSeconds));
+        }
+
+        private class EllipticMovementControl
+        {
+            private SecondBoss boss;
+            private Single timePassed = 0;
+            private Single cycleTime;
+            private Single bigHalfAxe;
+            private Single smallHalfAxe;
+            private ISpawnedActorsController spawnedActorsController;
+            private Dictionary<IEnemy, Int32> placeInElliplse = new Dictionary<IEnemy, Int32>();
+
+            internal EllipticMovementControl(SecondBoss boss, ISpawnedActorsController spawnedActorsController, 
+                Single cycleTime, Single bigHalfAxe, Single smallHalfAxe)
+            {
+                this.boss = boss;
+                this.spawnedActorsController = spawnedActorsController;
+                this.cycleTime = cycleTime;
+                this.bigHalfAxe = bigHalfAxe;
+                this.smallHalfAxe = smallHalfAxe;
+            }
+
+            internal void MoveEnemiesInEllipse(Single elapsedSeconds, Single xCoeff, Single yCoeff)
+            {
+                timePassed += elapsedSeconds;
+                foreach (IEnemy patrol in spawnedActorsController.SpawnedEnemies)
+                {
+                    if (!placeInElliplse.ContainsKey(patrol))
+                    {
+                        var possiblePlaceInCircle = 0;
+                        while (placeInElliplse.ContainsValue(possiblePlaceInCircle))
+                            possiblePlaceInCircle += 1;
+                        placeInElliplse.Add(patrol, possiblePlaceInCircle);
+                        patrol.Died += Patrol_Died;
+                    }
+                    var i = placeInElliplse[patrol];
+                    var patrolAngle = System.Math.PI * 2 * (1.0 / spawnedActorsController.MaxSpawned * i + timePassed / cycleTime);
+                    var patrolX = (Single)(bigHalfAxe * xCoeff * System.Math.Cos(patrolAngle));
+                    var patrolY = (Single)(smallHalfAxe * yCoeff * System.Math.Sin(patrolAngle));
+                    (patrol as ICollidable).Position = boss.Position + new Vector2(patrolX, patrolY);
+                }
+            }
+
+            private void Patrol_Died(Object sender, EventArgs e)
+            {
+                placeInElliplse.Remove(sender as IEnemy);
+            }
         }
     }
 }

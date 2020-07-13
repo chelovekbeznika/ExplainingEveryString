@@ -17,6 +17,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
 
+        public Int32 MaxSpawned => Specification.MaxSpawned;
+
         internal SpawnedActorsController(SpawnerSpecification specification, IActor spawner, 
             BehaviorParameters spawnerBehaviorParameters, ActorsFactory factory)
         {
