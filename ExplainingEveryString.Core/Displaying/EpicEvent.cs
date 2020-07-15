@@ -7,7 +7,7 @@ namespace ExplainingEveryString.Core.Displaying
     internal class EpicEvent
     {
         private event EventHandler<EpicEventArgs> Event;
-        private Boolean handled = false;
+        internal Boolean Handled { get; private set; } = false;
         private Boolean oneTimeEvent;
         private SpecEffectSpecification specEffect;
         private IDisplayble eventSource;
@@ -25,10 +25,10 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void TryHandle()
         {
-            if (!handled || !oneTimeEvent)
+            if (!Handled || !oneTimeEvent)
             {
                 var sprite = eventSource.SpriteState;
-                handled = true;
+                Handled = true;
                 if (specEffect != null)
                     Event?.Invoke(eventSource, new EpicEventArgs
                     {

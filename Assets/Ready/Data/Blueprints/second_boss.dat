@@ -40,6 +40,19 @@
           "acceleration": 300.0
         }
       },
+      "Spawner": {
+        "MaxSpawned": 2,
+        "Reloader": {
+          "FireRate": 0.2
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "0.0, 0.0"
+          ]
+        },
+        "BlueprintType": "SupportGhost"
+      },
       "MoveTargetSelectType": "RandomTargets",
     },
     
@@ -91,7 +104,8 @@
           "HeartBeatTime": 2.0,
           "PowerKeeperCycleTime": 10.0
         },
-        "PowerKeepersAmount": 7
+        "PowerKeepersAmount": 7,
+        "UseSupport": false
       },
       {
         "Sprite": {
@@ -108,7 +122,8 @@
           "HeartBeatTime": 4.0,
           "PowerKeeperCycleTime": 10.0
         },
-        "PowerKeepersAmount": 8
+        "PowerKeepersAmount": 8,
+        "UseSupport": false
       },
       {
         "Sprite": {
@@ -125,7 +140,8 @@
           "HeartBeatTime": 8.0,
           "PowerKeeperCycleTime": 10.0
         },
-        "PowerKeepersAmount": 9
+        "PowerKeepersAmount": 9,
+        "UseSupport": true
       },
       {
         "Sprite": {
@@ -142,7 +158,8 @@
           "HeartBeatTime": 12.0,
           "PowerKeeperCycleTime": 10.0
         },
-        "PowerKeepersAmount": 10
+        "PowerKeepersAmount": 10,
+        "UseSupport": true
       }
     ]
   },
@@ -174,9 +191,7 @@
     "Behavior": {
       "Weapon": {
         "Reloader": {
-          "FireRate": 5.0,
-          "Ammo": 3,
-          "ReloadTime": 7.5,
+          "FireRate": 0.1,
         },
         "Barrels": [
           {
@@ -241,9 +256,9 @@
       "Mover": {
         "Type": "Acceleration",
         "Parameters": {
-          "startSpeed": 300.0,
-          "maxSpeed": 400.0,
-          "acceleration": 400.0
+          "startSpeed": 200.0,
+          "maxSpeed": 300.0,
+          "acceleration": 600.0
         }
       },
       "MoveTargetSelectType": "MoveTowardPlayer"

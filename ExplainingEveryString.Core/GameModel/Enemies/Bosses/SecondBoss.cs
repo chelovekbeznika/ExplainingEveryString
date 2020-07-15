@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
@@ -54,6 +55,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             this.powerKeepersMovement = new EllipticMovementControl(this, powerKeepersActors, powerKeepersMovementSpec.PowerKeeperCycleTime, 
                 powerKeepersMovementSpec.InnerBigHalfAxe, powerKeepersMovementSpec.InnerSmallHalfAxe);
 
+            this.Behavior.SpawnedActors.TurnOff();
             this.actorsController = new CompositeSpawnedActorsController(Behavior.SpawnedActors, deathZoneBorderActors, powerKeepersActors);
             this.Died += SecondBoss_Died;
         }
@@ -65,6 +67,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             deathZoneMovement.MoveEnemiesInEllipse(elapsedSeconds, 1, 1);
             PowerKeepersMovement(elapsedSeconds);
             base.Update(elapsedSeconds);
+            if (!IsInAppearancePhase && phasesPassed == 0)
+                Behavior.SpawnedActors.TurnOff();
         }
 
         private void DamagingPlayerInDeathZone(Single elapsedSeconds)
@@ -96,6 +100,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         {
             foreach (var enemy in deathZoneBorderActors.SpawnedEnemies)
                 enemy.TakeDamage(Single.MaxValue);
+            foreach (var enemy in Behavior.SpawnedActors.SpawnedEnemies)
+                enemy.TakeDamage(Single.MaxValue);
         }
 
         private void PowerKeeperDied(Object sender, EventArgs e)
@@ -120,6 +126,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             this.powerKeepersMovement = new EllipticMovementControl(this, powerKeepersActors, powerKeepersMovementSpec.PowerKeeperCycleTime,
                 powerKeepersMovementSpec.InnerBigHalfAxe, powerKeepersMovementSpec.InnerSmallHalfAxe);
             this.powerKeepersActors.MaxSpawned = currentPhase.PowerKeepersAmount;
+            if (currentPhase.UseSupport)
+                Behavior.SpawnedActors.TurnOn();
+            else
+                Behavior.SpawnedActors.TurnOff();
         }
 
         private class DeathZoneParameters
