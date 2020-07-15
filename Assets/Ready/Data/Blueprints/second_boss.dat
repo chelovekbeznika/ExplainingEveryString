@@ -5,7 +5,7 @@
     "CollisionDamage": 100.0,
     "Height": 88.0,
     "Width": 160.0,
-    "Hitpoints": 6.0,
+    "Hitpoints": 1.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss2/1",
       "AnimationCycle": 1.0
@@ -48,7 +48,7 @@
     "DeathZoneDamage": 20.0,
     "DeathZonePatrolCycleTime": 15.0,
     "DeathZoneBorderSpawner": {
-      "MaxSpawned": 10,
+      "MaxSpawned": 6,
       "Reloader": {
         "FireRate": 1.0
       },
@@ -69,8 +69,8 @@
     "PowerKeepersMovement": {
       "InnerSmallHalfAxe": 100,
       "InnerBigHalfAxe": 150,
-      "SmallHalfAxeExpand": 0.2,
-      "BigHalfAxeExpand": 0.3,
+      "SmallHalfAxeExpand": 0.25,
+      "BigHalfAxeExpand": 0.25,
       "HeartBeatTime": 1.0,
       "PowerKeeperCycleTime": 10.0
     },
@@ -82,7 +82,15 @@
           "AnimationCycle": 1.0
         },
         "Width": 160,
-        "Height": 72
+        "Height": 72,
+        "PowerKeepersMovement": {
+          "InnerSmallHalfAxe": 100,
+          "InnerBigHalfAxe": 150,
+          "SmallHalfAxeExpand": 0.5,
+          "BigHalfAxeExpand": 0.5,
+          "HeartBeatTime": 2.0,
+          "PowerKeeperCycleTime": 10.0
+        }
       },
       {
         "Sprite": {
@@ -90,7 +98,15 @@
           "AnimationCycle": 1.0
         },
         "Width": 160,
-        "Height": 56
+        "Height": 56,
+        "PowerKeepersMovement": {
+          "InnerSmallHalfAxe": 100,
+          "InnerBigHalfAxe": 150,
+          "SmallHalfAxeExpand": 1.0,
+          "BigHalfAxeExpand": 1.0,
+          "HeartBeatTime": 4.0,
+          "PowerKeeperCycleTime": 10.0
+        }
       },
       {
         "Sprite": {
@@ -98,7 +114,15 @@
           "AnimationCycle": 1.0
         },
         "Width": 160,
-        "Height": 40
+        "Height": 40,
+        "PowerKeepersMovement": {
+          "InnerSmallHalfAxe": 100,
+          "InnerBigHalfAxe": 150,
+          "SmallHalfAxeExpand": 2.0,
+          "BigHalfAxeExpand": 2.0,
+          "HeartBeatTime": 8.0,
+          "PowerKeeperCycleTime": 10.0
+        }
       },
       {
         "Sprite": {
@@ -106,7 +130,15 @@
           "AnimationCycle": 1.0
         },
         "Width": 160,
-        "Height": 24
+        "Height": 24,
+        "PowerKeepersMovement": {
+          "InnerSmallHalfAxe": 100,
+          "InnerBigHalfAxe": 150,
+          "SmallHalfAxeExpand": 3.0,
+          "BigHalfAxeExpand": 3.0,
+          "HeartBeatTime": 12.0,
+          "PowerKeeperCycleTime": 10.0
+        }
       }
     ]
   },

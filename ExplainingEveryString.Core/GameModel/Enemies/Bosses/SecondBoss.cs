@@ -106,13 +106,19 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             {
                 phasesPassed += 1;
                 var currentPhase = phases[phasesPassed - 1];
-
-                base.SpriteState = new Displaying.SpriteState(currentPhase.Sprite);
-                this.Width = currentPhase.Width;
-                this.Height = currentPhase.Height;
-
+                ApplyPhaseChanges(currentPhase);
                 this.powerKeepersActors.Reset();
             }
+        }
+
+        private void ApplyPhaseChanges(SecondBossPhaseSpecification currentPhase)
+        {
+            base.SpriteState = new Displaying.SpriteState(currentPhase.Sprite);
+            this.Width = currentPhase.Width;
+            this.Height = currentPhase.Height;
+            this.powerKeepersMovementSpec = currentPhase.PowerKeepersMovement;
+            this.powerKeepersMovement = new EllipticMovementControl(this, powerKeepersActors, powerKeepersMovementSpec.PowerKeeperCycleTime,
+                powerKeepersMovementSpec.InnerBigHalfAxe, powerKeepersMovementSpec.InnerSmallHalfAxe);
         }
 
         private class DeathZoneParameters
