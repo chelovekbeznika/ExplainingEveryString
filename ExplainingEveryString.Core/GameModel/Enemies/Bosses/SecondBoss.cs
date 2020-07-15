@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             base.Construct(blueprint, startInfo, level, factory);
             this.player = level.Player;
             this.phases = blueprint.Phases;
-            this.HitPoints = (phases.Length + 1) * blueprint.PowerKeepersSpawner.MaxSpawned;
+            this.HitPoints = blueprint.PowerKeepersSpawner.MaxSpawned + blueprint.Phases.Select(phase => phase.PowerKeepersAmount).Sum();
             this.MaxHitPoints = HitPoints;
 
             var a = blueprint.DeathEllipseX;
@@ -119,6 +119,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             this.powerKeepersMovementSpec = currentPhase.PowerKeepersMovement;
             this.powerKeepersMovement = new EllipticMovementControl(this, powerKeepersActors, powerKeepersMovementSpec.PowerKeeperCycleTime,
                 powerKeepersMovementSpec.InnerBigHalfAxe, powerKeepersMovementSpec.InnerSmallHalfAxe);
+            this.powerKeepersActors.MaxSpawned = currentPhase.PowerKeepersAmount;
         }
 
         private class DeathZoneParameters

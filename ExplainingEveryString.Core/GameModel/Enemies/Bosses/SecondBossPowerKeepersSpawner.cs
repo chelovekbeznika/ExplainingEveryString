@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public List<IEnemy> SpawnedEnemies { get; private set; }
 
-        public Int32 MaxSpawned => Specification.MaxSpawned;
+        public Int32 MaxSpawned { get => Specification.MaxSpawned; set => Specification.MaxSpawned = value; }
         public Boolean EveryoneSpawned => alreadySpawned == MaxSpawned;
 
         internal SecondBossPowerKeepersSpawner(OneTimeSpawnerSpecification specification, SecondBoss spawner, 
