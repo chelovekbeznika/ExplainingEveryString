@@ -10,27 +10,37 @@
     "TilePosition": {
       "X": 10,
       "Y": 39,
-      "Offset": "8.0, -8.0"
-    }
+      "Offset": "8, -8"
+    },
+    "Angle": 0.0,
+    "TrajectoryParameters": null,
+    "CustomSpawns": null,
+    "AppearancePhaseDuration": 0.0
   },
   "EnemyWaves": [
     {
+      "Doors": [
+        {
+          "ClosesAt": null,
+          "BlueprintType": "BridgeBlocker",
+          "TilePosition": {
+            "X": 80,
+            "Y": 39,
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        }
+      ],
+      "Checkpoint": null,
       "StartRegion": {
         "X": 70,
         "Y": 30,
         "Width": 5,
         "Height": 20
       },
-      "Doors": [
-        {
-          "BlueprintType": "BridgeBlocker",
-          "TilePosition": {
-            "X": 80,
-            "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
-        }
-      ],
       "MaxEnemiesAtOnce": 2,
       "Enemies": [
         {
@@ -38,193 +48,262 @@
           "TilePosition": {
             "X": 38,
             "Y": 30,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 38,
             "Y": 49,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 78,
             "Y": 30,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 78,
             "Y": 49,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 40,
             "Y": 32,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 40,
             "Y": 47,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 76,
             "Y": 32,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 76,
             "Y": 47,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
-      ]
+      ],
+      "Bosses": null
     },
     {
+      "Doors": [
+        {
+          "ClosesAt": null,
+          "BlueprintType": "BridgeBlocker",
+          "TilePosition": {
+            "X": 100,
+            "Y": 39,
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        }
+      ],
+      "Checkpoint": null,
       "StartRegion": {
         "X": 80,
         "Y": 30,
         "Width": 5,
         "Height": 20
       },
-      "Doors": [
-        {
-          "BlueprintType": "BridgeBlocker",
-          "TilePosition": {
-            "X": 100,
-            "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
-        }
-      ],
       "MaxEnemiesAtOnce": 8,
       "Enemies": [
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": -105.0,
           "TilePosition": {
             "X": 85,
             "Y": 19,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": -105.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": 75.0,
           "TilePosition": {
             "X": 82,
             "Y": 62,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 75.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": -90.0,
           "TilePosition": {
             "X": 97,
             "Y": 24,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": -90.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": 90.0,
           "TilePosition": {
             "X": 92,
             "Y": 58,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 90.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": -150.0,
           "TilePosition": {
             "X": 105,
             "Y": 18,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": -150.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": 135.0,
           "TilePosition": {
             "X": 104,
             "Y": 58,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 135.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 39,
-            "Y": 31
-          }
+            "Y": 31,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 39,
-            "Y": 48
-          }
+            "Y": 48,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 99,
-            "Y": 31
-          }
+            "Y": 31,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 99,
-            "Y": 48
-          }
+            "Y": 48,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
-      ]
+      ],
+      "Bosses": null
     },
     {
-      "StartRegion": {
-        "X": 110,
-        "Y": 30,
-        "Width": 5,
-        "Height": 20
-      },
-      "Checkpoint": {
-        "Name": "Monorail",
-        "PlayerPosition": {
-          "X": 104,
-          "Y": 39,
-          "Offset": "8.0, -8.0"
-        }
-      },
       "Doors": [
         {
+          "ClosesAt": null,
           "BlueprintType": "BridgeBlocker",
           "TilePosition": {
             "X": 160,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "ClosesAt": 2,
@@ -232,70 +311,98 @@
           "TilePosition": {
             "X": 100,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
       ],
+      "Checkpoint": {
+        "Name": "Monorail",
+        "PlayerPosition": {
+          "X": 104,
+          "Y": 39,
+          "Offset": "8, -8"
+        }
+      },
+      "StartRegion": {
+        "X": 110,
+        "Y": 30,
+        "Width": 5,
+        "Height": 20
+      },
+      "MaxEnemiesAtOnce": 2147483647,
       "Enemies": [
         {
           "BlueprintType": "MonorailCannon",
           "TilePosition": {
-            "X": 124,
+            "X": 125,
             "Y": 46,
-            "Offset": "8.0, -8.0"
+            "Offset": "-8, -8"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "-144.0, 0.0",
-            "0.0, 0.0"
-          ]
+            "-144, 0",
+            "0, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "MonorailCannon",
           "TilePosition": {
-            "X": 125,
+            "X": 126,
             "Y": 41,
-            "Offset": "8.0, -8.0"
+            "Offset": "-8, -8"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "64.0, 0.0",
-            "64.0, -96.0",
-            "64.0, 0.0",
-            "0.0, 0.0"
-          ]
+            "64, 0",
+            "64, -96",
+            "64, 0",
+            "0, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "MonorailCannon",
           "TilePosition": {
             "X": 150,
             "Y": 30,
-            "Offset": "8.0, -8.0"
+            "Offset": "8, -8"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "0.0, -32.0",
-            "-336.0, -32.0",
-            "-336.0, 0.0",
-            "-336.0, -32.0",
-            "0.0, -32.0",
-            "0.0, 0.0"
-          ]
+            "0, -32",
+            "-336, -32",
+            "-336, 0",
+            "-336, -32",
+            "0, -32",
+            "0, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
-      ]
+      ],
+      "Bosses": null
     },
     {
-      "StartRegion": {
-        "X": 135,
-        "Y": 30,
-        "Width": 25,
-        "Height": 20
-      },
       "Doors": [
         {
+          "ClosesAt": null,
           "BlueprintType": "BridgeBlocker",
           "TilePosition": {
             "X": 180,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "ClosesAt": 3,
@@ -303,10 +410,21 @@
           "TilePosition": {
             "X": 110,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
       ],
+      "Checkpoint": null,
+      "StartRegion": {
+        "X": 135,
+        "Y": 30,
+        "Width": 25,
+        "Height": 20
+      },
       "MaxEnemiesAtOnce": 3,
       "Enemies": [
         {
@@ -314,101 +432,120 @@
           "TilePosition": {
             "X": 150,
             "Y": 37,
-            "Offset": "8.0, -8.0"
+            "Offset": "8, -8"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "0.0, 80.0",
-            "-336.0, 80.0",
-            "-336.0, -64.0",
-            "-160.0, -64.0",
-            "-336.0, -64.0",
-            "-336.0, 80.0",
-            "0.0, 80.0",
-            "0.0, 0.0"
-          ]
+            "0, 80",
+            "-336, 80",
+            "-336, -64",
+            "-160, -64",
+            "-336, -64",
+            "-336, 80",
+            "0, 80",
+            "0, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "MonorailCannon",
           "TilePosition": {
             "X": 176,
             "Y": 45,
-            "Offset": "8.0, -8.0"
+            "Offset": "8, -8"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "-560.0, 0.0",
-            "0.0, 0.0"
-          ]
+            "-560, 0",
+            "0, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 175,
             "Y": 31,
-          }
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 161,
             "Y": 32,
-          }
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 176,
             "Y": 41,
-          }
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "MonorailCannon",
           "TilePosition": {
             "X": 115,
             "Y": 46,
-            "Offset": "8.0, -8.0"
+            "Offset": "8, -8"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "144.0, 0.0",
-            "0.0, 0.0"
-          ]
+            "144, 0",
+            "0, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "MonorailCannon",
           "TilePosition": {
             "X": 160,
             "Y": 37,
-            "Offset": "8.0, -8.0"
+            "Offset": "8, -8"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "256.0, 0.0",
-            "0.0, 0.0"
-          ]
-        },
-      ]
+            "256, 0",
+            "0, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        }
+      ],
+      "Bosses": null
     },
     {
-      "StartRegion": {
-        "X": 190,
-        "Y": 30,
-        "Width": 50,
-        "Height": 20
-      },
-      "Checkpoint": {
-        "Name": "Minefield",
-        "PlayerPosition": {
-          "X": 184,
-          "Y": 39,
-          "Offset": "8.0, -8.0"
-        }
-      },
       "Doors": [
         {
+          "ClosesAt": null,
           "BlueprintType": "BridgeBlocker",
           "TilePosition": {
             "X": 240,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "ClosesAt": 4,
@@ -416,154 +553,263 @@
           "TilePosition": {
             "X": 180,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
       ],
+      "Checkpoint": {
+        "Name": "Minefield",
+        "PlayerPosition": {
+          "X": 184,
+          "Y": 39,
+          "Offset": "8, -8"
+        }
+      },
+      "StartRegion": {
+        "X": 190,
+        "Y": 30,
+        "Width": 50,
+        "Height": 20
+      },
+      "MaxEnemiesAtOnce": 2147483647,
       "Enemies": [
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 183,
-            "Y": 33
-          }
+            "Y": 33,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 186,
-            "Y": 46
-          }
+            "Y": 46,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 201,
-            "Y": 35
-          }
+            "Y": 35,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 202,
-            "Y": 43
-          }
+            "Y": 43,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 207,
-            "Y": 47
-          }
+            "Y": 47,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 213,
-            "Y": 33
-          }
+            "Y": 33,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 219,
-            "Y": 40
-          }
+            "Y": 40,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 223,
-            "Y": 46
-          }
+            "Y": 46,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 226,
-            "Y": 31
-          }
+            "Y": 31,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 231,
-            "Y": 39
-          }
+            "Y": 39,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 232,
-            "Y": 36
-          }
+            "Y": 36,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 232,
-            "Y": 40
-          }
+            "Y": 40,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 233,
-            "Y": 40
-          }
+            "Y": 40,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 234,
-            "Y": 40
-          }
+            "Y": 40,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 235,
-            "Y": 40
-          }
+            "Y": 40,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 236,
-            "Y": 40
-          }
+            "Y": 40,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 236,
-            "Y": 36
-          }
+            "Y": 36,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 237,
-            "Y": 39
-          }
+            "Y": 39,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
-      ]
+      ],
+      "Bosses": null
     },
     {
-      "StartRegion": {
-        "X": 240,
-        "Y": 30,
-        "Width": 30,
-        "Height": 20
-      },
       "Doors": [
         {
+          "ClosesAt": null,
           "BlueprintType": "BridgeBlocker",
           "TilePosition": {
             "X": 270,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "ClosesAt": 5,
@@ -571,133 +817,256 @@
           "TilePosition": {
             "X": 233,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
       ],
+      "Checkpoint": null,
+      "StartRegion": {
+        "X": 240,
+        "Y": 30,
+        "Width": 30,
+        "Height": 20
+      },
       "MaxEnemiesAtOnce": 7,
       "Enemies": [
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": -90.0,
-          "TilePosition" : {
+          "TilePosition": {
             "X": 235,
             "Y": 30,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": -90.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": -90.0,
           "TilePosition": {
             "X": 268,
             "Y": 30,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": -90.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": 90.0,
           "TilePosition": {
-            "X": 268, 
+            "X": 268,
             "Y": 48,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 90.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "FixedCannon_mk1",
-          "Angle": 90.0,
           "TilePosition": {
             "X": 235,
             "Y": 48,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 90.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Hunter_mk1",
-          "AppearancePhaseDuration": 2.0,
           "TilePosition": {
             "X": 259,
             "Y": 33,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 2.0
         },
         {
           "BlueprintType": "Hunter_mk1",
-          "AppearancePhaseDuration": 2.0,
           "TilePosition": {
             "X": 265,
-            "Y": 44
-          }
+            "Y": 44,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 2.0
         },
         {
           "BlueprintType": "Hunter_mk1",
-          "AppearancePhaseDuration": 2.0,
           "TilePosition": {
             "X": 252,
             "Y": 45,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 2.0
         },
         {
           "BlueprintType": "Hunter_mk1",
-          "AppearancePhaseDuration": 2.0,
           "TilePosition": {
             "X": 248,
             "Y": 37,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 2.0
         },
         {
           "BlueprintType": "Hunter_mk1",
-          "AppearancePhaseDuration": 2.0,
           "TilePosition": {
             "X": 256,
             "Y": 38,
-            "Offset": "8.0, 0.0"
-          }
+            "Offset": "8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 2.0
         },
         {
           "BlueprintType": "Hunter_mk1",
-          "AppearancePhaseDuration": 2.0,
           "TilePosition": {
             "X": 267,
-            "Y": 42
-          }
+            "Y": 42,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 2.0
         },
         {
           "BlueprintType": "Hunter_mk1",
-          "AppearancePhaseDuration": 2.0,
           "TilePosition": {
             "X": 263,
-            "Y": 44
-          }
-        },
-      ]
+            "Y": 44,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 2.0
+        }
+      ],
+      "Bosses": null
     },
     {
+      "Doors": [
+        {
+          "ClosesAt": null,
+          "BlueprintType": "BridgeBlocker",
+          "TilePosition": {
+            "X": 300,
+            "Y": 39,
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "BridgeBlocker",
+          "TilePosition": {
+            "X": 273,
+            "Y": 39,
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "TightSpot",
+        "PlayerPosition": {
+          "X": 277,
+          "Y": 39,
+          "Offset": "8, -8"
+        }
+      },
       "StartRegion": {
         "X": 280,
         "Y": 30,
         "Width": 20,
         "Height": 20
       },
-      "Checkpoint": {
-        "Name": "TightSpot",
-        "PlayerPosition": {
-          "X": 277,
-          "Y": 39,
-          "Offset": "8.0, -8.0"
+      "MaxEnemiesAtOnce": 2147483647,
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 276,
+            "Y": 48,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 298,
+            "Y": 31,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk1",
+          "TilePosition": {
+            "X": 298,
+            "Y": 48,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
-      },
+      ],
+      "Bosses": null
+    },
+    {
       "Doors": [
         {
+          "ClosesAt": null,
           "BlueprintType": "BridgeBlocker",
           "TilePosition": {
-            "X": 300,
+            "X": 310,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "ClosesAt": 6,
@@ -705,60 +1074,21 @@
           "TilePosition": {
             "X": 273,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
       ],
-      "Enemies": [
-        {
-          "BlueprintType": "TripleCannon_mk1",
-          "TilePosition": {
-            "X": 276,
-            "Y": 48
-          }
-        },
-        {
-          "BlueprintType": "TripleCannon_mk1",
-          "TilePosition": {
-            "X": 298,
-            "Y": 31
-          }
-        },
-        {
-          "BlueprintType": "TripleCannon_mk1",
-          "TilePosition": {
-            "X": 298,
-            "Y": 48
-          }
-        }
-      ]
-    },
-    {
+      "Checkpoint": null,
       "StartRegion": {
         "X": 300,
         "Y": 30,
         "Width": 10,
         "Height": 20
       },
-      "Doors": [
-        {
-          "BlueprintType": "BridgeBlocker",
-          "TilePosition": {
-            "X": 310,
-            "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
-        },
-        {
-          "ClosesAt": 6,
-          "BlueprintType": "BridgeBlocker",
-          "TilePosition": {
-            "X": 273,
-            "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
-        }
-      ],
       "MaxEnemiesAtOnce": 2,
       "Enemies": [
         {
@@ -766,178 +1096,259 @@
           "TilePosition": {
             "X": 275,
             "Y": 30,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 308,
             "Y": 49,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 308,
             "Y": 30,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 275,
             "Y": 49,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 277,
             "Y": 32,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 306,
             "Y": 47,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 306,
             "Y": 32,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "BlueprintType": "Tank_mk1",
           "TilePosition": {
             "X": 277,
             "Y": 47,
-            "Offset": "8.0, 8.0"
-          }
+            "Offset": "8, 8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
-      ]
+      ],
+      "Bosses": null
     },
     {
+      "Doors": [],
+      "Checkpoint": null,
       "StartRegion": {
         "X": 310,
         "Y": 30,
         "Width": 30,
         "Height": 20
       },
-      "Doors": [
-      ],
       "MaxEnemiesAtOnce": 5,
       "Enemies": [
         {
-          "BlueprintType": "Mine_mk1", 
+          "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 338,
-            "Y": 41
-          }
+            "Y": 41,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk1", 
+          "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 339,
-            "Y": 34
-          }
+            "Y": 34,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Mine_mk1", 
+          "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 298,
-            "Y": 34
-          }
+            "Y": 34,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk1", 
+          "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 297,
-            "Y": 48
-          }
+            "Y": 48,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Mine_mk1", 
+          "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 327,
-            "Y": 43
-          }
+            "Y": 43,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk1", 
+          "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 330,
-            "Y": 32
-          }
+            "Y": 32,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Mine_mk1", 
+          "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 304,
-            "Y": 40
-          }
+            "Y": 40,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk1", 
+          "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 305,
-            "Y": 42
-          }
+            "Y": 42,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Mine_mk1", 
+          "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 333,
-            "Y": 37
-          }
+            "Y": 37,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk1", 
+          "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 338,
-            "Y": 30
-          }
+            "Y": 30,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Mine_mk1", 
+          "BlueprintType": "Mine_mk1",
           "TilePosition": {
             "X": 296,
-            "Y": 31
-          }
+            "Y": 31,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk1", 
+          "BlueprintType": "Hunter_mk1",
           "TilePosition": {
             "X": 296,
-            "Y": 48
-          }
+            "Y": 48,
+            "Offset": "0, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
-      ]
+      ],
+      "Bosses": null
     },
     {
-      "StartRegion": {
-        "X": 295,
-        "Y": 40,
-        "Width": 30,
-        "Height": 10
-      },
-      "Checkpoint": {
-        "Name": "Boss",
-        "PlayerPosition": {
-          "X": 317,
-          "Y": 33
-        }
-      },
       "Doors": [
         {
           "ClosesAt": 0,
@@ -945,8 +1356,12 @@
           "TilePosition": {
             "X": 36,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "ClosesAt": 0,
@@ -954,8 +1369,12 @@
           "TilePosition": {
             "X": 340,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         },
         {
           "ClosesAt": 8,
@@ -963,24 +1382,46 @@
           "TilePosition": {
             "X": 293,
             "Y": 39,
-            "Offset": "8.0, -8.0"
-          }
+            "Offset": "8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": null,
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
         }
       ],
-      "Enemies": [
-      ],
-      "Bosses": [ 
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 317,
+          "Y": 33,
+          "Offset": "0, 0"
+        }
+      },
+      "StartRegion": {
+        "X": 295,
+        "Y": 40,
+        "Width": 30,
+        "Height": 10
+      },
+      "MaxEnemiesAtOnce": 2147483647,
+      "Enemies": [],
+      "Bosses": [
         {
           "BlueprintType": "Miniboss_mk12",
           "TilePosition": {
             "X": 317,
-            "Y": 54
+            "Y": 54,
+            "Offset": "0, 0"
           },
+          "Angle": 0.0,
           "TrajectoryParameters": [
-            "-240.0, 0.0",
-            "240.0, 0.0"
-          ]         
-        } 
+            "-240, 0",
+            "240, 0"
+          ],
+          "CustomSpawns": null,
+          "AppearancePhaseDuration": 0.0
+        }
       ]
     }
   ],
@@ -994,8 +1435,13 @@
       "Sprites/FogOfWar/Level1X/3",
       "Sprites/FogOfWar/Level1X/4"
     ],
-    "Weights": [16, 1, 1, 1, 1]
+    "Weights": [
+      16,
+      1,
+      1,
+      1,
+      1
+    ]
   },
-  "ObstaclesTilePositions": {
-  }
+  "ObstaclesTilePositions": {}
 }
