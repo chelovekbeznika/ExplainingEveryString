@@ -18,6 +18,7 @@ namespace ExplainingEveryString.Core.GameModel
         private EpicEvent softDamageTaken;
         private EpicEvent baseDestroyed;
         private EpicEvent cannonDestroyed;
+        private EpicEvent weaponSwitched;
 
         public Boolean ShowInterfaceInfo => false;
         public Single MaxHitPoints { get; private set; }
@@ -68,6 +69,7 @@ namespace ExplainingEveryString.Core.GameModel
             softDamageTaken = new EpicEvent(level, blueprint.SoftDamageEffect, false, this, true);
             baseDestroyed = new EpicEvent(level, blueprint.BaseDestructionEffect, true, this, false);
             cannonDestroyed = new EpicEvent(level, blueprint.CannonDestructionEffect, true, this.Weapon, true);
+            weaponSwitched = new EpicEvent(level, blueprint.WeaponSwitchEffect, false, this, true);
             ConstructDash(level, blueprint.Dash);
         }
 
@@ -91,11 +93,14 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void WeaponSelect()
         {
-            selectedWeapon += Input.WeaponsSwitched();
+            var switchMeasure = Input.WeaponsSwitched();
+            selectedWeapon += switchMeasure;
             while (selectedWeapon < 0)
                 selectedWeapon += weapons.Length;
             while (selectedWeapon >= weapons.Length)
                 selectedWeapon -= weapons.Length;
+            if (switchMeasure % weapons.Length != 0)
+                weaponSwitched.TryHandle();
         }
 
         private void Move(Single elapsedSeconds)

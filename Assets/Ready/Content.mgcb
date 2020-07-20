@@ -308,6 +308,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/Shoot.wav
 
+#begin Sounds/Player/WeaponSwitch.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/WeaponSwitch.wav
+
 #begin Sounds/StandardEnemy/Appearance.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

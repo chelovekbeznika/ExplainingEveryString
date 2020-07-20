@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
                 .Concat(blueprint.Weapons.Select(weapon => weapon.ShootingEffect))
                 .Concat(new SpecEffectSpecification[]
             {
-                blueprint.BaseDestructionEffect, 
+                blueprint.BaseDestructionEffect, blueprint.WeaponSwitchEffect,
                 blueprint.CannonDestructionEffect, blueprint.Dash.SpecEffect,
                 blueprint.DamageEffect, blueprint.SoftDamageEffect,
             });

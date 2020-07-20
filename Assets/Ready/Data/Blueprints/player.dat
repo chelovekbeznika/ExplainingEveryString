@@ -105,6 +105,12 @@
     "DefaultSprite": {
       "Name": "Sprites/Player/Base"
     },
+    "WeaponSwitchEffect": {
+      "Sound": {
+        "Name": "Sounds/Player/WeaponSwitch",
+        "Volume": 0.25
+      }
+    },
     "DamageEffect": {
       "Sound": {
         "Name": "Sounds/Player/Hit",
