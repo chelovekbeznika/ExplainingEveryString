@@ -11,6 +11,8 @@ namespace ExplainingEveryString.Core.Input
         private static readonly Vector2 left = new Vector2(-1, 0);
         private static readonly Vector2 right = new Vector2(1, 0);
         private readonly Func<Vector2> playerPositionOnScreen;
+        private Int32 afterLastWeaponCheckScroll;
+        private KeyboardState afterLastWeaponCheckKeyboard;
 
         private Single focused = 0;
         private Single timeToFocus = 0.25F;
@@ -20,6 +22,8 @@ namespace ExplainingEveryString.Core.Input
         {
             this.playerPositionOnScreen = playerPositionOnScreen;
             this.timeToFocus = timeToFocus;
+            this.afterLastWeaponCheckScroll = Mouse.GetState().ScrollWheelValue;
+            this.afterLastWeaponCheckKeyboard = Keyboard.GetState();
         }
 
         public override Vector2 GetMoveDirection()
@@ -65,6 +69,22 @@ namespace ExplainingEveryString.Core.Input
                 focused = 0;
             if (focused > 1)
                 focused = 1;
+        }
+
+        public override Int32 WeaponsSwitched()
+        {
+            var scrollDifference = Mouse.GetState().ScrollWheelValue - afterLastWeaponCheckScroll;
+            afterLastWeaponCheckScroll = Mouse.GetState().ScrollWheelValue;
+
+            var currentKeyboard = Keyboard.GetState();
+            var keyboardResult = 0;
+            if (currentKeyboard.IsKeyDown(Keys.E) && !afterLastWeaponCheckKeyboard.IsKeyDown(Keys.E))
+                keyboardResult += 1;
+            if (currentKeyboard.IsKeyDown(Keys.Q) && !afterLastWeaponCheckKeyboard.IsKeyDown(Keys.Q))
+                keyboardResult -= 1;
+            afterLastWeaponCheckKeyboard = currentKeyboard;
+
+            return scrollDifference / 120 + keyboardResult;
         }
     }
 }

@@ -7,6 +7,7 @@ using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel
 {
@@ -45,7 +46,9 @@ namespace ExplainingEveryString.Core.GameModel
 
         private DashAcceleration dashAcceleration;
 
-        private Weapon Weapon { get; set; }
+        private Weapon[] weapons;
+        private Int32 selectedWeapon = 0;
+        private Weapon Weapon => weapons[selectedWeapon];
 
         protected override void Construct(PlayerBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -57,8 +60,9 @@ namespace ExplainingEveryString.Core.GameModel
             
             MaxHitPoints = blueprint.Hitpoints;
 
-            Weapon = new Weapon(blueprint.Weapon, Input, () => Position, null, level);
-            Weapon.Shoot += level.PlayerShoot;
+            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, null, level)).ToArray();
+            foreach (var weapon in weapons)
+                weapon.Shoot += level.PlayerShoot;
 
             damageTaken = new EpicEvent(level, blueprint.DamageEffect, false, this, true);
             softDamageTaken = new EpicEvent(level, blueprint.SoftDamageEffect, false, this, true);
@@ -79,9 +83,19 @@ namespace ExplainingEveryString.Core.GameModel
         {
             base.Update(elapsedSeconds);
             Input.Update(elapsedSeconds);
+            WeaponSelect();
             Weapon.Update(elapsedSeconds);
             DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);
+        }
+
+        private void WeaponSelect()
+        {
+            selectedWeapon += Input.WeaponsSwitched();
+            while (selectedWeapon < 0)
+                selectedWeapon += weapons.Length;
+            while (selectedWeapon >= weapons.Length)
+                selectedWeapon -= weapons.Length;
         }
 
         private void Move(Single elapsedSeconds)

@@ -9,15 +9,17 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
         public IEnumerable<SpriteSpecification> GetSprites(PlayerBlueprint blueprint)
         {
             return base.GetSprites(blueprint)
-                .Concat(GetSpritesFromWeapon(blueprint.Weapon))
+                .Concat(blueprint.Weapons.SelectMany(weapon => GetSpritesFromWeapon(weapon)))
                 .Concat(new SpriteSpecification[] { blueprint.Dash.Sprite });
         }
 
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(PlayerBlueprint blueprint)
         {
-            return base.GetSpecEffects(blueprint).Concat(new SpecEffectSpecification[]
+            return base.GetSpecEffects(blueprint)
+                .Concat(blueprint.Weapons.Select(weapon => weapon.ShootingEffect))
+                .Concat(new SpecEffectSpecification[]
             {
-                blueprint.Weapon.ShootingEffect, blueprint.BaseDestructionEffect, 
+                blueprint.BaseDestructionEffect, 
                 blueprint.CannonDestructionEffect, blueprint.Dash.SpecEffect,
                 blueprint.DamageEffect, blueprint.SoftDamageEffect,
             });

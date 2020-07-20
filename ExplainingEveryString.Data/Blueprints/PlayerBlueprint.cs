@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single BulletHitboxWidth { get; set; }
         public Single MaxSpeed { get; set; }
         public Single MaxAcceleration { get; set; }
-        public WeaponSpecification Weapon { get; set; }
+        public WeaponSpecification[] Weapons { get; set; }
         public DashSpecification Dash { get; set; }
         public SpecEffectSpecification DamageEffect { get; set; }
         public SpecEffectSpecification SoftDamageEffect { get; set; }
