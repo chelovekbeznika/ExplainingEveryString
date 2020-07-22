@@ -54,7 +54,7 @@ namespace ExplainingEveryString.Core.Input
 
         public override Boolean IsTryingToDash() => GetState().Triggers.Left >= 0.5;
 
-        public override Int32 WeaponsSwitched()
+        public override Int32 WeaponSwitchMeasure()
         {
             var currentState = GetState();
             var result = 0;

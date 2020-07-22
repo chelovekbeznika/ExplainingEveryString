@@ -71,7 +71,7 @@ namespace ExplainingEveryString.Core.Input
                 focused = 1;
         }
 
-        public override Int32 WeaponsSwitched()
+        public override Int32 WeaponSwitchMeasure()
         {
             var scrollDifference = Mouse.GetState().ScrollWheelValue - afterLastWeaponCheckScroll;
             afterLastWeaponCheckScroll = Mouse.GetState().ScrollWheelValue;

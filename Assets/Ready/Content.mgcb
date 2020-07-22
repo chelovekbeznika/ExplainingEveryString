@@ -308,6 +308,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/Shoot.wav
 
+#begin Sounds/Player/Shotgun.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/Shotgun.wav
+
 #begin Sounds/Player/WeaponSwitch.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -3008,6 +3014,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Death.png
 
+#begin Sprites/Player/Grain.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Grain.png
+
 #begin Sprites/Player/PlayerBullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3019,6 +3037,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/PlayerBullet.png
+
+#begin Sprites/Player/Shotgun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Shotgun.png
 
 #begin Sprites/Player/SoftDamage.png
 /importer:TextureImporter

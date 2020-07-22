@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Core.Input
     {
         Vector2 GetMoveDirection();
         Boolean IsTryingToDash();
-        Int32 WeaponsSwitched();
+        Int32 WeaponSwitchMeasure();
         Single Focus { get; }
     }
 
@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.Input
         public abstract Vector2 GetMoveDirection();
         public abstract Vector2 GetFireDirection();
         public abstract Boolean IsTryingToDash();
-        public abstract Int32 WeaponsSwitched();
+        public abstract Int32 WeaponSwitchMeasure();
 
         public virtual void Update(Single elapsedSeconds)
         {

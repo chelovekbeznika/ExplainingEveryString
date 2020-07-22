@@ -93,7 +93,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void WeaponSelect()
         {
-            var switchMeasure = Input.WeaponsSwitched();
+            var switchMeasure = Input.WeaponSwitchMeasure();
             selectedWeapon += switchMeasure;
             while (selectedWeapon < 0)
                 selectedWeapon += weapons.Length;
