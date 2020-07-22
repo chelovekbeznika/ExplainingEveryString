@@ -8,4 +8,9 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         String[] GetSpritesNames();
         void InitSprites(Dictionary<String, SpriteData> sprites);
     }
+
+    internal interface IWeaponDisplayer : IDisplayer
+    {
+        void Draw(PlayerWeaponInfo playerWeapon);
+    }
 }

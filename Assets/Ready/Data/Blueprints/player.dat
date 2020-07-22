@@ -62,6 +62,7 @@
         "AimType": "ControlledByPlayer"
       },
       {
+        "Name": "Shotgun",
         "Reloader": {
           "FireRate": 1.5,
           "Ammo": 6,

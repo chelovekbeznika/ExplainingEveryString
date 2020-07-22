@@ -32,8 +32,8 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         public void InitSprites(Dictionary<String, SpriteData> sprites)
         {
-            this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
-            this.emptyHealthBar = TexturesHelper.GetSprite(sprites, EmptyHealthBarTexture);
+            this.healthBar = TextureLoadingHelper.GetSprite(sprites, HealthBarTexture);
+            this.emptyHealthBar = TextureLoadingHelper.GetSprite(sprites, EmptyHealthBarTexture);
         }
 
         public void Draw(PlayerInterfaceInfo interfaceInfo)

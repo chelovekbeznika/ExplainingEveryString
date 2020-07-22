@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.Interface
 {
-    internal static class TexturesHelper
+    internal static class TextureLoadingHelper
     {
         internal static SpriteData GetSprite(Dictionary<String, SpriteData> sprites, String name)
         {

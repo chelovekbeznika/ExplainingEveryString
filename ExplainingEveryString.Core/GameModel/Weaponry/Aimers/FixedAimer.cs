@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
             return fireDirection;
         }
 
-        public bool IsFiring()
+        public Boolean IsFiring()
         {
             return true;
         }

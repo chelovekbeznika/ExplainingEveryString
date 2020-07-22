@@ -24,8 +24,8 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         public void InitSprites(Dictionary<String, SpriteData> sprites)
         {
-            this.healthBar = TexturesHelper.GetSprite(sprites, HealthBarTexture);
-            this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, RecentlyHitHealthBarTexture);
+            this.healthBar = TextureLoadingHelper.GetSprite(sprites, HealthBarTexture);
+            this.recentlyHitHealthBar = TextureLoadingHelper.GetSprite(sprites, RecentlyHitHealthBarTexture);
         }
 
         public void Draw(IEnumerable<EnemyInterfaceInfo> enemiesInterfaceInfo)

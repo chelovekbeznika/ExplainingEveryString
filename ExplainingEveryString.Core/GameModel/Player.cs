@@ -49,7 +49,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Weapon[] weapons;
         private Int32 selectedWeapon = 0;
-        private Weapon Weapon => weapons[selectedWeapon];
+        internal Weapon Weapon => weapons[selectedWeapon];
 
         protected override void Construct(PlayerBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -61,7 +61,7 @@ namespace ExplainingEveryString.Core.GameModel
             
             MaxHitPoints = blueprint.Hitpoints;
 
-            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, null, level)).ToArray();
+            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, null, level, true)).ToArray();
             foreach (var weapon in weapons)
                 weapon.Shoot += level.PlayerShoot;
 

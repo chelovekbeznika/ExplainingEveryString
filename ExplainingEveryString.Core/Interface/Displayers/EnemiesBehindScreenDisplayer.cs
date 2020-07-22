@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         public void InitSprites(Dictionary<String, SpriteData> sprites)
         {
-            this.dangerSign = TexturesHelper.GetSprite(sprites, DangerSign);
+            this.dangerSign = TextureLoadingHelper.GetSprite(sprites, DangerSign);
         }
 
         public void Draw(List<Vector2> hiddenEnemies)

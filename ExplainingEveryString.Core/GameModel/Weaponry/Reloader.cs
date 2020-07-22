@@ -11,22 +11,22 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Single reloadScatter;
         private Single timeTillNextShoot;
         private Single nextBulletFirstUpdateTime = 0;
-        private Int32 maxAmmo;
-        private Int32 currentAmmo;
+        internal Int32 MaxAmmo { get; private set; }
+        internal Int32 CurrentAmmo { get; private set; }
         private Func<Boolean> isOn;
         private Action<Single> onReloadEnd;
 
-        private Boolean AmmoLimited => maxAmmo > 1;
+        internal Boolean AmmoLimited => MaxAmmo > 1;
 
-        internal Reloader(ReloaderSpecification specification, Func<Boolean> isOn, Action<Single> onReloadEnd)
+        internal Reloader(ReloaderSpecification specification, Func<Boolean> isOn, Action<Single> onReloadEnd, Boolean fullAmmoAtStart = false)
         { 
             this.isOn = isOn;
             this.onReloadEnd = onReloadEnd;
-            this.maxAmmo = specification.Ammo;
+            this.MaxAmmo = specification.Ammo;
             this.shootCooldown = 1 / specification.FireRate;
             this.reloadTime = specification.ReloadTime;
             this.reloadScatter = specification.ReloadScatter;
-            this.currentAmmo = 0;
+            this.CurrentAmmo = fullAmmoAtStart ? this.MaxAmmo : 0;
 
             timeTillNextShoot = AmmoLimited ? reloadTime : shootCooldown;
         }
@@ -35,6 +35,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             if (timeTillNextShoot > Constants.Epsilon)
                 timeTillNextShoot -= elapsedSeconds;
+            else if (CurrentAmmo == 0)
+                CurrentAmmo = this.MaxAmmo;
             if (isOn())
             {
                 weaponFired = false;
@@ -61,11 +63,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private void ProcessReloadForLimitedAmmo(ref Single betweenShoots)
         {
             var reloadAfterThisBullet = false;
-            if (currentAmmo == 1)
+            if (CurrentAmmo == 1)
                 reloadAfterThisBullet = true;
-            if (currentAmmo == 0)
-                currentAmmo = this.maxAmmo;
-            currentAmmo -= 1;
+            if (CurrentAmmo == 0)
+                CurrentAmmo = this.MaxAmmo;
+            CurrentAmmo -= 1;
             if (reloadAfterThisBullet)
                 betweenShoots = reloadTime + RandomUtility.Next(-reloadScatter, reloadScatter);
         }

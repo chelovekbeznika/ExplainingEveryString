@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Interface;
+﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Interface.Displayers;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
@@ -27,6 +28,7 @@ namespace ExplainingEveryString.Core
         private BossInfoDisplayer leftBossInfoDisplayer;
         private BossInfoDisplayer rightBossInfoDisplayer;
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
+        private Dictionary<String, IWeaponDisplayer> playerWeaponDisplayers;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
         {
@@ -59,7 +61,7 @@ namespace ExplainingEveryString.Core
             var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
             var animatedSprites = displayers
                 .SelectMany(displayer => displayer.GetSpritesNames())
-                .Select(spriteName => TexturesHelper.GetFullName(spriteName));
+                .Select(spriteName => TextureLoadingHelper.GetFullName(spriteName));
             var sprites = spriteDataBuilder.Build(animatedSprites);
             foreach (var displayer in displayers)
                 displayer.InitSprites(sprites);
@@ -78,13 +80,18 @@ namespace ExplainingEveryString.Core
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
             var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
+            playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
+            {
+                { "Shotgun", new ShotgunDisplayer(interfaceSpritesDisplayer) }
+            };
 
             return new IDisplayer[]
             {
                 healthBarDisplayer, dashStateDisplayer, enemiesInfoDisplayer,
                 bossInfoDisplayer, leftBossInfoDisplayer, rightBossInfoDisplayer,
                 enemiesBehindScreenDisplayer
-            };
+            }
+            .Concat(playerWeaponDisplayers.Values).ToArray();
         }
 
         public override void Update(GameTime gameTime)
@@ -99,10 +106,15 @@ namespace ExplainingEveryString.Core
             if (interfaceInfo != null)
             {
                 spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
-                enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);
-                enemiesBehindScreenDisplayer.Draw(interfaceInfo.HiddenEnemies);
+       
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
+                var weaponName = interfaceInfo.Player.Weapon.Name;
+                if (weaponName != null && playerWeaponDisplayers.ContainsKey(weaponName))
+                    playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
+
+                enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);
+                enemiesBehindScreenDisplayer.Draw(interfaceInfo.HiddenEnemies);
                 if (interfaceInfo.Bosses != null && interfaceInfo.Bosses.Count > 0)
                 {
                     if (interfaceInfo.Bosses.Count == 1)
@@ -113,6 +125,7 @@ namespace ExplainingEveryString.Core
                         rightBossInfoDisplayer.Draw(interfaceInfo.Bosses[1]);
                     }
                 }
+
                 gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
                 spriteBatch.End();
             }

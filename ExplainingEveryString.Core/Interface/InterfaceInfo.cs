@@ -15,8 +15,9 @@ namespace ExplainingEveryString.Core.Interface
 
     internal class EnemyInterfaceInfo
     {
+        private Single health;
         internal Single MaxHealth { get; set; }
-        internal Single Health { get; set; }
+        internal Single Health { get => health; set => health = value > 0 ? value : 0; }
         internal Single FromLastHit { get; set; }
         internal Rectangle PositionOnScreen { get; set; }
     }
@@ -30,6 +31,15 @@ namespace ExplainingEveryString.Core.Interface
         internal Single DashCooldown { get; set; }
         internal Single TillDashRecharge { get; set; }
         internal DashState DashState { get; set; }
+        internal PlayerWeaponInfo Weapon { get; set; }
+    }
+
+    internal class PlayerWeaponInfo
+    {
+        internal String Name { get; set; }
+        internal Boolean AmmoLimited { get; set; }
+        internal Int32 CurrentAmmo { get; set; }
+        internal Int32 MaxAmmo { get; set; }
     }
 
     internal enum DashState { Active, Nonavailable, Available }

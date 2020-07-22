@@ -43,10 +43,10 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         public void InitSprites(Dictionary<String, SpriteData> sprites)
         {
-            this.healthBar = TexturesHelper.GetSprite(sprites, String.Format(HealthBarTexture, spritesPrefix));
-            this.emptyHealthBar = TexturesHelper.GetSprite(sprites, String.Format(EmptyHealthBarTexture, spritesPrefix));
-            this.recentlyHitHealthBar = TexturesHelper.GetSprite(sprites, String.Format(RecentlyHitHealthBarTexture, spritesPrefix));
-            this.recentlyHitEmptyHealthBar = TexturesHelper.GetSprite(sprites, String.Format(RecentlyHitEmptyHealthBarTexture, spritesPrefix));
+            this.healthBar = TextureLoadingHelper.GetSprite(sprites, String.Format(HealthBarTexture, spritesPrefix));
+            this.emptyHealthBar = TextureLoadingHelper.GetSprite(sprites, String.Format(EmptyHealthBarTexture, spritesPrefix));
+            this.recentlyHitHealthBar = TextureLoadingHelper.GetSprite(sprites, String.Format(RecentlyHitHealthBarTexture, spritesPrefix));
+            this.recentlyHitEmptyHealthBar = TextureLoadingHelper.GetSprite(sprites, String.Format(RecentlyHitEmptyHealthBarTexture, spritesPrefix));
         }
 
         public void Draw(EnemyInterfaceInfo bossInfo)

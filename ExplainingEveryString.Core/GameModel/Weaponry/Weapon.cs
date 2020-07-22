@@ -25,7 +25,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             }
         }
 
-        private Reloader reloader;
+        internal String Name { get; private set; }
+        internal Reloader Reloader { get; private set; }
         private IAimer aimer;
         private Barrel[] barrels;
 
@@ -43,12 +44,13 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal Vector2 GetFireDirection() => aimer.GetFireDirection();
 
         internal Weapon(WeaponSpecification specification, IAimer aimer, 
-            Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, Level level)
+            Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, Level level, Boolean fullAmmoAtStart = false)
         {
             this.aimer = aimer;
             barrels = specification.Barrels
                 .Select(bs => new Barrel(aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
-            reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot);
+            Name = specification.Name;
+            Reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot, fullAmmoAtStart);
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             this.findOutWhereIAm = findOutWhereIAm;
             this.targetLocator = targetLocator;
@@ -64,7 +66,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal void Update(Single elapsedSeconds)
         {
             aimer.Update(elapsedSeconds);
-            reloader.TryReload(elapsedSeconds, out Boolean weaponFired);
+            Reloader.TryReload(elapsedSeconds, out Boolean weaponFired);
             if (weaponFired)
                 this.weaponFired.TryHandle();
             if (IsVisible)

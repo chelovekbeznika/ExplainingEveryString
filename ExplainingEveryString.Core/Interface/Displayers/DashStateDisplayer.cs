@@ -30,10 +30,10 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         public void InitSprites(Dictionary<String, SpriteData> sprites)
         {
-            this.available = TexturesHelper.GetSprite(sprites, AvailableTexture);
-            this.nonAvailable = TexturesHelper.GetSprite(sprites, NonAvailableTexture);
-            this.cooldown = TexturesHelper.GetSprite(sprites, CooldownTexture);
-            this.active = TexturesHelper.GetSprite(sprites, ActiveTexture);
+            this.available = TextureLoadingHelper.GetSprite(sprites, AvailableTexture);
+            this.nonAvailable = TextureLoadingHelper.GetSprite(sprites, NonAvailableTexture);
+            this.cooldown = TextureLoadingHelper.GetSprite(sprites, CooldownTexture);
+            this.active = TextureLoadingHelper.GetSprite(sprites, ActiveTexture);
         }
         public void Draw(PlayerInterfaceInfo interfaceInfo)
         {

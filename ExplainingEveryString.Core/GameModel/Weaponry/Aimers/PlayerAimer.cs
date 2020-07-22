@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
                 return new Vector2(0, 0);
         }
 
-        public bool IsFiring()
+        public Boolean IsFiring()
         {
             return true;
         }
