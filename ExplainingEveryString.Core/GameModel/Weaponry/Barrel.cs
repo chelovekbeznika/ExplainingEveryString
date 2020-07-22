@@ -38,11 +38,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal void OnShoot(Single bulletFirstFrameUpdateTime)
         {
-            var barrelDirection = aimer.GetFireDirection();
+            var barrelDirection = GetFireDirection(false);
             var position = findOutWhereIAm() + baseOffset + barrelDirection * length + GetMuzzleOffset();
             foreach (var i in Enumerable.Range(0, bulletsAtOnce))
             {
-                var direction = GetFireDirection();
+                var direction = GetFireDirection(true);
                 var bullet = new Bullet(position, direction, bulletSpecification, targetLocator);
                 var eventArgs = new ShootEventArgs
                 {
@@ -55,17 +55,17 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private Vector2 GetMuzzleOffset()
         {
-            var direction = aimer.GetFireDirection();
+            var direction = GetFireDirection(false);
             return GeometryHelper.RotateVector(muzzleOffset, direction.Y, direction.X);
         }
 
-        private Vector2 GetFireDirection()
+        private Vector2 GetFireDirection(Boolean includeInaccuracy)
         {
             var direction = aimer.GetFireDirection();
             var angle = AngleConverter.ToRadians(direction);
             if (angleCorrection != 0)
                 angle += angleCorrection;
-            if (accuracy != 0)
+            if (accuracy != 0 && includeInaccuracy)
                 angle += (RandomUtility.Next() - 0.5F) * accuracy;
             direction = AngleConverter.ToVector(angle);
             return direction;
