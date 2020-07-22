@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.Interface
         {
             return new PlayerInterfaceInfo
             {
-                Health = player.HitPoints,
+                Health = player.HitPoints > 0 ? player.HitPoints : 0,
                 MaxHealth = player.MaxHitPoints,
                 FromLastHit = player.FromLastHit,
                 DashCooldown = player.DashController.RechargeTime,
@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Core.Interface
         {
             return new EnemyInterfaceInfo
             {
-                Health = interfaceAccessable.HitPoints,
+                Health = interfaceAccessable.HitPoints > 0 ? interfaceAccessable.HitPoints : 0,
                 MaxHealth = interfaceAccessable.MaxHitPoints,
                 FromLastHit = interfaceAccessable.FromLastHit,
                 PositionOnScreen = camera.PositionOnScreen(interfaceAccessable)
