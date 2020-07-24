@@ -28,6 +28,7 @@ namespace ExplainingEveryString.Core
         private BossInfoDisplayer leftBossInfoDisplayer;
         private BossInfoDisplayer rightBossInfoDisplayer;
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
+        private AmmoStockDisplayer ammoStockDisplayer;
         private Dictionary<String, IWeaponDisplayer> playerWeaponDisplayers;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
@@ -78,6 +79,7 @@ namespace ExplainingEveryString.Core
             leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.LeftBossPrefix, -160);
             rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightBossPrefix, 160);
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
+            ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
             var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
@@ -87,7 +89,7 @@ namespace ExplainingEveryString.Core
 
             return new IDisplayer[]
             {
-                healthBarDisplayer, dashStateDisplayer, enemiesInfoDisplayer,
+                healthBarDisplayer, dashStateDisplayer, enemiesInfoDisplayer, ammoStockDisplayer,
                 bossInfoDisplayer, leftBossInfoDisplayer, rightBossInfoDisplayer,
                 enemiesBehindScreenDisplayer
             }
@@ -113,6 +115,8 @@ namespace ExplainingEveryString.Core
                 var weaponName = interfaceInfo.Player.Weapon.Name;
                 if (weaponName != null && playerWeaponDisplayers.ContainsKey(weaponName))
                     playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
+                if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
+                    ammoStockDisplayer.Draw(interfaceInfo.Player.Weapon.AmmoStock.Value);
 
                 //Enemies
                 enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);

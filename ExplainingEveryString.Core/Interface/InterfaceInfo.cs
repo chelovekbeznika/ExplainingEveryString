@@ -40,6 +40,7 @@ namespace ExplainingEveryString.Core.Interface
         internal Boolean AmmoLimited { get; set; }
         internal Int32 CurrentAmmo { get; set; }
         internal Int32 MaxAmmo { get; set; }
+        internal Int32? AmmoStock { get; set; }
     }
 
     internal enum DashState { Active, Nonavailable, Available }

@@ -10,14 +10,14 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Single reloadTime;
         private Single timeTillNextShoot;
         private Single nextBulletFirstUpdateTime = 0;
-        private Int32? ammoStock;
+        internal Int32? AmmoStock { get; private set; }
         internal Int32 MaxAmmo { get; private set; }
         internal Int32 CurrentAmmo { get; private set; }
         private Func<Boolean> isOn;
         private Action<Single> onReloadEnd;
 
         internal Boolean AmmoLimited => MaxAmmo > 1;
-        internal Boolean HasAmmo => ammoStock is null || ammoStock > 0;
+        internal Boolean HasAmmo => AmmoStock is null || AmmoStock > 0;
 
         internal Reloader(ReloaderSpecification specification, Func<Boolean> isOn, Action<Single> onReloadEnd, Boolean fullAmmoAtStart = false, Int32? ammoStock = null)
         { 
@@ -51,8 +51,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     if (AmmoLimited)
                         ProcessReloadForLimitedAmmo(ref betweenShoots);
 
-                    if (ammoStock != null)
-                        ammoStock -= 1;
+                    if (AmmoStock != null)
+                        AmmoStock -= 1;
 
                     timeTillNextShoot += betweenShoots;
                     nextBulletFirstUpdateTime -= betweenShoots;
@@ -68,7 +68,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal void SupplyLimitedAmmoStock(Int32 ammoStock)
         {
-            this.ammoStock = ammoStock;
+            this.AmmoStock = ammoStock;
             Reload();
         }
 
@@ -84,6 +84,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 betweenShoots = reloadTime;
         }
 
-        private void Reload() => CurrentAmmo = System.Math.Min(this.MaxAmmo, this.ammoStock ?? Int32.MaxValue);
+        private void Reload() => CurrentAmmo = System.Math.Min(this.MaxAmmo, this.AmmoStock ?? Int32.MaxValue);
     }
 }

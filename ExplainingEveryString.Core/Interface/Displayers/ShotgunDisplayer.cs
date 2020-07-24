@@ -9,7 +9,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     {
         private const Int32 betweenShellsPixels = 4;
         private const Int32 pixelsFromRight = 12;
-        private const Int32 pixelsFromBottom = 32;
+        private const Int32 pixelsFromBottom = 16;
 
         private SpriteData shell;
         private SpriteData emptyShell;

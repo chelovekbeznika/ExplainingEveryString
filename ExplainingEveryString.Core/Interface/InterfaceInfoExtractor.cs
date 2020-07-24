@@ -33,17 +33,18 @@ namespace ExplainingEveryString.Core.Interface
                 FromLastHit = player.FromLastHit,
                 DashCooldown = player.DashController.RechargeTime,
                 TillDashRecharge = player.DashController.TillRecharge,
-                DashState = player.DashController.IsActive 
-                    ? DashState.Active 
+                DashState = player.DashController.IsActive
+                    ? DashState.Active
                     : player.DashController.IsAvailable
-                        ? DashState.Available 
+                        ? DashState.Available
                         : DashState.Nonavailable,
                 Weapon = new PlayerWeaponInfo
                 {
                     Name = player.Weapon.Name,
                     AmmoLimited = player.Weapon.Reloader.AmmoLimited,
                     CurrentAmmo = player.Weapon.Reloader.CurrentAmmo,
-                    MaxAmmo = player.Weapon.Reloader.MaxAmmo
+                    MaxAmmo = player.Weapon.Reloader.MaxAmmo,
+                    AmmoStock = player.Weapon.Reloader.AmmoStock
                 }
             };
         }

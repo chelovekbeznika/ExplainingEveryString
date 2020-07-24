@@ -62,7 +62,7 @@ namespace ExplainingEveryString.Core.GameModel
             MaxHitPoints = blueprint.Hitpoints;
 
             weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, null, level, true)).ToArray();
-            weapons.First(weapon => weapon.Name == "Shotgun").Reloader.SupplyLimitedAmmoStock(30);
+            weapons.First(weapon => weapon.Name == "Shotgun").Reloader.SupplyLimitedAmmoStock(60);
             foreach (var weapon in weapons)
                 weapon.Shoot += level.PlayerShoot;
 
