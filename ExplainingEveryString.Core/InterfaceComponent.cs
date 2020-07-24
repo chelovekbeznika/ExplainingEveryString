@@ -106,13 +106,15 @@ namespace ExplainingEveryString.Core
             if (interfaceInfo != null)
             {
                 spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
-       
+
+                //Player
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
                 var weaponName = interfaceInfo.Player.Weapon.Name;
                 if (weaponName != null && playerWeaponDisplayers.ContainsKey(weaponName))
                     playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
 
+                //Enemies
                 enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);
                 enemiesBehindScreenDisplayer.Draw(interfaceInfo.HiddenEnemies);
                 if (interfaceInfo.Bosses != null && interfaceInfo.Bosses.Count > 0)
