@@ -66,7 +66,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal void Update(Single elapsedSeconds)
         {
             aimer.Update(elapsedSeconds);
-            Reloader.TryReload(elapsedSeconds, out Boolean weaponFired);
+            Reloader.Update(elapsedSeconds, out Boolean weaponFired);
             if (weaponFired)
                 this.weaponFired.TryHandle();
             if (IsVisible)

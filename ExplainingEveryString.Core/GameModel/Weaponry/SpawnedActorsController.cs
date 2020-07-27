@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public void Update(Single elapsedSeconds)
         {
             if (active)
-                reloader.TryReload(elapsedSeconds, out Boolean enemySpawned);
+                reloader.Update(elapsedSeconds, out Boolean enemySpawned);
         }
 
         public void SendDeadToHeaven(List<IEnemy> avengers)

@@ -87,6 +87,8 @@ namespace ExplainingEveryString.Core.GameModel
             base.Update(elapsedSeconds);
             Input.Update(elapsedSeconds);
             WeaponSelect();
+            if (Input.IsTryingToReload())
+                Weapon.Reloader.TryReload();
             Weapon.Update(elapsedSeconds);
             DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);

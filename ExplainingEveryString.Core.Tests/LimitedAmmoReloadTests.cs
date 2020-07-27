@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Tests
         [Test]
         public void BeforeShot()
         {
-            reloader.TryReload(50, out Boolean weaponFired);
+            reloader.Update(50, out Boolean weaponFired);
             InnerAssert(5, 0);
         }
 
@@ -54,7 +54,7 @@ namespace ExplainingEveryString.Core.Tests
         private void InnerAssert(Single time, Int32 shots)
         {
             aimer.StartFire();
-            reloader.TryReload(time, out Boolean weaponFired);
+            reloader.Update(time, out Boolean weaponFired);
             aimer.StopFire();
             Assert.That(shots, Is.EqualTo(shots));
         }

@@ -54,6 +54,8 @@ namespace ExplainingEveryString.Core.Input
 
         public override Boolean IsTryingToDash() => GetState().Triggers.Left >= 0.5;
 
+        public override Boolean IsTryingToReload() => GetState().Buttons.A == ButtonState.Pressed;
+
         public override Int32 WeaponSwitchMeasure()
         {
             var currentState = GetState();

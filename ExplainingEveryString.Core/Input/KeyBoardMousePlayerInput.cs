@@ -55,10 +55,9 @@ namespace ExplainingEveryString.Core.Input
             return NormalizeDirectionVector(fireDirectionOnLevel);
         }
 
-        public override Boolean IsTryingToDash()
-        {
-            return Keyboard.GetState().IsKeyDown(Keys.Space);
-        }
+        public override Boolean IsTryingToDash() => Keyboard.GetState().IsKeyDown(Keys.Space);
+
+        public override Boolean IsTryingToReload() => Keyboard.GetState().IsKeyDown(Keys.R);
 
         public override void Update(Single elapsedSeconds)
         {
@@ -86,5 +85,7 @@ namespace ExplainingEveryString.Core.Input
 
             return scrollDifference / 120 + keyboardResult;
         }
+
+
     }
 }
