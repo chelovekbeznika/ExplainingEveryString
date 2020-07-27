@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
                 blueprint.DeathEffect, blueprint.BeforeAppearanceEffect, blueprint.AfterAppearanceEffect, blueprint.GoalAchievedEffect
             };
             if (blueprint.Behavior.Weapon != null)
-                specEffects.Add(blueprint.Behavior.Weapon.ShootingEffect);
+                specEffects.AddRange(GetSpecEffectsFromWeapon(blueprint.Behavior.Weapon));
             return specEffects;
         }
     }

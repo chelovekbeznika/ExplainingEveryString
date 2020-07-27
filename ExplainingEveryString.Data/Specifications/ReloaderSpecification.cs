@@ -10,5 +10,7 @@ namespace ExplainingEveryString.Data.Specifications
         public Int32 Ammo { get; set; }
         [DefaultValue(0.0)]
         public Single ReloadTime { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification ReloadStartedEffect { get; set; }
     }
 }

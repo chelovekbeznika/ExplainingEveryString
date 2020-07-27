@@ -314,6 +314,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/Shotgun.wav
 
+#begin Sounds/Player/ShotgunReload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/ShotgunReload.wav
+
 #begin Sounds/Player/WeaponSwitch.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

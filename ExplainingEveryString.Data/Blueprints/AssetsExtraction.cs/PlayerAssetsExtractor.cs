@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(PlayerBlueprint blueprint)
         {
             return base.GetSpecEffects(blueprint)
-                .Concat(blueprint.Weapons.Select(weapon => weapon.ShootingEffect))
+                .Concat(blueprint.Weapons.SelectMany(weapon => GetSpecEffectsFromWeapon(weapon)))
                 .Concat(new SpecEffectSpecification[]
             {
                 blueprint.BaseDestructionEffect, blueprint.WeaponSwitchEffect,

@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
             var phasesSpeceffects = blueprint.Phases
                 .Select(phase => phase.Behavior.Weapon)
                 .Where(weapon => weapon != null)
-                .Select(weapon => weapon.ShootingEffect);
+                .SelectMany(weapon => GetSpecEffectsFromWeapon(weapon));
             return baseSpecEffects.Concat(phasesSpeceffects)
                 .Concat(new SpecEffectSpecification[] { blueprint.PhaseOnEffect, blueprint.PhaseOffEffect });
         }

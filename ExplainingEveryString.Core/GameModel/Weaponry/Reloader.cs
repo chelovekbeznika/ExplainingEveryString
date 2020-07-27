@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Math;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Specifications;
 using System;
 
@@ -6,6 +7,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
     internal class Reloader
     {
+        internal event EventHandler ReloadStarted;
+
         private Single shootCooldown;
         private Single reloadTime;
         private Single timeTillNextShoot;
@@ -62,8 +65,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
                     if (AmmoStock != null)
                         AmmoStock -= 1;
-                    if (!HasAmmo)
-                        reloadingNow = false;
 
                     timeTillNextShoot += betweenShoots;
                     nextBulletFirstUpdateTime -= betweenShoots;
@@ -85,6 +86,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             CurrentAmmo = 0;
             timeTillNextShoot = reloadTime;
             reloadingNow = true;
+            ReloadStarted?.Invoke(this, EventArgs.Empty);
         }
 
         internal void SupplyLimitedAmmoStock(Int32 ammoStock)
@@ -103,8 +105,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             CurrentAmmo -= 1;
             if (reloadAfterThisBullet)
             {
-                reloadingNow = true;
+                reloadingNow = AmmoStock is null || AmmoStock > 1;
                 betweenShoots = reloadTime;
+                if (reloadingNow)
+                    ReloadStarted?.Invoke(this, EventArgs.Empty);
             }
             else
                 reloadingNow = false;

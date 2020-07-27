@@ -31,6 +31,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Barrel[] barrels;
 
         private readonly EpicEvent weaponFired;
+        private readonly EpicEvent reloadStarted;
 
         private readonly Func<Vector2> findOutWhereIAm;
         private readonly Func<Vector2> targetLocator;
@@ -51,10 +52,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 .Select(bs => new Barrel(aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
             Name = specification.Name;
             Reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot, fullAmmoAtStart);
+            Reloader.ReloadStarted += (sender, e) => reloadStarted.TryHandle();
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             this.findOutWhereIAm = findOutWhereIAm;
             this.targetLocator = targetLocator;
             this.weaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
+            this.reloadStarted = new EpicEvent(level, specification.Reloader.ReloadStartedEffect, false, this, true);
         }
 
         private void OnShoot(Single seconds)

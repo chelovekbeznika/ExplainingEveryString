@@ -66,7 +66,13 @@
         "Reloader": {
           "FireRate": 1.5,
           "Ammo": 6,
-          "ReloadTime": 2.0
+          "ReloadTime": 2.0,
+          "ReloadStartedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/ShotgunReload",
+              "Volume": 0.25
+            }
+          }
         },
         "Sprite": {
           "Name": "Sprites/Player/Shotgun",
