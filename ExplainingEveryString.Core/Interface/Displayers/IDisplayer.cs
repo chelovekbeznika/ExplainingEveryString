@@ -11,6 +11,6 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
     internal interface IWeaponDisplayer : IDisplayer
     {
-        void Draw(PlayerWeaponInfo playerWeapon);
+        void Draw(PlayerWeaponInterfaceInfo playerWeapon);
     }
 }

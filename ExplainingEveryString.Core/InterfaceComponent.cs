@@ -29,6 +29,7 @@ namespace ExplainingEveryString.Core
         private BossInfoDisplayer rightBossInfoDisplayer;
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
         private AmmoStockDisplayer ammoStockDisplayer;
+        private ReloadDisplayer reloadDisplayer;
         private Dictionary<String, IWeaponDisplayer> playerWeaponDisplayers;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
@@ -80,6 +81,7 @@ namespace ExplainingEveryString.Core
             rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightBossPrefix, 160);
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
+            reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
             var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
@@ -89,9 +91,9 @@ namespace ExplainingEveryString.Core
 
             return new IDisplayer[]
             {
-                healthBarDisplayer, dashStateDisplayer, enemiesInfoDisplayer, ammoStockDisplayer,
-                bossInfoDisplayer, leftBossInfoDisplayer, rightBossInfoDisplayer,
-                enemiesBehindScreenDisplayer
+                healthBarDisplayer, dashStateDisplayer, ammoStockDisplayer, reloadDisplayer,
+                enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer, 
+                rightBossInfoDisplayer, enemiesBehindScreenDisplayer
             }
             .Concat(playerWeaponDisplayers.Values).ToArray();
         }
@@ -117,6 +119,9 @@ namespace ExplainingEveryString.Core
                     playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
                 if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
                     ammoStockDisplayer.Draw(interfaceInfo.Player.Weapon.AmmoStock.Value);
+                if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue) 
+                    reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
+
 
                 //Enemies
                 enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);

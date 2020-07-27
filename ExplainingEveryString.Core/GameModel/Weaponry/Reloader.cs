@@ -13,7 +13,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal Int32? AmmoStock { get; private set; }
         internal Int32 MaxAmmo { get; private set; }
         internal Int32 CurrentAmmo { get; private set; }
-        internal Boolean ReloadingNow { get; private set; }
+        internal Single? ReloadRemained => reloadingNow ? timeTillNextShoot / reloadTime : null as Single?;
+        private Boolean reloadingNow;
         private Func<Boolean> isOn;
         private Action<Single> onReloadEnd;
 
@@ -31,7 +32,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 LoadAmmo();
             else
             {
-                ReloadingNow = true;
+                reloadingNow = true;
                 CurrentAmmo = 0;
             }
 
@@ -46,7 +47,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             {
                 if (CurrentAmmo == 0)
                     LoadAmmo();
-                ReloadingNow = false;
+                reloadingNow = false;
             }
             if (isOn() && HasAmmo)
             {
@@ -61,6 +62,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
                     if (AmmoStock != null)
                         AmmoStock -= 1;
+                    if (!HasAmmo)
+                        reloadingNow = false;
 
                     timeTillNextShoot += betweenShoots;
                     nextBulletFirstUpdateTime -= betweenShoots;
@@ -76,12 +79,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal void TryReload()
         {
-            if (!AmmoLimited || CurrentAmmo == MaxAmmo || CurrentAmmo == AmmoStock || ReloadingNow)
+            if (!AmmoLimited || CurrentAmmo == MaxAmmo || CurrentAmmo == AmmoStock || reloadingNow)
                 return;
 
             CurrentAmmo = 0;
             timeTillNextShoot = reloadTime;
-            ReloadingNow = true;
+            reloadingNow = true;
         }
 
         internal void SupplyLimitedAmmoStock(Int32 ammoStock)
@@ -100,9 +103,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             CurrentAmmo -= 1;
             if (reloadAfterThisBullet)
             {
-                ReloadingNow = true;
+                reloadingNow = true;
                 betweenShoots = reloadTime;
             }
+            else
+                reloadingNow = false;
         }
 
         private void LoadAmmo() => CurrentAmmo = System.Math.Min(this.MaxAmmo, this.AmmoStock ?? Int32.MaxValue);

@@ -2558,6 +2558,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/Ammo/9.png
 
+#begin Sprites/Interface/AmmoClip.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/AmmoClip.png
+
 #begin Sprites/Interface/BossHealthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2701,6 +2713,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/LeftDoubleBossHealthBar.png
+
+#begin Sprites/Interface/Magazine.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/Magazine.png
+
+#begin Sprites/Interface/MagazineTopPart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/MagazineTopPart.png
 
 #begin Sprites/Interface/RecentlyHitBossHealthBar.png
 /importer:TextureImporter

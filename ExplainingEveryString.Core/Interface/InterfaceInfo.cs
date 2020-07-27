@@ -31,16 +31,17 @@ namespace ExplainingEveryString.Core.Interface
         internal Single DashCooldown { get; set; }
         internal Single TillDashRecharge { get; set; }
         internal DashState DashState { get; set; }
-        internal PlayerWeaponInfo Weapon { get; set; }
+        internal PlayerWeaponInterfaceInfo Weapon { get; set; }
     }
 
-    internal class PlayerWeaponInfo
+    internal class PlayerWeaponInterfaceInfo
     {
         internal String Name { get; set; }
         internal Boolean AmmoLimited { get; set; }
         internal Int32 CurrentAmmo { get; set; }
         internal Int32 MaxAmmo { get; set; }
         internal Int32? AmmoStock { get; set; }
+        internal Single? ReloadRemained { get; set; }
     }
 
     internal enum DashState { Active, Nonavailable, Available }

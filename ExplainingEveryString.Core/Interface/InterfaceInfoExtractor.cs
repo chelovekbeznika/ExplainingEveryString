@@ -38,13 +38,14 @@ namespace ExplainingEveryString.Core.Interface
                     : player.DashController.IsAvailable
                         ? DashState.Available
                         : DashState.Nonavailable,
-                Weapon = new PlayerWeaponInfo
+                Weapon = new PlayerWeaponInterfaceInfo
                 {
                     Name = player.Weapon.Name,
                     AmmoLimited = player.Weapon.Reloader.AmmoLimited,
                     CurrentAmmo = player.Weapon.Reloader.CurrentAmmo,
                     MaxAmmo = player.Weapon.Reloader.MaxAmmo,
-                    AmmoStock = player.Weapon.Reloader.AmmoStock
+                    AmmoStock = player.Weapon.Reloader.AmmoStock,
+                    ReloadRemained = player.Weapon.Reloader.ReloadRemained
                 }
             };
         }

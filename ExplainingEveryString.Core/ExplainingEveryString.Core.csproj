@@ -99,6 +99,7 @@
     <Compile Include="Interface\Displayers\BossInfoDisplayer.cs" />
     <Compile Include="Interface\Displayers\IDisplayer.cs" />
     <Compile Include="Interface\Displayers\EnemiesBehindScreenDisplayer.cs" />
+    <Compile Include="Interface\Displayers\ReloadDisplayer.cs" />
     <Compile Include="Interface\Displayers\ShotgunDisplayer.cs" />
     <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\Displayers\DashStateDisplayer.cs" />

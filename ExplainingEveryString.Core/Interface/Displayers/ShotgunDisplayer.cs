@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
             this.displayer = displayer;
         }
 
-        public void Draw(PlayerWeaponInfo playerWeapon)
+        public void Draw(PlayerWeaponInterfaceInfo playerWeapon)
         {
             foreach (var index in Enumerable.Range(0, playerWeapon.MaxAmmo))
             {
