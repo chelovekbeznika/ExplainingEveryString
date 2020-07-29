@@ -140,6 +140,7 @@
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
+              "ConsiderAngle": true,
               "Sprite": {
                 "Name": "Sprites/Player/Rocket"
               }

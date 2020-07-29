@@ -20,6 +20,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Single bulletAge = 0;
         private Boolean alive = true;
         private BulletTrajectory trajectory;
+        private Boolean considerAngle;
 
         public SpriteState SpriteState { get; private set; }
         public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
@@ -38,6 +39,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.OldPosition = position;
             this.Damage = specification.Damage;
             this.timeToLive = specification.TimeToLive;
+            this.considerAngle = specification.ConsiderAngle;
             this.trajectory = trajectoryFactory.GetTrajectory(specification.TrajectoryType,
                 position, fireDirection, specification.TrajectoryParameters);
             this.targetLocator = targetLocator;
@@ -48,9 +50,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             if (IsHoming)
                 trajectory.FireDirection = CorrectFireDirection(trajectory.FireDirection, elapsedSeconds);
-            OldPosition = Position;
             bulletAge += elapsedSeconds;
+            OldPosition = Position;
             Position = trajectory.GetBulletPosition(bulletAge);
+            if (considerAngle)
+                SpriteState.Angle = AngleConverter.ToRadians(Position - OldPosition);
             SpriteState.Update(elapsedSeconds);
         }
 

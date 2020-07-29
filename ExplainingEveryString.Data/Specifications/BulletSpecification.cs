@@ -16,6 +16,8 @@ namespace ExplainingEveryString.Data.Specifications
         /// </summary>
         [DefaultValue(0.0)]
         public Single HomingSpeed { get; set; }
+        [DefaultValue(false)]
+        public Boolean ConsiderAngle { get; set; }
 
         public SpriteSpecification Sprite { get; set; }
     }
