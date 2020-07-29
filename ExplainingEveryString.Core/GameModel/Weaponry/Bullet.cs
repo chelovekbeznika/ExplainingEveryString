@@ -28,6 +28,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public Vector2 Position { get; private set; }
         internal Vector2 OldPosition { get; private set; }
         internal Single Damage { get; private set; }
+        internal Single BlastWaveRadius { get; private set; }
 
         private Boolean IsHoming => targetLocator != null && homingSpeed > 0;
         public Boolean IsVisible => IsAlive();
@@ -39,6 +40,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.Position = position;
             this.OldPosition = position;
             this.Damage = specification.Damage;
+            this.BlastWaveRadius = specification.BlastWaveRadius;
             this.timeToLive = specification.TimeToLive;
             this.considerAngle = specification.ConsiderAngle;
             this.trajectory = trajectoryFactory.GetTrajectory(specification.TrajectoryType,

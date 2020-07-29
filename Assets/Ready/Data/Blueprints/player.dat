@@ -138,7 +138,8 @@
                 "speed": 160.0,
                 "acceleration": 320.0
               },
-              "Damage": 15.0,
+              "Damage": 20.0,
+              "BlastWaveRadius": 96.0,
               "TimeToLive": 5.0,
               "ConsiderAngle": true,
               "Sprite": {

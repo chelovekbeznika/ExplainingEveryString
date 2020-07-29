@@ -10,6 +10,8 @@ namespace ExplainingEveryString.Data.Specifications
         [DefaultValue("Linear")]
         public String TrajectoryType { get; set; }
         public Single Damage { get; set; }
+        [DefaultValue(0F)]
+        public Single BlastWaveRadius { get; set; }
         public Single TimeToLive { get; set; }
         /// <summary>
         /// Degrees per second
