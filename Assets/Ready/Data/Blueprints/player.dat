@@ -119,6 +119,40 @@
           }
         },
         "AimType": "ControlledByPlayer"
+      },
+      {
+        "Name": "RocketLauncher",
+        "Reloader": {
+          "FireRate": 1
+        },
+        "Sprite": {
+          "Name": "Sprites/Player/RocketLauncher",
+          "AnimationCycle": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 8.0,
+            "Bullet": {
+              "TrajectoryType": "Acceleration",
+              "TrajectoryParameters": {
+                "speed": 160.0,
+                "acceleration": 320.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Player/Rocket"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Player/RocketLaunch",
+            "Volume": 0.5
+          }
+        },
+        "AimType": "ControlledByPlayer"
       }
     ],
     "Height": 32.0,

@@ -65,6 +65,14 @@
       "AnimationFrames": 2
     },
     {
+      "Name": "Sprites/Player/RocketLauncher",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Player/Rocket",
+      "AnimationFrames": 5
+    },
+    {
       "Name": "Sprites/Player/Death",
       "AnimationFrames": 13
     },

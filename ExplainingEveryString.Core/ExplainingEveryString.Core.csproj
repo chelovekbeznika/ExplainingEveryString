@@ -94,6 +94,7 @@
     <Compile Include="GameModel\Weaponry\CompositeSpawnedActorsController.cs" />
     <Compile Include="GameModel\Weaponry\ISpawnedActorsController.cs" />
     <Compile Include="GameModel\Enemies\Bosses\SecondBossPowerKeepersSpawner.cs" />
+    <Compile Include="GameModel\Weaponry\Trajectories\AccelerationTrajectory.cs" />
     <Compile Include="GameModel\Weaponry\Trajectories\SpiralTrajectory.cs" />
     <Compile Include="Interface\Displayers\AmmoStockDisplayer.cs" />
     <Compile Include="Interface\Displayers\BossInfoDisplayer.cs" />

@@ -7,7 +7,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
 {
     internal class TrajectoryFactory
     {
-        private Dictionary<String, ConstructorInfo> constructorsCache = new Dictionary<String, ConstructorInfo>();
+        private readonly Dictionary<String, ConstructorInfo> constructorsCache = new Dictionary<String, ConstructorInfo>();
 
         internal BulletTrajectory GetTrajectory
             (String type, Vector2 startPosition, Vector2 fireDirection, Dictionary<String, Single> parameters)
@@ -18,16 +18,21 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
 
         private ConstructorInfo GetTrajectoryConstructor(String type)
         {
-            var trajectoryClassName = $"ExplainingEveryString.Core.GameModel.Weaponry.Trajectories.{type}Trajectory";
-            var trajectoryClass = Type.GetType(trajectoryClassName);
-            var bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
-            var constructor = trajectoryClass.GetConstructor(bindingFlags, null, new Type[]
+            if (!constructorsCache.ContainsKey(type))
             {
-                typeof(Vector2),
-                typeof(Vector2),
-                typeof(Dictionary<String, Single>)
-            }, null);
-            return constructor;
+                var trajectoryClassName = $"ExplainingEveryString.Core.GameModel.Weaponry.Trajectories.{type}Trajectory";
+                var trajectoryClass = Type.GetType(trajectoryClassName);
+                var bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic;
+                var constructor = trajectoryClass.GetConstructor(bindingFlags, null, new Type[]
+                {
+                    typeof(Vector2),
+                    typeof(Vector2),
+                    typeof(Dictionary<String, Single>)
+                }, null);
+                constructorsCache.Add(type, constructor);
+            }
+            
+            return constructorsCache[type];
         }
     }
 }
