@@ -302,6 +302,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/Hit.wav
 
+#begin Sounds/Player/RocketExplosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/RocketExplosion.wav
+
 #begin Sounds/Player/RocketLaunch.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -3242,7 +3248,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Rocket.png
 
-#begin Sprites/Player/RocketLauncher.png
+#begin Sprites/Player/RocketExplosion.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3252,7 +3258,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Player/RocketLauncher.png
+/build:Sprites/Player/RocketExplosion.png
 
 #begin Sprites/Player/RocketLauncher.png
 /importer:TextureImporter

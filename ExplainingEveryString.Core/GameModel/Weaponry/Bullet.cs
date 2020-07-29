@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Single timeToLive;
         private readonly Single homingSpeed;
         private readonly Func<Vector2> targetLocator;
+        private readonly EpicEvent hit;
 
         private Single bulletAge = 0;
         private Boolean alive = true;
@@ -31,7 +32,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Boolean IsHoming => targetLocator != null && homingSpeed > 0;
         public Boolean IsVisible => IsAlive();
 
-        internal Bullet(Vector2 position, Vector2 fireDirection, 
+        internal Bullet(Level level, Vector2 position, Vector2 fireDirection, 
             BulletSpecification specification, Func<Vector2> targetLocator)
         {
             this.SpriteState = new SpriteState(specification.Sprite);
@@ -44,6 +45,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 position, fireDirection, specification.TrajectoryParameters);
             this.targetLocator = targetLocator;
             this.homingSpeed = AngleConverter.ToRadians(specification.HomingSpeed);
+            this.hit = new EpicEvent(level, specification.HitEffect, true, this, true);
         }
 
         public void Update(Single elapsedSeconds)
@@ -61,6 +63,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public void RegisterCollision()
         {
             alive = false;
+            hit.TryHandle();
         }
 
         public Boolean IsAlive()

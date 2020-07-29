@@ -18,6 +18,8 @@ namespace ExplainingEveryString.Data.Specifications
         public Single HomingSpeed { get; set; }
         [DefaultValue(false)]
         public Boolean ConsiderAngle { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification HitEffect { get; set; }
 
         public SpriteSpecification Sprite { get; set; }
     }

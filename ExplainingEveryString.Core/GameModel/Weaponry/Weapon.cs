@@ -49,7 +49,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             this.aimer = aimer;
             barrels = specification.Barrels
-                .Select(bs => new Barrel(aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
+                .Select(bs => new Barrel(level, aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
             Name = specification.Name;
             Reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot, fullAmmoAtStart);
             Reloader.ReloadStarted += (sender, e) => reloadStarted.TryHandle();

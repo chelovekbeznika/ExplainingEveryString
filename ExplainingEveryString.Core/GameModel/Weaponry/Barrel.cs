@@ -11,7 +11,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     {
         internal event EventHandler<ShootEventArgs> Shoot;
 
-        private IAimer aimer;
+        private readonly IAimer aimer;
+        private readonly Level level;
         private readonly Func<Vector2> findOutWhereIAm;
         private readonly Func<Vector2> targetLocator;
         private readonly BulletSpecification bulletSpecification;
@@ -22,12 +23,13 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Single accuracy;
         private readonly Int32 bulletsAtOnce;
 
-        internal Barrel(IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
+        internal Barrel(Level level, IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
         {
             this.baseOffset = specification.BaseOffset;
             this.muzzleOffset = specification.MuzzleOffset;
             this.length = specification.Length;
             this.aimer = aimer;
+            this.level = level;
             this.bulletsAtOnce = specification.BulletsAtOnce;
             this.findOutWhereIAm = findOutWhereIAm;
             this.targetLocator = targetLocator;
@@ -43,7 +45,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             foreach (var i in Enumerable.Range(0, bulletsAtOnce))
             {
                 var direction = GetFireDirection(true);
-                var bullet = new Bullet(position, direction, bulletSpecification, targetLocator);
+                var bullet = new Bullet(level, position, direction, bulletSpecification, targetLocator);
                 var eventArgs = new ShootEventArgs
                 {
                     Bullet = bullet,

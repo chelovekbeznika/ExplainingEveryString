@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             var aimer = AimersFactory.Get(specification.AimType, 0, currentPositionLocator, playerLocator);
             barrels = specification.Barrels
-                .Select(bs => new Barrel(aimer, currentPositionLocator, playerLocator, bs)).ToArray();
+                .Select(bs => new Barrel(level, aimer, currentPositionLocator, playerLocator, bs)).ToArray();
             foreach (var barrel in barrels)
                 barrel.Shoot += level.EnemyShoot;
         }

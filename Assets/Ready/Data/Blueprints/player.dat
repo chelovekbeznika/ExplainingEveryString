@@ -143,6 +143,16 @@
               "ConsiderAngle": true,
               "Sprite": {
                 "Name": "Sprites/Player/Rocket"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Player/RocketExplosion",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Player/RocketExplosion",
+                  "Volume": 0.4
+                }
               }
             }
           }
