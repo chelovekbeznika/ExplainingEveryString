@@ -1,7 +1,6 @@
 ﻿using System;
 using ExplainingEveryString.Core;
 using ExplainingEveryString.Editor;
-using Microsoft.Xna.Framework;
 
 namespace ExplainingEveryString
 {

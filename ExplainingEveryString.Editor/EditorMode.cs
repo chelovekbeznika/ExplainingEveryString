@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

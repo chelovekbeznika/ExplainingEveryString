@@ -1,6 +1,4 @@
-﻿using ExplainingEveryString.Core.GameModel.Enemies;
-using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

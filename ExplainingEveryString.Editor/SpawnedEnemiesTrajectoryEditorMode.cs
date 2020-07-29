@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Data.Blueprints;
-using ExplainingEveryString.Data.Level;
+﻿using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

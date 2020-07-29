@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Math;
+﻿using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Specifications;
 using System;
 

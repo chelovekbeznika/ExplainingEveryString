@@ -1,6 +1,4 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Tiles;
-using ExplainingEveryString.Data.AssetsMetadata;
+﻿using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;

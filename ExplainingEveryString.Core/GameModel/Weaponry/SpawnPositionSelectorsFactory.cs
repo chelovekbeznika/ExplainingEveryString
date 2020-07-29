@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Specifications;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry

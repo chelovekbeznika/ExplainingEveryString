@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Core.Interface;
+﻿using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Interface.Displayers;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;

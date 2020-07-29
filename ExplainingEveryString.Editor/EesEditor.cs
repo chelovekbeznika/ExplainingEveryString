@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Core;
 using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;

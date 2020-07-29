@@ -1,12 +1,7 @@
-﻿using ExplainingEveryString.Core;
-using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Displaying;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExplainingEveryString.Editor
 {
