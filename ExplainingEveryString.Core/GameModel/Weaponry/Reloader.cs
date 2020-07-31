@@ -38,7 +38,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 CurrentAmmo = 0;
             }
 
-            timeTillNextShoot = AmmoLimited ? reloadTime : shootCooldown;
+            timeTillNextShoot = AmmoLimited && !fullAmmoAtStart ? reloadTime : shootCooldown;
         }
 
         internal void Update(Single elapsedSeconds, out Boolean weaponFired)
