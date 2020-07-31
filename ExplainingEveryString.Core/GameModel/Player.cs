@@ -110,12 +110,25 @@ namespace ExplainingEveryString.Core.GameModel
         private void WeaponSelect()
         {
             var switchMeasure = Input.WeaponSwitchMeasure();
-            selectedWeapon += switchMeasure;
-            while (selectedWeapon < 0)
-                selectedWeapon += weapons.Length;
-            while (selectedWeapon >= weapons.Length)
-                selectedWeapon -= weapons.Length;
-            if (switchMeasure % weapons.Length != 0)
+            var oldSelectedWeapon = selectedWeapon;
+            if (switchMeasure == 0 && !Weapon.Reloader.HasAmmo)
+                switchMeasure = -1;
+            foreach (var _ in Enumerable.Range(0, System.Math.Abs(switchMeasure)))
+            {
+                do
+                {
+                    if (switchMeasure < 0)
+                        selectedWeapon -= 1;
+                    else
+                        selectedWeapon += 1;
+                    if (selectedWeapon < 0)
+                        selectedWeapon = weapons.Length - 1;
+                    if (selectedWeapon >= weapons.Length)
+                        selectedWeapon = 0;
+                }
+                while (!Weapon.Reloader.HasAmmo);
+            }
+            if (oldSelectedWeapon != selectedWeapon)
                 weaponSwitched.TryHandle();
         }
 
