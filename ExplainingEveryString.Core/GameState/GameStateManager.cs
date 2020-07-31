@@ -73,7 +73,7 @@ namespace ExplainingEveryString.Core.GameState
                 MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile(),
                 LevelProgress = new LevelProgress
                 {
-                    CurrentCheckPoint = CheckpointsManager.StartCheckpointName,
+                    CurrentCheckPoint = CheckpointSpecification.StartCheckpointName,
                     GameTime = 0
                 }
             };
@@ -176,7 +176,7 @@ namespace ExplainingEveryString.Core.GameState
                 MaxAchievedLevelName = this.levelSequence.GetMaxAchievedLevelFile(),
                 LevelProgress = new LevelProgress
                 {
-                    CurrentCheckPoint = CheckpointsManager.StartCheckpointName,
+                    CurrentCheckPoint = CheckpointSpecification.StartCheckpointName,
                     GameTime = 0
                 }
             };

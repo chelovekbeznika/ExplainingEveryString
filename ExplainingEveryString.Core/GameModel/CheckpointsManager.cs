@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
+using ExplainingEveryString.Data.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,6 @@ namespace ExplainingEveryString.Core.GameModel
 {
     internal class CheckpointsManager
     {
-        internal const String StartCheckpointName = "Default";
-
         private ITileCoordinatesMaster tilePositionConverter;
         private LevelData levelData;
         private Data.Level.ActorStartInfo playerStartInfo;
@@ -24,7 +23,11 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void InitializeCheckpoints()
         {
-            playerStartInfo = levelData.PlayerPosition;
+            playerStartInfo = new Data.Level.ActorStartInfo()
+            {
+                BlueprintType = Player.BlueprintType,
+                TilePosition = levelData.StartCheckpoint.PlayerPosition
+            };
 
             checkpointsByName = levelData.EnemyWaves.Select(CheckpointFromWave)
                 .Where(checkpoint => checkpoint != null)
@@ -43,7 +46,15 @@ namespace ExplainingEveryString.Core.GameModel
                     Position = checkpointsByName[checkpointName].StartPosition
                 };
             else
-                throw new ArgumentException("checkpointName");
+                throw new ArgumentException(nameof(checkpointName));
+        }
+
+        internal ArsenalSpecification GetPlayerArsenal(String checkpointName)
+        {
+            if (checkpointsByName.ContainsKey(checkpointName))
+                return checkpointsByName[checkpointName].PlayerArsenal;
+            else
+                throw new ArgumentException(nameof(checkpointName));
         }
 
         internal Int32 GetStartWave(String checkpointName)
@@ -64,25 +75,21 @@ namespace ExplainingEveryString.Core.GameModel
 
         private Checkpoint CheckpointFromWave(EnemyWave ew, Int32 number)
         {
-            if (number == 0)
-            {
+            var specification = number != 0 ? ew.Checkpoint : levelData.StartCheckpoint;
+            return FromSpecification(specification, number);
+        }
+
+        private Checkpoint FromSpecification(CheckpointSpecification specification, Int32 number)
+        {
+            if (specification != null)
                 return new Checkpoint
                 {
-                    Name = StartCheckpointName,
-                    StartPosition = tilePositionConverter.GetLevelPosition(playerStartInfo.TilePosition),
-                    StartWave = 0
-                };
-            }
-            else if (ew.Checkpoint != null)
-            {
-                return new Checkpoint
-                {
-                    Name = ew.Checkpoint.Name,
-                    StartPosition = tilePositionConverter.GetLevelPosition(ew.Checkpoint.PlayerPosition),
+                    Name = specification.Name,
+                    StartPosition = tilePositionConverter.GetLevelPosition(specification.PlayerPosition),
+                    PlayerArsenal = specification.Arsenal,
                     StartWave = number
                 };
-            }
-            else 
+            else
                 return null;
         }
     }

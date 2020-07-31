@@ -41,6 +41,7 @@ namespace ExplainingEveryString.Core.GameModel
             var checkpointsManager = new CheckpointsManager(map, levelData);
             this.levelState = new LevelState(activeActors, actorsInitializer, checkpointsManager, 
                 levelData.EnemyWaves.Count, levelProgress.CurrentCheckPoint);
+            this.CheckpointReached += levelState.RechargePlayer;
 
             this.collisionsController = new CollisionsController(activeActors);
         }

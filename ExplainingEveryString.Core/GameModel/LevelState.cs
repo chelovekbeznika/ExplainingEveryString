@@ -3,18 +3,19 @@ using System;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal class LevelState
+    internal class LevelState : IUpdateable
     {
         private const Single waveDelay = 2;
 
         private Int32 currentEnemyWaveNumber;
         private readonly Int32 wavesAmount;
         private readonly ActorsInitializer actorsInitializer;
+        private readonly CheckpointsManager checkpointsManager;
         private WaveState currentEnemyWaveState = WaveState.Sleeping;
-        private CheckpointsManager checkpointsManager;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
 
         internal ActiveActorsStorage ActiveActors { get; private set; }
+
         internal String CurrentCheckpoint { get; private set; }
 
         internal Boolean Lost => !ActiveActors.Player.IsAlive();
@@ -34,7 +35,7 @@ namespace ExplainingEveryString.Core.GameModel
             TrySwitchCheckpoint();
         }
 
-        internal void Update(Single elapsedSeconds)
+        public void Update(Single elapsedSeconds)
         {
             ActiveActors.Update();
             if (!LevelIsEnded)
@@ -44,6 +45,14 @@ namespace ExplainingEveryString.Core.GameModel
                 if (currentEnemyWaveState == WaveState.Triggered)
                     TriggeredWaveCheck();
             }
+        }
+
+        internal void RechargePlayer(Object sender, CheckpointReachedEventArgs e)
+        {
+            var playerArsenal = checkpointsManager.GetPlayerArsenal(e.LevelProgress.CurrentCheckPoint);
+            var player = ActiveActors.Player;
+            player.SupplyWeapons(playerArsenal);
+            player.HitPoints = player.MaxHitPoints;
         }
 
         private void SleepingWaveCheck()

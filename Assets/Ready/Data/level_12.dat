@@ -5,17 +5,12 @@
   ],
   "MusicName": "christmas_tree_was_born_in_forest",
   "TileMap": "TileMaps/Level_12",
-  "PlayerPosition": {
-    "BlueprintType": "Player",
-    "TilePosition": {
+  "StartCheckpoint": {
+    "PlayerPosition": {
       "X": 10,
       "Y": 39,
       "Offset": "8, -8"
-    },
-    "Angle": 0.0,
-    "TrajectoryParameters": null,
-    "CustomSpawns": null,
-    "AppearancePhaseDuration": 0.0
+    }
   },
   "EnemyWaves": [
     {

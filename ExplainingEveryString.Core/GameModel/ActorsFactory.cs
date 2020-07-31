@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.GameModel.Enemies;
 using ExplainingEveryString.Core.GameModel.Enemies.Bosses;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,11 @@ namespace ExplainingEveryString.Core.GameModel
             };
         }
 
-        internal Player ConstructPlayer(ActorStartInfo position)
+        internal Player ConstructPlayer(ActorStartInfo position, ArsenalSpecification playerArsenal)
         {
-            return Construct<Player, PlayerBlueprint>(position);
+            var player = Construct<Player, PlayerBlueprint>(position);
+            player.SupplyWeapons(playerArsenal);
+            return player;
         }
 
         internal Door ConstructDoor(ActorStartInfo position, Int32 openingWaveNumber)

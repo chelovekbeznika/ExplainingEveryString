@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Tests
         {
             var checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
             checkpointsManager.InitializeCheckpoints();
-            Assert.That(checkpointsManager.GetStartWave(CheckpointsManager.StartCheckpointName), Is.EqualTo(0));
+            Assert.That(checkpointsManager.GetStartWave(CheckpointSpecification.StartCheckpointName), Is.EqualTo(0));
             Assert.That(checkpointsManager.GetStartWave("SecondCheckpoint"), Is.EqualTo(1));
             Assert.That(checkpointsManager.GetStartWave("ThirdCheckpoint"), Is.EqualTo(4));
             Assert.That(checkpointsManager.GetStartWave("LastCheckpoint"), Is.EqualTo(6));
@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.Tests
         {
             var checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
             checkpointsManager.InitializeCheckpoints();
-            Assert.That(checkpointsManager.CheckForCheckpoint(0), Is.EqualTo(CheckpointsManager.StartCheckpointName));
+            Assert.That(checkpointsManager.CheckForCheckpoint(0), Is.EqualTo(CheckpointSpecification.StartCheckpointName));
             Assert.That(checkpointsManager.CheckForCheckpoint(1), Is.EqualTo("SecondCheckpoint"));
             Assert.That(checkpointsManager.CheckForCheckpoint(2), Is.Null);
             Assert.That(checkpointsManager.CheckForCheckpoint(3), Is.Null);
@@ -46,7 +46,7 @@ namespace ExplainingEveryString.Core.Tests
         {
             var checkpointsManager = new CheckpointsManager(tilePositionConverter, levelData);
             checkpointsManager.InitializeCheckpoints();
-            AssertPlayerPositionAt(checkpointsManager, CheckpointsManager.StartCheckpointName, 0);
+            AssertPlayerPositionAt(checkpointsManager, CheckpointSpecification.StartCheckpointName, 0);
             AssertPlayerPositionAt(checkpointsManager, "SecondCheckpoint", 1);
             AssertPlayerPositionAt(checkpointsManager, "ThirdCheckpoint", 2);
             AssertPlayerPositionAt(checkpointsManager, "LastCheckpoint", 3);
@@ -56,7 +56,7 @@ namespace ExplainingEveryString.Core.Tests
         private void AssertPlayerPositionAt(CheckpointsManager checkpointsManager, String checkpointName, Int32 position)
         {
             GameModel.ActorStartInfo playerPosition = checkpointsManager.GetPlayerPosition(checkpointName);
-            Assert.That(playerPosition.BlueprintType, Is.EqualTo("Player"));
+            Assert.That(playerPosition.BlueprintType, Is.EqualTo(Player.BlueprintType));
             Assert.That(playerPosition.Position.X, Is.EqualTo(position));
             Assert.That(playerPosition.Position.Y, Is.EqualTo(position));
         }
@@ -85,10 +85,10 @@ namespace ExplainingEveryString.Core.Tests
             };
             return new LevelData
             {
-                PlayerPosition = new Data.Level.ActorStartInfo
+                StartCheckpoint = new CheckpointSpecification
                 {
-                    BlueprintType = "Player",
-                    TilePosition = new PositionOnTileMap { X = 0, Y = 0 }
+                    Name = "Default",
+                    PlayerPosition = new PositionOnTileMap { X = 0, Y = 0 }
                 },
                 EnemyWaves = new List<EnemyWave>
                 {

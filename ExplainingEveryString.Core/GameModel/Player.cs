@@ -14,6 +14,8 @@ namespace ExplainingEveryString.Core.GameModel
     internal sealed class Player : Actor<PlayerBlueprint>, IDisplayble, IUpdateable, IMovableCollidable,
         ITouchableByBullets, IInterfaceAccessable
     {
+        internal const String BlueprintType = "Player";
+
         private EpicEvent damageTaken;
         private EpicEvent softDamageTaken;
         private EpicEvent baseDestroyed;
@@ -37,6 +39,7 @@ namespace ExplainingEveryString.Core.GameModel
         }
         public String CollideTag => null;
         public override CollidableMode CollidableMode => DashController.IsActive ? CollidableMode.Shadow : base.CollidableMode;
+
         internal IPlayerInput Input { get; private set; }
         internal PlayerDashController DashController { get; private set; }
 
@@ -62,8 +65,6 @@ namespace ExplainingEveryString.Core.GameModel
             MaxHitPoints = blueprint.Hitpoints;
 
             weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, null, level, true)).ToArray();
-            weapons.First(weapon => weapon.Name == "Shotgun").Reloader.SupplyLimitedAmmoStock(90);
-            weapons.First(weapon => weapon.Name == "RocketLauncher").Reloader.SupplyLimitedAmmoStock(45);
             foreach (var weapon in weapons)
                 weapon.Shoot += level.PlayerShoot;
 
@@ -93,6 +94,17 @@ namespace ExplainingEveryString.Core.GameModel
             Weapon.Update(elapsedSeconds);
             DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);
+        }
+
+        internal void SupplyWeapons(ArsenalSpecification playerArsenal)
+        {
+            foreach (var weapon in weapons.Where(weapon => weapon.Name != null))
+            {
+                if (playerArsenal?.AvailableWeapons.ContainsKey(weapon.Name) ?? false)
+                    weapon.Reloader.SupplyLimitedAmmoStock(playerArsenal.AvailableWeapons[weapon.Name]);
+                else
+                    weapon.Reloader.SupplyLimitedAmmoStock(0);
+            }
         }
 
         private void WeaponSelect()

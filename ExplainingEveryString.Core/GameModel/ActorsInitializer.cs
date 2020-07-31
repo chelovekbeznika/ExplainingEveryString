@@ -73,7 +73,12 @@ namespace ExplainingEveryString.Core.GameModel
             return wallsFactory.ConstructWalls().OfType<ICollidable>().ToArray();
         }
 
-        internal Player InitializePlayer(ActorStartInfo playerStartInfo) => actorsFactory.ConstructPlayer(playerStartInfo);
+        internal Player InitializePlayer(CheckpointsManager checkpointsManager, String checkpoint)
+        {
+            var playerStartInfo = checkpointsManager.GetPlayerPosition(checkpoint);
+            var playerArsenal = checkpointsManager.GetPlayerArsenal(checkpoint);
+            return actorsFactory.ConstructPlayer(playerStartInfo, playerArsenal);
+        }
 
         internal Hitbox InitializeStartRegion(Int32 waveNumber)
         {

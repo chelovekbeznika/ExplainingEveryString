@@ -6,14 +6,12 @@
   ],
   "MusicName": "liberty_bell",
   "TileMap": "TileMaps/Level_24",
-  "PlayerPosition": {
-    "BlueprintType": "Player",
-    "TilePosition": {
+  "StartCheckpoint": {
+    "PlayerPosition": {
       "X": 59,
       "Y": 69,
       "Offset": "8, -8"
-    },
-    "Angle": 0.0
+    }
   },
   "EnemyWaves": [
     {

@@ -109,7 +109,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             var startWave = checkpointsManager.GetStartWave(startCheckpoint);
 
-            Player = actorsInitializer.InitializePlayer(checkpointsManager.GetPlayerPosition(startCheckpoint));
+            Player = actorsInitializer.InitializePlayer(checkpointsManager, startCheckpoint);
             obstacles = actorsInitializer.InitializeObstacles();
             walls = actorsInitializer.InitializeWalls();
             doors = actorsInitializer.InitializeCommonDoors(startWave);

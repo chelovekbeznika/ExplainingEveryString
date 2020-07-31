@@ -6,9 +6,8 @@
   ],
   "MusicName": "liberty_bell",
   "TileMap": "TileMaps/Level_14",
-  "PlayerPosition": {
-    "BlueprintType": "Player",
-    "TilePosition": {
+  "StartCheckpoint": {
+    "PlayerPosition": {
       "X": 31,
       "Y": 45,
       "Offset": "8.0, -8.0"

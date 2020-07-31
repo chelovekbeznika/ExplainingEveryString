@@ -5,14 +5,12 @@
   ],
   "MusicName": "rondo_alla_turca",
   "TileMap": "TileMaps/Level_23",
-  "PlayerPosition": {
-    "BlueprintType": "Player",
-    "TilePosition": {
+  "StartCheckpoint": {
+    "PlayerPosition": {
       "X": 10,
       "Y": 170,
       "Offset": "8, -8"
-    },
-    "Angle": 0.0
+    }
   },
   "EnemyWaves": [
     {

@@ -5,14 +5,18 @@
   ],
   "MusicName": "christmas_tree_was_born_in_forest",
   "TileMap": "TileMaps/Level_11",
-  "PlayerPosition": {
-    "BlueprintType": "Player",
-    "TilePosition": {
+  "StartCheckpoint": {
+    "PlayerPosition": {
       "X": 47,
       "Y": 284,
       "Offset": "8, 8"
     },
-    "Angle": 0.0
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 60,
+        "RocketLauncher": 30
+      }
+    }
   },
   "EnemyWaves": [
     {

@@ -82,6 +82,7 @@
     <Compile Include="Level\EnemyWave.cs" />
     <Compile Include="Menu\MusicTestSpecificationAccess.cs" />
     <Compile Include="Menu\MusicTestButtonSpecification.cs" />
+    <Compile Include="Specifications\ArsenalSpecification.cs" />
     <Compile Include="Specifications\BarrelSpecification.cs" />
     <Compile Include="Blueprints\Blueprint.cs" />
     <Compile Include="Blueprints\BlueprintsAccess.cs" />

@@ -5,9 +5,8 @@
   ],
   "MusicName": "christmas_tree_was_born_in_forest",
   "TileMap": "TileMaps/level_01",
-  "PlayerPosition": {
-    "BlueprintType": "Player",
-    "TilePosition": {
+  "StartCheckpoint": {
+    "PlayerPosition": {
       "X": 38,
       "Y": 44
     }
