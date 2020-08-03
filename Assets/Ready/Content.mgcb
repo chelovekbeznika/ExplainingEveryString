@@ -284,6 +284,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Enemy/TripleCannonShoot.wav
 
+#begin Sounds/Player/Cone.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/Cone.wav
+
+#begin Sounds/Player/ConeReload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/ConeReload.wav
+
 #begin Sounds/Player/Dash.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -2852,6 +2864,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/RightDoubleBossHealthBar.png
 
+#begin Sprites/Interface/Weaponry/Cone.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/Weaponry/Cone.png
+
+#begin Sprites/Interface/Weaponry/ConeEmpty.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/Weaponry/ConeEmpty.png
+
 #begin Sprites/Interface/Weaponry/Shotgun.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3175,6 +3211,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/CannonDeath.png
+
+#begin Sprites/Player/Cone.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/Cone.png
+
+#begin Sprites/Player/ConeBullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/ConeBullet.png
+
+#begin Sprites/Player/ConeSparkle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/ConeSparkle.png
 
 #begin Sprites/Player/Dash.png
 /importer:TextureImporter

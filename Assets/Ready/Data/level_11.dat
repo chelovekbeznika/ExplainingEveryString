@@ -14,7 +14,8 @@
     "Arsenal": {
       "AvailableWeapons": {
         "Shotgun": 60,
-        "RocketLauncher": 30
+        "RocketLauncher": 30,
+        "Cone": 600
       }
     }
   },

@@ -85,7 +85,8 @@ namespace ExplainingEveryString.Core
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
             {
-                { "Shotgun", new ShotgunDisplayer(interfaceSpritesDisplayer) }
+                { "Shotgun", new ShotgunDisplayer(interfaceSpritesDisplayer) },
+                { "Cone", new ConeDisplayer(interfaceSpritesDisplayer) }
             };
 
             return new IDisplayer[]

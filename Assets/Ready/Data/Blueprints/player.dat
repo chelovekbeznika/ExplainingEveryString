@@ -88,7 +88,7 @@
               "TrajectoryParameters": {
                 "speed": 2400.0
               },
-              "Damage": 0.8,
+              "Damage": 1.5,
               "TimeToLive": 0.15,
               "Sprite": {
                 "Name": "Sprites/Player/Grain"
@@ -104,7 +104,7 @@
               "TrajectoryParameters": {
                 "speed": 2400.0
               },
-              "Damage": 0.8,
+              "Damage": 1.5,
               "TimeToLive": 0.15,
               "Sprite": {
                 "Name": "Sprites/Player/Grain"
@@ -138,7 +138,7 @@
                 "speed": 160.0,
                 "acceleration": 320.0
               },
-              "Damage": 20.0,
+              "Damage": 30.0,
               "BlastWaveRadius": 96.0,
               "TimeToLive": 5.0,
               "ConsiderAngle": true,
@@ -162,6 +162,54 @@
           "Sound": {
             "Name": "Sounds/Player/RocketLaunch",
             "Volume": 0.5
+          }
+        },
+        "AimType": "ControlledByPlayer"
+      },
+      {
+        "Name": "Cone",
+        "Reloader": {
+          "FireRate": 40.0,
+          "Ammo": 120,
+          "ReloadTime": 1.0,
+          "ReloadStartedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/ConeReload",
+              "Volume": 0.25
+            }
+          }
+        },
+        "Sprite": {
+          "Name": "Sprites/Player/Cone"
+        },
+        "Barrels": [
+          {
+            "Length": 13.0,
+            "Bullet": {
+              "TrajectoryType": "Cone",
+              "TrajectoryParameters": {
+                "speed": 600.0,
+                "angularVelocity": 45.0,
+                "coneExtension": 200.0
+              },
+              "Damage": 0.75,
+              "TimeToLive": 6.0,
+              "Sprite": {
+                "Name": "Sprites/Player/ConeBullet"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Player/ConeSparkle",
+                  "AnimationCycle": 0.15
+                }
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Player/Cone",
+            "Volume": 0.1
           }
         },
         "AimType": "ControlledByPlayer"

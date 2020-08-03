@@ -77,6 +77,10 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Player/ConeSparkle",
+      "AnimationFrames": 5
+    },
+    {
       "Name": "Sprites/Player/Death",
       "AnimationFrames": 13
     },
