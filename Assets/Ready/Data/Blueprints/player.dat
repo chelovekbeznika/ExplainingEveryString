@@ -185,6 +185,7 @@
         "Barrels": [
           {
             "Length": 13.0,
+            "Accuracy": 2.0,
             "Bullet": {
               "TrajectoryType": "Cone",
               "TrajectoryParameters": {
