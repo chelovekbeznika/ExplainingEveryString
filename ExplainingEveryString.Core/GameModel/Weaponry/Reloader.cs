@@ -92,6 +92,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             AmmoStock = ammoStock;
             LoadAmmo();
+            timeTillNextShoot = System.Math.Min(timeTillNextShoot, shootCooldown);
         }
 
         private void ProcessReloadForLimitedAmmo(ref Single betweenShoots)
