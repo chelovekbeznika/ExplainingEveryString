@@ -10,6 +10,11 @@
       "X": 10,
       "Y": 39,
       "Offset": "8, -8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 18
+      }
     }
   },
   "EnemyWaves": [
@@ -320,6 +325,11 @@
           "X": 104,
           "Y": 39,
           "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 18
+          }
         }
       },
       "StartRegion": {
@@ -562,6 +572,11 @@
           "X": 184,
           "Y": 39,
           "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 24
+          }
         }
       },
       "StartRegion": {
@@ -999,6 +1014,11 @@
           "X": 277,
           "Y": 39,
           "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 30
+          }
         }
       },
       "StartRegion": {

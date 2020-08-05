@@ -11,6 +11,11 @@
       "X": 31,
       "Y": 45,
       "Offset": "8.0, -8.0"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 30
+      }
     }
   },
   "EnemyWaves": [

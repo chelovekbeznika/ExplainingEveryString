@@ -13,9 +13,7 @@
     },
     "Arsenal": {
       "AvailableWeapons": {
-        "Shotgun": 60,
-        "RocketLauncher": 30,
-        "Cone": 600
+        "Shotgun": 12
       }
     }
   },
@@ -145,6 +143,11 @@
           "X": 47,
           "Y": 214,
           "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 12
+          }
         }
       },
       "StartRegion": {
@@ -242,6 +245,11 @@
           "X": 47,
           "Y": 183,
           "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 24
+          }
         }
       },
       "StartRegion": {
@@ -485,6 +493,11 @@
           "X": 47,
           "Y": 104,
           "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 24
+          }
         }
       },
       "StartRegion": {

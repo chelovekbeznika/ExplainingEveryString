@@ -10,6 +10,11 @@
       "X": 10,
       "Y": 170,
       "Offset": "8, -8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 60
+      }
     }
   },
   "EnemyWaves": [
@@ -560,6 +565,11 @@
         "PlayerPosition": {
           "X": 37,
           "Y": 142
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 75
+          }
         }
       },
       "StartRegion": {
@@ -1313,6 +1323,11 @@
         "PlayerPosition": {
           "X": 67,
           "Y": 112
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 75
+          }
         }
       },
       "StartRegion": {
@@ -2006,6 +2021,12 @@
         "PlayerPosition": {
           "X": 97,
           "Y": 82
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 75,
+            "RocketLauncher": 50
+          }
         }
       },
       "StartRegion": {
@@ -2575,6 +2596,11 @@
         "PlayerPosition": {
           "X": 127,
           "Y": 52
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Cone": 750
+          }
         }
       },
       "StartRegion": {
@@ -2967,6 +2993,11 @@
         "PlayerPosition": {
           "X": 127,
           "Y": 52
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 60
+          }
         }
       },
       "StartRegion": {
