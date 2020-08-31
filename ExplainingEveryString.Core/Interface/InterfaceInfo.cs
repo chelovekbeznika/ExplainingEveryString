@@ -36,8 +36,8 @@ namespace ExplainingEveryString.Core.Interface
 
     internal class PlayerWeaponInterfaceInfo
     {
-        internal String Name { get; set; }
-        internal Boolean AmmoLimited { get; set; }
+        internal String SelectedWeapon { get; set; }
+        internal List<String> AvailableWeapons { get; set; }
         internal Int32 CurrentAmmo { get; set; }
         internal Int32 MaxAmmo { get; set; }
         internal Int32? AmmoStock { get; set; }

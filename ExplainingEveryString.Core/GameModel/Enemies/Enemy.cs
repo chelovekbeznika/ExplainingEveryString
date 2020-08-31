@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
 
-        internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Constants.Epsilon;
+        internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Math.Constants.Epsilon;
         public override SpriteState SpriteState => IsInAppearancePhase ? appearanceSprite : base.SpriteState;
         public override CollidableMode CollidableMode => IsInAppearancePhase 
             ? CollidableMode.Ghost 
@@ -41,7 +41,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             set
             {
                 base.HitPoints = value;
-                if (value < Constants.Epsilon)
+                if (value < Math.Constants.Epsilon)
                 {
                     death.TryHandle();
                     Behavior.PostMortemSurprise?.TryTrigger();

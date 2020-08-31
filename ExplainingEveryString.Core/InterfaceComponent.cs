@@ -27,6 +27,7 @@ namespace ExplainingEveryString.Core
         private BossInfoDisplayer leftBossInfoDisplayer;
         private BossInfoDisplayer rightBossInfoDisplayer;
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
+        private RemainedWeaponsDisplayer remainedWeaponsDisplayer;
         private AmmoStockDisplayer ammoStockDisplayer;
         private ReloadDisplayer reloadDisplayer;
         private Dictionary<String, IWeaponDisplayer> playerWeaponDisplayers;
@@ -79,6 +80,7 @@ namespace ExplainingEveryString.Core
             leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.LeftBossPrefix, -160);
             rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightBossPrefix, 160);
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
+            remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer);
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
             reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
             var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
@@ -91,7 +93,7 @@ namespace ExplainingEveryString.Core
 
             return new IDisplayer[]
             {
-                healthBarDisplayer, dashStateDisplayer, ammoStockDisplayer, reloadDisplayer,
+                healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer, ammoStockDisplayer, reloadDisplayer,
                 enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer, 
                 rightBossInfoDisplayer, enemiesBehindScreenDisplayer
             }
@@ -114,9 +116,10 @@ namespace ExplainingEveryString.Core
                 //Player
                 healthBarDisplayer.Draw(interfaceInfo.Player);
                 dashStateDisplayer.Draw(interfaceInfo.Player);
-                var weaponName = interfaceInfo.Player.Weapon.Name;
-                if (weaponName != null && playerWeaponDisplayers.ContainsKey(weaponName))
+                var weaponName = interfaceInfo.Player.Weapon.SelectedWeapon;
+                if (weaponName != GameModel.Constants.DefaultPlayerWeapon && playerWeaponDisplayers.ContainsKey(weaponName))
                     playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
+                remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);
                 if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
                     ammoStockDisplayer.Draw(interfaceInfo.Player.Weapon.AmmoStock.Value);
                 if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue) 

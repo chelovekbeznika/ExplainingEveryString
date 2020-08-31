@@ -76,7 +76,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         public bool IsAlive()
         {
-            return HitPoints > Constants.Epsilon;
+            return HitPoints > Math.Constants.Epsilon;
         }
 
         public virtual void Destroy()

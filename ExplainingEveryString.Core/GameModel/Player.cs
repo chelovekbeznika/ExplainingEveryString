@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Core.GameModel
             set
             {
                 base.HitPoints = value;
-                if (value < Constants.Epsilon)
+                if (value < Math.Constants.Epsilon)
                 {
                     baseDestroyed.TryHandle();
                     cannonDestroyed.TryHandle();
@@ -53,6 +53,7 @@ namespace ExplainingEveryString.Core.GameModel
         private Weapon[] weapons;
         private Int32 selectedWeapon = 0;
         internal Weapon Weapon => weapons[selectedWeapon];
+        internal IEnumerable<String> AvailableWeapons => weapons.Where(weapon => weapon.Reloader.HasAmmo).Select(weapon => weapon.Name);
 
         protected override void Construct(PlayerBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -98,7 +99,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void SupplyWeapons(ArsenalSpecification playerArsenal)
         {
-            foreach (var weapon in weapons.Where(weapon => weapon.Name != null))
+            foreach (var weapon in weapons.Where(weapon => weapon.Name != Constants.DefaultPlayerWeapon))
             {
                 if (playerArsenal?.AvailableWeapons.ContainsKey(weapon.Name) ?? false)
                     weapon.Reloader.SupplyLimitedAmmoStock(playerArsenal.AvailableWeapons[weapon.Name]);

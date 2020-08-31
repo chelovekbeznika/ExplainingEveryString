@@ -114,8 +114,8 @@ namespace ExplainingEveryString.Core.Collisions
         private void CheckHorizontalMove(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall,
             out Vector2? positionAfterWallHit, out Boolean touchingCorner)
         {
-            Boolean touchingHorizontalFringes = System.Math.Abs(oldHitbox.Left - wall.Right) < Constants.Epsilon
-                    || System.Math.Abs(oldHitbox.Right - wall.Left) < Constants.Epsilon;
+            Boolean touchingHorizontalFringes = System.Math.Abs(oldHitbox.Left - wall.Right) < Math.Constants.Epsilon
+                    || System.Math.Abs(oldHitbox.Right - wall.Left) < Math.Constants.Epsilon;
             if (CrossWallBottom(oldHitbox, newHitbox, wall))
             {
                 positionAfterWallHit = new Vector2
@@ -123,7 +123,7 @@ namespace ExplainingEveryString.Core.Collisions
                     X = (newHitbox.Left + newHitbox.Right) / 2,
                     Y = wall.Bottom - (newHitbox.Top - newHitbox.Bottom) / 2
                 };
-                touchingCorner = System.Math.Abs(oldHitbox.Top - wall.Bottom) < Constants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Top - wall.Bottom) < Math.Constants.Epsilon
                     && touchingHorizontalFringes;
 ;
                 return;
@@ -135,7 +135,7 @@ namespace ExplainingEveryString.Core.Collisions
                     X = (newHitbox.Left + newHitbox.Right) / 2,
                     Y = wall.Top + (newHitbox.Top - newHitbox.Bottom) / 2
                 };
-                touchingCorner = System.Math.Abs(oldHitbox.Bottom - wall.Top) < Constants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Bottom - wall.Top) < Math.Constants.Epsilon
                     && touchingHorizontalFringes;
                 return;
             }
@@ -146,8 +146,8 @@ namespace ExplainingEveryString.Core.Collisions
         private void CheckVerticalMove(Hitbox oldHitbox, Hitbox newHitbox, Hitbox wall,
             out Vector2? positionAfterWallHit, out Boolean touchingCorner)
         {
-            Boolean touchingVerticalFringes = System.Math.Abs(oldHitbox.Top - wall.Bottom) < Constants.Epsilon
-                    || System.Math.Abs(oldHitbox.Bottom - wall.Top) < Constants.Epsilon;
+            Boolean touchingVerticalFringes = System.Math.Abs(oldHitbox.Top - wall.Bottom) < Math.Constants.Epsilon
+                    || System.Math.Abs(oldHitbox.Bottom - wall.Top) < Math.Constants.Epsilon;
             if (CrossWallLeft(oldHitbox, newHitbox, wall))
             {
                 positionAfterWallHit = new Vector2
@@ -155,7 +155,7 @@ namespace ExplainingEveryString.Core.Collisions
                     X = wall.Left - (newHitbox.Right - newHitbox.Left) / 2,
                     Y = (newHitbox.Top + newHitbox.Bottom) / 2
                 };
-                touchingCorner = System.Math.Abs(oldHitbox.Right - wall.Left) < Constants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Right - wall.Left) < Math.Constants.Epsilon
                     && touchingVerticalFringes;
                 return;
             }
@@ -166,7 +166,7 @@ namespace ExplainingEveryString.Core.Collisions
                     X = wall.Right + (newHitbox.Right - newHitbox.Left) / 2,
                     Y = (newHitbox.Top + newHitbox.Bottom) / 2
                 };
-                touchingCorner = System.Math.Abs(oldHitbox.Left - wall.Right) < Constants.Epsilon
+                touchingCorner = System.Math.Abs(oldHitbox.Left - wall.Right) < Math.Constants.Epsilon
                     && touchingVerticalFringes;
                 return;
             }

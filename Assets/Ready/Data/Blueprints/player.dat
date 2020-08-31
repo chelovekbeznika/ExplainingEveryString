@@ -28,6 +28,7 @@
     },
     "Weapons": [
       {
+        "Name": "Default",
         "Reloader": {
           "FireRate": 20.0,
           "Ammo": 1,

@@ -40,8 +40,8 @@ namespace ExplainingEveryString.Core.Interface
                         : DashState.Nonavailable,
                 Weapon = new PlayerWeaponInterfaceInfo
                 {
-                    Name = player.Weapon.Name,
-                    AmmoLimited = player.Weapon.Reloader.AmmoLimited,
+                    SelectedWeapon = player.Weapon.Name,
+                    AvailableWeapons = player.AvailableWeapons.ToList(),
                     CurrentAmmo = player.Weapon.Reloader.CurrentAmmo,
                     MaxAmmo = player.Weapon.Reloader.MaxAmmo,
                     AmmoStock = player.Weapon.Reloader.AmmoStock,

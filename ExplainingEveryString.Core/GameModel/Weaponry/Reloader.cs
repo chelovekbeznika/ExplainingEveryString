@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal void Update(Single elapsedSeconds, out Boolean weaponFired)
         {
-            if (timeTillNextShoot > Constants.Epsilon)
+            if (timeTillNextShoot > Math.Constants.Epsilon)
                 timeTillNextShoot -= elapsedSeconds;
             else
             {
@@ -54,9 +54,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             if (isOn() && HasAmmo)
             {
                 weaponFired = false;
-                if (timeTillNextShoot <= Constants.Epsilon)
+                if (timeTillNextShoot <= Math.Constants.Epsilon)
                     nextBulletFirstUpdateTime += elapsedSeconds;
-                while (timeTillNextShoot <= Constants.Epsilon)
+                while (timeTillNextShoot <= Math.Constants.Epsilon)
                 {
                     var betweenShoots = shootCooldown;
                     if (AmmoLimited)
@@ -67,7 +67,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
                     timeTillNextShoot += betweenShoots;
                     nextBulletFirstUpdateTime -= betweenShoots;
-                    if (nextBulletFirstUpdateTime < -Constants.Epsilon)
+                    if (nextBulletFirstUpdateTime < -Math.Constants.Epsilon)
                         nextBulletFirstUpdateTime = 0;
                     onReloadEnd(nextBulletFirstUpdateTime);
                     weaponFired = true;

@@ -83,6 +83,7 @@
     <Compile Include="Displaying\ScreenCoordinatesMaster.cs" />
     <Compile Include="EesApp.cs" />
     <Compile Include="GameModel\BehaviorParameters.cs" />
+    <Compile Include="GameModel\Constants.cs" />
     <Compile Include="GameModel\Enemies\EnemyBehavior.cs" />
     <Compile Include="GameModel\Enemies\EnemyBehaviorChangedEventArgs.cs" />
     <Compile Include="GameModel\Enemies\Bosses\FirstBoss.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Interface\Displayers\IDisplayer.cs" />
     <Compile Include="Interface\Displayers\EnemiesBehindScreenDisplayer.cs" />
     <Compile Include="Interface\Displayers\ReloadDisplayer.cs" />
+    <Compile Include="Interface\Displayers\RemainedWeaponsDisplayer.cs" />
     <Compile Include="Interface\Displayers\ShotgunDisplayer.cs" />
     <Compile Include="Interface\InterfaceDrawController.cs" />
     <Compile Include="Interface\Displayers\DashStateDisplayer.cs" />
