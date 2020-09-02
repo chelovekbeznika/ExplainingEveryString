@@ -31,6 +31,7 @@ namespace ExplainingEveryString.Core.Interface
                 Health = player.HitPoints > 0 ? player.HitPoints : 0,
                 MaxHealth = player.MaxHitPoints,
                 FromLastHit = player.FromLastHit,
+                FromLastCheckpoint = player.FromLastCheckpoint,
                 DashCooldown = player.DashController.RechargeTime,
                 TillDashRecharge = player.DashController.TillRecharge,
                 DashState = player.DashController.IsActive

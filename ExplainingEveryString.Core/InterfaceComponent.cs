@@ -30,6 +30,7 @@ namespace ExplainingEveryString.Core
         private RemainedWeaponsDisplayer remainedWeaponsDisplayer;
         private AmmoStockDisplayer ammoStockDisplayer;
         private ReloadDisplayer reloadDisplayer;
+        private CheckpointDisplayer checkpointDisplayer;
         private Dictionary<String, IWeaponDisplayer> playerWeaponDisplayers;
 
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
@@ -83,6 +84,7 @@ namespace ExplainingEveryString.Core
             remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer);
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
             reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
+            checkpointDisplayer = new CheckpointDisplayer(interfaceSpritesDisplayer);
             var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
             gameTimeDisplayer = new GameTimeDisplayer(timeFont);
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
@@ -93,7 +95,8 @@ namespace ExplainingEveryString.Core
 
             return new IDisplayer[]
             {
-                healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer, ammoStockDisplayer, reloadDisplayer,
+                healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer, 
+                ammoStockDisplayer, reloadDisplayer, checkpointDisplayer,
                 enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer, 
                 rightBossInfoDisplayer, enemiesBehindScreenDisplayer
             }
@@ -123,6 +126,7 @@ namespace ExplainingEveryString.Core
                     ammoStockDisplayer.Draw(interfaceInfo.Player.Weapon.AmmoStock.Value);
                 if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue) 
                     reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
+                checkpointDisplayer.Draw(interfaceInfo.Player);
 
 
                 //Enemies

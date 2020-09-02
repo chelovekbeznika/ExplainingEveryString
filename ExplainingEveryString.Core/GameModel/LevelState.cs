@@ -51,7 +51,7 @@ namespace ExplainingEveryString.Core.GameModel
         {
             var playerArsenal = checkpointsManager.GetPlayerArsenal(e.LevelProgress.CurrentCheckPoint);
             var player = ActiveActors.Player;
-            player.Refresh(playerArsenal);
+            player.CheckpointRefresh(playerArsenal);
         }
 
         private void SleepingWaveCheck()

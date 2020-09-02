@@ -100,6 +100,7 @@
     <Compile Include="GameModel\Weaponry\Trajectories\SpiralTrajectory.cs" />
     <Compile Include="Interface\Displayers\AmmoStockDisplayer.cs" />
     <Compile Include="Interface\Displayers\BossInfoDisplayer.cs" />
+    <Compile Include="Interface\Displayers\CheckpointDisplayer.cs" />
     <Compile Include="Interface\Displayers\ConeDisplayer.cs" />
     <Compile Include="Interface\Displayers\IDisplayer.cs" />
     <Compile Include="Interface\Displayers\EnemiesBehindScreenDisplayer.cs" />

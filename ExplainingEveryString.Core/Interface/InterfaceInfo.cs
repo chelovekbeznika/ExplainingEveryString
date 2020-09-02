@@ -28,6 +28,7 @@ namespace ExplainingEveryString.Core.Interface
         internal Single MaxHealth { get; set; }
         internal Single Health { get => health; set => health = value > 0 ? value : 0; }
         internal Single FromLastHit { get; set; }
+        internal Single FromLastCheckpoint { get; set; }
         internal Single DashCooldown { get; set; }
         internal Single TillDashRecharge { get; set; }
         internal DashState DashState { get; set; }

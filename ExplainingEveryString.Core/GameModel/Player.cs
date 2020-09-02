@@ -38,6 +38,7 @@ namespace ExplainingEveryString.Core.GameModel
                 }
             }
         }
+        internal Single FromLastCheckpoint { get; private set; } = Single.NaN;
         public String CollideTag => null;
         public override CollidableMode CollidableMode => DashController.IsActive ? CollidableMode.Shadow : base.CollidableMode;
 
@@ -97,13 +98,15 @@ namespace ExplainingEveryString.Core.GameModel
             Weapon.Update(elapsedSeconds);
             DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);
+            FromLastCheckpoint += elapsedSeconds;
         }
 
-        internal void Refresh(ArsenalSpecification playerApsenal)
+        internal void CheckpointRefresh(ArsenalSpecification playerApsenal)
         {
             SupplyWeapons(playerApsenal);
             HitPoints = MaxHitPoints;
             refreshed.TryHandle();
+            FromLastCheckpoint = 0;
         }
 
         internal void SupplyWeapons(ArsenalSpecification playerArsenal)
