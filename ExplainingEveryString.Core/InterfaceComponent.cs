@@ -119,8 +119,7 @@ namespace ExplainingEveryString.Core
                 var weaponName = interfaceInfo.Player.Weapon.SelectedWeapon;
                 if (weaponName != GameModel.Constants.DefaultPlayerWeapon && playerWeaponDisplayers.ContainsKey(weaponName))
                     playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
-                remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);
-                if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
+                remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);                if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
                     ammoStockDisplayer.Draw(interfaceInfo.Player.Weapon.AmmoStock.Value);
                 if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue) 
                     reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
