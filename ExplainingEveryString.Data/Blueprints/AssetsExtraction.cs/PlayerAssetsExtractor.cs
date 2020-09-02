@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
             {
                 blueprint.BaseDestructionEffect, blueprint.WeaponSwitchEffect,
                 blueprint.CannonDestructionEffect, blueprint.Dash.SpecEffect,
-                blueprint.DamageEffect, blueprint.SoftDamageEffect,
+                blueprint.DamageEffect, blueprint.SoftDamageEffect, blueprint.RefreshEffect
             });
         }
     }

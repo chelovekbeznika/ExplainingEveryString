@@ -74,7 +74,7 @@ namespace ExplainingEveryString.Core.Displaying
             SoundSpecification sound = epicEvent.SpecEffectSpecification.Sound;
             if (sound != null)
             {
-                Single distance = (level.Player.Position - epicEvent.Position).Length();
+                Single distance = (level.Player.Position - epicEvent.Position()).Length();
                 Single currentFadingOutDistance = fadingOutDistance * sound.FadingCoeff;
                 if (distance <= currentFadingOutDistance)
                 {

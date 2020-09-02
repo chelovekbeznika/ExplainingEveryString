@@ -81,6 +81,10 @@
       "AnimationFrames": 5
     },
     {
+      "Name": "Sprites/Player/Refresh",
+      "AnimationFrames": 9
+    },
+    {
       "Name": "Sprites/Player/Death",
       "AnimationFrames": 13
     },

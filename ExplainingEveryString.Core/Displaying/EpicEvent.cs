@@ -12,15 +12,17 @@ namespace ExplainingEveryString.Core.Displaying
         private SpecEffectSpecification specEffect;
         private IDisplayble eventSource;
         private Boolean inheritAngle;
+        private Boolean follow;
 
         internal EpicEvent(Level level, SpecEffectSpecification specEffect, Boolean handleOneTime,
-            IDisplayble eventSource, Boolean inheritAngle)
+            IDisplayble eventSource, Boolean inheritAngle, Boolean follow = false)
         {
             this.Event += level.EpicEventOccured;
             this.specEffect = specEffect;
             this.oneTimeEvent = handleOneTime;
             this.eventSource = eventSource;
             this.inheritAngle = inheritAngle;
+            this.follow = follow;
         }
 
         internal void TryHandle()
@@ -28,11 +30,12 @@ namespace ExplainingEveryString.Core.Displaying
             if (!Handled || !oneTimeEvent)
             {
                 var sprite = eventSource.SpriteState;
+                var startPosition = eventSource.Position;
                 Handled = true;
                 if (specEffect != null)
                     Event?.Invoke(eventSource, new EpicEventArgs
                     {
-                        Position = eventSource.Position,
+                        Position = () => follow ? eventSource.Position : startPosition,
                         Angle = inheritAngle  && sprite != null ? sprite.Angle : 0,
                         SpecEffectSpecification = specEffect
                     });

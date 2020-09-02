@@ -11,17 +11,18 @@ namespace ExplainingEveryString.Core.Displaying
     {
         public SpriteState SpriteState { get; private set; }
         public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
-        public Vector2 Position { get; private set; }
+        private Func<Vector2> positionLocator;
+        public Vector2 Position => positionLocator();
 
         public Boolean IsVisible
         {
             get { return IsAlive(); }
         }
 
-        internal SpecEffect(Vector2 position, Single angle, SpriteSpecification sprite)
+        internal SpecEffect(Func<Vector2> positionLocator, Single angle, SpriteSpecification sprite)
         {
             this.SpriteState = new SpriteState(sprite) { Angle = angle, Looping = false };
-            this.Position = position;
+            this.positionLocator = positionLocator;
         }
 
         public void Update(Single elapsedSeconds)

@@ -15,5 +15,6 @@ namespace ExplainingEveryString.Data.Blueprints
         public SpecEffectSpecification SoftDamageEffect { get; set; }
         public SpecEffectSpecification BaseDestructionEffect { get; set; }
         public SpecEffectSpecification CannonDestructionEffect { get; set; }
+        public SpecEffectSpecification RefreshEffect { get; set; }
     }
 }

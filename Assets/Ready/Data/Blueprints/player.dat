@@ -230,6 +230,16 @@
         "Volume": 0.25
       }
     },
+    "RefreshEffect": {
+      "Sound": {
+        "Name": "Sounds/Player/Refresh",
+        "Volume": 0.75
+      },
+      "Sprite": {
+        "Name": "Sprites/Player/Refresh",
+        "AnimationCycle": 0.889
+      }
+    },
     "DamageEffect": {
       "Sound": {
         "Name": "Sounds/Player/Hit",

@@ -21,6 +21,7 @@ namespace ExplainingEveryString.Core.GameModel
         private EpicEvent baseDestroyed;
         private EpicEvent cannonDestroyed;
         private EpicEvent weaponSwitched;
+        private EpicEvent refreshed;
 
         public Boolean ShowInterfaceInfo => false;
         public Single MaxHitPoints { get; private set; }
@@ -74,6 +75,7 @@ namespace ExplainingEveryString.Core.GameModel
             baseDestroyed = new EpicEvent(level, blueprint.BaseDestructionEffect, true, this, false);
             cannonDestroyed = new EpicEvent(level, blueprint.CannonDestructionEffect, true, this.Weapon, true);
             weaponSwitched = new EpicEvent(level, blueprint.WeaponSwitchEffect, false, this, true);
+            refreshed = new EpicEvent(level, blueprint.RefreshEffect, false, this, true, true);
             ConstructDash(level, blueprint.Dash);
         }
 
@@ -95,6 +97,13 @@ namespace ExplainingEveryString.Core.GameModel
             Weapon.Update(elapsedSeconds);
             DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);
+        }
+
+        internal void Refresh(ArsenalSpecification playerApsenal)
+        {
+            SupplyWeapons(playerApsenal);
+            HitPoints = MaxHitPoints;
+            refreshed.TryHandle();
         }
 
         internal void SupplyWeapons(ArsenalSpecification playerArsenal)
