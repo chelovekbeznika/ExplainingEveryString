@@ -542,6 +542,26 @@
     {
       "Name": "Sprites/Enemies/Boss2/CircleDeathPart",
       "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Walls/Level3X/Teapot",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Walls/Level3X/Steam1",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Walls/Level3X/Steam2",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Walls/Level3X/Steam3",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Walls/Level3X/Steam4",
+      "AnimationFrames": 5
     }
   ]
 }
