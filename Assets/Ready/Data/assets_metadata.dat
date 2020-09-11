@@ -594,6 +594,54 @@
     {
       "Name": "Sprites/Doors/Level3X/EnergyBarrierVerticalOpening",
       "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/TankBase",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/TripleCannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Appearance/TripleCannon",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Appearance/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/Cannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/Tank",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/Hunter",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/FixedCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/TripleCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/Mine",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/MineSpawner",
+      "AnimationFrames": 6
     }
   ]
 }
