@@ -562,6 +562,38 @@
     {
       "Name": "Sprites/Walls/Level3X/Steam4",
       "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/CrackerWallUp",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/CrackerWallDown",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/CrackerWallLeft",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/CrackerWallRight",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrier",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrierOpening",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrierVertical",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrierVerticalOpening",
+      "AnimationFrames": 4
     }
   ]
 }
