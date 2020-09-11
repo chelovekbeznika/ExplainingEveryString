@@ -608,6 +608,10 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level3X/Mouse",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Enemies/Level3X/Appearance/TripleCannon",
       "AnimationFrames": 2
     },
@@ -642,6 +646,10 @@
     {
       "Name": "Sprites/Enemies/Level3X/Death/MineSpawner",
       "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/Mouse",
+      "AnimationFrames": 3
     }
   ]
 }
