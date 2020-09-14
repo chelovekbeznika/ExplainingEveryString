@@ -1,0 +1,103 @@
+{
+  "Teacup1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 24.0,
+    "Width": 32.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Teacup1"
+    }
+  },
+  "Teacup2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 24.0,
+    "Width": 32.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Teacup2"
+    }
+  },
+  "Teacup3": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 24.0,
+    "Width": 32.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Teacup3"
+    }
+  },
+  "Teacup4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 24.0,
+    "Width": 32.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Teacup4"
+    }
+  },
+  "Teacup5": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 24.0,
+    "Width": 32.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Teacup5"
+    }
+  },
+  "Teapot": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 32.0,
+    "Width": 48.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Teapot",
+      "AnimationCycle": 0.25
+    }
+  },
+  "CheeseMoonFlag": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 32.0,
+    "Width": 48.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/CheeseMoonFlag"
+    }
+  },
+  "CheesePieceFlag": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 32.0,
+    "Width": 48.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/CheesePieceFlag"
+    }
+  },
+  "Steam1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 1.0,
+    "Width": 1.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Steam1",
+      "AnimationCycle": 0.666667
+    }
+  },
+  "Steam2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 1.0,
+    "Width": 1.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Steam2",
+      "AnimationCycle": 0.666667
+    }
+  },
+  "Steam3": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 1.0,
+    "Width": 1.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Steam3",
+      "AnimationCycle": 0.666667
+    }
+  },
+  "Steam4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 1.0,
+    "Width": 1.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level3X/Steam4",
+      "AnimationCycle": 0.666667
+    }
+  }
+}
