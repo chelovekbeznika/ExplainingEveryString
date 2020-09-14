@@ -650,6 +650,36 @@
     {
       "Name": "Sprites/Enemies/Level3X/Death/Mouse",
       "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level3X/0",
+      "AnimationFrames": 3,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level3X/1",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level3X/2",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level3X/3",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level3X/4",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level3X/5",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 1.0
     }
   ]
 }
