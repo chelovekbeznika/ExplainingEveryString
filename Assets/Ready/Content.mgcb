@@ -215,11 +215,23 @@
 /processorParam:Quality=Best
 /build:Sounds/Doors/CompletelyOpenedTest.wav
 
+#begin Sounds/Doors/CookiesEaten.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Doors/CookiesEaten.wav
+
 #begin Sounds/Doors/IceDoorOpening.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Doors/IceDoorOpening.wav
+
+#begin Sounds/Doors/MoonDoorOpening.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Doors/MoonDoorOpening.wav
 
 #begin Sounds/Doors/QuarterDelimiterOpening.wav
 /importer:WavImporter

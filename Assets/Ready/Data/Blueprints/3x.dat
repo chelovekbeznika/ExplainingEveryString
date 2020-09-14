@@ -1,4 +1,118 @@
 {
+  "EnergyBarrier": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 64,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrier",
+      "AnimationCycle": 1.2
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrierOpening",
+      "AnimationCycle": 0.6
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/MoonDoorOpening",
+        "Volume": 0.4
+      }
+    }
+  },
+  "EnergyBarrierVertical": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 64,
+    "Width": 16,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrierVertical",
+      "AnimationCycle": 1.2
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level3X/EnergyBarrierVerticalOpening",
+      "AnimationCycle": 0.6
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/MoonDoorOpening",
+        "Volume": 0.4
+      }
+    }
+  },
+  "CrackedWallUp": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 32,
+    "Width": 48,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWall"
+    },
+    "OpeningMode": "Up",
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWallUp",
+      "AnimationCycle": 0.6
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/CookiesEaten",
+        "Volume": 0.4
+      }
+    }
+  },
+  "CrackedWallDown": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 32,
+    "Width": 48,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWall"
+    },
+    "OpeningMode": "Up",
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWallDown",
+      "AnimationCycle": 0.6
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/CookiesEaten",
+        "Volume": 0.4
+      }
+    }
+  },
+  "CrackedWallLeft": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 32,
+    "Width": 48,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWall"
+    },
+    "OpeningMode": "Right",
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWallLeft",
+      "AnimationCycle": 0.6
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/CookiesEaten",
+        "Volume": 0.4
+      }
+    }
+  },
+  "CrackedWallRight": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 32,
+    "Width": 48,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWall"
+    },
+    "OpeningMode": "Left",
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level3X/CrackedWallRight",
+      "AnimationCycle": 0.6
+    },
+    "OpeningStartedEffect": {
+      "Sound": {
+        "Name": "Sounds/Doors/CookiesEaten",
+        "Volume": 0.4
+      }
+    }
+  },
   "Teacup1": {
     "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
     "Height": 24.0,
