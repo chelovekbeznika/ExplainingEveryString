@@ -18,16 +18,21 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                 case MoveType.StayingStill:
                     return new NonMover();
                 case MoveType.Linear:
-                    Single speed = specification.Parameters["speed"];
+                    var speed = specification.Parameters["speed"];
                     return new LinearMover(speed);
                 case MoveType.Acceleration:
-                    Single maxSpeed = specification.Parameters["maxSpeed"];
-                    Single startSpeed = specification.Parameters["startSpeed"];
-                    Single acceleration = specification.Parameters["acceleration"];
+                    var maxSpeed = specification.Parameters["maxSpeed"];
+                    var startSpeed = specification.Parameters["startSpeed"];
+                    var acceleration = specification.Parameters["acceleration"];
                     return new AccelerationMover(acceleration, startSpeed, maxSpeed);
+                case MoveType.Axis:
+                    var scalarSpeed = specification.Parameters["speed"];
+                    var minTimeTillAxeSwitch = specification.Parameters["minTimeTillAxeSwitch"];
+                    var maxTimeTillAxeSwitch = specification.Parameters["maxTimeTillAxeSwitch"];
+                    return new AxisMover(scalarSpeed, minTimeTillAxeSwitch, maxTimeTillAxeSwitch);
                 case MoveType.Teleportation:
-                    Single minTillTeleport = specification.Parameters["min"];
-                    Single maxTillTeleport = specification.Parameters["max"];
+                    var minTillTeleport = specification.Parameters["min"];
+                    var maxTillTeleport = specification.Parameters["max"];
                     return new TeleportationMover(minTillTeleport, maxTillTeleport);
                 default:
                     throw new ArgumentException("Unknown MoveType");

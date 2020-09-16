@@ -7,6 +7,10 @@
     {
       "Id": "Desert",
       "ButtonSprite": "Sprites/Menu/LevelSelect/2X"
+    },
+    {
+      "Id": "Moon",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/3X"
     }
   ],
   "Levels": [
@@ -49,6 +53,11 @@
       "LevelData": "level_24",
       "ButtonSprite": "Sprites/Menu/LevelSelect/24",
       "LevelsBlockId": "Desert"
+    },
+    {
+      "LevelData": "level_31",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/31",
+      "LevelsBlockId": "Moon"
     }
   ]
 }

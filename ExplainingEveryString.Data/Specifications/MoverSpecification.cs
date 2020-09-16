@@ -17,6 +17,7 @@ namespace ExplainingEveryString.Data.Specifications
         StayingStill,
         Linear,
         Acceleration,
-        Teleportation
+        Teleportation,
+        Axis
     }
 }

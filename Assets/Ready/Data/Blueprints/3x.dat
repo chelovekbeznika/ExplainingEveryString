@@ -398,10 +398,10 @@
         "Barrels": [
           {
             "Length": 5.0,
+            "Accuracy": 72.0,
+            "BulletsAtOnce": 9,
             "Bullet": {
               "TrajectoryType": "Sinus",
-              "Accuracy": 72.0,
-              "BulletsAtOnce": 9,
               "TrajectoryParameters": {
                 "speed": 150.0
               },
@@ -649,6 +649,89 @@
       }
     }
   },
+  "Mouse": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 40.0,
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 33.333333,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level3X/Mouse",
+      "AnimationCycle": 2.0
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/MouseDeath",
+        "Volume": 0.4
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/Death/Mouse",
+        "AnimationCycle": 0.666667
+      }
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/16_16",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.75,
+    "Behavior": {
+      "Mover": {
+        "Type": "Axis",
+        "Parameters": {
+          "speed": 150.0,
+          "minTimeTillAxeSwitch": 0.15,
+          "maxTimeTillAxeSwitch": 0.5
+        }
+      },
+      "MoveTargetSelectType": "RandomTargets",
+      "Spawner": {
+        "MaxSpawned": 9,
+        "Reloader": {
+          "FireRate": 0.2
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "0.0, 0.0"
+          ]
+        },
+        "BlueprintType": "Mine_mk3"
+      },
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 10.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
   "EnergyBarrier": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
@@ -687,16 +770,16 @@
       }
     }
   },
-  "CrackedWallUp": {
+  "CrackerWallUp": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 32,
     "Width": 48,
     "DefaultSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWall"
+      "Name": "Sprites/Doors/Level3X/CrackerWall"
     },
     "OpeningMode": "Up",
     "OpeningSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWallUp",
+      "Name": "Sprites/Doors/Level3X/CrackerWallUp",
       "AnimationCycle": 0.6
     },
     "OpeningStartedEffect": {
@@ -706,16 +789,16 @@
       }
     }
   },
-  "CrackedWallDown": {
+  "CrackerWallDown": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 32,
     "Width": 48,
     "DefaultSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWall"
+      "Name": "Sprites/Doors/Level3X/CrackerWall"
     },
     "OpeningMode": "Up",
     "OpeningSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWallDown",
+      "Name": "Sprites/Doors/Level3X/CrackerWallDown",
       "AnimationCycle": 0.6
     },
     "OpeningStartedEffect": {
@@ -725,16 +808,16 @@
       }
     }
   },
-  "CrackedWallLeft": {
+  "CrackerWallLeft": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 32,
     "Width": 48,
     "DefaultSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWall"
+      "Name": "Sprites/Doors/Level3X/CrackerWall"
     },
     "OpeningMode": "Right",
     "OpeningSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWallLeft",
+      "Name": "Sprites/Doors/Level3X/CrackerWallLeft",
       "AnimationCycle": 0.6
     },
     "OpeningStartedEffect": {
@@ -744,16 +827,16 @@
       }
     }
   },
-  "CrackedWallRight": {
+  "CrackerWallRight": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 32,
     "Width": 48,
     "DefaultSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWall"
+      "Name": "Sprites/Doors/Level3X/CrackerWall"
     },
     "OpeningMode": "Left",
     "OpeningSprite": {
-      "Name": "Sprites/Doors/Level3X/CrackedWallRight",
+      "Name": "Sprites/Doors/Level3X/CrackerWallRight",
       "AnimationCycle": 0.6
     },
     "OpeningStartedEffect": {
