@@ -52,7 +52,7 @@
                 },
                 {
                   "Length": 0.0,
-                  "AngleCorrection": 10.0,
+                  "AngleCorrection": 5.0,
                   "Accuracy": 5.0,
                   "Bullet": {
                     "TrajectoryParameters": {
