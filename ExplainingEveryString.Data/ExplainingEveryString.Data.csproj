@@ -1,124 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B320FDE-6C59-45F9-9DC1-DCAFCCCA63CE}</ProjectGuid>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExplainingEveryString.Data</RootNamespace>
-    <AssemblyName>ExplainingEveryString.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL">
+      <Version>3.8.0.1641</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssetsMetadata\AssetsMetadata.cs" />
-    <Compile Include="AssetsMetadata\AssetsMetadataAccess.cs" />
-    <Compile Include="AssetsMetadata\SpriteMetadata.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\BlueprintAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\DoorAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\EnemyAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\FirstBossAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\IAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\PlayerAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\SecondBossAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtraction.cs\ShadowEnemyAssetsExtractor.cs" />
-    <Compile Include="Blueprints\AssetsExtractor.cs" />
-    <Compile Include="Blueprints\FirstBossBlueprint.cs" />
-    <Compile Include="Blueprints\DoorBlueprint.cs" />
-    <Compile Include="Blueprints\ObstacleBlueprint.cs" />
-    <Compile Include="Blueprints\SecondBossBlueprint.cs" />
-    <Compile Include="Blueprints\ShadowEnemyBlueprint.cs" />
-    <Compile Include="Configuration\CameraConfiguration.cs" />
-    <Compile Include="Configuration\InputConfiguration.cs" />
-    <Compile Include="Configuration\ScreenConfiguration.cs" />
-    <Compile Include="Level\CheckpointSpecification.cs" />
-    <Compile Include="Level\SpawnSpecification.cs" />
-    <Compile Include="Level\DoorStartInfo.cs" />
-    <Compile Include="Level\FogOfWarSpecification.cs" />
-    <Compile Include="Level\GameProgress.cs" />
-    <Compile Include="Level\GameProgressAccess.cs" />
-    <Compile Include="Level\LevelProgress.cs" />
-    <Compile Include="Level\LevelsBlockSpecification.cs" />
-    <Compile Include="Level\LevelSequenceAccess.cs" />
-    <Compile Include="Level\LevelSequnceSpecification.cs" />
-    <Compile Include="Level\LevelSpecification.cs" />
-    <Compile Include="Level\PositionOnTileMap.cs" />
-    <Compile Include="Level\EnemyWave.cs" />
-    <Compile Include="Menu\MusicTestSpecificationAccess.cs" />
-    <Compile Include="Menu\MusicTestButtonSpecification.cs" />
-    <Compile Include="Specifications\ArsenalSpecification.cs" />
-    <Compile Include="Specifications\BarrelSpecification.cs" />
-    <Compile Include="Blueprints\Blueprint.cs" />
-    <Compile Include="Blueprints\BlueprintsAccess.cs" />
-    <Compile Include="Blueprints\IBlueprintsLoader.cs" />
-    <Compile Include="Specifications\BulletSpecification.cs" />
-    <Compile Include="Blueprints\EnemyBlueprint.cs" />
-    <Compile Include="Blueprints\JsonBlueprintsLoader.cs" />
-    <Compile Include="Blueprints\PlayerBlueprint.cs" />
-    <Compile Include="Specifications\DashSpecification.cs" />
-    <Compile Include="Specifications\EnemyBehaviorSpecification.cs" />
-    <Compile Include="Specifications\FirstBossPhaseSpecification.cs" />
-    <Compile Include="Specifications\MoverSpecification.cs" />
-    <Compile Include="Specifications\MoveTargetSelectType.cs" />
-    <Compile Include="Specifications\OneTimeSpawnerSpecification.cs" />
-    <Compile Include="Specifications\PostMortemSurpriseSpecification.cs" />
-    <Compile Include="Specifications\ReloaderSpecification.cs" />
-    <Compile Include="Specifications\SecondBossPhaseSpecification.cs" />
-    <Compile Include="Specifications\SecondBossPowerKeepersSpecification.cs" />
-    <Compile Include="Specifications\SoundSpecification.cs" />
-    <Compile Include="Specifications\SpawnerSpecification.cs" />
-    <Compile Include="Specifications\SpawnPositionSelectorSpecification.cs" />
-    <Compile Include="Specifications\WeaponSpecification.cs" />
-    <Compile Include="Specifications\SpecEffectSpecification.cs" />
-    <Compile Include="Specifications\SpriteSpecification.cs" />
-    <Compile Include="Configuration\Configuration.cs" />
-    <Compile Include="Configuration\ConfigurationAccess.cs" />
-    <Compile Include="Configuration\ControlDevice.cs" />
-    <Compile Include="FileNames.cs" />
-    <Compile Include="JsonDataAccessor.cs" />
-    <Compile Include="Level\ActorStartInfo.cs" />
-    <Compile Include="Level\LevelData.cs" />
-    <Compile Include="Level\LevelDataAccess.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

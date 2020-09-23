@@ -1,42 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3A60ECD8-33B2-45A3-AAA8-136B76514954}</ProjectGuid>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExplainingEveryString</RootNamespace>
-    <AssemblyName>ExplainingEveryString</AssemblyName>
-    <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\Build\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;LINUX</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>false</Prefer32Bit>
-    <WarningLevel>4</WarningLevel>
     <LangVersion>7.2</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>..\Build\Release\</OutputPath>
     <DefineConstants>TRACE;LINUX</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>false</Prefer32Bit>
-    <WarningLevel>4</WarningLevel>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -46,97 +23,33 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\SDL2.dll">
-      <Link>x86\SDL2.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\SDL2.dll">
-      <Link>x64\SDL2.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\soft_oal.dll">
-      <Link>x86\soft_oal.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\soft_oal.dll">
-      <Link>x64\soft_oal.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libSDL2-2.0.so.0">
-      <Link>x86\libSDL2-2.0.so.0</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libSDL2-2.0.so.0">
-      <Link>x64\libSDL2-2.0.so.0</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libopenal.so.1">
-      <Link>x86\libopenal.so.1</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libopenal.so.1">
-      <Link>x64\libopenal.so.1</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libSDL2-2.0.0.dylib">
-      <Link>libSDL2-2.0.0.dylib</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libopenal.1.dylib">
-      <Link>libopenal.1.dylib</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll.config">
-      <Link>MonoGame.Framework.dll.config</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="app.config" />
-    <None Include="app.manifest">
+    <None Update="app.manifest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExplainingEveryString.Core\ExplainingEveryString.Core.csproj">
-      <Project>{c033f4f6-87d8-406f-b2b9-855b06d1a417}</Project>
-      <Name>ExplainingEveryString.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExplainingEveryString.Editor\ExplainingEveryString.Editor.csproj">
-      <Project>{AC039BF5-95D1-4791-B556-FD6EBDD1FE67}</Project>
-      <Name>ExplainingEveryString.Editor</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\ExplainingEveryString.Core\ExplainingEveryString.Core.csproj" />
+    <ProjectReference Include="..\ExplainingEveryString.Editor\ExplainingEveryString.Editor.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Extended.Content.Pipeline" Version="3.8.0" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL">
+      <Version>3.8.0.1641</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Console">
+      <Version>3.11.1</Version>
+    </PackageReference>
+  </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)packages\NUnit.ConsoleRunner.3.11.1\tools\NUNIT3-CONSOLE.exe $(SolutionDir)ExplainingEveryString.Core.Tests/bin/$(ConfigurationName)/ExplainingEveryString.Core.Tests.dll
-if not exist $(SolutionDir)build\PipelineImporters md $(SolutionDir)build\PipelineImporters
-copy /Y $(SolutionDir)packages\MonoGame.Extended.3.7.0\lib\netstandard2.0\MonoGame.Extended.dll $(SolutionDir)build\PipelineImporters\
-copy /Y $(SolutionDir)packages\MonoGame.Extended.Tiled.3.7.0\lib\netstandard2.0\MonoGame.Extended.Tiled.dll $(SolutionDir)build\PipelineImporters\
-copy /Y $(SolutionDir)packages\MonoGame.Extended.Content.Pipeline.3.7.0\lib\netstandard2.0\MonoGame.Extended.Content.Pipeline.dll $(SolutionDir)build\PipelineImporters\
-"%25ProgramFiles(x86)%25\MSBuild\MonoGame\v3.0\Tools\mgcb.exe" /w:$(SolutionDir)Assets/Ready /@:../../Assets/Ready/Content.mgcb /config:$(ConfigurationName)
-</PostBuildEvent>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist $(SolutionDir)Build\PipelineImporters md $(SolutionDir)Build\PipelineImporters&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.Tiled.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.Content.Pipeline.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;mgcb /w:$(SolutionDir)Assets/Ready /@:../Assets/Ready/Content.mgcb /config:$(ConfigurationName)" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

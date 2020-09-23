@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString", "ExplainingEveryString\ExplainingEveryString.csproj", "{3A60ECD8-33B2-45A3-AAA8-136B76514954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExplainingEveryString", "ExplainingEveryString\ExplainingEveryString.csproj", "{3A60ECD8-33B2-45A3-AAA8-136B76514954}"
 	ProjectSection(ProjectDependencies) = postProject
 		{99731D96-7455-4294-B29B-9B8AAD098057} = {99731D96-7455-4294-B29B-9B8AAD098057}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString.Core", "ExplainingEveryString.Core\ExplainingEveryString.Core.csproj", "{C033F4F6-87D8-406F-B2B9-855B06D1A417}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExplainingEveryString.Core", "ExplainingEveryString.Core\ExplainingEveryString.Core.csproj", "{C033F4F6-87D8-406F-B2B9-855B06D1A417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString.Core.Tests", "ExplainingEveryString.Core.Tests\ExplainingEveryString.Core.Tests.csproj", "{99731D96-7455-4294-B29B-9B8AAD098057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExplainingEveryString.Core.Tests", "ExplainingEveryString.Core.Tests\ExplainingEveryString.Core.Tests.csproj", "{99731D96-7455-4294-B29B-9B8AAD098057}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString.Data", "ExplainingEveryString.Data\ExplainingEveryString.Data.csproj", "{9B320FDE-6C59-45F9-9DC1-DCAFCCCA63CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExplainingEveryString.Data", "ExplainingEveryString.Data\ExplainingEveryString.Data.csproj", "{9B320FDE-6C59-45F9-9DC1-DCAFCCCA63CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString.Music", "ExplainingEveryString.Music\ExplainingEveryString.Music.csproj", "{1B5E024F-A5B0-4C68-BB3C-C3CB455D4945}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExplainingEveryString.Music", "ExplainingEveryString.Music\ExplainingEveryString.Music.csproj", "{1B5E024F-A5B0-4C68-BB3C-C3CB455D4945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplainingEveryString.Editor", "ExplainingEveryString.Editor\ExplainingEveryString.Editor.csproj", "{AC039BF5-95D1-4791-B556-FD6EBDD1FE67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExplainingEveryString.Editor", "ExplainingEveryString.Editor\ExplainingEveryString.Editor.csproj", "{AC039BF5-95D1-4791-B556-FD6EBDD1FE67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
