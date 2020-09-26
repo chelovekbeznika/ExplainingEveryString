@@ -55,13 +55,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             if (specification.Weapon != null)
             {
                 var aimer = AimersFactory.Get(
-                    specification.Weapon.AimType, parameters.Angle, CurrentPositionLocator, playerLocator);
+                    specification.Weapon.AimType, parameters.Angle, enemy, playerLocator);
                 weapon = new Weapon(specification.Weapon, aimer, CurrentPositionLocator, playerLocator, level, false);
                 weapon.Shoot += level.EnemyShoot;
             }
             if (specification.PostMortemSurprise != null)
             {
-                PostMortemSurprise = new PostMortemSurprise(specification.PostMortemSurprise, CurrentPositionLocator,
+                PostMortemSurprise = new PostMortemSurprise(specification.PostMortemSurprise, enemy,
                     playerLocator, level, factory);
             }
             if (specification.Spawner != null)

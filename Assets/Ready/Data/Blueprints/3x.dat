@@ -1,5 +1,5 @@
 {
-    "Hunter_mk3": {
+  "Hunter_mk3": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 25.0,
     "Height": 16.0,
@@ -728,7 +728,7 @@
             "Volume": 0.2
           }
         },
-        "AimType": "AimAtPlayer"
+        "AimType": "ByMovement"
       }
     }
   },

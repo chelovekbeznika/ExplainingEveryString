@@ -7,14 +7,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
     internal static class AimersFactory
     {
         internal static IAimer Get(AimType aimType, Single angle,
-            Func<Vector2> currentPositionLocator, Func<Vector2> playerLocator)
+            IMovableCollidable shooter, Func<Vector2> playerLocator)
         {
             switch (aimType)
             {
                 case AimType.FixedFireDirection:
                     return new FixedAimer(angle);
                 case AimType.AimAtPlayer:
-                    return new PlayerAimer(playerLocator, currentPositionLocator);
+                    return new PlayerAimer(playerLocator, () => shooter.Position);
+                case AimType.ByMovement:
+                    return new ByMovementAimer(shooter);
                 case AimType.SpinningAim:
                     return new SpinningAimer(angle);
                 default:

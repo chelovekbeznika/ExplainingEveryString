@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private String avengerType;
         private ISpawnPositionSelector positionSelector;
         private ActorsFactory factory;
-        private Func<Vector2> currentPositionLocator;
+        private IMovableCollidable shooter;
         private Func<Vector2> playerLocator;
 
         private Boolean triggered = false;
@@ -24,11 +24,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Boolean FiresWeapon => barrels != null;
         private Boolean SpawnsEnemies => avengerType != null;
 
-        internal PostMortemSurprise(PostMortemSurpriseSpecification specification, Func<Vector2> currentPositionLocator, 
+        internal PostMortemSurprise(PostMortemSurpriseSpecification specification, IMovableCollidable shooter, 
             Func<Vector2> playerLocator, Level level, ActorsFactory factory)
         {
             this.factory = factory;
-            this.currentPositionLocator = currentPositionLocator;
+            this.shooter = shooter;
             this.playerLocator = playerLocator;
             if (specification.Weapon != null)
             {
@@ -42,9 +42,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private void InitializeWeapon(PostMortemWeaponSpecification specification, Level level)
         {
-            var aimer = AimersFactory.Get(specification.AimType, 0, currentPositionLocator, playerLocator);
+            var aimer = AimersFactory.Get(specification.AimType, 0, shooter, playerLocator);
             barrels = specification.Barrels
-                .Select(bs => new Barrel(level, aimer, currentPositionLocator, playerLocator, bs)).ToArray();
+                .Select(bs => new Barrel(level, aimer, () => shooter.Position, playerLocator, bs)).ToArray();
             foreach (var barrel in barrels)
                 barrel.Shoot += level.EnemyShoot;
         }
@@ -86,7 +86,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 var asi = new ActorStartInfo
                 {
                     BlueprintType = avengerType,
-                    Position = spawnSpecification.SpawnPoint + currentPositionLocator(),
+                    Position = spawnSpecification.SpawnPoint + shooter.Position,
                     BehaviorParameters = new BehaviorParameters
                     {
                         TrajectoryParameters = spawnSpecification.TrajectoryParameters?.ToArray(),
