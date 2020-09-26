@@ -599,7 +599,7 @@
       }
     }
   },
-  "MineSpawner_mk2": {
+  "MineSpawner_mk3": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 100.0,
     "Height": 48.0,
