@@ -13,6 +13,30 @@
     }
   },
   "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 57,
+        "Y": 210,
+        "Width": 36,
+        "Height": 12
+      },
+      "MaxEnemiesAtOnce": 3,
+      "Enemies": [
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 65,
+            "Y": 218
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "248, -120",
+            "-136, 136"
+          ]
+        }
+      ],
+      "Bosses": []
+    }
   ],
   "FogOfWar": {
     "ParticleWidth": 16,
