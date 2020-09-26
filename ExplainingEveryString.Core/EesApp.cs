@@ -9,16 +9,20 @@ namespace ExplainingEveryString.Core
 
         protected void PreInit()
         {
-            ConfigurationAccess.InitializeConfig();
-            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
-            graphics = new GraphicsDeviceManager(this)
-            {
-                PreferredBackBufferHeight = screenConfig.ScreenHeight,
-                PreferredBackBufferWidth = screenConfig.ScreenWidth,
-                IsFullScreen = screenConfig.FullScreen
-            };
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
+            graphics = new GraphicsDeviceManager(this);
+        }
+
+        //This method exists only cause of bug in Monogame 3.8.0. Should be merged with PreInit after update to 3.8.1
+        protected void GraphicsPreInit()
+        {
+            ConfigurationAccess.InitializeConfig();
+            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
+            graphics.PreferredBackBufferHeight = screenConfig.ScreenHeight;
+            graphics.PreferredBackBufferWidth = screenConfig.ScreenWidth;
+            graphics.IsFullScreen = screenConfig.FullScreen;
+            graphics.ApplyChanges();
         }
     }
 }

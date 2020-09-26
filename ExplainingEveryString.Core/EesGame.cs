@@ -21,6 +21,7 @@ namespace ExplainingEveryString.Core
 
         protected override void Initialize()
         {
+            GraphicsPreInit();
             var levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
             var musicTestSpecification = MusicTestSpecificationAccess.Load();
 

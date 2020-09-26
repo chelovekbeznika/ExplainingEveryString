@@ -28,6 +28,7 @@ namespace ExplainingEveryString.Editor
 
         protected override void Initialize()
         {
+            GraphicsPreInit();
             base.Initialize();
         }
 
