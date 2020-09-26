@@ -3,7 +3,10 @@ This repository belongs to youtube channel ["Explaining every string"](https://w
 
 I'm making here videogame on "Monogame framework".
 # How to start up?
-You need VS2019 (you can try VS2017, but I can't guarantee anything) and installed Monogame
+You need VS2019 with .NET Core SDK
+Also you need to install some dotnet instruments with these commands
+`dotnet tool install --global dotnet-mgcb`
+`dotnet tool install --global dotnet-mgcb-editor`
 
 Open your VS studio solution and build solution. It should find, build and copy assets in postbuild of ExplainingEveryString project.
 
