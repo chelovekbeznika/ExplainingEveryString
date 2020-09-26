@@ -18,6 +18,8 @@ namespace ExplainingEveryString.Data.Specifications
         public Single Accuracy { get; set; }
         [DefaultValue(1)]
         public Int32 BulletsAtOnce { get; set; }
+        [DefaultValue(0)]
+        public Single AngleStep { get; set; }
         public BulletSpecification Bullet { get; set; }
     }
 }

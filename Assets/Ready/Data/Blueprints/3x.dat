@@ -439,131 +439,14 @@
             {
               "Length": 0.0,
               "AngleCorrection": 0.0,
+              "BulletsAtOnce": 10,
+              "AngleStep": 36.0,
               "Bullet": {
                 "TrajectoryType": "Gravitational",
                 "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
-                },
-                "Damage": 25.0,
-                "TimeToLive": 5.0,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/EnemyBullet"
-                }
-              }
-            },
-            {
-              "Length": 0.0,
-              "AngleCorrection": 45.0,
-              "Bullet": {
-                "TrajectoryType": "Gravitational",
-                "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
-                },
-                "Damage": 25.0,
-                "TimeToLive": 5.0,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/EnemyBullet"
-                }
-              }
-            },
-            {
-              "Length": 0.0,
-              "AngleCorrection": 90.0,
-              "Bullet": {
-                "TrajectoryType": "Gravitational",
-                "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
-                },
-                "Damage": 25.0,
-                "TimeToLive": 5.0,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/EnemyBullet"
-                }
-              }
-            },
-            {
-              "Length": 0.0,
-              "AngleCorrection": 135.0,
-              "Bullet": {
-                "TrajectoryType": "Gravitational",
-                "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
-                },
-                "Damage": 25.0,
-                "TimeToLive": 5.0,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/EnemyBullet"
-                }
-              }
-            },
-            {
-              "Length": 0.0,
-              "AngleCorrection": 180.0,
-              "Bullet": {
-                "TrajectoryType": "Gravitational",
-                "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
-                },
-                "Damage": 25.0,
-                "TimeToLive": 5.0,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/EnemyBullet"
-                }
-              }
-            },
-            {
-              "Length": 0.0,
-              "AngleCorrection": 225.0,
-              "Bullet": {
-                "TrajectoryType": "Gravitational",
-                "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
-                },
-                "Damage": 25.0,
-                "TimeToLive": 5.0,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/EnemyBullet"
-                }
-              }
-            },
-            {
-              "Length": 0.0,
-              "AngleCorrection": 270.0,
-              "Bullet": {
-                "TrajectoryType": "Gravitational",
-                "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
-                },
-                "Damage": 25.0,
-                "TimeToLive": 5.0,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/EnemyBullet"
-                }
-              }
-            },
-            {
-              "Length": 0.0,
-              "AngleCorrection": 315.0,
-              "Bullet": {
-                "TrajectoryType": "Gravitational",
-                "TrajectoryParameters": {
-                  "startFlySpeed": 500.0,
-                  "sideSpeed": 75.0,
-                  "fallAcceleration": 350.0
+                  "startFlySpeed": 200.0,
+                  "sideSpeed": 50.0,
+                  "fallAcceleration": 400.0
                 },
                 "Damage": 25.0,
                 "TimeToLive": 5.0,
@@ -693,7 +576,7 @@
       "Spawner": {
         "MaxSpawned": 9,
         "Reloader": {
-          "FireRate": 0.2
+          "FireRate": 0.125
         },
         "PositionSelector" : {
           "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",

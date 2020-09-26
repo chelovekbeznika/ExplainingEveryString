@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Single angleCorrection;
         private readonly Single accuracy;
         private readonly Int32 bulletsAtOnce;
+        private readonly Single angleStep;
 
         internal Barrel(Level level, IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
         {
@@ -31,6 +32,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.aimer = aimer;
             this.level = level;
             this.bulletsAtOnce = specification.BulletsAtOnce;
+            this.angleStep = AngleConverter.ToRadians(specification.AngleStep);
             this.findOutWhereIAm = findOutWhereIAm;
             this.targetLocator = targetLocator;
             this.bulletSpecification = specification.Bullet;
@@ -44,7 +46,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             var position = findOutWhereIAm() + baseOffset + barrelDirection * length + GetMuzzleOffset();
             foreach (var i in Enumerable.Range(0, bulletsAtOnce))
             {
-                var direction = GetFireDirection(true);
+                var direction = GetFireDirection(true, i * angleStep);
                 var bullet = new Bullet(level, position, direction, bulletSpecification, targetLocator);
                 var eventArgs = new ShootEventArgs
                 {
@@ -61,12 +63,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             return GeometryHelper.RotateVector(muzzleOffset, direction.Y, direction.X);
         }
 
-        private Vector2 GetFireDirection(Boolean includeInaccuracy)
+        private Vector2 GetFireDirection(Boolean includeInaccuracy, Single angleStepCorrection = 0)
         {
             var direction = aimer.GetFireDirection();
             var angle = AngleConverter.ToRadians(direction);
-            if (angleCorrection != 0)
-                angle += angleCorrection;
+            angle += angleCorrection;
+            angle += angleStepCorrection;
             if (accuracy != 0 && includeInaccuracy)
                 angle += (RandomUtility.Next() - 0.5F) * accuracy;
             direction = AngleConverter.ToVector(angle);
