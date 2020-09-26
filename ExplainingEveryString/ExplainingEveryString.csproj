@@ -50,6 +50,6 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if not exist $(SolutionDir)Build\PipelineImporters md $(SolutionDir)Build\PipelineImporters&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.Tiled.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.Content.Pipeline.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;mgcb /w:$(SolutionDir)Assets/Ready /@:../Assets/Ready/Content.mgcb /config:$(ConfigurationName)" />
+    <Exec Command="dotnet test $(SolutionDir)ExplainingEveryString.Core.Tests\ExplainingEveryString.Core.Tests.csproj&#xD;&#xA;if not exist $(SolutionDir)Build\PipelineImporters md $(SolutionDir)Build\PipelineImporters&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.Tiled.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;copy /Y $(TargetDir)\MonoGame.Extended.Content.Pipeline.dll $(SolutionDir)build\PipelineImporters\&#xD;&#xA;mgcb /w:$(SolutionDir)Assets/Ready /@:../Assets/Ready/Content.mgcb /config:$(ConfigurationName)" />
   </Target>
 </Project>
