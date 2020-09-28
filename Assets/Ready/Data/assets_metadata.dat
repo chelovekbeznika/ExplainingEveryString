@@ -45,6 +45,10 @@
       "AnimationFrames": 6
     },
     {
+      "Name": "Sprites/Enemies/HomingBullet",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/Appearance/16_16",
       "AnimationFrames": 6
     },

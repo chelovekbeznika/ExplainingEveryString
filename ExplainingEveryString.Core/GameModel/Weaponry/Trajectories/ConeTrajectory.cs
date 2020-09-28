@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
             this.speed = parameters[nameof(speed)];
             this.angularVelocity = parameters[nameof(angularVelocity)];
             this.coneExtension = parameters[nameof(coneExtension)];
-            this.phaseShift = parameters[nameof(phaseShift)];
+            this.phaseShift = parameters.ContainsKey(nameof(phaseShift)) ? parameters[nameof(phaseShift)] : 0;
         }
 
         protected override Vector2 GetTrajectoryOffset(Single time)

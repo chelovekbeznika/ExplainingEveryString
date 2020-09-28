@@ -22,31 +22,15 @@
               "Barrels": [
                 {
                   "Length": 0.0,
-                  "AngleCorrection": -30.0,
-                  "Accuracy": 5.0,
-                  "Bullet": {
-                    "TrajectoryType": "Cone",
-                    "TrajectoryParameters": {
-                      "speed": 200.0,
-                      "angularVelocity": 90.0,
-                      "coneExtension": 20.0
-                    },
-                    "Damage": 10.0,
-                    "TimeToLive": 7.5,
-                    "Sprite": {
-                      "Name": "Sprites/Enemies/HelicopterBullet"
-                    }
-                  }
-                },
-                {
-                  "Length": 0.0,
                   "AngleCorrection": -15.0,
-                  "Accuracy": 5.0,
+                  "Accuracy": 2.5,
+                  "BulletsAtOnce": 5,
+                  "AngleStep": 7.5,
                   "Bullet": {
                     "TrajectoryType": "Cone",
                     "TrajectoryParameters": {
                       "speed": 200.0,
-                      "angularVelocity": 90.0,
+                      "angularVelocity": 60.0,
                       "coneExtension": 20.0
                     },
                     "Damage": 10.0,
@@ -55,61 +39,7 @@
                       "Name": "Sprites/Enemies/HelicopterBullet"
                     }
                   }
-                },
-                {
-                  "Length": 0.0,
-                  "AngleCorrection": 0.0,
-                  "Accuracy": 5.0,
-                  "Bullet": {
-                    "TrajectoryType": "Cone",
-                    "TrajectoryParameters": {
-                      "speed": 200.0,
-                      "angularVelocity": 90.0,
-                      "coneExtension": 20.0
-                    },
-                    "Damage": 10.0,
-                    "TimeToLive": 7.5,
-                    "Sprite": {
-                      "Name": "Sprites/Enemies/HelicopterBullet"
-                    }
-                  }
-                },
-                {
-                  "Length": 0.0,
-                  "AngleCorrection": 15.0,
-                  "Accuracy": 5.0,
-                  "Bullet": {
-                    "TrajectoryType": "Cone",
-                    "TrajectoryParameters": {
-                      "speed": 200.0,
-                      "angularVelocity": 90.0,
-                      "coneExtension": 20.0
-                    },
-                    "Damage": 10.0,
-                    "TimeToLive": 7.5,
-                    "Sprite": {
-                      "Name": "Sprites/Enemies/HelicopterBullet"
-                    }
-                  }
-                },
-                {
-                  "Length": 0.0,
-                  "AngleCorrection": 30.0,
-                  "Accuracy": 5.0,
-                  "Bullet": {
-                    "TrajectoryType": "Cone",
-                    "TrajectoryParameters": {
-                      "speed": 200.0,
-                      "angularVelocity": 90.0,
-                      "coneExtension": 20.0
-                    },
-                    "Damage": 10.0,
-                    "TimeToLive": 7.5,
-                    "Sprite": {
-                      "Name": "Sprites/Enemies/HelicopterBullet"
-                    }
-                  }
-                },
+                }
               ]
             }
           },
@@ -257,7 +187,7 @@
               "TrajectoryType": "Cone",
               "TrajectoryParameters": {
                 "speed": 400.0,
-                "angularVelocity": 90.0,
+                "angularVelocity": 6.283,
                 "coneExtension": 30.0
               },
               "Damage": 25.0,
@@ -274,7 +204,7 @@
               "TrajectoryType": "Cone",
               "TrajectoryParameters": {
                 "speed": 400.0,
-                "angularVelocity": 90.0,
+                "angularVelocity": 6.283,
                 "coneExtension": 30.0,
                 "phaseShift": 1.570796
               },
@@ -335,17 +265,14 @@
           {
             "Length": 12.0,
             "Bullet": {
-              "TrajectoryType": "Sinus",
               "HomingSpeed": 10.0,
               "TrajectoryParameters": {
-                "speed": 270.0,
-                "amplitude": 48.0,
-                "angularVelocity": 10.0
+                "speed": 270.0
               },
               "Damage": 25.0,
-              "TimeToLive": 7.5,
+              "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
+                "Name": "Sprites/Enemies/HomingBullet"
               }
             }
           }
@@ -399,11 +326,13 @@
           {
             "Length": 5.0,
             "Accuracy": 72.0,
-            "BulletsAtOnce": 9,
+            "BulletsAtOnce": 5,
             "Bullet": {
               "TrajectoryType": "Sinus",
               "TrajectoryParameters": {
-                "speed": 150.0
+                "speed": 100.0,
+                "amplitude": 4.0,
+                "angularVelocity": 12.566
               },
               "Damage": 25.0,
               "TimeToLive": 10.0,

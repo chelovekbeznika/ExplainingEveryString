@@ -1544,6 +1544,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/HelicopterBullet.png
 
+#begin Sprites/Enemies/HomingBullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/HomingBullet.png
+
 #begin Sprites/Enemies/Hunter.png
 /importer:TextureImporter
 /processor:TextureProcessor
