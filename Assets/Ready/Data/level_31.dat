@@ -10,6 +10,11 @@
       "X": 68,
       "Y": 233,
       "Offset": "8, -8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "RocketLauncher": 75
+      }
     }
   },
   "EnemyWaves": [
@@ -620,6 +625,11 @@
           "X": 86,
           "Y": 170,
           "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "RocketLauncher": 50
+          }
         }
       },
       "StartRegion": {
@@ -1347,6 +1357,11 @@
           "X": 83,
           "Y": 117,
           "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "RocketLauncher": 50
+          }
         }
       },
       "StartRegion": {
