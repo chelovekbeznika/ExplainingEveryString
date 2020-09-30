@@ -466,7 +466,7 @@
     "CollisionDamage": 40.0,
     "Height": 16.0,
     "Width": 16.0,
-    "Hitpoints": 33.333333,
+    "Hitpoints": 16.666667,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level3X/Mouse",
       "AnimationCycle": 2.0
@@ -503,7 +503,7 @@
       },
       "MoveTargetSelectType": "RandomTargets",
       "Spawner": {
-        "MaxSpawned": 9,
+        "MaxSpawned": 1,
         "Reloader": {
           "FireRate": 0.125
         },
