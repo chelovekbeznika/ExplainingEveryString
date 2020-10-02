@@ -307,7 +307,7 @@
       }
     },
     "AppearancePhaseSprite": {
-      "Name": "Sprites/Enemies/Level2X/Appearance/TripleCannon",
+      "Name": "Sprites/Enemies/Level3X/Appearance/TripleCannon",
       "AnimationCycle": 0.1666666
     },
     "AfterAppearanceEffect": {
@@ -541,6 +541,102 @@
           }
         },
         "AimType": "ByMovement"
+      }
+    }
+  },
+  "Miniboss_mk31": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 500.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level3X/BlackMask",
+      "AnimationCycle": 0.666667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BlackMaskFadeOut",
+        "Volume": 0.4
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/Death/BlackMask",
+        "AnimationCycle": 1.0
+      }
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level3X/Appearance/BlackMask",
+      "AnimationCycle": 1.0
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 50.0,
+          "maxSpeed": 50.0,
+          "acceleration": 6000.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 15.0,
+            "BulletsAtOnce": 3,
+            "AngleStep": 10.0,
+            "AngleCorrection": -10.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 750.0
+              },
+              "BlastWaveRadius": 96.0,
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level3X/LaserRocketBlast",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Bosses/LaserRocketBlast",
+                  "Volume": 0.4
+                }
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "ByMovement"
+      },
+      "Spawner": {
+        "MaxSpawned": 1,
+        "Reloader": {
+          "FireRate": 0.1
+        },
+        "BlueprintType": "TripleCannon_mk3",
+        "SpawnPositionRelativeToCurrentPosition": false,
+        "PositionSelector": {
+          "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
+          "BetweenRepeats": 3
+        }
       }
     }
   },

@@ -616,12 +616,20 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Level3X/BlackMask",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Enemies/Level3X/Appearance/TripleCannon",
       "AnimationFrames": 2
     },
     {
       "Name": "Sprites/Enemies/Level3X/Appearance/MineSpawner",
       "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Appearance/BlackMask",
+      "AnimationFrames": 5
     },
     {
       "Name": "Sprites/Enemies/Level3X/Death/Cannon",
@@ -654,6 +662,10 @@
     {
       "Name": "Sprites/Enemies/Level3X/Death/Mouse",
       "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/BlackMask",
+      "AnimationFrames": 6
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/0",

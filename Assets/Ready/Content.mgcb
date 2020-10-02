@@ -152,6 +152,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/BigBrother.wav
 
+#begin Sounds/Bosses/BlackMaskFadeOut.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/BlackMaskFadeOut.wav
+
 #begin Sounds/Bosses/BreakingIce.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -169,6 +175,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Bosses/HelicopterShoot.wav
+
+#begin Sounds/Bosses/LaserRocketBlast.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/LaserRocketBlast.wav
 
 #begin Sounds/Bosses/SmallBrother.wav
 /importer:WavImporter
@@ -2348,6 +2360,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level2X/TripleCannon.png
 
+#begin Sprites/Enemies/Level3X/Appearance/BlackMask.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Appearance/BlackMask.png
+
 #begin Sprites/Enemies/Level3X/Appearance/MineSpawner.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2372,6 +2396,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Appearance/TripleCannon.png
 
+#begin Sprites/Enemies/Level3X/BlackMask.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/BlackMask.png
+
 #begin Sprites/Enemies/Level3X/Cannon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2383,6 +2419,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Cannon.png
+
+#begin Sprites/Enemies/Level3X/Death/BlackMask.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Death/BlackMask.png
 
 #begin Sprites/Enemies/Level3X/Death/Cannon.png
 /importer:TextureImporter
@@ -2503,6 +2551,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Hunter.png
+
+#begin Sprites/Enemies/Level3X/LaserRocketBlast.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/LaserRocketBlast.png
 
 #begin Sprites/Enemies/Level3X/Mine.png
 /importer:TextureImporter
