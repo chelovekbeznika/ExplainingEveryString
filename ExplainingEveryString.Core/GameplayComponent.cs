@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core
         private readonly String levelFileName;
         private readonly LevelProgress levelStart;
         private LevelData levelData;
+        private SpriteEmitter spriteEmitter;
         private EesGame eesGame;
         private TileWrapper map;
         private TiledMapDisplayer mapDisplayer;
@@ -54,6 +55,8 @@ namespace ExplainingEveryString.Core
             map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
             level = new Level(factory, map, new PlayerInputFactory(this), levelData, levelStart);
             level.CheckpointReached += eesGame.GameState.NotableProgressMaid;
+            if (levelData.SpriteEmitter != null)
+                spriteEmitter = new SpriteEmitter(levelData.SpriteEmitter, map);
             base.Initialize();
         }
 
@@ -77,7 +80,7 @@ namespace ExplainingEveryString.Core
         {
             var metadataLoader = AssetsMetadataAccess.GetLoader();
             var assetsStorage = new AssetsStorage();
-            assetsStorage.FillAssetsStorages(blueprintsLoader, metadataLoader, eesGame.Content);
+            assetsStorage.FillAssetsStorages(blueprintsLoader, levelData.SpriteEmitter, metadataLoader, eesGame.Content);
             return assetsStorage;
         }
 
@@ -100,6 +103,7 @@ namespace ExplainingEveryString.Core
             var elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
             level.Update(elapsedSeconds);
             Camera.Update(elapsedSeconds);
+            spriteEmitter?.Update(elapsedSeconds);
             mapDisplayer.Update(gameTime);
             EpicEventsProcessor.Update(elapsedSeconds);
             fogOfWarRuler.Update(elapsedSeconds);
@@ -113,6 +117,8 @@ namespace ExplainingEveryString.Core
             Camera.Draw(spriteBatch, level.GetObjectsToDraw());
             EpicEventsProcessor.ProcessEpicEvents();
             Camera.Draw(spriteBatch, EpicEventsProcessor.GetSpecEffectsToDraw());
+            if (spriteEmitter != null)
+                Camera.Draw(spriteBatch, spriteEmitter.EmittedSprites);
             fogOfWarRuler.DrawFogOfWar(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

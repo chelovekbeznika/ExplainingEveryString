@@ -2078,5 +2078,68 @@
       1
     ]
   },
-  "ObstaclesTilePositions": {}
+  "ObstaclesTilePositions": {},
+  "SpriteEmitter": {
+    "Region": {
+      "X": 0,
+      "Y": 0,
+      "Width": 55,
+      "Height": 240
+    },
+    "SpriteLifetime": {
+      "ExpectedValue": 10.0,
+      "Sigma": 9.0
+    },
+    "BetweenSpawns": {
+      "ExpectedValue": 0.05,
+      "Sigma": 0.02
+    },
+    "RandomSprites": {
+      "PossibleValues": [
+        {
+          "Name": "Sprites/CheeseMoonStars/0",
+          "AnimationCycle": 1.5
+        },
+        {
+          "Name": "Sprites/CheeseMoonStars/1",
+          "AnimationCycle": 1.2
+        },
+        {
+          "Name": "Sprites/CheeseMoonStars/2",
+          "AnimationCycle": 1.8
+        },
+        {
+          "Name": "Sprites/CheeseMoonStars/3",
+          "AnimationCycle": 0.9
+        },
+        {
+          "Name": "Sprites/CheeseMoonStars/4",
+          "AnimationCycle": 1.8
+        }
+      ],
+      "Weights": [
+        3,
+        2,
+        2,
+        2,
+        1
+      ]
+    },
+    "SpriteSpeedMovement": {
+      "ExpectedValue": 200,
+      "Sigma": 50
+    },
+    "RandomDirections": {
+      "PossibleValues": [
+        "0.0, 1.0",
+        "-0.05, 1.0",
+        "-0.1, 1.0"
+      ],
+      "Weights": [
+        12,
+        2,
+        1
+      ]
+    }
+  }
 }

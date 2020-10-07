@@ -696,6 +696,26 @@
       "Name": "Sprites/FogOfWar/Level3X/5",
       "AnimationFrames": 5,
       "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/CheeseMoonStars/0",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/CheeseMoonStars/1",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/CheeseMoonStars/2",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/CheeseMoonStars/3",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/CheeseMoonStars/4",
+      "AnimationFrames": 4
     }
   ]
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Level
 {
@@ -12,5 +13,7 @@ namespace ExplainingEveryString.Data.Level
         public List<EnemyWave> EnemyWaves { get; set; }
         public FogOfWarSpecification FogOfWar { get; set; }
         public Dictionary<String, PositionOnTileMap[]> ObstaclesTilePositions { get; set; }
+        [DefaultValue(null)]
+        public SpriteEmitterData SpriteEmitter { get; set; }
     }
 }
