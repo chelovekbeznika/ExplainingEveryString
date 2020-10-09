@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Music.Model
     public enum NoteLength 
     { 
         Whole = 1, Half = 2, Quarter = 4, Eigth = 8, Sixteenth = 16, ThirtySecond = 32,
-        Dotted = 64, DoubleDotted = 128, TripleDotted = 256 
+        Dotted = 64, DoubleDotted = 128, TripleDotted = 256, Triplet = 512
     }
 
     [JsonConverter(typeof(StringEnumConverter))]

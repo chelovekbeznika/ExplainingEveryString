@@ -86,6 +86,9 @@
 #begin Data/Music/liberty_bell.dat
 /copy:Data/Music/liberty_bell.dat
 
+#begin Data/Music/moonlight.dat
+/copy:Data/Music/moonlight.dat
+
 #begin Data/Music/rondo_alla_turca.dat
 /copy:Data/Music/rondo_alla_turca.dat
 
@@ -3847,6 +3850,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Songs/Desert.png
+
+#begin Sprites/Menu/Songs/Moon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Songs/Moon.png
 
 #begin Sprites/Menu/Songs/Winter.png
 /importer:TextureImporter

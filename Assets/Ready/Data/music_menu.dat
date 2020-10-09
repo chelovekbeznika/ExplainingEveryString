@@ -10,5 +10,9 @@
   {
     "Sprite": "Sprites/Menu/Songs/Desert",
     "SongName": "rondo_alla_turca"
+  },
+  {
+    "Sprite": "Sprites/Menu/Songs/Moon",
+    "SongName": "moonlight"
   }
 ]

@@ -40,6 +40,8 @@ namespace ExplainingEveryString.Music.Model
             if (noteLength.HasFlag(NoteLength.DoubleDotted)) result = result * 7 / 4;
             if (noteLength.HasFlag(NoteLength.TripleDotted)) result = result * 15 / 8;
 
+            if (noteLength.HasFlag(NoteLength.Triplet)) result = result * 2 / 3;
+
             return result;
         }
 
