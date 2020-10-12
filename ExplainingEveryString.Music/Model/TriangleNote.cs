@@ -23,11 +23,11 @@ namespace ExplainingEveryString.Music.Model
                 Parameter = SoundChannelParameter.Timer,
                 Value = NotesHelper.TriangleTimer(Note, Accidental)
             };
-            var endAt = PartOfLegato ? SamplesOffset + NoteLengthInSamples(Length) * 19 / 20 : SamplesOffset + NoteLengthInSamples(Length);
+            var endAt = PartOfLegato ? SamplesOffset + NoteLengthInSamples(Length) : SamplesOffset + NoteLengthInSamples(Length) * 19 / 20;
             yield return new RawSoundDirectingEvent
             {
                 Seconds = Seconds,
-                SamplesOffset = SamplesOffset + endAt,
+                SamplesOffset = endAt,
                 SoundComponent = SoundComponentType.Triangle,
                 Parameter = SoundChannelParameter.Timer,
                 Value = 0
