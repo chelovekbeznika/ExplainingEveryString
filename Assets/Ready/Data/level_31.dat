@@ -2056,6 +2056,348 @@
         }
       ],
       "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 8,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 10,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 12,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 14,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 16,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 18,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 20,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 22,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 24,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 26,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 28,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallRight",
+          "TilePosition": {
+            "X": 55,
+            "Y": 30,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallLeft",
+          "TilePosition": {
+            "X": 55,
+            "Y": 32,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallLeft",
+          "TilePosition": {
+            "X": 55,
+            "Y": 34,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallLeft",
+          "TilePosition": {
+            "X": 55,
+            "Y": 36,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallLeft",
+          "TilePosition": {
+            "X": 55,
+            "Y": 38,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallLeft",
+          "TilePosition": {
+            "X": 55,
+            "Y": 40,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 89,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 86,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 83,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 80,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 77,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 74,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 71,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 68,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 65,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 62,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 59,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 56,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 74, 
+          "Y": 38,
+          "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "RocketLauncher": 50
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 56,
+        "Y": 7,
+        "Width": 42,
+        "Height": 21
+      },
+      "Bosses": [
+        {
+          "BlueprintType": "Miniboss_mk31",
+          "TilePosition": {
+            "X": 96,
+            "Y": 22,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "8, 160",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, 112",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, 64",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, 24",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, -208",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, -160",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, -112",
+              "Angle": 0.0
+            },
+            {
+              "SpawnPoint": "8, -64",
+              "Angle": 0.0
+            }
+          ]
+        }
+      ],
+      "Enemies": []
     }
   ],
   "FogOfWar": {
@@ -2081,8 +2423,6 @@
   "ObstaclesTilePositions": {},
   "SpriteEmitter": {
     "Region": {
-      "X": 0,
-      "Y": 0,
       "Width": 55,
       "Height": 240
     },
@@ -2126,14 +2466,14 @@
       ]
     },
     "SpriteSpeedMovement": {
-      "ExpectedValue": 200,
-      "Sigma": 50
+      "ExpectedValue": 200.0,
+      "Sigma": 50.0
     },
     "RandomDirections": {
       "PossibleValues": [
-        "0.0, 1.0",
-        "-0.05, 1.0",
-        "-0.1, 1.0"
+        "0, 1",
+        "-0.05, 1",
+        "-0.1, 1"
       ],
       "Weights": [
         12,
