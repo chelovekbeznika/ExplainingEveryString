@@ -39,6 +39,7 @@ namespace ExplainingEveryString.Core.GameModel
             }
         }
         internal Single FromLastCheckpoint { get; private set; } = Single.NaN;
+        internal Func<List<IEnemy>> CurrentEnemies { get; set; }
         public String CollideTag => null;
         public override CollidableMode CollidableMode => DashController.IsActive ? CollidableMode.Shadow : base.CollidableMode;
 
@@ -52,6 +53,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private DashAcceleration dashAcceleration;
 
+        private ICollidable currentTarget;
         private Weapon[] weapons;
         private Int32 selectedWeapon = 0;
         internal Weapon Weapon => weapons[selectedWeapon];
@@ -67,7 +69,7 @@ namespace ExplainingEveryString.Core.GameModel
             
             MaxHitPoints = blueprint.Hitpoints;
 
-            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, null, level, true)).ToArray();
+            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, () => currentTarget?.Position, level, true)).ToArray();
             foreach (var weapon in weapons)
                 weapon.Shoot += level.PlayerShoot;
 
@@ -95,10 +97,23 @@ namespace ExplainingEveryString.Core.GameModel
             WeaponSelect();
             if (Input.IsTryingToReload())
                 Weapon.Reloader.TryReload();
+            TargetSelect();
             Weapon.Update(elapsedSeconds);
             DashController.Update(elapsedSeconds);
             Move(elapsedSeconds);
             FromLastCheckpoint += elapsedSeconds;
+        }
+
+        private void TargetSelect()
+        {
+            var fireAngle = AngleConverter.ToRadians(Weapon.GetFireDirection());
+            Single angleBetween(IEnemy enemy)
+            {
+                var angleToEnemy = AngleConverter.ToRadians((enemy as ICollidable).Position - Position);
+                return System.Math.Abs(AngleConverter.ClosestArc(fireAngle, angleToEnemy));
+            };
+                
+            currentTarget = CurrentEnemies().Any() ? CurrentEnemies().Select(enemy => (angleBetween(enemy), enemy)).Min().enemy : null;
         }
 
         internal void CheckpointRefresh(ArsenalSpecification playerApsenal)

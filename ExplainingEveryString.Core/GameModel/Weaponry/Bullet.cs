@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private readonly Single timeToLive;
         private readonly Single homingSpeed;
-        private readonly Func<Vector2> targetLocator;
+        private readonly Func<Vector2?> targetLocator;
         private readonly EpicEvent hit;
 
         private Single bulletAge = 0;
@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public Boolean IsVisible => IsAlive();
 
         internal Bullet(Level level, Vector2 position, Vector2 fireDirection, 
-            BulletSpecification specification, Func<Vector2> targetLocator)
+            BulletSpecification specification, Func<Vector2?> targetLocator)
         {
             this.SpriteState = new SpriteState(specification.Sprite);
             this.Position = position;
@@ -52,7 +52,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public void Update(Single elapsedSeconds)
         {
-            if (IsHoming)
+            if (IsHoming && targetLocator() != null)
                 trajectory.FireDirection = CorrectFireDirection(trajectory.FireDirection, elapsedSeconds);
             bulletAge += elapsedSeconds;
             OldPosition = Position;
@@ -75,7 +75,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private Vector2 CorrectFireDirection(Vector2 fireDirection, Single elapsedSeconds)
         {
-            var directionToTarget = targetLocator() - Position;
+            var directionToTarget = targetLocator().Value - Position;
             var targetAngle = AngleConverter.ToRadians(directionToTarget);
             var currentAngle = AngleConverter.ToRadians(fireDirection);
             var arcToTarget = AngleConverter.ClosestArc(currentAngle, targetAngle);

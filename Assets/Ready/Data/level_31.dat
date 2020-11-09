@@ -628,7 +628,8 @@
         },
         "Arsenal": {
           "AvailableWeapons": {
-            "RocketLauncher": 50
+            "RocketLauncher": 50,
+            "Homing": 2000
           }
         }
       },

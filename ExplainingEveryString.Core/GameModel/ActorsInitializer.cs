@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Core.Tiles;
 using ExplainingEveryString.Data.Level;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,11 +74,13 @@ namespace ExplainingEveryString.Core.GameModel
             return wallsFactory.ConstructWalls().OfType<ICollidable>().ToArray();
         }
 
-        internal Player InitializePlayer(CheckpointsManager checkpointsManager, String checkpoint)
+        internal Player InitializePlayer(ActiveActorsStorage actorsStorage, CheckpointsManager checkpointsManager, String checkpoint)
         {
             var playerStartInfo = checkpointsManager.GetPlayerPosition(checkpoint);
             var playerArsenal = checkpointsManager.GetPlayerArsenal(checkpoint);
-            return actorsFactory.ConstructPlayer(playerStartInfo, playerArsenal);
+            var player = actorsFactory.ConstructPlayer(playerStartInfo, playerArsenal);
+            player.CurrentEnemies = () => actorsStorage.Enemies;
+            return player;
         }
 
         internal Hitbox InitializeStartRegion(Int32 waveNumber)

@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly IAimer aimer;
         private readonly Level level;
         private readonly Func<Vector2> findOutWhereIAm;
-        private readonly Func<Vector2> targetLocator;
+        private readonly Func<Vector2?> targetLocator;
         private readonly BulletSpecification bulletSpecification;
         private readonly Vector2 baseOffset;
         private readonly Vector2 muzzleOffset;
@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Int32 bulletsAtOnce;
         private readonly Single angleStep;
 
-        internal Barrel(Level level, IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, BarrelSpecification specification)
+        internal Barrel(Level level, IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2?> targetLocator, BarrelSpecification specification)
         {
             this.baseOffset = specification.BaseOffset;
             this.muzzleOffset = specification.MuzzleOffset;

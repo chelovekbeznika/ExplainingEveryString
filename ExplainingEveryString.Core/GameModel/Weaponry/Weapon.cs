@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly EpicEvent reloadStarted;
 
         private readonly Func<Vector2> findOutWhereIAm;
-        private readonly Func<Vector2> targetLocator;
+        private readonly Func<Vector2?> targetLocator;
 
         public SpriteState SpriteState { get; private set; }
         public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal Vector2 GetFireDirection() => aimer.GetFireDirection();
 
         internal Weapon(WeaponSpecification specification, IAimer aimer, 
-            Func<Vector2> findOutWhereIAm, Func<Vector2> targetLocator, Level level, Boolean fullAmmoAtStart = false)
+            Func<Vector2> findOutWhereIAm, Func<Vector2?> targetLocator, Level level, Boolean fullAmmoAtStart = false)
         {
             this.aimer = aimer;
             barrels = specification.Barrels

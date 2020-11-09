@@ -56,7 +56,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             {
                 var aimer = AimersFactory.Get(
                     specification.Weapon.AimType, parameters.Angle, enemy, playerLocator);
-                weapon = new Weapon(specification.Weapon, aimer, CurrentPositionLocator, playerLocator, level, false);
+                weapon = new Weapon(specification.Weapon, aimer, CurrentPositionLocator, () => playerLocator(), level, false);
                 weapon.Shoot += level.EnemyShoot;
             }
             if (specification.PostMortemSurprise != null)
