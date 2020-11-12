@@ -359,6 +359,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/Hit.wav
 
+#begin Sounds/Player/Homing.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/Homing.wav
+
 #begin Sounds/Player/Refresh.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -3551,6 +3557,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/Weaponry/ConeEmpty.png
 
+#begin Sprites/Interface/Weaponry/Homing.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/Weaponry/Homing.png
+
 #begin Sprites/Interface/Weaponry/Shotgun.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4030,6 +4048,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Grain.png
+
+#begin Sprites/Player/HomingBullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/HomingBullet.png
+
+#begin Sprites/Player/HomingCannon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/HomingCannon.png
 
 #begin Sprites/Player/PlayerBullet.png
 /importer:TextureImporter

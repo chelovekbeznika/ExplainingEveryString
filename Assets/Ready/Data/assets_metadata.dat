@@ -73,6 +73,10 @@
       "AnimationFrames": 2
     },
     {
+      "Name": "Sprites/Player/HomingCannon",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Player/Rocket",
       "AnimationFrames": 5
     },

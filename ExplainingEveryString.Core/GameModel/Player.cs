@@ -112,8 +112,8 @@ namespace ExplainingEveryString.Core.GameModel
                 var angleToEnemy = AngleConverter.ToRadians((enemy as ICollidable).Position - Position);
                 return System.Math.Abs(AngleConverter.ClosestArc(fireAngle, angleToEnemy));
             };
-                
-            currentTarget = CurrentEnemies().Any() ? CurrentEnemies().Select(enemy => (angleBetween(enemy), enemy)).Min().enemy : null;
+
+            currentTarget = CurrentEnemies().OrderBy(enemy => angleBetween(enemy)).FirstOrDefault();
         }
 
         internal void CheckpointRefresh(ArsenalSpecification playerApsenal)

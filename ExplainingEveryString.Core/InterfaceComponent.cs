@@ -90,6 +90,7 @@ namespace ExplainingEveryString.Core
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
             {
                 { "Shotgun", new ShotgunDisplayer(interfaceSpritesDisplayer) },
+                { "Homing", new HomingDisplayer(interfaceSpritesDisplayer) },
                 { "Cone", new ConeDisplayer(interfaceSpritesDisplayer) }
             };
 

@@ -219,34 +219,35 @@
        {
         "Name": "Homing",
         "Reloader": {
-          "FireRate": 20.0,
-          "Ammo": 1,
-          "ReloadTime": 0.0
+          "FireRate": 3.0,
+          "Ammo": 30,
+          "ReloadTime": 2.5
         },
         "Sprite": {
-          "Name": "Sprites/Player/Cannon",
-          "AnimationCycle": 0.5
+          "Name": "Sprites/Player/HomingCannon",
+          "AnimationCycle": 1.5
         },
         "Barrels": [
           {
-            "Length": 14.0,
-            "Accuracy": 5.0,
+            "Length": 10.0,
+            "Accuracy": 0.0,
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 800.0
+                "speed": 600.0
               },
               "HomingSpeed": 120.0,
-              "Damage": 1.0,
+              "Damage": 5.0,
               "TimeToLive": 3.0,
+              "ConsiderAngle": true,
               "Sprite": {
-                "Name": "Sprites/Player/PlayerBullet"
+                "Name": "Sprites/Player/HomingBullet"
               }
             }
           }
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/Player/Shoot",
+            "Name": "Sounds/Player/Homing",
             "Volume": 0.1
           }
         },

@@ -629,7 +629,7 @@
         "Arsenal": {
           "AvailableWeapons": {
             "RocketLauncher": 50,
-            "Homing": 2000
+            "Homing": 180
           }
         }
       },
@@ -2061,6 +2061,7 @@
     {
       "Doors": [
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2070,6 +2071,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2079,6 +2081,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2088,6 +2091,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2097,6 +2101,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2106,6 +2111,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2115,6 +2121,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2124,6 +2131,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2133,6 +2141,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2142,6 +2151,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2151,6 +2161,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2160,6 +2171,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallRight",
           "TilePosition": {
             "X": 55,
@@ -2169,6 +2181,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallLeft",
           "TilePosition": {
             "X": 55,
@@ -2178,6 +2191,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallLeft",
           "TilePosition": {
             "X": 55,
@@ -2187,6 +2201,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallLeft",
           "TilePosition": {
             "X": 55,
@@ -2196,6 +2211,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallLeft",
           "TilePosition": {
             "X": 55,
@@ -2205,6 +2221,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 9,
           "BlueprintType": "CrackerWallLeft",
           "TilePosition": {
             "X": 55,
@@ -2337,7 +2354,7 @@
       "Checkpoint": {
         "Name": "Boss",
         "PlayerPosition": {
-          "X": 74, 
+          "X": 74,
           "Y": 38,
           "Offset": "-8, -8"
         },
@@ -2353,6 +2370,7 @@
         "Width": 42,
         "Height": 21
       },
+      "Enemies": [],
       "Bosses": [
         {
           "BlueprintType": "Miniboss_mk31",
@@ -2397,8 +2415,7 @@
             }
           ]
         }
-      ],
-      "Enemies": []
+      ]
     }
   ],
   "FogOfWar": {
