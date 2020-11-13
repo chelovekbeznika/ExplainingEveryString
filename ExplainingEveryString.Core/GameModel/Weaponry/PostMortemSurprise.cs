@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private ISpawnPositionSelector positionSelector;
         private ActorsFactory factory;
         private IMovableCollidable shooter;
-        private Func<Vector2> playerLocator;
+        private Player player;
 
         private Boolean triggered = false;
 
@@ -25,11 +25,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Boolean SpawnsEnemies => avengerType != null;
 
         internal PostMortemSurprise(PostMortemSurpriseSpecification specification, IMovableCollidable shooter, 
-            Func<Vector2> playerLocator, Level level, ActorsFactory factory)
+            Player player, Level level, ActorsFactory factory)
         {
             this.factory = factory;
             this.shooter = shooter;
-            this.playerLocator = playerLocator;
+            this.player = player;
             if (specification.Weapon != null)
             {
                 InitializeWeapon(specification.Weapon, level);
@@ -42,9 +42,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private void InitializeWeapon(PostMortemWeaponSpecification specification, Level level)
         {
-            var aimer = AimersFactory.Get(specification.AimType, 0, shooter, playerLocator);
+            var aimer = AimersFactory.Get(specification.AimType, 0, shooter, () => player.Position);
             barrels = specification.Barrels
-                .Select(bs => new Barrel(level, aimer, () => shooter.Position, () => playerLocator(), bs)).ToArray();
+                .Select(bs => new Barrel(level, aimer, () => shooter.Position, () => player, bs)).ToArray();
             foreach (var barrel in barrels)
                 barrel.Shoot += level.EnemyShoot;
         }

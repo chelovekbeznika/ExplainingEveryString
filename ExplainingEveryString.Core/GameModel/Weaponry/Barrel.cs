@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly IAimer aimer;
         private readonly Level level;
         private readonly Func<Vector2> findOutWhereIAm;
-        private readonly Func<Vector2?> targetLocator;
+        private readonly Func<IActor> targetSelector;
         private readonly BulletSpecification bulletSpecification;
         private readonly Vector2 baseOffset;
         private readonly Vector2 muzzleOffset;
@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Int32 bulletsAtOnce;
         private readonly Single angleStep;
 
-        internal Barrel(Level level, IAimer aimer, Func<Vector2> findOutWhereIAm, Func<Vector2?> targetLocator, BarrelSpecification specification)
+        internal Barrel(Level level, IAimer aimer, Func<Vector2> findOutWhereIAm, Func<IActor> targetSelector, BarrelSpecification specification)
         {
             this.baseOffset = specification.BaseOffset;
             this.muzzleOffset = specification.MuzzleOffset;
@@ -34,7 +34,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.bulletsAtOnce = specification.BulletsAtOnce;
             this.angleStep = AngleConverter.ToRadians(specification.AngleStep);
             this.findOutWhereIAm = findOutWhereIAm;
-            this.targetLocator = targetLocator;
+            this.targetSelector = targetSelector;
             this.bulletSpecification = specification.Bullet;
             this.angleCorrection = AngleConverter.ToRadians(specification.AngleCorrection);
             this.accuracy = AngleConverter.ToRadians(specification.Accuracy);
@@ -47,7 +47,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             foreach (var i in Enumerable.Range(0, bulletsAtOnce))
             {
                 var direction = GetFireDirection(true, i * angleStep);
-                var bullet = new Bullet(level, position, direction, bulletSpecification, targetLocator);
+                var bullet = new Bullet(level, position, direction, bulletSpecification, targetSelector());
                 var eventArgs = new ShootEventArgs
                 {
                     Bullet = bullet,

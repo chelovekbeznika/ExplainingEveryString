@@ -17,6 +17,15 @@ namespace ExplainingEveryString.Core.Tests
         }
 
         [Test]
+        public void OutOfDiaposonTest()
+        {
+            var arc = AngleConverter.ClosestArc(MathHelper.TwoPi * 10 + MathHelper.Pi / 6, MathHelper.PiOver2);
+            Assert.That(arc, Is.EqualTo(MathHelper.Pi / 3).Within(Constants.Epsilon));
+            arc = AngleConverter.ClosestArc(-MathHelper.TwoPi * 10 -MathHelper.PiOver2, MathHelper.PiOver4);
+            Assert.That(arc, Is.EqualTo(MathHelper.Pi / 4 * 3).Within(Constants.Epsilon));
+        }
+
+        [Test]
         public void SimpleClockwiseTest()
         {
             var arc = AngleConverter.ClosestArc(MathHelper.PiOver2, MathHelper.Pi / 6);

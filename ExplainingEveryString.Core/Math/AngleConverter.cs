@@ -22,6 +22,8 @@ namespace ExplainingEveryString.Core.Math
 
         internal static Single ClosestArc(Single currentAngle, Single targetAngle)
         {
+            currentAngle = AlignAngle(currentAngle);
+            targetAngle = AlignAngle(targetAngle);
             Single counterclockArc, clockwiseArc;
             if (currentAngle > targetAngle)
             {
@@ -38,5 +40,8 @@ namespace ExplainingEveryString.Core.Math
             else
                 return -clockwiseArc;
         }
+
+        private static Single AlignAngle(Single angle) => 
+            (Single)(System.Math.IEEERemainder(angle, MathHelper.TwoPi) + MathHelper.Pi);
     }
 }

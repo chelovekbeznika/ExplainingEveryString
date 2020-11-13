@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry.Trajectories;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
@@ -14,8 +14,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private static TrajectoryFactory trajectoryFactory = new TrajectoryFactory();
 
         private readonly Single timeToLive;
-        private readonly Single homingSpeed;
-        private readonly Func<Vector2?> targetLocator;
+        private Single homingSpeed;
+        private readonly IActor target;
         private readonly EpicEvent hit;
 
         private Single bulletAge = 0;
@@ -30,11 +30,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal Single Damage { get; private set; }
         internal Single BlastWaveRadius { get; private set; }
 
-        private Boolean IsHoming => targetLocator != null && homingSpeed > 0;
+        private Boolean IsHoming => target != null && homingSpeed > 0;
         public Boolean IsVisible => IsAlive();
 
         internal Bullet(Level level, Vector2 position, Vector2 fireDirection, 
-            BulletSpecification specification, Func<Vector2?> targetLocator)
+            BulletSpecification specification, IActor target)
         {
             this.SpriteState = new SpriteState(specification.Sprite);
             this.Position = position;
@@ -45,18 +45,27 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.considerAngle = specification.ConsiderAngle;
             this.trajectory = trajectoryFactory.GetTrajectory(specification.TrajectoryType,
                 position, fireDirection, specification.TrajectoryParameters);
-            this.targetLocator = targetLocator;
+            this.target = target;
             this.homingSpeed = AngleConverter.ToRadians(specification.HomingSpeed);
             this.hit = new EpicEvent(level, specification.HitEffect, true, this, true);
         }
 
         public void Update(Single elapsedSeconds)
         {
-            if (IsHoming && targetLocator() != null)
-                trajectory.FireDirection = CorrectFireDirection(trajectory.FireDirection, elapsedSeconds);
+            if (IsHoming)
+            {
+                if (target.IsAlive())
+                {
+                    trajectory.FireDirection = CorrectFireDirection(trajectory.FireDirection, elapsedSeconds);
+                    trajectory.StartPosition = Position;
+                }
+                else
+                    homingSpeed = 0;
+            }
+                
             bulletAge += elapsedSeconds;
             OldPosition = Position;
-            Position = trajectory.GetBulletPosition(bulletAge);
+            Position = trajectory.GetBulletPosition(!IsHoming ? bulletAge : elapsedSeconds);
             if (considerAngle)
                 SpriteState.Angle = AngleConverter.ToRadians(Position - OldPosition);
             SpriteState.Update(elapsedSeconds);
@@ -75,7 +84,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private Vector2 CorrectFireDirection(Vector2 fireDirection, Single elapsedSeconds)
         {
-            var directionToTarget = targetLocator().Value - Position;
+            var directionToTarget = (target as ICollidable).Position - Position;
             var targetAngle = AngleConverter.ToRadians(directionToTarget);
             var currentAngle = AngleConverter.ToRadians(fireDirection);
             var arcToTarget = AngleConverter.ClosestArc(currentAngle, targetAngle);

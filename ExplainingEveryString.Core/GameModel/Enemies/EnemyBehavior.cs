@@ -30,11 +30,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Vector2 CurrentPositionLocator() => (enemy as ICollidable).Position;
         private Vector2 Position { get => (enemy as ICollidable).Position; set => (enemy as ICollidable).Position = value; }
         private Func<Vector2> playerLocator;
+        private Player player;
 
-        internal EnemyBehavior(IEnemy enemy, Func<Vector2> playerLocator)
+        internal EnemyBehavior(IEnemy enemy, Player player)
         {
             this.enemy = enemy;
-            this.playerLocator = playerLocator;
+            this.player = player;
+            this.playerLocator = () => player.Position;
         }
 
         internal void Construct(EnemyBehaviorSpecification specification, BehaviorParameters parameters, Level level, ActorsFactory factory)
@@ -56,13 +58,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             {
                 var aimer = AimersFactory.Get(
                     specification.Weapon.AimType, parameters.Angle, enemy, playerLocator);
-                weapon = new Weapon(specification.Weapon, aimer, CurrentPositionLocator, () => playerLocator(), level, false);
+                weapon = new Weapon(specification.Weapon, aimer, CurrentPositionLocator, () => player, level, false);
                 weapon.Shoot += level.EnemyShoot;
             }
             if (specification.PostMortemSurprise != null)
             {
                 PostMortemSurprise = new PostMortemSurprise(specification.PostMortemSurprise, enemy,
-                    playerLocator, level, factory);
+                    player, level, factory);
             }
             if (specification.Spawner != null)
                 this.SpawnedActors = new SpawnedActorsController(specification.Spawner, enemy, parameters, factory);

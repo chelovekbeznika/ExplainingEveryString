@@ -53,7 +53,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private DashAcceleration dashAcceleration;
 
-        private ICollidable currentTarget;
+        private IActor currentTarget;
         private Weapon[] weapons;
         private Int32 selectedWeapon = 0;
         internal Weapon Weapon => weapons[selectedWeapon];
@@ -69,7 +69,7 @@ namespace ExplainingEveryString.Core.GameModel
             
             MaxHitPoints = blueprint.Hitpoints;
 
-            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, () => currentTarget?.Position, level, true)).ToArray();
+            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, () => currentTarget, level, true)).ToArray();
             foreach (var weapon in weapons)
                 weapon.Shoot += level.PlayerShoot;
 

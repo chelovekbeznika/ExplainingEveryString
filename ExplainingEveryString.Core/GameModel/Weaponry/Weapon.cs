@@ -34,7 +34,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly EpicEvent reloadStarted;
 
         private readonly Func<Vector2> findOutWhereIAm;
-        private readonly Func<Vector2?> targetLocator;
 
         public SpriteState SpriteState { get; private set; }
         public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
@@ -45,17 +44,16 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal Vector2 GetFireDirection() => aimer.GetFireDirection();
 
         internal Weapon(WeaponSpecification specification, IAimer aimer, 
-            Func<Vector2> findOutWhereIAm, Func<Vector2?> targetLocator, Level level, Boolean fullAmmoAtStart = false)
+            Func<Vector2> findOutWhereIAm, Func<IActor> targetSelector, Level level, Boolean fullAmmoAtStart = false)
         {
             this.aimer = aimer;
             barrels = specification.Barrels
-                .Select(bs => new Barrel(level, aimer, findOutWhereIAm, targetLocator, bs)).ToArray();
+                .Select(bs => new Barrel(level, aimer, findOutWhereIAm, targetSelector, bs)).ToArray();
             Name = specification.Name;
             Reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot, fullAmmoAtStart);
             Reloader.ReloadStarted += (sender, e) => reloadStarted.TryHandle();
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
             this.findOutWhereIAm = findOutWhereIAm;
-            this.targetLocator = targetLocator;
             this.weaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
             this.reloadStarted = new EpicEvent(level, specification.Reloader.ReloadStartedEffect, false, this, true);
         }

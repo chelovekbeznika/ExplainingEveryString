@@ -57,7 +57,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            this.Behavior = new EnemyBehavior(this, () => level.Player.Position);
+            this.Behavior = new EnemyBehavior(this, level.Player);
             base.Construct(blueprint, startInfo, level, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;

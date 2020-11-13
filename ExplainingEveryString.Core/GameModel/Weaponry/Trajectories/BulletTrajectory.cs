@@ -7,12 +7,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
 {
     internal abstract class BulletTrajectory
     {
-        private Vector2 startPosition;
+        internal Vector2 StartPosition { get; set; }
         internal Vector2 FireDirection { get; set; }
 
         internal BulletTrajectory(Vector2 startPosition, Vector2 fireDirection, Dictionary<String, Single> parameters)
         {
-            this.startPosition = startPosition;
+            this.StartPosition = startPosition;
             this.FireDirection = fireDirection;
             AssignParameters(parameters);
         }
@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
         {
             var rawPosition = GetTrajectoryOffset(time);
             var rotatedPosition = GeometryHelper.RotateVector(rawPosition, FireDirection.Y, FireDirection.X);
-            return startPosition + rotatedPosition;
+            return StartPosition + rotatedPosition;
         }
 
         protected abstract void AssignParameters(Dictionary<String, Single> parameters);
