@@ -109,15 +109,21 @@ namespace ExplainingEveryString.Core.GameModel
             if (Weapon.IsHoming)
             {
                 var fireAngle = AngleConverter.ToRadians(Weapon.GetFireDirection());
-                Single angleBetween(IEnemy enemy)
-                {
-                    var angleToEnemy = AngleConverter.ToRadians((enemy as ICollidable).Position - Position);
-                    return System.Math.Abs(AngleConverter.ClosestArc(fireAngle, angleToEnemy));
-                };
-                CurrentTarget = CurrentEnemies().OrderBy(enemy => angleBetween(enemy)).FirstOrDefault();
+                CurrentTarget = CurrentEnemies().OrderBy(enemy => TargetPriority(enemy, fireAngle)).FirstOrDefault();
             }
             else
                 CurrentTarget = null;
+        }
+
+        private Single TargetPriority(IEnemy enemy, Single fireAngle)
+        {
+            var vectorToEnemy = (enemy as ICollidable).Position - Position;
+            var angleToEnemy = AngleConverter.ToRadians(vectorToEnemy);
+            var angleBetween = System.Math.Abs(AngleConverter.ClosestArc(fireAngle, angleToEnemy));
+            //Equal priorities:
+            //Target behind your back and target directly in ~900 pixels
+            //Target near your side and target directly in ~450 pixels
+            return angleBetween * 300 + vectorToEnemy.Length();
         }
 
         internal void CheckpointRefresh(ArsenalSpecification playerApsenal)
