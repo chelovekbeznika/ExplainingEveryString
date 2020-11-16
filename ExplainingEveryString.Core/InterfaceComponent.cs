@@ -26,6 +26,7 @@ namespace ExplainingEveryString.Core
         private BossInfoDisplayer bossInfoDisplayer;
         private BossInfoDisplayer leftBossInfoDisplayer;
         private BossInfoDisplayer rightBossInfoDisplayer;
+        private HomingTargetDisplayer homingTargetDisplayer;
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
         private RemainedWeaponsDisplayer remainedWeaponsDisplayer;
         private AmmoStockDisplayer ammoStockDisplayer;
@@ -81,6 +82,7 @@ namespace ExplainingEveryString.Core
             leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.LeftBossPrefix, -160);
             rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightBossPrefix, 160);
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
+            homingTargetDisplayer = new HomingTargetDisplayer(interfaceSpritesDisplayer);
             remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer);
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
             reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
@@ -99,7 +101,7 @@ namespace ExplainingEveryString.Core
                 healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer, 
                 ammoStockDisplayer, reloadDisplayer, checkpointDisplayer,
                 enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer, 
-                rightBossInfoDisplayer, enemiesBehindScreenDisplayer
+                rightBossInfoDisplayer, enemiesBehindScreenDisplayer, homingTargetDisplayer
             }
             .Concat(playerWeaponDisplayers.Values).ToArray();
         }
@@ -123,12 +125,14 @@ namespace ExplainingEveryString.Core
                 var weaponName = interfaceInfo.Player.Weapon.SelectedWeapon;
                 if (weaponName != GameModel.Constants.DefaultPlayerWeapon && playerWeaponDisplayers.ContainsKey(weaponName))
                     playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
-                remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);                if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
+                remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);                
+                if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
                     ammoStockDisplayer.Draw(interfaceInfo.Player.Weapon.AmmoStock.Value);
                 if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue) 
                     reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
                 checkpointDisplayer.Draw(interfaceInfo.Player);
-
+                if (interfaceInfo.Player.HomingTarget != null)
+                    homingTargetDisplayer.Draw(interfaceInfo.Player.HomingTarget);
 
                 //Enemies
                 enemiesInfoDisplayer.Draw(interfaceInfo.Enemies);

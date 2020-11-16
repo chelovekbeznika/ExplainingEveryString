@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     internal class Barrel
     {
         internal event EventHandler<ShootEventArgs> Shoot;
+        internal Boolean IsHoming => bulletSpecification.HomingSpeed > 0;
 
         private readonly IAimer aimer;
         private readonly Level level;

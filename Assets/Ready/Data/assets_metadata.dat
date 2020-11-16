@@ -316,6 +316,11 @@
       "DefaultAnimationCycle": 0.8
     },
     {
+      "Name": "Sprites/Interface/HomingTarget",
+      "AnimationFrames": 2,
+      "DefaultAnimationCycle": 0.33333
+    },
+    {
       "Name": "Sprites/FogOfWar/Test/1",
       "AnimationFrames": 7,
       "DefaultAnimationCycle": 7.0

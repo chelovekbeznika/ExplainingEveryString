@@ -9,9 +9,10 @@ namespace ExplainingEveryString.Core.Interface
     {
         internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, LevelProgress levelProgress)
         {
+            var homingTarget = activeActors.Player.CurrentTarget;
             return new InterfaceInfo
             {
-                Player = GetInterfaceInfo(activeActors.Player),
+                Player = GetInterfaceInfo(activeActors.Player, camera),
                 GameTime = levelProgress.GameTime,
                 Enemies = activeActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
@@ -20,11 +21,11 @@ namespace ExplainingEveryString.Core.Interface
                 HiddenEnemies = activeActors.Enemies
                             .Where(e => e.IsVisible && !camera.IsVisibleOnScreen(e))
                             .Select(e => camera.GetScreenBorderDangerDirection(e)).ToList(),
-                Bosses = activeActors.Bosses?.Select(boss => GetInterfaceInfo(boss, camera)).ToList()
+                Bosses = activeActors.Bosses?.Select(boss => GetInterfaceInfo(boss,  camera)).ToList()
             };
         }
 
-        private PlayerInterfaceInfo GetInterfaceInfo(Player player)
+        private PlayerInterfaceInfo GetInterfaceInfo(Player player, Camera camera)
         {
             return new PlayerInterfaceInfo
             {
@@ -47,11 +48,13 @@ namespace ExplainingEveryString.Core.Interface
                     MaxAmmo = player.Weapon.Reloader.MaxAmmo,
                     AmmoStock = player.Weapon.Reloader.AmmoStock,
                     ReloadRemained = player.Weapon.Reloader.ReloadRemained
-                }
+                },
+                HomingTarget = player.CurrentTarget != null ? GetInterfaceInfo(player.CurrentTarget, camera) : null
             };
         }
 
-        private EnemyInterfaceInfo GetInterfaceInfo(IInterfaceAccessable interfaceAccessable, Camera camera)
+        private EnemyInterfaceInfo GetInterfaceInfo(
+            IInterfaceAccessable interfaceAccessable, Camera camera)
         {
             return new EnemyInterfaceInfo
             {

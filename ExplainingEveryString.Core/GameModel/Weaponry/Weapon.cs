@@ -40,7 +40,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public Vector2 Position => findOutWhereIAm();
         public Boolean IsVisible => SpriteState != null;
-        internal Boolean IsFiring () => aimer.IsFiring();
+        internal Boolean IsFiring() => aimer.IsFiring();
+        internal Boolean IsHoming => barrels.Any(barrel => barrel.IsHoming);
         internal Vector2 GetFireDirection() => aimer.GetFireDirection();
 
         internal Weapon(WeaponSpecification specification, IAimer aimer, 

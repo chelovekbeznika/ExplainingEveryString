@@ -53,7 +53,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private DashAcceleration dashAcceleration;
 
-        private IActor currentTarget;
+        internal IEnemy CurrentTarget { get; private set; }
         private Weapon[] weapons;
         private Int32 selectedWeapon = 0;
         internal Weapon Weapon => weapons[selectedWeapon];
@@ -69,7 +69,7 @@ namespace ExplainingEveryString.Core.GameModel
             
             MaxHitPoints = blueprint.Hitpoints;
 
-            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, () => currentTarget, level, true)).ToArray();
+            weapons = blueprint.Weapons.Select(spec => new Weapon(spec, Input, () => Position, () => CurrentTarget, level, true)).ToArray();
             foreach (var weapon in weapons)
                 weapon.Shoot += level.PlayerShoot;
 
@@ -106,14 +106,18 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void TargetSelect()
         {
-            var fireAngle = AngleConverter.ToRadians(Weapon.GetFireDirection());
-            Single angleBetween(IEnemy enemy)
+            if (Weapon.IsHoming)
             {
-                var angleToEnemy = AngleConverter.ToRadians((enemy as ICollidable).Position - Position);
-                return System.Math.Abs(AngleConverter.ClosestArc(fireAngle, angleToEnemy));
-            };
-
-            currentTarget = CurrentEnemies().OrderBy(enemy => angleBetween(enemy)).FirstOrDefault();
+                var fireAngle = AngleConverter.ToRadians(Weapon.GetFireDirection());
+                Single angleBetween(IEnemy enemy)
+                {
+                    var angleToEnemy = AngleConverter.ToRadians((enemy as ICollidable).Position - Position);
+                    return System.Math.Abs(AngleConverter.ClosestArc(fireAngle, angleToEnemy));
+                };
+                CurrentTarget = CurrentEnemies().OrderBy(enemy => angleBetween(enemy)).FirstOrDefault();
+            }
+            else
+                CurrentTarget = null;
         }
 
         internal void CheckpointRefresh(ArsenalSpecification playerApsenal)

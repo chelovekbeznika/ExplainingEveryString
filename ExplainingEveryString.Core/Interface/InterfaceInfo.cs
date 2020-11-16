@@ -33,6 +33,7 @@ namespace ExplainingEveryString.Core.Interface
         internal Single TillDashRecharge { get; set; }
         internal DashState DashState { get; set; }
         internal PlayerWeaponInterfaceInfo Weapon { get; set; }
+        internal EnemyInterfaceInfo HomingTarget { get; set; }
     }
 
     internal class PlayerWeaponInterfaceInfo
