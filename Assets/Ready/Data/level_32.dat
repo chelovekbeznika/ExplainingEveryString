@@ -1,0 +1,323 @@
+{
+  "Blueprints": [
+    "player",
+    "3x"
+  ],
+  "MusicName": "moonlight",
+  "TileMap": "TileMaps/Level_32",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 19,
+      "Y": 22
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 36,
+        "RocketLauncher": 30
+      }
+    }
+  },
+  "EnemyWaves": [
+    {
+      "Doors": [
+        {
+          "BlueprintType": "EnergyBarrier",
+          "TilePosition": {
+            "X": 58,
+            "Y": 41,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 43,
+        "Y": 28,
+        "Width": 30,
+        "Height": 13
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk3",
+          "TilePosition": {
+            "X": 44,
+            "Y": 4
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk3",
+          "TilePosition": {
+            "X": 71,
+            "Y": 4
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk3",
+          "TilePosition": {
+            "X": 71,
+            "Y": 39
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk3",
+          "TilePosition": {
+            "X": 44,
+            "Y": 39
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 47,
+            "Y": 7
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "344, -472"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 68,
+            "Y": 7
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-344, 8",
+            "8, -472"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 68,
+            "Y": 36
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-344, 472",
+            "8, -8"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 47,
+            "Y": 36
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 472",
+            "344, -8"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 96,
+            "Y": 60,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "EnergyBarrier",
+          "TilePosition": {
+            "X": 100,
+            "Y": 41,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 74,
+        "Y": 42,
+        "Width": 22,
+        "Height": 31
+      },
+      "MaxEnemiesAtOnce": 6,
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk3",
+          "TilePosition": {
+            "X": 94,
+            "Y": 43,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk3",
+          "TilePosition": {
+            "X": 94,
+            "Y": 67,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 41,
+            "Y": 43
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 44,
+            "Y": 45,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 41,
+            "Y": 48
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 44,
+            "Y": 50,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 41,
+            "Y": 53
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 44,
+            "Y": 55,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 41,
+            "Y": 58
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 44,
+            "Y": 60,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 41,
+            "Y": 63
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 44,
+            "Y": 65,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 41,
+            "Y": 68
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 102,
+            "Y": 18,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 74,
+        "Y": 10,
+        "Width": 28,
+        "Height": 17
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "MineSpawner_mk3",
+          "TilePosition": {
+            "X": 77,
+            "Y": 12,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-40, 40",
+            "392, -440"
+          ]
+        }
+      ],
+      "Bosses": []
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level3X/0",
+      "Sprites/FogOfWar/Level3X/1",
+      "Sprites/FogOfWar/Level3X/2",
+      "Sprites/FogOfWar/Level3X/3",
+      "Sprites/FogOfWar/Level3X/4",
+      "Sprites/FogOfWar/Level3X/5"
+    ],
+    "Weights": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "ObstaclesTilePositions": {}
+}

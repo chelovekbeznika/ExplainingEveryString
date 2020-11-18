@@ -71,6 +71,9 @@
 #begin Data/level_31.dat
 /copy:Data/level_31.dat
 
+#begin Data/level_32.dat
+/copy:Data/level_32.dat
+
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
