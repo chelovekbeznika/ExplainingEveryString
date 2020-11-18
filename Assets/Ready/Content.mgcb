@@ -4459,6 +4459,11 @@
 /processor:TiledMapProcessor
 /build:TileMaps/Level_31.tmx
 
+#begin TileMaps/Level_32.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_32.tmx
+
 #begin TileSets/1x.tsx
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
