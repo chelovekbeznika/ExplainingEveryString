@@ -297,6 +297,232 @@
         }
       ],
       "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "EnergyBarrier",
+          "TilePosition": {
+            "X": 123,
+            "Y": 37,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "First",
+        "PlayerPosition": {
+          "X": 105,
+          "Y": 18,
+          "Offset": "8, -8"
+        }
+      },
+      "StartRegion": {
+        "X": 121,
+        "Y": 14,
+        "Width": 17,
+        "Height": 23
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 137,
+            "Y": 14,
+            "Offset": "-8, -8"
+          },
+          "Angle": 225.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 137,
+            "Y": 35,
+            "Offset": "-8, -8"
+          },
+          "Angle": 135.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 135,
+            "Y": 16
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 133,
+            "Y": 16
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 135,
+            "Y": 18
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 135,
+            "Y": 34
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 133,
+            "Y": 34
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 135,
+            "Y": 32
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk3",
+          "TilePosition": {
+            "X": 129,
+            "Y": 34,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk3",
+          "TilePosition": {
+            "X": 129,
+            "Y": 15,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 126,
+            "Y": 16
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 128,
+            "Y": 18
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 129,
+            "Y": 18
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 131,
+            "Y": 16
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 126,
+            "Y": 34
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 128,
+            "Y": 32
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 129,
+            "Y": 32
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 131,
+            "Y": 34
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk3",
+          "TilePosition": {
+            "X": 136,
+            "Y": 25
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 133,
+            "Y": 21
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 133,
+            "Y": 29
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 132,
+            "Y": 25
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 132,
+            "Y": 23
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk3",
+          "TilePosition": {
+            "X": 132,
+            "Y": 27
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
     }
   ],
   "FogOfWar": {
