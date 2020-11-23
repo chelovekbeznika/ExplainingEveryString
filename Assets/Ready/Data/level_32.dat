@@ -333,24 +333,6 @@
       },
       "Enemies": [
         {
-          "BlueprintType": "FixedCannon_mk3",
-          "TilePosition": {
-            "X": 137,
-            "Y": 14,
-            "Offset": "-8, -8"
-          },
-          "Angle": 225.0
-        },
-        {
-          "BlueprintType": "FixedCannon_mk3",
-          "TilePosition": {
-            "X": 137,
-            "Y": 35,
-            "Offset": "-8, -8"
-          },
-          "Angle": 135.0
-        },
-        {
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 129,
@@ -472,21 +454,12 @@
             "Y": 61,
             "Offset": "-8, -8"
           },
-          "Angle": 65.0
-        },
-        {
-          "BlueprintType": "FixedCannon_mk3",
-          "TilePosition": {
-            "X": 114,
-            "Y": 61,
-            "Offset": "-8, -8"
-          },
           "Angle": 75.0
         },
         {
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
-            "X": 120,
+            "X": 116,
             "Y": 61,
             "Offset": "-8, -8"
           },
@@ -495,7 +468,7 @@
         {
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
-            "X": 126,
+            "X": 124,
             "Y": 61,
             "Offset": "-8, -8"
           },
@@ -513,7 +486,7 @@
         {
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
-            "X": 137,
+            "X": 139,
             "Y": 61,
             "Offset": "-8, -8"
           },
@@ -522,7 +495,7 @@
         {
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
-            "X": 143,
+            "X": 147,
             "Y": 61,
             "Offset": "-8, -8"
           },
@@ -531,44 +504,11 @@
         {
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
-            "X": 149,
-            "Y": 61,
-            "Offset": "-8, -8"
-          },
-          "Angle": 105.0
-        },
-        {
-          "BlueprintType": "FixedCannon_mk3",
-          "TilePosition": {
             "X": 155,
             "Y": 61,
             "Offset": "-8, -8"
           },
-          "Angle": 115.0
-        },
-        {
-          "BlueprintType": "Mouse",
-          "TilePosition": {
-            "X": 107,
-            "Y": 51
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-8, 8",
-            "776, -40"
-          ]
-        },
-        {
-          "BlueprintType": "Mouse",
-          "TilePosition": {
-            "X": 107,
-            "Y": 54
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-8, 8",
-            "776, -40"
-          ]
+          "Angle": 105.0
         },
         {
           "BlueprintType": "Mouse",
@@ -580,30 +520,6 @@
           "TrajectoryParameters": [
             "-8, 8",
             "776, -40"
-          ]
-        },
-        {
-          "BlueprintType": "Mouse",
-          "TilePosition": {
-            "X": 155,
-            "Y": 51
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-776, 8",
-            "8, -40"
-          ]
-        },
-        {
-          "BlueprintType": "Mouse",
-          "TilePosition": {
-            "X": 155,
-            "Y": 54
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-776, 8",
-            "8, -40"
           ]
         },
         {
