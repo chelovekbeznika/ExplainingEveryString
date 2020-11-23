@@ -320,8 +320,7 @@
         "Arsenal": {
           "AvailableWeapons": {
             "RocketLauncher": 30,
-            "Shotgun": 54,
-            "Cone": 600
+            "Shotgun": 54
           }
         }
       },
@@ -837,6 +836,12 @@
           "X": 164,
           "Y": 32,
           "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 36,
+            "RocketLauncher": 30
+          }
         }
       },
       "StartRegion": {
@@ -1058,6 +1063,166 @@
           "TilePosition": {
             "X": 237,
             "Y": 33
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 0,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 42,
+            "Y": 18,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 0,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 42,
+            "Y": 25,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "EnergyBarrier",
+          "TilePosition": {
+            "X": 58,
+            "Y": 41,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 96,
+            "Y": 60,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "EnergyBarrier",
+          "TilePosition": {
+            "X": 100,
+            "Y": 41,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 102,
+            "Y": 18,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "EnergyBarrier",
+          "TilePosition": {
+            "X": 123,
+            "Y": 37,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 5,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 160,
+            "Y": 42,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 160,
+            "Y": 57,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "EnergyBarrier",
+          "TilePosition": {
+            "X": 170,
+            "Y": 35,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 188,
+            "Y": 32,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 8,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 214,
+            "Y": 32,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 239,
+            "Y": 32,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 242,
+          "Y": 32,
+          "Offset": "-8, -8"
+        }
+      },
+      "StartRegion": {
+        "X": 251,
+        "Y": 4,
+        "Width": 31,
+        "Height": 37
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 273,
+            "Y": 20,
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         }
