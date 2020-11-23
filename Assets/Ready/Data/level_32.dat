@@ -511,30 +511,6 @@
           "Angle": 105.0
         },
         {
-          "BlueprintType": "Mouse",
-          "TilePosition": {
-            "X": 107,
-            "Y": 57
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-8, 8",
-            "776, -40"
-          ]
-        },
-        {
-          "BlueprintType": "Mouse",
-          "TilePosition": {
-            "X": 155,
-            "Y": 57
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-776, 8",
-            "8, -40"
-          ]
-        },
-        {
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 109,
@@ -837,42 +813,6 @@
             "X": 221,
             "Y": 68,
             "Offset": "-8, 0"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Hunter_mk3",
-          "TilePosition": {
-            "X": 222,
-            "Y": 64,
-            "Offset": "0, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Hunter_mk3",
-          "TilePosition": {
-            "X": 222,
-            "Y": 56,
-            "Offset": "0, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Hunter_mk3",
-          "TilePosition": {
-            "X": 222,
-            "Y": 48,
-            "Offset": "0, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Hunter_mk3",
-          "TilePosition": {
-            "X": 222,
-            "Y": 40,
-            "Offset": "0, -8"
           },
           "Angle": 0.0
         }
