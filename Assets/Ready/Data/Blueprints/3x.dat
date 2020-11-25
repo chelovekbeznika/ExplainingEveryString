@@ -549,7 +549,7 @@
     "CollisionDamage": 100.0,
     "Height": 48.0,
     "Width": 48.0,
-    "Hitpoints": 500.0,
+    "Hitpoints": 600.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level3X/BlackMask",
       "AnimationCycle": 0.666667
@@ -636,6 +636,179 @@
         "PositionSelector": {
           "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
           "BetweenRepeats": 3
+        }
+      }
+    }
+  },
+  "Miniboss_mk32_left": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 80.0,
+    "Width": 32.0,
+    "Hitpoints": 600.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level3X/SiameseLeft",
+      "AnimationCycle": 0.666667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/Chwyak",
+        "Volume": 0.4
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/Death/SiameseLeft",
+        "AnimationCycle": 1.5
+      }
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/Chwyak",
+        "Volume": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level3X/Appearance/Siamese",
+      "AnimationCycle": 0.33333
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 200
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 10,
+          "Ammo": 15,
+          "ReloadTime": 1.5
+        },
+        "Barrels": [
+          {
+            "Accuracy": 5.0,
+            "MuzzleOffset": "10, 27",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.15
+          }
+        },
+        "AimType": "AimAtPlayer",
+        "Sprite": {
+          "Name": "Sprites/Empty",
+        }
+      },
+      "Spawner": {
+        "MaxSpawned": 2,
+        "Reloader": {
+          "FireRate": 0.2
+        },
+        "BlueprintType": "Hunter_mk3",
+        "SpawnPositionRelativeToCurrentPosition": true,
+        "PositionSelector": {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "-14.0, 17.0"
+          ]
+        }
+      }
+    }
+  },
+  "Miniboss_mk32_right": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 80.0,
+    "Width": 32.0,
+    "Hitpoints": 400.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level3X/SiameseRight",
+      "AnimationCycle": 0.666667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/Chwyak",
+        "Volume": 0.4
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/Death/SiameseRight",
+        "AnimationCycle": 1.5
+      }
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/Chwyak",
+        "Volume": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level3X/Appearance/Siamese",
+      "AnimationCycle": 0.33333
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 200
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "MuzzleOffset": "14, 17",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 320.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.2
+          }
+        },
+        "Sprite": {
+          "Name": "Sprites/Empty",
+        },
+        "AimType": "AimAtPlayer"
+      },
+      "Spawner": {
+        "MaxSpawned": 3,
+        "Reloader": {
+          "FireRate": 0.15
+        },
+        "BlueprintType": "Mine_mk3",
+        "SpawnPositionRelativeToCurrentPosition": true,
+        "PositionSelector": {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "-10.0, 27.0"
+          ]
         }
       }
     }

@@ -1208,6 +1208,12 @@
           "X": 242,
           "Y": 32,
           "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 50,
+            "RocketLauncher": 50
+          }
         }
       },
       "StartRegion": {
@@ -1216,18 +1222,43 @@
         "Width": 31,
         "Height": 37
       },
-      "Enemies": [
+      "Bosses": [
         {
-          "BlueprintType": "Hunter_mk3",
+          "BlueprintType": "Miniboss_mk32_left",
           "TilePosition": {
-            "X": 273,
-            "Y": 20,
-            "Offset": "0, -8"
+            "X": 276,
+            "Y": 23,
+            "Offset": "-8, 0"
           },
-          "Angle": 0.0
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-96, 200",
+            "-384, 200",
+            "-480, 0",
+            "-384, -168",
+            "-96, -168",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Miniboss_mk32_right",
+          "TilePosition": {
+            "X": 278,
+            "Y": 23,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-96, 200",
+            "-384, 200",
+            "-480, 0",
+            "-384, -168",
+            "-96, -168",
+            "0, 0"
+          ]
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {

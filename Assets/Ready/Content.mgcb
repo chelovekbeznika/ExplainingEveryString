@@ -278,6 +278,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Enemy/AltarDissappears.wav
 
+#begin Sounds/Enemy/Chwyak.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/Chwyak.wav
+
 #begin Sounds/Enemy/DesertGhost.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -1075,6 +1081,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Editor/SpawnPointMarkers/Base.png
+
+#begin Sprites/Empty.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Empty.png
 
 #begin Sprites/Enemies/Appearance/16_16.png
 /importer:TextureImporter
@@ -2456,6 +2474,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Appearance/MineSpawner.png
 
+#begin Sprites/Enemies/Level3X/Appearance/Siamese.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Appearance/Siamese.png
+
 #begin Sprites/Enemies/Level3X/Appearance/TripleCannon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2576,6 +2606,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Death/Mouse.png
 
+#begin Sprites/Enemies/Level3X/Death/SiameseLeft.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Death/SiameseLeft.png
+
+#begin Sprites/Enemies/Level3X/Death/SiameseRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Death/SiameseRight.png
+
 #begin Sprites/Enemies/Level3X/Death/Tank.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2671,6 +2725,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Mouse.png
+
+#begin Sprites/Enemies/Level3X/SiameseLeft.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/SiameseLeft.png
+
+#begin Sprites/Enemies/Level3X/SiameseRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/SiameseRight.png
 
 #begin Sprites/Enemies/Level3X/TankBase.png
 /importer:TextureImporter

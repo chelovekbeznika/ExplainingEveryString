@@ -629,6 +629,18 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Level3X/SiameseLeft",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/SiameseRight",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Appearance/Siamese",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Enemies/Level3X/Appearance/TripleCannon",
       "AnimationFrames": 2
     },
@@ -674,6 +686,14 @@
     },
     {
       "Name": "Sprites/Enemies/Level3X/Death/BlackMask",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/SiameseLeft",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/SiameseRight",
       "AnimationFrames": 6
     },
     {
