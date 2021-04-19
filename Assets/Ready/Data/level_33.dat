@@ -1,0 +1,44 @@
+{
+  "Blueprints": [
+    "player",
+    "3x"
+  ],
+  "MusicName": "moonlight",
+  "TileMap": "TileMaps/Level_33",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 11,
+      "Y": 35,
+      "Offset": "8.0,-8.0"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 36,
+        "RocketLauncher": 30
+      }
+    }
+  },
+  "EnemyWaves": [
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level3X/0",
+      "Sprites/FogOfWar/Level3X/1",
+      "Sprites/FogOfWar/Level3X/2",
+      "Sprites/FogOfWar/Level3X/3",
+      "Sprites/FogOfWar/Level3X/4",
+      "Sprites/FogOfWar/Level3X/5"
+    ],
+    "Weights": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "ObstaclesTilePositions": {}
+}

@@ -63,6 +63,11 @@
       "LevelData": "level_32",
       "ButtonSprite": "Sprites/Menu/LevelSelect/32",
       "LevelsBlockId": "Moon"
+    },
+    {
+      "LevelData": "level_33",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/33",
+      "LevelsBlockId": "Moon"
     }
   ]
 }

@@ -491,6 +491,21 @@
    <property name="Wall" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="136">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="137">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="138">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="140">
   <properties>
    <property name="Wall" type="bool" value="true"/>
@@ -536,6 +551,21 @@
    <property name="Wall" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="152">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="153">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="154">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="156">
   <properties>
    <property name="Wall" type="bool" value="true"/>
@@ -561,6 +591,21 @@
    <property name="Wall" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="168">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="169">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="170">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="172">
   <properties>
    <property name="Wall" type="bool" value="true"/>
@@ -577,6 +622,21 @@
   </properties>
  </tile>
  <tile id="175">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="184">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="185">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="186">
   <properties>
    <property name="Wall" type="bool" value="true"/>
   </properties>

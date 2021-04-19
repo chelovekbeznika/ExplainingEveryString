@@ -74,6 +74,9 @@
 #begin Data/level_32.dat
 /copy:Data/level_32.dat
 
+#begin Data/level_33.dat
+/copy:Data/level_33.dat
+
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
@@ -4544,6 +4547,11 @@
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /build:TileMaps/Level_32.tmx
+
+#begin TileMaps/Level_33.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_33.tmx
 
 #begin TileSets/1x.tsx
 /importer:TiledMapTilesetImporter
