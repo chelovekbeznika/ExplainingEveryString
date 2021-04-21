@@ -681,6 +681,498 @@
         }
       ],
       "Bosses": []
+    },
+    {
+      "Checkpoint": {
+        "Name": "Second",
+        "PlayerPosition": {
+          "X": 44,
+          "Y": 108,
+          "Offset": "-8, 0"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 36,
+            "Homing": 240,
+            "RocketLauncher": 25
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 48,
+        "Y": 52,
+        "Width": 50,
+        "Height": 88
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 49,
+            "Y": 93
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "760, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 50,
+            "Y": 89
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "728, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 51,
+            "Y": 85
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "696, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 52,
+            "Y": 81
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "664, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 53,
+            "Y": 77
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "632, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 54,
+            "Y": 73
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "600, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 55,
+            "Y": 69
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "568, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 56,
+            "Y": 65
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "536, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 57,
+            "Y": 61
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "504, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 58,
+            "Y": 57
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "472, -24"
+          ]
+        },
+        {
+          "BlueprintType": "Mouse",
+          "TilePosition": {
+            "X": 59,
+            "Y": 53
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-8, 8",
+            "440, -24"
+          ]
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk3",
+          "TilePosition": {
+            "X": 50,
+            "Y": 53,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk3",
+          "TilePosition": {
+            "X": 96,
+            "Y": 53,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "StartRegion": {
+        "X": 41,
+        "Y": 52,
+        "Width": 57,
+        "Height": 88
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk3",
+          "TilePosition": {
+            "X": 73,
+            "Y": 54,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 69,
+            "Y": 58,
+            "Offset": "-8, -8"
+          },
+          "Angle": 285.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 69,
+            "Y": 62,
+            "Offset": "-8, -8"
+          },
+          "Angle": 105.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 77,
+            "Y": 58,
+            "Offset": "-8, -8"
+          },
+          "Angle": 255.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 77,
+            "Y": 62,
+            "Offset": "-8, -8"
+          },
+          "Angle": 75.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 65,
+            "Y": 68,
+            "Offset": "-8, -8"
+          },
+          "Angle": 300.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 65,
+            "Y": 72,
+            "Offset": "-8, -8"
+          },
+          "Angle": 120.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 81,
+            "Y": 68,
+            "Offset": "-8, -8"
+          },
+          "Angle": 240.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 81,
+            "Y": 72,
+            "Offset": "-8, -8"
+          },
+          "Angle": 60.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 61,
+            "Y": 80,
+            "Offset": "-8, -8"
+          },
+          "Angle": 315.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 61,
+            "Y": 84,
+            "Offset": "-8, -8"
+          },
+          "Angle": 135.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 85,
+            "Y": 80,
+            "Offset": "-8, -8"
+          },
+          "Angle": 225.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 85,
+            "Y": 84,
+            "Offset": "-8, -8"
+          },
+          "Angle": 45.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 57,
+            "Y": 92,
+            "Offset": "-8, -8"
+          },
+          "Angle": 330.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 57,
+            "Y": 96,
+            "Offset": "-8, -8"
+          },
+          "Angle": 150.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 89,
+            "Y": 92,
+            "Offset": "-8, -8"
+          },
+          "Angle": 210.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk3",
+          "TilePosition": {
+            "X": 89,
+            "Y": 96,
+            "Offset": "-8, -8"
+          },
+          "Angle": 30.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "StartRegion": {
+        "X": 41,
+        "Y": 51,
+        "Width": 57,
+        "Height": 88
+      },
+      "MaxEnemiesAtOnce": 6,
+      "Enemies": [
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 56,
+            "Y": 67,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 91,
+            "Y": 78,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 58,
+            "Y": 86
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 81,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 64,
+            "Y": 122,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 81,
+            "Y": 125
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 78,
+            "Y": 96
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 55,
+            "Y": 88,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 91,
+            "Y": 110,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 56,
+            "Y": 110
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 72,
+            "Y": 71,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 56,
+            "Y": 56,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 76,
+            "Y": 111,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 79,
+            "Y": 76,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk3",
+          "TilePosition": {
+            "X": 55,
+            "Y": 131,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 55,
+            "Y": 100,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
     }
   ],
   "FogOfWar": {
