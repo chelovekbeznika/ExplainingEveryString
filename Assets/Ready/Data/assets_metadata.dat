@@ -562,19 +562,23 @@
     },
     {
       "Name": "Sprites/Walls/Level3X/Steam1",
-      "AnimationFrames": 3
+      "AnimationFrames": 3,
+      "FrameToShowInEditor": 2
     },
     {
       "Name": "Sprites/Walls/Level3X/Steam2",
-      "AnimationFrames": 5
+      "AnimationFrames": 5,
+      "FrameToShowInEditor": 2
     },
     {
       "Name": "Sprites/Walls/Level3X/Steam3",
-      "AnimationFrames": 5
+      "AnimationFrames": 5,
+      "FrameToShowInEditor": 2
     },
     {
       "Name": "Sprites/Walls/Level3X/Steam4",
-      "AnimationFrames": 5
+      "AnimationFrames": 5,
+      "FrameToShowInEditor": 2
     },
     {
       "Name": "Sprites/Doors/Level3X/CrackerWallUp",

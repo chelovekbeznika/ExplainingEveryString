@@ -67,8 +67,8 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 61,
-            "Y": 127,
-            "Offset": "-8, -8"
+            "Y": 126,
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         },
@@ -76,7 +76,7 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 73,
-            "Y": 127,
+            "Y": 126,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
@@ -85,7 +85,7 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 85,
-            "Y": 127,
+            "Y": 126,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
@@ -94,7 +94,7 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 97,
-            "Y": 127,
+            "Y": 126,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
@@ -577,7 +577,7 @@
           "BlueprintType": "TripleCannon_mk3",
           "TilePosition": {
             "X": 43,
-            "Y": 101
+            "Y": 100
           },
           "Angle": 0.0
         },
@@ -602,7 +602,7 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 48,
-            "Y": 96,
+            "Y": 95,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
@@ -611,8 +611,8 @@
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
             "X": 44,
-            "Y": 108,
-            "Offset": "-8, 0"
+            "Y": 107,
+            "Offset": "-8, -8"
           },
           "Angle": 0.0
         },
@@ -1203,13 +1203,13 @@
           "BlueprintType": "Mouse",
           "TilePosition": {
             "X": 42,
-            "Y": 101,
+            "Y": 100,
             "Offset": "-8, -8"
           },
           "Angle": 0.0,
           "TrajectoryParameters": [
             "-8, 8",
-            "88, -96"
+            "96, -112"
           ]
         },
         {
@@ -1242,21 +1242,21 @@
           "BlueprintType": "Mouse",
           "TilePosition": {
             "X": 42,
-            "Y": 112,
+            "Y": 111,
             "Offset": "-8, 0"
           },
           "Angle": 0.0,
           "TrajectoryParameters": [
             "-8, -8",
-            "160, 72"
+            "160, 56"
           ]
         },
         {
           "BlueprintType": "Mouse",
           "TilePosition": {
             "X": 42,
-            "Y": 108,
-            "Offset": "-8, 0"
+            "Y": 107,
+            "Offset": "-8, -8"
           },
           "Angle": 0.0,
           "TrajectoryParameters": [
@@ -1313,7 +1313,7 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 47,
-            "Y": 98,
+            "Y": 97,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
@@ -1339,7 +1339,7 @@
           "BlueprintType": "TripleCannon_mk3",
           "TilePosition": {
             "X": 46,
-            "Y": 103
+            "Y": 102
           },
           "Angle": 0.0
         },
@@ -1347,8 +1347,8 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 47,
-            "Y": 108,
-            "Offset": "-8, 0"
+            "Y": 107,
+            "Offset": "-8, -8"
           },
           "Angle": 0.0
         }
@@ -1472,6 +1472,125 @@
       "Bosses": []
     },
     {
+      "Doors": [
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 49,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 52,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 55,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 58,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 61,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 64,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 67,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 70,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 73,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 76,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 79,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 82,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "CrackerWallUp",
+          "TilePosition": {
+            "X": 85,
+            "Y": 139,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
       "StartRegion": {
         "X": 42,
         "Y": 52,
@@ -1491,7 +1610,7 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 43,
-            "Y": 100
+            "Y": 99
           },
           "Angle": 0.0
         },
@@ -1499,7 +1618,7 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 45,
-            "Y": 100
+            "Y": 99
           },
           "Angle": 0.0
         },
@@ -1507,7 +1626,7 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 47,
-            "Y": 100
+            "Y": 99
           },
           "Angle": 0.0
         },
@@ -1515,7 +1634,7 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 47,
-            "Y": 98
+            "Y": 97
           },
           "Angle": 0.0
         },
@@ -1523,7 +1642,7 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 47,
-            "Y": 96
+            "Y": 95
           },
           "Angle": 0.0
         },
@@ -1572,7 +1691,7 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 46,
-            "Y": 98,
+            "Y": 97,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
@@ -1581,7 +1700,7 @@
           "BlueprintType": "TripleCannon_mk3",
           "TilePosition": {
             "X": 46,
-            "Y": 103
+            "Y": 102
           },
           "Angle": 0.0
         },
@@ -1606,7 +1725,7 @@
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
             "X": 44,
-            "Y": 103,
+            "Y": 102,
             "Offset": "-8, 0"
           },
           "Angle": 45.0
@@ -1615,8 +1734,7 @@
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
             "X": 45,
-            "Y": 109,
-            "Offset": "0, -8"
+            "Y": 109
           },
           "Angle": 0.0
         },
@@ -1624,8 +1742,7 @@
           "BlueprintType": "FixedCannon_mk3",
           "TilePosition": {
             "X": 45,
-            "Y": 106,
-            "Offset": "0, -8"
+            "Y": 106
           },
           "Angle": 0.0
         },
@@ -1633,8 +1750,8 @@
           "BlueprintType": "SimpleCannon_mk3",
           "TilePosition": {
             "X": 49,
-            "Y": 108,
-            "Offset": "-8, 0"
+            "Y": 107,
+            "Offset": "-8, -8"
           },
           "Angle": 0.0
         },
@@ -1651,7 +1768,7 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 49,
-            "Y": 102,
+            "Y": 101,
             "Offset": "-8, 0"
           },
           "Angle": 0.0
@@ -1668,7 +1785,8 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 50,
-            "Y": 104
+            "Y": 102,
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         },
@@ -1676,7 +1794,7 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 51,
-            "Y": 106
+            "Y": 105
           },
           "Angle": 0.0
         },
@@ -1692,7 +1810,8 @@
           "BlueprintType": "Mine_mk3",
           "TilePosition": {
             "X": 52,
-            "Y": 108
+            "Y": 107,
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         },
@@ -1701,7 +1820,7 @@
           "TilePosition": {
             "X": 47,
             "Y": 106,
-            "Offset": "-8, -8"
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         },
@@ -1710,7 +1829,215 @@
           "TilePosition": {
             "X": 47,
             "Y": 109,
-            "Offset": "-8, -8"
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 0,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 40,
+            "Y": 101,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 0,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 40,
+            "Y": 105,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 0,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 40,
+            "Y": 109,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 0,
+          "BlueprintType": "EnergyBarrierVertical",
+          "TilePosition": {
+            "X": 40,
+            "Y": 113,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 49,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 52,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 55,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 58,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 61,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 64,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 67,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 70,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 73,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 76,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 79,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 82,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 12,
+          "BlueprintType": "CrackerWallDown",
+          "TilePosition": {
+            "X": 85,
+            "Y": 138,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 74,
+          "Y": 145,
+          "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 36,
+            "Homing": 240,
+            "RocketLauncher": 25,
+            "Cone": 600
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 48,
+        "Y": 152,
+        "Width": 50,
+        "Height": 40
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk3",
+          "TilePosition": {
+            "X": 74,
+            "Y": 173,
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         }
@@ -1738,5 +2065,708 @@
       1
     ]
   },
-  "ObstaclesTilePositions": {}
+  "ObstaclesTilePositions": {
+    "Teacup1": [
+      {
+        "X": 51,
+        "Y": 232
+      },
+      {
+        "X": 53,
+        "Y": 219,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 55,
+        "Y": 219,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 59,
+        "Y": 223,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 55,
+        "Y": 223
+      },
+      {
+        "X": 73,
+        "Y": 234,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 81,
+        "Y": 234,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 89,
+        "Y": 226
+      },
+      {
+        "X": 90,
+        "Y": 229,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 85,
+        "Y": 231,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 91,
+        "Y": 235,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 97,
+        "Y": 219,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 95,
+        "Y": 219,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 89,
+        "Y": 222
+      },
+      {
+        "X": 93,
+        "Y": 226
+      },
+      {
+        "X": 97,
+        "Y": 229,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 92,
+        "Y": 230,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 95,
+        "Y": 232,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 83,
+        "Y": 235,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 80,
+        "Y": 227
+      },
+      {
+        "X": 83,
+        "Y": 226
+      },
+      {
+        "X": 85,
+        "Y": 228,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 86,
+        "Y": 223,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 82,
+        "Y": 222,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 83,
+        "Y": 219
+      },
+      {
+        "X": 87,
+        "Y": 219
+      },
+      {
+        "X": 69,
+        "Y": 218,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 81,
+        "Y": 217,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 83,
+        "Y": 217,
+        "Offset": "-8, -8"
+      }
+    ],
+    "Teacup2": [
+      {
+        "X": 58,
+        "Y": 235,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 89,
+        "Y": 219
+      },
+      {
+        "X": 79,
+        "Y": 217,
+        "Offset": "-8, -8"
+      }
+    ],
+    "Teacup3": [
+      {
+        "X": 66,
+        "Y": 237,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 62,
+        "Y": 236
+      },
+      {
+        "X": 64,
+        "Y": 233,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 65,
+        "Y": 235,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 63,
+        "Y": 230,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 69,
+        "Y": 229,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 69,
+        "Y": 231,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 72,
+        "Y": 229,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 75,
+        "Y": 231
+      },
+      {
+        "X": 77,
+        "Y": 228
+      },
+      {
+        "X": 71,
+        "Y": 226
+      },
+      {
+        "X": 72,
+        "Y": 224
+      },
+      {
+        "X": 65,
+        "Y": 225,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 67,
+        "Y": 222,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 60,
+        "Y": 221,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 61,
+        "Y": 219,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 56,
+        "Y": 219
+      },
+      {
+        "X": 56,
+        "Y": 224,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 57,
+        "Y": 221,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 50,
+        "Y": 224
+      },
+      {
+        "X": 57,
+        "Y": 227,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 51,
+        "Y": 229,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 49,
+        "Y": 226,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 53,
+        "Y": 230
+      },
+      {
+        "X": 49,
+        "Y": 235
+      },
+      {
+        "X": 71,
+        "Y": 218,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 77,
+        "Y": 218,
+        "Offset": "-8, 0"
+      }
+    ],
+    "Teacup4": [
+      {
+        "X": 52,
+        "Y": 237,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 54,
+        "Y": 234
+      },
+      {
+        "X": 57,
+        "Y": 230,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 57,
+        "Y": 233,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 59,
+        "Y": 233,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 76,
+        "Y": 234
+      },
+      {
+        "X": 79,
+        "Y": 232,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 80,
+        "Y": 236,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 75,
+        "Y": 228,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 80,
+        "Y": 225
+      },
+      {
+        "X": 71,
+        "Y": 222,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 68,
+        "Y": 225,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 75,
+        "Y": 221
+      },
+      {
+        "X": 78,
+        "Y": 219,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 83,
+        "Y": 224,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 85,
+        "Y": 219,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 86,
+        "Y": 226,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 92,
+        "Y": 221,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 87,
+        "Y": 221,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 92,
+        "Y": 224
+      },
+      {
+        "X": 95,
+        "Y": 221,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 94,
+        "Y": 229
+      },
+      {
+        "X": 89,
+        "Y": 232,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 97,
+        "Y": 232,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 93,
+        "Y": 237,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 88,
+        "Y": 236,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 95,
+        "Y": 235,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 84,
+        "Y": 238,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 73,
+        "Y": 237,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 69,
+        "Y": 236,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 49,
+        "Y": 219,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 52,
+        "Y": 222,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 54,
+        "Y": 225
+      },
+      {
+        "X": 63,
+        "Y": 226,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 60,
+        "Y": 228,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 66,
+        "Y": 230
+      },
+      {
+        "X": 69,
+        "Y": 220,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 72,
+        "Y": 219,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 74,
+        "Y": 223,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 79,
+        "Y": 222
+      },
+      {
+        "X": 74,
+        "Y": 226
+      },
+      {
+        "X": 82,
+        "Y": 232,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 91,
+        "Y": 219
+      },
+      {
+        "X": 93,
+        "Y": 219
+      },
+      {
+        "X": 73,
+        "Y": 218,
+        "Offset": "-8, 0"
+      }
+    ],
+    "Teacup5": [
+      {
+        "X": 55,
+        "Y": 230
+      },
+      {
+        "X": 61,
+        "Y": 230,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 61,
+        "Y": 233
+      },
+      {
+        "X": 65,
+        "Y": 228
+      },
+      {
+        "X": 70,
+        "Y": 234,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 72,
+        "Y": 227,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 66,
+        "Y": 232,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 70,
+        "Y": 228,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 73,
+        "Y": 232,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 79,
+        "Y": 229,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 87,
+        "Y": 230,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 85,
+        "Y": 234,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 91,
+        "Y": 228
+      },
+      {
+        "X": 92,
+        "Y": 232,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 96,
+        "Y": 226
+      },
+      {
+        "X": 83,
+        "Y": 221
+      },
+      {
+        "X": 83,
+        "Y": 229,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 88,
+        "Y": 223,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 77,
+        "Y": 225,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 60,
+        "Y": 226,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 65,
+        "Y": 220,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 54,
+        "Y": 221,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 55,
+        "Y": 226,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 62,
+        "Y": 223,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 52,
+        "Y": 226,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 49,
+        "Y": 221
+      },
+      {
+        "X": 51,
+        "Y": 219,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 63,
+        "Y": 218,
+        "Offset": "0, -8"
+      },
+      {
+        "X": 75,
+        "Y": 218,
+        "Offset": "-8, -8"
+      }
+    ],
+    "Teapot": [
+      {
+        "X": 59,
+        "Y": 219,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 64,
+        "Y": 222
+      },
+      {
+        "X": 81,
+        "Y": 219,
+        "Offset": "-8, 0"
+      },
+      {
+        "X": 66,
+        "Y": 218
+      },
+      {
+        "X": 85,
+        "Y": 217,
+        "Offset": "0, -8"
+      }
+    ],
+    "Steam1": [
+      {
+        "X": 101,
+        "Y": 139
+      },
+      {
+        "X": 87,
+        "Y": 40
+      }
+    ],
+    "Steam2": [
+      {
+        "X": 97,
+        "Y": 51
+      },
+      {
+        "X": 87,
+        "Y": 4
+      }
+    ],
+    "Steam3": [
+      {
+        "X": 101,
+        "Y": 51
+      },
+      {
+        "X": 87,
+        "Y": 31
+      }
+    ],
+    "Steam4": [
+      {
+        "X": 69,
+        "Y": 49
+      },
+      {
+        "X": 87,
+        "Y": 13
+      }
+    ]
+  }
 }
