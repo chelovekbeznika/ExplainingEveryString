@@ -657,6 +657,18 @@
       "AnimationFrames": 5
     },
     {
+      "Name": "Sprites/Enemies/Level3X/Appearance/RedBrickTank",
+      "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Appearance/WhiteBrickTank",
+      "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Appearance/MudBrickTank",
+      "AnimationFrames": 9
+    },
+    {
       "Name": "Sprites/Enemies/Level3X/Death/Cannon",
       "AnimationFrames": 8
     },
@@ -699,6 +711,18 @@
     {
       "Name": "Sprites/Enemies/Level3X/Death/SiameseRight",
       "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/RedBrickTank",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/WhiteBrickTank",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/Death/MudBrickTank",
+      "AnimationFrames": 5
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/0",

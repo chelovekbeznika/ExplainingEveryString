@@ -2477,6 +2477,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Appearance/MineSpawner.png
 
+#begin Sprites/Enemies/Level3X/Appearance/MudBrickTank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Appearance/MudBrickTank.png
+
+#begin Sprites/Enemies/Level3X/Appearance/RedBrickTank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Appearance/RedBrickTank.png
+
 #begin Sprites/Enemies/Level3X/Appearance/Siamese.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2500,6 +2524,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Appearance/TripleCannon.png
+
+#begin Sprites/Enemies/Level3X/Appearance/WhiteBrickTank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Appearance/WhiteBrickTank.png
 
 #begin Sprites/Enemies/Level3X/BlackMask.png
 /importer:TextureImporter
@@ -2609,6 +2645,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Death/Mouse.png
 
+#begin Sprites/Enemies/Level3X/Death/MudBrickTank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Death/MudBrickTank.png
+
+#begin Sprites/Enemies/Level3X/Death/RedBrickTank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Death/RedBrickTank.png
+
 #begin Sprites/Enemies/Level3X/Death/SiameseLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2656,6 +2716,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Death/TripleCannon.png
+
+#begin Sprites/Enemies/Level3X/Death/WhiteBrickTank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/Death/WhiteBrickTank.png
 
 #begin Sprites/Enemies/Level3X/FixedCannon.png
 /importer:TextureImporter
@@ -2729,6 +2801,54 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/Mouse.png
 
+#begin Sprites/Enemies/Level3X/MudBrickTankBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/MudBrickTankBase.png
+
+#begin Sprites/Enemies/Level3X/MudBrickTankCannon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/MudBrickTankCannon.png
+
+#begin Sprites/Enemies/Level3X/RedBrickTankBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/RedBrickTankBase.png
+
+#begin Sprites/Enemies/Level3X/RedBrickTankCannon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/RedBrickTankCannon.png
+
 #begin Sprites/Enemies/Level3X/SiameseLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2788,6 +2908,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/TripleCannon.png
+
+#begin Sprites/Enemies/Level3X/WhiteBrickTankBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/WhiteBrickTankBase.png
+
+#begin Sprites/Enemies/Level3X/WhiteBrickTankCannon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level3X/WhiteBrickTankCannon.png
 
 #begin Sprites/Enemies/Mine.png
 /importer:TextureImporter
