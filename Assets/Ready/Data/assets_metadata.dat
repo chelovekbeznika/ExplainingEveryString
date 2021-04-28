@@ -641,6 +641,18 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Level3X/RedBrickBlast",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/WhiteBrickBlast",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/MudBrickBlast",
+      "AnimationFrames": 5
+    },
+    {
       "Name": "Sprites/Enemies/Level3X/Appearance/Siamese",
       "AnimationFrames": 8
     },
