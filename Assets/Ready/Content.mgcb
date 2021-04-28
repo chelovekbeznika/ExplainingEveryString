@@ -173,6 +173,30 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/BreakingIce.wav
 
+#begin Sounds/Bosses/BrickBlast.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/BrickBlast.wav
+
+#begin Sounds/Bosses/BrickCannonFire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/BrickCannonFire.wav
+
+#begin Sounds/Bosses/BrickTankAppears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/BrickTankAppears.wav
+
+#begin Sounds/Bosses/BrickTankDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/BrickTankDeath.wav
+
 #begin Sounds/Bosses/HelicopterExplosion.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -190,6 +214,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Bosses/LaserRocketBlast.wav
+
+#begin Sounds/Bosses/MudBrickBlast.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/MudBrickBlast.wav
 
 #begin Sounds/Bosses/SmallBrother.wav
 /importer:WavImporter
