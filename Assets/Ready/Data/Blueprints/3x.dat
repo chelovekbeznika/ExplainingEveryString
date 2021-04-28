@@ -813,6 +813,285 @@
       }
     }
   },
+  "Miniboss_mk33_red": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 333.33333,
+    "CollideTag": "Tank",
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level3X/RedBrickTankBase"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BrickTankDeath",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/Death/RedBrickTank",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level3X/Appearance/RedBrickTank",
+      "AnimationCycle": 1.5
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BrickTankAppears",
+        "Volume": 0.4
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 200.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5,
+        },
+        "Barrels": [
+          {
+            "Length": 30.0,
+            "Accuracy": 10.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 540.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 10.0,
+              "ConsiderAngle": true,
+              "BlastWaveRadius": 24.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level3X/RedBrick"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level3X/RedBrickBlast",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Bosses/BrickBlast",
+                  "Volume": 0.4
+                }
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level3X/RedBrickTankCannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/BrickCannonFire",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
+  "Miniboss_mk33_white": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 333.33333,
+    "CollideTag": "Tank",
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level3X/WhiteBrickTankBase"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BrickTankDeath",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/Death/WhiteBrickTank",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level3X/Appearance/WhiteBrickTank",
+      "AnimationCycle": 1.5
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BrickTankAppears",
+        "Volume": 0.4
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 200.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.66667,
+        },
+        "Barrels": [
+          {
+            "MuzzleOffset": "24.0,7.0",
+            "AngleCorrection": -0.33333,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 360.0,
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "ConsiderAngle": true,
+              "BlastWaveRadius": 24.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level3X/WhiteBrick"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level3X/WhiteBrickBlast",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Bosses/BrickBlast",
+                  "Volume": 0.4
+                }
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "24.0,-7.0",
+            "AngleCorrection": 0.33333,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 360.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "ConsiderAngle": true,
+              "BlastWaveRadius": 24.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level3X/WhiteBrick"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level3X/WhiteBrickBlast",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Bosses/BrickBlast",
+                  "Volume": 0.4
+                }
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level3X/WhiteBrickTankCannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/BrickCannonFire",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
+  "Miniboss_mk33_mud": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 500.0,
+    "CollideTag": "Tank",
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level3X/MudBrickTankBase"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BrickTankDeath",
+        "Volume": 0.3
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/Death/MudBrickTank",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level3X/Appearance/MudBrickTank",
+      "AnimationCycle": 1.5
+    },
+    "DefaultAppearancePhaseDuration": 1.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/BrickTankAppears",
+        "Volume": 0.4
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 250.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 5.0,
+          "Ammo": 5,
+          "ReloadTime": 1.5,
+        },
+        "Barrels": [
+          {
+            "Length": 23.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "ConsiderAngle": true,
+              "BlastWaveRadius": 24.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level3X/MudBrick"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level3X/MudBrickBlast",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Bosses/MudBrickBlast",
+                  "Volume": 0.4
+                }
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level3X/MudBrickTankCannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/BrickCannonFire",
+            "Volume": 0.15
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
   "EnergyBarrier": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
