@@ -78,6 +78,25 @@ namespace ExplainingEveryString.Core.Interface
         }
     }
 
+    internal class VerticalCenterPartDisplayer : ISpritePartDisplayer
+    {
+        public Rectangle GetDrawPart(SpriteData spriteData, Single coeff)
+        {
+            var cutXPixels = CutXPixels(spriteData, coeff);
+            return new Rectangle(cutXPixels, 0, spriteData.Width - cutXPixels * 2, spriteData.Height);
+        }
+
+        public Vector2 GetDrawPosition(SpriteData spriteData, Single coeff, Vector2 wholeSpritePosition)
+        {
+            return wholeSpritePosition + new Vector2(CutXPixels(spriteData, coeff), 0);
+        }
+
+        private Int32 CutXPixels(SpriteData spriteData, Single coeff)
+        {
+            return (Int32)(spriteData.Width / 2 * (1 - coeff));
+        }
+    }
+
     internal class WholeSpriteDisplayer : ISpritePartDisplayer
     {
         public Rectangle GetDrawPart(SpriteData spriteData, Single coeff)

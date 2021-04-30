@@ -26,6 +26,9 @@ namespace ExplainingEveryString.Core
         private BossInfoDisplayer bossInfoDisplayer;
         private BossInfoDisplayer leftBossInfoDisplayer;
         private BossInfoDisplayer rightBossInfoDisplayer;
+        private BossInfoDisplayer leftOfThreeBossInfoDisplayer;
+        private BossInfoDisplayer rightOfThreeBossInfoDisplayer;
+        private BossInfoDisplayer centerOfThreeBossInfoDisplayer;
         private HomingTargetDisplayer homingTargetDisplayer;
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
         private RemainedWeaponsDisplayer remainedWeaponsDisplayer;
@@ -78,9 +81,12 @@ namespace ExplainingEveryString.Core
             healthBarDisplayer = new HealthBarDisplayer(interfaceSpritesDisplayer);
             dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer);
             enemiesInfoDisplayer = new EnemyInfoDisplayer(interfaceSpritesDisplayer);
-            bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.OneBossPrefix, 0);
-            leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.LeftBossPrefix, -160);
-            rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightBossPrefix, 160);
+            bossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.OneBossPrefix, 0, DrainType.Left);
+            leftBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.LeftBossPrefix, -160, DrainType.Left);
+            rightBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightBossPrefix, 160, DrainType.Right);
+            leftOfThreeBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.LeftOfThreeBossPrefix, -224, DrainType.Left);
+            rightOfThreeBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.RightOfThreeBossPrefix, 224, DrainType.Right);
+            centerOfThreeBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.CenterOfThreeBossPrefix, 0, DrainType.Center);
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
             homingTargetDisplayer = new HomingTargetDisplayer(interfaceSpritesDisplayer);
             remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer);
@@ -101,7 +107,8 @@ namespace ExplainingEveryString.Core
                 healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer, 
                 ammoStockDisplayer, reloadDisplayer, checkpointDisplayer,
                 enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer, 
-                rightBossInfoDisplayer, enemiesBehindScreenDisplayer, homingTargetDisplayer
+                rightBossInfoDisplayer, enemiesBehindScreenDisplayer, homingTargetDisplayer,
+                leftOfThreeBossInfoDisplayer, rightOfThreeBossInfoDisplayer, centerOfThreeBossInfoDisplayer
             }
             .Concat(playerWeaponDisplayers.Values).ToArray();
         }
@@ -141,10 +148,16 @@ namespace ExplainingEveryString.Core
                 {
                     if (interfaceInfo.Bosses.Count == 1)
                         bossInfoDisplayer.Draw(interfaceInfo.Bosses[0]);
-                    else
+                    else if (interfaceInfo.Bosses.Count == 2)
                     {
                         leftBossInfoDisplayer.Draw(interfaceInfo.Bosses[0]);
                         rightBossInfoDisplayer.Draw(interfaceInfo.Bosses[1]);
+                    }
+                    else
+                    {
+                        leftOfThreeBossInfoDisplayer.Draw(interfaceInfo.Bosses[0]);
+                        centerOfThreeBossInfoDisplayer.Draw(interfaceInfo.Bosses[1]);
+                        rightOfThreeBossInfoDisplayer.Draw(interfaceInfo.Bosses[2]);
                     }
                 }
 

@@ -9,6 +9,9 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         internal const String OneBossPrefix = "";
         internal const String LeftBossPrefix = "LeftDouble";
         internal const String RightBossPrefix = "RightDouble";
+        internal const String LeftOfThreeBossPrefix = "LeftTriple";
+        internal const String RightOfThreeBossPrefix = "RightTriple";
+        internal const String CenterOfThreeBossPrefix = "CenterTriple";
 
         private const String HealthBarTexture = "{0}BossHealthBar";
         private const String EmptyHealthBarTexture = "Empty{0}BossHealthBar";
@@ -25,12 +28,12 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private readonly Int32 pixelsFromTop = 16;
         private readonly Int32 offset;
         private readonly String spritesPrefix;
-        private readonly Boolean reversedDrain;
+        private readonly DrainType drainType;
 
-        internal BossInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, String spritesPrefix, Int32 offset)
+        internal BossInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, String spritesPrefix, Int32 offset, DrainType drainType)
         {
             this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
-            this.reversedDrain = spritesPrefix == RightBossPrefix;
+            this.drainType = drainType;
             this.spritesPrefix = spritesPrefix;
             this.offset = offset;
         }
@@ -59,16 +62,25 @@ namespace ExplainingEveryString.Core.Interface.Displayers
                 X = (interfaceSpriteDisplayer.ScreenWidth - currentHealthBar.Width) / 2 + offset,
                 Y = pixelsFromTop
             };
-            if (!reversedDrain)
+            switch (drainType)
             {
-                interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new LeftPartDisplayer(), healthRemained);
-                interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new RightPartDisplayer(), 1 - healthRemained);
-            }
-            else
-            {
-                interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new RightPartDisplayer(), healthRemained);
-                interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new LeftPartDisplayer(), 1 - healthRemained);
+                case DrainType.Left:
+                    interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new LeftPartDisplayer(), healthRemained);
+                    interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new RightPartDisplayer(), 1 - healthRemained);
+                    break;
+                case DrainType.Right:
+                    interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new RightPartDisplayer(), healthRemained);
+                    interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new LeftPartDisplayer(), 1 - healthRemained);
+                    break;
+                case DrainType.Center:
+                    var edgeCoeff = (1 - healthRemained) / 2;
+                    interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new RightPartDisplayer(), edgeCoeff);
+                    interfaceSpriteDisplayer.Draw(currentHealthBar, healthBarPosition, new VerticalCenterPartDisplayer(), healthRemained);
+                    interfaceSpriteDisplayer.Draw(currentEmptyHealthBar, healthBarPosition, new LeftPartDisplayer(), edgeCoeff);
+                    break;
             }
         }
     }
+
+    internal enum DrainType { Left, Right, Center }
 }

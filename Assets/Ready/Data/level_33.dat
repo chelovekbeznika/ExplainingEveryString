@@ -2031,24 +2031,11 @@
         "Width": 50,
         "Height": 40
       },
-      "Enemies": [
+      "Bosses": [
         {
           "BlueprintType": "Miniboss_mk33_red",
           "TilePosition": {
             "X": 54,
-            "Y": 153,
-            "Offset": "-8, -8"
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "0, 0",
-            "0, -640"
-          ]
-        },
-        {
-          "BlueprintType": "Miniboss_mk33_white",
-          "TilePosition": {
-            "X": 92,
             "Y": 153,
             "Offset": "-8, -8"
           },
@@ -2070,9 +2057,22 @@
             "-304, 0",
             "336, 0"
           ]
+        },
+        {
+          "BlueprintType": "Miniboss_mk33_white",
+          "TilePosition": {
+            "X": 92,
+            "Y": 153,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, -640"
+          ]
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {
