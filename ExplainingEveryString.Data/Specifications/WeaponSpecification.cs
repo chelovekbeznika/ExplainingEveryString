@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Specifications
 {
-    public class WeaponSpecification
+    public class WeaponSpecification : IModificationSpecification
     {
         [DefaultValue(null)]
         public String Name { get; set; }
@@ -14,6 +14,8 @@ namespace ExplainingEveryString.Data.Specifications
         public SpriteSpecification Sprite { get; set; }
         public SpecEffectSpecification ShootingEffect { get; set; }
         public AimType AimType { get; set; }
+        [DefaultValue("Weapon")]
+        public String ModificationType { get; set; }
     }
 
     [JsonConverter(typeof(StringEnumConverter))]

@@ -56,12 +56,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         private FirstBossPhase ConstructPhase(FirstBossPhaseSpecification phase, Level level, ActorsFactory factory)
         {
-            var behavior = new EnemyBehavior(this, level.Player);
             var behaviorParameters = new BehaviorParameters
             {
                 TrajectoryParameters = phase.TrajectoryParameters
             };
-            behavior.Construct(phase.Behavior, behaviorParameters, level, factory);
+            var behavior = new EnemyBehavior(this, level.Player, behaviorParameters);
+
+            behavior.Construct(phase.Behavior, level, factory);
             return new FirstBossPhase
             {
                 Sprite = new SpriteState(phase.Phase),

@@ -19,6 +19,7 @@ namespace ExplainingEveryString.Core.GameModel
             .Concat(avengers)
             .Concat(enemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
         internal List<IEnemy> Bosses { get; private set; } = null;
+        internal List<IChangeableActor> ChangeableActors => Enemies.OfType<IChangeableActor>().ToList();
       
         private List<IActor> obstacles;
         private List<Door> doors;

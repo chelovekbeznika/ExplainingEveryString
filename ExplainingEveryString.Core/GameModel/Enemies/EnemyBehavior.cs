@@ -31,36 +31,32 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Vector2 Position { get => (enemy as ICollidable).Position; set => (enemy as ICollidable).Position = value; }
         private Func<Vector2> playerLocator;
         private Player player;
+        private BehaviorParameters parameters;
 
-        internal EnemyBehavior(IEnemy enemy, Player player)
+        internal EnemyBehavior(IEnemy enemy, Player player, BehaviorParameters parameters)
         {
             this.enemy = enemy;
             this.player = player;
             this.playerLocator = () => player.Position;
+            this.parameters = parameters;
         }
 
-        internal void Construct(EnemyBehaviorSpecification specification, BehaviorParameters parameters, Level level, ActorsFactory factory)
+        internal void Construct(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
         {
-            ConstructMovement(specification, parameters);
-            ConstructWeaponry(specification, parameters, level, factory);
+            ConstructMovement(specification);
+            ConstructWeaponry(specification, level, factory);
         }
 
-        private void ConstructMovement(EnemyBehaviorSpecification specification, BehaviorParameters parameters)
+        private void ConstructMovement(EnemyBehaviorSpecification specification)
         {
             this.moveTargetSelector = MoveTargetSelectorFactory.Get(
                 specification.MoveTargetSelectType, parameters.TrajectoryParameters, playerLocator, enemy);
             this.mover = MoverFactory.Get(specification.Mover);
         }
 
-        private void ConstructWeaponry(EnemyBehaviorSpecification specification, BehaviorParameters parameters, Level level, ActorsFactory factory)
+        private void ConstructWeaponry(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
         {
-            if (specification.Weapon != null)
-            {
-                var aimer = AimersFactory.Get(
-                    specification.Weapon.AimType, parameters.Angle, enemy, playerLocator);
-                weapon = new Weapon(specification.Weapon, aimer, CurrentPositionLocator, () => player, level, false);
-                weapon.Shoot += level.EnemyShoot;
-            }
+            ChangeWeapon(specification.Weapon, level);
             if (specification.PostMortemSurprise != null)
             {
                 PostMortemSurprise = new PostMortemSurprise(specification.PostMortemSurprise, enemy,
@@ -82,6 +78,19 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 return new IDisplayble[] { weapon };
             else
                 return Enumerable.Empty<IDisplayble>();
+        }
+
+        internal void ChangeWeapon(WeaponSpecification specification, Level level)
+        {
+            if (weapon != null)
+                weapon.Shoot -= level.EnemyShoot;
+            if (specification != null)
+            {
+                var aimer = AimersFactory.Get(
+                    specification.AimType, parameters.Angle, enemy, playerLocator);
+                weapon = new Weapon(specification, aimer, CurrentPositionLocator, () => player, level, false);
+                weapon.Shoot += level.EnemyShoot;
+            }
         }
 
         private void Move(Single elapsedSeconds)

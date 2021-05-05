@@ -1,7 +1,7 @@
 ﻿using ExplainingEveryString.Data.Specifications;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
+namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
 {
     internal interface IAssetsExtractor<TBlueprint> where TBlueprint : Blueprint
     {

@@ -1,4 +1,4 @@
-﻿using ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs;
+﻿using ExplainingEveryString.Data.Blueprints.AssetsExtraction;
 using ExplainingEveryString.Data.Specifications;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,8 @@ namespace ExplainingEveryString.Data.Blueprints
             { typeof(EnemyBlueprint), new EnemyAssetsExtractor() },
             { typeof(ShadowEnemyBlueprint), new ShadowEnemyAssetsExtractor() },
             { typeof(FirstBossBlueprint), new FirstBossAssetsExtractor() },
-            { typeof(SecondBossBlueprint), new SecondBossAssetsExtractor() }
+            { typeof(SecondBossBlueprint), new SecondBossAssetsExtractor() },
+            { typeof(ChangeableEnemyBlueprint), new ChangeableEnemyAssetsExtractor() }
         };
 
         public static List<String> GetNeccessarySprites(IBlueprintsLoader loader)

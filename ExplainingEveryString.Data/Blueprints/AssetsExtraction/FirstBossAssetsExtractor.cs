@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ExplainingEveryString.Data.Specifications;
 
-namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
+namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
 {
     internal class FirstBossAssetsExtractor : EnemyAssetsExtractor, IAssetsExtractor<FirstBossBlueprint>
     {

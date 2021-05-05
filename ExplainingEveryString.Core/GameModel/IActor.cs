@@ -23,4 +23,10 @@ namespace ExplainingEveryString.Core.GameModel
         event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
         event EventHandler Died;
     }
+
+    internal interface IChangeableActor : IUpdateable
+    {
+        void ReactToChangingEvent(String enemyChangingEvent);
+        event EventHandler<ChangingEventArgs> ChangingEventOccured;
+    }
 }

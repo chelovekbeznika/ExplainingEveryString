@@ -19,6 +19,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public List<IEnemy> Avengers => Behavior.PostMortemSurprise?.Avengers;
         public event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
         public event EventHandler Died;
+        private Boolean diedInvoked = false;
 
         private Single appearancePhaseRemained;
         private SpriteState appearanceSprite;
@@ -45,7 +46,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 {
                     death.TryHandle();
                     Behavior.PostMortemSurprise?.TryTrigger();
-                    Died?.Invoke(this, EventArgs.Empty);
+                    if (!diedInvoked)
+                    {
+                        Died?.Invoke(this, EventArgs.Empty);
+                        diedInvoked = true;
+                    }
                 }
             }
         }
@@ -57,8 +62,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         protected override void Construct(TBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            this.Behavior = new EnemyBehavior(this, level.Player);
             base.Construct(blueprint, startInfo, level, factory);
+
+            this.Behavior = new EnemyBehavior(this, level.Player, startInfo.BehaviorParameters);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
             
@@ -78,7 +84,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.CollideTag = blueprint.CollideTag;
             this.hideHealthBar = blueprint.HideHealthBar;
 
-            Behavior.Construct(blueprint.Behavior, startInfo.BehaviorParameters, level, factory);
+            Behavior.Construct(blueprint.Behavior,  level, factory);
         }
 
         public override IEnumerable<IDisplayble> GetParts()

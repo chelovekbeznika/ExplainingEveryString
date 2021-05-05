@@ -2,7 +2,7 @@
 using System.Linq;
 using ExplainingEveryString.Data.Specifications;
 
-namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction.cs
+namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
 {
     internal class PlayerAssetsExtractor : ActorAssetsExtractor, IAssetsExtractor<PlayerBlueprint>
     {

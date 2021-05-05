@@ -11,6 +11,7 @@ namespace ExplainingEveryString.Core.GameModel
         private readonly Int32 wavesAmount;
         private readonly ActorsInitializer actorsInitializer;
         private readonly CheckpointsManager checkpointsManager;
+        private readonly ActorChangingEventsProcessor actorChangingEventsProcessor;
         private WaveState currentEnemyWaveState = WaveState.Sleeping;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
 
@@ -29,6 +30,7 @@ namespace ExplainingEveryString.Core.GameModel
             this.actorsInitializer = actorsInitializer;
             this.checkpointsManager = checkpointsManager;
             this.wavesAmount = wavesAmount;
+            this.actorChangingEventsProcessor = new ActorChangingEventsProcessor(activeActors);
             checkpointsManager.InitializeCheckpoints();
             activeActors.InitializeActorsOnLevelStart(actorsInitializer, checkpointsManager, startCheckpoint);
             currentEnemyWaveNumber = checkpointsManager.GetStartWave(startCheckpoint);
@@ -38,6 +40,7 @@ namespace ExplainingEveryString.Core.GameModel
         public void Update(Single elapsedSeconds)
         {
             ActiveActors.Update();
+            actorChangingEventsProcessor.Update();
             if (!LevelIsEnded)
             {
                 if (currentEnemyWaveState == WaveState.Sleeping)

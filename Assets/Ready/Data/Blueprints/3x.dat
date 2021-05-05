@@ -814,7 +814,8 @@
     }
   },
   "Miniboss_mk33_red": {
-    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ChangeableEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "Changeable",
     "CollisionDamage": 100.0,
     "Height": 64.0,
     "Width": 64.0,
@@ -878,7 +879,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Bosses/BrickBlast",
-                  "Volume": 0.4
+                  "Volume": 0.3
                 }
               }
             }
@@ -895,10 +896,110 @@
         },
         "AimType": "AimAtPlayer"
       }
+    },
+    "ChangingEventAtDeath": {
+      "Type": "BrickBrotherDead"
+    },
+    "Modifications": {
+      "BrickBrotherDead:1": [
+        {
+          "$type": "ExplainingEveryString.Data.Specifications.WeaponSpecification, ExplainingEveryString.Data",
+          "Reloader": {
+            "FireRate": 1.0,
+          },
+          "Barrels": [
+            {
+              "Length": 30.0,
+              "Accuracy": 10.0,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 600.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 10.0,
+                "ConsiderAngle": true,
+                "BlastWaveRadius": 48.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level3X/RedBrick"
+                },
+                "HitEffect": {
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/Level3X/RedBrickBlast",
+                    "AnimationCycle": 0.25
+                  },
+                  "Sound": {
+                    "Name": "Sounds/Bosses/BrickBlast",
+                    "Volume": 0.4
+                  }
+                }
+              }
+            }
+          ],
+          "Sprite": {
+            "Name": "Sprites/Enemies/Level3X/RedBrickTankCannon"
+          },
+          "ShootingEffect": {
+            "Sound": {
+              "Name": "Sounds/Bosses/BrickCannonFire",
+              "Volume": 0.25
+            }
+          },
+          "AimType": "AimAtPlayer"
+        }
+      ],
+      "BrickBrotherDead:2": [
+        {
+          "$type": "ExplainingEveryString.Data.Specifications.WeaponSpecification, ExplainingEveryString.Data",
+          "Reloader": {
+            "FireRate": 1,
+          },
+          "Barrels": [
+            {
+              "Length": 30.0,
+              "AngleCorrection": -45.0,
+              "BulletsAtOnce": 5,
+              "AngleStep": 22.5,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 660.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 10.0,
+                "ConsiderAngle": true,
+                "BlastWaveRadius": 72.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level3X/RedBrick"
+                },
+                "HitEffect": {
+                  "Sprite": {
+                    "Name": "Sprites/Enemies/Level3X/RedBrickBlast",
+                    "AnimationCycle": 0.25
+                  },
+                  "Sound": {
+                    "Name": "Sounds/Bosses/BrickBlast",
+                    "Volume": 0.5
+                  }
+                }
+              }
+            }
+          ],
+          "Sprite": {
+            "Name": "Sprites/Enemies/Level3X/RedBrickTankCannon"
+          },
+          "ShootingEffect": {
+            "Sound": {
+              "Name": "Sounds/Bosses/BrickCannonFire",
+              "Volume": 0.25
+            }
+          },
+          "AimType": "AimAtPlayer"
+        }
+      ]
     }
   },
   "Miniboss_mk33_white": {
-    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ChangeableEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "Changeable",
     "CollisionDamage": 100.0,
     "Height": 64.0,
     "Width": 64.0,
@@ -1005,10 +1106,14 @@
         },
         "AimType": "AimAtPlayer"
       }
+    },
+    "ChangingEventAtDeath": {
+      "Type": "BrickBrotherDead"
     }
   },
   "Miniboss_mk33_mud": {
-    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "$type": "ExplainingEveryString.Data.Blueprints.ChangeableEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "Changeable",
     "CollisionDamage": 100.0,
     "Height": 64.0,
     "Width": 64.0,
@@ -1090,6 +1195,9 @@
         },
         "AimType": "AimAtPlayer"
       }
+    },
+    "ChangingEventAtDeath": {
+      "Type": "BrickBrotherDead"
     }
   },
   "EnergyBarrier": {
