@@ -641,6 +641,18 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Level3X/RedBrickTankCannonAngry",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/MudBrickTankCannonAngry",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level3X/WhiteBrickTankCannonAngry",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Enemies/Level3X/RedBrickBlast",
       "AnimationFrames": 5
     },

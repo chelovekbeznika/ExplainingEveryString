@@ -51,7 +51,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         {
             this.moveTargetSelector = MoveTargetSelectorFactory.Get(
                 specification.MoveTargetSelectType, parameters.TrajectoryParameters, playerLocator, enemy);
-            this.mover = MoverFactory.Get(specification.Mover);
+            ChangeMover(specification.Mover);
         }
 
         private void ConstructWeaponry(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
@@ -91,6 +91,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 weapon = new Weapon(specification, aimer, CurrentPositionLocator, () => player, level, false);
                 weapon.Shoot += level.EnemyShoot;
             }
+        }
+
+        internal void ChangeMover(MoverSpecification specification)
+        {
+            this.mover = MoverFactory.Get(specification);
         }
 
         private void Move(Single elapsedSeconds)

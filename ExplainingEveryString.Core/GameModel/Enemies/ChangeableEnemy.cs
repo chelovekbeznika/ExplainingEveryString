@@ -54,6 +54,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 case "Weapon":
                     Behavior.ChangeWeapon(modification as WeaponSpecification, level);
                     break;
+                case "Mover":
+                    Behavior.ChangeMover(modification as MoverSpecification);
+                    break;
                 case "DefaultSprite":
                     SpriteState = new SpriteState(modification as SpriteSpecification);
                     break;
