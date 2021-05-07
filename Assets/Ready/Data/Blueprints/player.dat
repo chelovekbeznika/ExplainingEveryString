@@ -8,8 +8,8 @@
       "MaxSpeedIncrease": 2.0,
       "SpeedIncrease": 3.0,
       "AccelerationIncrease": 2.5,
-      "RechargeTime": 5.0,
-      "Duration": 1.0,
+      "RechargeTime": 3.0,
+      "Duration": 0.5,
       "CollideTagsDefense": [ "Hunter" ],
       "SpecEffect": {
         "Sound": {
