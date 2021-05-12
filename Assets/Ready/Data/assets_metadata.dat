@@ -797,6 +797,26 @@
     {
       "Name": "Sprites/CheeseMoonStars/4",
       "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss3/Base",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Boss3/Appearance",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss3/Death",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss3/Sphere",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss3/Blast",
+      "AnimationFrames": 5
     }
   ]
 }
