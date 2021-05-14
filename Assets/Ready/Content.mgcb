@@ -158,6 +158,24 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/2/SupportDeath.wav
 
+#begin Sounds/Bosses/3/Appearance.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/3/Appearance.wav
+
+#begin Sounds/Bosses/3/Blast.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/3/Blast.wav
+
+#begin Sounds/Bosses/3/Shot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/3/Shot.wav
+
 #begin Sounds/Bosses/BigBrother.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -1634,18 +1652,6 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Boss3/Base.png
 
-#begin Sprites/Enemies/Boss3/Base.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Enemies/Boss3/Base.png
-
 #begin Sprites/Enemies/Boss3/Blast.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1657,18 +1663,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Boss3/Blast.png
-
-#begin Sprites/Enemies/Boss3/Cannon.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Enemies/Boss3/Cannon.png
 
 #begin Sprites/Enemies/Boss3/Cannon.png
 /importer:TextureImporter
