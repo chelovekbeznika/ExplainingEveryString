@@ -1,0 +1,142 @@
+{
+  "Boss_mk3": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ThirdBossBlueprint, ExplainingEveryString.Data",
+    "Type": "ThirdBoss",
+    "CollisionDamage": 100.0,
+    "Height": 128.0,
+    "Width": 128.0,
+    "Hitpoints": 1000.0,
+    "CollideTag": "Tank",
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss3/Base",
+      "AnimationCycle": 0.166667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss3/Death",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss3/Appearance",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 2.0,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/3/Appearance",
+        "Volume": 0.25
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 150.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.0,
+        },
+        "Barrels": [
+          {
+            "Length": 54.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 600.0
+              },
+              "Damage": 50.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss3/Sphere",
+                "AnimationCycle": 0.5
+              },
+              "BlastWaveRadius": 64.0,
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Boss3/Blast",
+                  "AnimationCycle": 0.33333
+                },
+                "Sound": {
+                  "Name": "Sounds/Bosses/3/Blast",
+                  "Volume": 0.35
+                }
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Boss3/Cannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/3/Shot",
+            "Volume": 0.4
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    "SmallWeapon": {
+      "Reloader": {
+        "FireRate": 30,
+        "Ammo": 10,
+        "ReloadTime": 1.5
+      },
+      "Barrels": [
+        {
+          "Length": 13.0,
+          "Accuracy": 15.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 240.0
+            },
+            "Damage": 10.0,
+            "TimeToLive": 10.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HelicopterBullet"
+            }
+          }
+        }
+      ],
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level3X/TankCannon"
+      },
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/StandardEnemy/Shot",
+          "Volume": 0.15
+        }
+      },
+      "AimType": "AimAtPlayer"
+    },
+    "SmallWeaponOffsets": [
+      "-50.0,50.0",
+      "-25.0,46.0",
+      "0.0,42.0",
+      "25.0,46.0",
+      "50.0,50.0",
+      "46.0,25.0",
+      "42.0,0.0",
+      "46.0,-25.0",
+      "50.0,-50.0",
+      "25.0,-46.0",
+      "0.0,-42.0",
+      "-25.0,-46.0",
+      "-50.0,-50.0",
+      "-46.0,-25.0",
+      "-42.0,0.0",
+      "-46.0,25.0"
+    ],
+    "Aimers": {
+      "SimultaneouslyFiring": 3,
+      "ChangeInterval": 5.0
+    }
+  }
+}

@@ -44,5 +44,18 @@ namespace ExplainingEveryString.Core.Math
             }
             return proportions.PossibleValues.Last();
         }
+
+        internal static List<Int32> IntsFromRange(Int32 elementsToPick, Int32 range)
+        {
+            var result = new List<Int32>();
+            var pool = Enumerable.Range(0, range).ToList();
+            foreach (var _ in Enumerable.Range(0, elementsToPick))
+            {
+                var picked = NextInt(pool.Count);
+                result.Add(pool[picked]);
+                pool.RemoveAt(picked);
+            }
+            return result;
+        }
     }
 }

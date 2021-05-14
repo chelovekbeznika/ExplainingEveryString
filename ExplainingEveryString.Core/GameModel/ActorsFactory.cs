@@ -24,7 +24,8 @@ namespace ExplainingEveryString.Core.GameModel
                 { "ShadowEnemy", (pos) => Construct<ShadowEnemy, ShadowEnemyBlueprint>(pos) },
                 { "Changeable", (pos) => Construct<ChangeableEnemy, ChangeableEnemyBlueprint>(pos) },
                 { "FirstBoss", (pos) => Construct<FirstBoss, FirstBossBlueprint>(pos) },
-                { "SecondBoss", (pos) => Construct<SecondBoss, SecondBossBlueprint>(pos) }
+                { "SecondBoss", (pos) => Construct<SecondBoss, SecondBossBlueprint>(pos) },
+                { "ThirdBoss", (pos) => Construct<ThirdBoss, ThirdBossBlueprint>(pos) }
             };
         }
 

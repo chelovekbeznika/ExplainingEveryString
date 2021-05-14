@@ -84,7 +84,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.CollideTag = blueprint.CollideTag;
             this.hideHealthBar = blueprint.HideHealthBar;
 
-            Behavior.Construct(blueprint.Behavior,  level, factory);
+            Behavior.Construct(blueprint.Behavior, level, factory);
         }
 
         public override IEnumerable<IDisplayble> GetParts()

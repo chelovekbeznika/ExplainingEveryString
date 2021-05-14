@@ -1,7 +1,8 @@
 {
   "Blueprints": [
     "player",
-    "3x"
+    "3x",
+    "third_boss"
   ],
   "MusicName": "liberty_bell",
   "TileMap": "TileMaps/Level_34",
@@ -22,18 +23,28 @@
         "Width": 63,
         "Height": 47
       },
-      "Enemies": [
+      "Bosses": [
         {
-          "BlueprintType": "Hunter_mk3",
+          "BlueprintType": "Boss_mk3",
           "TilePosition": {
-            "X": 70,
-            "Y": 69,
-            "Offset": "0, -8"
+            "X": 60,
+            "Y": 72,
+            "Offset": "-8, -8"
           },
-          "Angle": 0.0
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-320, 384",
+            "-320, 0",
+            "320, 0",
+            "320, 384",
+            "0, 384",
+            "-320, 192",
+            "0, 0",
+            "320, 192"
+          ]
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {
