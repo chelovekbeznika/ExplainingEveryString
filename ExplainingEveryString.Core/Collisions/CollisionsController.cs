@@ -155,18 +155,29 @@ namespace ExplainingEveryString.Core.Collisions
                 var hitbox = collidable is ITouchableByBullets
                     ? (collidable as ITouchableByBullets).GetBulletsHitbox()
                     : collidable.GetCurrentHitbox();
-                if (collisionsChecker.Collides(hitbox, bullet.OldPosition, bullet.Position))
+
+                void registerBlastVictim(ITouchableByBullets blastVictim)
+                {
+                    var damageCoeff = 1 - (blastVictim.Position - bullet.Position).Length() / bullet.BlastWaveRadius;
+                    blastWaveVictims.Add(blastVictim as ITouchableByBullets, damageCoeff * bullet.Damage);
+                };
+
+                if (collisionsChecker.Collides(hitbox, bullet.OldPosition, bullet.CollisionCheckPosition))
                 {
                     if (collidable is ITouchableByBullets)
-                        (collidable as ITouchableByBullets).TakeDamage(bullet.Damage);
+                    {
+                        if (!bullet.IsBlastsBefore)
+                            (collidable as ITouchableByBullets).TakeDamage(bullet.Damage);
+                        else
+                            registerBlastVictim(collidable as ITouchableByBullets);
+                    } 
                     bullet.RegisterCollision();
                     bulletCollisionHappened = true;
                 }
                 else if (bullet.BlastWaveRadius > 0 && collidable is ITouchableByBullets 
                     && (collidable.Position - bullet.Position).Length() < bullet.BlastWaveRadius)
                 {
-                    var damageCoeff = 1 - (collidable.Position - bullet.Position).Length() / bullet.BlastWaveRadius;
-                    blastWaveVictims.Add(collidable as ITouchableByBullets, damageCoeff * bullet.Damage);
+                    registerBlastVictim(collidable as ITouchableByBullets);
                 }
             }
             if (bulletCollisionHappened && bullet.BlastWaveRadius > 0)

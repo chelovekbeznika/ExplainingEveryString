@@ -16,12 +16,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private const Int32 MaxMoveTargetsPerFrame = 32;
 
         private IEnemy enemy;
-        private Weapon weapon;      
         private IMoveTargetSelector moveTargetSelector;
         private IMover mover;
 
         internal EventHandler MoveGoalReached;
-
+        internal Weapon Weapon { get; set; }
         internal PostMortemSurprise PostMortemSurprise { get; private set; }
         internal SpawnedActorsController SpawnedActors { get; private set; }
         internal Single? EnemyAngle { get; private set; } = null;
@@ -74,22 +73,22 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         internal IEnumerable<IDisplayble> GetPartsToDisplay()
         {
-            if (weapon != null)
-                return new IDisplayble[] { weapon };
+            if (Weapon != null)
+                return new IDisplayble[] { Weapon };
             else
                 return Enumerable.Empty<IDisplayble>();
         }
 
         internal void ChangeWeapon(WeaponSpecification specification, Level level)
         {
-            if (weapon != null)
-                weapon.Shoot -= level.EnemyShoot;
+            if (Weapon != null)
+                Weapon.Shoot -= level.EnemyShoot;
             if (specification != null)
             {
                 var aimer = AimersFactory.Get(
                     specification.AimType, parameters.Angle, enemy, playerLocator);
-                weapon = new Weapon(specification, aimer, CurrentPositionLocator, () => player, level, false);
-                weapon.Shoot += level.EnemyShoot;
+                Weapon = new Weapon(specification, aimer, CurrentPositionLocator, () => player, level, false);
+                Weapon.Shoot += level.EnemyShoot;
             }
         }
 
@@ -119,11 +118,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         private void UseWeapon(Single elapsedSeconds)
         {
-            if (weapon != null)
+            if (Weapon != null)
             {
-                weapon.Update(elapsedSeconds);
-                if (weapon.IsFiring() && !weapon.IsVisible)
-                    EnemyAngle = AngleConverter.ToRadians(weapon.GetFireDirection());
+                Weapon.Update(elapsedSeconds);
+                if (Weapon.IsFiring() && !Weapon.IsVisible)
+                    EnemyAngle = AngleConverter.ToRadians(Weapon.GetFireDirection());
                 else
                     EnemyAngle = null;
             }

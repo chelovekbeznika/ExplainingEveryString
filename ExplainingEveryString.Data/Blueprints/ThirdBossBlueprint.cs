@@ -11,5 +11,6 @@ namespace ExplainingEveryString.Data.Blueprints
         public ThirdBossAimersSpecification Aimers { get; set; }
         public WeaponSpecification SmallWeapon { get; set; }
         public Vector2[] SmallWeaponOffsets { get; set; }
+        public ThirdBossBigGunSpawnSpecification BigGunSpawn { get; set; }
     }
 }

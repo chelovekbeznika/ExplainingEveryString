@@ -12,14 +12,17 @@ namespace ExplainingEveryString.Data.Specifications
         public Single Damage { get; set; }
         [DefaultValue(0F)]
         public Single BlastWaveRadius { get; set; }
+        [DefaultValue(0F)]
+        public Single PrematureBlastInterval { get; set; }
         public Single TimeToLive { get; set; }
         /// <summary>
         /// Degrees per second
         /// </summary>
-        [DefaultValue(0.0)]
+        [DefaultValue(0F)]
         public Single HomingSpeed { get; set; }
         [DefaultValue(false)]
         public Boolean ConsiderAngle { get; set; }
+
         [DefaultValue(null)]
         public SpecEffectSpecification HitEffect { get; set; }
 

@@ -22,16 +22,21 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Boolean alive = true;
         private BulletTrajectory trajectory;
         private Boolean considerAngle;
+        private Single prematureBlastInterval;
 
         public SpriteState SpriteState { get; private set; }
         public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
+        internal Vector2 CollisionCheckPosition { get; private set; }
         public Vector2 Position { get; private set; }
         internal Vector2 OldPosition { get; private set; }
         internal Single Damage { get; private set; }
         internal Single BlastWaveRadius { get; private set; }
+        internal Boolean IsBlastsBefore => prematureBlastInterval > 0;
+        public Boolean IsVisible => IsAlive();
+
+        internal event EventHandler BulletHit;
 
         private Boolean IsHoming => target != null && homingSpeed > 0;
-        public Boolean IsVisible => IsAlive();
 
         internal Bullet(Level level, Vector2 position, Vector2 fireDirection, 
             BulletSpecification specification, IActor target)
@@ -41,6 +46,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.OldPosition = position;
             this.Damage = specification.Damage;
             this.BlastWaveRadius = specification.BlastWaveRadius;
+            this.prematureBlastInterval = specification.PrematureBlastInterval;
             this.timeToLive = specification.TimeToLive;
             this.considerAngle = specification.ConsiderAngle;
             this.trajectory = trajectoryFactory.GetTrajectory(specification.TrajectoryType,
@@ -65,7 +71,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 
             bulletAge += elapsedSeconds;
             OldPosition = Position;
-            Position = trajectory.GetBulletPosition(!IsHoming ? bulletAge : elapsedSeconds);
+            var effectiveBulletTime = !IsHoming ? bulletAge : elapsedSeconds;
+            Position = trajectory.GetBulletPosition(effectiveBulletTime);
+            CollisionCheckPosition = prematureBlastInterval == 0 
+                ? Position : trajectory.GetBulletPosition(effectiveBulletTime + prematureBlastInterval);
             if (considerAngle)
                 SpriteState.Angle = AngleConverter.ToRadians(Position - OldPosition);
             SpriteState.Update(elapsedSeconds);
@@ -73,8 +82,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public void RegisterCollision()
         {
-            alive = false;
-            hit.TryHandle();
+            if (alive)
+            {
+                alive = false;
+                hit.TryHandle();
+                BulletHit?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public Boolean IsAlive()

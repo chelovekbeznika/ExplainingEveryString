@@ -6,7 +6,6 @@
     "Height": 128.0,
     "Width": 128.0,
     "Hitpoints": 1000.0,
-    "CollideTag": "Tank",
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss3/Base",
       "AnimationCycle": 0.166667
@@ -42,7 +41,7 @@
       "MoveTargetSelectType": "RandomFromListTargets",
       "Weapon": {
         "Reloader": {
-          "FireRate": 1.0,
+          "FireRate": 0.166667,
         },
         "Barrels": [
           {
@@ -58,6 +57,7 @@
                 "AnimationCycle": 0.5
               },
               "BlastWaveRadius": 64.0,
+              "PrematureBlastInterval": 0.06,
               "HitEffect": {
                 "Sprite": {
                   "Name": "Sprites/Enemies/Boss3/Blast",
@@ -137,6 +137,10 @@
     "Aimers": {
       "SimultaneouslyFiring": 3,
       "ChangeInterval": 5.0
+    },
+    "BigGunSpawn": {
+      "BlueprintType": "Tank_mk3",
+      "MaxSpawned": 4
     }
   }
 }
