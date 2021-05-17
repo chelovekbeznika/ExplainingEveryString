@@ -156,12 +156,6 @@ namespace ExplainingEveryString.Core.Collisions
                     ? (collidable as ITouchableByBullets).GetBulletsHitbox()
                     : collidable.GetCurrentHitbox();
 
-                void registerBlastVictim(ITouchableByBullets blastVictim)
-                {
-                    var damageCoeff = 1 - (blastVictim.Position - bullet.Position).Length() / bullet.BlastWaveRadius;
-                    blastWaveVictims.Add(blastVictim as ITouchableByBullets, damageCoeff * bullet.Damage);
-                };
-
                 if (collisionsChecker.Collides(hitbox, bullet.OldPosition, bullet.CollisionCheckPosition))
                 {
                     if (collidable is ITouchableByBullets)
@@ -169,7 +163,7 @@ namespace ExplainingEveryString.Core.Collisions
                         if (!bullet.IsBlastsBefore)
                             (collidable as ITouchableByBullets).TakeDamage(bullet.Damage);
                         else
-                            registerBlastVictim(collidable as ITouchableByBullets);
+                            RegisterBlastVictim(collidable as ITouchableByBullets, bullet);
                     } 
                     bullet.RegisterCollision();
                     bulletCollisionHappened = true;
@@ -177,12 +171,18 @@ namespace ExplainingEveryString.Core.Collisions
                 else if (bullet.BlastWaveRadius > 0 && collidable is ITouchableByBullets 
                     && (collidable.Position - bullet.Position).Length() < bullet.BlastWaveRadius)
                 {
-                    registerBlastVictim(collidable as ITouchableByBullets);
+                    RegisterBlastVictim(collidable as ITouchableByBullets, bullet);
                 }
             }
             if (bulletCollisionHappened && bullet.BlastWaveRadius > 0)
                 foreach (var victimDamagePair in blastWaveVictims)
                     victimDamagePair.Key.TakeDamage(victimDamagePair.Value);
+        }
+
+        private void RegisterBlastVictim(ITouchableByBullets blastVictim, Bullet bullet)
+        {
+            var damageCoeff = 1 - (blastVictim.Position - bullet.Position).Length() / bullet.BlastWaveRadius;
+            blastWaveVictims.Add(blastVictim, damageCoeff * bullet.Damage);
         }
     }
 }
