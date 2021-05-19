@@ -12,7 +12,10 @@
       "Y": 60
     },
     "Arsenal": {
-      "AvailableWeapons": {}
+      "AvailableWeapons": {
+        "RocketLauncher": 100,
+        "Shotgun": 120
+      }
     }
   },
   "EnemyWaves": [

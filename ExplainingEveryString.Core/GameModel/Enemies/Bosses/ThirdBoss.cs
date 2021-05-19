@@ -33,7 +33,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 weapons.Add(weapon);
             }
             smallWeapons = weapons.ToArray();
-            aimersController = new ThirdBossAimersController(blueprint.Aimers, aimers.ToArray());
+            aimersController = new ThirdBossAimersController(this, blueprint.Aimers, aimers.ToArray());
 
             var blastTime = blueprint.Behavior.Weapon.Barrels[0].Bullet.HitEffect.Sprite.AnimationCycle;
             var bigGunSpawner = new ThirdBossBigGunSpawner(blueprint.BigGunSpawn, factory, Behavior.Weapon, blastTime);

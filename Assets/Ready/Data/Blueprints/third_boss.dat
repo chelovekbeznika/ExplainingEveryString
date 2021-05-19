@@ -5,7 +5,7 @@
     "CollisionDamage": 100.0,
     "Height": 128.0,
     "Width": 128.0,
-    "Hitpoints": 1000.0,
+    "Hitpoints": 1500.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss3/Base",
       "AnimationCycle": 0.166667
@@ -41,7 +41,7 @@
       "MoveTargetSelectType": "RandomFromListTargets",
       "Weapon": {
         "Reloader": {
-          "FireRate": 0.166667,
+          "FireRate": 0.125,
         },
         "Barrels": [
           {
@@ -135,7 +135,8 @@
       "-46.0,25.0"
     ],
     "Aimers": {
-      "SimultaneouslyFiring": 3,
+      "HealthThresholds": [1000, 750, 500, 250, 125],
+      "SimultaneouslyFiring": [2, 4, 5, 6, 8, 16],
       "ChangeInterval": 5.0
     },
     "BigGunSpawn": {
