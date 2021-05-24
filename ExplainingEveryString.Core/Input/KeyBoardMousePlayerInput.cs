@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Data.Configuration;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
@@ -49,7 +50,10 @@ namespace ExplainingEveryString.Core.Input
         public override Vector2 GetFireDirection()
         {
             var mousePoint = Mouse.GetState().Position;
-            var mousePosition = new Vector2(mousePoint.X, mousePoint.Y);
+            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
+            var mousePosition = new Vector2(
+                x: (Single)mousePoint.X / screenConfig.ScreenWidth * screenConfig.TargetWidth, 
+                y: (Single)mousePoint.Y / screenConfig.ScreenHeight * screenConfig.TargetHeight);
             var fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
             var fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
             return NormalizeDirectionVector(fireDirectionOnLevel);
