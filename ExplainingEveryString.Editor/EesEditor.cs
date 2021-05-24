@@ -40,6 +40,8 @@ namespace ExplainingEveryString.Editor
             var levelData = levelLoader.Load(levelToEdit);
             var map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
             var config = ConfigurationAccess.GetCurrentConfig();
+            config.Screen.TargetWidth = config.Screen.ScreenWidth;
+            config.Screen.TargetHeight = config.Screen.ScreenHeight;
             var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetLevelPosition(levelData.StartCheckpoint.PlayerPosition));
             var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, config.Screen, config.Camera);
 
