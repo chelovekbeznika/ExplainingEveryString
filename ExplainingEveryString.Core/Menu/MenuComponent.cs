@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.Menu
         private Texture2D background;
         private SpriteBatch spriteBatch;
         private MenuVisiblePart visiblePart;
+        private ScreenConfiguration screenConfig;
         private MenuItemsContainer CurrentButtonsContainer => visiblePart.CurrentButtonsContainer;
         private EesGame game;
         private InnerMenuInputProcessor menuInputProcessor;
@@ -50,8 +51,8 @@ namespace ExplainingEveryString.Core.Menu
             var menuBuild = new MenuBuilder(game, 
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
                 new MusicTestMenuBuilder(game, musicTestSpecification));
-            var screen = game.GraphicsDevice.Viewport.Bounds;
-            var positionsMapper = new MenuItemPositionsMapper(new Point(screen.Width, screen.Height), 16);
+            this.screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
+            var positionsMapper = new MenuItemPositionsMapper(new Point(screenConfig.TargetWidth, screenConfig.TargetHeight), 16);
             var menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);
             return new MenuVisiblePart(menuBuild, positionsMapper, menuItemDisplayer);
         }
@@ -59,7 +60,7 @@ namespace ExplainingEveryString.Core.Menu
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(background, game.GraphicsDevice.Viewport.Bounds, Color.White);
+            spriteBatch.Draw(background, new Rectangle(0, 0, screenConfig.TargetWidth, screenConfig.TargetHeight), Color.White);
             visiblePart.Draw();
             spriteBatch.End();
             base.Draw(gameTime);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Data.Configuration;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -6,16 +7,16 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class ScreenCoordinatesMaster : IScreenCoordinatesMaster
     {
-        private readonly Viewport viewport;
+        private readonly ScreenConfiguration screen;
         private readonly ILevelCoordinatesMaster levelCoordinatesMaster;
 
         public Vector2 PlayerPosition => ConvertToScreenPosition(levelCoordinatesMaster.PlayerPosition);
 
-        public Rectangle ScreenCovers => viewport.Bounds;
+        public Rectangle ScreenCovers => new Rectangle(0, 0, screen.TargetWidth, screen.TargetHeight);
 
-        public ScreenCoordinatesMaster(Viewport viewport, ILevelCoordinatesMaster levelCoordinatesMaster)
+        public ScreenCoordinatesMaster(ScreenConfiguration screen, ILevelCoordinatesMaster levelCoordinatesMaster)
         {
-            this.viewport = viewport;
+            this.screen = screen;
             this.levelCoordinatesMaster = levelCoordinatesMaster;
         }
 
@@ -40,7 +41,7 @@ namespace ExplainingEveryString.Core.Displaying
         public Boolean IsVisibleOnScreen(Vector2 position, SpriteData sprite)
         {
             var displaybleOnScreen = PositionOnScreen(position, sprite);
-            var screen = viewport.Bounds;
+            var screen = ScreenCovers;
             return screen.Intersects(displaybleOnScreen);
         }
 
@@ -49,13 +50,13 @@ namespace ExplainingEveryString.Core.Displaying
             var cameraOffset = levelCoordinatesMaster.CameraOffset;
             var centerOfSpriteOnScreen = position - cameraOffset;
             centerOfSpriteOnScreen.X = (Int32)centerOfSpriteOnScreen.X;
-            centerOfSpriteOnScreen.Y = (Int32)(viewport.Height - centerOfSpriteOnScreen.Y);
+            centerOfSpriteOnScreen.Y = (Int32)(screen.TargetHeight - centerOfSpriteOnScreen.Y);
             return centerOfSpriteOnScreen;
         }
 
         public Vector2 ConvertToLevelPosition(Vector2 position)
         {
-            position.Y = viewport.Height - position.Y;
+            position.Y = screen.TargetHeight - position.Y;
             var cameraOffset = levelCoordinatesMaster.CameraOffset;
             var centerOfSpriteOnLevel = cameraOffset + position;
             return centerOfSpriteOnLevel;

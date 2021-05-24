@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,16 +9,18 @@ namespace ExplainingEveryString.Core.Interface
     internal class InterfaceSpriteDisplayer
     {
         private readonly SpriteBatch spriteBatch;
+        private readonly ScreenConfiguration screenConfig;
         private readonly Color colorMask;
         private Single elapsedTime = 0;
 
-        internal Int32 ScreenWidth => spriteBatch.GraphicsDevice.Viewport.Width;
-        internal Int32 ScreenHeight => spriteBatch.GraphicsDevice.Viewport.Height;
+        internal Int32 ScreenWidth => screenConfig.TargetWidth;
+        internal Int32 ScreenHeight => screenConfig.TargetHeight;
 
-        internal InterfaceSpriteDisplayer(SpriteBatch spriteBatch, Color colorMask)
+        internal InterfaceSpriteDisplayer(SpriteBatch spriteBatch, Color colorMask, Configuration config)
         {
             this.spriteBatch = spriteBatch;
             this.colorMask = colorMask;
+            this.screenConfig = config.Screen;
         }
 
         internal void Update(Single elapsedSeconds)

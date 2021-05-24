@@ -39,11 +39,11 @@ namespace ExplainingEveryString.Editor
             var levelLoader = LevelDataAccess.GetLevelLoader();
             var levelData = levelLoader.Load(levelToEdit);
             var map = new TileWrapper(Content.Load<TiledMap>(levelData.TileMap));
-            var config = ConfigurationAccess.GetCurrentConfig().Camera;
+            var config = ConfigurationAccess.GetCurrentConfig();
             var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetLevelPosition(levelData.StartCheckpoint.PlayerPosition));
-            var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, GraphicsDevice.Viewport, config);
+            var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, config.Screen, config.Camera);
 
-            this.screenCoordinatesMaster = new ScreenCoordinatesMaster(GraphicsDevice.Viewport, levelCoordinatesMaster);
+            this.screenCoordinatesMaster = new ScreenCoordinatesMaster(config.Screen, levelCoordinatesMaster);
             var coordinatesConveter = new CoordinatesConverter(screenCoordinatesMaster, map);
 
             this.mapDisplayer = new TiledMapDisplayer(map, this, screenCoordinatesMaster);

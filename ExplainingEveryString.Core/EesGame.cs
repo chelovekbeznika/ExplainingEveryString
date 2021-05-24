@@ -11,6 +11,8 @@ namespace ExplainingEveryString.Core
     public class EesGame : EesApp
     {
         private OuterMenuInputProcessor menuInputProcessor;
+        private SpriteBatch targetBatch;
+        private RenderTarget2D unscaledRenderTarget;
 
         internal GameStateManager GameState { get; private set; }
 
@@ -36,6 +38,9 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
+            var configuration = ConfigurationAccess.GetCurrentConfig().Screen;
+            targetBatch = new SpriteBatch(GraphicsDevice);
+            unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, configuration.TargetWidth, configuration.TargetHeight);
             base.LoadContent();
         }
 
@@ -56,8 +61,15 @@ namespace ExplainingEveryString.Core
 
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.SetRenderTarget(unscaledRenderTarget);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(gameTime);
+
+            var config = ConfigurationAccess.GetCurrentConfig().Screen;
+            GraphicsDevice.SetRenderTarget(null);
+            targetBatch.Begin();
+            targetBatch.Draw(unscaledRenderTarget, new Rectangle(0, 0, config.ScreenWidth, config.ScreenHeight), Color.White);
+            targetBatch.End();
         }
     }
 }
