@@ -68,5 +68,15 @@ namespace ExplainingEveryString.Core.Menu
         {
             Items[SelectedIndex].RequestCommandExecution();
         }
+
+        internal void Increment()
+        {
+            Items[SelectedIndex].Increment();
+        }
+
+        internal void Decrement()
+        {
+            Items[SelectedIndex].Decrement();
+        }
     }
 }

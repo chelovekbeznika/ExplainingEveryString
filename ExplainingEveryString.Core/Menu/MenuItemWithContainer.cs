@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.Menu
 {
-    internal class MenuItemWithContainer : MenuItem
+    internal class MenuItemWithContainer : MenuItemButton
     {
         private MenuItemsContainer container;
         private MenuVisiblePart menuVisiblePart;
@@ -34,7 +34,6 @@ namespace ExplainingEveryString.Core.Menu
         internal override void RequestCommandExecution()
         {
             menuVisiblePart.CurrentButtonsContainer = container;
-            base.RequestCommandExecution();
         }
     }
 }

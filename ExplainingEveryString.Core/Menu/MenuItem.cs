@@ -1,30 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ExplainingEveryString.Core.Menu
 {
-    internal class MenuItem
+    internal abstract class MenuItem
     {
-        internal Texture2D Sprite { get; private set; }
         internal Boolean Selected { get; set; } = false;
-        internal event EventHandler<EventArgs> ItemCommandExecuteRequested;
         internal Func<Boolean> IsVisible { get; set; } = () => true;
         internal virtual MenuItemsContainer ParentContainer { get; set; }
 
-        internal MenuItem(Texture2D sprite)
-        {
-            this.Sprite = sprite;
-        }
-
-        internal Point GetSize()
-        {
-            return new Point(Sprite.Width, Sprite.Height);
-        }
-
-        internal virtual void RequestCommandExecution()
-        {
-            ItemCommandExecuteRequested?.Invoke(this, EventArgs.Empty);
-        }
+        internal abstract void Draw(SpriteBatch spriteBatch, Vector2 position);
+        internal abstract Point GetSize();
+        internal abstract void RequestCommandExecution();
+        internal virtual void Decrement() { }
+        internal virtual void Increment() { }
     }
 }

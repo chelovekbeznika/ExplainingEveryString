@@ -18,29 +18,30 @@ namespace ExplainingEveryString.Core.Menu
         internal void Draw(MenuItem item, Point pointPosition)
         {
             var position = new Vector2(pointPosition.X, pointPosition.Y);
-            spriteBatch.Draw(item.Sprite, position, Color.White);
+            item.Draw(spriteBatch, position);
             if (item.Selected)
                 DrawBorder(item, pointPosition);
         }
 
         internal void DrawBorder(MenuItem item, Point pointPosition)
         {
+            var size = item.GetSize();
             DrawHorizontallBorder(
                 pointPosition.X - borderPart.Width,
-                pointPosition.X + item.Sprite.Width + borderPart.Width,
+                pointPosition.X + size.X + borderPart.Width,
                 pointPosition.Y - borderPart.Height);
             DrawHorizontallBorder(
                 pointPosition.X - borderPart.Width,
-                pointPosition.X + item.Sprite.Width + borderPart.Width,
-                pointPosition.Y + item.Sprite.Height);
+                pointPosition.X + size.X + borderPart.Width,
+                pointPosition.Y + size.Y);
             DrawVerticalBorder(
                 pointPosition.Y,
-                pointPosition.Y + item.Sprite.Height,
+                pointPosition.Y + size.Y,
                 pointPosition.X - borderPart.Width);
             DrawVerticalBorder(
                 pointPosition.Y,
-                pointPosition.Y + item.Sprite.Height,
-                pointPosition.X + item.Sprite.Width);
+                pointPosition.Y + size.Y,
+                pointPosition.X + size.X);
         }
 
         internal void DrawHorizontallBorder(Int32 from, Int32 to, Int32 yLineCoord)

@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Menu
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
         {
-            var items = new List<MenuItem>();
+            var items = new List<MenuItemButton>();
             foreach (var levelsBlock in levelSequenceSpecification.LevelsBlocks)
             {
                 var item = new MenuItemWithContainer(Content.Load<Texture2D>(levelsBlock.ButtonSprite),
@@ -32,12 +32,12 @@ namespace ExplainingEveryString.Core.Menu
 
         private MenuItemsContainer GetMenuContainerForBlock(LevelsBlockSpecification levelsBlock)
         {
-            var items = new List<MenuItem>();
+            var items = new List<MenuItemButton>();
             var levels = levelSequenceSpecification.Levels
                 .Where(l => l.LevelsBlockId == levelsBlock.Id);
             foreach (var level in levels)
             {
-                var item = new MenuItem(Content.Load<Texture2D>(level.ButtonSprite));
+                var item = new MenuItemButton(Content.Load<Texture2D>(level.ButtonSprite));
                 item.ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueFrom(level.LevelData);
                 item.IsVisible = () => game.GameState.LevelAvailable(level.LevelData);
                 items.Add(item);

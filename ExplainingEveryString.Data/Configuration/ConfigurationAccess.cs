@@ -12,19 +12,23 @@ namespace ExplainingEveryString.Data.Configuration
             return configuration;
         }
 
+        public static void SaveCurrentConfig()
+        {
+            JsonDataAccessor.Instance.Save(FileNames.Configuration, configuration);
+        }
+
         public static void InitializeConfig()
         {
-            var fileName = FileNames.Configuration;
             try
             {
-                if (File.Exists(fileName))
+                if (File.Exists(FileNames.Configuration))
                 {
-                    configuration = JsonDataAccessor.Instance.Load<Configuration>(fileName);
+                    configuration = JsonDataAccessor.Instance.Load<Configuration>(FileNames.Configuration);
                 }
                 else
                 {
                     configuration = GetDefaultConfig();
-                    JsonDataAccessor.Instance.Save(fileName, configuration);
+                    SaveCurrentConfig();
                 }
             }
             catch (Exception)

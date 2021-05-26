@@ -50,7 +50,8 @@ namespace ExplainingEveryString.Core.Menu
             var borderPart = game.Content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder");
             var menuBuild = new MenuBuilder(game, 
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
-                new MusicTestMenuBuilder(game, musicTestSpecification));
+                new MusicTestMenuBuilder(game, musicTestSpecification),
+                new SettingsMenuBuilder(game));
             this.screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
             var positionsMapper = new MenuItemPositionsMapper(new Point(screenConfig.TargetWidth, screenConfig.TargetHeight), 16);
             var menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);
@@ -66,11 +67,6 @@ namespace ExplainingEveryString.Core.Menu
             base.Draw(gameTime);
         }
 
-        internal void Accept()
-        {
-            CurrentButtonsContainer.RequestSelectedCommandExecution();
-        }
-
         internal void ReturnMenuToDefaultStateAtPause()
         {
             visiblePart.ReturnToRoot();
@@ -81,7 +77,9 @@ namespace ExplainingEveryString.Core.Menu
         {
             menuInputProcessor.Down.ButtonPressed += (sender, e) => CurrentButtonsContainer.SelectNextButton();
             menuInputProcessor.Up.ButtonPressed += (sender, e) => CurrentButtonsContainer.SelectPreviousButton();
-            menuInputProcessor.Accept.ButtonPressed += (sender, e) => Accept();
+            menuInputProcessor.Left.ButtonPressed += (sender, e) => CurrentButtonsContainer.Decrement();
+            menuInputProcessor.Right.ButtonPressed += (sender, e) => CurrentButtonsContainer.Increment();
+            menuInputProcessor.Accept.ButtonPressed += (sender, e) => CurrentButtonsContainer.RequestSelectedCommandExecution();
             menuInputProcessor.Back.ButtonPressed += (sender, e) => visiblePart.TryToGetBack();
         }
     }
