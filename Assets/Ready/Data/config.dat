@@ -1,6 +1,6 @@
 {
   "Input": {
-    "ControlDevice": "GamePad",
+    "ControlDevice": "Gamepad",
     "TimeToFocusOnKeyboard": 0.25,
     "TimeToFocusOnGamepad": 0.375
   },
@@ -10,7 +10,9 @@
     "TimeToReverseFocusDirection": 1.5
   },
   "Screen": {
-    "ScreenWidth": 512,
+    "TargetWidth": 1024,
+    "TargetHeight": 768,
+    "ScreenWidth": 1024,
     "ScreenHeight": 768,
     "FullScreen": false
   },
