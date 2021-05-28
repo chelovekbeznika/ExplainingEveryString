@@ -6,13 +6,18 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuItemDisplayer
     {
+        private const Int32 betweenPixels = 2;
         private Texture2D borderPart;
+        private Texture2D left;
+        private Texture2D right;
         private SpriteBatch spriteBatch;
 
-        internal MenuItemDisplayer(Texture2D borderPart, SpriteBatch spriteBatch)
+        internal MenuItemDisplayer(SpriteBatch spriteBatch, Texture2D borderPart, Texture2D left, Texture2D right)
         {
             this.borderPart = borderPart;
             this.spriteBatch = spriteBatch;
+            this.left = left;
+            this.right = right;
         }
 
         internal void Draw(MenuItem item, Point pointPosition)
@@ -20,12 +25,34 @@ namespace ExplainingEveryString.Core.Menu
             var position = new Vector2(pointPosition.X, pointPosition.Y);
             item.Draw(spriteBatch, position);
             if (item.Selected)
-                DrawBorder(item, pointPosition);
+            {
+                var size = item.GetSize();
+                switch (item.BorderType)
+                {
+                    case BorderType.Button:
+                        DrawButtonBorder(pointPosition, size);
+                        break;
+                    case BorderType.Setting:
+                        DrawSettingBorder(pointPosition, size);
+                        break;
+                }
+            }
         }
 
-        internal void DrawBorder(MenuItem item, Point pointPosition)
+        internal void DrawSettingBorder(Point pointPosition, Point size)
         {
-            var size = item.GetSize();
+            var leftPosition = new Vector2(
+                x: pointPosition.X - betweenPixels - left.Width,
+                y: pointPosition.Y + (Single)size.Y / 2 - (Single)left.Width / 2);
+            var rightPosition = new Vector2(
+                x: pointPosition.X + size.X + betweenPixels,
+                y: pointPosition.Y + (Single)size.Y / 2 - (Single)left.Width / 2);
+            spriteBatch.Draw(left, leftPosition, Color.White);
+            spriteBatch.Draw(right, rightPosition, Color.White);
+        }
+
+        internal void DrawButtonBorder(Point pointPosition, Point size)
+        {
             DrawHorizontallBorder(
                 pointPosition.X - borderPart.Width,
                 pointPosition.X + size.X + borderPart.Width,

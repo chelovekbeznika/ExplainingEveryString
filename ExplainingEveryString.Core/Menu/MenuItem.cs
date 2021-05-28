@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.Menu
         internal Func<Boolean> IsVisible { get; set; } = () => true;
         internal virtual MenuItemsContainer ParentContainer { get; set; }
 
+        internal abstract BorderType BorderType { get; }
         internal abstract void Draw(SpriteBatch spriteBatch, Vector2 position);
         internal abstract Point GetSize();
         internal abstract void RequestCommandExecution();

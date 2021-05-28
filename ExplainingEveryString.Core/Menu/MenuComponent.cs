@@ -51,14 +51,17 @@ namespace ExplainingEveryString.Core.Menu
 
         private MenuVisiblePart InitializeVisiblePart()
         {
-            var borderPart = game.Content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder");
+            var content = game.Content;
             var menuBuild = new MenuBuilder(game, 
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
                 new MusicTestMenuBuilder(game, musicTestSpecification),
                 new SettingsMenuBuilder(game, settings));
             this.screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
             var positionsMapper = new MenuItemPositionsMapper(new Point(screenConfig.TargetWidth, screenConfig.TargetHeight), 16);
-            var menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);
+            var menuItemDisplayer = new MenuItemDisplayer(spriteBatch, 
+                borderPart: content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder"),
+                left: content.Load<Texture2D>(@"Sprites/Menu/Settings/Left"),
+                right: content.Load<Texture2D>(@"Sprites/Menu/Settings/Right"));
             return new MenuVisiblePart(menuBuild, positionsMapper, menuItemDisplayer);
         }
 

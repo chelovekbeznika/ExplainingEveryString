@@ -7,6 +7,9 @@ namespace ExplainingEveryString.Core.Menu
     internal class MenuItemButton : MenuItem
     {
         private Texture2D sprite;
+
+        internal override BorderType BorderType => BorderType.Button;
+
         internal event EventHandler<EventArgs> ItemCommandExecuteRequested;
 
         internal MenuItemButton(Texture2D sprite)

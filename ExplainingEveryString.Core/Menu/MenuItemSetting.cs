@@ -20,6 +20,8 @@ namespace ExplainingEveryString.Core.Menu
 
         private Int32 BarsSelected { get => settings.MusicVolume; set => settings.MusicVolume = value; }
 
+        internal override BorderType BorderType => BorderType.Setting;
+
         internal MenuItemMusicVolumeSetting(Texture2D empty, Texture2D full, Int32 maxBars, CurrentSettings settings)
         {
             this.empty = empty;
