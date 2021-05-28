@@ -33,6 +33,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal override void RequestCommandExecution()
         {
+            base.RequestCommandExecution();
             menuVisiblePart.CurrentButtonsContainer = container;
         }
     }

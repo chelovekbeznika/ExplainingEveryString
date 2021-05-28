@@ -10,12 +10,10 @@ namespace ExplainingEveryString.Core.Menu
     internal class SettingsMenuBuilder : IMenuBuilder
     {
         private EesGame game;
-        private CurrentSettings settings;
 
-        internal SettingsMenuBuilder(EesGame game, CurrentSettings settings)
+        internal SettingsMenuBuilder(EesGame game)
         {
             this.game = game;
-            this.settings = settings;
         }
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
@@ -25,7 +23,7 @@ namespace ExplainingEveryString.Core.Menu
                 new MenuItem[]
                 {
                     new MenuItemMusicVolumeSetting(
-                        settings: settings,
+                        settingsProvider: () => SettingsAccess.GetCurrentSettings(),
                         empty: content.Load<Texture2D>(@"Sprites/Menu/Settings/EmptySoundBar"),
                         full: content.Load<Texture2D>(@"Sprites/Menu/Settings/FullSoundBar"),
                         maxBars: CurrentSettings.MaxSoundBars),
@@ -34,7 +32,7 @@ namespace ExplainingEveryString.Core.Menu
             (container.Items[container.Items.Length - 1] as MenuItemButton).ItemCommandExecuteRequested += (sender, e) =>
             {
                 var config = ConfigurationAccess.GetCurrentConfig();
-                SettingsConfigurationConverter.SettingsIntoConfiguration(config, settings);
+                SettingsAccess.SettingsIntoConfiguration(config);
                 ConfigurationAccess.SaveCurrentConfig();
                 game.GameState.ConfigChanged();
             };

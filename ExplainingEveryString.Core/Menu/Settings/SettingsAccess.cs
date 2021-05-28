@@ -5,17 +5,21 @@ using System.Text;
 
 namespace ExplainingEveryString.Core.Menu.Settings
 {
-    internal static class SettingsConfigurationConverter
+    internal static class SettingsAccess
     {
-        internal static CurrentSettings SettingsFromConfiguration(Configuration config)
+        private static CurrentSettings settings = null;
+
+        internal static CurrentSettings GetCurrentSettings() => settings;
+
+        internal static void InitSettingsFromConfiguration(Configuration config)
         {
-            return new CurrentSettings
+            settings = new CurrentSettings
             {
                 MusicVolume = (Int32)(config.MusicVolume * CurrentSettings.MaxSoundBars),
             };
         }
 
-        internal static void SettingsIntoConfiguration(Configuration config, CurrentSettings settings)
+        internal static void SettingsIntoConfiguration(Configuration config)
         {
             config.MusicVolume = (Single)settings.MusicVolume / CurrentSettings.MaxSoundBars;
         }

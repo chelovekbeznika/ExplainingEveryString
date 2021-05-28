@@ -13,21 +13,21 @@ namespace ExplainingEveryString.Core.Menu
     {
         private const Int32 pixelsBetween = 4;
 
-        private CurrentSettings settings;
+        private Func<CurrentSettings> settingsProvider;
         private Texture2D empty;
         private Texture2D full;
         private Int32 maxBars;
 
-        private Int32 BarsSelected { get => settings.MusicVolume; set => settings.MusicVolume = value; }
+        private Int32 BarsSelected { get => settingsProvider().MusicVolume; set => settingsProvider().MusicVolume = value; }
 
         internal override BorderType BorderType => BorderType.Setting;
 
-        internal MenuItemMusicVolumeSetting(Texture2D empty, Texture2D full, Int32 maxBars, CurrentSettings settings)
+        internal MenuItemMusicVolumeSetting(Texture2D empty, Texture2D full, Int32 maxBars, Func<CurrentSettings> settingsProvider)
         {
             this.empty = empty;
             this.full = full;
             this.maxBars = maxBars;
-            this.settings = settings;
+            this.settingsProvider = settingsProvider;
         }
 
         internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
