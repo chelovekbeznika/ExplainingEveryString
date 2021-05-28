@@ -17,5 +17,6 @@
     "FullScreen": false
   },
   "SoundFadingOut": 1000.0,
-  "InterfaceAlpha": 0.75
+  "InterfaceAlpha": 0.75,
+  "MusicVolume": 0.3
 }

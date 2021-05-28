@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
@@ -10,17 +11,15 @@ namespace ExplainingEveryString.Core.GameState
         private enum GameState { BetweenLevels, InGame, Paused }
 
         private GameState currentState = GameState.BetweenLevels;
-        private readonly Game game;
         private ComponentsManager componentsManager;
         private LevelSequence levelSequence;
         private GameProgress gameProgress;
 
         internal Boolean IsPaused => currentState == GameState.Paused;
 
-        internal GameStateManager(Game game, LevelSequnceSpecification levelSequenceSpecification, 
+        internal GameStateManager(LevelSequnceSpecification levelSequenceSpecification, 
             ComponentsManager componentsManager)
         {
-            this.game = game;
             this.componentsManager = componentsManager;
             this.gameProgress = GameProgressAccess.Load();
             
@@ -129,6 +128,13 @@ namespace ExplainingEveryString.Core.GameState
                 SwitchToInGameState();
                 return;
             }
+        }
+
+        internal void ConfigChanged()
+        {
+            var newConfig = ConfigurationAccess.GetCurrentConfig();
+            componentsManager.MenuMusic.Volume = newConfig.MusicVolume;
+            componentsManager.GameMusic.Volume = newConfig.MusicVolume;
         }
 
         internal void StartMusicInGame(String songName)

@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Configuration;
+﻿using ExplainingEveryString.Core.Menu.Settings;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,16 +13,19 @@ namespace ExplainingEveryString.Core.Menu
     {
         private const Int32 pixelsBetween = 4;
 
+        private CurrentSettings settings;
         private Texture2D empty;
         private Texture2D full;
         private Int32 maxBars;
-        private Int32 barsSelected;
 
-        internal MenuItemMusicVolumeSetting(Texture2D empty, Texture2D full, Int32 maxBars)
+        private Int32 BarsSelected { get => settings.MusicVolume; set => settings.MusicVolume = value; }
+
+        internal MenuItemMusicVolumeSetting(Texture2D empty, Texture2D full, Int32 maxBars, CurrentSettings settings)
         {
             this.empty = empty;
             this.full = full;
             this.maxBars = maxBars;
+            this.settings = settings;
         }
 
         internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
@@ -29,7 +33,7 @@ namespace ExplainingEveryString.Core.Menu
             var x = position.X;
             foreach (var index in Enumerable.Range(0, maxBars))
             {
-                var sprite = index < barsSelected ? full : empty;
+                var sprite = index < BarsSelected ? full : empty;
                 var y = position.Y + System.Math.Max(empty.Height, full.Height) - sprite.Height;
                 spriteBatch.Draw(sprite, new Vector2(x, y), Color.White);
                 x += sprite.Width + pixelsBetween;
@@ -38,7 +42,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal override Point GetSize() => new Point
         (
-            x: barsSelected * full.Width + (maxBars - barsSelected) * empty.Width + pixelsBetween * (maxBars - 1),
+            x: BarsSelected * full.Width + (maxBars - BarsSelected) * empty.Width + pixelsBetween * (maxBars - 1),
             y: System.Math.Max(empty.Height, full.Height)
         );
 
@@ -49,14 +53,14 @@ namespace ExplainingEveryString.Core.Menu
 
         internal override void Increment()
         {
-            if (barsSelected < maxBars)
-                barsSelected += 1;
+            if (BarsSelected < maxBars)
+                BarsSelected += 1;
         }
 
         internal override void Decrement()
         {
-            if (barsSelected > 0)
-                barsSelected -= 1;
+            if (BarsSelected > 0)
+                BarsSelected -= 1;
         }
     }
 }

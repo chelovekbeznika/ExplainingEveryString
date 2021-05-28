@@ -9,6 +9,8 @@ namespace ExplainingEveryString.Core
     {
         private MusicPlayer musicPlayer;
 
+        internal Single Volume { get => musicPlayer.Volume; set => musicPlayer.Volume = value; }
+
         public MusicComponent(EesGame game) : base(game)
         {
             this.musicPlayer = new MusicPlayer();

@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Core.Menu.Settings;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
@@ -18,16 +19,19 @@ namespace ExplainingEveryString.Core.Menu
         private InnerMenuInputProcessor menuInputProcessor;
         private LevelSequnceSpecification levelSequenceSpecification;
         private MusicTestButtonSpecification[] musicTestSpecification;
+        private CurrentSettings settings;
 
         internal MenuComponent(EesGame game, LevelSequnceSpecification levelSequenceSpecification, 
             MusicTestButtonSpecification[] musicTestSpecification) : base(game)
         {
+            var config = ConfigurationAccess.GetCurrentConfig();
             this.game = game;
             this.levelSequenceSpecification = levelSequenceSpecification;
             this.musicTestSpecification = musicTestSpecification;
             this.DrawOrder = ComponentsOrder.Menu;
             this.UpdateOrder = ComponentsOrder.Menu;
-            this.menuInputProcessor = new InnerMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
+            this.menuInputProcessor = new InnerMenuInputProcessor(config);
+            this.settings = SettingsConfigurationConverter.SettingsFromConfiguration(config);
             InitMenuInput(menuInputProcessor);
         }
 
@@ -51,7 +55,7 @@ namespace ExplainingEveryString.Core.Menu
             var menuBuild = new MenuBuilder(game, 
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
                 new MusicTestMenuBuilder(game, musicTestSpecification),
-                new SettingsMenuBuilder(game));
+                new SettingsMenuBuilder(game, settings));
             this.screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
             var positionsMapper = new MenuItemPositionsMapper(new Point(screenConfig.TargetWidth, screenConfig.TargetHeight), 16);
             var menuItemDisplayer = new MenuItemDisplayer(borderPart, spriteBatch);

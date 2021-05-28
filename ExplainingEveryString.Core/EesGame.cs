@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Core
             var componentsManager =  new ComponentsManager(this, levelSequenceSpecification, 
                 musicTestSpecification);
 
-            this.GameState = new GameStateManager(this, levelSequenceSpecification, componentsManager);
+            this.GameState = new GameStateManager(levelSequenceSpecification, componentsManager);
             this.menuInputProcessor = new OuterMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
             base.Initialize();

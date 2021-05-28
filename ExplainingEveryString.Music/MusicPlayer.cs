@@ -10,12 +10,13 @@ namespace ExplainingEveryString.Music
     {
         private DynamicSoundEffectInstance sound;
         private Single volume;
-        private Single Volume { get { return volume; } set { volume = value; if (sound != null) sound.Volume = value; } }
         private List<Byte[]> deltaSamplesLibrary;
         private NesSoundChipReplica soundChipReplica;
         private List<Byte[]> songParts;
         private Int32 songPartsPlaying;
         private String nowPlaying = null;
+
+        public Single Volume { get { return volume; } set { volume = value; if (sound != null) sound.Volume = value; } }
 
         public MusicPlayer()
         {
