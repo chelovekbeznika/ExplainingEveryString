@@ -5,6 +5,7 @@ using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace ExplainingEveryString.Core.Menu
 {
@@ -54,7 +55,7 @@ namespace ExplainingEveryString.Core.Menu
             var menuBuild = new MenuBuilder(game, 
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
                 new MusicTestMenuBuilder(game, musicTestSpecification),
-                new SettingsMenuBuilder(game));
+                new SettingsMenuBuilder(game, SaveSettingsHandler));
             this.screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
             var positionsMapper = new MenuItemPositionsMapper(new Point(screenConfig.TargetWidth, screenConfig.TargetHeight), 16);
             var menuItemDisplayer = new MenuItemDisplayer(spriteBatch, 
@@ -87,6 +88,15 @@ namespace ExplainingEveryString.Core.Menu
             menuInputProcessor.Right.ButtonPressed += (sender, e) => CurrentButtonsContainer.Increment();
             menuInputProcessor.Accept.ButtonPressed += (sender, e) => CurrentButtonsContainer.RequestSelectedCommandExecution();
             menuInputProcessor.Back.ButtonPressed += (sender, e) => visiblePart.TryToGetBack();
+        }
+
+        private void SaveSettingsHandler(object sender, EventArgs e)
+        {
+            var config = ConfigurationAccess.GetCurrentConfig();
+            SettingsAccess.SettingsIntoConfiguration(config);
+            ConfigurationAccess.SaveCurrentConfig();
+            game.GameState.ConfigChanged();
+            visiblePart.TryToGetBack();
         }
     }
 }

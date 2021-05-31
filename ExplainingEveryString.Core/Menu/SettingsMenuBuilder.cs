@@ -10,15 +10,18 @@ namespace ExplainingEveryString.Core.Menu
     internal class SettingsMenuBuilder : IMenuBuilder
     {
         private EesGame game;
+        private EventHandler<EventArgs> saveSettingsHandler;
 
-        internal SettingsMenuBuilder(EesGame game)
+        internal SettingsMenuBuilder(EesGame game, EventHandler<EventArgs> saveSettingsHandler)
         {
             this.game = game;
+            this.saveSettingsHandler = saveSettingsHandler;
         }
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
         {
             var content = game.Content;
+            var saveSettings = new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Settings/Save"));
             var container = new MenuItemsContainer(
                 new MenuItem[]
                 {
@@ -34,15 +37,9 @@ namespace ExplainingEveryString.Core.Menu
                         maxBars: CurrentSettings.MaxSoundBars,
                         getItem: () => SettingsAccess.GetCurrentSettings().SoundVolume,
                         setItem: volume => SettingsAccess.GetCurrentSettings().SoundVolume = volume),
-                    new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Settings/Save"))
+                    saveSettings
                 });
-            (container.Items[container.Items.Length - 1] as MenuItemButton).ItemCommandExecuteRequested += (sender, e) =>
-            {
-                var config = ConfigurationAccess.GetCurrentConfig();
-                SettingsAccess.SettingsIntoConfiguration(config);
-                ConfigurationAccess.SaveCurrentConfig();
-                game.GameState.ConfigChanged();
-            };
+            saveSettings.ItemCommandExecuteRequested += saveSettingsHandler;
             return container;
         }
     }
