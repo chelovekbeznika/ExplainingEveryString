@@ -13,7 +13,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.6
+        "Volume": 1.0
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss3/Death",
@@ -28,7 +28,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/3/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -65,7 +65,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Bosses/3/Blast",
-                  "Volume": 0.35
+                  "Volume": 0.7
                 }
               }
             }
@@ -77,7 +77,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/3/Shot",
-            "Volume": 0.4
+            "Volume": 0.8
           }
         },
         "AimType": "AimAtPlayer"
@@ -111,7 +111,7 @@
       "ShootingEffect": {
         "Sound": {
           "Name": "Sounds/StandardEnemy/Shot",
-          "Volume": 0.15
+          "Volume": 0.3
         }
       },
       "AimType": "AimAtPlayer"

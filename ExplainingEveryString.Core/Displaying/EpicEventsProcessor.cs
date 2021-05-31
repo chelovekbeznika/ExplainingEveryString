@@ -35,10 +35,11 @@ namespace ExplainingEveryString.Core.Displaying
 
         private void PlaySounds()
         {
+            var masterSoundVolume = ConfigurationAccess.GetCurrentConfig().SoundVolume;
             foreach (var soundPair in soundsToPlay)
             {   
                 var soundName = soundPair.Key;
-                var volume = soundPair.Value; 
+                var volume = soundPair.Value * masterSoundVolume; 
                 if (!soundsRecentlyPlayed.Contains(soundName))
                 {
                     assetsStorage.GetSound(soundName).Play(volume, 0, 0);

@@ -31,7 +31,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Explosion_02",
-        "Volume": 0.4
+        "Volume": 0.8
       },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
@@ -41,7 +41,7 @@
     "PhaseChangeEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/ShadowPhaseChange",
-        "Volume": 0.25,
+        "Volume": 0.5,
         "FadingCoeff": 0.33333
       },
       "Sprite": {
@@ -95,19 +95,19 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Explosion_01",
-        "Volume": 0.2
+        "Volume": 0.4
       }
     },
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.1
+        "Volume": 0.2
       }
     },
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.2
+        "Volume": 0.4
       }
     },
     "AppearancePhaseSprite": {
@@ -128,7 +128,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Explosion_02",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
@@ -232,7 +232,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Enemy/FixedCannonShoot",
-            "Volume": 0.05
+            "Volume": 0.1
           }
         },
         "AimType": "FixedFireDirection"
@@ -252,7 +252,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/HelicopterExplosion",
-        "Volume": 0.2
+        "Volume": 0.4
       },
       "Sprite": {
         "Name": "Sprites/Explosions/HelicopterDeath",
@@ -331,7 +331,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/HelicopterShoot",
-            "Volume": 0.15
+            "Volume": 0.3
           }
         },
         "AimType": "FixedFireDirection"
@@ -374,7 +374,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Explosion_02",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
@@ -427,7 +427,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Enemy/TripleCannonShoot",
-            "Volume": 0.05
+            "Volume": 0.1
           }
         }
       }
@@ -445,7 +445,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Explosion_02",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Explosions/01",
@@ -542,7 +542,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Enemy/TripleCannonShoot",
-            "Volume": 0.05
+            "Volume": 0.1
           }
         },
         "AimType": "AimAtPlayer"
@@ -563,7 +563,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/BridgeBlockerOpening",
-        "Volume": 0.5
+        "Volume": 1.0
       }
     }
   },

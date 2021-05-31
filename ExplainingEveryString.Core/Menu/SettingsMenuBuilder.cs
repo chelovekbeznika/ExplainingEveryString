@@ -22,11 +22,18 @@ namespace ExplainingEveryString.Core.Menu
             var container = new MenuItemsContainer(
                 new MenuItem[]
                 {
-                    new MenuItemMusicVolumeSetting(
-                        settingsProvider: () => SettingsAccess.GetCurrentSettings(),
+                    new MenuItemVolumeSetting(
+                        empty: content.Load<Texture2D>(@"Sprites/Menu/Settings/EmptySoundBar"),
+                        full: content.Load<Texture2D>(@"Sprites/Menu/Settings/FullMusicBar"),
+                        maxBars: CurrentSettings.MaxSoundBars,
+                        getItem: () => SettingsAccess.GetCurrentSettings().MusicVolume,
+                        setItem: volume => SettingsAccess.GetCurrentSettings().MusicVolume = volume),
+                    new MenuItemVolumeSetting(
                         empty: content.Load<Texture2D>(@"Sprites/Menu/Settings/EmptySoundBar"),
                         full: content.Load<Texture2D>(@"Sprites/Menu/Settings/FullSoundBar"),
-                        maxBars: CurrentSettings.MaxSoundBars),
+                        maxBars: CurrentSettings.MaxSoundBars,
+                        getItem: () => SettingsAccess.GetCurrentSettings().SoundVolume,
+                        setItem: volume => SettingsAccess.GetCurrentSettings().SoundVolume = volume),
                     new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Settings/Save"))
                 });
             (container.Items[container.Items.Length - 1] as MenuItemButton).ItemCommandExecuteRequested += (sender, e) =>

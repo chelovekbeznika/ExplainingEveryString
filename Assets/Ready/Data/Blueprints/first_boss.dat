@@ -25,13 +25,13 @@
       },
       "Sound": {
         "Name": "Sounds/Bosses/1/Death",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     },
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/1/Appearance",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     },
     "AppearancePhaseSprite": {
@@ -45,13 +45,13 @@
     "PhaseOnEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/1/PhaseOn",
-        "Volume": 0.5
+        "Volume": 1.0
       }
     },
     "PhaseOffEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/1/PhaseOff",
-        "Volume": 0.3
+        "Volume": 0.6
       }
     },
     "Phases": [
@@ -135,7 +135,7 @@
             "ShootingEffect": {
               "Sound": {
                 "Name": "Sounds/StandardEnemy/Shot",
-                "Volume": 0.25
+                "Volume": 0.5
               }
             },
             "AimType": "FixedFireDirection"
@@ -439,7 +439,7 @@
             "ShootingEffect": {
               "Sound": {
                 "Name": "Sounds/StandardEnemy/Shot",
-                "Volume": 0.25
+                "Volume": 0.5
               }
             },
             "AimType": "FixedFireDirection"
@@ -927,7 +927,7 @@
             "ShootingEffect": {
               "Sound": {
                 "Name": "Sounds/StandardEnemy/LongShot",
-                "Volume": 0.2
+                "Volume": 0.4
               }
             },
             "AimType": "FixedFireDirection"

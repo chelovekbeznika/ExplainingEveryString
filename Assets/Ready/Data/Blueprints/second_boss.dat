@@ -13,7 +13,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/2/Death",
-        "Volume": 0.4
+        "Volume": 0.8
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss2/Death",
@@ -176,7 +176,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss2/CircleDeathPart",
@@ -211,7 +211,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "AimAtPlayer"
@@ -232,7 +232,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/2/SupportDeath",
-        "Volume": 0.25
+        "Volume": 0.5
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss2/SupportGhostDeath",
@@ -269,7 +269,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/2/SupportDeath",
-        "Volume": 0.25
+        "Volume": 0.5
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss2/SupportGhostDeath",

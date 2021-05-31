@@ -9,5 +9,6 @@ namespace ExplainingEveryString.Core.Menu.Settings
         internal const Int32 MaxSoundBars = 10;
 
         internal Int32 MusicVolume { get; set; }
+        internal Int32 SoundVolume { get; set; }
     }
 }

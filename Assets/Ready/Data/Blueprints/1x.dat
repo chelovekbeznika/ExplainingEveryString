@@ -11,7 +11,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/Cannon",
@@ -26,7 +26,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -52,7 +52,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "AimAtPlayer"
@@ -73,7 +73,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/Tank",
@@ -88,7 +88,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -126,7 +126,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.15
+            "Volume": 0.3
           }
         },
         "AimType": "AimAtPlayer"
@@ -145,7 +145,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/FixedCannon",
@@ -160,7 +160,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -189,7 +189,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "FixedFireDirection"
@@ -220,7 +220,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/SmallExplosion",
-        "Volume": 0.25
+        "Volume": 0.5
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/Hunter",
@@ -230,7 +230,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "AppearancePhaseSprite": {
@@ -251,7 +251,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/TripleCannon",
@@ -265,7 +265,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "DefaultAppearancePhaseDuration": 1.0,
@@ -320,7 +320,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.15
+            "Volume": 0.3
           }
         },
         "AimType": "AimAtPlayer"
@@ -340,7 +340,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/MonorailCannon",
@@ -355,7 +355,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -388,7 +388,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "AimAtPlayer"
@@ -533,7 +533,7 @@
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/MineDiggingUp",
-        "Volume": 0.5
+        "Volume": 1.0
       }
     },
     "DeathEffect": {
@@ -543,7 +543,7 @@
       },
       "Sound": {
         "Name": "Sounds/StandardEnemy/SmallExplosion",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },
@@ -560,7 +560,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.25
+        "Volume": 0.5
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/MineSpawner",
@@ -613,7 +613,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/HelicopterExplosion",
-        "Volume": 0.2
+        "Volume": 0.4
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/Helicopter",
@@ -632,7 +632,7 @@
     "PhaseChangeEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/ShadowPhaseChange",
-        "Volume": 0.25,
+        "Volume": 0.5,
         "FadingCoeff": 1.5
       },
       "Sprite": {
@@ -707,7 +707,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.25
+            "Volume": 0.5
           }
         },
         "AimType": "FixedFireDirection"
@@ -738,7 +738,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/SwanDyingScream",
-        "Volume": 0.2
+        "Volume": 0.4
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/Swan",
@@ -748,7 +748,7 @@
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/SwanPecking",
-        "Volume": 0.2
+        "Volume": 0.4
       }
     },
     "AppearancePhaseSprite": {
@@ -858,7 +858,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/SwanShot",
-            "Volume": 0.25
+            "Volume": 0.5
           }
         },
         "AimType": "FixedFireDirection"
@@ -878,7 +878,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/SwanDyingScream",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level1X/Death/Penguin",
@@ -892,13 +892,13 @@
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BreakingIce",
-        "Volume": 0.3
+        "Volume": 0.6
       }
     },
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BreakingIce",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     },
     "DefaultAppearancePhaseDuration": 3.0,
@@ -1076,7 +1076,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/VakidzasiHit",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         }
       },
@@ -1108,7 +1108,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/IceDoorOpening",
-        "Volume": 0.5
+        "Volume": 1.0
       }
     }
   },
@@ -1126,7 +1126,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/BossDoorOpening",
-        "Volume": 0.5
+        "Volume": 1.0
       }
     }
   },
@@ -1168,7 +1168,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/BridgeBlockerOpening",
-        "Volume": 0.3
+        "Volume": 0.6
       }
     }
   },
@@ -1187,7 +1187,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/QuarterDelimiterOpening",
-        "Volume": 0.2
+        "Volume": 0.4
       }
     }
   },
@@ -1206,7 +1206,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/QuarterDelimiterOpening",
-        "Volume": 0.2
+        "Volume": 0.4
       }
     }
   },

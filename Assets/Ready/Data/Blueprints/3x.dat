@@ -50,7 +50,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/SmallExplosion",
-        "Volume": 0.25
+        "Volume": 0.5
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/Hunter",
@@ -60,7 +60,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "AppearancePhaseSprite": {
@@ -83,7 +83,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/Tank",
@@ -98,7 +98,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -137,7 +137,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.15
+            "Volume": 0.3
           }
         },
         "AimType": "AimAtPlayer"
@@ -156,7 +156,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/Cannon",
@@ -171,7 +171,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -219,7 +219,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "AimAtPlayer"
@@ -238,7 +238,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/FixedCannon",
@@ -253,7 +253,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "Behavior": {
@@ -280,7 +280,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "FixedFireDirection"
@@ -299,7 +299,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/TripleCannon",
@@ -313,7 +313,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "DefaultAppearancePhaseDuration": 1.0,
@@ -345,7 +345,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "AimAtPlayer"
@@ -397,7 +397,7 @@
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/MineDiggingUp",
-        "Volume": 0.5
+        "Volume": 1.0
       }
     },
     "DeathEffect": {
@@ -407,7 +407,7 @@
       },
       "Sound": {
         "Name": "Sounds/StandardEnemy/SmallExplosion",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },
@@ -424,7 +424,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.25
+        "Volume": 0.5
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/MineSpawner",
@@ -474,7 +474,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/MouseDeath",
-        "Volume": 0.4
+        "Volume": 0.8
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/Mouse",
@@ -484,7 +484,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "AppearancePhaseSprite": {
@@ -537,7 +537,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "ByMovement"
@@ -557,7 +557,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BlackMaskFadeOut",
-        "Volume": 0.4
+        "Volume": 0.8
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/BlackMask",
@@ -567,7 +567,7 @@
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/StandardEnemy/Appearance",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "AppearancePhaseSprite": {
@@ -612,7 +612,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Bosses/LaserRocketBlast",
-                  "Volume": 0.4
+                  "Volume": 0.8
                 }
               }
             }
@@ -621,7 +621,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "AimType": "ByMovement"
@@ -653,7 +653,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Chwyak",
-        "Volume": 0.4
+        "Volume": 0.8
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/SiameseLeft",
@@ -663,7 +663,7 @@
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Chwyak",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "AppearancePhaseSprite": {
@@ -704,7 +704,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.15
+            "Volume": 0.3
           }
         },
         "AimType": "AimAtPlayer",
@@ -741,7 +741,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Chwyak",
-        "Volume": 0.4
+        "Volume": 0.8
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/SiameseRight",
@@ -751,7 +751,7 @@
     "BeforeAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/Chwyak",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "AppearancePhaseSprite": {
@@ -789,7 +789,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.2
+            "Volume": 0.4
           }
         },
         "Sprite": {
@@ -827,7 +827,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BrickTankDeath",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/RedBrickTank",
@@ -842,7 +842,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BrickTankAppears",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     },
     "Behavior": {
@@ -879,7 +879,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Bosses/BrickBlast",
-                  "Volume": 0.3
+                  "Volume": 0.6
                 }
               }
             }
@@ -891,7 +891,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/BrickCannonFire",
-            "Volume": 0.25
+            "Volume": 0.5
           }
         },
         "AimType": "AimAtPlayer"
@@ -929,7 +929,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/BrickBlast",
-                    "Volume": 0.4
+                    "Volume": 0.8
                   }
                 }
               }
@@ -942,7 +942,7 @@
           "ShootingEffect": {
             "Sound": {
               "Name": "Sounds/Bosses/BrickCannonFire",
-              "Volume": 0.25
+              "Volume": 0.5
             }
           },
           "AimType": "AimAtPlayer"
@@ -985,7 +985,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/BrickBlast",
-                    "Volume": 0.5
+                    "Volume": 1.0
                   }
                 }
               }
@@ -998,7 +998,7 @@
           "ShootingEffect": {
             "Sound": {
               "Name": "Sounds/Bosses/BrickCannonFire",
-              "Volume": 0.25
+              "Volume": 0.5
             }
           },
           "AimType": "AimAtPlayer"
@@ -1027,7 +1027,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BrickTankDeath",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/WhiteBrickTank",
@@ -1042,7 +1042,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BrickTankAppears",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     },
     "Behavior": {
@@ -1079,7 +1079,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Bosses/BrickBlast",
-                  "Volume": 0.4
+                  "Volume": 0.8
                 }
               }
             }
@@ -1105,7 +1105,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Bosses/BrickBlast",
-                  "Volume": 0.3
+                  "Volume": 0.6
                 }
               }
             }
@@ -1117,7 +1117,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/BrickCannonFire",
-            "Volume": 0.25
+            "Volume": 0.5
           }
         },
         "AimType": "AimAtPlayer"
@@ -1157,7 +1157,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/BrickBlast",
-                    "Volume": 0.4
+                    "Volume": 0.8
                   }
                 }
               }
@@ -1185,7 +1185,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/BrickBlast",
-                    "Volume": 0.4
+                    "Volume": 0.8
                   }
                 }
               }
@@ -1198,7 +1198,7 @@
           "ShootingEffect": {
             "Sound": {
               "Name": "Sounds/Bosses/BrickCannonFire",
-              "Volume": 0.25
+              "Volume": 0.5
             }
           },
           "AimType": "AimAtPlayer"
@@ -1241,7 +1241,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/BrickBlast",
-                    "Volume": 0.4
+                    "Volume": 0.8
                   }
                 }
               }
@@ -1269,7 +1269,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/BrickBlast",
-                    "Volume": 0.5
+                    "Volume": 1.0
                   }
                 }
               }
@@ -1282,7 +1282,7 @@
           "ShootingEffect": {
             "Sound": {
               "Name": "Sounds/Bosses/BrickCannonFire",
-              "Volume": 0.25
+              "Volume": 0.5
             }
           },
           "AimType": "AimAtPlayer"
@@ -1311,7 +1311,7 @@
     "DeathEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BrickTankDeath",
-        "Volume": 0.3
+        "Volume": 0.6
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level3X/Death/MudBrickTank",
@@ -1326,7 +1326,7 @@
     "AfterAppearanceEffect": {
       "Sound": {
         "Name": "Sounds/Bosses/BrickTankAppears",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     },
     "Behavior": {
@@ -1364,7 +1364,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Bosses/MudBrickBlast",
-                  "Volume": 0.4
+                  "Volume": 0.8
                 }
               }
             }
@@ -1376,7 +1376,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/BrickCannonFire",
-            "Volume": 0.15
+            "Volume": 0.3
           }
         },
         "AimType": "AimAtPlayer"
@@ -1416,7 +1416,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/MudBrickBlast",
-                    "Volume": 0.4
+                    "Volume": 0.8
                   }
                 }
               }
@@ -1429,7 +1429,7 @@
           "ShootingEffect": {
             "Sound": {
               "Name": "Sounds/Bosses/BrickCannonFire",
-              "Volume": 0.15
+              "Volume": 0.3
             }
           },
           "AimType": "AimAtPlayer"
@@ -1472,7 +1472,7 @@
                   },
                   "Sound": {
                     "Name": "Sounds/Bosses/MudBrickBlast",
-                    "Volume": 0.4
+                    "Volume": 0.8
                   }
                 }
               }
@@ -1485,7 +1485,7 @@
           "ShootingEffect": {
             "Sound": {
               "Name": "Sounds/Bosses/BrickCannonFire",
-              "Volume": 0.15
+              "Volume": 0.3
             }
           },
           "AimType": "AimAtPlayer"
@@ -1517,7 +1517,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/MoonDoorOpening",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },
@@ -1536,7 +1536,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/MoonDoorOpening",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },
@@ -1555,7 +1555,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/CookiesEaten",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },
@@ -1574,7 +1574,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/CookiesEaten",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },
@@ -1593,7 +1593,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/CookiesEaten",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },
@@ -1612,7 +1612,7 @@
     "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/CookiesEaten",
-        "Volume": 0.4
+        "Volume": 0.8
       }
     }
   },

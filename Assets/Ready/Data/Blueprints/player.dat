@@ -14,7 +14,7 @@
       "SpecEffect": {
         "Sound": {
           "Name": "Sounds/Player/Dash",
-          "Volume": 0.3
+          "Volume": 0.6
         },
         "Sprite": {
           "Name": "Sprites/Player/Dash",
@@ -57,7 +57,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Player/Shoot",
-            "Volume": 0.1
+            "Volume": 0.2
           }
         },
         "AimType": "ControlledByPlayer"
@@ -71,7 +71,7 @@
           "ReloadStartedEffect": {
             "Sound": {
               "Name": "Sounds/Player/ShotgunReload",
-              "Volume": 0.25
+              "Volume": 0.5
             }
           }
         },
@@ -116,7 +116,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Player/Shotgun",
-            "Volume": 0.1
+            "Volume": 0.2
           }
         },
         "AimType": "ControlledByPlayer"
@@ -153,7 +153,7 @@
                 },
                 "Sound": {
                   "Name": "Sounds/Player/RocketExplosion",
-                  "Volume": 0.4
+                  "Volume": 0.8
                 }
               }
             }
@@ -162,7 +162,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Player/RocketLaunch",
-            "Volume": 0.5
+            "Volume": 1.0
           }
         },
         "AimType": "ControlledByPlayer"
@@ -176,7 +176,7 @@
           "ReloadStartedEffect": {
             "Sound": {
               "Name": "Sounds/Player/ConeReload",
-              "Volume": 0.25
+              "Volume": 0.5
             }
           }
         },
@@ -211,7 +211,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Player/Cone",
-            "Volume": 0.1
+            "Volume": 0.2
           }
         },
         "AimType": "ControlledByPlayer"
@@ -248,7 +248,7 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Player/Homing",
-            "Volume": 0.1
+            "Volume": 0.2
           }
         },
         "AimType": "ControlledByPlayer"
@@ -264,13 +264,13 @@
     "WeaponSwitchEffect": {
       "Sound": {
         "Name": "Sounds/Player/WeaponSwitch",
-        "Volume": 0.25
+        "Volume": 0.5
       }
     },
     "RefreshEffect": {
       "Sound": {
         "Name": "Sounds/Player/Refresh",
-        "Volume": 0.75
+        "Volume": 1.0
       },
       "Sprite": {
         "Name": "Sprites/Player/Refresh",
@@ -292,7 +292,7 @@
     "BaseDestructionEffect": {
       "Sound": {
         "Name": "Sounds/Player/Death",
-        "Volume": 0.5
+        "Volume": 1.0
       },
       "Sprite": {
         "Name": "Sprites/Player/Death",

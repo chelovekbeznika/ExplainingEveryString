@@ -18,5 +18,6 @@
   },
   "SoundFadingOut": 1000.0,
   "InterfaceAlpha": 0.75,
-  "MusicVolume": 0.3
+  "MusicVolume": 0.3,
+  "SoundVolume": 0.5
 }
