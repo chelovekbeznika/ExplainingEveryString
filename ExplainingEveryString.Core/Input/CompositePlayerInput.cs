@@ -46,6 +46,8 @@ namespace ExplainingEveryString.Core.Input
                 case ControlDevice.Keyboard: current = keyboard; break;
                 default: throw new Exception("Badly configured input");
             }
+
+            current.Update(elapsedSeconds);
         }
 
         private Boolean GamepadAccessible => GamePad.GetCapabilities(PlayerIndex.One).IsConnected;
