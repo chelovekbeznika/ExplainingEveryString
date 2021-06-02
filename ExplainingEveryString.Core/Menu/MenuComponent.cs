@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Core.Menu
             this.musicTestSpecification = musicTestSpecification;
             this.DrawOrder = ComponentsOrder.Menu;
             this.UpdateOrder = ComponentsOrder.Menu;
-            this.menuInputProcessor = new InnerMenuInputProcessor(config);
+            this.menuInputProcessor = new InnerMenuInputProcessor();
             SettingsAccess.InitSettingsFromConfiguration(config);
             InitMenuInput(menuInputProcessor);
         }

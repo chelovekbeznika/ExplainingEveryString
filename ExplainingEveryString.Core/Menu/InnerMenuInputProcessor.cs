@@ -14,26 +14,28 @@ namespace ExplainingEveryString.Core.Menu
         internal MenuButtonHandler Left { get => Buttons[4]; private set => Buttons[4] = value; }
         internal MenuButtonHandler Right { get => Buttons[5]; private set => Buttons[5] = value; }
 
-        internal InnerMenuInputProcessor(Configuration configuration) : base(configuration) { }
+        internal InnerMenuInputProcessor() : base() { }
 
-        protected override void InitGamepadButtons()
+        protected override void InitButtons()
         {
-            Up = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed);
-            Down = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed);
-            Left = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed);
-            Right = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed);
-            Accept = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed);
-            Back = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed);
-        }
-
-        protected override void InitKeyboardButtons()
-        {
-            Up = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.W));
-            Down = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.S));
-            Left = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.A));
-            Right = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.D));
-            Accept = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.Space));
-            Back = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.Back) || Keyboard.GetState().IsKeyDown(Keys.Escape));
+            Up = new MenuButtonHandler(() => 
+                GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.W));
+            Down = new MenuButtonHandler(() => 
+                GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.S));
+            Left = new MenuButtonHandler(() => 
+                GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.A));
+            Right = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.D));
+            Accept = new MenuButtonHandler(() => 
+                GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Space) ||
+                Keyboard.GetState().IsKeyDown(Keys.Enter));
+            Back = new MenuButtonHandler(() => 
+                GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Back));
         }
     }
 }

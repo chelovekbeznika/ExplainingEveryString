@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Data.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,5 +11,6 @@ namespace ExplainingEveryString.Core.Menu.Settings
 
         internal Int32 MusicVolume { get; set; }
         internal Int32 SoundVolume { get; set; }
+        internal ControlDevice PreferrableControlDevice { get; set; }
     }
 }

@@ -8,17 +8,9 @@ namespace ExplainingEveryString.Core.Menu
     {
         protected abstract MenuButtonHandler[] Buttons { get; set; }
 
-        internal MenuInputProcessor(Configuration config)
+        internal MenuInputProcessor()
         {
-            switch (config.Input.ControlDevice)
-            {
-                case ControlDevice.GamePad:
-                    InitGamepadButtons();
-                    break;
-                case ControlDevice.Keyboard:
-                    InitKeyboardButtons();
-                    break;
-            }
+            InitButtons();
         }
 
         internal void Update(GameTime gameTime)
@@ -28,7 +20,6 @@ namespace ExplainingEveryString.Core.Menu
                 button.Update(elapsedSeconds);
         }
 
-        protected abstract void InitGamepadButtons();
-        protected abstract void InitKeyboardButtons();
+        protected abstract void InitButtons();
     }
 }

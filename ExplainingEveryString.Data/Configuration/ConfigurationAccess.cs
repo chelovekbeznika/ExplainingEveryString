@@ -43,7 +43,7 @@ namespace ExplainingEveryString.Data.Configuration
             {
                 Input = new InputConfiguration
                 {
-                    ControlDevice = ControlDevice.Keyboard,
+                    PreferredControlDevice = ControlDevice.Keyboard,
                     TimeToFocusOnKeyboard = 0.25F,
                     TimeToFocusOnGamepad = 0.25F
                 },

@@ -31,7 +31,7 @@ namespace ExplainingEveryString.Core
                 musicTestSpecification);
 
             this.GameState = new GameStateManager(levelSequenceSpecification, componentsManager);
-            this.menuInputProcessor = new OuterMenuInputProcessor(ConfigurationAccess.GetCurrentConfig());
+            this.menuInputProcessor = new OuterMenuInputProcessor();
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
             base.Initialize();
         }

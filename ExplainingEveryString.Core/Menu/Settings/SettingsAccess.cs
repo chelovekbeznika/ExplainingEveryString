@@ -16,7 +16,8 @@ namespace ExplainingEveryString.Core.Menu.Settings
             settings = new CurrentSettings
             {
                 MusicVolume = (Int32)(config.MusicVolume * CurrentSettings.MaxSoundBars),
-                SoundVolume = (Int32)(config.SoundVolume * CurrentSettings.MaxSoundBars)
+                SoundVolume = (Int32)(config.SoundVolume * CurrentSettings.MaxSoundBars),
+                PreferrableControlDevice = config.Input.PreferredControlDevice
             };
         }
 
@@ -24,6 +25,7 @@ namespace ExplainingEveryString.Core.Menu.Settings
         {
             config.MusicVolume = (Single)settings.MusicVolume / CurrentSettings.MaxSoundBars;
             config.SoundVolume = (Single)settings.SoundVolume / CurrentSettings.MaxSoundBars;
+            config.Input.PreferredControlDevice = settings.PreferrableControlDevice;
         }
     }
 }

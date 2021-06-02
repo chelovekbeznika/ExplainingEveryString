@@ -37,6 +37,9 @@ namespace ExplainingEveryString.Core.Menu
                         maxBars: CurrentSettings.MaxSoundBars,
                         getItem: () => SettingsAccess.GetCurrentSettings().SoundVolume,
                         setItem: volume => SettingsAccess.GetCurrentSettings().SoundVolume = volume),
+                    new MenuItemControlDeviceSetting(
+                        gamePad: content.Load<Texture2D>(@"Sprites/Menu/Settings/GamePad"),
+                        keyboard: content.Load<Texture2D>(@"Sprites/Menu/Settings/Keyboard")),
                     saveSettings
                 });
             saveSettings.ItemCommandExecuteRequested += saveSettingsHandler;

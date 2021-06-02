@@ -10,16 +10,13 @@ namespace ExplainingEveryString.Core.Menu
 
         internal MenuButtonHandler Pause { get => Buttons[0]; private set => Buttons[0] = value; }
 
-        internal OuterMenuInputProcessor(Configuration configuration) : base(configuration) { }
+        internal OuterMenuInputProcessor() : base() { }
 
-        protected override void InitGamepadButtons()
+        protected override void InitButtons()
         {
-            Pause = new MenuButtonHandler(() => GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed);
-        }
-
-        protected override void InitKeyboardButtons()
-        {
-            Pause = new MenuButtonHandler(() => Keyboard.GetState().IsKeyDown(Keys.Escape));
+            Pause = new MenuButtonHandler(() => 
+                GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape));
         }
     }
 }
