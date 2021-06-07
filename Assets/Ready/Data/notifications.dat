@@ -1,0 +1,16 @@
+[
+  {
+    "Type": "SettingsApplied",
+    "SpriteName": "Sprites/Notifications/SettingsApplied",
+    "SoundName": "Sounds/Notifications/SettingsApplied",
+    "Duration": 1.5,
+    "Priority": 100,
+  },
+  {
+    "Type": "GamepadDisconnected",
+    "SpriteName": "Sprites/Notifications/GamepadDisconnected",
+    "SoundName": "Sounds/Notifications/GamepadDisconnected",
+    "Duration": 2.5,
+    "Priority": 200
+  }
+]

@@ -39,7 +39,7 @@ namespace ExplainingEveryString.Core
             foreach (var spriteMetadata in assetsMetadata.SpritesMetadata.Where(m => spritesData.ContainsKey(m.Name)))
             {
                 spritesData[spriteMetadata.Name].AnimationFrames = spriteMetadata.AnimationFrames;
-                spritesData[spriteMetadata.Name].DefaultAnimationCycle = spriteMetadata.DefaultAnimationCycle;
+                spritesData[spriteMetadata.Name].AnimationCycle = spriteMetadata.DefaultAnimationCycle;
             }
         }
     }

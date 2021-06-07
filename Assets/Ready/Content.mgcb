@@ -107,6 +107,9 @@
 #begin Data/music_menu.dat
 /copy:Data/music_menu.dat
 
+#begin Data/notifications.dat
+/copy:Data/notifications.dat
+
 #begin Sounds/Bosses/1/Appearance.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -394,6 +397,18 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Enemy/TripleCannonShoot.wav
+
+#begin Sounds/Notifications/GamepadDisconnected.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Notifications/GamepadDisconnected.wav
+
+#begin Sounds/Notifications/SettingsApplied.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Notifications/SettingsApplied.wav
 
 #begin Sounds/Player/Cone.wav
 /importer:WavImporter
@@ -4654,6 +4669,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Unpause.png
+
+#begin Sprites/Notifications/GamepadDisconnected.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Notifications/GamepadDisconnected.png
+
+#begin Sprites/Notifications/SettingsApplied.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Notifications/SettingsApplied.png
 
 #begin Sprites/Player/Base.png
 /importer:TextureImporter

@@ -8,12 +8,12 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class Camera
     {
-        private AssetsStorage assetsStorage;
+        private IAssetsStorage assetsStorage;
         private IScreenCoordinatesMaster screenCoordinatesMaster;
 
         internal Vector2 PlayerPositionOnScreen => screenCoordinatesMaster.PlayerPosition;
 
-        internal Camera(AssetsStorage assetsStorage, IScreenCoordinatesMaster screenCoordinatesMaster)
+        internal Camera(IAssetsStorage assetsStorage, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
             this.assetsStorage = assetsStorage;
             this.screenCoordinatesMaster = screenCoordinatesMaster;
@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.Displaying
             var spriteData = assetsStorage.GetSprite(spriteState.Name);
             var position = toDraw.Position;
             var drawPosition = screenCoordinatesMaster.ConvertToScreenPosition(position);
-            var drawPart = AnimationHelp.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);
+            var drawPart = AnimationHelper.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);
             var angle = -spriteState.Angle;
             var spriteCenter = new Vector2
             {

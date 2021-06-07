@@ -75,7 +75,7 @@ namespace ExplainingEveryString.Core
             base.LoadContent();
         }
 
-        private AssetsStorage CreateFilledAssetsStorage()
+        private IAssetsStorage CreateFilledAssetsStorage()
         {
             var metadataLoader = AssetsMetadataAccess.GetLoader();
             var assetsStorage = new AssetsStorage();

@@ -9,5 +9,6 @@ namespace ExplainingEveryString.Core
         internal const Int32 Interface = 2;
         internal const Int32 Menu = 3;
         internal const Int32 Music = 4;
+        internal const Int32 Notifications = 5;
     }
 }

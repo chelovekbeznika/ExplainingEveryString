@@ -30,7 +30,7 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
             foreach (FogOfWarSpriteEntry spriteEntry in fogOfWarSpriteEntries)
             {
                 var sprite = fogParticles[spriteEntry.SpriteNumber];
-                var drawPart = AnimationHelp.GetDrawPart(sprite, timeElapsed);
+                var drawPart = AnimationHelper.GetDrawPart(sprite, timeElapsed);
                 var origin = new Vector2(sprite.Width / 2, sprite.Height / 2);
                 var position = new Vector2(spriteEntry.ScreenPosition.X, spriteEntry.ScreenPosition.Y);
                 spriteBatch.Draw(sprite.Sprite, position, drawPart, Color.White, 0, origin, 1, SpriteEffects.None, 0);

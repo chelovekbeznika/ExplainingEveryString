@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core.Interface
 
         internal void Draw(SpriteData spriteData, Vector2 position, ISpritePartDisplayer partDisplayer, Single coeff)
         {
-            var animationFrame = AnimationHelp.GetDrawPart(spriteData, elapsedTime);
+            var animationFrame = AnimationHelper.GetDrawPart(spriteData, elapsedTime);
             var drawPart = partDisplayer.GetDrawPart(spriteData, coeff);
             if (animationFrame != null)
                 drawPart = new Rectangle

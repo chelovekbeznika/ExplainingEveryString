@@ -35,6 +35,12 @@ namespace ExplainingEveryString.Core.Displaying
             Angle = 0;
         }
 
+        internal SpriteState(String name, Single animationCycle)
+        {
+            Name = name;
+            AnimationCycle = animationCycle;
+        }
+
         internal void Update(Single elapsedSeconds)
         {
             ElapsedTime += elapsedSeconds;

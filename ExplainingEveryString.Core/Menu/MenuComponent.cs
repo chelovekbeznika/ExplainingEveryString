@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Core.Menu.Settings;
+using ExplainingEveryString.Core.Notifications;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
@@ -96,6 +97,7 @@ namespace ExplainingEveryString.Core.Menu
             SettingsAccess.SettingsIntoConfiguration(config);
             ConfigurationAccess.SaveCurrentConfig();
             game.GameState.ConfigChanged();
+            game.GameState.SendGlobalNotification(NotificationType.SettingsApplied);
             visiblePart.TryToGetBack();
         }
     }

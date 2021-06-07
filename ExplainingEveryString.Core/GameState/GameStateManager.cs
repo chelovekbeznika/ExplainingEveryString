@@ -152,6 +152,11 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.MenuMusic.Stop();
         }
 
+        internal void SendGlobalNotification(String type)
+        {
+            componentsManager.Notifications.SendNotification(type);
+        }
+
         private void SwitchToInGameState()
         {
             componentsManager.SwitchGameplayRelatedComponents(true);

@@ -9,7 +9,7 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class EpicEventsProcessor
     {
-        private readonly AssetsStorage assetsStorage;
+        private readonly IAssetsStorage assetsStorage;
         private readonly Level level;
         private List<SpecEffect> activeSpecEffects = new List<SpecEffect>();
         private readonly Dictionary<String, Single> soundsToPlay = new Dictionary<String, Single>();
@@ -17,7 +17,7 @@ namespace ExplainingEveryString.Core.Displaying
         private readonly Single fadingOutDistance;
         private const Single SameSoundTimeout = 1.0F / 15;
 
-        internal EpicEventsProcessor(AssetsStorage assetsStorage, Level level, Configuration config)
+        internal EpicEventsProcessor(IAssetsStorage assetsStorage, Level level, Configuration config)
         {
             this.assetsStorage = assetsStorage;
             this.level = level;

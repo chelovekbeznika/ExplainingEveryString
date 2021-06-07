@@ -817,6 +817,16 @@
     {
       "Name": "Sprites/Enemies/Boss3/Blast",
       "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Notifications/SettingsApplied",
+      "AnimationFrames": 9,
+      "DefaultAnimationCycle": 1.5
+    },
+    {
+      "Name": "Sprites/Notifications/GamepadDisconnected",
+      "AnimationFrames": 3,
+      "DefaultAnimationCycle": 0.33333
     }
   ]
 }

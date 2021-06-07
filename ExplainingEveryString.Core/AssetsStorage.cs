@@ -9,7 +9,13 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core
 {
-    internal class AssetsStorage
+    internal interface IAssetsStorage
+    {
+        SpriteData GetSprite(String name);
+        SoundEffect GetSound(String name);
+    }
+
+    internal class AssetsStorage : IAssetsStorage
     {
         private Dictionary<String, SpriteData> spritesStorage = new Dictionary<String, SpriteData>();
         private Dictionary<String, SoundEffect> soundsStorage = new Dictionary<String, SoundEffect>();
@@ -32,12 +38,12 @@ namespace ExplainingEveryString.Core
             }
         }
 
-        internal SpriteData GetSprite(String name)
+        public SpriteData GetSprite(String name)
         {
             return spritesStorage[name];
         }
 
-        internal SoundEffect GetSound(String name)
+        public SoundEffect GetSound(String name)
         {
             return soundsStorage[name];
         }

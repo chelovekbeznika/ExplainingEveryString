@@ -3,11 +3,11 @@ using System;
 
 namespace ExplainingEveryString.Core.Math
 {
-    internal static class AnimationHelp
+    internal static class AnimationHelper
     {
         internal static Rectangle? GetDrawPart(SpriteData spriteData, Single elapsedTime)
         {
-            return GetDrawPart(spriteData, spriteData.DefaultAnimationCycle, elapsedTime);
+            return GetDrawPart(spriteData, spriteData.AnimationCycle, elapsedTime);
         }
 
         internal static Rectangle? GetDrawPart(SpriteData spriteData, Single animationCycle, Single elapsedTime)

@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Core.GameState
         internal GameplayComponent CurrentGameplay { get; private set; }
         internal MusicComponent MenuMusic { get; private set; }
         internal MusicComponent GameMusic { get; private set; }
+        internal NotificationsComponent Notifications { get; private set; }
 
         internal ComponentsManager(EesGame game, LevelSequnceSpecification levelSequenceSpecification,
             MusicTestButtonSpecification[] musicTestSpecification)
@@ -23,6 +24,7 @@ namespace ExplainingEveryString.Core.GameState
             Menu = new MenuComponent(game, levelSequenceSpecification, musicTestSpecification);
             MenuMusic = new MusicComponent(game);
             GameMusic = new MusicComponent(game);
+            Notifications = new NotificationsComponent(game);
         }
 
         internal void InitNewGameplayComponent(GameProgress gameProgress)
@@ -51,6 +53,7 @@ namespace ExplainingEveryString.Core.GameState
             components.Add(Menu);
             components.Add(MenuMusic);
             components.Add(GameMusic);
+            components.Add(Notifications);
             SwitchMenuRelatedComponents(true);
         }
 
