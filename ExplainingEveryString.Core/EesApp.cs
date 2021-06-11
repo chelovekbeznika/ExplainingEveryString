@@ -1,5 +1,7 @@
 ﻿using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
+using System;
+using System.Linq;
 
 namespace ExplainingEveryString.Core
 {
@@ -24,10 +26,22 @@ namespace ExplainingEveryString.Core
 
         protected void ChangeScreenResolution(ScreenConfiguration screenConfig)
         {
+            if (!ResolutionSupported(screenConfig.ScreenWidth, screenConfig.ScreenHeight))
+            {
+                var displayMode = graphics.GraphicsDevice.Adapter.SupportedDisplayModes.First();
+                screenConfig.ScreenWidth = displayMode.Width;
+                screenConfig.ScreenHeight = displayMode.Height;
+            }
+
             graphics.PreferredBackBufferHeight = screenConfig.ScreenHeight;
             graphics.PreferredBackBufferWidth = screenConfig.ScreenWidth;
             graphics.IsFullScreen = screenConfig.FullScreen;
             graphics.ApplyChanges();
+        }
+
+        private Boolean ResolutionSupported(Int32 width, Int32 height)
+        {
+            return graphics.GraphicsDevice.Adapter.SupportedDisplayModes.Any(dp => dp.Width == width && dp.Height == height);
         }
     }
 }

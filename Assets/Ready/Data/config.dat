@@ -1,6 +1,6 @@
 {
   "Input": {
-    "ControlDevice": "Gamepad",
+    "PreferredControlDevice": "Gamepad",
     "TimeToFocusOnKeyboard": 0.25,
     "TimeToFocusOnGamepad": 0.375
   },
