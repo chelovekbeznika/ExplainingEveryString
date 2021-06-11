@@ -31,9 +31,9 @@ namespace ExplainingEveryString.Core
             this.wasGamePadConnected = GamePad.GetCapabilities(PlayerIndex.One).IsConnected;
         }
 
-        public override void Initialize()
+        protected override void LoadContent()
         {
-            base.Initialize();
+            base.LoadContent();
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             var spriteDataBuilder = new SpriteDataBuilder(game.Content, AssetsMetadataAccess.GetLoader());

@@ -19,6 +19,11 @@ namespace ExplainingEveryString.Core
         {
             ConfigurationAccess.InitializeConfig();
             var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
+            ChangeScreenResolution(screenConfig);
+        }
+
+        protected void ChangeScreenResolution(ScreenConfiguration screenConfig)
+        {
             graphics.PreferredBackBufferHeight = screenConfig.ScreenHeight;
             graphics.PreferredBackBufferWidth = screenConfig.ScreenWidth;
             graphics.IsFullScreen = screenConfig.FullScreen;

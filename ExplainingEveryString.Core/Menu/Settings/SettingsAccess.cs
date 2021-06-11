@@ -17,7 +17,12 @@ namespace ExplainingEveryString.Core.Menu.Settings
             {
                 MusicVolume = (Int32)(config.MusicVolume * CurrentSettings.MaxSoundBars),
                 SoundVolume = (Int32)(config.SoundVolume * CurrentSettings.MaxSoundBars),
-                PreferrableControlDevice = config.Input.PreferredControlDevice
+                PreferrableControlDevice = config.Input.PreferredControlDevice,
+                Resolution = new Resolution
+                {
+                    Width = config.Screen.ScreenWidth,
+                    Height = config.Screen.ScreenHeight
+                }
             };
         }
 
@@ -26,6 +31,8 @@ namespace ExplainingEveryString.Core.Menu.Settings
             config.MusicVolume = (Single)settings.MusicVolume / CurrentSettings.MaxSoundBars;
             config.SoundVolume = (Single)settings.SoundVolume / CurrentSettings.MaxSoundBars;
             config.Input.PreferredControlDevice = settings.PreferrableControlDevice;
+            config.Screen.ScreenWidth = settings.Resolution.Width;
+            config.Screen.ScreenHeight = settings.Resolution.Height;
         }
     }
 }

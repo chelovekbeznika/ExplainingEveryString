@@ -52,7 +52,7 @@ namespace ExplainingEveryString.Core
             this.blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
             blueprintsLoader.Load();
             var factory = new ActorsFactory(blueprintsLoader);
-            map = new TileWrapper(eesGame.Content.Load<TiledMap>(levelData.TileMap));
+            map = new TileWrapper(levelData.TileMap, eesGame.Content);
             level = new Level(factory, map, new PlayerInputFactory(this), levelData, levelStart);
             level.CheckpointReached += eesGame.GameState.NotableProgressMaid;
             if (levelData.SpriteEmitter != null)
@@ -68,6 +68,7 @@ namespace ExplainingEveryString.Core
             var screenCoordinatesMaster = new ScreenCoordinatesMaster(config.Screen, levelCoordinatesMaster);
             var assetsStorage = CreateFilledAssetsStorage();
             Camera = new Camera(assetsStorage, screenCoordinatesMaster);
+            map.LoadContent(Game.Content);
             this.mapDisplayer = new TiledMapDisplayer(map, eesGame, screenCoordinatesMaster);
             EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level, config);
             this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);

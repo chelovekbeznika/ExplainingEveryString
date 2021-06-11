@@ -96,7 +96,7 @@ namespace ExplainingEveryString.Core.Menu
             var config = ConfigurationAccess.GetCurrentConfig();
             SettingsAccess.SettingsIntoConfiguration(config);
             ConfigurationAccess.SaveCurrentConfig();
-            game.GameState.ConfigChanged();
+            game.ConfigChanged();
             game.GameState.SendGlobalNotification(NotificationType.SettingsApplied);
             visiblePart.TryToGetBack();
         }

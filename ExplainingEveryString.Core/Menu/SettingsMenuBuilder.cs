@@ -40,6 +40,9 @@ namespace ExplainingEveryString.Core.Menu
                     new MenuItemControlDeviceSetting(
                         gamePad: content.Load<Texture2D>(@"Sprites/Menu/Settings/GamePad"),
                         keyboard: content.Load<Texture2D>(@"Sprites/Menu/Settings/Keyboard")),
+                    new MenuItemResolutionSetting(
+                        fontsStorage: game.FontsStorage,
+                        adapter: game.GraphicsDevice.Adapter),
                     saveSettings
                 });
             saveSettings.ItemCommandExecuteRequested += saveSettingsHandler;

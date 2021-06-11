@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using MonoGame.Extended.Tiled;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,8 @@ namespace ExplainingEveryString.Core.Tiles
 {
     internal class TileWrapper : ITileCoordinatesMaster
     {
-        internal TiledMap TiledMap { get; }
+        private String tiledMapName;
+        internal TiledMap TiledMap { get; private set; }
         public Rectangle Bounds => new Rectangle
         {
             X = 0,
@@ -19,9 +21,15 @@ namespace ExplainingEveryString.Core.Tiles
             Height = TiledMap.Height * TiledMap.TileHeight
         };
 
-        internal TileWrapper(TiledMap map)
+        internal TileWrapper(String mapName, ContentManager content)
         {
-            this.TiledMap = map;
+            this.tiledMapName = mapName;
+            LoadContent(content);
+        }
+
+        internal void LoadContent(ContentManager content)
+        {
+            this.TiledMap = content.Load<TiledMap>(tiledMapName);
         }
 
         public Vector2 GetLevelPosition(PositionOnTileMap tilePosition)

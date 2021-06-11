@@ -130,9 +130,8 @@ namespace ExplainingEveryString.Core.GameState
             }
         }
 
-        internal void ConfigChanged()
+        internal void ConfigChanged(Configuration newConfig)
         {
-            var newConfig = ConfigurationAccess.GetCurrentConfig();
             componentsManager.MenuMusic.Volume = newConfig.MusicVolume;
             componentsManager.GameMusic.Volume = newConfig.MusicVolume;
         }

@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Menu;
+using ExplainingEveryString.Core.Text;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
@@ -14,6 +15,7 @@ namespace ExplainingEveryString.Core
         private SpriteBatch targetBatch;
         private RenderTarget2D unscaledRenderTarget;
 
+        internal FontsStorage FontsStorage { get; private set; }
         internal GameStateManager GameState { get; private set; }
 
         public EesGame()
@@ -30,6 +32,7 @@ namespace ExplainingEveryString.Core
             var componentsManager =  new ComponentsManager(this, levelSequenceSpecification, 
                 musicTestSpecification);
 
+            this.FontsStorage = new FontsStorage();
             this.GameState = new GameStateManager(levelSequenceSpecification, componentsManager);
             this.menuInputProcessor = new OuterMenuInputProcessor();
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
@@ -42,6 +45,7 @@ namespace ExplainingEveryString.Core
             targetBatch = new SpriteBatch(GraphicsDevice);
             unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, configuration.TargetWidth, configuration.TargetHeight);
             base.LoadContent();
+            FontsStorage.LoadContent(Content);
         }
 
         protected override void UnloadContent()
@@ -70,6 +74,13 @@ namespace ExplainingEveryString.Core
             targetBatch.Begin();
             targetBatch.Draw(unscaledRenderTarget, new Rectangle(0, 0, config.ScreenWidth, config.ScreenHeight), Color.White);
             targetBatch.End();
+        }
+
+        internal void ConfigChanged()
+        {
+            var newConfig = ConfigurationAccess.GetCurrentConfig();
+            GameState.ConfigChanged(newConfig);
+            ChangeScreenResolution(newConfig.Screen);
         }
     }
 }
