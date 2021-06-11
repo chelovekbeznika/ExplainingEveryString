@@ -7,7 +7,7 @@ namespace ExplainingEveryString.Core.Tests
     [TestFixture]
     public class MenuItemsPositioningTests
     {
-        private MenuItemPositionsMapper mapper = new MenuItemPositionsMapper(new Point(800, 600), 16);
+        private MenuItemPositionsMapper mapper = new MenuItemPositionsMapper(() => new Point(800, 600), 16);
 
         [Test]
         public void NoMappingTest()

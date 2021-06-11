@@ -7,17 +7,18 @@ namespace ExplainingEveryString.Core.Math
 {
     internal class MenuItemPositionsMapper
     {
-        private Point screenSize;
+        private Func<Point> screenSizeAccessor;
         private Int32 pixelsBetweenItems;
 
-        internal MenuItemPositionsMapper(Point screenSize, Int32 pixelsBetweenItems)
+        internal MenuItemPositionsMapper(Func<Point> screenSizeAccessor, Int32 pixelsBetweenItems)
         {
-            this.screenSize = screenSize;
+            this.screenSizeAccessor = screenSizeAccessor;
             this.pixelsBetweenItems = pixelsBetweenItems;
         }
 
         internal Point[] GetItemsPositions(Point[] itemsSize)
         {
+            var screenSize = screenSizeAccessor();
             var menuHeight = itemsSize.Select(p => p.Y).Sum() + pixelsBetweenItems * (itemsSize.Length - 1);
             var heights = itemsSize
                 .Take(itemsSize.Length - 1)

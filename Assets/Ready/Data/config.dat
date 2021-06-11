@@ -10,7 +10,6 @@
     "TimeToReverseFocusDirection": 1.5
   },
   "Screen": {
-    "TargetWidth": 1024,
     "TargetHeight": 768,
     "ScreenWidth": 1024,
     "ScreenHeight": 768,

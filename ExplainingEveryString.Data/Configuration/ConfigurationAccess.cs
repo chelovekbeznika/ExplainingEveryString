@@ -58,7 +58,6 @@ namespace ExplainingEveryString.Data.Configuration
                     FullScreen = false,
                     ScreenWidth = 1024,
                     ScreenHeight = 768,
-                    TargetWidth = 1024,
                     TargetHeight = 768
                 },
                 InterfaceAlpha = 0.75F,

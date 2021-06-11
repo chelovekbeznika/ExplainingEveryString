@@ -81,6 +81,7 @@ namespace ExplainingEveryString.Core
             var newConfig = ConfigurationAccess.GetCurrentConfig();
             GameState.ConfigChanged(newConfig);
             ChangeScreenResolution(newConfig.Screen);
+            unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, newConfig.Screen.TargetWidth, newConfig.Screen.TargetHeight);
         }
     }
 }

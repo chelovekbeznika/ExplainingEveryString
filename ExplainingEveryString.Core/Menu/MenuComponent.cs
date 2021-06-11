@@ -58,7 +58,8 @@ namespace ExplainingEveryString.Core.Menu
                 new MusicTestMenuBuilder(game, musicTestSpecification),
                 new SettingsMenuBuilder(game, SaveSettingsHandler));
             this.screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
-            var positionsMapper = new MenuItemPositionsMapper(new Point(screenConfig.TargetWidth, screenConfig.TargetHeight), 16);
+            Point screenSizeAccessor() => new Point(screenConfig.TargetWidth, screenConfig.TargetHeight);
+            var positionsMapper = new MenuItemPositionsMapper(screenSizeAccessor, 16);
             var menuItemDisplayer = new MenuItemDisplayer(spriteBatch, 
                 borderPart: content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder"),
                 left: content.Load<Texture2D>(@"Sprites/Menu/Settings/Left"),
