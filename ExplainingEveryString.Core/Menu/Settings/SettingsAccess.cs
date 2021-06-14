@@ -22,7 +22,8 @@ namespace ExplainingEveryString.Core.Menu.Settings
                 {
                     Width = config.Screen.ScreenWidth,
                     Height = config.Screen.ScreenHeight
-                }
+                },
+                Fullscreen = config.Screen.FullScreen
             };
         }
 
@@ -33,6 +34,7 @@ namespace ExplainingEveryString.Core.Menu.Settings
             config.Input.PreferredControlDevice = settings.PreferrableControlDevice;
             config.Screen.ScreenWidth = settings.Resolution.Width;
             config.Screen.ScreenHeight = settings.Resolution.Height;
+            config.Screen.FullScreen = settings.Fullscreen;
         }
     }
 }

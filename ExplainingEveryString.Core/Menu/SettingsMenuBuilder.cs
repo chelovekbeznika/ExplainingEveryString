@@ -43,6 +43,9 @@ namespace ExplainingEveryString.Core.Menu
                     new MenuItemResolutionSetting(
                         fontsStorage: game.FontsStorage,
                         adapter: game.GraphicsDevice.Adapter),
+                    new MenuItemFullscreenSetting(
+                        window: content.Load<Texture2D>(@"Sprites/Menu/Settings/Window"),
+                        fullscreen: content.Load<Texture2D>(@"Sprites/Menu/Settings/Fullscreen")),
                     saveSettings
                 });
             saveSettings.ItemCommandExecuteRequested += saveSettingsHandler;

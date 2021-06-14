@@ -4514,6 +4514,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Settings/FullMusicBar.png
 
+#begin Sprites/Menu/Settings/Fullscreen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Settings/Fullscreen.png
+
 #begin Sprites/Menu/Settings/FullSoundBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4597,6 +4609,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Settings/Submenu.png
+
+#begin Sprites/Menu/Settings/Window.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Settings/Window.png
 
 #begin Sprites/Menu/Songs/BossFight.png
 /importer:TextureImporter

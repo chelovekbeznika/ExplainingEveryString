@@ -13,5 +13,6 @@ namespace ExplainingEveryString.Core.Menu.Settings
         internal Int32 SoundVolume { get; set; }
         internal ControlDevice PreferrableControlDevice { get; set; }
         internal Resolution Resolution { get; set; }
+        internal Boolean Fullscreen { get; set; }
     }
 }
