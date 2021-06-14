@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Configuration;
+﻿using ExplainingEveryString.Core.Extensions;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using System;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace ExplainingEveryString.Core
         {
             if (!ResolutionSupported(screenConfig.ScreenWidth, screenConfig.ScreenHeight))
             {
-                var displayMode = graphics.GraphicsDevice.Adapter.SupportedDisplayModes.First();
+                var displayMode = graphics.GraphicsDevice.Adapter.AllowedResolutions().First();
                 screenConfig.ScreenWidth = displayMode.Width;
                 screenConfig.ScreenHeight = displayMode.Height;
             }
@@ -41,7 +42,7 @@ namespace ExplainingEveryString.Core
 
         private Boolean ResolutionSupported(Int32 width, Int32 height)
         {
-            return graphics.GraphicsDevice.Adapter.SupportedDisplayModes.Any(dp => dp.Width == width && dp.Height == height);
+            return graphics.GraphicsDevice.Adapter.AllowedResolutions().Any(r => r.Width == width && r.Height == height);
         }
     }
 }

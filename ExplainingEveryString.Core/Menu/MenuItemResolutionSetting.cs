@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Menu.Settings;
+﻿using ExplainingEveryString.Core.Extensions;
+using ExplainingEveryString.Core.Menu.Settings;
 using ExplainingEveryString.Core.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,7 +22,7 @@ namespace ExplainingEveryString.Core.Menu
         internal MenuItemResolutionSetting(FontsStorage fontsStorage, GraphicsAdapter adapter)
         {
             this.font = fontsStorage.SmallNumbers;
-            this.resolutions = Resolution.GetSupportedResolutions(adapter);
+            this.resolutions = adapter.AllowedResolutions();
             var resolutionSet = SettingsAccess.GetCurrentSettings().Resolution;
             this.selectedIndex = resolutions.FindIndex(r => r.Width == resolutionSet.Width && r.Height == resolutionSet.Height);
         }

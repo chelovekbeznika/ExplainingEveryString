@@ -6,6 +6,7 @@ using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace ExplainingEveryString.Core
 {
@@ -72,7 +73,7 @@ namespace ExplainingEveryString.Core
             var config = ConfigurationAccess.GetCurrentConfig().Screen;
             GraphicsDevice.SetRenderTarget(null);
             targetBatch.Begin();
-            targetBatch.Draw(unscaledRenderTarget, new Rectangle(0, 0, config.ScreenWidth, config.ScreenHeight), Color.White);
+            targetBatch.Draw(unscaledRenderTarget, FitWithNesAspectRatio(config), Color.White);
             targetBatch.End();
         }
 
@@ -82,6 +83,18 @@ namespace ExplainingEveryString.Core
             GameState.ConfigChanged(newConfig);
             ChangeScreenResolution(newConfig.Screen);
             unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, newConfig.Screen.TargetWidth, newConfig.Screen.TargetHeight);
+        }
+
+        /// <summary>
+        /// Which is 8:7
+        /// </summary>
+        /// <param name="screenConfiguration"></param>
+        /// <returns></returns>
+        private Rectangle FitWithNesAspectRatio(ScreenConfiguration screenConfiguration)
+        {
+            var widthWithoutVerticalStripes = (Int32)System.Math.Round((Double)(screenConfiguration.ScreenHeight * 8.0 / 7.0));
+            var stripWidth = (screenConfiguration.ScreenWidth - widthWithoutVerticalStripes) / 2;
+            return new Rectangle(stripWidth, 0, widthWithoutVerticalStripes, screenConfiguration.ScreenHeight);
         }
     }
 }
