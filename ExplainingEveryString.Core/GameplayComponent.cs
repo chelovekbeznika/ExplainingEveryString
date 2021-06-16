@@ -64,8 +64,8 @@ namespace ExplainingEveryString.Core
         {
             this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             var config = ConfigurationAccess.GetCurrentConfig();
-            var levelCoordinatesMaster = new CameraObjectGlass(new PlayerInfoForCameraExtractor(level), config.Screen, config.Camera);
-            var screenCoordinatesMaster = new ScreenCoordinatesMaster(config.Screen, levelCoordinatesMaster);
+            var levelCoordinatesMaster = new CameraObjectGlass(new PlayerInfoForCameraExtractor(level), config.Camera);
+            var screenCoordinatesMaster = new ScreenCoordinatesMaster(levelCoordinatesMaster);
             var assetsStorage = CreateFilledAssetsStorage();
             Camera = new Camera(assetsStorage, screenCoordinatesMaster);
             map.LoadContent(Game.Content);

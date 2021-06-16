@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Configuration;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -52,8 +53,8 @@ namespace ExplainingEveryString.Core.Input
             var mousePoint = Mouse.GetState().Position;
             var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
             var mousePosition = new Vector2(
-                x: (Single)mousePoint.X / screenConfig.ScreenWidth * screenConfig.TargetWidth, 
-                y: (Single)mousePoint.Y / screenConfig.ScreenHeight * screenConfig.TargetHeight);
+                x: (Single)mousePoint.X / screenConfig.ScreenWidth * Constants.TargetWidth, 
+                y: (Single)mousePoint.Y / screenConfig.ScreenHeight * Constants.TargetHeight);
             var fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
             var fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
             return NormalizeDirectionVector(fireDirectionOnLevel);

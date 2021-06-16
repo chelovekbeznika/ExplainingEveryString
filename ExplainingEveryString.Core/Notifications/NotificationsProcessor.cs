@@ -55,7 +55,7 @@ namespace ExplainingEveryString.Core.Notifications
             if (Current == null)
                 return;
 
-            var height = ConfigurationAccess.GetCurrentConfig().Screen.TargetHeight;
+            var height = Displaying.Constants.TargetHeight;
             var spriteState = Current.Sprite;
             var spriteData = assetsStorage.GetSprite(Current.Type);
             var drawPart = AnimationHelper.GetDrawPart(spriteData, spriteState.AnimationCycle, spriteState.ElapsedTime);

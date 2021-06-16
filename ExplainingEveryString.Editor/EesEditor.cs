@@ -41,9 +41,9 @@ namespace ExplainingEveryString.Editor
             var map = new TileWrapper(levelData.TileMap, Content);
             var config = ConfigurationAccess.GetCurrentConfig();
             var editorCameraFocus = new EditorInfoForCameraExtractor(map.GetLevelPosition(levelData.StartCheckpoint.PlayerPosition));
-            var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, config.Screen, config.Camera);
+            var levelCoordinatesMaster = new CameraObjectGlass(editorCameraFocus, config.Camera);
 
-            this.screenCoordinatesMaster = new ScreenCoordinatesMaster(config.Screen, levelCoordinatesMaster);
+            this.screenCoordinatesMaster = new ScreenCoordinatesMaster(levelCoordinatesMaster);
             var coordinatesConveter = new CoordinatesConverter(screenCoordinatesMaster, map);
 
             this.mapDisplayer = new TiledMapDisplayer(map, this, screenCoordinatesMaster);

@@ -60,7 +60,7 @@ namespace ExplainingEveryString.Core
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
-            interfaceSpritesDisplayer = new InterfaceSpriteDisplayer(spriteBatch, alphaMask, ConfigurationAccess.GetCurrentConfig());
+            interfaceSpritesDisplayer = new InterfaceSpriteDisplayer(spriteBatch, alphaMask);
 
             var displayers = InitDisplayers();
 

@@ -12,19 +12,37 @@ namespace ExplainingEveryString.Core.Menu
     internal class MenuItemResolutionSetting : MenuItem
     {
         private CustomFont font;
-        private List<Resolution> resolutions;
-        private Int32 selectedIndex = 0;
+        private List<Resolution> fullScreenResolutions;
+        private List<Resolution> windowResolutions;
+        private Int32 selectedFullscreenIndex = 0;
+        private Int32 selectedWindowIndex = 0;
 
-        private Resolution SelectedResolution => resolutions[selectedIndex];
+        private Boolean Fullscreen => SettingsAccess.GetCurrentSettings().Fullscreen;
+
+        private Resolution SelectedResolution => Fullscreen
+            ? fullScreenResolutions[selectedFullscreenIndex]
+            : windowResolutions[selectedWindowIndex];
 
         internal override BorderType BorderType => BorderType.Setting;
 
         internal MenuItemResolutionSetting(FontsStorage fontsStorage, GraphicsAdapter adapter)
         {
             this.font = fontsStorage.SmallNumbers;
-            this.resolutions = adapter.AllowedResolutions();
+            this.fullScreenResolutions = adapter.AllowedResolutions(true);
+            this.windowResolutions = adapter.AllowedResolutions(false);
             var resolutionSet = SettingsAccess.GetCurrentSettings().Resolution;
-            this.selectedIndex = resolutions.FindIndex(r => r.Width == resolutionSet.Width && r.Height == resolutionSet.Height);
+            if (Fullscreen)
+            {
+                this.selectedFullscreenIndex = fullScreenResolutions
+                    .FindIndex(r => r.Width == resolutionSet.Width && r.Height == resolutionSet.Height);
+                this.selectedWindowIndex = windowResolutions.Count - 1;
+            }
+            else
+            {
+                this.selectedWindowIndex = windowResolutions
+                    .FindIndex(r => r.Width == resolutionSet.Width && r.Height == resolutionSet.Height);
+                this.selectedFullscreenIndex = fullScreenResolutions.Count - 1;
+            }
         }
 
         internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
@@ -41,17 +59,35 @@ namespace ExplainingEveryString.Core.Menu
 
         internal override void Increment()
         {
-            selectedIndex += 1;
-            if (selectedIndex >= resolutions.Count)
-                selectedIndex = 0;
+            if (Fullscreen)
+            {
+                selectedFullscreenIndex += 1;
+                if (selectedFullscreenIndex >= fullScreenResolutions.Count)
+                    selectedFullscreenIndex = 0;
+            }
+            else
+            {
+                selectedWindowIndex += 1;
+                if (selectedWindowIndex >= windowResolutions.Count)
+                    selectedWindowIndex = 0;
+            }
             UpdateSettings();
         }
 
         internal override void Decrement()
         {
-            selectedIndex -= 1;
-            if (selectedIndex < 0)
-                selectedIndex = resolutions.Count - 1;
+            if (Fullscreen)
+            {
+                selectedFullscreenIndex -= 1;
+                if (selectedFullscreenIndex < 0)
+                    selectedFullscreenIndex = fullScreenResolutions.Count - 1;
+            }
+            else
+            {
+                selectedWindowIndex -= 1;
+                if (selectedWindowIndex < 0)
+                    selectedWindowIndex = windowResolutions.Count - 1;
+            }
             UpdateSettings();
         }
 

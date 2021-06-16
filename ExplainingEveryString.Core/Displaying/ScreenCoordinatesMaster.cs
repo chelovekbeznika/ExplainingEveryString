@@ -7,16 +7,14 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class ScreenCoordinatesMaster : IScreenCoordinatesMaster
     {
-        private readonly ScreenConfiguration screen;
         private readonly ILevelCoordinatesMaster levelCoordinatesMaster;
 
         public Vector2 PlayerPosition => ConvertToScreenPosition(levelCoordinatesMaster.PlayerPosition);
 
-        public Rectangle ScreenCovers => new Rectangle(0, 0, screen.TargetWidth, screen.TargetHeight);
+        public Rectangle ScreenCovers => new Rectangle(0, 0, Constants.TargetWidth, Constants.TargetHeight);
 
-        public ScreenCoordinatesMaster(ScreenConfiguration screen, ILevelCoordinatesMaster levelCoordinatesMaster)
+        public ScreenCoordinatesMaster(ILevelCoordinatesMaster levelCoordinatesMaster)
         {
-            this.screen = screen;
             this.levelCoordinatesMaster = levelCoordinatesMaster;
         }
 
@@ -50,13 +48,13 @@ namespace ExplainingEveryString.Core.Displaying
             var cameraOffset = levelCoordinatesMaster.CameraOffset;
             var centerOfSpriteOnScreen = position - cameraOffset;
             centerOfSpriteOnScreen.X = (Int32)centerOfSpriteOnScreen.X;
-            centerOfSpriteOnScreen.Y = (Int32)(screen.TargetHeight - centerOfSpriteOnScreen.Y);
+            centerOfSpriteOnScreen.Y = (Int32)(Constants.TargetHeight - centerOfSpriteOnScreen.Y);
             return centerOfSpriteOnScreen;
         }
 
         public Vector2 ConvertToLevelPosition(Vector2 position)
         {
-            position.Y = screen.TargetHeight - position.Y;
+            position.Y = Constants.TargetHeight - position.Y;
             var cameraOffset = levelCoordinatesMaster.CameraOffset;
             var centerOfSpriteOnLevel = cameraOffset + position;
             return centerOfSpriteOnLevel;

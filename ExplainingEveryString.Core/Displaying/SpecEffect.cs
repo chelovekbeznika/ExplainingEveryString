@@ -32,7 +32,7 @@ namespace ExplainingEveryString.Core.Displaying
 
         public Boolean IsAlive()
         {
-            return SpriteState.ElapsedTime < SpriteState.AnimationCycle - Constants.Epsilon;
+            return SpriteState.ElapsedTime < SpriteState.AnimationCycle - Math.Constants.Epsilon;
         }
     }
 }

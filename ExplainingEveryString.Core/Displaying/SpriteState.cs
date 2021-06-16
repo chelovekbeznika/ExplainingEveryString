@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Core.Displaying
                 if (Looping)
                     return elapsedTime;
                 else
-                    return elapsedTime < AnimationCycle ? elapsedTime : AnimationCycle - Constants.Epsilon;
+                    return elapsedTime < AnimationCycle ? elapsedTime : AnimationCycle - Math.Constants.Epsilon;
             }
             private set
             {

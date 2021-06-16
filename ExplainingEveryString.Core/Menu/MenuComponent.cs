@@ -15,7 +15,6 @@ namespace ExplainingEveryString.Core.Menu
         private Texture2D background;
         private SpriteBatch spriteBatch;
         private MenuVisiblePart visiblePart;
-        private ScreenConfiguration screenConfig;
         private MenuItemsContainer CurrentButtonsContainer => visiblePart.CurrentButtonsContainer;
         private EesGame game;
         private InnerMenuInputProcessor menuInputProcessor;
@@ -57,8 +56,7 @@ namespace ExplainingEveryString.Core.Menu
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
                 new MusicTestMenuBuilder(game, musicTestSpecification),
                 new SettingsMenuBuilder(game, SaveSettingsHandler));
-            this.screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
-            Point screenSizeAccessor() => new Point(screenConfig.TargetWidth, screenConfig.TargetHeight);
+            Point screenSizeAccessor() => new Point(Displaying.Constants.TargetWidth, Displaying.Constants.TargetHeight);
             var positionsMapper = new MenuItemPositionsMapper(screenSizeAccessor, 16);
             var menuItemDisplayer = new MenuItemDisplayer(spriteBatch, 
                 borderPart: content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder"),
@@ -70,7 +68,7 @@ namespace ExplainingEveryString.Core.Menu
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(background, new Rectangle(0, 0, screenConfig.TargetWidth, screenConfig.TargetHeight), Color.White);
+            spriteBatch.Draw(background, new Rectangle(0, 0, Displaying.Constants.TargetWidth, Displaying.Constants.TargetHeight), Color.White);
             visiblePart.Draw();
             spriteBatch.End();
             base.Draw(gameTime);

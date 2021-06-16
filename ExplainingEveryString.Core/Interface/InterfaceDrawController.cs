@@ -9,18 +9,16 @@ namespace ExplainingEveryString.Core.Interface
     internal class InterfaceSpriteDisplayer
     {
         private readonly SpriteBatch spriteBatch;
-        private readonly ScreenConfiguration screenConfig;
         private readonly Color colorMask;
         private Single elapsedTime = 0;
 
-        internal Int32 ScreenWidth => screenConfig.TargetWidth;
-        internal Int32 ScreenHeight => screenConfig.TargetHeight;
+        internal Int32 ScreenWidth => Displaying.Constants.TargetWidth;
+        internal Int32 ScreenHeight => Displaying.Constants.TargetHeight;
 
-        internal InterfaceSpriteDisplayer(SpriteBatch spriteBatch, Color colorMask, Configuration config)
+        internal InterfaceSpriteDisplayer(SpriteBatch spriteBatch, Color colorMask)
         {
             this.spriteBatch = spriteBatch;
             this.colorMask = colorMask;
-            this.screenConfig = config.Screen;
         }
 
         internal void Update(Single elapsedSeconds)

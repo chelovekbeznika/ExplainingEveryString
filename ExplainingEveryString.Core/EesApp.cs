@@ -27,9 +27,9 @@ namespace ExplainingEveryString.Core
 
         protected void ChangeScreenResolution(ScreenConfiguration screenConfig)
         {
-            if (!ResolutionSupported(screenConfig.ScreenWidth, screenConfig.ScreenHeight))
+            if (!ResolutionSupported(screenConfig.ScreenWidth, screenConfig.ScreenHeight, screenConfig.FullScreen))
             {
-                var displayMode = graphics.GraphicsDevice.Adapter.AllowedResolutions().First();
+                var displayMode = graphics.GraphicsDevice.Adapter.AllowedResolutions(screenConfig.FullScreen).Last();
                 screenConfig.ScreenWidth = displayMode.Width;
                 screenConfig.ScreenHeight = displayMode.Height;
             }
@@ -40,9 +40,10 @@ namespace ExplainingEveryString.Core
             graphics.ApplyChanges();
         }
 
-        private Boolean ResolutionSupported(Int32 width, Int32 height)
+        private Boolean ResolutionSupported(Int32 width, Int32 height, Boolean fullscreen)
         {
-            return graphics.GraphicsDevice.Adapter.AllowedResolutions().Any(r => r.Width == width && r.Height == height);
+            return graphics.GraphicsDevice.Adapter.AllowedResolutions(fullscreen)
+                .Any(r => r.Width == width && r.Height == height);
         }
     }
 }

@@ -9,10 +9,9 @@ namespace ExplainingEveryString.Core.Displaying
     internal class CameraObjectGlass : ILevelCoordinatesMaster
     {
         private readonly Vector2 playerWindowEllips;
-        private readonly ScreenConfiguration screen;
 
         private IMainCharacterInfoForCameraExtractor playerInfo;
-        private Vector2 ScreenHalf => new Vector2 { X = screen.TargetWidth / 2, Y = screen.TargetHeight / 2 };
+        private Vector2 ScreenHalf => new Vector2 { X = Constants.TargetWidth / 2, Y = Constants.TargetHeight / 2 };
         private Vector2 cameraCenter;
         private Single focusAngle;
         private Single desiredFocusAngle;
@@ -23,14 +22,13 @@ namespace ExplainingEveryString.Core.Displaying
         {
             X = (Int32)CameraOffset.X,
             Y = (Int32)CameraOffset.Y,
-            Width = screen.TargetWidth,
-            Height = screen.TargetHeight
+            Width = Constants.TargetWidth,
+            Height = Constants.TargetHeight
         };
         public Vector2 PlayerPosition => playerInfo.Position;
 
-        internal CameraObjectGlass(IMainCharacterInfoForCameraExtractor playerInfo, ScreenConfiguration screen, CameraConfiguration config)
+        internal CameraObjectGlass(IMainCharacterInfoForCameraExtractor playerInfo, CameraConfiguration config)
         {
-            this.screen = screen;
             this.playerInfo = playerInfo;
             this.cameraCenter = playerInfo.Position;
             this.playerWindowEllips = new Vector2()

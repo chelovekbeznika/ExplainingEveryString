@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.GameState;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Core.Text;
 using ExplainingEveryString.Data.Configuration;
@@ -42,9 +43,8 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            var configuration = ConfigurationAccess.GetCurrentConfig().Screen;
             targetBatch = new SpriteBatch(GraphicsDevice);
-            unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, configuration.TargetWidth, configuration.TargetHeight);
+            unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, Constants.TargetWidth, Constants.TargetHeight);
             base.LoadContent();
             FontsStorage.LoadContent(Content);
         }
@@ -82,7 +82,7 @@ namespace ExplainingEveryString.Core
             var newConfig = ConfigurationAccess.GetCurrentConfig();
             GameState.ConfigChanged(newConfig);
             ChangeScreenResolution(newConfig.Screen);
-            unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, newConfig.Screen.TargetWidth, newConfig.Screen.TargetHeight);
+            unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, Constants.TargetWidth, Constants.TargetHeight);
         }
 
         /// <summary>
