@@ -11,7 +11,7 @@
   },
   "Screen": {
     "ScreenWidth": 1024,
-    "ScreenHeight": 768,
+    "ScreenHeight": 896,
     "FullScreen": false
   },
   "SoundFadingOut": 1000.0,
