@@ -52,8 +52,10 @@ namespace ExplainingEveryString.Core.Input
         {
             var mousePoint = Mouse.GetState().Position;
             var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
+            var widthWithoutVerticalStripes = (Int32)System.Math.Round((Double)(screenConfig.ScreenHeight * 8.0 / 7.0));
+            var stripWidth = (screenConfig.ScreenWidth - widthWithoutVerticalStripes) / 2;
             var mousePosition = new Vector2(
-                x: (Single)mousePoint.X / screenConfig.ScreenWidth * Constants.TargetWidth, 
+                x: ((Single)mousePoint.X - stripWidth) / widthWithoutVerticalStripes  * Constants.TargetWidth, 
                 y: (Single)mousePoint.Y / screenConfig.ScreenHeight * Constants.TargetHeight);
             var fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
             var fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
