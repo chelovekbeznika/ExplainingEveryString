@@ -10,9 +10,6 @@ namespace ExplainingEveryString.Core.Extensions
 {
     internal static class GraphicsAdapterExtensions
     {
-        private const Int32 BaseHeight = 224;
-        private const Int32 BaseWidth = 256;
-
         internal static List<Resolution> AllowedResolutions(this GraphicsAdapter adapter, Boolean fullscreen)
         {
             if (fullscreen)
@@ -24,9 +21,9 @@ namespace ExplainingEveryString.Core.Extensions
             else
             {
                 var maxHeight = adapter.SupportedDisplayModes.Max(dp => dp.Height);
-                var resolutions = maxHeight / BaseHeight;
+                var resolutions = maxHeight / Constants.BaseHeight;
                 return Enumerable.Range(1, resolutions)
-                    .Select(n => new Resolution { Width = Constants.BaseWidth * n, Height = Constants.BaseHeiht * n })
+                    .Select(n => new Resolution { Width = Constants.BaseWidth * n, Height = Constants.BaseHeight * n })
                     .ToList();
             }
         }
