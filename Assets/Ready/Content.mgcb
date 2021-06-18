@@ -5590,3 +5590,10 @@
 /processorParam:TextureFormat=Color
 /build:TileSets/level_01.png
 
+#begin Time.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Time.spritefont
+

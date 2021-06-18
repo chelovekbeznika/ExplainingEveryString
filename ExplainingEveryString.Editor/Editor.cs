@@ -29,7 +29,7 @@ namespace ExplainingEveryString.Editor
             InputProcessor.Instance.MouseScrolled += MouseScrolled;
             InputProcessor.Instance.MouseButtonPressed += MouseButtonPressed;
             InputProcessor.Instance.KeyPressed += KeyPressed;
-            this.font = content.Load<SpriteFont>(@"TimeFont");
+            this.font = content.Load<SpriteFont>(@"Time");
             this.cursor = content.Load<Texture2D>(@"Sprites/Editor/Cursor");
 
             this.coordinatesConverter = coordinatesConverter;
