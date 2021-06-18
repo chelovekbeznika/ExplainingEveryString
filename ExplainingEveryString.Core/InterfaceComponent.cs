@@ -93,8 +93,7 @@ namespace ExplainingEveryString.Core
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
             reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
             checkpointDisplayer = new CheckpointDisplayer(interfaceSpritesDisplayer);
-            var timeFont = eesGame.Content.Load<SpriteFont>(@"TimeFont");
-            gameTimeDisplayer = new GameTimeDisplayer(timeFont);
+            gameTimeDisplayer = new GameTimeDisplayer(eesGame.FontsStorage.LevelTime);
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
             {
                 { "Shotgun", new ShotgunDisplayer(interfaceSpritesDisplayer) },

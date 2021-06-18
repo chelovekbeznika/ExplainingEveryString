@@ -6,13 +6,13 @@ using System.Text;
 
 namespace ExplainingEveryString.Core.Text
 {
-    internal class SmallNumbersFont : CustomFont
+    internal class ScreenResolutionFont : CustomFont
     {
         protected override Int32 BetweenChars => 2;
 
         internal override void Load(ContentManager content)
         {
-            Texture2D loadCharTexture(String name) => content.Load<Texture2D>($@"Sprites/Numbers/{name}");
+            Texture2D loadCharTexture(String name) => content.Load<Texture2D>($@"Sprites/Fonts/Resolution/{name}");
 
             chars = new Dictionary<char, Texture2D>
             {

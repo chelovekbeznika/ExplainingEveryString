@@ -24,12 +24,17 @@ namespace ExplainingEveryString.Core.Text
 
         internal void Draw(SpriteBatch spriteBatch, Vector2 position, String text)
         {
+            Draw(spriteBatch, position, text, Color.White);
+        }
+
+        internal void Draw(SpriteBatch spriteBatch, Vector2 position, String text, Color colorMask)
+        {
             var x = position.X;
             var height = text.Select(c => chars[c].Height).Max();
             foreach (var c in text)
             {
                 var y = position.Y + height - chars[c].Height;
-                spriteBatch.Draw(chars[c], new Vector2(x, y), Color.White);
+                spriteBatch.Draw(chars[c], new Vector2(x, y), colorMask);
                 x += chars[c].Width + BetweenChars;
             }
         }

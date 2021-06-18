@@ -27,7 +27,7 @@ namespace ExplainingEveryString.Core.Menu
 
         internal MenuItemResolutionSetting(FontsStorage fontsStorage, GraphicsAdapter adapter)
         {
-            this.font = fontsStorage.SmallNumbers;
+            this.font = fontsStorage.ScreenResolution;
             this.fullScreenResolutions = adapter.AllowedResolutions(true);
             this.windowResolutions = adapter.AllowedResolutions(false);
             var resolutionSet = SettingsAccess.GetCurrentSettings().Resolution;

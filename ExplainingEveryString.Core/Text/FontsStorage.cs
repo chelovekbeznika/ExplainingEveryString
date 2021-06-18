@@ -7,12 +7,15 @@ namespace ExplainingEveryString.Core.Text
 {
     internal class FontsStorage
     {
-        internal CustomFont SmallNumbers { get; private set; }
+        internal CustomFont ScreenResolution { get; private set; }
+        internal CustomFont LevelTime { get; private set; }
 
         internal void LoadContent(ContentManager content)
         {
-            SmallNumbers = new SmallNumbersFont();
-            SmallNumbers.Load(content);
+            ScreenResolution = new ScreenResolutionFont();
+            ScreenResolution.Load(content);
+            LevelTime = new LevelTimeFont();
+            LevelTime.Load(content);
         }
     }
 }
