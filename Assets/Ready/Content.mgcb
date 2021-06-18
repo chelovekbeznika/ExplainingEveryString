@@ -44,47 +44,47 @@
 #begin Data/config.dat
 /copy:Data/config.dat
 
-#begin Data/level_01.dat
-/copy:Data/level_01.dat
-
-#begin Data/level_11.dat
-/copy:Data/level_11.dat
-
-#begin Data/level_12.dat
-/copy:Data/level_12.dat
-
-#begin Data/level_13.dat
-/copy:Data/level_13.dat
-
-#begin Data/level_14.dat
-/copy:Data/level_14.dat
-
-#begin Data/level_21.dat
-/copy:Data/level_21.dat
-
-#begin Data/level_22.dat
-/copy:Data/level_22.dat
-
-#begin Data/level_23.dat
-/copy:Data/level_23.dat
-
-#begin Data/level_24.dat
-/copy:Data/level_24.dat
-
-#begin Data/level_31.dat
-/copy:Data/level_31.dat
-
-#begin Data/level_32.dat
-/copy:Data/level_32.dat
-
-#begin Data/level_33.dat
-/copy:Data/level_33.dat
-
-#begin Data/level_34.dat
-/copy:Data/level_34.dat
-
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
+
+#begin Data/Levels/level_01.dat
+/copy:Data/Levels/level_01.dat
+
+#begin Data/Levels/level_11.dat
+/copy:Data/Levels/level_11.dat
+
+#begin Data/Levels/level_12.dat
+/copy:Data/Levels/level_12.dat
+
+#begin Data/Levels/level_13.dat
+/copy:Data/Levels/level_13.dat
+
+#begin Data/Levels/level_14.dat
+/copy:Data/Levels/level_14.dat
+
+#begin Data/Levels/level_21.dat
+/copy:Data/Levels/level_21.dat
+
+#begin Data/Levels/level_22.dat
+/copy:Data/Levels/level_22.dat
+
+#begin Data/Levels/level_23.dat
+/copy:Data/Levels/level_23.dat
+
+#begin Data/Levels/level_24.dat
+/copy:Data/Levels/level_24.dat
+
+#begin Data/Levels/level_31.dat
+/copy:Data/Levels/level_31.dat
+
+#begin Data/Levels/level_32.dat
+/copy:Data/Levels/level_32.dat
+
+#begin Data/Levels/level_33.dat
+/copy:Data/Levels/level_33.dat
+
+#begin Data/Levels/level_34.dat
+/copy:Data/Levels/level_34.dat
 
 #begin Data/Music/christmas_tree_was_born_in_forest.dat
 /copy:Data/Music/christmas_tree_was_born_in_forest.dat

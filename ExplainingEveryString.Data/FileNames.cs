@@ -12,7 +12,9 @@ namespace ExplainingEveryString.Data
         internal static String MusicTestMenu => GetJsonDataPath("music_menu");
         internal static String Notifications => GetJsonDataPath("notifications");
 
-        internal static String GetJsonDataPath(String fileName) => Path.Combine("Content", "Data", $"{fileName}.dat");
+        private static String GetJsonDataPath(String fileName) => Path.Combine("Content", "Data", $"{fileName}.dat");
+
+        internal static String GetJsonLevelsPath(String fileName) => Path.Combine("Content", "Data", "Levels", $"{fileName}.dat");
         internal static String GetJsonBlueprintsPath(String fileName) => Path.Combine("Content", "Data", "Blueprints", $"{fileName}.dat");
     }
 }
