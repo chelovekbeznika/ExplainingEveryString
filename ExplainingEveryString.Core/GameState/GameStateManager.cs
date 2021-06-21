@@ -45,7 +45,7 @@ namespace ExplainingEveryString.Core.GameState
                 case GameState.InGame:
                     if (componentsManager.CurrentGameplay.Lost)
                     {
-                        StartCurrentLevel();
+                        StartCurrentLevel(false);
                     }
                     if (componentsManager.CurrentGameplay.Won)
                         SwitchToNextLevel();
@@ -62,12 +62,12 @@ namespace ExplainingEveryString.Core.GameState
             levelSequence.Reset();
             ProgressToLevelStart();
             GameProgressAccess.Save(gameProgress);
-            StartCurrentLevel();
+            StartCurrentLevel(true);
         }
 
         internal void ContinueCurrentGame()
         {
-            StartCurrentLevel();
+            StartCurrentLevel(true);
         }
 
         internal void ContinueFrom(String levelName)
@@ -83,7 +83,7 @@ namespace ExplainingEveryString.Core.GameState
                 }
             };
             GameProgressAccess.Save(gameProgress);
-            StartCurrentLevel();
+            StartCurrentLevel(true);
         }
 
         internal Boolean LevelAvailable(String levelFileName)
@@ -97,12 +97,15 @@ namespace ExplainingEveryString.Core.GameState
             GameProgressAccess.Save(gameProgress);
         }
 
-        private void StartCurrentLevel()
+        private void StartCurrentLevel(Boolean showTitle)
         {
             levelSequence.MarkLevelAsCurrentContinuePoint(gameProgress.CurrentLevelFileName);
             componentsManager.DeleteCurrentGameplayRelatedComponents();
             componentsManager.InitNewGameplayRelatedComponents(gameProgress);
-            SwitchToTitleState();
+            if (showTitle)
+                SwitchToTitleState();
+            else
+                SwitchToInGameState();
         }
 
         private void SwitchToNextLevel()
@@ -111,7 +114,7 @@ namespace ExplainingEveryString.Core.GameState
             if (!levelSequence.GameCompleted)
             {
                 ProgressToLevelStart();
-                StartCurrentLevel();
+                StartCurrentLevel(true);
                 GameProgressAccess.Save(gameProgress);
             }
             else
