@@ -5,6 +5,7 @@
     "second_boss"
   ],
   "MusicName": "liberty_bell",
+  "TitleSpriteName": "Sprites/Triangle",
   "TileMap": "TileMaps/Level_24",
   "StartCheckpoint": {
     "PlayerPosition": {

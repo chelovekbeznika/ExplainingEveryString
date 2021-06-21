@@ -7,11 +7,12 @@ namespace ExplainingEveryString.Core.GameState
 {
     internal class ComponentsManager
     {
-        private EesGame game;
+        private readonly EesGame game;
 
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
+        internal LevelTitleComponent CurrentLevelTitle { get; private set; }
         internal MusicComponent MenuMusic { get; private set; }
         internal MusicComponent GameMusic { get; private set; }
         internal NotificationsComponent Notifications { get; private set; }
@@ -27,21 +28,29 @@ namespace ExplainingEveryString.Core.GameState
             Notifications = new NotificationsComponent(game);
         }
 
-        internal void InitNewGameplayComponent(GameProgress gameProgress)
+        internal void InitNewGameplayRelatedComponents(GameProgress gameProgress)
         {
             CurrentGameplay = new GameplayComponent(
                 game, gameProgress.CurrentLevelFileName, gameProgress.LevelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
+            CurrentLevelTitle = new LevelTitleComponent(
+                game, gameProgress.CurrentLevelFileName);
+            game.Components.Add(CurrentLevelTitle);
             game.Components.Add(CurrentGameplay);
         }
 
-        internal void DeleteCurrentGameplayComponent()
+        internal void DeleteCurrentGameplayRelatedComponents()
         {
             if (CurrentGameplay != null)
             {
                 game.Components.Remove(CurrentGameplay);
                 Interface.SetGameplayComponentToDraw(null);
                 CurrentGameplay = null;
+            }
+            if (CurrentLevelTitle != null)
+            {
+                game.Components.Remove(CurrentLevelTitle);
+                CurrentLevelTitle = null;
             }
         }
 
@@ -72,6 +81,15 @@ namespace ExplainingEveryString.Core.GameState
             Menu.Enabled = active;
             Menu.Visible = active;
             MenuMusic.Enabled = active;
+        }
+
+        internal void SwitchLevelTitleRelatedComponents(Boolean active)
+        {
+            if (CurrentLevelTitle != null)
+            {
+                CurrentLevelTitle.Enabled = active;
+                CurrentLevelTitle.Visible = active;
+            }
         }
     }
 }

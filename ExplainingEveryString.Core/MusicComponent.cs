@@ -33,6 +33,8 @@ namespace ExplainingEveryString.Core
         public void PlaySong(String songName)
         {
             musicPlayer.Start(songName);
+            if (!Enabled)
+                musicPlayer.TryPause();
         }
 
         public void Stop()

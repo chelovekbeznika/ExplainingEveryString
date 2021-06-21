@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Core.GameState
 {
     internal class GameStateManager
     {
-        private enum GameState { BetweenLevels, InGame, Paused }
+        private enum GameState { BetweenLevels, LevelTitle, InGame, Paused }
 
         private GameState currentState = GameState.BetweenLevels;
         private ComponentsManager componentsManager;
@@ -40,14 +40,20 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void Update()
         {
-            if (componentsManager.CurrentGameplay != null)
+            switch (currentState)
             {
-                if (componentsManager.CurrentGameplay.Lost)
-                {
-                    StartCurrentLevel();
-                }
-                if (componentsManager.CurrentGameplay.Won)
-                    SwitchToNextLevel();
+                case GameState.InGame:
+                    if (componentsManager.CurrentGameplay.Lost)
+                    {
+                        StartCurrentLevel();
+                    }
+                    if (componentsManager.CurrentGameplay.Won)
+                        SwitchToNextLevel();
+                    break;
+                case GameState.LevelTitle:
+                    if (componentsManager.CurrentLevelTitle.Closed)
+                        SwitchToInGameState();
+                    break;
             }
         }
 
@@ -94,9 +100,9 @@ namespace ExplainingEveryString.Core.GameState
         private void StartCurrentLevel()
         {
             levelSequence.MarkLevelAsCurrentContinuePoint(gameProgress.CurrentLevelFileName);
-            componentsManager.DeleteCurrentGameplayComponent();
-            componentsManager.InitNewGameplayComponent(gameProgress);
-            SwitchToInGameState();
+            componentsManager.DeleteCurrentGameplayRelatedComponents();
+            componentsManager.InitNewGameplayRelatedComponents(gameProgress);
+            SwitchToTitleState();
         }
 
         private void SwitchToNextLevel()
@@ -156,10 +162,19 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.Notifications.SendNotification(type);
         }
 
+        private void SwitchToTitleState()
+        {
+            componentsManager.SwitchGameplayRelatedComponents(false);
+            componentsManager.SwitchMenuRelatedComponents(false);
+            componentsManager.SwitchLevelTitleRelatedComponents(true);
+            currentState = GameState.LevelTitle;
+        }
+
         private void SwitchToInGameState()
         {
             componentsManager.SwitchGameplayRelatedComponents(true);
             componentsManager.SwitchMenuRelatedComponents(false);
+            componentsManager.SwitchLevelTitleRelatedComponents(false);
             currentState = GameState.InGame;
         }
 
@@ -167,6 +182,7 @@ namespace ExplainingEveryString.Core.GameState
         {
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchMenuRelatedComponents(true);
+            componentsManager.SwitchLevelTitleRelatedComponents(false);
             currentState = GameState.Paused;
         }
 
@@ -174,7 +190,8 @@ namespace ExplainingEveryString.Core.GameState
         {
             componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.DeleteCurrentGameplayComponent();
+            componentsManager.SwitchLevelTitleRelatedComponents(false);
+            componentsManager.DeleteCurrentGameplayRelatedComponents();
             currentState = GameState.BetweenLevels;
         }
 

@@ -8,7 +8,8 @@ namespace ExplainingEveryString.Core
         internal const Int32 Gameplay = 1;
         internal const Int32 Interface = 2;
         internal const Int32 Menu = 3;
-        internal const Int32 Music = 4;
-        internal const Int32 Notifications = 5;
+        internal const Int32 Title = 4;
+        internal const Int32 Music = 5;
+        internal const Int32 Notifications = 6;
     }
 }

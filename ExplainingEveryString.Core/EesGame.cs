@@ -60,8 +60,8 @@ namespace ExplainingEveryString.Core
                 GameState.InitComponents();
             }
             base.Update(gameTime);
-            GameState.Update();
             menuInputProcessor.Update(gameTime);
+            GameState.Update();
         }
 
         protected override void Draw(GameTime gameTime)
