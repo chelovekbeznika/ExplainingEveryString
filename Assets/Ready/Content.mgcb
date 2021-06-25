@@ -4502,6 +4502,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/Weaponry/ShotgunEmpty.png
 
+#begin Sprites/LevelTitles/11.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/LevelTitles/11.png
+
 #begin Sprites/Menu/Background.png
 /importer:TextureImporter
 /processor:TextureProcessor
