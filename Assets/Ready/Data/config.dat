@@ -17,5 +17,6 @@
   "SoundFadingOut": 1000.0,
   "InterfaceAlpha": 0.75,
   "MusicVolume": 0.3,
-  "SoundVolume": 0.5
+  "SoundVolume": 0.5,
+  "LevelTitleBackgroundColor": { "Item1": 64, "Item2": 146, "Item3": 195 }
 }

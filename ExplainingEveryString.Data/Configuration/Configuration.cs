@@ -13,5 +13,6 @@ namespace ExplainingEveryString.Data.Configuration
         public Single SoundFadingOut { get; set; }
         public Single MusicVolume { get; set; }
         public Single SoundVolume { get; set; }
+        public (Int32, Int32, Int32) LevelTitleBackgroundColor { get; set; }
     }
 }

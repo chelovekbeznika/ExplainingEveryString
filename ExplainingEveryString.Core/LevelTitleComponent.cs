@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Level;
+﻿using ExplainingEveryString.Data.Configuration;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -19,6 +20,7 @@ namespace ExplainingEveryString.Core
         private Boolean somethingPressed = false;
         private String levelFileName;
         private String levelTitleName;
+        private Color background;
         private readonly Vector2 screenCenter = new Vector2(Displaying.Constants.TargetWidth / 2, Displaying.Constants.TargetHeight / 2);
 
 
@@ -33,6 +35,9 @@ namespace ExplainingEveryString.Core
 
         public override void Initialize()
         {
+            var configuration = ConfigurationAccess.GetCurrentConfig();
+            var (red, green, blue) = configuration.LevelTitleBackgroundColor;
+            this.background = new Color(red, green, blue);
             var levelLoader = LevelDataAccess.GetLevelLoader();
             var levelData = levelLoader.Load(levelFileName);
             this.levelTitleName = levelData.TitleSpriteName;
@@ -62,7 +67,7 @@ namespace ExplainingEveryString.Core
 
         public override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(background);
             spriteBatch.Begin();
             var spriteCenter = new Vector2(levelTitle.Width / 2, levelTitle.Height / 2);
             spriteBatch.Draw(levelTitle, screenCenter, null, Color.White, 0, spriteCenter, 1, SpriteEffects.None, 0);

@@ -61,6 +61,7 @@ namespace ExplainingEveryString.Data.Configuration
                 },
                 InterfaceAlpha = 0.75F,
                 SoundFadingOut = 1000,
+                LevelTitleBackgroundColor = (64, 146, 195)
             };
         }
     }
