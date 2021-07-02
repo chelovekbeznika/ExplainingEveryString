@@ -1153,7 +1153,7 @@
           "Angle": 0.0
         },
         {
-          "ClosesAt": 6,
+          "ClosesAt": 5,
           "BlueprintType": "EnergyBarrierVertical",
           "TilePosition": {
             "X": 160,
@@ -1163,7 +1163,7 @@
           "Angle": 0.0
         },
         {
-          "ClosesAt": 7,
+          "ClosesAt": 6,
           "BlueprintType": "EnergyBarrier",
           "TilePosition": {
             "X": 170,
@@ -1223,6 +1223,7 @@
         "Width": 31,
         "Height": 37
       },
+      "Enemies": [],
       "Bosses": [
         {
           "BlueprintType": "Miniboss_mk32_left",
@@ -1258,8 +1259,7 @@
             "0, 0"
           ]
         }
-      ],
-      "Enemies": []
+      ]
     }
   ],
   "FogOfWar": {
