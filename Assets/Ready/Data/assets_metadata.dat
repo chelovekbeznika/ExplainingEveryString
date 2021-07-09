@@ -819,6 +819,22 @@
       "AnimationFrames": 5
     },
     {
+      "Name": "Sprites/Doors/Level4X/Horizontal4Tiles",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Doors/Level4X/Vertical4Tiles",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Doors/Level4X/Horizontal4TilesClosing",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Doors/Level4X/Vertical4TilesClosing",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
