@@ -5722,6 +5722,18 @@
 /processorParam:TextureFormat=Color
 /build:TileSets/3x_tiles.png
 
+#begin TileSets/4x_tiles.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileSets/4x_tiles.png
+
 #begin TileSets/level_01.png
 /importer:TextureImporter
 /processor:TextureProcessor
