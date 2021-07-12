@@ -5719,6 +5719,11 @@
 /processor:TiledMapProcessor
 /build:TileMaps/Level_34.tmx
 
+#begin TileMaps/Level_41.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_41.tmx
+
 #begin TileSets/1x.tsx
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
@@ -5769,6 +5774,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileSets/3x_tiles.png
+
+#begin TileSets/4x.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:TileSets/4x.tsx
 
 #begin TileSets/4x_tiles.png
 /importer:TextureImporter
