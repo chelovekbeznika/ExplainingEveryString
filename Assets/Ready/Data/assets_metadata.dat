@@ -819,6 +819,70 @@
       "AnimationFrames": 5
     },
     {
+      "Name": "Sprites/Enemies/Level4X/Appearance/TripleCannon",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Appearance/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/Cannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/FixedCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/Hunter",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/Mine",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/MineSpawner",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/Tank",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/TripleCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/CannonRocket",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/FixedCannonTeleport",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/TankBase",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/TripleCannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/TripleCannonAngry",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/TripleCannonVeryAngry",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Doors/Level4X/Horizontal4Tiles",
       "AnimationFrames": 6
     },
