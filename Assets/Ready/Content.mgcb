@@ -5606,6 +5606,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Walls/Level3X/Teapot.png
 
+#begin Sprites/Walls/Level4X/BigFan.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Walls/Level4X/BigFan.png
+
+#begin Sprites/Walls/Level4X/LittleFan.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Walls/Level4X/LittleFan.png
+
 #begin Sprites/Walls/LittleDecoration.png
 /importer:TextureImporter
 /processor:TextureProcessor
