@@ -855,6 +855,14 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Level4X/Death/WallCannon",
+      "AnimationFrames": 9
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/SpreadTank",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/Level4X/CannonRocket",
       "AnimationFrames": 5
     },
@@ -881,6 +889,10 @@
     {
       "Name": "Sprites/Enemies/Level4X/TripleCannonVeryAngry",
       "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/WallCannon",
+      "AnimationFrames": 4
     },
     {
       "Name": "Sprites/Doors/Level4X/Horizontal4Tiles",

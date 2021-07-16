@@ -3350,6 +3350,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/Death/MineSpawner.png
 
+#begin Sprites/Enemies/Level4X/Death/SpreadTank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/Death/SpreadTank.png
+
 #begin Sprites/Enemies/Level4X/Death/Tank.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3373,6 +3385,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/Death/TripleCannon.png
+
+#begin Sprites/Enemies/Level4X/Death/WallCannon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/Death/WallCannon.png
 
 #begin Sprites/Enemies/Level4X/FixedCannon.png
 /importer:TextureImporter
@@ -3446,6 +3470,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/MineSpawner.png
 
+#begin Sprites/Enemies/Level4X/SpreadTankCannon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/SpreadTankCannon.png
+
 #begin Sprites/Enemies/Level4X/TankBase.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3505,6 +3541,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/TripleCannonVeryAngry.png
+
+#begin Sprites/Enemies/Level4X/WallCannon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/WallCannon.png
 
 #begin Sprites/Enemies/Mine.png
 /importer:TextureImporter
