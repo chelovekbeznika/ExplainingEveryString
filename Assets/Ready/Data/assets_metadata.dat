@@ -919,6 +919,34 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/FogOfWar/Level4X/1",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level4X/2",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level4X/3",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level4X/4",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level4X/5",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level4X/6",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level4X/7",
+      "AnimationFrames": 7
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
