@@ -368,6 +368,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Enemy/FixedCannonShoot.wav
 
+#begin Sounds/Enemy/FixedCannonTeleport.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/FixedCannonTeleport.wav
+
 #begin Sounds/Enemy/FunnySound.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -391,6 +397,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Enemy/MouseDeath.wav
+
+#begin Sounds/Enemy/RocketLaunch.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/RocketLaunch.wav
 
 #begin Sounds/Enemy/TripleCannonShoot.wav
 /importer:WavImporter
