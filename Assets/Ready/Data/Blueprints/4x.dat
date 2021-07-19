@@ -97,6 +97,84 @@
     },
     "DefaultAppearancePhaseDuration": 0.5
   },
+  "Tank_mk4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 40.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 40.0,
+    "CollideTag": "Tank",
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/TankBase",
+      "AnimationCycle": 0.166667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/Tank",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 75.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 30,
+          "Ammo": 10,
+          "ReloadTime": 1.5
+        },
+        "Barrels": [
+          {
+            "Length": 13.0,
+            "Accuracy": 15.0,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "amplitude": 15.0,
+                "angularVelocity": 150.79644
+              },
+              "Damage": 10.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level3X/TankCannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.3
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
   "Horizontal": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
