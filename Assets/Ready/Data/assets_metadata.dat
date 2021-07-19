@@ -867,6 +867,10 @@
       "AnimationFrames": 5
     },
     {
+      "Name": "Sprites/Enemies/Level4X/CannonRocketBlast",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Enemies/Level4X/FixedCannonTeleport",
       "AnimationFrames": 2
     },

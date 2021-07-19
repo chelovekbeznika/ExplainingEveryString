@@ -175,6 +175,79 @@
       }
     }
   },
+  "SimpleCannon_mk4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 25.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/Cannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/Cannon",
+        "AnimationCycle": 0.33333333
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "AngleCorrection": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 600.0,
+              },
+              "BlastWaveRadius": 128.0,
+              "Damage": 50.0,
+              "TimeToLive": 5.0,
+              "ConsiderAngle": true,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/CannonRocket"
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level4X/CannonRocketBlast",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Enemy/Explosion_01",
+                  "Volume": 0.8
+                }
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/RocketLaunch",
+            "Volume": 0.6
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
   "Horizontal": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
