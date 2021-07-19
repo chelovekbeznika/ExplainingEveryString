@@ -248,6 +248,85 @@
       }
     }
   },
+  "FixedCannon_mk4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 40.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/FixedCannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/FixedCannon",
+        "AnimationCycle": 0.33333333
+      }
+    },
+    "GoalAchievedEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/FixedCannonTeleport",
+        "Volume": 0.5
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/FixedCannonTeleport",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Teleportation",
+        "Parameters": {
+          "min": 1.5,
+          "max": 3.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.666667
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "Bullet": {
+              "HomingSpeed": 15.0,
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HomingBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.4
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    }
+  },
   "Horizontal": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
