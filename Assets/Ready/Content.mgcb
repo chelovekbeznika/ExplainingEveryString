@@ -26,6 +26,9 @@
 #begin Data/Blueprints/3x.dat
 /copy:Data/Blueprints/3x.dat
 
+#begin Data/Blueprints/4x.dat
+/copy:Data/Blueprints/4x.dat
+
 #begin Data/Blueprints/blueprints.dat
 /copy:Data/Blueprints/blueprints.dat
 
@@ -85,6 +88,9 @@
 
 #begin Data/Levels/level_34.dat
 /copy:Data/Levels/level_34.dat
+
+#begin Data/Levels/level_41.dat
+/copy:Data/Levels/level_41.dat
 
 #begin Data/Music/christmas_tree_was_born_in_forest.dat
 /copy:Data/Music/christmas_tree_was_born_in_forest.dat
@@ -403,6 +409,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Enemy/RocketLaunch.wav
+
+#begin Sounds/Enemy/Shotgun.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/Shotgun.wav
 
 #begin Sounds/Enemy/TripleCannonShoot.wav
 /importer:WavImporter

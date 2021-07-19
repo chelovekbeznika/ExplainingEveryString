@@ -1,0 +1,84 @@
+{
+  "Blueprints": [
+    "player",
+    "4x"
+  ],
+  "MusicName": "rondo_alla_turca",
+  "TitleSpriteName": "Sprites/Triangle",
+  "TileMap": "TileMaps/Level_41",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 7,
+      "Y": 18,
+      "Offset": "-8, 8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "RocketLauncher": 100,
+        "Shotgun": 120
+      }
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 19,
+        "Y": 7,
+        "Width": 16,
+        "Height": 23
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 31,
+            "Y": 9
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 31,
+            "Y": 26
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 31,
+            "Y": 18
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level4X/0",
+      "Sprites/FogOfWar/Level4X/1",
+      "Sprites/FogOfWar/Level4X/2",
+      "Sprites/FogOfWar/Level4X/3",
+      "Sprites/FogOfWar/Level4X/4",
+      "Sprites/FogOfWar/Level4X/5",
+      "Sprites/FogOfWar/Level4X/6",
+      "Sprites/FogOfWar/Level4X/7"
+    ],
+    "Weights": [
+      86,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "ObstaclesTilePositions": {}
+}

@@ -16,33 +16,33 @@
         }
       },
       "MoveTargetSelectType": "MoveTowardPlayer",
-          "PostMortemSurprise": {
-            "Weapon": {
-              "AimType": "AimAtPlayer",
-              "Barrels": [
-                {
-                  "Length": 0.0,
-                  "AngleCorrection": -15.0,
-                  "Accuracy": 2.5,
-                  "BulletsAtOnce": 5,
-                  "AngleStep": 7.5,
-                  "Bullet": {
-                    "TrajectoryType": "Cone",
-                    "TrajectoryParameters": {
-                      "speed": 200.0,
-                      "angularVelocity": 60.0,
-                      "coneExtension": 20.0
-                    },
-                    "Damage": 10.0,
-                    "TimeToLive": 7.5,
-                    "Sprite": {
-                      "Name": "Sprites/Enemies/HelicopterBullet"
-                    }
-                  }
+      "PostMortemSurprise": {
+        "Weapon": {
+          "AimType": "AimAtPlayer",
+          "Barrels": [
+            {
+              "Length": 0.0,
+              "AngleCorrection": -15.0,
+              "Accuracy": 2.5,
+              "BulletsAtOnce": 5,
+              "AngleStep": 7.5,
+              "Bullet": {
+                "TrajectoryType": "Cone",
+                "TrajectoryParameters": {
+                  "speed": 200.0,
+                  "angularVelocity": 60.0,
+                  "coneExtension": 20.0
+                },
+                "Damage": 10.0,
+                "TimeToLive": 7.5,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/HelicopterBullet"
                 }
-              ]
+              }
             }
-          },
+          ]
+        }
+      },
     },
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level3X/Hunter"

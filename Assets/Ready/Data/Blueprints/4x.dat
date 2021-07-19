@@ -1,0 +1,144 @@
+{
+  "Hunter_mk4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 25.0,
+    "Height": 16.0,
+    "Width": 16.0,
+    "Hitpoints": 16.0,
+    "CollideTag": "Hunter",
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 150.0,
+          "maxSpeed": 350.0,
+          "acceleration": 800.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.0
+        },
+        "Barrels": [
+          {
+            "Accuracy": 22.5,
+            "BulletsAtOnce": 10,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 1600.0
+              },
+              "Damage": 2.5,
+              "TimeToLive": 0.1,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/HunterGrain"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/Shotgun",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "AimAtPlayer"
+      },
+      "PostMortemSurprise": {
+        "Weapon": {
+          "AimType": "AimAtPlayer",
+          "Barrels": [
+            {
+              "Length": 0.0,
+              "AngleCorrection": -15.0,
+              "Accuracy": 2.5,
+              "BulletsAtOnce": 5,
+              "AngleStep": 7.5,
+              "Bullet": {
+                "TrajectoryType": "Cone",
+                "TrajectoryParameters": {
+                  "speed": 300.0,
+                  "angularVelocity": 60.0,
+                  "coneExtension": 20.0
+                },
+                "Damage": 10.0,
+                "TimeToLive": 7.5,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/HelicopterBullet"
+                }
+              }
+            }
+          ]
+        }
+      },
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/Hunter"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/SmallExplosion",
+        "Volume": 0.5
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/Hunter",
+        "AnimationCycle": 0.2
+      }
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/16_16",
+      "AnimationCycle": 0.15
+    },
+    "DefaultAppearancePhaseDuration": 0.5
+  },
+  "Horizontal": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 16,
+    "Width": 64,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level4X/Horizontal4Tiles"
+    },
+    "OpeningStartedEffect": {
+      "Sprite": {
+        "Name": "Sprites/Doors/Level4X/Horizontal4TilesClosing",
+        "AnimationCycle": 0.5
+      }
+    }
+  },
+  "Vertical": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 64,
+    "Width": 16,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level4X/Vertical4Tiles"
+    },
+    "OpeningStartedEffect": {
+      "Sprite": {
+        "Name": "Sprites/Doors/Level4X/Vertical4TilesClosing",
+        "AnimationCycle": 0.5
+      }
+    }
+  },
+  "LittleFan": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 32.0,
+    "Width": 32.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level4X/LittleFan"
+    }
+  },
+  "BigFan": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
+    "Height": 64.0,
+    "Width": 64.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Walls/Level4X/BigFan"
+    }
+  }
+}

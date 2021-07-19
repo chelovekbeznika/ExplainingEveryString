@@ -11,6 +11,10 @@
     {
       "Id": "Moon",
       "ButtonSprite": "Sprites/Menu/LevelSelect/3X"
+    },
+    {
+      "Id": "AirFarm",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/4X"
     }
   ],
   "Levels": [
@@ -73,6 +77,11 @@
       "LevelData": "level_34",
       "ButtonSprite": "Sprites/Menu/LevelSelect/34",
       "LevelsBlockId": "Moon"
+    },
+    {
+      "LevelData": "level_41",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/41",
+      "LevelsBlockId": "AirFarm"
     }
   ]
 }
