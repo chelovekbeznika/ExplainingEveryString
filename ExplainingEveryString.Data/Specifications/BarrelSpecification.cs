@@ -21,5 +21,7 @@ namespace ExplainingEveryString.Data.Specifications
         [DefaultValue(0)]
         public Single AngleStep { get; set; }
         public BulletSpecification Bullet { get; set; }
+        [DefaultValue(false)]
+        public Boolean KeepAngleStep { get; set; }
     }
 }

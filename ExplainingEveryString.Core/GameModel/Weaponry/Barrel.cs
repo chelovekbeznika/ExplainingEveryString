@@ -24,6 +24,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private readonly Single accuracy;
         private readonly Int32 bulletsAtOnce;
         private readonly Single angleStep;
+        private readonly Boolean keepAngleStep;
+        private Single accuracyCorrection;
 
         internal Barrel(Level level, IAimer aimer, Func<Vector2> findOutWhereIAm, Func<IActor> targetSelector, BarrelSpecification specification)
         {
@@ -34,6 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.level = level;
             this.bulletsAtOnce = specification.BulletsAtOnce;
             this.angleStep = AngleConverter.ToRadians(specification.AngleStep);
+            this.keepAngleStep = specification.KeepAngleStep;
             this.findOutWhereIAm = findOutWhereIAm;
             this.targetSelector = targetSelector;
             this.bulletSpecification = specification.Bullet;
@@ -45,6 +48,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         {
             var barrelDirection = GetFireDirection(false);
             var position = findOutWhereIAm() + baseOffset + barrelDirection * length + GetMuzzleOffset();
+            if (keepAngleStep)
+                accuracyCorrection = (RandomUtility.Next() - 0.5F) * accuracy;
             foreach (var i in Enumerable.Range(0, bulletsAtOnce))
             {
                 var direction = GetFireDirection(true, i * angleStep);
@@ -71,7 +76,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             angle += angleCorrection;
             angle += angleStepCorrection;
             if (accuracy != 0 && includeInaccuracy)
-                angle += (RandomUtility.Next() - 0.5F) * accuracy;
+            {
+                angle += keepAngleStep ? accuracyCorrection : (RandomUtility.Next() - 0.5F) * accuracy;
+            }  
             direction = AngleConverter.ToVector(angle);
             return direction;
         }
