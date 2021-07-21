@@ -662,6 +662,77 @@
       }
     }
   },
+  "WallCannon": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 60.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/WallCannon",
+      "AnimationCycle": 0.5
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/WallCannon",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 150.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 45,
+          "Ammo": 15,
+          "ReloadTime": 2.0
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "Accuracy": 15.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 450.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.4
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    }
+  },
   "Horizontal": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
