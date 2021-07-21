@@ -327,6 +327,157 @@
       }
     }
   },
+  "TripleCannon_mk4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ChangeableEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "Changeable",
+    "CollisionDamage": 50.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 50.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/TripleCannon"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/TripleCannon",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level4X/Appearance/TripleCannon",
+      "AnimationCycle": 0.1666666
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.333333
+        },
+        "Barrels": [
+          {
+            "Length": 5.0,
+            "Accuracy": 72.0,
+            "BulletsAtOnce": 5,
+            "Bullet": {
+              "TrajectoryType": "Sinus",
+              "TrajectoryParameters": {
+                "speed": 125.0,
+                "amplitude": 6.0,
+                "angularVelocity": 25.132
+              },
+              "Damage": 25.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.4
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    "ChangingEventAtDeath": {
+      "Type": "TripleBrotherDead"
+    },
+    "Modifications": {
+      "TripleBrotherDead:2": [
+        {
+          "$type": "ExplainingEveryString.Data.Specifications.WeaponSpecification, ExplainingEveryString.Data",
+          "Reloader": {
+            "FireRate": 0.4
+          },
+          "Barrels": [
+            {
+              "Length": 5.0,
+              "Accuracy": 72.0,
+              "BulletsAtOnce": 6,
+              "Bullet": {
+                "TrajectoryType": "Sinus",
+                "TrajectoryParameters": {
+                  "speed": 150.0,
+                  "amplitude": 6.0,
+                  "angularVelocity": 25.132
+                },
+                "Damage": 25.0,
+                "TimeToLive": 10.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            }
+          ],
+          "ShootingEffect": {
+            "Sound": {
+              "Name": "Sounds/StandardEnemy/LongShot",
+              "Volume": 0.4
+            }
+          },
+          "AimType": "AimAtPlayer"
+        },
+        {
+          "$type": "ExplainingEveryString.Data.Specifications.SpriteSpecification, ExplainingEveryString.Data",
+          "Name": "Sprites/Enemies/Level4X/TripleCannonAngry",
+          "AnimationCycle": 0.75
+        }
+      ],
+      "TripleBrotherDead:4": [
+        {
+          "$type": "ExplainingEveryString.Data.Specifications.WeaponSpecification, ExplainingEveryString.Data",
+          "Reloader": {
+            "FireRate": 0.5
+          },
+          "Barrels": [
+            {
+              "Length": 5.0,
+              "Accuracy": 72.0,
+              "BulletsAtOnce": 7,
+              "Bullet": {
+                "TrajectoryType": "Sinus",
+                "TrajectoryParameters": {
+                  "speed": 200.0,
+                  "amplitude": 6.0,
+                  "angularVelocity": 25.132
+                },
+                "Damage": 25.0,
+                "TimeToLive": 10.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/EnemyBullet"
+                }
+              }
+            }
+          ],
+          "ShootingEffect": {
+            "Sound": {
+              "Name": "Sounds/StandardEnemy/LongShot",
+              "Volume": 0.4
+            }
+          },
+          "AimType": "AimAtPlayer"
+        },
+        {
+          "$type": "ExplainingEveryString.Data.Specifications.SpriteSpecification, ExplainingEveryString.Data",
+          "Name": "Sprites/Enemies/Level4X/TripleCannonVeryAngry",
+          "AnimationCycle": 0.5
+        }
+      ]
+    }
+  },
   "Horizontal": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
