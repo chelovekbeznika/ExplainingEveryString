@@ -163,7 +163,7 @@
           }
         ],
         "Sprite": {
-          "Name": "Sprites/Enemies/Level3X/TankCannon"
+          "Name": "Sprites/Enemies/Level4X/TankCannon"
         },
         "ShootingEffect": {
           "Sound": {
@@ -585,6 +585,80 @@
           ]
         },
         "BlueprintType": "Mine_mk4"
+      }
+    }
+  },
+  "SpreadTank": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 40.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 30.0,
+    "CollideTag": "Tank",
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/TankBase",
+      "AnimationCycle": 0.166667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/MediumExplosion",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/SpreadTank",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.333333
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 87.5
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.66667
+        },
+        "Barrels": [
+          {
+            "Length": 6.0,
+            "BulletsAtOnce": 8,
+            "AngleStep": 45.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level4X/SpreadTankCannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.5
+          }
+        },
+        "AimType": "AimAtPlayer"
       }
     }
   },
