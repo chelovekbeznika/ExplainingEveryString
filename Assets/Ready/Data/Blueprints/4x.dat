@@ -10,9 +10,9 @@
       "Mover": {
         "Type": "Acceleration",
         "Parameters": {
-          "startSpeed": 150.0,
-          "maxSpeed": 350.0,
-          "acceleration": 800.0
+          "startSpeed": 100.0,
+          "maxSpeed": 300.0,
+          "acceleration": 750.0
         }
       },
       "MoveTargetSelectType": "MoveTowardPlayer",
@@ -43,34 +43,7 @@
           }
         },
         "AimType": "AimAtPlayer"
-      },
-      "PostMortemSurprise": {
-        "Weapon": {
-          "AimType": "AimAtPlayer",
-          "Barrels": [
-            {
-              "Length": 0.0,
-              "AngleCorrection": -15.0,
-              "Accuracy": 2.5,
-              "BulletsAtOnce": 5,
-              "AngleStep": 7.5,
-              "Bullet": {
-                "TrajectoryType": "Cone",
-                "TrajectoryParameters": {
-                  "speed": 300.0,
-                  "angularVelocity": 60.0,
-                  "coneExtension": 20.0
-                },
-                "Damage": 10.0,
-                "TimeToLive": 7.5,
-                "Sprite": {
-                  "Name": "Sprites/Enemies/HelicopterBullet"
-                }
-              }
-            }
-          ]
-        }
-      },
+      }
     },
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level4X/Hunter"
@@ -270,7 +243,7 @@
     "GoalAchievedEffect": {
       "Sound": {
         "Name": "Sounds/Enemy/FixedCannonTeleport",
-        "Volume": 0.5
+        "Volume": 0.25
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Level4X/FixedCannonTeleport",
@@ -740,11 +713,9 @@
     "DefaultSprite": {
       "Name": "Sprites/Doors/Level4X/Horizontal4Tiles"
     },
-    "OpeningStartedEffect": {
-      "Sprite": {
-        "Name": "Sprites/Doors/Level4X/Horizontal4TilesClosing",
-        "AnimationCycle": 0.5
-      }
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level4X/Horizontal4TilesClosing",
+      "AnimationCycle": 0.5
     }
   },
   "Vertical": {
@@ -754,11 +725,9 @@
     "DefaultSprite": {
       "Name": "Sprites/Doors/Level4X/Vertical4Tiles"
     },
-    "OpeningStartedEffect": {
-      "Sprite": {
-        "Name": "Sprites/Doors/Level4X/Vertical4TilesClosing",
-        "AnimationCycle": 0.5
-      }
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level4X/Vertical4TilesClosing",
+      "AnimationCycle": 0.5
     }
   },
   "LittleFan": {
