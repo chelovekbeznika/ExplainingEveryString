@@ -117,9 +117,9 @@ namespace ExplainingEveryString.Core
             Camera.Draw(spriteBatch, level.GetObjectsToDraw());
             EpicEventsProcessor.ProcessEpicEvents();
             Camera.Draw(spriteBatch, EpicEventsProcessor.GetSpecEffectsToDraw());
+            fogOfWarRuler.DrawFogOfWar(spriteBatch);
             if (spriteEmitter != null)
                 Camera.Draw(spriteBatch, spriteEmitter.EmittedSprites);
-            fogOfWarRuler.DrawFogOfWar(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -80,5 +80,112 @@
       2
     ]
   },
-  "ObstaclesTilePositions": {}
+  "ObstaclesTilePositions": {
+  },
+  "SpriteEmitter": {
+    "Region": {
+      "X": -10,
+      "Y": -10,
+      "Width": 140,
+      "Height": 200
+    },
+    "SpriteLifetime": {
+      "ExpectedValue": 30.0,
+      "Sigma": 5.0
+    },
+    "BetweenSpawns": {
+      "ExpectedValue": 0.1,
+      "Sigma": 0.01333
+    },
+    "RandomSprites": {
+      "PossibleValues": [
+        {
+          "Name": "Sprites/Clouds/00"
+        },
+        {
+          "Name": "Sprites/Clouds/01"
+        },
+        {
+          "Name": "Sprites/Clouds/02"
+        },
+        {
+          "Name": "Sprites/Clouds/03"
+        },
+        {
+          "Name": "Sprites/Clouds/04"
+        },
+        {
+          "Name": "Sprites/Clouds/05"
+        },
+        {
+          "Name": "Sprites/Clouds/06"
+        },
+        {
+          "Name": "Sprites/Clouds/07"
+        },
+        {
+          "Name": "Sprites/Clouds/08"
+        },
+        {
+          "Name": "Sprites/Clouds/09"
+        },
+        {
+          "Name": "Sprites/Clouds/10"
+        },
+        {
+          "Name": "Sprites/Clouds/11"
+        },
+        {
+          "Name": "Sprites/Clouds/12"
+        },
+        {
+          "Name": "Sprites/Clouds/13"
+        },
+        {
+          "Name": "Sprites/Clouds/14"
+        }
+      ],
+      "Weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "SpriteSpeedMovement": {
+      "ExpectedValue": 60.0,
+      "Sigma": 5.0
+    },
+    "RandomDirections": {
+      "PossibleValues": [
+        "1, 1",
+        "1, 0.85",
+        "1, 0.9",
+        "0.9, 1",
+        "0.85, 1",
+        "1, 0.8",
+        "0.8, 1",
+      ],
+      "Weights": [
+        3,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  }
 }
