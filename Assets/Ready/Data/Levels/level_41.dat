@@ -86,7 +86,7 @@
         "Width": 4,
         "Height": 23
       },
-      "MaxEnemiesAtOnce": 1,
+      "MaxEnemiesAtOnce": 2,
       "Enemies": [
         {
           "BlueprintType": "Hunter_mk4",
@@ -421,6 +421,7 @@
         "Width": 15,
         "Height": 30
       },
+      "MaxEnemiesAtOnce": 3,
       "Enemies": [
         {
           "BlueprintType": "FixedCannon_mk4",
@@ -460,6 +461,40 @@
           "TilePosition": {
             "X": 50,
             "Y": 85
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 36,
+            "Y": 99,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 50,
+            "Y": 99,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 36,
+            "Y": 114
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 50,
+            "Y": 114
           },
           "Angle": 0.0
         }
@@ -748,6 +783,24 @@
             "Offset": "-8, -8"
           },
           "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 97,
+            "Y": 132,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 97,
+            "Y": 141,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
         }
       ],
       "Bosses": []
@@ -907,7 +960,7 @@
       "Checkpoint": {
         "Name": "Boss",
         "PlayerPosition": {
-          "X": 63,
+          "X": 73,
           "Y": 73,
           "Offset": "-8, -8"
         },
@@ -922,9 +975,10 @@
       "StartRegion": {
         "X": 28,
         "Y": 52,
-        "Width": 39,
+        "Width": 35,
         "Height": 24
       },
+      "Enemies": [],
       "Bosses": [
         {
           "BlueprintType": "Miniboss_mk41",
@@ -939,8 +993,7 @@
             "80, -160"
           ]
         }
-      ],
-      "Enemies": []
+      ]
     }
   ],
   "FogOfWar": {
