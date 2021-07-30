@@ -22,6 +22,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Boolean diedInvoked = false;
 
         private Single appearancePhaseRemained;
+        private Single bulletsWidth;
+        private Single bulletsHeight;
         private SpriteState appearanceSprite;
 
         internal Boolean IsInAppearancePhase => appearancePhaseRemained > -Math.Constants.Epsilon;
@@ -67,6 +69,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.Behavior = new EnemyBehavior(this, level.Player, startInfo.BehaviorParameters);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
+            this.bulletsHeight = blueprint.BulletsHeight;
+            this.bulletsWidth = blueprint.BulletsWidth;
             
             this.death = new EpicEvent(level, blueprint.DeathEffect, true, this, true);
             this.afterAppearance = new EpicEvent(level, blueprint.AfterAppearanceEffect, true, this, false);
@@ -93,6 +97,20 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 return Behavior.GetPartsToDisplay();
             else
                 return Enumerable.Empty<IDisplayble>();
+        }
+
+        public override Hitbox GetBulletsHitbox()
+        {
+            if (bulletsHeight <= 0 || bulletsWidth <= 0)
+                return base.GetBulletsHitbox();
+            else
+                return new Hitbox
+                {
+                    Bottom = Position.Y - bulletsHeight / 2,
+                    Top = Position.Y + bulletsHeight / 2,
+                    Left = Position.X - bulletsWidth / 2,
+                    Right = Position.X + bulletsWidth / 2
+                };
         }
 
         public override void Update(Single elapsedSeconds)

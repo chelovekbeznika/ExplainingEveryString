@@ -704,6 +704,151 @@
       }
     }
   },
+  "Miniboss_mk41": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 40.0,
+    "Height": 64.0,
+    "Width": 96.0,
+    "BulletsHeight": 48.0,
+    "BulletsWidth": 48.0,
+    "Hitpoints": 400.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/Turtle",
+      "AnimationCycle": 0.666667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/TurtleCannonDeath",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/Turtle",
+        "AnimationCycle": 1.0
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level4X/Appearance/Turtle",
+      "AnimationCycle": 1.0
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/TurtleSwimsUp",
+        "Volume": 0.6
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "maxSpeed": 64.0,
+          "startSpeed": 0.0,
+          "acceleration": 32.0
+        }
+      },
+      "MoveTargetSelectType": "RandomTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.0
+        },
+        "Barrels": [
+          {
+            "Length": 20.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 400.0,
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "0.0, 4.0",
+            "Length": 25.1,
+            "AngleCorrection": 15.57922,
+            "AngleStep": 5.0,
+            "BulletsAtOnce": 7,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "0.0, -4.0",
+            "Length": 25.1,
+            "AngleCorrection": -15.57922,
+            "AngleStep": -5.0,
+            "BulletsAtOnce": 7,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "-1.0, 9.0",
+            "Length": 28.7,
+            "AngleCorrection": 19.24882,
+            "AngleStep": 10.0,
+            "BulletsAtOnce": 3,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 180.0
+              },
+              "HomingSpeed": 10.0,
+              "Damage": 25.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HomingBullet"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "-1.0, -9.0",
+            "Length": 28.7,
+            "AngleCorrection": -19.24882,
+            "AngleStep": -10.0,
+            "BulletsAtOnce": 3,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 210.0
+              },
+              "HomingSpeed": 15.0,
+              "Damage": 25.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HomingBullet"
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level4X/TurtleCannon"
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 0.7
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
   "Horizontal": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 16,
