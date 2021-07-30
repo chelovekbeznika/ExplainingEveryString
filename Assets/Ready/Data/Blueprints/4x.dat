@@ -807,9 +807,9 @@
             "BulletsAtOnce": 3,
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 180.0
+                "speed": 210.0
               },
-              "HomingSpeed": 10.0,
+              "HomingSpeed": 15.0,
               "Damage": 25.0,
               "TimeToLive": 3.0,
               "Sprite": {
