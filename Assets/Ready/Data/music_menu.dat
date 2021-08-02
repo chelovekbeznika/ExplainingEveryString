@@ -14,5 +14,9 @@
   {
     "Sprite": "Sprites/Menu/Songs/Moon",
     "SongName": "moonlight"
+  },
+  {
+    "Sprite": "Sprites/Menu/Songs/AirFarm",
+    "SongName": "rv363"
   }
 ]

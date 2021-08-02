@@ -110,6 +110,9 @@
 #begin Data/Music/rondo_alla_turca.dat
 /copy:Data/Music/rondo_alla_turca.dat
 
+#begin Data/Music/rv363.dat
+/copy:Data/Music/rv363.dat
+
 #begin Data/music_menu.dat
 /copy:Data/music_menu.dat
 
@@ -5845,6 +5848,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Settings/Window.png
+
+#begin Sprites/Menu/Songs/AirFarm.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Songs/AirFarm.png
 
 #begin Sprites/Menu/Songs/BossFight.png
 /importer:TextureImporter
