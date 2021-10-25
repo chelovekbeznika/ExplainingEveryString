@@ -351,12 +351,32 @@
    <property name="Wall" type="bool" value="true"/>
   </properties>
  </tile>
+ <tile id="107">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="108">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
  <tile id="121">
   <properties>
    <property name="Wall" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="122">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="123">
+  <properties>
+   <property name="Wall" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="124">
   <properties>
    <property name="Wall" type="bool" value="true"/>
   </properties>
