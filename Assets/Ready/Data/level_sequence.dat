@@ -82,6 +82,11 @@
       "LevelData": "level_41",
       "ButtonSprite": "Sprites/Menu/LevelSelect/41",
       "LevelsBlockId": "AirFarm"
+    },
+    {
+      "LevelData": "level_42",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/42",
+      "LevelsBlockId": "AirFarm"
     }
   ]
 }

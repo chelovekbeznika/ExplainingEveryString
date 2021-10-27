@@ -1,0 +1,470 @@
+{
+  "Blueprints": [
+    "player",
+    "4x"
+  ],
+  "MusicName": "rv363",
+  "TitleSpriteName": "Sprites/LevelTitles/41",
+  "TileMap": "TileMaps/Level_42",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 35,
+      "Y": 44,
+      "Offset": "-8, 8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "RocketLauncher": 80
+      }
+    }
+  },
+  "EnemyWaves": [
+    {
+      "Doors": [],
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 71,
+            "Y": 44,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level4X/0",
+      "Sprites/FogOfWar/Level4X/1",
+      "Sprites/FogOfWar/Level4X/2",
+      "Sprites/FogOfWar/Level4X/3",
+      "Sprites/FogOfWar/Level4X/4",
+      "Sprites/FogOfWar/Level4X/5",
+      "Sprites/FogOfWar/Level4X/6",
+      "Sprites/FogOfWar/Level4X/7"
+    ],
+    "Weights": [
+      65,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ]
+  },
+  "ObstaclesTilePositions": {
+    "LittleFan": [
+      {
+        "X": 16,
+        "Y": 29,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 32,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 35,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 38,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 41,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 44,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 47,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 50,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 53,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 56,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 16,
+        "Y": 59,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 30,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 34,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 38,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 42,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 46,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 50,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 54,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 58,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 62,
+        "Y": 7,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 30,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 34,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 38,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 42,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 46,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 50,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 54,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 58,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 62,
+        "Y": 81,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 78,
+        "Y": 77,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 80,
+        "Y": 76,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 82,
+        "Y": 75,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 84,
+        "Y": 74,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 86,
+        "Y": 73,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 88,
+        "Y": 72,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 90,
+        "Y": 71,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 92,
+        "Y": 70,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 94,
+        "Y": 69,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 96,
+        "Y": 68,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 96,
+        "Y": 20,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 94,
+        "Y": 19,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 92,
+        "Y": 18,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 90,
+        "Y": 17,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 88,
+        "Y": 16,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 86,
+        "Y": 15,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 84,
+        "Y": 14,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 82,
+        "Y": 13,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 80,
+        "Y": 12,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 78,
+        "Y": 11,
+        "Offset": "-8, -8"
+      }
+    ],
+    "BigFan": [
+      {
+        "X": 115,
+        "Y": 76,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 121,
+        "Y": 78,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 127,
+        "Y": 80,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 133,
+        "Y": 82,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 132,
+        "Y": 6,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 126,
+        "Y": 8,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 120,
+        "Y": 10,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 114,
+        "Y": 12,
+        "Offset": "-8, -8"
+      }
+    ]
+  },
+  "SpriteEmitter": {
+    "Region": {
+      "X": -10,
+      "Y": -10,
+      "Width": 180,
+      "Height": 110
+    },
+    "SpriteLifetime": {
+      "ExpectedValue": 30.0,
+      "Sigma": 5.0
+    },
+    "BetweenSpawns": {
+      "ExpectedValue": 0.1,
+      "Sigma": 0.01333
+    },
+    "RandomSprites": {
+      "PossibleValues": [
+        {
+          "Name": "Sprites/Clouds/00",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/01",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/02",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/03",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/04",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/05",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/06",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/07",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/08",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/09",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/10",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/11",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/12",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/13",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/14",
+          "AnimationCycle": 1.0
+        }
+      ],
+      "Weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "SpriteSpeedMovement": {
+      "ExpectedValue": 90.0,
+      "Sigma": 10.0
+    },
+    "RandomDirections": {
+      "PossibleValues": [
+        "1, -0.1",
+        "1, -0.05",
+        "1, 0",
+        "1, 0.05",
+        "1, 0.1"
+      ],
+      "Weights": [
+        1,
+        1,
+        3,
+        1,
+        1
+      ]
+    }
+  }
+}
