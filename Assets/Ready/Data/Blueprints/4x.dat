@@ -873,6 +873,18 @@
       "AnimationCycle": 0.5
     }
   },
+  "Vertical5": {
+    "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
+    "Height": 80,
+    "Width": 16,
+    "DefaultSprite": {
+      "Name": "Sprites/Doors/Level4X/Vertical5Tiles"
+    },
+    "OpeningSprite": {
+      "Name": "Sprites/Doors/Level4X/Vertical5TilesClosing",
+      "AnimationCycle": 0.5
+    }
+  },
   "LittleFan": {
     "$type": "ExplainingEveryString.Data.Blueprints.ObstacleBlueprint, ExplainingEveryString.Data",
     "Height": 32.0,
