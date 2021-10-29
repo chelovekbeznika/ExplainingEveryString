@@ -568,6 +568,21 @@
       "Bosses": []
     },
     {
+      "Checkpoint": {
+        "Name": "AnotherOne",
+        "PlayerPosition": {
+          "X": 84,
+          "Y": 44,
+          "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "RocketLauncher": 80,
+            "Shotgun": 120,
+            "Homing": 180
+          }
+        }
+      },
       "StartRegion": {
         "X": 81,
         "Y": 25,
@@ -652,22 +667,6 @@
           "TilePosition": {
             "X": 109,
             "Y": 32
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Vertical5",
-          "TilePosition": {
-            "X": 109,
-            "Y": 57
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Vertical5",
-          "TilePosition": {
-            "X": 109,
-            "Y": 62
           },
           "Angle": 0.0
         }
@@ -900,6 +899,7 @@
     {
       "Doors": [
         {
+          "ClosesAt": 8,
           "BlueprintType": "Horizontal",
           "TilePosition": {
             "X": 124,
@@ -909,6 +909,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 8,
           "BlueprintType": "Horizontal",
           "TilePosition": {
             "X": 128,
@@ -918,6 +919,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 8,
           "BlueprintType": "Horizontal",
           "TilePosition": {
             "X": 132,
@@ -927,6 +929,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 8,
           "BlueprintType": "Horizontal",
           "TilePosition": {
             "X": 136,
@@ -936,6 +939,7 @@
           "Angle": 0.0
         },
         {
+          "ClosesAt": 8,
           "BlueprintType": "Horizontal",
           "TilePosition": {
             "X": 140,
@@ -1041,7 +1045,7 @@
           ]
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
             "X": 112,
             "Y": 65,
@@ -1050,7 +1054,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
             "X": 118,
             "Y": 65,
@@ -1059,7 +1063,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
             "X": 124,
             "Y": 65,
@@ -1068,7 +1072,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
             "X": 130,
             "Y": 65,
@@ -1077,7 +1081,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
             "X": 136,
             "Y": 65,
@@ -1086,7 +1090,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
             "X": 142,
             "Y": 65,
@@ -1095,7 +1099,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
             "X": 148,
             "Y": 65,
@@ -1104,31 +1108,240 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
-            "X": 155,
+            "X": 154,
             "Y": 63,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
-            "X": 161,
+            "X": 160,
             "Y": 63,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
         },
         {
-          "BlueprintType": "Hunter_mk4",
+          "BlueprintType": "Mine_mk4",
           "TilePosition": {
-            "X": 167,
+            "X": 166,
             "Y": 63,
             "Offset": "-8, -8"
           },
           "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 109,
+            "Y": 62
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 109,
+            "Y": 57
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 121,
+            "Y": 57
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 121,
+            "Y": 62
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 121,
+            "Y": 67
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 142,
+            "Y": 57
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 142,
+            "Y": 62
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 142,
+            "Y": 67
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 142,
+            "Y": 32
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 142,
+            "Y": 27
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 142,
+            "Y": 22
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 121,
+            "Y": 32
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 121,
+            "Y": 27
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 121,
+            "Y": 22
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 109,
+            "Y": 27
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "Vertical5",
+          "TilePosition": {
+            "X": 109,
+            "Y": 32
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 80,
+            "Y": 48,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 80,
+            "Y": 44,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 80,
+            "Y": 40,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 132,
+          "Y": 44,
+          "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "RocketLauncher": 80,
+            "Shotgun": 120,
+            "Homing": 180
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 122,
+        "Y": 20,
+        "Width": 20,
+        "Height": 21
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 139,
+            "Y": 37,
+            "Offset": "0, -8"
+          },
+          "Angle": 5.0
         }
       ],
       "Bosses": []
