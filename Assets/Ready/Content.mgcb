@@ -476,6 +476,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/Death.wav
 
+#begin Sounds/Player/FiveShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/FiveShot.wav
+
+#begin Sounds/Player/FiveShotReload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/FiveShotReload.wav
+
 #begin Sounds/Player/Hit.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -5168,6 +5180,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/WeaponIcons/Default.png
 
+#begin Sprites/Interface/WeaponIcons/FiveShots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/WeaponIcons/FiveShots.png
+
 #begin Sprites/Interface/WeaponIcons/Homing.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5227,6 +5251,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/Weaponry/ConeEmpty.png
+
+#begin Sprites/Interface/Weaponry/FiveShot.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/Weaponry/FiveShot.png
+
+#begin Sprites/Interface/Weaponry/FiveShotEmpty.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/Weaponry/FiveShotEmpty.png
 
 #begin Sprites/Interface/Weaponry/Homing.png
 /importer:TextureImporter
@@ -6103,6 +6151,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Death.png
+
+#begin Sprites/Player/FiveShots.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/FiveShots.png
+
+#begin Sprites/Player/FiveShotsBullet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/FiveShotsBullet.png
 
 #begin Sprites/Player/Grain.png
 /importer:TextureImporter
