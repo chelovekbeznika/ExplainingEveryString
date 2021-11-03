@@ -67,7 +67,7 @@
         "Reloader": {
           "FireRate": 1.5,
           "Ammo": 6,
-          "ReloadTime": 2.0,
+          "ReloadTime": 1.5,
           "ReloadStartedEffect": {
             "Sound": {
               "Name": "Sounds/Player/ShotgunReload",
@@ -279,7 +279,7 @@
               "TrajectoryParameters": {
                 "speed": 1200.0
               },
-              "Damage": 1.5,
+              "Damage": 1.25,
               "TimeToLive": 3.0,
               "Sprite": {
                 "Name": "Sprites/Player/FiveShotBullet"
@@ -294,7 +294,7 @@
               "TrajectoryParameters": {
                 "speed": 1200.0
               },
-              "Damage": 1.5,
+              "Damage": 1.25,
               "TimeToLive": 3.0,
               "Sprite": {
                 "Name": "Sprites/Player/FiveShotBullet"
@@ -308,7 +308,7 @@
               "TrajectoryParameters": {
                 "speed": 1200.0
               },
-              "Damage": 1.5,
+              "Damage": 1.25,
               "TimeToLive": 3.0,
               "Sprite": {
                 "Name": "Sprites/Player/FiveShotBullet"
@@ -323,7 +323,7 @@
               "TrajectoryParameters": {
                 "speed": 1200.0
               },
-              "Damage": 1.5,
+              "Damage": 1.25,
               "TimeToLive": 3.0,
               "Sprite": {
                 "Name": "Sprites/Player/FiveShotBullet"
@@ -338,7 +338,7 @@
               "TrajectoryParameters": {
                 "speed": 1200.0
               },
-              "Damage": 1.5,
+              "Damage": 1.25,
               "TimeToLive": 3.0,
               "Sprite": {
                 "Name": "Sprites/Player/FiveShotBullet"
