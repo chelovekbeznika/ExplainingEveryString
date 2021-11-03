@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const Int32 betweenIcons = 8;
         private const Int32 pixelsFromRight = 32;
         private const Int32 pixelsFromTop = 32;
-        private readonly IReadOnlyList<String> ExistingWeapons = new[] { "Default", "Shotgun", "RocketLauncher", "Cone", "Homing" };
+        private readonly IReadOnlyList<String> ExistingWeapons = new[] { "Default", "Shotgun", "RocketLauncher", "Cone", "Homing", "FiveShot" };
         private const string Border = @"WeaponIcons/Border";
 
         private Dictionary<String, SpriteData> iconsSprites;

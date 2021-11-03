@@ -77,6 +77,10 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Player/FiveShot",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Player/Rocket",
       "AnimationFrames": 5
     },
@@ -87,6 +91,10 @@
     {
       "Name": "Sprites/Player/ConeSparkle",
       "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Player/FiveShotBullet",
+      "AnimationFrames": 2
     },
     {
       "Name": "Sprites/Player/Refresh",

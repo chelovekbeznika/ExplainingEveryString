@@ -98,7 +98,8 @@ namespace ExplainingEveryString.Core
             {
                 { "Shotgun", new ShotgunDisplayer(interfaceSpritesDisplayer) },
                 { "Homing", new HomingDisplayer(interfaceSpritesDisplayer) },
-                { "Cone", new ConeDisplayer(interfaceSpritesDisplayer) }
+                { "Cone", new ConeDisplayer(interfaceSpritesDisplayer) },
+                { "FiveShot", new FiveShotDisplayer(interfaceSpritesDisplayer) }
             };
 
             return new IDisplayer[]

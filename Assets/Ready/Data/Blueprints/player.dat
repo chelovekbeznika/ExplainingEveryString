@@ -216,7 +216,7 @@
         },
         "AimType": "ControlledByPlayer"
       },
-       {
+      {
         "Name": "Homing",
         "Reloader": {
           "FireRate": 3.0,
@@ -253,6 +253,107 @@
         },
         "AimType": "ControlledByPlayer"
       },
+      {
+        "Name": "FiveShot",
+        "Reloader": {
+          "FireRate": 12.0,
+          "Ammo": 8,
+          "ReloadTime": 0.3333,
+          "ReloadStartedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/FiveShotReload",
+              "Volume": 0.5
+            }
+          }
+        },
+        "Sprite": {
+          "Name": "Sprites/Player/FiveShot",
+          "AnimationCycle": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 0.0,
+            "MuzzleOffset": "10,6",
+            "AngleCorrection": -15.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 1200.0
+              },
+              "Damage": 1.5,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Player/FiveShotBullet"
+              }
+            }
+          },
+          {
+            "Length": 0.0,
+            "MuzzleOffset": "12,3",
+            "AngleCorrection": -7.5,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 1200.0
+              },
+              "Damage": 1.5,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Player/FiveShotBullet"
+              }
+            }
+          },
+          {
+            "Length": 0.0,
+            "MuzzleOffset": "14,0",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 1200.0
+              },
+              "Damage": 1.5,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Player/FiveShotBullet"
+              }
+            }
+          },
+          {
+            "Length": 0.0,
+            "MuzzleOffset": "12,-3",
+            "AngleCorrection": 7.5,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 1200.0
+              },
+              "Damage": 1.5,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Player/FiveShotBullet"
+              }
+            }
+          },
+          {
+            "Length": 0.0,
+            "MuzzleOffset": "10,-6",
+            "AngleCorrection": 15.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 1200.0
+              },
+              "Damage": 1.5,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Player/FiveShotBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Player/FiveShot",
+            "Volume": 0.2
+          }
+        },
+        "AimType": "ControlledByPlayer"
+      }
     ],
     "Height": 32.0,
     "Width": 32.0,

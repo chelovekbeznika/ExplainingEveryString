@@ -405,7 +405,8 @@
           "AvailableWeapons": {
             "RocketLauncher": 80,
             "Shotgun": 120,
-            "Homing": 180
+            "Homing": 180,
+            "FiveShot": 240
           }
         }
       },
@@ -579,7 +580,8 @@
           "AvailableWeapons": {
             "RocketLauncher": 80,
             "Shotgun": 120,
-            "Homing": 180
+            "Homing": 180,
+            "FiveShot": 240
           }
         }
       },
@@ -793,7 +795,8 @@
           "AvailableWeapons": {
             "RocketLauncher": 80,
             "Shotgun": 120,
-            "Homing": 180
+            "Homing": 180,
+            "FiveShot": 240
           }
         }
       },
@@ -1323,7 +1326,8 @@
           "AvailableWeapons": {
             "RocketLauncher": 80,
             "Shotgun": 120,
-            "Homing": 180
+            "Homing": 180,
+            "FiveShot": 240
           }
         }
       },

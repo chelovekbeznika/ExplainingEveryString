@@ -5180,7 +5180,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/WeaponIcons/Default.png
 
-#begin Sprites/Interface/WeaponIcons/FiveShots.png
+#begin Sprites/Interface/WeaponIcons/FiveShot.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -5190,7 +5190,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Interface/WeaponIcons/FiveShots.png
+/build:Sprites/Interface/WeaponIcons/FiveShot.png
 
 #begin Sprites/Interface/WeaponIcons/Homing.png
 /importer:TextureImporter
@@ -6152,7 +6152,7 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Death.png
 
-#begin Sprites/Player/FiveShots.png
+#begin Sprites/Player/FiveShot.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -6162,9 +6162,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Player/FiveShots.png
+/build:Sprites/Player/FiveShot.png
 
-#begin Sprites/Player/FiveShotsBullet.png
+#begin Sprites/Player/FiveShotBullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -6174,7 +6174,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Sprites/Player/FiveShotsBullet.png
+/build:Sprites/Player/FiveShotBullet.png
 
 #begin Sprites/Player/Grain.png
 /importer:TextureImporter
