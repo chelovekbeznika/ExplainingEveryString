@@ -290,6 +290,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/TurtleCannonDeath.wav
 
+#begin Sounds/Bosses/TurtleFire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/TurtleFire.wav
+
+#begin Sounds/Bosses/TurtleFlies.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/TurtleFlies.wav
+
 #begin Sounds/Bosses/TurtleSwimsUp.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -3488,6 +3500,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level3X/WhiteBrickTankCannonAngry.png
 
+#begin Sprites/Enemies/Level4X/Appearance/FlyingTurtle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/Appearance/FlyingTurtle.png
+
 #begin Sprites/Enemies/Level4X/Appearance/MineSpawner.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3583,6 +3607,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/Death/FixedCannon.png
+
+#begin Sprites/Enemies/Level4X/Death/FlyingTurtle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/Death/FlyingTurtle.png
 
 #begin Sprites/Enemies/Level4X/Death/Hunter.png
 /importer:TextureImporter
@@ -3703,6 +3739,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/FixedCannonTeleport.png
+
+#begin Sprites/Enemies/Level4X/FlyingTurtle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/FlyingTurtle.png
 
 #begin Sprites/Enemies/Level4X/Hunter.png
 /importer:TextureImporter
@@ -3836,6 +3884,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/Turtle.png
 
+#begin Sprites/Enemies/Level4X/TurtleBlade.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/TurtleBlade.png
+
 #begin Sprites/Enemies/Level4X/TurtleCannon.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3847,6 +3907,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/TurtleCannon.png
+
+#begin Sprites/Enemies/Level4X/TurtleFire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/TurtleFire.png
 
 #begin Sprites/Enemies/Level4X/WallCannon.png
 /importer:TextureImporter
