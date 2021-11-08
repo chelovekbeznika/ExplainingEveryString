@@ -65,7 +65,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private Vector2 GetMuzzleOffset()
         {
-            var direction = GetFireDirection(false);
+            var direction = aimer.GetFireDirection();
             return GeometryHelper.RotateVector(muzzleOffset, direction.Y, direction.X);
         }
 

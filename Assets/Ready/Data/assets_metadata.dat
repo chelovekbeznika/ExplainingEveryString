@@ -935,6 +935,10 @@
       "AnimationFrames": 2
     },
     {
+      "Name": "Sprites/Enemies/Level4X/TurtleBlade",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Doors/Level4X/Horizontal4Tiles",
       "AnimationFrames": 6
     },

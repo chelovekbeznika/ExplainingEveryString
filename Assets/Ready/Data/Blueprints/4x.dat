@@ -706,7 +706,7 @@
   },
   "Miniboss_mk41": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
-    "CollisionDamage": 40.0,
+    "CollisionDamage": 100.0,
     "Height": 64.0,
     "Width": 96.0,
     "BulletsHeight": 48.0,
@@ -846,6 +846,140 @@
           }
         },
         "AimType": "AimAtPlayer"
+      }
+    }
+  },
+  "Miniboss_mk42": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 96.0,
+    "Width": 64.0,
+    "Hitpoints": 650.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/FlyingTurtle",
+      "AnimationCycle": 0.2
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/TurtleFlies",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/FlyingTurtle",
+        "AnimationCycle": 1.0
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level4X/Appearance/FlyingTurtle",
+      "AnimationCycle": 1.0
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/TurtleFlies",
+        "Volume": 0.6
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 128.0
+        }
+      },
+      "MoveTargetSelectType": "RandomTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "MuzzleOffset": "58.0,0.0",
+            "AngleCorrection": -135.0,
+            "AngleStep": 15.0,
+            "BulletsAtOnce": 19,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0,
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "ConsiderAngle": true,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/TurtleFire"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "50.0,32.0",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "HomingSpeed": 15.0,
+              "Damage": 20.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/TurtleBlade",
+                "AnimationCycle": 0.2
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "50.0,-32.0",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0
+              },
+              "HomingSpeed": 15.0,
+              "Damage": 20.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/TurtleBlade",
+                "AnimationCycle": 0.2
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "-50.0,-32.0",
+            "AngleCorrection": -15.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 450.0
+              },
+              "HomingSpeed": 25.0,
+              "Damage": 20.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/TurtleBlade",
+                "AnimationCycle": 0.2
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "-50.0,32.0",
+            "AngleCorrection": 15.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 450.0
+              },
+              "HomingSpeed": 25.0,
+              "Damage": 20.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/TurtleBlade",
+                "AnimationCycle": 0.2
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/TurtleFire",
+            "Volume": 0.7
+          }
+        },
+        "AimType": "FixedFireDirection"
       }
     }
   },
