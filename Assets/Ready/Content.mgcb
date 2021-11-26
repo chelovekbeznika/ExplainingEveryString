@@ -10,7 +10,11 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:..\Build\PipelineImporters\MonoGame.Extended.Content.Pipeline.dll
+/reference:c:\users\chelovekbeznika\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Content.Pipeline.dll
+/reference:c:\users\chelovekbeznika\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.dll
+/reference:c:\users\chelovekbeznika\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Graphics.dll
+/reference:c:\users\chelovekbeznika\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Tiled.dll
+/reference:c:\users\chelovekbeznika\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\Newtonsoft.Json.dll
 
 #---------------------------------- Content ---------------------------------#
 
