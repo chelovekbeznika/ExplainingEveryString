@@ -173,7 +173,7 @@
  </tile>
  <tile id="53" probability="83">
   <properties>
-   <property name="Pit" type="bool" value="true"/>
+   <property name="Pit" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="56">
