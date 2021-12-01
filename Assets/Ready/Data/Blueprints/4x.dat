@@ -704,6 +704,77 @@
       }
     }
   },
+  "Helicopter": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 40.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 25.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "LinearWithStops",
+        "Parameters": {
+          "speed": 750.0,
+          "stopTime": 3.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 15.0,
+          "Ammo": 7,
+          "ReloadTime": 2.5
+        },
+        "Barrels": [
+          {
+            "Accuracy": 5.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.3
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/Helicopter",
+      "AnimationCycle": 0.166667
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/SmallExplosion",
+        "Volume": 0.5
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/Helicopter",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/StandardEnemy/Appearance",
+        "Volume": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Appearance/32_32",
+      "AnimationCycle": 0.15
+    },
+    "DefaultAppearancePhaseDuration": 0.5
+  },
   "Miniboss_mk41": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 100.0,

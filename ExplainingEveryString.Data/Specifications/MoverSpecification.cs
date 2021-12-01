@@ -19,6 +19,7 @@ namespace ExplainingEveryString.Data.Specifications
     {
         StayingStill,
         Linear,
+        LinearWithStops,
         Acceleration,
         Teleportation,
         Axis

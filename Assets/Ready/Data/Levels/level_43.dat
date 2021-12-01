@@ -1,0 +1,743 @@
+{
+  "Blueprints": [
+    "player",
+    "4x"
+  ],
+  "MusicName": "rv363",
+  "TitleSpriteName": "Sprites/LevelTitles/42",
+  "TileMap": "TileMaps/Level_43",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 40,
+      "Y": 39,
+      "Offset": "-8, -8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "RocketLauncher": 80,
+        "Shotgun": 120
+      }
+    }
+  },
+  "EnemyWaves": [
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 80,
+            "Y": 39,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 46,
+        "Y": 30,
+        "Width": 34,
+        "Height": 20
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 35,
+            "Y": 27
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 35,
+            "Y": 52
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 27,
+            "Y": 44
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 27,
+            "Y": 35
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk4",
+          "TilePosition": {
+            "X": 70,
+            "Y": 39,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "AppearancePhaseDuration": 1.5
+        },
+        {
+          "BlueprintType": "Mine_mk4",
+          "TilePosition": {
+            "X": 67,
+            "Y": 39
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk4",
+          "TilePosition": {
+            "X": 67,
+            "Y": 40
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk4",
+          "TilePosition": {
+            "X": 67,
+            "Y": 38,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk4",
+          "TilePosition": {
+            "X": 67,
+            "Y": 41,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk4",
+          "TilePosition": {
+            "X": 66,
+            "Y": 37
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk4",
+          "TilePosition": {
+            "X": 66,
+            "Y": 42
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 98,
+            "Y": 50,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 102,
+            "Y": 50,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 59,
+            "Y": 37,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 59,
+            "Y": 41,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 82,
+        "Y": 38,
+        "Width": 28,
+        "Height": 12
+      },
+      "MaxEnemiesAtOnce": 3,
+      "Enemies": [
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 70,
+            "Y": 30,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, -288",
+            "240, -288",
+            "480, -288",
+            "480, 0",
+            "240, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 99,
+            "Y": 32,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, -224",
+            "-224, -224",
+            "-432, -224",
+            "-432, 0",
+            "-224, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 112,
+            "Y": 27,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, -192",
+            "0, -368",
+            "0, -192",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 85,
+            "Y": 27,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, -192",
+            "0, -368",
+            "0, -192",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 112,
+            "Y": 30,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-192, 0",
+            "-432, 0",
+            "-672, 0",
+            "-864, 0",
+            "-672, 0",
+            "-432, 0",
+            "-192, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 112,
+            "Y": 48,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-192, 0",
+            "-432, 0",
+            "-672, 0",
+            "-864, 0",
+            "-672, 0",
+            "-432, 0",
+            "-192, 0",
+            "0, 0"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 123,
+            "Y": 59,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 137,
+            "Y": 59,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 90,
+        "Y": 63,
+        "Width": 50,
+        "Height": 17
+      },
+      "MaxEnemiesAtOnce": 4,
+      "Enemies": [
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 111,
+            "Y": 60,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "128, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 111,
+            "Y": 78,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "128, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 111,
+            "Y": 72,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "128, 96",
+            "128, 0",
+            "0, 96",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 127,
+            "Y": 66,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "96, -96",
+            "96, 0",
+            "0, -96",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 90,
+            "Y": 60
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 90,
+            "Y": 79
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 91,
+            "Y": 76
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 91,
+            "Y": 64
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 92,
+            "Y": 72
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 92,
+            "Y": 67
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 130,
+            "Y": 80,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 119,
+            "Y": 63,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 119,
+            "Y": 75,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 98,
+            "Y": 59,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 2,
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 102,
+            "Y": 59,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 123,
+        "Y": 30,
+        "Width": 17,
+        "Height": 50
+      },
+      "MaxEnemiesAtOnce": 6,
+      "Enemies": [
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 123,
+            "Y": 32,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "224, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 137,
+            "Y": 35,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-224, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 123,
+            "Y": 38,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "224, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 137,
+            "Y": 40,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-224, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 123,
+            "Y": 43,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "224, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 137,
+            "Y": 46,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-224, 0",
+            "0, 0"
+          ]
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 127,
+            "Y": 67
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 132,
+            "Y": 67
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 132,
+            "Y": 72
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 127,
+            "Y": 72
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level4X/0",
+      "Sprites/FogOfWar/Level4X/1",
+      "Sprites/FogOfWar/Level4X/2",
+      "Sprites/FogOfWar/Level4X/3",
+      "Sprites/FogOfWar/Level4X/4",
+      "Sprites/FogOfWar/Level4X/5",
+      "Sprites/FogOfWar/Level4X/6",
+      "Sprites/FogOfWar/Level4X/7"
+    ],
+    "Weights": [
+      30,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ]
+  },
+  "ObstaclesTilePositions": {},
+  "SpriteEmitter": {
+    "Region": {
+      "X": -20,
+      "Y": -20,
+      "Width": 210,
+      "Height": 210
+    },
+    "SpriteLifetime": {
+      "ExpectedValue": 30.0,
+      "Sigma": 5.0
+    },
+    "BetweenSpawns": {
+      "ExpectedValue": 0.1,
+      "Sigma": 0.01333
+    },
+    "RandomSprites": {
+      "PossibleValues": [
+        {
+          "Name": "Sprites/Clouds/00",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/01",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/02",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/03",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/04",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/05",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/06",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/07",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/08",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/09",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/10",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/11",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/12",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/13",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/14",
+          "AnimationCycle": 1.0
+        }
+      ],
+      "Weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "SpriteSpeedMovement": {
+      "ExpectedValue": 90.0,
+      "Sigma": 10.0
+    },
+    "RandomDirections": {
+      "PossibleValues": [
+        "1, -0.1",
+        "1, -0.05",
+        "1, 0",
+        "1, 0.05",
+        "1, 0.1"
+      ],
+      "Weights": [
+        1,
+        1,
+        3,
+        1,
+        1
+      ]
+    }
+  }
+}

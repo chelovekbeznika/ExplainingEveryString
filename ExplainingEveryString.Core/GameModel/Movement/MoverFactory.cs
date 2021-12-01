@@ -20,6 +20,10 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                 case MoveType.Linear:
                     var speed = specification.Parameters["speed"];
                     return new LinearMover(speed);
+                case MoveType.LinearWithStops:
+                    var speedBetweenStops = specification.Parameters["speed"];
+                    var stopTime = specification.Parameters["stopTime"];
+                    return new LinearWithStopsMover(speedBetweenStops, stopTime);
                 case MoveType.Acceleration:
                     var maxSpeed = specification.Parameters["maxSpeed"];
                     var startSpeed = specification.Parameters["startSpeed"];

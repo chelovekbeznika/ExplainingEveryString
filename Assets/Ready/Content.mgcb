@@ -99,6 +99,9 @@
 #begin Data/Levels/level_42.dat
 /copy:Data/Levels/level_42.dat
 
+#begin Data/Levels/level_43.dat
+/copy:Data/Levels/level_43.dat
+
 #begin Data/Music/christmas_tree_was_born_in_forest.dat
 /copy:Data/Music/christmas_tree_was_born_in_forest.dat
 
@@ -3624,6 +3627,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/Death/FlyingTurtle.png
 
+#begin Sprites/Enemies/Level4X/Death/Helicopter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/Death/Helicopter.png
+
 #begin Sprites/Enemies/Level4X/Death/Hunter.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3755,6 +3770,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/FlyingTurtle.png
+
+#begin Sprites/Enemies/Level4X/Helicopter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level4X/Helicopter.png
 
 #begin Sprites/Enemies/Level4X/Hunter.png
 /importer:TextureImporter

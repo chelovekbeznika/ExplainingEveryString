@@ -887,6 +887,10 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Level4X/Death/Helicopter",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/Level4X/CannonRocket",
       "AnimationFrames": 5
     },
@@ -921,6 +925,10 @@
     {
       "Name": "Sprites/Enemies/Level4X/WallCannon",
       "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Helicopter",
+      "AnimationFrames": 3
     },
     {
       "Name": "Sprites/Enemies/Level4X/Turtle",

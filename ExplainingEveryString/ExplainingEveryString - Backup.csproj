@@ -27,9 +27,6 @@
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-  <ItemGroup>
     <None Update="app.manifest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -53,6 +50,6 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="dotnet test $(SolutionDir)ExplainingEveryString.Core.Tests\ExplainingEveryString.Core.Tests.csproj&#xD;&#xA;mgcb $(SolutionDir)Assets\Ready\Content.mgcb /config:$(ConfigurationName) /workingDir:$(SolutionDir)\Assets\Ready /outputDir:$(SolutionDir)\Build\$(ConfigurationName)\Content" />
+    <Exec Command="mgcb $(SolutionDir)Assets\Ready\Content.mgcb /config:$(ConfigurationName) " />
   </Target>
 </Project>
