@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Core.Collisions
 {
     internal class CollisionsController
     {
+        private readonly String[] stoppedByPitsCollidableTags = new[] { "Tank" };
         private ActiveActorsStorage activeObjects;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
         private Dictionary<ITouchableByBullets, Single> blastWaveVictims = new Dictionary<ITouchableByBullets, Single>();
@@ -61,7 +62,10 @@ namespace ExplainingEveryString.Core.Collisions
                     stoppedEnemies.Add(movingEnemy);
                 }
                 else
-                    AdjustObjectToWalls(movingEnemy, true, null, null);             
+                {
+                    var ridesThroughWalls = !stoppedByPitsCollidableTags.Contains(movingEnemy.CollideTag);
+                    AdjustObjectToWalls(movingEnemy, ridesThroughWalls, null, null);
+                }                
             }
         }
 
