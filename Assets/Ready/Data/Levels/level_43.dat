@@ -669,7 +669,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "SpreadTank",
+          "BlueprintType": "Tank_mk4",
           "TilePosition": {
             "X": 136,
             "Y": 135,
@@ -696,7 +696,7 @@
           "Angle": 0.0
         },
         {
-          "BlueprintType": "SpreadTank",
+          "BlueprintType": "Tank_mk4",
           "TilePosition": {
             "X": 123,
             "Y": 114,
@@ -934,6 +934,499 @@
         }
       ],
       "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 98,
+            "Y": 119,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 102,
+            "Y": 119,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 59,
+            "Y": 127,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 59,
+            "Y": 131,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Second",
+        "PlayerPosition": {
+          "X": 99,
+          "Y": 114,
+          "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 120,
+            "RocketLauncher": 50,
+            "Homing": 300,
+            "FiveShot": 300
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 60,
+        "Y": 128,
+        "Width": 50,
+        "Height": 12
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "WallCannon",
+          "TilePosition": {
+            "X": 107,
+            "Y": 129,
+            "Offset": "-8, -8"
+          },
+          "Angle": 180.0,
+          "TrajectoryParameters": [
+            "0, 128",
+            "0, -128"
+          ]
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 78,
+            "Y": 129,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 73,
+            "Y": 123,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 73,
+            "Y": 135,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk4",
+          "TilePosition": {
+            "X": 76,
+            "Y": 126,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk4",
+          "TilePosition": {
+            "X": 76,
+            "Y": 132,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 119,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 80,
+            "Y": 129,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 30,
+        "Y": 120,
+        "Width": 38,
+        "Height": 20
+      },
+      "MaxEnemiesAtOnce": 4,
+      "Enemies": [
+        {
+          "BlueprintType": "SpreadTank",
+          "TilePosition": {
+            "X": 60,
+            "Y": 109,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SpreadTank",
+          "TilePosition": {
+            "X": 80,
+            "Y": 109,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 54,
+            "Y": 121,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 43,
+            "Y": 126
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 43,
+            "Y": 133
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk4",
+          "TilePosition": {
+            "X": 54,
+            "Y": 137,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk4",
+          "TilePosition": {
+            "X": 66,
+            "Y": 109,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk4",
+          "TilePosition": {
+            "X": 74,
+            "Y": 109,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 89,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 8,
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 110,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 30,
+        "Y": 90,
+        "Width": 28,
+        "Height": 15
+      },
+      "MaxEnemiesAtOnce": 5,
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 26,
+            "Y": 93
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 26,
+            "Y": 105,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk4",
+          "TilePosition": {
+            "X": 55,
+            "Y": 99,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk4",
+          "TilePosition": {
+            "X": 52,
+            "Y": 95,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk4",
+          "TilePosition": {
+            "X": 52,
+            "Y": 103,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 57,
+            "Y": 69,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 57,
+            "Y": 99,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Horizontal",
+          "TilePosition": {
+            "X": 40,
+            "Y": 80,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 30,
+        "Y": 60,
+        "Width": 26,
+        "Height": 17
+      },
+      "MaxEnemiesAtOnce": 4,
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk4",
+          "TilePosition": {
+            "X": 26,
+            "Y": 77,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk4",
+          "TilePosition": {
+            "X": 50,
+            "Y": 55,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk4",
+          "TilePosition": {
+            "X": 26,
+            "Y": 69,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk4",
+          "TilePosition": {
+            "X": 42,
+            "Y": 55,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 26,
+            "Y": 65,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-32, 96",
+            "-32, -32",
+            "32, 96",
+            "32, -32"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 38,
+            "Y": 55,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-96, 32",
+            "-96, -32",
+            "32, 32",
+            "32, -32"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 26,
+            "Y": 61,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-32, -32",
+            "-32, 96",
+            "32, -32",
+            "32, 96"
+          ]
+        },
+        {
+          "BlueprintType": "Helicopter",
+          "TilePosition": {
+            "X": 34,
+            "Y": 55,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-96, 32",
+            "-96, -32",
+            "32, 32",
+            "32, -32"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 57,
+            "Y": 69,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "Vertical",
+          "TilePosition": {
+            "X": 57,
+            "Y": 99,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 56,
+          "Y": 69,
+          "Offset": "8, -8"
+        }
+      },
+      "StartRegion": {
+        "X": 64,
+        "Y": 58,
+        "Width": 18,
+        "Height": 54
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk4",
+          "TilePosition": {
+            "X": 71,
+            "Y": 83,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
     }
   ],
   "FogOfWar": {
@@ -960,7 +1453,40 @@
       10
     ]
   },
-  "ObstaclesTilePositions": {},
+  "ObstaclesTilePositions": {
+    "LittleFan": [
+      {
+        "X": 109,
+        "Y": 120,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 109,
+        "Y": 138,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 109,
+        "Y": 123,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 109,
+        "Y": 127,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 109,
+        "Y": 131,
+        "Offset": "-8, -8"
+      },
+      {
+        "X": 109,
+        "Y": 135,
+        "Offset": "-8, -8"
+      }
+    ]
+  },
   "SpriteEmitter": {
     "Region": {
       "X": -20,
