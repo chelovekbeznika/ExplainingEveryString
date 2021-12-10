@@ -843,6 +843,14 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Level4X/Appearance/TurtleCannon",
+      "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Appearance/LittleTurtle",
+      "AnimationFrames": 9
+    },
+    {
       "Name": "Sprites/Enemies/Level4X/Death/Cannon",
       "AnimationFrames": 8
     },
@@ -889,6 +897,14 @@
     {
       "Name": "Sprites/Enemies/Level4X/Death/Helicopter",
       "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/TurtleCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level4X/Death/LittleTurtle",
+      "AnimationFrames": 9
     },
     {
       "Name": "Sprites/Enemies/Level4X/CannonRocket",
