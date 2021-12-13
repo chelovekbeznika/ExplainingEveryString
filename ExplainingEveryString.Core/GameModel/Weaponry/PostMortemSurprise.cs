@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Barrel[] barrels;
 
         private Int32 howMuchToSpawn;
-        private String avengerType;
+        private Queue<String> avengerTypes;
         private ISpawnPositionSelector positionSelector;
         private ActorsFactory factory;
         private IMovableCollidable shooter;
@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal List<IEnemy> Avengers { get; private set; }
         private Boolean FiresWeapon => barrels != null;
-        private Boolean SpawnsEnemies => avengerType != null;
+        private Boolean SpawnsEnemies => avengerTypes != null;
 
         internal PostMortemSurprise(PostMortemSurpriseSpecification specification, IMovableCollidable shooter, 
             Player player, Level level, ActorsFactory factory)
@@ -52,7 +52,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private void InitializeSpawn(PostMortemSpawnSpecificaton specification)
         {
             howMuchToSpawn = specification.AvengersAmount;
-            avengerType = specification.AvengersType;
+            avengerTypes = new Queue<String>(specification.AvengersType.Split(','));
             positionSelector = SpawnPositionSelectorsFactory.Get(specification.PositionSelector, null);
         }
 
@@ -80,12 +80,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private void SpawnAvengers()
         {
             Avengers = new List<IEnemy>();
-            foreach (var index in Enumerable.Range(0, howMuchToSpawn))
+            foreach (var _ in Enumerable.Range(0, howMuchToSpawn))
             {
                 var spawnSpecification = positionSelector.GetNextSpawnSpecification();
                 var asi = new ActorStartInfo
                 {
-                    BlueprintType = avengerType,
+                    BlueprintType = avengerTypes.Peek(),
                     Position = spawnSpecification.SpawnPoint + shooter.Position,
                     BehaviorParameters = new BehaviorParameters
                     {
@@ -95,6 +95,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 };
                 var enemy = factory.ConstructEnemy(asi);
                 Avengers.Add(enemy);
+
+                avengerTypes.Enqueue(avengerTypes.Dequeue());
             }
         }
 

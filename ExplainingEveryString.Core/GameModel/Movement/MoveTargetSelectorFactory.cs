@@ -21,6 +21,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                     return new RandomFromListTargetsSelector(parameters, actorLocator());
                 case MoveTargetSelectType.MoveTowardPlayer:
                     return new PlayerHunter(playerLocator);
+                case MoveTargetSelectType.MoveByPlayerTracks:
+                    return new PlayerTracker(playerLocator);
                 case MoveTargetSelectType.RandomTargets:
                     return new RandomFlight(actor, parameters[0], parameters[1]);
                 default:

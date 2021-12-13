@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Data.Specifications
         TargetsList,
         RandomTargets,
         RandomFromListTargets,
-        MoveTowardPlayer
+        MoveTowardPlayer,
+        MoveByPlayerTracks
     }
 }
