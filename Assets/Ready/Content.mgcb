@@ -261,6 +261,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/LaserRocketBlast.wav
 
+#begin Sounds/Bosses/LittleTurtleDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/LittleTurtleDeath.wav
+
 #begin Sounds/Bosses/MudBrickBlast.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -272,6 +278,18 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Bosses/SmallBrother.wav
+
+#begin Sounds/Bosses/StationaryTurtleIn.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/StationaryTurtleIn.wav
+
+#begin Sounds/Bosses/StationaryTurtleOut.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/StationaryTurtleOut.wav
 
 #begin Sounds/Bosses/SwanDyingScream.wav
 /importer:WavImporter
@@ -296,6 +314,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Bosses/TurtleCannonDeath.wav
+
+#begin Sounds/Bosses/TurtleEggCracked.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/TurtleEggCracked.wav
 
 #begin Sounds/Bosses/TurtleFire.wav
 /importer:WavImporter
