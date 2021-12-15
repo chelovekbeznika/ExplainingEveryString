@@ -10,10 +10,10 @@ Also you need to install some dotnet instruments with these commands
 
 `dotnet tool install --global dotnet-mgcb-editor`
 
-WARNING!
-There are one thing to do before building solution in VS Studio. Thing is I'm using Monogame.Extended.Content.Pipeline to build tilemaps. And mgcb should find some additional DLLs. Tragedy here - there are lying in nuget cache. And this cache lying in `C:\Users\[User]\.nuget\packages` folder. That means - you should open with text editor file `Assets\Ready\Content.mgcb`, find "References" section and replace "chelovekbeznika" with your username before building it with VS. If you know some workaround which will allow everyone else just built it away without editing content.mgcb contact me, please.
-
 Now, after this you can open your VS studio solution and build solution. It should find, build and copy assets in postbuild of ExplainingEveryString project.
+
+WARNING!
+If you updating Monogame.Extended.Content.Pipeline you should find pipeline extensions DLLs in folder `C:\Users\[User]\.nuget\packages\monogame.extended.content.pipeline\[Version]\tools\` and copy them to "PipelineExtension" folder in solution. mgcb-editor should be able to find them and this is easiest way to ensure it.
 
 # How to add/edit sprite
 1. Draw it in aserprite and save in Raw/Sprites in appropriate subfolder or edit existing folder
