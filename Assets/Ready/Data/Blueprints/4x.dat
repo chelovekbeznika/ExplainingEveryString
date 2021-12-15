@@ -1054,12 +1054,95 @@
       }
     }
   },
+  "Miniboss_mk43": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 128,
+    "Width": 96,
+    "Hitpoints": 150.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level4X/TurtleBase"
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/StationaryTurtleIn",
+        "Volume": 0.6
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level4X/Appearance/TurtleCannon",
+      "AnimationCycle": 0.75
+    },
+    "DefaultAppearancePhaseDuration": 0.75,
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/StationaryTurtleOut",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level4X/Death/TurtleCannon",
+        "AnimationCycle": 0.25
+      }
+    },
+    "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.75
+        },
+        "Barrels": [
+          {
+            "Length": 57.0,
+            "AngleStep": 7.5,
+            "AngleCorrection": -30.0,
+            "BulletsAtOnce": 9,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "HomingSpeed": 25.0,
+              "Damage": 20.0,
+              "TimeToLive": 3.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level4X/TurtleBlade",
+                "AnimationCycle": 0.15
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/TurtleFire",
+            "Volume": 0.7
+          }
+        },
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level4X/Turtle",
+          "AnimationCycle": 1.5
+        },
+        "AimType": "AimAtPlayer"
+      },
+      "PostMortemSurprise": {
+        "Spawn": {
+          "AvengersAmount": 3,
+          "AvengersType": "SlowLittleTurtle,FastLittleTurtle,LittleTurtle",
+          "PositionSelector" : {
+            "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+            "SpawnPositions": [
+              "-13.0,15.0",
+              "13.0,15.0",
+              "0.0,-18.0"
+            ]
+          }
+        }
+      }
+    }
+  },
   "LittleTurtle": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 100.0,
     "Height": 32.0,
     "Width": 32.0,
-    "Hitpoints": 300.0,
+    "Hitpoints": 200.0,
     "Behavior": {
       "Mover": {
         "Type": "LinearWithStops",
@@ -1076,43 +1159,33 @@
         "Barrels": [
           {
             "Length": 16.0,
-            "AngleCorrection": -22.5,
+            "AngleCorrection": -11.25,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 400.0
               },
               "Damage": 10.0,
               "TimeToLive": 5.0,
+              "ConsiderAngle": true,
               "Sprite": {
-                "Name": "Sprites/Enemies/HelicopterBullet"
+                "Name": "Sprites/Enemies/Level4X/TurtleFire",
+                "AnimationCycle": 0.15
               }
             }
           },
           {
             "Length": 16.0,
-            "AngleCorrection": 22.5,
+            "AngleCorrection": 11.25,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 400.0
               },
               "Damage": 10.0,
               "TimeToLive": 5.0,
+              "ConsiderAngle": true,
               "Sprite": {
-                "Name": "Sprites/Enemies/HelicopterBullet"
-              }
-            }
-          },
-          {
-            "Length": 16.0,
-            "Accuracy": 45.0,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 400.0
-              },
-              "Damage": 25.0,
-              "TimeToLive": 5.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
+                "Name": "Sprites/Enemies/Level4X/TurtleFire",
+                "AnimationCycle": 0.15
               }
             }
           }
@@ -1156,7 +1229,7 @@
     "CollisionDamage": 100.0,
     "Height": 32.0,
     "Width": 32.0,
-    "Hitpoints": 300.0,
+    "Hitpoints": 200.0,
     "Behavior": {
       "Mover": {
         "Type": "LinearWithStops",
@@ -1181,8 +1254,10 @@
               },
               "Damage": 2.5,
               "TimeToLive": 0.125,
+              "ConsiderAngle": true,
               "Sprite": {
-                "Name": "Sprites/Enemies/Level4X/HunterGrain"
+                "Name": "Sprites/Enemies/Level4X/TurtleFire",
+                "AnimationCycle": 0.15
               }
             }
           }
@@ -1193,7 +1268,7 @@
             "Volume": 0.5
           }
         },
-        "AimType": "AimAtPlayer"
+        "AimType": "ByMovement"
       }
     },
     "DefaultSprite": {
@@ -1226,12 +1301,12 @@
     "CollisionDamage": 100.0,
     "Height": 32.0,
     "Width": 32.0,
-    "Hitpoints": 300.0,
+    "Hitpoints": 200.0,
     "Behavior": {
       "Mover": {
         "Type": "LinearWithStops",
         "Parameters": {
-          "speed": 750.0,
+          "speed": 500.0,
           "stopTime": 5.0
         }
       },
@@ -1239,7 +1314,7 @@
       "Weapon": {
         "Reloader": {
           "FireRate": 10.0,
-          "Ammo": 10,
+          "Ammo": 7,
           "ReloadTime": 3.0
         },
         "Barrels": [
@@ -1248,12 +1323,14 @@
             "Accuracy": 2.5,
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 500.0
+                "speed": 450.0
               },
               "Damage": 10.0,
               "TimeToLive": 5.0,
+              "ConsiderAngle": true,
               "Sprite": {
-                "Name": "Sprites/Enemies/HelicopterBullet"
+                "Name": "Sprites/Enemies/Level4X/TurtleFire",
+                "AnimationCycle": 0.15
               }
             }
           }

@@ -6,16 +6,22 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
 {
     internal class ByMovementAimer : IAimer
     {
-        IMovableCollidable shooter;
+        private IMovableCollidable shooter;
+        private Vector2 lastFireDirection = new Vector2(1, 0);
 
         internal ByMovementAimer(IMovableCollidable shooter)
         {
             this.shooter = shooter;
         }
 
-        public Vector2 GetFireDirection() => (shooter.Position - shooter.OldPosition).NormalizedCopy();
+        public Vector2 GetFireDirection()
+        {
+            if (shooter.Position != shooter.OldPosition)
+                lastFireDirection = (shooter.Position - shooter.OldPosition).NormalizedCopy();
+            return lastFireDirection;
+        }
 
-        public Boolean IsFiring() => GetFireDirection() != Vector2.Zero;
+        public Boolean IsFiring() => true;
 
         public void Update(Single elapsedSeconds) { }
     }

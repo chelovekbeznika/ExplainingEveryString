@@ -7,6 +7,8 @@ namespace ExplainingEveryString.Core.GameModel
     {
         internal static List<IEnemy> SendDeadToHeaven(List<IEnemy> enemies, List<IEnemy> avengers)
         {
+            if (enemies == null)
+                return null;
             var newAvengers = new List<IEnemy>();
             foreach (var dead in enemies.Where(e => !e.IsAlive()))
             {

@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
         private Single scalarSpeed;
         private Single stopTime;
         private Single tillStopEnd;
-        private Boolean stopped = false;
+        private Boolean stopped = true;
 
         public LinearWithStopsMover(Single scalarSpeed, Single stopTime)
         {
