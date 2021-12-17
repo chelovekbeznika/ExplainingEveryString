@@ -201,6 +201,36 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/3/Shot.wav
 
+#begin Sounds/Bosses/4/HeadFire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/4/HeadFire.wav
+
+#begin Sounds/Bosses/4/PartBurnedOut.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/4/PartBurnedOut.wav
+
+#begin Sounds/Bosses/4/PartFire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/4/PartFire.wav
+
+#begin Sounds/Bosses/4/PhoenixIn.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/4/PhoenixIn.wav
+
+#begin Sounds/Bosses/4/PhoenixOut.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/4/PhoenixOut.wav
+
 #begin Sounds/Bosses/BigBrother.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
