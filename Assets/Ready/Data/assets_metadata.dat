@@ -1023,6 +1023,42 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Boss4/Center",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Right_1",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Right_2",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Right_3",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Left_1",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Left_2",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Left_3",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Head",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/Tail",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
