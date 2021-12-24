@@ -1131,6 +1131,42 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Center",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Right_1",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Right_2",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Right_3",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Left_1",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Left_2",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Left_3",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Head",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Tail",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
