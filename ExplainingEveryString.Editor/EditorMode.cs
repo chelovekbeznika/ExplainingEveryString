@@ -38,7 +38,7 @@ namespace ExplainingEveryString.Editor
 
         protected LevelData LevelData { get; private set; }
 
-        public String CurrentEditableType => editableTypes[selectedEditableTypeIndex];
+        public String CurrentEditableType => selectedEditableTypeIndex > 0 ? editableTypes[selectedEditableTypeIndex] : null;
 
         public abstract String ModeName { get; }
 
@@ -103,8 +103,11 @@ namespace ExplainingEveryString.Editor
 
         public void Add(Vector2 screenPosition)
         {
-            var newEditable = Create(CurrentEditableType, CoordinatesConverter.ScreenToTile(screenPosition));
-            Editables.Add(newEditable);
+            if (CurrentEditableType != null)
+            {
+                var newEditable = Create(CurrentEditableType, CoordinatesConverter.ScreenToTile(screenPosition));
+                Editables.Add(newEditable);
+            }
         }
 
         protected abstract T Create(String editableType, PositionOnTileMap positionOnTileMap);
