@@ -38,7 +38,8 @@ namespace ExplainingEveryString.Editor
 
         protected LevelData LevelData { get; private set; }
 
-        public String CurrentEditableType => selectedEditableTypeIndex >= 0 ? editableTypes[selectedEditableTypeIndex] : null;
+        public String CurrentEditableType => selectedEditableTypeIndex >= 0 && selectedEditableTypeIndex < editableTypes.Length 
+            ? editableTypes[selectedEditableTypeIndex] : null;
 
         public abstract String ModeName { get; }
 

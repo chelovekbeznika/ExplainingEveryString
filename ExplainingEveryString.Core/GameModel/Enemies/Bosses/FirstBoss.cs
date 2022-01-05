@@ -72,7 +72,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             };
         }
 
-        protected override EnemyBehavior Behavior
+        protected override IEnemyBehavior Behavior
         {
             get => state == BossState.InPhase ? CurrentPhase.Behavior : base.Behavior;
             set => base.Behavior = value;

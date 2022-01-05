@@ -88,10 +88,15 @@
       "ButtonSprite": "Sprites/Menu/LevelSelect/42",
       "LevelsBlockId": "AirFarm"
     },
-	{
+    {
       "LevelData": "level_43",
-	  "ButtonSprite": "Sprites/Menu/LevelSelect/43",
-	  "LevelsBlockId": "AirFarm"
-	}
+      "ButtonSprite": "Sprites/Menu/LevelSelect/43",
+      "LevelsBlockId": "AirFarm"
+    },
+    {
+      "LevelData": "level_44",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/44",
+      "LevelsBlockId": "AirFarm"
+    }
   ]
 }

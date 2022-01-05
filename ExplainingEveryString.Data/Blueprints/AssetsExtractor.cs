@@ -21,7 +21,9 @@ namespace ExplainingEveryString.Data.Blueprints
             { typeof(ChangeableEnemyBlueprint), new ChangeableEnemyAssetsExtractor() },
             { typeof(FirstBossBlueprint), new FirstBossAssetsExtractor() },
             { typeof(SecondBossBlueprint), new SecondBossAssetsExtractor() },
-            { typeof(ThirdBossBlueprint), new ThirdBossAssetsExtractor() }
+            { typeof(ThirdBossBlueprint), new ThirdBossAssetsExtractor() },
+            { typeof(FourthBossBlueprint), new FourthBossAssetsExtractor() },
+            { typeof(FourthBossPartBlueprint), new FourthBossPartAssetsExtractor() }
         };
 
         public static List<String> GetNeccessarySprites(IBlueprintsLoader loader)

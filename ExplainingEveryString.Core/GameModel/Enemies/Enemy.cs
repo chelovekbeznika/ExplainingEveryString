@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public String CollideTag { get; private set; }
         public Single CollisionDamage { get; set; }
 
-        protected virtual EnemyBehavior Behavior { get; set; }
+        protected virtual IEnemyBehavior Behavior { get; set; }
 
         public override Single HitPoints
         {
@@ -44,16 +44,6 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             set
             {
                 base.HitPoints = value;
-                if (value < Math.Constants.Epsilon)
-                {
-                    death.TryHandle();
-                    Behavior.PostMortemSurprise?.TryTrigger();
-                    if (!diedInvoked)
-                    {
-                        Died?.Invoke(this, EventArgs.Empty);
-                        diedInvoked = true;
-                    }
-                }
             }
         }
         
@@ -66,7 +56,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         {
             base.Construct(blueprint, startInfo, level, factory);
 
-            this.Behavior = new EnemyBehavior(this, level.Player, startInfo.BehaviorParameters);
+            this.Behavior = CreateBehaviorObject(this, level.Player, startInfo.BehaviorParameters);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
             this.bulletsHeight = blueprint.BulletsHeight;
@@ -89,6 +79,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.hideHealthBar = blueprint.HideHealthBar;
 
             Behavior.Construct(blueprint.Behavior, level, factory);
+        }
+
+        protected virtual IEnemyBehavior CreateBehaviorObject(IEnemy enemy, Player player, BehaviorParameters behaviorParameters)
+        {
+            return new EnemyBehavior(enemy, player, behaviorParameters);
         }
 
         public override IEnumerable<IDisplayble> GetParts()
@@ -128,6 +123,16 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 Behavior.Update(elapsedSeconds);
                 if (Behavior.EnemyAngle != null)
                     SpriteState.Angle = Behavior.EnemyAngle.Value;
+            }
+            if (!IsAlive())
+            {
+                death.TryHandle();
+                Behavior.PostMortemSurprise?.TryTrigger();
+                if (!diedInvoked)
+                {
+                    Died?.Invoke(this, EventArgs.Empty);
+                    diedInvoked = true;
+                }
             }
             base.Update(elapsedSeconds);
         }

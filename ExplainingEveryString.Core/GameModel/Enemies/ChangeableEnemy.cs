@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private Dictionary<ValueTuple<String, Int32>, IModificationSpecification[]> modifications;
         private Dictionary<String, Int32> occuredEvents = new Dictionary<String, Int32>();
         private Level level;
+        private IChangeableEnemyBehavior ChangeableBehavior => Behavior as IChangeableEnemyBehavior;
 
         public event EventHandler<ChangingEventArgs> ChangingEventOccured;
 
@@ -52,10 +53,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             switch (modification.ModificationType)
             {
                 case "Weapon":
-                    Behavior.ChangeWeapon(modification as WeaponSpecification, level);
+                    ChangeableBehavior?.ChangeWeapon(modification as WeaponSpecification, level);
                     break;
                 case "Mover":
-                    Behavior.ChangeMover(modification as MoverSpecification);
+                    ChangeableBehavior?.ChangeMover(modification as MoverSpecification);
                     break;
                 case "DefaultSprite":
                     SpriteState = new SpriteState(modification as SpriteSpecification);

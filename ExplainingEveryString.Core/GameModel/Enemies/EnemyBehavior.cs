@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {
-    internal class EnemyBehavior
+    internal class EnemyBehavior : IEnemyBehavior
     {
         private const Int32 MaxMoveTargetsPerFrame = 32;
 
@@ -19,12 +19,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private IMoveTargetSelector moveTargetSelector;
         private IMover mover;
 
-        internal EventHandler MoveGoalReached;
-        internal Weapon Weapon { get; set; }
-        internal PostMortemSurprise PostMortemSurprise { get; private set; }
-        internal SpawnedActorsController SpawnedActors { get; private set; }
-        internal Single? EnemyAngle { get; private set; } = null;
-        internal Boolean IsTeleporter => mover.IsTeleporting;
+        public EventHandler MoveGoalReached { get; set; }
+        public Weapon Weapon { get; private set; }
+        public PostMortemSurprise PostMortemSurprise { get; private set; }
+        public SpawnedActorsController SpawnedActors { get; private set; }
+        public Single? EnemyAngle { get; private set; } = null;
+        public Boolean IsTeleporter => mover.IsTeleporting;
 
         private Vector2 CurrentPositionLocator() => (enemy as ICollidable).Position;
         private Vector2 Position { get => (enemy as ICollidable).Position; set => (enemy as ICollidable).Position = value; }
@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             this.parameters = parameters;
         }
 
-        internal void Construct(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
+        public void Construct(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
         {
             ConstructMovement(specification);
             ConstructWeaponry(specification, level, factory);
@@ -65,13 +65,13 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 this.SpawnedActors = new SpawnedActorsController(specification.Spawner, enemy, parameters, factory);
         }
 
-        internal void Update(Single elapsedSeconds)
+        public void Update(Single elapsedSeconds)
         {
             Move(elapsedSeconds);
             UseWeapon(elapsedSeconds);
         }
 
-        internal IEnumerable<IDisplayble> GetPartsToDisplay()
+        public IEnumerable<IDisplayble> GetPartsToDisplay()
         {
             if (Weapon != null)
                 return new IDisplayble[] { Weapon };

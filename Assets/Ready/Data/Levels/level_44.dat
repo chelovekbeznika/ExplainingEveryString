@@ -1,0 +1,167 @@
+{
+  "Blueprints": [
+    "player",
+    "fourth_boss"
+  ],
+  "MusicName": "liberty_bell",
+  "TitleSpriteName": "Sprites/LevelTitles/43",
+  "TileMap": "TileMaps/Level_44",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 39,
+      "Y": 39,
+      "Offset": "8.0, -8.0"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "RocketLauncher": 80,
+        "Shotgun": 120
+      }
+    }
+  },
+  "EnemyWaves": [
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level4X/0",
+      "Sprites/FogOfWar/Level4X/1",
+      "Sprites/FogOfWar/Level4X/2",
+      "Sprites/FogOfWar/Level4X/3",
+      "Sprites/FogOfWar/Level4X/4",
+      "Sprites/FogOfWar/Level4X/5",
+      "Sprites/FogOfWar/Level4X/6",
+      "Sprites/FogOfWar/Level4X/7"
+    ],
+    "Weights": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ]
+  },
+  "ObstaclesTilePositions": {
+  },
+    "SpriteEmitter": {
+    "Region": {
+      "X": -30,
+      "Y": -30,
+      "Width": 120,
+      "Height": 120
+    },
+    "SpriteLifetime": {
+      "ExpectedValue": 30.0,
+      "Sigma": 5.0
+    },
+    "BetweenSpawns": {
+      "ExpectedValue": 0.075,
+      "Sigma": 0.02
+    },
+    "RandomSprites": {
+      "PossibleValues": [
+        {
+          "Name": "Sprites/Clouds/00",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/01",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/02",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/03",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/04",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/05",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/06",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/07",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/08",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/09",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/10",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/11",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/12",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/13",
+          "AnimationCycle": 1.0
+        },
+        {
+          "Name": "Sprites/Clouds/14",
+          "AnimationCycle": 1.0
+        }
+      ],
+      "Weights": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "SpriteSpeedMovement": {
+      "ExpectedValue": 90.0,
+      "Sigma": 10.0
+    },
+    "RandomDirections": {
+      "PossibleValues": [
+        "-0.1, -1",
+        "-0.05, -1",
+        "0, -1",
+        "0.05, -1",
+        "0.1, -1"
+      ],
+      "Weights": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

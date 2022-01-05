@@ -1,0 +1,275 @@
+{
+  "Boss_mk4": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBoss",
+    "CollisionDamage": 100,
+    "Height": 1.0,
+    "Width": 1.0,
+    "Hitpoints": 900.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Empty"
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/4/PhoenixIn",
+        "Volume": 0.6
+      }
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/4/PhoenixOut",
+        "Volume": 0.6
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Empty"
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 400
+        }
+      },
+      "MoveTargetSelectType": "TargetsList"
+    },
+    "PartsList": [
+      "Right_3", "Left_3", "Right_2", "Left_2", "Right_1", "Left_1", "Tail", "Center", "Head"
+    ]
+  },
+  "Head": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Head",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Head",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Head",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "56.0,0.0"
+  },
+  "Center": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Center",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Center",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Center",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "0.0,0.0"
+  },
+  "Tail": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Tail",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Tail",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Tail",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "-64.0,0.0"
+  },
+  "Left_1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Left_1",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Left_1",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Left_1",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "0.0,-64.0"
+  },
+  "Left_2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Left_2",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Left_2",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Left_2",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "8.0,-136.0"
+  },
+  "Left_3": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Left_3",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Left_3",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Left_3",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "16.0,-208.0"
+  },
+  "Right_1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 64.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Right_1",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Right_1",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Right_1",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "0.0,64.0"
+  },
+  "Right_2": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Right_2",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Right_2",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Right_2",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "8.0,136.0"
+  },
+  "Right_3": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
+    "Type": "FourthBossPart",
+    "CollisionDamage": 100.0,
+    "Height": 48.0,
+    "Width": 48.0,
+    "Hitpoints": 100.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss4/Right_3",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss4/Death/Right_3",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/Appearance/Right_3",
+      "AnimationCycle": 0.25
+    },
+    "DefaultAppearancePhaseDuration": 0.25,
+    "Behavior": {
+    },
+    "Offset": "16.0,208.0"
+  },
+}

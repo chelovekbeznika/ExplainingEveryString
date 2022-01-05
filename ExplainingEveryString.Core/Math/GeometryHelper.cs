@@ -43,5 +43,10 @@ namespace ExplainingEveryString.Core.Math
                 Y = rawPosition.X * sinus + rawPosition.Y * cosinus
             };
         }
+
+        internal static Vector2 RotateVector(Vector2 rawPosition, Single angle)
+        {
+            return RotateVector(rawPosition, (Single)System.Math.Sin(angle), (Single)System.Math.Cos(angle));
+        }
     }
 }

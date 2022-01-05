@@ -39,6 +39,9 @@
 #begin Data/Blueprints/first_boss.dat
 /copy:Data/Blueprints/first_boss.dat
 
+#begin Data/Blueprints/fourth_boss.dat
+/copy:Data/Blueprints/fourth_boss.dat
+
 #begin Data/Blueprints/player.dat
 /copy:Data/Blueprints/player.dat
 
@@ -101,6 +104,9 @@
 
 #begin Data/Levels/level_43.dat
 /copy:Data/Levels/level_43.dat
+
+#begin Data/Levels/level_44.dat
+/copy:Data/Levels/level_44.dat
 
 #begin Data/Music/christmas_tree_was_born_in_forest.dat
 /copy:Data/Music/christmas_tree_was_born_in_forest.dat

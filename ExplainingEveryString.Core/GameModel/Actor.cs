@@ -74,7 +74,7 @@ namespace ExplainingEveryString.Core.GameModel
             HitPoints -= damage;
         }
 
-        public bool IsAlive()
+        public virtual Boolean IsAlive()
         {
             return HitPoints > Math.Constants.Epsilon;
         }

@@ -25,7 +25,9 @@ namespace ExplainingEveryString.Core.GameModel
                 { "Changeable", (pos) => Construct<ChangeableEnemy, ChangeableEnemyBlueprint>(pos) },
                 { "FirstBoss", (pos) => Construct<FirstBoss, FirstBossBlueprint>(pos) },
                 { "SecondBoss", (pos) => Construct<SecondBoss, SecondBossBlueprint>(pos) },
-                { "ThirdBoss", (pos) => Construct<ThirdBoss, ThirdBossBlueprint>(pos) }
+                { "ThirdBoss", (pos) => Construct<ThirdBoss, ThirdBossBlueprint>(pos) },
+                { "FourthBoss", (pos) => Construct<FourthBossBrain, FourthBossBlueprint>(pos) },
+                { "FourthBossPart", (pos) => Construct<FourthBossPart, FourthBossPartBlueprint>(pos) }
             };
         }
 

@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
         {
             var unbentSpiral = new Vector2(radialSpeed, 0) * time;
             var angle = angularVelocity * time;
-            return GeometryHelper.RotateVector(unbentSpiral, (Single)System.Math.Sin(angle), (Single)System.Math.Cos(angle));
+            return GeometryHelper.RotateVector(unbentSpiral, angle);
         }
     }
 }
