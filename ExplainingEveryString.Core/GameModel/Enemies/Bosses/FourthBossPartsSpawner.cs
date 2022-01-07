@@ -27,9 +27,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             MaxSpawned = partsList.Length;
         }
 
-        public void SendDeadToHeaven(List<IEnemy> avengers)
+        public void DivideAliveAndDead(List<IEnemy> avengers)
         {
-            SpawnedEnemies = EnemyDeathProcessor.SendDeadToHeaven(SpawnedEnemies, avengers);
+            SpawnedEnemies = EnemiesDeathProcessor.DivideAliveAndDead(SpawnedEnemies, avengers);
         }
 
         public void TurnOff()

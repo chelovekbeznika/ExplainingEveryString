@@ -30,10 +30,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             controllers.Add(controller);
         }
 
-        public void SendDeadToHeaven(List<IEnemy> avengers)
+        public void DivideAliveAndDead(List<IEnemy> avengers)
         {
             foreach (var controller in controllers)
-                controller.SendDeadToHeaven(avengers);
+                controller.DivideAliveAndDead(avengers);
         }
 
         public void TurnOff()

@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel
 {
-    internal static class EnemyDeathProcessor
+    internal static class EnemiesDeathProcessor
     {
-        internal static List<IEnemy> SendDeadToHeaven(List<IEnemy> enemies, List<IEnemy> avengers)
+        internal static List<IEnemy> DivideAliveAndDead(List<IEnemy> enemies, List<IEnemy> avengers)
         {
             if (enemies == null)
                 return null;
@@ -14,6 +14,7 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 if (dead.Avengers != null)
                     newAvengers.AddRange(dead.Avengers);
+                dead.ProcessDeath();
             }
             avengers.AddRange(newAvengers);
             return enemies.Where(e => e.IsAlive()).ToList();

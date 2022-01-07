@@ -37,9 +37,9 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 reloader.Update(elapsedSeconds, out Boolean enemySpawned);
         }
 
-        public void SendDeadToHeaven(List<IEnemy> avengers)
+        public void DivideAliveAndDead(List<IEnemy> avengers)
         {
-            SpawnedEnemies = EnemyDeathProcessor.SendDeadToHeaven(SpawnedEnemies, avengers);
+            SpawnedEnemies = EnemiesDeathProcessor.DivideAliveAndDead(SpawnedEnemies, avengers);
         }
 
         public void TurnOn()

@@ -99,11 +99,11 @@ namespace ExplainingEveryString.Core.GameModel
                 foreach (var sector in wallsPerSectors.Keys)
                     wallsPerSectors[sector].Remove(openedDoor);
 
-            currentWaveEnemies = EnemyDeathProcessor.SendDeadToHeaven(currentWaveEnemies, avengers);
-            Bosses = EnemyDeathProcessor.SendDeadToHeaven(Bosses, Bosses);
+            currentWaveEnemies = EnemiesDeathProcessor.DivideAliveAndDead(currentWaveEnemies, avengers);
+            Bosses = EnemiesDeathProcessor.DivideAliveAndDead(Bosses, Bosses);
             foreach (var spawnedActorsController in enemySpawners)
-                spawnedActorsController.SendDeadToHeaven(avengers);
-            avengers = EnemyDeathProcessor.SendDeadToHeaven(avengers, avengers);
+                spawnedActorsController.DivideAliveAndDead(avengers);
+            avengers = EnemiesDeathProcessor.DivideAliveAndDead(avengers, avengers);
         }
 
         internal void InitializeActorsOnLevelStart(ActorsInitializer actorsInitializer, 

@@ -86,6 +86,17 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             return new EnemyBehavior(enemy, player, behaviorParameters);
         }
 
+        public void ProcessDeath()
+        {
+            death.TryHandle();
+            Behavior.PostMortemSurprise?.TryTrigger();
+            if (!diedInvoked)
+            {
+                Died?.Invoke(this, EventArgs.Empty);
+                diedInvoked = true;
+            }
+        }
+
         public override IEnumerable<IDisplayble> GetParts()
         {
             if (!IsInAppearancePhase)
@@ -123,16 +134,6 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 Behavior.Update(elapsedSeconds);
                 if (Behavior.EnemyAngle != null)
                     SpriteState.Angle = Behavior.EnemyAngle.Value;
-            }
-            if (!IsAlive())
-            {
-                death.TryHandle();
-                Behavior.PostMortemSurprise?.TryTrigger();
-                if (!diedInvoked)
-                {
-                    Died?.Invoke(this, EventArgs.Empty);
-                    diedInvoked = true;
-                }
             }
             base.Update(elapsedSeconds);
         }

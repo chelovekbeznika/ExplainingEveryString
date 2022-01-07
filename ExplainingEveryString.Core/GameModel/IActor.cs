@@ -20,6 +20,7 @@ namespace ExplainingEveryString.Core.GameModel
     {
         ISpawnedActorsController SpawnedActors { get; }
         List<IEnemy> Avengers { get; }
+        void ProcessDeath();
         event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
         event EventHandler Died;
     }
