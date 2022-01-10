@@ -7,7 +7,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
     internal interface IFourthBossBrain
     {
-        Vector2 Position { get; }
+        Vector2 Position { get; set; }
         Single Angle { get; }
         Boolean IsAlive();
     }

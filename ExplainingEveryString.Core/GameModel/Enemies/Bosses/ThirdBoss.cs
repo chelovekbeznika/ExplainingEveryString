@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private ThirdBossAimersController aimersController;
         private ISpawnedActorsController actorsController;
 
-        public override ISpawnedActorsController SpawnedActors => actorsController;
+        public override ISpawnedActorsController SpawnedActorsController => actorsController;
 
         protected override void Construct(ThirdBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {

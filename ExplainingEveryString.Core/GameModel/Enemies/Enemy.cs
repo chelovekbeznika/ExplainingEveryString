@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         private EpicEvent beforeAppearance;
         private EpicEvent afterAppearance;
         private EpicEvent goalAchieved;
-        public virtual ISpawnedActorsController SpawnedActors => Behavior.SpawnedActors;
+        public virtual ISpawnedActorsController SpawnedActorsController => Behavior.SpawnedActors;
         public List<IEnemy> Avengers => Behavior.PostMortemSurprise?.Avengers;
         public event EventHandler<EnemyBehaviorChangedEventArgs> EnemyBehaviorChanged;
         public event EventHandler Died;
@@ -56,7 +56,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         {
             base.Construct(blueprint, startInfo, level, factory);
 
-            this.Behavior = CreateBehaviorObject(this, level.Player, startInfo.BehaviorParameters);
+            this.Behavior = CreateBehaviorObject(blueprint, level.Player, startInfo, factory);
             this.MaxHitPoints = blueprint.Hitpoints;
             this.CollisionDamage = blueprint.CollisionDamage;
             this.bulletsHeight = blueprint.BulletsHeight;
@@ -81,9 +81,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             Behavior.Construct(blueprint.Behavior, level, factory);
         }
 
-        protected virtual IEnemyBehavior CreateBehaviorObject(IEnemy enemy, Player player, BehaviorParameters behaviorParameters)
+        protected virtual IEnemyBehavior CreateBehaviorObject(TBlueprint blueprint, Player player, ActorStartInfo actorStartInfo, ActorsFactory factory)
         {
-            return new EnemyBehavior(enemy, player, behaviorParameters);
+            return new EnemyBehavior(this, player, actorStartInfo.BehaviorParameters);
         }
 
         public void ProcessDeath()
@@ -129,7 +129,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             else
             {
                 if (!afterAppearance.Handled)
-                    SpawnedActors?.TurnOn();
+                    SpawnedActorsController?.TurnOn();
                 afterAppearance.TryHandle();
                 Behavior.Update(elapsedSeconds);
                 if (Behavior.EnemyAngle != null)
@@ -144,7 +144,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             Destroy();
         }
 
-        protected void OnBehaviorChanged(SpawnedActorsController oldSpawner, SpawnedActorsController newSpawner)
+        protected void OnBehaviorChanged(ISpawnedActorsController oldSpawner, ISpawnedActorsController newSpawner)
         {
             EnemyBehaviorChanged?.Invoke(this, new EnemyBehaviorChangedEventArgs()
             {

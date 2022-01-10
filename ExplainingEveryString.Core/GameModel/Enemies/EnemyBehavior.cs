@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         public EventHandler MoveGoalReached { get; set; }
         public Weapon Weapon { get; private set; }
         public PostMortemSurprise PostMortemSurprise { get; private set; }
-        public SpawnedActorsController SpawnedActors { get; private set; }
+        public ISpawnedActorsController SpawnedActors { get; private set; }
         public Single? EnemyAngle { get; private set; } = null;
         public Boolean IsTeleporter => mover.IsTeleporting;
 

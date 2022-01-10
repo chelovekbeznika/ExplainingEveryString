@@ -26,17 +26,18 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
-      "Mover": {
-        "Type": "Linear",
-        "Parameters": {
-          "speed": 400
-        }
-      },
-      "MoveTargetSelectType": "TargetsList"
     },
     "PartsList": [
       "Right_3", "Left_3", "Right_2", "Left_2", "Right_1", "Left_1", "Tail", "Center", "Head"
-    ]
+    ],
+    "MovementSpecification": {
+      "Radius": 480.0,
+      "CircleTime": 6.0,
+      "BetweenDirectionSwitches": {
+        "ExpectedValue": 8.0,
+        "Sigma": 1.0
+      }
+    }
   },
   "Head": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",

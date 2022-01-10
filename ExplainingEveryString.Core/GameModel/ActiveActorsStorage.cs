@@ -70,8 +70,8 @@ namespace ExplainingEveryString.Core.GameModel
                 var enemy = enemiesQueue.Dequeue();
                 currentWaveEnemies.Add(enemy);
                 enemy.EnemyBehaviorChanged += EnemyBehaviorChanged;
-                if (enemy.SpawnedActors != null)
-                    enemySpawners.Add(enemy.SpawnedActors);
+                if (enemy.SpawnedActorsController != null)
+                    enemySpawners.Add(enemy.SpawnedActorsController);
             }
         }
 

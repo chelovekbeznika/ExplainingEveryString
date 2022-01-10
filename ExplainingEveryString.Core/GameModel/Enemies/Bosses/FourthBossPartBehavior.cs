@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public Weapon Weapon => null;
 
-        public SpawnedActorsController SpawnedActors => null;
+        public ISpawnedActorsController SpawnedActors => null;
 
         public PostMortemSurprise PostMortemSurprise => null;
 
@@ -34,11 +34,17 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public void Construct(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
         {
+            UpdatePosition();
         }
 
         public IEnumerable<IDisplayble> GetPartsToDisplay() => new IDisplayble[] { };
 
         public void Update(float elapsedSeconds)
+        {
+            UpdatePosition();
+        }
+
+        private void UpdatePosition()
         {
             (bossPart as ICollidable).Position = BossBrain.Position + GeometryHelper.RotateVector(bossPartOffset, BossBrain.Angle);
         }

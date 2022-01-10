@@ -5,7 +5,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 {
     internal class EnemyBehaviorChangedEventArgs : EventArgs
     {
-        internal SpawnedActorsController OldSpawner { get; set; }
-        internal SpawnedActorsController NewSpawner { get; set; }
+        internal ISpawnedActorsController OldSpawner { get; set; }
+        internal ISpawnedActorsController NewSpawner { get; set; }
     }
 }

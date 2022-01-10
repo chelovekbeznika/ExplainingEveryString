@@ -19,9 +19,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 {
                     Position = bossBrain.Position,
                     BlueprintType = partName,
-                    BehaviorParameters = new BehaviorParameters { }
+                    BehaviorParameters = new BehaviorParameters { },
+                    AdditionalParameters = new[] { bossBrain }
                 });
-                (newPart as FourthBossPart).BossBrain = bossBrain;
                 SpawnedEnemies.Add(newPart);
             }
             MaxSpawned = partsList.Length;
@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         {
         }
 
-        public void Update(float elapsedSeconds)
+        public void Update(Single elapsedSeconds)
         {
         }
     }

@@ -33,11 +33,6 @@ namespace ExplainingEveryString.Core.GameModel
             this.completelyOpened = new EpicEvent(level, blueprint.CompletelyOpenedEffect, true, this, false);
         }
 
-        protected override void PlaceOnLevel(ActorStartInfo info)
-        {
-            base.PlaceOnLevel(info);
-        }
-
         internal void Open()
         {
             opened = true;

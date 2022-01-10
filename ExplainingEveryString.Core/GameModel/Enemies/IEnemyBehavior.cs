@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         IEnumerable<IDisplayble> GetPartsToDisplay();
         EventHandler MoveGoalReached { get; set; }
         Weapon Weapon { get; }
-        SpawnedActorsController SpawnedActors { get; }
+        ISpawnedActorsController SpawnedActors { get; }
         PostMortemSurprise PostMortemSurprise { get; }
         Boolean IsTeleporter { get; }
         Single? EnemyAngle { get; }

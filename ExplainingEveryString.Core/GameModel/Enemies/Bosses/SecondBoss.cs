@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public override CollidableMode CollidableMode => CollidableMode.Shadow;
 
-        public override ISpawnedActorsController SpawnedActors => actorsController;
+        public override ISpawnedActorsController SpawnedActorsController => actorsController;
 
         protected override void Construct(SecondBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
