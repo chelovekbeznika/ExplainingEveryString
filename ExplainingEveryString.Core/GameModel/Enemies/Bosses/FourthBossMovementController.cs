@@ -18,6 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private Single tillNextDirectionSwitch;
 
         internal Vector2 Position { get; private set; }
+        internal Single Angle => (Single)(currentAngle - System.Math.PI);
 
         internal FourthBossMovementController(FourthBossMovementSpecification specification, Vector2 center)
         {

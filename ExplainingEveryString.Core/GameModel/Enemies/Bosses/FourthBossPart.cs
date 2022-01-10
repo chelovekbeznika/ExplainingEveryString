@@ -24,6 +24,16 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             BossBrain = (IFourthBossBrain)info.AdditionalParameters[0];
         }
 
+        public override void Update(Single elapsedSeconds)
+        {
+            base.Update(elapsedSeconds);
+            if (IsInAppearancePhase)
+            {
+                (Behavior as FourthBossPartBehavior).UpdatePosition();
+                SpriteState.Angle = Behavior.EnemyAngle ?? 0;
+            }
+        }
+
         public override bool IsAlive() => BossBrain.IsAlive();
 
         protected override IEnemyBehavior CreateBehaviorObject(FourthBossPartBlueprint blueprint, Player player, 

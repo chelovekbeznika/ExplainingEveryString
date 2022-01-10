@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public Boolean IsTeleporter => false;
 
-        public Single? EnemyAngle => null;
+        public Single? EnemyAngle => movementController.Angle;
 
         internal FourthBossBrainBehavior(FourthBossMovementController movementController, FourthBossPartsSpawner partsSpawner, IFourthBossBrain bossBrain)
         {

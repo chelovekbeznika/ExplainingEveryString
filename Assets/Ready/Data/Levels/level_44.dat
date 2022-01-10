@@ -10,7 +10,7 @@
     "PlayerPosition": {
       "X": 39,
       "Y": 39,
-      "Offset": "8.0, -8.0"
+      "Offset": "8, -8"
     },
     "Arsenal": {
       "AvailableWeapons": {
@@ -20,6 +20,27 @@
     }
   },
   "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 46,
+        "Y": 19,
+        "Width": 15,
+        "Height": 42
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Boss_mk4",
+          "TilePosition": {
+            "X": 40,
+            "Y": 39,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": []
+        }
+      ],
+      "Bosses": []
+    }
   ],
   "FogOfWar": {
     "ParticleWidth": 16,
@@ -45,9 +66,8 @@
       10
     ]
   },
-  "ObstaclesTilePositions": {
-  },
-    "SpriteEmitter": {
+  "ObstaclesTilePositions": {},
+  "SpriteEmitter": {
     "Region": {
       "X": -30,
       "Y": -30,

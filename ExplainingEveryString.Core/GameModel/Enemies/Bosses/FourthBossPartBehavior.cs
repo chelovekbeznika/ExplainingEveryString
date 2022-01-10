@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             UpdatePosition();
         }
 
-        private void UpdatePosition()
+        internal void UpdatePosition()
         {
             (bossPart as ICollidable).Position = BossBrain.Position + GeometryHelper.RotateVector(bossPartOffset, BossBrain.Angle);
         }

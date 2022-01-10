@@ -129,8 +129,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             else
             {
                 if (!afterAppearance.Handled)
-                    SpawnedActorsController?.TurnOn();
-                afterAppearance.TryHandle();
+                    afterAppearance.TryHandle();
+                SpawnedActorsController?.TurnOn();
                 Behavior.Update(elapsedSeconds);
                 if (Behavior.EnemyAngle != null)
                     SpriteState.Angle = Behavior.EnemyAngle.Value;
