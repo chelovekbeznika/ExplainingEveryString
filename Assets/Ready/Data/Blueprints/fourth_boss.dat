@@ -31,13 +31,19 @@
       "Right_3", "Left_3", "Right_2", "Left_2", "Right_1", "Left_1", "Tail", "Center", "Head"
     ],
     "MovementSpecification": {
-      "Radius": 480.0,
-      "CircleTime": 6.0,
+      "Radius": 496.0,
+      "RadiusPulsationPart": -48.0,
+      "CircleTime": 12.0,
       "BetweenDirectionSwitches": {
         "ExpectedValue": 8.0,
         "Sigma": 1.0
+      },
+      "TimeBetweenPulses": {
+        "Wings": 1.0,
+        "Head": 2.0,
+        "Tail": 4.0
       }
-    }
+    },
   },
   "Head": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -63,7 +69,9 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "56.0,0.0"
+    "Offset": "56.0,0.0",
+    "PulsationOffset": "24.0,0.0",
+    "PulsationTag": "Head"
   },
   "Center": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -89,7 +97,8 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "0.0,0.0"
+    "Offset": "0.0,0.0",
+    "PulsationTag": "Wings"
   },
   "Tail": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -115,7 +124,9 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "-64.0,0.0"
+    "Offset": "-64.0,0.0",
+    "PulsationOffset": "-8.0,0.0",
+    "PulsationTag": "Tail"
   },
   "Left_1": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -141,7 +152,9 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "0.0,-64.0"
+    "Offset": "-8.0,-64.0",
+    "PulsationOffset": "24.0,-12.0",
+    "PulsationTag": "Wings"
   },
   "Left_2": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -167,7 +180,9 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "8.0,-136.0"
+    "Offset": "-16.0,-120.0",
+    "PulsationOffset": "48.0,-24.0",
+    "PulsationTag": "Wings"
   },
   "Left_3": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -193,7 +208,9 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "16.0,-208.0"
+    "Offset": "-32.0,-184.0",
+    "PulsationOffset": "96.0,-48.0",
+    "PulsationTag": "Wings"
   },
   "Right_1": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -219,7 +236,9 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "0.0,64.0"
+    "Offset": "-8.0,64.0",
+    "PulsationOffset": "24.0,12.0",
+    "PulsationTag": "Wings"
   },
   "Right_2": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -245,7 +264,9 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "8.0,136.0"
+    "Offset": "-16.0,120.0",
+    "PulsationOffset": "48.0,24.0",
+    "PulsationTag": "Wings"
   },
   "Right_3": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -271,6 +292,8 @@
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
     },
-    "Offset": "16.0,208.0"
+    "Offset": "-32.0,184.0",
+    "PulsationOffset": "96.0,48.0",
+    "PulsationTag": "Wings"
   },
 }

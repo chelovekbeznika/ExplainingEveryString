@@ -19,6 +19,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public Single Angle => Behavior?.EnemyAngle ?? 0;
 
+        public Single PulsationCoefficient(String tag) => (Behavior as FourthBossBrainBehavior)?.PulsationCoefficient(tag) ?? 0;
 
         protected override void Construct(FourthBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {

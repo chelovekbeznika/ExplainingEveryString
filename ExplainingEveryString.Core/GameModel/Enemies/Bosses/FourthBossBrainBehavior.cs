@@ -25,6 +25,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public Single? EnemyAngle => movementController.Angle;
 
+        internal Single PulsationCoefficient(String tag) => movementController.PulsationCoefficient(tag);
+
         internal FourthBossBrainBehavior(FourthBossMovementController movementController, FourthBossPartsSpawner partsSpawner, IFourthBossBrain bossBrain)
         {
             this.bossBrain = bossBrain;

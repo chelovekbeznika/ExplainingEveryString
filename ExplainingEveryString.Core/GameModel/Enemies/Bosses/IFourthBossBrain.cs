@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
     {
         Vector2 Position { get; set; }
         Single Angle { get; }
+        Single PulsationCoefficient(String tag);
         Boolean IsAlive();
     }
 }

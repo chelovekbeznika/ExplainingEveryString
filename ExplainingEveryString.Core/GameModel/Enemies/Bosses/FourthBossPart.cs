@@ -10,11 +10,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
     {
         internal IFourthBossBrain BossBrain { get; private set; }
 
-        internal Vector2 Offset { get; private set; }
-
         protected override void Construct(FourthBossPartBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
-            this.Offset = blueprint.Offset;
             base.Construct(blueprint, startInfo, level, factory);
         }
 
@@ -39,7 +36,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         protected override IEnemyBehavior CreateBehaviorObject(FourthBossPartBlueprint blueprint, Player player, 
             ActorStartInfo actorStartInfo, ActorsFactory factory)
         {
-            return new FourthBossPartBehavior(this);
+            return new FourthBossPartBehavior(this, blueprint);
         }
     }
 }
