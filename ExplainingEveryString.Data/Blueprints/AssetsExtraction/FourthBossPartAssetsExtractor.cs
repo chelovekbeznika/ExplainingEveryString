@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Data.Specifications;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
@@ -14,7 +15,11 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
 
         public IEnumerable<SpriteSpecification> GetSprites(FourthBossPartBlueprint blueprint)
         {
-            return base.GetSprites(blueprint);
+            return base.GetSprites(blueprint).Concat(new[]
+            {
+                blueprint.PhaseSwitchSprite,
+                blueprint.SecondPhaseSprite
+            });
         }
     }
 }

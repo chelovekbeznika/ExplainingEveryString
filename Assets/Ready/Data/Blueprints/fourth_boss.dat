@@ -5,7 +5,7 @@
     "CollisionDamage": 100,
     "Height": 1.0,
     "Width": 1.0,
-    "Hitpoints": 900.0,
+    "Hitpoints": 1300.0,
     "DefaultSprite": {
       "Name": "Sprites/Empty"
     },
@@ -59,7 +59,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Head",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -71,7 +71,15 @@
     },
     "Offset": "56.0,0.0",
     "PulsationOffset": "24.0,0.0",
-    "PulsationTag": "Head"
+    "PulsationTag": "Head",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Head",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Head",
+      "AnimationCycle": 0.25
+    }
   },
   "Center": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -87,7 +95,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Center",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -98,7 +106,15 @@
     "Behavior": {
     },
     "Offset": "0.0,0.0",
-    "PulsationTag": "Wings"
+    "PulsationTag": "Wings",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Center",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Center",
+      "AnimationCycle": 0.25
+    }
   },
   "Tail": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -114,7 +130,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Tail",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -126,7 +142,15 @@
     },
     "Offset": "-64.0,0.0",
     "PulsationOffset": "-8.0,0.0",
-    "PulsationTag": "Tail"
+    "PulsationTag": "Tail",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Tail",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Tail",
+      "AnimationCycle": 0.25
+    }
   },
   "Left_1": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -142,7 +166,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Left_1",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -154,7 +178,15 @@
     },
     "Offset": "-8.0,-64.0",
     "PulsationOffset": "24.0,-12.0",
-    "PulsationTag": "Wings"
+    "PulsationTag": "Wings",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Left_1",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Left_1",
+      "AnimationCycle": 0.25
+    }
   },
   "Left_2": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -170,7 +202,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Left_2",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -182,7 +214,15 @@
     },
     "Offset": "-16.0,-120.0",
     "PulsationOffset": "48.0,-24.0",
-    "PulsationTag": "Wings"
+    "PulsationTag": "Wings",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Left_2",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Left_2",
+      "AnimationCycle": 0.25
+    }
   },
   "Left_3": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -198,7 +238,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Left_3",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -210,7 +250,15 @@
     },
     "Offset": "-32.0,-184.0",
     "PulsationOffset": "96.0,-48.0",
-    "PulsationTag": "Wings"
+    "PulsationTag": "Wings",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Left_3",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Left_3",
+      "AnimationCycle": 0.25
+    }
   },
   "Right_1": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -226,7 +274,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Right_1",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -238,7 +286,15 @@
     },
     "Offset": "-8.0,64.0",
     "PulsationOffset": "24.0,12.0",
-    "PulsationTag": "Wings"
+    "PulsationTag": "Wings",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Right_1",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Right_1",
+      "AnimationCycle": 0.25
+    }
   },
   "Right_2": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -254,7 +310,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Right_2",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -266,7 +322,15 @@
     },
     "Offset": "-16.0,120.0",
     "PulsationOffset": "48.0,24.0",
-    "PulsationTag": "Wings"
+    "PulsationTag": "Wings",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Right_2",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Right_2",
+      "AnimationCycle": 0.25
+    }
   },
   "Right_3": {
     "$type": "ExplainingEveryString.Data.Blueprints.FourthBossPartBlueprint, ExplainingEveryString.Data",
@@ -282,7 +346,7 @@
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Boss4/Death/Right_3",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.75
       }
     },
     "AppearancePhaseSprite": {
@@ -294,6 +358,14 @@
     },
     "Offset": "-32.0,184.0",
     "PulsationOffset": "96.0,48.0",
-    "PulsationTag": "Wings"
-  },
+    "PulsationTag": "Wings",
+    "PhaseSwitchSprite": {
+      "Name": "Sprites/Enemies/Boss4/PhaseSwitch/Right_3",
+      "AnimationCycle": 0.25
+    },
+    "SecondPhaseSprite": {
+      "Name": "Sprites/Enemies/Boss4/SecondPhase/Right_3",
+      "AnimationCycle": 0.25
+    }
+  }
 }

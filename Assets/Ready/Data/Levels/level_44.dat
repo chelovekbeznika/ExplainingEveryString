@@ -27,7 +27,7 @@
         "Width": 15,
         "Height": 42
       },
-      "Enemies": [
+      "Bosses": [
         {
           "BlueprintType": "Boss_mk4",
           "TilePosition": {
@@ -39,7 +39,7 @@
           "TrajectoryParameters": []
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {
