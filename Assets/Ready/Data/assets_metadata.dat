@@ -1203,6 +1203,18 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Boss4/LittleFire",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss4/BigFire",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5

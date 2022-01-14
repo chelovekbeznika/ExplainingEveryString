@@ -2211,6 +2211,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Boss4/Appearance/Tail.png
 
+#begin Sprites/Enemies/Boss4/BigFire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Boss4/BigFire.png
+
 #begin Sprites/Enemies/Boss4/Center.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2222,6 +2234,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Boss4/Center.png
+
+#begin Sprites/Enemies/Boss4/ChubbyFire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Boss4/ChubbyFire.png
 
 #begin Sprites/Enemies/Boss4/Death/Center.png
 /importer:TextureImporter
@@ -2378,6 +2402,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Boss4/Left_3.png
+
+#begin Sprites/Enemies/Boss4/LittleFire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Boss4/LittleFire.png
 
 #begin Sprites/Enemies/Boss4/PhaseSwitch/Center.png
 /importer:TextureImporter
