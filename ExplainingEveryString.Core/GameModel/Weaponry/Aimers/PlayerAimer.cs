@@ -23,10 +23,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
                 return new Vector2(0, 0);
         }
 
-        public virtual Boolean IsFiring()
-        {
-            return true;
-        }
+        public virtual Boolean IsFiring() => true;
 
         public void Update(Single elapsedSeconds)
         {

@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
+using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;
@@ -20,7 +21,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public EventHandler MoveGoalReached { get ; set; }
 
-        public Weapon Weapon => null;
+        public Weapon Weapon { get; private set; }
 
         public ISpawnedActorsController SpawnedActors => null;
 
@@ -41,6 +42,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         public void Construct(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
         {
             UpdatePosition();
+            GiveWeapon(specification.Weapon, level);
         }
 
         public IEnumerable<IDisplayble> GetPartsToDisplay() => new IDisplayble[] { };
@@ -48,12 +50,29 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         public void Update(float elapsedSeconds)
         {
             UpdatePosition();
+            Weapon?.Update(elapsedSeconds);
         }
 
         internal void UpdatePosition()
         {
             var fullOffset = offset + pulsationOffset * BossBrain.PulsationCoefficient(pulsationTag);
             (bossPart as ICollidable).Position = BossBrain.Position + GeometryHelper.RotateVector(fullOffset, BossBrain.Angle);
+        }
+
+        internal void GiveWeapon(WeaponSpecification specification, Level level)
+        {
+            if (Weapon != null)
+                Weapon.Shoot -= level.EnemyShoot;
+            if (specification != null)
+            {
+                IAimer aimer = null;
+                if (specification.AimType == AimType.FixedFireDirection)
+                    aimer = new FourthBossFixedDirectionAimer(bossPart);
+                if (specification.AimType == AimType.AimAtPlayer)
+                    aimer = new PlayerAimer(() => level.Player.Position, () => bossPart.Position);
+                Weapon = new Weapon(specification, aimer, () => bossPart.Position, () => level.Player, level, false);
+                Weapon.Shoot += level.EnemyShoot;
+            }
         }
     }
 }

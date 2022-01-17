@@ -15,5 +15,6 @@ namespace ExplainingEveryString.Data.Blueprints
         public String PulsationTag { get; set; }
         public SpriteSpecification PhaseSwitchSprite { get; set; }
         public SpriteSpecification SecondPhaseSprite { get; set; }
+        public WeaponSpecification WeaponOfRage { get; set; }
     }
 }

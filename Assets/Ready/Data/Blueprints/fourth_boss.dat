@@ -68,6 +68,68 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.25
+        },
+        "Barrels": [
+          {
+            "MuzzleOffset": "32.0,0.0",
+            "Accuracy": 30.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 350.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "HomingSpeed": 20.0,
+              "ConsiderAngle": true,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.5
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 1.25
+      },
+      "Barrels": [
+        {
+          "MuzzleOffset": "32.0,0.0",
+          "Accuracy": 45.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 350.0
+            },
+            "Damage": 15.0,
+            "TimeToLive": 5.0,
+            "HomingSpeed": 30.0,
+            "ConsiderAngle": true,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/LittleFire",
+              "AnimationCycle": 0.25
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.55
+        }
+      },
+      "AimType": "AimAtPlayer"
     },
     "Offset": "56.0,0.0",
     "PulsationOffset": "24.0,0.0",

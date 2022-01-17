@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private SpriteState phaseSwitchSprite;
         private SpriteState secondPhaseSprite;
         private Single tillSwitchToSecondPhase = Single.MaxValue;
+        private Level level;
+        private WeaponSpecification weaponOfRage;
 
         internal IFourthBossBrain BossBrain { get; private set; }
 
@@ -53,6 +56,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             base.Construct(blueprint, startInfo, level, factory);
             this.phaseSwitchSprite = new SpriteState(blueprint.PhaseSwitchSprite) { Looping = false };
             this.secondPhaseSprite = new SpriteState(blueprint.SecondPhaseSprite);
+            this.level = level;
+            this.weaponOfRage = blueprint.WeaponOfRage;
         }
 
         protected override void PlaceOnLevel(ActorStartInfo info)
@@ -78,6 +83,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             {
                 state = FourthBossPartState.BetweenPhases;
                 tillSwitchToSecondPhase = phaseSwitchSprite.AnimationCycle;
+                (Behavior as FourthBossPartBehavior).GiveWeapon(null, level);
             }
             else if (state == FourthBossPartState.BetweenPhases)
             {
@@ -86,6 +92,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 {
                     state = FourthBossPartState.SecondPhase;
                     BossBrain.SendAgonySignal();
+                    (Behavior as FourthBossPartBehavior).GiveWeapon(weaponOfRage, level);
                 }
             }
             else if (state == FourthBossPartState.SecondPhase && BossBrain.InAgony)
