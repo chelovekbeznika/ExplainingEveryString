@@ -5,7 +5,7 @@
     "CollisionDamage": 100,
     "Height": 1.0,
     "Width": 1.0,
-    "Hitpoints": 1300.0,
+    "Hitpoints": 1500.0,
     "DefaultSprite": {
       "Name": "Sprites/Empty"
     },
@@ -33,7 +33,7 @@
     "MovementSpecification": {
       "Radius": 496.0,
       "RadiusPulsationPart": -48.0,
-      "CircleTime": 12.0,
+      "CircleTime": 20.0,
       "BetweenDirectionSwitches": {
         "ExpectedValue": 8.0,
         "Sigma": 1.0
@@ -51,7 +51,7 @@
     "CollisionDamage": 100.0,
     "Height": 48.0,
     "Width": 48.0,
-    "Hitpoints": 100.0,
+    "Hitpoints": 150.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss4/Head",
       "AnimationCycle": 0.25
@@ -70,22 +70,19 @@
     "Behavior": {
       "Weapon": {
         "Reloader": {
-          "FireRate": 1.25
+          "FireRate": 0.333333
         },
         "Barrels": [
           {
             "MuzzleOffset": "32.0,0.0",
-            "Accuracy": 30.0,
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 350.0
+                "speed": 600.0
               },
-              "Damage": 15.0,
+              "Damage": 25.0,
               "TimeToLive": 5.0,
-              "HomingSpeed": 20.0,
-              "ConsiderAngle": true,
               "Sprite": {
-                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "Name": "Sprites/Enemies/Boss4/BigFire",
                 "AnimationCycle": 0.25
               }
             }
@@ -94,31 +91,28 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Bosses/4/PartFire",
-            "Volume": 0.5
+            "Volume": 1.0
           }
         },
-        "AimType": "AimAtPlayer"
+        "AimType": "FixedFireDirection"
       }
     },
     "WeaponOfRage": {
       "Reloader": {
-        "FireRate": 1.25
+        "FireRate": 0.5
       },
       "Barrels": [
         {
           "MuzzleOffset": "32.0,0.0",
-          "Accuracy": 45.0,
           "Bullet": {
             "TrajectoryParameters": {
-              "speed": 350.0
+              "speed": 600.0
             },
-            "Damage": 15.0,
+            "Damage": 25.0,
             "TimeToLive": 5.0,
-            "HomingSpeed": 30.0,
-            "ConsiderAngle": true,
             "Sprite": {
-              "Name": "Sprites/Enemies/Boss4/LittleFire",
-              "AnimationCycle": 0.25
+              "Name": "Sprites/Enemies/Boss4/BigFire",
+              "AnimationCycle": 0.166667
             }
           }
         }
@@ -126,7 +120,7 @@
       "ShootingEffect": {
         "Sound": {
           "Name": "Sounds/Bosses/4/PartFire",
-          "Volume": 0.55
+          "Volume": 1.0
         }
       },
       "AimType": "AimAtPlayer"
@@ -149,7 +143,7 @@
     "CollisionDamage": 100.0,
     "Height": 64.0,
     "Width": 64.0,
-    "Hitpoints": 100.0,
+    "Hitpoints": 150.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss4/Center",
       "AnimationCycle": 0.25
@@ -166,6 +160,72 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.333333
+        },
+        "Barrels": [
+          {
+            "Length": 0.0,
+            "AngleCorrection": 0.0,
+            "AngleStep": 45.0,
+            "BulletsAtOnce": 8,
+            "Bullet": {
+              "TrajectoryType": "Spiral",
+              "TrajectoryParameters": {
+                "speed": 250.0,
+                "angularVelocity": 30.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.75
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 0.4
+      },
+      "Barrels": [
+        {
+          "Length": 0.0,
+          "AngleCorrection": 0.0,
+          "AngleStep": 45.0,
+          "BulletsAtOnce": 8,
+          "Bullet": {
+            "TrajectoryType": "Spiral",
+            "TrajectoryParameters": {
+              "speed": 250.0,
+              "angularVelocity": 45.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.75
+        }
+      },
+      "AimType": "FixedFireDirection"
     },
     "Offset": "0.0,0.0",
     "PulsationTag": "Wings",
@@ -237,6 +297,64 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.0
+        },
+        "Barrels": [
+          {
+            "Accuracy": 60.0,
+            "BulletsAtOnce": 7,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 160.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 1.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.6
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 1.0
+      },
+      "Barrels": [
+        {
+          "Accuracy": 60.0,
+          "BulletsAtOnce": 7,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 400.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 0.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.6
+        }
+      },
+      "AimType": "FixedFireDirection"
     },
     "Offset": "-8.0,-64.0",
     "PulsationOffset": "24.0,-12.0",
@@ -273,6 +391,68 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 5,
+          "Ammo": 5,
+          "ReloadTime": 1.5
+        },
+        "Barrels": [
+          {
+            "Length": 0.0,
+            "Accuracy": 5.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 450.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.35
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 5,
+        "Ammo": 5,
+        "ReloadTime": 1.25
+      },
+      "Barrels": [
+        {
+          "Accuracy": 15.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 500.0
+            },
+            "Damage": 15.0,
+            "TimeToLive": 5.0,
+            "ConsiderAngle": true,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/LittleFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.35
+        }
+      },
+      "AimType": "AimAtPlayer"
     },
     "Offset": "-16.0,-120.0",
     "PulsationOffset": "48.0,-24.0",
@@ -292,7 +472,7 @@
     "CollisionDamage": 100.0,
     "Height": 48.0,
     "Width": 48.0,
-    "Hitpoints": 100.0,
+    "Hitpoints": 75.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss4/Left_3",
       "AnimationCycle": 0.25
@@ -309,6 +489,130 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 4.0
+        },
+        "Barrels": [
+          {
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 1000.0,
+                "outerCoefficient": -4.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 1000.0,
+                "outerCoefficient": -3.5,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 1000.0,
+                "outerCoefficient": -3.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 4.0
+      },
+      "Barrels": [
+        {
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 1000.0,
+              "outerCoefficient": -0.5,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        },
+        {
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 1000.0,
+              "outerCoefficient": 0.0,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        },
+        {
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 1000.0,
+              "outerCoefficient": 0.5,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.25
+        }
+      },
+      "AimType": "FixedFireDirection"
     },
     "Offset": "-32.0,-184.0",
     "PulsationOffset": "96.0,-48.0",
@@ -345,6 +649,64 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.0
+        },
+        "Barrels": [
+          {
+            "Accuracy": 60.0,
+            "BulletsAtOnce": 7,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 160.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 1.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.6
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 1.0
+      },
+      "Barrels": [
+        {
+          "Accuracy": 60.0,
+          "BulletsAtOnce": 7,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 400.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 0.5,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.6
+        }
+      },
+      "AimType": "FixedFireDirection"
     },
     "Offset": "-8.0,64.0",
     "PulsationOffset": "24.0,12.0",
@@ -381,6 +743,68 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 5,
+          "Ammo": 5,
+          "ReloadTime": 1.5
+        },
+        "Barrels": [
+          {
+            "Length": 0.0,
+            "Accuracy": 5.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 450.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.35
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 5,
+        "Ammo": 5,
+        "ReloadTime": 1.25
+      },
+      "Barrels": [
+        {
+          "Accuracy": 15.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 500.0
+            },
+            "Damage": 15.0,
+            "TimeToLive": 5.0,
+            "ConsiderAngle": true,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/LittleFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.35
+        }
+      },
+      "AimType": "AimAtPlayer"
     },
     "Offset": "-16.0,120.0",
     "PulsationOffset": "48.0,24.0",
@@ -400,7 +824,7 @@
     "CollisionDamage": 100.0,
     "Height": 48.0,
     "Width": 48.0,
-    "Hitpoints": 100.0,
+    "Hitpoints": 75.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Boss4/Right_3",
       "AnimationCycle": 0.25
@@ -417,6 +841,130 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 4.0
+        },
+        "Barrels": [
+          {
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 1000.0,
+                "outerCoefficient": 4.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 1000.0,
+                "outerCoefficient": 3.5,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TrajectoryType": "Parabolic",
+              "TrajectoryParameters": {
+                "speed": 1000.0,
+                "outerCoefficient": 3.0,
+                "innerCoefficient": 3.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/4/PartFire",
+            "Volume": 0.25
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    "WeaponOfRage": {
+      "Reloader": {
+        "FireRate": 4.0
+      },
+      "Barrels": [
+        {
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 1000.0,
+              "outerCoefficient": -0.5,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        },
+        {
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 1000.0,
+              "outerCoefficient": 0.0,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        },
+        {
+          "Bullet": {
+            "TrajectoryType": "Parabolic",
+            "TrajectoryParameters": {
+              "speed": 1000.0,
+              "outerCoefficient": 0.5,
+              "innerCoefficient": 3.0
+            },
+            "Damage": 20.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
+              "AnimationCycle": 0.166667
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Bosses/4/PartFire",
+          "Volume": 0.25
+        }
+      },
+      "AimType": "FixedFireDirection"
     },
     "Offset": "-32.0,184.0",
     "PulsationOffset": "96.0,48.0",
