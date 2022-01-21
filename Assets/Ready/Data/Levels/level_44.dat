@@ -4,7 +4,7 @@
     "fourth_boss"
   ],
   "MusicName": "liberty_bell",
-  "TitleSpriteName": "Sprites/LevelTitles/43",
+  "TitleSpriteName": "Sprites/LevelTitles/44",
   "TileMap": "TileMaps/Level_44",
   "StartCheckpoint": {
     "PlayerPosition": {
