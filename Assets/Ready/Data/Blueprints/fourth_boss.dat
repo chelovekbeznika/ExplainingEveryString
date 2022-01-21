@@ -168,16 +168,14 @@
           {
             "Length": 0.0,
             "AngleCorrection": 0.0,
-            "AngleStep": 45.0,
-            "BulletsAtOnce": 8,
+            "AngleStep": 22.5,
+            "BulletsAtOnce": 16,
             "Bullet": {
-              "TrajectoryType": "Spiral",
               "TrajectoryParameters": {
-                "speed": 250.0,
-                "angularVelocity": 30.0
+                "speed": 250.0
               },
               "Damage": 20.0,
-              "TimeToLive": 5.0,
+              "TimeToLive": 10.0,
               "Sprite": {
                 "Name": "Sprites/Enemies/Boss4/ChubbyFire",
                 "AnimationCycle": 0.25
@@ -202,13 +200,11 @@
         {
           "Length": 0.0,
           "AngleCorrection": 0.0,
-          "AngleStep": 45.0,
-          "BulletsAtOnce": 8,
+          "AngleStep": 22.5,
+          "BulletsAtOnce": 16,
           "Bullet": {
-            "TrajectoryType": "Spiral",
             "TrajectoryParameters": {
-              "speed": 250.0,
-              "angularVelocity": 45.0
+              "speed": 400.0
             },
             "Damage": 20.0,
             "TimeToLive": 5.0,
@@ -297,64 +293,6 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
-      "Weapon": {
-        "Reloader": {
-          "FireRate": 1.0
-        },
-        "Barrels": [
-          {
-            "Accuracy": 60.0,
-            "BulletsAtOnce": 7,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 160.0
-              },
-              "Damage": 20.0,
-              "TimeToLive": 1.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-                "AnimationCycle": 0.25
-              }
-            }
-          }
-        ],
-        "ShootingEffect": {
-          "Sound": {
-            "Name": "Sounds/Bosses/4/PartFire",
-            "Volume": 0.6
-          }
-        },
-        "AimType": "FixedFireDirection"
-      }
-    },
-    "WeaponOfRage": {
-      "Reloader": {
-        "FireRate": 1.0
-      },
-      "Barrels": [
-        {
-          "Accuracy": 60.0,
-          "BulletsAtOnce": 7,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 400.0
-            },
-            "Damage": 20.0,
-            "TimeToLive": 0.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Bosses/4/PartFire",
-          "Volume": 0.6
-        }
-      },
-      "AimType": "FixedFireDirection"
     },
     "Offset": "-8.0,-64.0",
     "PulsationOffset": "24.0,-12.0",
@@ -407,6 +345,7 @@
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
+              "ConsiderAngle": true,
               "Sprite": {
                 "Name": "Sprites/Enemies/Boss4/LittleFire",
                 "AnimationCycle": 0.25
@@ -499,8 +438,8 @@
               "TrajectoryType": "Parabolic",
               "TrajectoryParameters": {
                 "speed": 1000.0,
-                "outerCoefficient": -4.0,
-                "innerCoefficient": 3.0
+                "outerCoefficient": -6.0,
+                "innerCoefficient": 5.0
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
@@ -515,8 +454,8 @@
               "TrajectoryType": "Parabolic",
               "TrajectoryParameters": {
                 "speed": 1000.0,
-                "outerCoefficient": -3.5,
-                "innerCoefficient": 3.0
+                "outerCoefficient": -5.5,
+                "innerCoefficient": 5.0
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
@@ -531,8 +470,8 @@
               "TrajectoryType": "Parabolic",
               "TrajectoryParameters": {
                 "speed": 1000.0,
-                "outerCoefficient": -3.0,
-                "innerCoefficient": 3.0
+                "outerCoefficient": -5.0,
+                "innerCoefficient": 5.0
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
@@ -562,14 +501,14 @@
             "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
               "speed": 1000.0,
-              "outerCoefficient": -0.5,
+              "outerCoefficient": -4.0,
               "innerCoefficient": 3.0
             },
-            "Damage": 20.0,
+            "Damage": 15.0,
             "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
+              "AnimationCycle": 0.25
             }
           }
         },
@@ -578,14 +517,14 @@
             "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
               "speed": 1000.0,
-              "outerCoefficient": 0.0,
+              "outerCoefficient": -3.5,
               "innerCoefficient": 3.0
             },
-            "Damage": 20.0,
+            "Damage": 15.0,
             "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
+              "AnimationCycle": 0.25
             }
           }
         },
@@ -594,14 +533,14 @@
             "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
               "speed": 1000.0,
-              "outerCoefficient": 0.5,
+              "outerCoefficient": -3.0,
               "innerCoefficient": 3.0
             },
-            "Damage": 20.0,
+            "Damage": 15.0,
             "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
+              "AnimationCycle": 0.25
             }
           }
         }
@@ -649,64 +588,6 @@
     },
     "DefaultAppearancePhaseDuration": 0.25,
     "Behavior": {
-      "Weapon": {
-        "Reloader": {
-          "FireRate": 1.0
-        },
-        "Barrels": [
-          {
-            "Accuracy": 60.0,
-            "BulletsAtOnce": 7,
-            "Bullet": {
-              "TrajectoryParameters": {
-                "speed": 160.0
-              },
-              "Damage": 20.0,
-              "TimeToLive": 1.0,
-              "Sprite": {
-                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-                "AnimationCycle": 0.25
-              }
-            }
-          }
-        ],
-        "ShootingEffect": {
-          "Sound": {
-            "Name": "Sounds/Bosses/4/PartFire",
-            "Volume": 0.6
-          }
-        },
-        "AimType": "FixedFireDirection"
-      }
-    },
-    "WeaponOfRage": {
-      "Reloader": {
-        "FireRate": 1.0
-      },
-      "Barrels": [
-        {
-          "Accuracy": 60.0,
-          "BulletsAtOnce": 7,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 400.0
-            },
-            "Damage": 20.0,
-            "TimeToLive": 0.5,
-            "Sprite": {
-              "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
-            }
-          }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Bosses/4/PartFire",
-          "Volume": 0.6
-        }
-      },
-      "AimType": "FixedFireDirection"
     },
     "Offset": "-8.0,64.0",
     "PulsationOffset": "24.0,12.0",
@@ -759,6 +640,7 @@
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
+              "ConsiderAngle": true,
               "Sprite": {
                 "Name": "Sprites/Enemies/Boss4/LittleFire",
                 "AnimationCycle": 0.25
@@ -851,13 +733,13 @@
               "TrajectoryType": "Parabolic",
               "TrajectoryParameters": {
                 "speed": 1000.0,
-                "outerCoefficient": 4.0,
-                "innerCoefficient": 3.0
+                "outerCoefficient": 6.0,
+                "innerCoefficient": 5.0
               },
               "Damage": 20.0,
               "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
                 "AnimationCycle": 0.25
               }
             }
@@ -867,13 +749,13 @@
               "TrajectoryType": "Parabolic",
               "TrajectoryParameters": {
                 "speed": 1000.0,
-                "outerCoefficient": 3.5,
-                "innerCoefficient": 3.0
+                "outerCoefficient": 5.5,
+                "innerCoefficient": 5.0
               },
               "Damage": 20.0,
               "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/Boss4/LittleFire",
+                "Name": "Sprites/Enemies/Boss4/ChubbyFire",
                 "AnimationCycle": 0.25
               }
             }
@@ -883,8 +765,8 @@
               "TrajectoryType": "Parabolic",
               "TrajectoryParameters": {
                 "speed": 1000.0,
-                "outerCoefficient": 3.0,
-                "innerCoefficient": 3.0
+                "outerCoefficient": 5.0,
+                "innerCoefficient": 5.0
               },
               "Damage": 20.0,
               "TimeToLive": 5.0,
@@ -914,14 +796,14 @@
             "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
               "speed": 1000.0,
-              "outerCoefficient": -0.5,
+              "outerCoefficient": 4.0,
               "innerCoefficient": 3.0
             },
             "Damage": 20.0,
             "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
+              "AnimationCycle": 0.25
             }
           }
         },
@@ -930,14 +812,14 @@
             "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
               "speed": 1000.0,
-              "outerCoefficient": 0.0,
+              "outerCoefficient": 3.5,
               "innerCoefficient": 3.0
             },
             "Damage": 20.0,
             "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
+              "AnimationCycle": 0.25
             }
           }
         },
@@ -946,14 +828,14 @@
             "TrajectoryType": "Parabolic",
             "TrajectoryParameters": {
               "speed": 1000.0,
-              "outerCoefficient": 0.5,
+              "outerCoefficient": 3.0,
               "innerCoefficient": 3.0
             },
             "Damage": 20.0,
             "TimeToLive": 5.0,
             "Sprite": {
               "Name": "Sprites/Enemies/Boss4/ChubbyFire",
-              "AnimationCycle": 0.166667
+              "AnimationCycle": 0.25
             }
           }
         }
