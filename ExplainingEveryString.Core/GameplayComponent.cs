@@ -91,7 +91,7 @@ namespace ExplainingEveryString.Core
             var screenDetector = new ScreenFogOfWarDetector(levelCoordinatesMaster, screenCoordinatesMaster);
             var filler = new FogOfWarFiller();
 
-            var displayer = new FogOfWarDisplayer();
+            var displayer = new FogOfWarDisplayer(screenCoordinatesMaster);
             var spriteDataBuilder = new SpriteDataBuilder(Game.Content, AssetsMetadataAccess.GetLoader());
             displayer.Construct(levelData.FogOfWar, spriteDataBuilder);
 

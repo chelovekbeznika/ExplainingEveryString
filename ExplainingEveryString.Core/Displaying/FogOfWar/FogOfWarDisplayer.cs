@@ -11,13 +11,24 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
     {
         private Single timeElapsed = 0;
         private SpriteData[] fogParticles;
+        private SpriteData defaultSprite = null;
+        private IScreenCoordinatesMaster screenCoordinatesMaster;
 
         public FogOfWarSpecification Specification { get; private set; }
+
+        public FogOfWarDisplayer(IScreenCoordinatesMaster screenCoordinatesMaster)
+        {
+            this.screenCoordinatesMaster = screenCoordinatesMaster;
+        }
 
         public void Construct(FogOfWarSpecification specification, SpriteDataBuilder spriteDataBuilder)
         {
             this.Specification = specification;
             this.fogParticles = spriteDataBuilder.Build(specification.Sprites).Values.ToArray();
+            if (specification.DefaultSprite != null)
+            {
+                defaultSprite = spriteDataBuilder.Build(new[] { specification.DefaultSprite }).Values.First();
+            }
         }
 
         public void Update(Single elapsedSeconds)
@@ -27,9 +38,12 @@ namespace ExplainingEveryString.Core.Displaying.FogOfWar
 
         public void Draw(SpriteBatch spriteBatch, FogOfWarSpriteEntry[] fogOfWarSpriteEntries)
         {
+            var currentVerticalBorder = screenCoordinatesMaster.ConvertToScreenPosition(new Vector2(Specification.PutDefaultSpritesLeftOf, 0)).X;
             foreach (FogOfWarSpriteEntry spriteEntry in fogOfWarSpriteEntries)
             {
-                var sprite = fogParticles[spriteEntry.SpriteNumber];
+                var sprite = (defaultSprite != null && spriteEntry.ScreenPosition.X < currentVerticalBorder)
+                        ? defaultSprite
+                        : fogParticles[spriteEntry.SpriteNumber];
                 var drawPart = AnimationHelper.GetDrawPart(sprite, timeElapsed);
                 var origin = new Vector2(sprite.Width / 2, sprite.Height / 2);
                 var position = new Vector2(spriteEntry.ScreenPosition.X, spriteEntry.ScreenPosition.Y);

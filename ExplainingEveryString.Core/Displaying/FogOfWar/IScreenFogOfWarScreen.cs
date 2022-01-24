@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace ExplainingEveryString.Core.Displaying.FogOfWar
 {

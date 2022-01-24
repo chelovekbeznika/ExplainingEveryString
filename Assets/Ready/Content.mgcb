@@ -4971,6 +4971,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/FogOfWar/Level3X/5.png
 
+#begin Sprites/FogOfWar/Level3X/Default.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/FogOfWar/Level3X/Default.png
+
 #begin Sprites/FogOfWar/Level4X/0.png
 /importer:TextureImporter
 /processor:TextureProcessor

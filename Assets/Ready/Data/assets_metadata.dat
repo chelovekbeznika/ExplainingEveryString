@@ -763,33 +763,33 @@
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/0",
-      "AnimationFrames": 3,
+      "AnimationFrames": 1,
       "DefaultAnimationCycle": 1.0
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/1",
-      "AnimationFrames": 5,
+      "AnimationFrames": 1,
       "DefaultAnimationCycle": 1.0
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/2",
-      "AnimationFrames": 5,
-      "DefaultAnimationCycle": 1.0
+      "AnimationFrames": 6,
+      "DefaultAnimationCycle": 1.25
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/3",
-      "AnimationFrames": 5,
+      "AnimationFrames": 1,
       "DefaultAnimationCycle": 1.0
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/4",
-      "AnimationFrames": 5,
-      "DefaultAnimationCycle": 1.0
+      "AnimationFrames": 7,
+      "DefaultAnimationCycle": 0.7
     },
     {
       "Name": "Sprites/FogOfWar/Level3X/5",
       "AnimationFrames": 5,
-      "DefaultAnimationCycle": 1.0
+      "DefaultAnimationCycle": 0.33333
     },
     {
       "Name": "Sprites/CheeseMoonStars/0",

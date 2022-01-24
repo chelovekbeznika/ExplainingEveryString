@@ -2422,6 +2422,8 @@
   "FogOfWar": {
     "ParticleWidth": 16,
     "ParticleHeight": 16,
+	"DefaultSprite": "Sprites/FogOfWar/Level3X/Default",
+	"PutDefaultSpritesLeftOf": 896,
     "Sprites": [
       "Sprites/FogOfWar/Level3X/0",
       "Sprites/FogOfWar/Level3X/1",
@@ -2431,7 +2433,7 @@
       "Sprites/FogOfWar/Level3X/5"
     ],
     "Weights": [
-      1,
+      65,
       1,
       1,
       1,
