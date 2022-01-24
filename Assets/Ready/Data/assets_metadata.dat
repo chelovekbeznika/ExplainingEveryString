@@ -329,6 +329,11 @@
       "DefaultAnimationCycle": 0.33333
     },
     {
+      "Name": "Sprites/Interface/Checkpoint",
+      "AnimationFrames": 3,
+      "DefaultAnimationCycle": 0.33333
+    },
+    {
       "Name": "Sprites/FogOfWar/Test/1",
       "AnimationFrames": 7,
       "DefaultAnimationCycle": 7.0
