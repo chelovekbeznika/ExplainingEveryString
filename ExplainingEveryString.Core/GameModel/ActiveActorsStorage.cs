@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.GameModel
         internal List<IEnemy> Enemies => currentWaveEnemies
             .Concat(avengers)
             .Concat(enemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
-        internal List<IEnemy> Bosses { get; private set; } = null;
+        internal List<IEnemy> ShowAsBossesInInterface { get; private set; } = null;
         internal List<IChangeableActor> ChangeableActors => Enemies.OfType<IChangeableActor>().ToList();
       
         private List<IActor> obstacles;
@@ -101,9 +101,9 @@ namespace ExplainingEveryString.Core.GameModel
 
             currentWaveEnemies = EnemiesDeathProcessor.DivideAliveAndDead(currentWaveEnemies, avengers);
             var bossAvengers = new List<IEnemy>();
-            Bosses = EnemiesDeathProcessor.DivideAliveAndDead(Bosses, bossAvengers);
+            ShowAsBossesInInterface = EnemiesDeathProcessor.DivideAliveAndDead(ShowAsBossesInInterface, bossAvengers);
             bossAvengers.ForEach(boss => enemiesQueue.Enqueue(boss));
-            Bosses?.Concat(bossAvengers);
+            ShowAsBossesInInterface?.Concat(bossAvengers);
             foreach (var spawnedActorsController in enemySpawners)
                 spawnedActorsController.DivideAliveAndDead(avengers);
             avengers = EnemiesDeathProcessor.DivideAliveAndDead(avengers, avengers);
@@ -139,9 +139,9 @@ namespace ExplainingEveryString.Core.GameModel
         internal void StartEnemyWave(ActorsInitializer actorsInitializer, Int32 waveNumber)
         {
             enemiesQueue = actorsInitializer.InitializeEnemies(waveNumber);
-            Bosses = actorsInitializer.InitializeBosses(waveNumber)?.ToList();
-            if (Bosses != null)
-                Bosses.ForEach((boss) => enemiesQueue.Enqueue(boss));
+            ShowAsBossesInInterface = actorsInitializer.InitializeBosses(waveNumber)?.ToList();
+            if (ShowAsBossesInInterface != null)
+                ShowAsBossesInInterface.ForEach((boss) => enemiesQueue.Enqueue(boss));
             maxEnemiesAtOnce = actorsInitializer.MaxEnemiesAtOnce(waveNumber);
             var newDoors = actorsInitializer.InitializeClosingDoors(waveNumber);
             doors.AddRange(newDoors);
