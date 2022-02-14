@@ -100,7 +100,10 @@ namespace ExplainingEveryString.Core.GameModel
                     wallsPerSectors[sector].Remove(openedDoor);
 
             currentWaveEnemies = EnemiesDeathProcessor.DivideAliveAndDead(currentWaveEnemies, avengers);
-            Bosses = EnemiesDeathProcessor.DivideAliveAndDead(Bosses, Bosses);
+            var bossAvengers = new List<IEnemy>();
+            Bosses = EnemiesDeathProcessor.DivideAliveAndDead(Bosses, bossAvengers);
+            bossAvengers.ForEach(boss => enemiesQueue.Enqueue(boss));
+            Bosses?.Concat(bossAvengers);
             foreach (var spawnedActorsController in enemySpawners)
                 spawnedActorsController.DivideAliveAndDead(avengers);
             avengers = EnemiesDeathProcessor.DivideAliveAndDead(avengers, avengers);
