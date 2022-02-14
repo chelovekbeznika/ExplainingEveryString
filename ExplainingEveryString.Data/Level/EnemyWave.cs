@@ -16,5 +16,7 @@ namespace ExplainingEveryString.Data.Level
         public ActorStartInfo[] Enemies { get; set; }
         [DefaultValue(null)]
         public ActorStartInfo[] Bosses { get; set; }
+        [DefaultValue(null)]
+        public String RoomName { get; set; }
     }
 }

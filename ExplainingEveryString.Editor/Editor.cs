@@ -135,6 +135,7 @@ namespace ExplainingEveryString.Editor
             var result = new List<IEditorMode>();
             result.Add(new EnemyWavesEditorMode(levelData, result, editableDisplayingCenter));
             result.Add(new ObstaclesEditorMode(levelData, editableDisplayingCenter));
+            result.Add(new WaypointsEditorMode(levelData, editableDisplayingCenter));
             return result;
         }
     }

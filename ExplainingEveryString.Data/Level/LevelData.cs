@@ -16,5 +16,6 @@ namespace ExplainingEveryString.Data.Level
         public Dictionary<String, PositionOnTileMap[]> ObstaclesTilePositions { get; set; }
         [DefaultValue(null)]
         public SpriteEmitterData SpriteEmitter { get; set; }
+        public Dictionary<String, Room> Waypoints { get; set; }
     }
 }
