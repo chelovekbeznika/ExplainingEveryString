@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Editor
         internal IEditableDisplayer RectangleCorner { get; private set; }
         internal IEditableDisplayer SpawnPoint { get; private set; }
         internal IEditableDisplayer SpawnedTrajectory { get; private set; }
+        internal IEditableDisplayer WaypointsDisplayer { get; private set; }
         internal IBlueprintsLoader BlueprintsLoader { get; private set; }
         internal CoordinatesConverter CoordinatesConverter { get; private set; }
 
@@ -21,6 +22,7 @@ namespace ExplainingEveryString.Editor
             RectangleCorner = new RectangleCornersDisplayer(content);
             SpawnPoint = new SpawnPointsDisplayer(content);
             SpawnedTrajectory = new SpawnedTrajectoryDisplayer(content);
+            WaypointsDisplayer = new WaypointsEditableDisplayer(content);
             CoordinatesConverter = coordinatesConverter;
         }
     }

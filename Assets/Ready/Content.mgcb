@@ -1407,6 +1407,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Editor/GridCorner.png
 
+#begin Sprites/Editor/SelectedWaypoint.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Editor/SelectedWaypoint.png
+
 #begin Sprites/Editor/SpawnPointMarkers/0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1538,6 +1550,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Editor/SpawnPointMarkers/Base.png
+
+#begin Sprites/Editor/Waypoint.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Editor/Waypoint.png
 
 #begin Sprites/Empty.png
 /importer:TextureImporter

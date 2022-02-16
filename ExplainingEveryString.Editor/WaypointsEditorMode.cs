@@ -10,7 +10,7 @@ namespace ExplainingEveryString.Editor
     internal class WaypointsEditorMode : EditorMode<WaypointInEditor>
     {
         public WaypointsEditorMode(LevelData levelData, EditableDisplayingCenter edc) 
-            : base(levelData, edc.CoordinatesConverter, edc.RectangleCorner, edc.BlueprintsLoader)
+            : base(levelData, edc.CoordinatesConverter, edc.WaypointsDisplayer, edc.BlueprintsLoader)
         {
             Editables = GetEditables();
         }
