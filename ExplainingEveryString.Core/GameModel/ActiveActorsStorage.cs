@@ -60,7 +60,9 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal IEnumerable<ICollidable> GetWalls() => obstacles.Concat(doors).OfType<ICollidable>().Concat(walls);
 
-        internal IEnumerable<ICollidable> GetWalls(string sector) => wallsPerSectors.ContainsKey(sector) ? wallsPerSectors[sector] : new List<ICollidable>();
+        internal IEnumerable<ICollidable> GetWalls(String sector) => wallsPerSectors.ContainsKey(sector) ? wallsPerSectors[sector] : new List<ICollidable>();
+
+        internal IEnumerable<ICollidable> GetWalls(IEnumerable<String> sectors) => sectors.SelectMany(s => GetWalls(s)).Distinct();
 
         internal void Update()
         {

@@ -18,51 +18,51 @@ namespace ExplainingEveryString.Core.Collisions
             return intersectsOnXAxis && intersectsOnYAxis;
         }
 
-        internal Boolean Collides(Hitbox hitbox, Vector2 oldPosition, Vector2 newPosition)
+        internal Boolean Collides(Hitbox hitbox, Vector2 a, Vector2 b)
         {
-            if (Collides(hitbox, newPosition))
+            if (Collides(hitbox, b))
                 return true;
 
-            return TrajectoryCrossesWithVerticalFringe(hitbox, true, oldPosition, newPosition)
-                || TrajectoryCrossesWithVerticalFringe(hitbox, false, oldPosition, newPosition)
-                || TrajectoryCrossesWithHorizontalFringe(hitbox, true, oldPosition, newPosition)
-                || TrajectoryCrossesWithHorizontalFringe(hitbox, false, oldPosition, newPosition);
+            return TrajectoryCrossesWithVerticalFringe(hitbox, true, a, b)
+                || TrajectoryCrossesWithVerticalFringe(hitbox, false, a, b)
+                || TrajectoryCrossesWithHorizontalFringe(hitbox, true, a, b)
+                || TrajectoryCrossesWithHorizontalFringe(hitbox, false, a, b);
         }
 
         private Boolean TrajectoryCrossesWithVerticalFringe
-            (Hitbox hitbox, Boolean left, Vector2 oldPosition, Vector2 newPosition)
+            (Hitbox hitbox, Boolean left, Vector2 a, Vector2 b)
         {
             var fringeXPosition = left ? hitbox.Left : hitbox.Right;
-            if ((oldPosition.X > fringeXPosition && newPosition.X > fringeXPosition)
-                || (oldPosition.X < fringeXPosition && newPosition.X < fringeXPosition))
+            if ((a.X > fringeXPosition && b.X > fringeXPosition)
+                || (a.X < fringeXPosition && b.X < fringeXPosition))
                 return false;
 
             var fringeCrossing = GeometryHelper.GetLineCrossingWithVerticalFringe
-                (fringeXPosition, newPosition, oldPosition);
+                (fringeXPosition, b, a);
 
             if (fringeCrossing != null)
                 return fringeCrossing >= hitbox.Bottom && fringeCrossing <= hitbox.Top;
             else
-                return newPosition.X == fringeXPosition
-                    && Overlaps(oldPosition.Y, newPosition.Y, hitbox.Bottom, hitbox.Top);
+                return b.X == fringeXPosition
+                    && Overlaps(a.Y, b.Y, hitbox.Bottom, hitbox.Top);
         }
 
         private Boolean TrajectoryCrossesWithHorizontalFringe
-            (Hitbox hitbox, Boolean bottom, Vector2 oldPosition, Vector2 newPosition)
+            (Hitbox hitbox, Boolean bottom, Vector2 a, Vector2 b)
         {
             var fringeYPosition = bottom ? hitbox.Bottom : hitbox.Top;
-            if ((oldPosition.Y > fringeYPosition && newPosition.Y > fringeYPosition)
-                || (oldPosition.Y < fringeYPosition && newPosition.Y < fringeYPosition))
+            if ((a.Y > fringeYPosition && b.Y > fringeYPosition)
+                || (a.Y < fringeYPosition && b.Y < fringeYPosition))
                 return false;
 
             var fringeCrossing = GeometryHelper.GetLineCrossingWithHorizontalsFringe
-                (fringeYPosition, newPosition, oldPosition);
+                (fringeYPosition, b, a);
 
             if (fringeCrossing != null)
                 return fringeCrossing >= hitbox.Left && fringeCrossing <= hitbox.Right;
             else
-                return newPosition.Y == fringeYPosition
-                    && Overlaps(oldPosition.X, newPosition.X, hitbox.Left, hitbox.Right);
+                return b.Y == fringeYPosition
+                    && Overlaps(a.X, b.X, hitbox.Left, hitbox.Right);
         }
 
         private Boolean Collides(Hitbox hitbox, Vector2 point)

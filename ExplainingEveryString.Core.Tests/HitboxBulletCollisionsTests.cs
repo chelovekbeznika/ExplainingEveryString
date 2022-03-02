@@ -9,24 +9,24 @@ namespace ExplainingEveryString.Core.Tests
     [TestFixture]
     public class HitboxBulletCollisionsTests
     {
-        private const String simpleBulletCollisionCheckCategory = "SimpleBulletCollisionCheck";
+        private const String SimpleBulletCollisionCheckCategory = "SimpleBulletCollisionCheck";
 
         [Test]
-        [Category(simpleBulletCollisionCheckCategory)]
+        [Category(SimpleBulletCollisionCheckCategory)]
         public void Hurt()
         {
             AssertHitboxBulletRelations(new Vector2(0, 0), new Vector2(15, 25), true);
         }
 
         [Test]
-        [Category(simpleBulletCollisionCheckCategory)]
+        [Category(SimpleBulletCollisionCheckCategory)]
         public void NotHurt()
         {
             AssertHitboxBulletRelations(new Vector2(0, 0), new Vector2(-5, 0), false);
         }
 
         [Test]
-        [Category(simpleBulletCollisionCheckCategory)]
+        [Category(SimpleBulletCollisionCheckCategory)]
         public void TouchesCorner()
         {
             AssertHitboxBulletRelations(new Vector2(5, 30), new Vector2(10, 30), true);

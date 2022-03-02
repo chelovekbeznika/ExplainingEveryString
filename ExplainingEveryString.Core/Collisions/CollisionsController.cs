@@ -27,6 +27,15 @@ namespace ExplainingEveryString.Core.Collisions
             CheckForBulletsCollisions();
         }
 
+        internal Boolean IsItPossibleToRide(Vector2 a, Vector2 b, String collidableTag)
+        {
+            var sectorsOnTheWay = SpatialPartioningHelper.GetSectors(a, b);
+            var obstacles = activeObjects.GetWalls(sectorsOnTheWay);
+            if (!stoppedByPitsCollidableTags.Contains(collidableTag))
+                obstacles = obstacles.Where(o => o.CollidableMode != CollidableMode.Pit);
+            return obstacles.All(w => !collisionsChecker.Collides(w.GetCurrentHitbox(), a, b));
+        }
+
         private void CheckEnemiesForCrashingIntoPlayer()
         {
             var player = activeObjects.Player;
