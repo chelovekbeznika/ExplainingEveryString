@@ -50,7 +50,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
                 && collisionsController.IsItPossibleToRide(BottomLeft(hunterHitbox), BottomLeft(playerHitbox), hunter.CollideTag)
                 && collisionsController.IsItPossibleToRide(TopRight(hunterHitbox), TopRight(playerHitbox), hunter.CollideTag)
                 && collisionsController.IsItPossibleToRide(BottomRight(hunterHitbox), BottomRight(playerHitbox), hunter.CollideTag);
-            if (pathIsClear && !pathIsClearAtPreviousFrame)
+            var passedCornerRightNow = pathIsClear && !pathIsClearAtPreviousFrame;
+            if (passedCornerRightNow)
             {
                 passingCorner = true;
                 TimersComponent.Instance.ScheduleEvent(TimeToPassCorner, () => this.passingCorner = false);
