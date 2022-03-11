@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Collisions;
 using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Movement;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
@@ -23,6 +24,7 @@ namespace ExplainingEveryString.Core.GameModel
         private LevelProgress levelProgress;
         private Boolean levelEndDelayPassed = false;
 
+        internal MoveTargetSelectorFactory MoveTargetSelectorFactory { get; private set; }
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
         internal Boolean Lost => levelState.Lost && levelEndDelayPassed;
@@ -38,12 +40,13 @@ namespace ExplainingEveryString.Core.GameModel
 
             var actorsInitializer = new ActorsInitializer(map, factory, levelData);
             var activeActors = new ActiveActorsStorage();
+            this.collisionsController = new CollisionsController(activeActors);
+            this.MoveTargetSelectorFactory = new MoveTargetSelectorFactory(collisionsController, levelData, map);
+
             var checkpointsManager = new CheckpointsManager(map, levelData);
             this.levelState = new LevelState(activeActors, actorsInitializer, checkpointsManager, 
-                levelData.EnemyWaves.Count, levelProgress.CurrentCheckPoint);
+                levelData.EnemyWaves.Count, levelProgress.CurrentCheckPoint, MoveTargetSelectorFactory);
             this.CheckpointReached += levelState.RechargePlayer;
-
-            this.collisionsController = new CollisionsController(activeActors);
         }
 
         internal void Update(Single elapsedSeconds)

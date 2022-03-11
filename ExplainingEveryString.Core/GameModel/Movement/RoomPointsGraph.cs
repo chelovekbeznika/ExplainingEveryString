@@ -12,11 +12,12 @@ namespace ExplainingEveryString.Core.GameModel.Movement
     internal class RoomPointsGraph
     {
         private const Single FarAway = 1_000_000_000;
+        private const Int32 NoWay = -1;
 
         private CollisionsController collisionController;
         private Vector2[] vertices;
         private Single[,] edges;
-        private Int32[,] next;
+        private Int32[] previousInPath;
 
         private const Int32 EnemyIndex = 0;
         private Int32 PlayerIndex => VerticesAmount - 1;
@@ -33,52 +34,29 @@ namespace ExplainingEveryString.Core.GameModel.Movement
             this.CollideTag = collideTag;
         }
 
-        internal List<Vector2> GetWayInLevel(Vector2 enemyPosition, Vector2 playerPosition)
+        internal List<Vector2> GetWayInLevel(Vector2 enemyPosition, Vector2 playerPosition, Boolean wallBetweenEnemyAndPlayer)
         {
-            RebuildPlayerAndEnemyPositionsInGraph(enemyPosition, playerPosition);
-            return GetWayInGraph(EnemyIndex, PlayerIndex);
+            RebuildPlayerAndEnemyPositionsInGraph(enemyPosition, playerPosition, wallBetweenEnemyAndPlayer);
+            return GetWayInGraph();
         }
 
-        internal List<Vector2> GetWayInGraph(Int32 a, Int32 b)
+        internal List<Vector2> GetWayInGraph()
         {
-            if (next[a, b] == 0)
+            if (previousInPath[PlayerIndex] == NoWay)
                 return null;
 
-            var result = new List<Vector2>() { vertices[a] };
-            var current = a;
-            while (current != b)
+            var currentVertice = PlayerIndex;
+            var result = new List<Vector2>();
+            while (currentVertice != NoWay)
             {
-                current = next[current, b];
-                result.Add(vertices[current]);
+                result.Add(vertices[currentVertice]);
+                currentVertice = previousInPath[currentVertice];
             }
+            result.Reverse();
             return result;
         }
 
-        internal void BuildPaths()
-        {
-            //Floyd–Warshall algorithm
-            this.next = new Int32[VerticesAmount, VerticesAmount];
-            var distances = new Single[VerticesAmount, VerticesAmount];
-            foreach (var a in Enumerable.Range(0, VerticesAmount))
-                foreach (var b in Enumerable.Range(0, VerticesAmount))
-                {
-                    distances[a, b] = a != b ? edges[a, b] : 0;
-                    next[a, b] = distances[a, b] < FarAway ? b : 0;
-                }
-
-            foreach (var interPoint in Enumerable.Range(0, VerticesAmount))
-                foreach (var a in Enumerable.Range(0, VerticesAmount))
-                    foreach (var b in Enumerable.Range(0, VerticesAmount))
-                    {
-                        if (distances[a, interPoint] + distances[interPoint, b] < distances[a, b])
-                        {
-                            distances[a, b] = distances[a, interPoint] + distances[interPoint, b];
-                            next[a, b] = next[a, interPoint];
-                        }
-                    }
-        }
-
-        private void RebuildPlayerAndEnemyPositionsInGraph(Vector2 enemyPosition, Vector2 playerPosition)
+        private void RebuildPlayerAndEnemyPositionsInGraph(Vector2 enemyPosition, Vector2 playerPosition, Boolean wallBetweenEnemyAndPlayer)
         {
             vertices[EnemyIndex] = enemyPosition;
             vertices[PlayerIndex] = playerPosition;
@@ -89,6 +67,45 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                 InitDistance(collisionController, vertices, edges, index, EnemyIndex, CollideTag);
                 InitDistance(collisionController, vertices, edges, PlayerIndex, index, CollideTag);
                 InitDistance(collisionController, vertices, edges, index, PlayerIndex, CollideTag);
+            }
+
+            if (wallBetweenEnemyAndPlayer)
+            {
+                edges[EnemyIndex, PlayerIndex] = FarAway;
+                edges[PlayerIndex, EnemyIndex] = FarAway;
+            }
+
+            BuildPaths();
+        }
+
+        private void BuildPaths()
+        {
+            //Dijkstra algorithm
+            this.previousInPath = new Int32[VerticesAmount];
+            var distances = new Single[VerticesAmount];
+            Array.Fill(distances, FarAway);
+            distances[EnemyIndex] = 0;
+            Array.Fill(previousInPath, NoWay);
+            var visited = new Boolean[VerticesAmount];
+
+            while (!visited.All(v => v))
+            {
+                var visitingNowIndex = distances.Select((dist, index) => new { Distance = dist, Index = index })
+                    .Where(pair => !visited[pair.Index])
+                    .OrderBy(pair => pair.Distance)
+                    .First()
+                    .Index;
+
+                visited[visitingNowIndex] = true;
+
+                foreach (var verticeIndex in Enumerable.Range(0, VerticesAmount).Where(verticeIndex => !visited[verticeIndex]))
+                {
+                    if (distances[visitingNowIndex] + edges[visitingNowIndex, verticeIndex] < distances[verticeIndex])
+                    {
+                        distances[verticeIndex] = distances[visitingNowIndex] + edges[visitingNowIndex, verticeIndex];
+                        previousInPath[verticeIndex] = visitingNowIndex;
+                    }
+                }
             }
         }
 
@@ -102,8 +119,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement
             var waypointsAmount = room.Waypoints.Count;
             var edges = new Single[waypointsAmount + 2, waypointsAmount + 2];
 
-            foreach (var row in Enumerable.Range(1, waypointsAmount - 1))
-                foreach (var col in Enumerable.Range(1, waypointsAmount - 1))
+            foreach (var row in Enumerable.Range(1, waypointsAmount))
+                foreach (var col in Enumerable.Range(1, waypointsAmount))
                     InitDistance(collisionsController, vertices, edges, row, col, collideTag);
 
             return new RoomPointsGraph(collisionsController, vertices, edges, collideTag);

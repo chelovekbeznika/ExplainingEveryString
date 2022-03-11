@@ -11,6 +11,7 @@ namespace ExplainingEveryString.Data.Specifications
         RandomTargets,
         RandomFromListTargets,
         MoveTowardPlayer,
+        MoveTowardPlayerByWaypoints,
         MoveByPlayerTracks
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Collisions;
+using ExplainingEveryString.Core.GameModel.Movement;
 using System;
 
 namespace ExplainingEveryString.Core.GameModel
@@ -13,6 +14,7 @@ namespace ExplainingEveryString.Core.GameModel
         private readonly CheckpointsManager checkpointsManager;
         private readonly ActorChangingEventsProcessor actorChangingEventsProcessor;
         private WaveState currentEnemyWaveState = WaveState.Sleeping;
+        private MoveTargetSelectorFactory moveTargetSelectorFactory;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
 
         internal ActiveActorsStorage ActiveActors { get; private set; }
@@ -23,14 +25,15 @@ namespace ExplainingEveryString.Core.GameModel
         internal Boolean Won => !Lost && currentEnemyWaveNumber >= wavesAmount;
         internal Boolean LevelIsEnded => Won || Lost;
 
-        internal LevelState(ActiveActorsStorage activeActors, ActorsInitializer actorsInitializer, 
-            CheckpointsManager checkpointsManager, Int32 wavesAmount, String startCheckpoint)
+        internal LevelState(ActiveActorsStorage activeActors, ActorsInitializer actorsInitializer, CheckpointsManager checkpointsManager, 
+            Int32 wavesAmount, String startCheckpoint, MoveTargetSelectorFactory moveTargetSelectorFactory)
         {
             this.ActiveActors = activeActors;
             this.actorsInitializer = actorsInitializer;
             this.checkpointsManager = checkpointsManager;
             this.wavesAmount = wavesAmount;
             this.actorChangingEventsProcessor = new ActorChangingEventsProcessor(activeActors);
+            this.moveTargetSelectorFactory = moveTargetSelectorFactory;
             checkpointsManager.InitializeCheckpoints();
             activeActors.InitializeActorsOnLevelStart(actorsInitializer, checkpointsManager, startCheckpoint);
             currentEnemyWaveNumber = checkpointsManager.GetStartWave(startCheckpoint);
@@ -63,6 +66,7 @@ namespace ExplainingEveryString.Core.GameModel
             {
                 currentEnemyWaveState = WaveState.Triggered;
                 TrySwitchCheckpoint();
+                moveTargetSelectorFactory.SwitchRoom(currentEnemyWaveNumber);
                 ActiveActors.StartEnemyWave(actorsInitializer, currentEnemyWaveNumber);
             }
         }
@@ -78,7 +82,7 @@ namespace ExplainingEveryString.Core.GameModel
                 {
                     ActiveActors.SwitchStartRegion(actorsInitializer, currentEnemyWaveNumber);
                     TimersComponent.Instance.ScheduleEvent(waveDelay, () => currentEnemyWaveState = WaveState.Sleeping);
-                }                   
+                }
             }
         }
 

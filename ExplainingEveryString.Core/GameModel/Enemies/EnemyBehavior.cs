@@ -42,14 +42,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
 
         public void Construct(EnemyBehaviorSpecification specification, Level level, ActorsFactory factory)
         {
-            ConstructMovement(specification);
+            ConstructMovement(specification, level);
             ConstructWeaponry(specification, level, factory);
         }
 
-        private void ConstructMovement(EnemyBehaviorSpecification specification)
+        private void ConstructMovement(EnemyBehaviorSpecification specification, Level level)
         {
-            this.moveTargetSelector = MoveTargetSelectorFactory.Get(
-                specification.MoveTargetSelectType, parameters.TrajectoryParameters, playerLocator, enemy);
+            this.moveTargetSelector = level.MoveTargetSelectorFactory.Get(
+                specification.MoveTargetSelectType, parameters.TrajectoryParameters, player, enemy);
             ChangeMover(specification.Mover);
         }
 

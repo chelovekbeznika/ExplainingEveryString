@@ -108,7 +108,7 @@
           "speed": 75.0
         }
       },
-      "MoveTargetSelectType": "MoveTowardPlayer",
+      "MoveTargetSelectType": "MoveTowardPlayerByWaypoints",
       "Weapon": {
         "Reloader": {
           "FireRate": 30,
