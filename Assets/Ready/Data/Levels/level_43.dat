@@ -618,6 +618,7 @@
           "Angle": 0.0
         }
       ],
+      "RoomName": "Alpha",
       "Checkpoint": {
         "Name": "First",
         "PlayerPosition": {
@@ -1423,10 +1424,8 @@
         "Width": 18,
         "Height": 54
       },
-      "Enemies": [
-
-      ],
-      "Bosses": [        
+      "Enemies": [],
+      "Bosses": [
         {
           "BlueprintType": "Miniboss_mk43",
           "TilePosition": {
@@ -1611,6 +1610,52 @@
         3,
         1,
         1
+      ]
+    }
+  },
+  "Waypoints": {
+    "Alpha": {
+      "Waypoints": [
+        {
+          "X": 123,
+          "Y": 93,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 137,
+          "Y": 93,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 137,
+          "Y": 136,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 123,
+          "Y": 136,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 123,
+          "Y": 105,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 137,
+          "Y": 105,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 137,
+          "Y": 122,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 123,
+          "Y": 122,
+          "Offset": "-8, -8"
+        }
       ]
     }
   }

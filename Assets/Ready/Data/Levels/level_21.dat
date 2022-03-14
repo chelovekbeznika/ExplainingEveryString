@@ -405,6 +405,7 @@
         "Width": 47,
         "Height": 53
       },
+      "RoomName": "Alpha",
       "MaxEnemiesAtOnce": 7,
       "Enemies": [
         {
@@ -760,6 +761,7 @@
         "Height": 57
       },
       "MaxEnemiesAtOnce": 4,
+      "RoomName": "Beta",
       "Enemies": [
         {
           "BlueprintType": "Tank_mk2",
@@ -1032,6 +1034,7 @@
         "Height": 57
       },
       "MaxEnemiesAtOnce": 6,
+      "RoomName": "Beta",
       "Enemies": [
         {
           "BlueprintType": "Hunter_mk2",
@@ -2998,5 +3001,89 @@
         "Y": 7
       }
     ]
+  },
+  "Waypoints": {
+    "Alpha": {
+      "Waypoints": [
+        {
+          "X": 20,
+          "Y": 29,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 20,
+          "Y": 42,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 48,
+          "Y": 29,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 56,
+          "Y": 42,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 56,
+          "Y": 55,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 20,
+          "Y": 55,
+          "Offset": "-8, -8"
+        }
+      ]
+    },
+    "Beta": {
+      "Waypoints": [
+        {
+          "X": 68,
+          "Y": 61,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 120,
+          "Y": 61,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 120,
+          "Y": 76,
+          "Offset": "-8, 0"
+        },
+        {
+          "X": 120,
+          "Y": 95,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 96,
+          "Y": 107,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 63,
+          "Y": 92,
+          "Offset": "-8, 0"
+        },
+        {
+          "X": 91,
+          "Y": 92
+        },
+        {
+          "X": 84,
+          "Y": 76,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 110,
+          "Y": 107,
+          "Offset": "-8, -8"
+        }
+      ]
+    }
   }
 }

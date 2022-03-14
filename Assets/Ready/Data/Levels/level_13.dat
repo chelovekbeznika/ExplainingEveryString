@@ -86,6 +86,7 @@
           "Angle": 0.0
         }
       ],
+      "RoomName": "Alpha",
       "StartRegion": {
         "X": 30,
         "Y": 54,
@@ -167,6 +168,7 @@
         "Width": 46,
         "Height": 46
       },
+      "RoomName": "Beta",
       "MaxEnemiesAtOnce": 10,
       "Enemies": [
         {
@@ -1147,7 +1149,7 @@
           "Offset": "8, -8"
         },
         "Arsenal": {
-          "AvailableWeapons": {     
+          "AvailableWeapons": {
             "Shotgun": 75,
             "RocketLauncher": 25
           }
@@ -1383,6 +1385,7 @@
         "Width": 96,
         "Height": 40
       },
+      "RoomName": "Gamma",
       "MaxEnemiesAtOnce": 10,
       "Enemies": [
         {
@@ -1753,8 +1756,7 @@
         "Width": 96,
         "Height": 44
       },
-      "Enemies": [
-      ],
+      "Enemies": [],
       "Bosses": [
         {
           "BlueprintType": "Miniboss_mk13",
@@ -1849,5 +1851,89 @@
         "Offset": "8, 0"
       }
     ]
+  },
+  "Waypoints": {
+    "Alpha": {
+      "Waypoints": [
+        {
+          "X": 6,
+          "Y": 76,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 23,
+          "Y": 76,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 23,
+          "Y": 89,
+          "Offset": "-8, -8"
+        }
+      ]
+    },
+    "Beta": {
+      "Waypoints": [
+        {
+          "X": 6,
+          "Y": 76,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 23,
+          "Y": 76,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 23,
+          "Y": 89,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 72,
+          "Y": 89,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 72,
+          "Y": 71,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 94,
+          "Y": 71,
+          "Offset": "-8, -8"
+        }
+      ]
+    },
+    "Gamma": {
+      "Waypoints": [
+        {
+          "X": 6,
+          "Y": 13,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 14,
+          "Y": 13,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 74,
+          "Y": 5,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 75,
+          "Y": 15,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 94,
+          "Y": 15,
+          "Offset": "-8, -8"
+        }
+      ]
+    }
   }
 }

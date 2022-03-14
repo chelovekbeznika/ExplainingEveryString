@@ -50,6 +50,7 @@
           "Angle": 0.0
         }
       ],
+      "RoomName": "Alpha",
       "StartRegion": {
         "X": 51,
         "Y": 30,
@@ -322,6 +323,7 @@
         "Height": 30
       },
       "MaxEnemiesAtOnce": 4,
+      "RoomName": "Alpha",
       "Enemies": [
         {
           "BlueprintType": "WallCannon",
@@ -679,6 +681,7 @@
         "Width": 28,
         "Height": 40
       },
+      "RoomName": "Beta",
       "Enemies": [
         {
           "BlueprintType": "WallCannon",
@@ -806,6 +809,7 @@
         "Width": 47,
         "Height": 15
       },
+      "RoomName": "Gamma",
       "MaxEnemiesAtOnce": 4,
       "Enemies": [
         {
@@ -1790,6 +1794,43 @@
         3,
         1,
         1
+      ]
+    }
+  },
+  "Waypoints": {
+    "Alpha": {
+      "Waypoints": [
+        {
+          "X": 76,
+          "Y": 45
+        },
+        {
+          "X": 44,
+          "Y": 45
+        }
+      ]
+    },
+    "Beta": {
+      "Waypoints": [
+        {
+          "X": 91,
+          "Y": 29,
+          "Offset": "-8, 0"
+        },
+        {
+          "X": 91,
+          "Y": 60,
+          "Offset": "-8, -8"
+        }
+      ]
+    },
+    "Gamma": {
+      "Waypoints": [
+        {
+          "X": 147,
+          "Y": 26,
+          "Offset": "-8, -8"
+        }
       ]
     }
   }

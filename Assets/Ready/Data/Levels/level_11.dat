@@ -294,7 +294,8 @@
           },
           "Angle": 0.0
         }
-      ]
+      ],
+      "RoomName": "Alpha"
     },
     {
       "StartRegion": {
@@ -515,7 +516,7 @@
             "Y": 79,
             "Offset": "8, -8"
           },
-          "Angle": -14.4775124
+          "Angle": -14.477512
         },
         {
           "BlueprintType": "FixedCannon_mk1",
@@ -524,7 +525,7 @@
             "Y": 92,
             "Offset": "8, 8"
           },
-          "Angle": 14.4775124
+          "Angle": 14.477512
         },
         {
           "BlueprintType": "FixedCannon_mk1",
@@ -533,7 +534,7 @@
             "Y": 79,
             "Offset": "-8, -8"
           },
-          "Angle": -165.522491
+          "Angle": -165.52249
         },
         {
           "BlueprintType": "FixedCannon_mk1",
@@ -542,7 +543,7 @@
             "Y": 92,
             "Offset": "-8, 8"
           },
-          "Angle": 165.522491
+          "Angle": 165.52249
         },
         {
           "BlueprintType": "TripleCannon_mk1",
@@ -614,8 +615,7 @@
         "Width": 50,
         "Height": 20
       },
-      "Enemies": [
-      ],
+      "Enemies": [],
       "Bosses": [
         {
           "BlueprintType": "Miniboss_mk11",
@@ -681,5 +681,31 @@
       1
     ]
   },
-  "ObstaclesTilePositions": {}
+  "ObstaclesTilePositions": {},
+  "Waypoints": {
+    "Alpha": {
+      "Waypoints": [
+        {
+          "X": 24,
+          "Y": 133,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 68,
+          "Y": 133,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 72,
+          "Y": 181,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 24,
+          "Y": 181,
+          "Offset": "-8, -8"
+        }
+      ]
+    }
+  }
 }
