@@ -37,6 +37,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement
         internal List<Vector2> GetWayInLevel(Vector2 enemyPosition, Vector2 playerPosition, Boolean wallBetweenEnemyAndPlayer)
         {
             RebuildPlayerAndEnemyPositionsInGraph(enemyPosition, playerPosition, wallBetweenEnemyAndPlayer);
+            BuildPaths();
             return GetWayInGraph();
         }
 
@@ -74,8 +75,6 @@ namespace ExplainingEveryString.Core.GameModel.Movement
                 edges[EnemyIndex, PlayerIndex] = FarAway;
                 edges[PlayerIndex, EnemyIndex] = FarAway;
             }
-
-            BuildPaths();
         }
 
         private void BuildPaths()
