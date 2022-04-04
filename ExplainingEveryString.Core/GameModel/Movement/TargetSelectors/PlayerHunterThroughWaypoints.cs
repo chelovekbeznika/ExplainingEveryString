@@ -1,25 +1,19 @@
 ﻿using ExplainingEveryString.Core.Collisions;
+using ExplainingEveryString.Core.Displaying.Debug;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
 {
     internal class PlayerHunterThroughWaypoints : IMoveTargetSelector
     {
         private const Single TooClose = 8;
-        private const Single TimeToPassCorner = 0.2f;
 
         private Player player;
         private IMovableCollidable hunter;
         private CollisionsController collisionsController;
         private RoomPointsGraph roomGraph;
-        private Boolean passingCorner = false;
-        private Boolean pathIsClearAtPreviousFrame = false;
-
-        private Vector2? nextPoint = null;
 
         internal PlayerHunterThroughWaypoints(IMovableCollidable hunter, Player player, 
             CollisionsController collisionsController, RoomPointsGraph roomGraph)
@@ -32,12 +26,18 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
 
         public Vector2 GetTarget()
         {
-            if (!passingCorner && HunterCanRideToPlayer())
+            if (HunterCanRideToPlayer())
                 return player.Position;
             else
             {
-                var path = roomGraph.GetWayInLevel(hunter.Position, player.Position, true);
-                nextPoint = path?.First(point => Vector2.Distance(hunter.Position, point) > TooClose);
+                var path = roomGraph.GetWayInLevel(hunter.Position, hunter.GetOldHitbox(), player.Position);
+#if DEBUG
+                if (path != null)
+                {
+                    DebugInfoDisplayer.Instance.AddDebugInfo(path);
+                }
+#endif
+                var nextPoint = path?.First(point => Vector2.Distance(hunter.Position, point) > TooClose);
                 return nextPoint ?? player.Position;
             }
         }
@@ -50,13 +50,6 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
                 && collisionsController.IsItPossibleToRide(BottomLeft(hunterHitbox), BottomLeft(playerHitbox), hunter.CollideTag)
                 && collisionsController.IsItPossibleToRide(TopRight(hunterHitbox), TopRight(playerHitbox), hunter.CollideTag)
                 && collisionsController.IsItPossibleToRide(BottomRight(hunterHitbox), BottomRight(playerHitbox), hunter.CollideTag);
-            var passedCornerRightNow = pathIsClear && !pathIsClearAtPreviousFrame;
-            if (passedCornerRightNow)
-            {
-                passingCorner = true;
-                TimersComponent.Instance.ScheduleEvent(TimeToPassCorner, () => this.passingCorner = false);
-            }
-            pathIsClearAtPreviousFrame = pathIsClear;
             return pathIsClear;
         }
 
@@ -67,8 +60,7 @@ namespace ExplainingEveryString.Core.GameModel.Movement.TargetSelectors
 
         public void SwitchToNextTarget()
         {
-            var path = roomGraph.GetWayInLevel(hunter.Position, player.Position, false);
-            nextPoint = path?.First(point => Vector2.Distance(hunter.Position, point) > TooClose);
+            GetTarget();
         }
     }
 }

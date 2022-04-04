@@ -34,9 +34,9 @@ namespace ExplainingEveryString.Core.GameModel.Movement
             this.CollideTag = collideTag;
         }
 
-        internal List<Vector2> GetWayInLevel(Vector2 enemyPosition, Vector2 playerPosition, Boolean wallBetweenEnemyAndPlayer)
+        internal List<Vector2> GetWayInLevel(Vector2 enemyPosition, Hitbox enemyHitbox, Vector2 playerPosition)
         {
-            RebuildPlayerAndEnemyPositionsInGraph(enemyPosition, playerPosition, wallBetweenEnemyAndPlayer);
+            RebuildPlayerAndEnemyPositionsInGraph(enemyPosition, enemyHitbox, playerPosition);
             BuildPaths();
             return GetWayInGraph();
         }
@@ -57,25 +57,36 @@ namespace ExplainingEveryString.Core.GameModel.Movement
             return result;
         }
 
-        private void RebuildPlayerAndEnemyPositionsInGraph(Vector2 enemyPosition, Vector2 playerPosition, Boolean wallBetweenEnemyAndPlayer)
+        private void RebuildPlayerAndEnemyPositionsInGraph(Vector2 enemyPosition, Hitbox enemyHitbox, Vector2 playerPosition)
         {
             vertices[EnemyIndex] = enemyPosition;
             vertices[PlayerIndex] = playerPosition;
 
             foreach (var index in Enumerable.Range(0, VerticesAmount))
             {
-                InitDistance(collisionController, vertices, edges, EnemyIndex, index, CollideTag);
-                InitDistance(collisionController, vertices, edges, index, EnemyIndex, CollideTag);
+                if (EnemyCanRideToPoint(enemyHitbox, vertices[index]))
+                {
+                    edges[index, EnemyIndex] = Vector2.Distance(vertices[index], vertices[EnemyIndex]);
+                    edges[EnemyIndex, index] = Vector2.Distance(vertices[EnemyIndex], vertices[index]);
+                }
+                else
+                {
+                    edges[index, EnemyIndex] = FarAway;
+                    edges[EnemyIndex, index] = FarAway;
+                }
                 InitDistance(collisionController, vertices, edges, PlayerIndex, index, CollideTag);
                 InitDistance(collisionController, vertices, edges, index, PlayerIndex, CollideTag);
             }
 
-            if (wallBetweenEnemyAndPlayer)
-            {
-                edges[EnemyIndex, PlayerIndex] = FarAway;
-                edges[PlayerIndex, EnemyIndex] = FarAway;
-            }
+            edges[EnemyIndex, PlayerIndex] = FarAway;
+            edges[PlayerIndex, EnemyIndex] = FarAway;
         }
+
+        private Boolean EnemyCanRideToPoint(Hitbox enemyHitbox, Vector2 point) =>
+            collisionController.IsItPossibleToRide(new Vector2(enemyHitbox.Left, enemyHitbox.Bottom), point, CollideTag)
+            && collisionController.IsItPossibleToRide(new Vector2(enemyHitbox.Right, enemyHitbox.Bottom), point, CollideTag)
+            && collisionController.IsItPossibleToRide(new Vector2(enemyHitbox.Left, enemyHitbox.Top), point, CollideTag)
+            && collisionController.IsItPossibleToRide(new Vector2(enemyHitbox.Right, enemyHitbox.Top), point, CollideTag);
 
         private void BuildPaths()
         {

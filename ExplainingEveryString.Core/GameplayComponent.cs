@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.Displaying.Debug;
 using ExplainingEveryString.Core.Displaying.FogOfWar;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Input;
@@ -28,6 +29,9 @@ namespace ExplainingEveryString.Core
         private TiledMapDisplayer mapDisplayer;
         private FogOfWarRuler fogOfWarRuler;
         private SpriteBatch spriteBatch;
+#if DEBUG
+        private DebugInfoDisplayer debugInfoDisplayer;
+#endif
 
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
@@ -73,6 +77,9 @@ namespace ExplainingEveryString.Core
             EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level, config);
             this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);
             eesGame.GameState.StartMusicInGame(levelData.MusicName);
+#if DEBUG
+            this.debugInfoDisplayer = new DebugInfoDisplayer(screenCoordinatesMaster, Game.Content);
+#endif
             base.LoadContent();
         }
 
@@ -107,6 +114,9 @@ namespace ExplainingEveryString.Core
             mapDisplayer.Update(gameTime);
             EpicEventsProcessor.Update(elapsedSeconds);
             fogOfWarRuler.Update(elapsedSeconds);
+#if DEBUG
+            debugInfoDisplayer.Update(elapsedSeconds);
+#endif
             base.Update(gameTime);
         }
 
@@ -120,6 +130,9 @@ namespace ExplainingEveryString.Core
             fogOfWarRuler.DrawFogOfWar(spriteBatch);
             if (spriteEmitter != null)
                 Camera.Draw(spriteBatch, spriteEmitter.EmittedSprites);
+#if DEBUG
+            debugInfoDisplayer.Draw(spriteBatch);
+#endif
             spriteBatch.End();
             base.Draw(gameTime);
         }
