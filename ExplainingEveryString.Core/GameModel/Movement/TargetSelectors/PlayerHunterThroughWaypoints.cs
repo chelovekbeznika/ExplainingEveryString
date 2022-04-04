@@ -1,5 +1,7 @@
 ﻿using ExplainingEveryString.Core.Collisions;
+#if DEBUG
 using ExplainingEveryString.Core.Displaying.Debug;
+#endif
 using Microsoft.Xna.Framework;
 using System;
 using System.Linq;

@@ -1,5 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+#if DEBUG
 using ExplainingEveryString.Core.Displaying.Debug;
+#endif
 using ExplainingEveryString.Core.Displaying.FogOfWar;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Input;
@@ -11,7 +13,6 @@ using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Tiled;
 using System;
 
 namespace ExplainingEveryString.Core
