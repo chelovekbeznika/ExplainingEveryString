@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Interface.Displayers;
+using ExplainingEveryString.Core.Interface.Minimap;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
@@ -37,6 +38,8 @@ namespace ExplainingEveryString.Core
         private CheckpointDisplayer checkpointDisplayer;
         private Dictionary<String, IWeaponDisplayer> playerWeaponDisplayers;
 
+        private MiniMapDisplayer minimapDisplayer = null;
+
         internal InterfaceComponent(EesGame eesGame) : base(eesGame)
         {
             var config = ConfigurationAccess.GetCurrentConfig();
@@ -54,6 +57,11 @@ namespace ExplainingEveryString.Core
             {
                 this.Enabled = false;
                 this.Visible = false;
+            }
+            else
+            {
+                gameplayComponent.ContentLoaded += (sender, e) => 
+                    this.minimapDisplayer = new MiniMapDisplayer(gameplayComponent.Map, Game);
             }
         }
 
@@ -117,19 +125,21 @@ namespace ExplainingEveryString.Core
         {
             interfaceInfo = gameplayComponent.GetInterfaceInfo();
             this.interfaceSpritesDisplayer.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
+            this.minimapDisplayer.Update(gameTime);
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
             if (interfaceInfo != null)
             {
-                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
                 DrawPlayerElements();
                 DrawEnemiesElements();
                 gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
-                spriteBatch.End();
             }
+            minimapDisplayer?.Draw();
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 

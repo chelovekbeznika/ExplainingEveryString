@@ -26,7 +26,6 @@ namespace ExplainingEveryString.Core
         private LevelData levelData;
         private SpriteEmitter spriteEmitter;
         private EesGame eesGame;
-        private TileWrapper map;
         private TiledMapDisplayer mapDisplayer;
         private FogOfWarRuler fogOfWarRuler;
         private SpriteBatch spriteBatch;
@@ -34,6 +33,8 @@ namespace ExplainingEveryString.Core
         private DebugInfoDisplayer debugInfoDisplayer;
 #endif
 
+        internal event EventHandler ContentLoaded;
+        internal TileWrapper Map { get; private set; }
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
         internal Boolean Lost => level.Lost;
@@ -57,11 +58,11 @@ namespace ExplainingEveryString.Core
             this.blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
             blueprintsLoader.Load();
             var factory = new ActorsFactory(blueprintsLoader);
-            map = new TileWrapper(levelData.TileMap, eesGame.Content);
-            level = new Level(factory, map, new PlayerInputFactory(this), levelData, levelStart);
+            Map = new TileWrapper(levelData.TileMap, eesGame.Content);
+            level = new Level(factory, Map, new PlayerInputFactory(this), levelData, levelStart);
             level.CheckpointReached += eesGame.GameState.NotableProgressMaid;
             if (levelData.SpriteEmitter != null)
-                spriteEmitter = new SpriteEmitter(levelData.SpriteEmitter, map);
+                spriteEmitter = new SpriteEmitter(levelData.SpriteEmitter, Map);
             base.Initialize();
         }
 
@@ -73,14 +74,15 @@ namespace ExplainingEveryString.Core
             var screenCoordinatesMaster = new ScreenCoordinatesMaster(levelCoordinatesMaster);
             var assetsStorage = CreateFilledAssetsStorage();
             Camera = new Camera(assetsStorage, screenCoordinatesMaster);
-            map.LoadContent(Game.Content);
-            this.mapDisplayer = new TiledMapDisplayer(map, eesGame, screenCoordinatesMaster);
+            Map.LoadContent(Game.Content);
+            this.mapDisplayer = new TiledMapDisplayer(Map, eesGame, screenCoordinatesMaster);
             EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level, config);
             this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);
             eesGame.GameState.StartMusicInGame(levelData.MusicName);
 #if DEBUG
             this.debugInfoDisplayer = new DebugInfoDisplayer(screenCoordinatesMaster, Game.Content);
 #endif
+            ContentLoaded?.Invoke(this, EventArgs.Empty);
             base.LoadContent();
         }
 
@@ -95,7 +97,7 @@ namespace ExplainingEveryString.Core
         private FogOfWarRuler ConstructFogOfWarRuler(
             ILevelCoordinatesMaster levelCoordinatesMaster, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
-            var extractor = new LevelFogOfWarExtractor(map);
+            var extractor = new LevelFogOfWarExtractor(Map);
             var screenDetector = new ScreenFogOfWarDetector(levelCoordinatesMaster, screenCoordinatesMaster);
             var filler = new FogOfWarFiller();
 

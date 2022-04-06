@@ -10,10 +10,10 @@ namespace ExplainingEveryString.Core.Displaying
         private readonly TiledMapRenderer renderer;
         private readonly IScreenCoordinatesMaster screenCoordinatesMaster;
 
-        public TiledMapDisplayer(TileWrapper map, EesApp app, IScreenCoordinatesMaster screenCoordinatesMaster)
+        public TiledMapDisplayer(TileWrapper map, Game gameApp, IScreenCoordinatesMaster screenCoordinatesMaster)
         {
             this.map = map;
-            this.renderer = new TiledMapRenderer(app.GraphicsDevice, map.TiledMap);
+            this.renderer = new TiledMapRenderer(gameApp.GraphicsDevice, map.TiledMap);
             this.screenCoordinatesMaster = screenCoordinatesMaster;
         }
 
