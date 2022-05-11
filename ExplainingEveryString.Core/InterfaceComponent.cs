@@ -60,8 +60,11 @@ namespace ExplainingEveryString.Core
             }
             else
             {
-                gameplayComponent.ContentLoaded += (sender, e) => 
-                    this.minimapDisplayer = new MiniMapDisplayer(gameplayComponent.Map, Game);
+                gameplayComponent.ContentLoaded += (sender, e) =>
+                {
+                    this.minimapDisplayer = new MiniMapDisplayer(interfaceSpritesDisplayer, gameplayComponent.Map, Game);
+                    InitDisplayers(new[] { minimapDisplayer });
+                };  
             }
         }
 
@@ -70,21 +73,13 @@ namespace ExplainingEveryString.Core
             spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
             interfaceSpritesDisplayer = new InterfaceSpriteDisplayer(spriteBatch, alphaMask);
 
-            var displayers = InitDisplayers();
-
-            var metadataLoader = AssetsMetadataAccess.GetLoader();
-            var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
-            var animatedSprites = displayers
-                .SelectMany(displayer => displayer.GetSpritesNames())
-                .Select(spriteName => TextureLoadingHelper.GetFullName(spriteName));
-            var sprites = spriteDataBuilder.Build(animatedSprites);
-            foreach (var displayer in displayers)
-                displayer.InitSprites(sprites);
+            var displayers = CreateDisplayers();
+            InitDisplayers(displayers);
 
             base.LoadContent();
         }
 
-        private IEnumerable<IDisplayer> InitDisplayers()
+        private IEnumerable<IDisplayer> CreateDisplayers()
         {
             healthBarDisplayer = new HealthBarDisplayer(interfaceSpritesDisplayer);
             dashStateDisplayer = new DashStateDisplayer(healthBarDisplayer, interfaceSpritesDisplayer);
@@ -121,6 +116,18 @@ namespace ExplainingEveryString.Core
             .Concat(playerWeaponDisplayers.Values).ToArray();
         }
 
+        private void InitDisplayers(IEnumerable<IDisplayer> displayers)
+        {
+            var metadataLoader = AssetsMetadataAccess.GetLoader();
+            var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
+            var animatedSprites = displayers
+                .SelectMany(displayer => displayer.GetSpritesNames())
+                .Select(spriteName => TextureLoadingHelper.GetFullName(spriteName));
+            var sprites = spriteDataBuilder.Build(animatedSprites);
+            foreach (var displayer in displayers)
+                displayer.InitSprites(sprites);
+        }
+
         public override void Update(GameTime gameTime)
         {
             interfaceInfo = gameplayComponent.GetInterfaceInfo();
@@ -136,9 +143,9 @@ namespace ExplainingEveryString.Core
             {
                 DrawPlayerElements();
                 DrawEnemiesElements();
+                minimapDisplayer?.Draw(interfaceInfo);
                 gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
             }
-            minimapDisplayer?.Draw();
             spriteBatch.End();
             base.Draw(gameTime);
         }

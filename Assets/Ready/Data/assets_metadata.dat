@@ -334,6 +334,21 @@
       "DefaultAnimationCycle": 0.33333
     },
     {
+      "Name": "Sprites/Interface/MinimapPlayer",
+      "AnimationFrames": 2,
+      "DefaultAnimationCycle": 0.5
+    },
+    {
+      "Name": "Sprites/Interface/MinimapEnemy",
+      "AnimationFrames": 4,
+      "DefaultAnimationCycle": 1.0
+    },
+    {
+      "Name": "Sprites/Interface/MinimapBoss",
+      "AnimationFrames": 5,
+      "DefaultAnimationCycle": 0.5
+    },
+    {
       "Name": "Sprites/FogOfWar/Test/1",
       "AnimationFrames": 7,
       "DefaultAnimationCycle": 7.0

@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core.Interface
     internal class EnemyInterfaceInfo
     {
         private Single health;
+        internal Vector2 LevelPosition { get; set; }
         internal Single MaxHealth { get; set; }
         internal Single Health { get => health; set => health = value > 0 ? value : 0; }
         internal Single FromLastHit { get; set; }
@@ -25,6 +26,7 @@ namespace ExplainingEveryString.Core.Interface
     internal class PlayerInterfaceInfo
     {
         private Single health;
+        internal Vector2 LevelPosition { get; set; }
         internal Single MaxHealth { get; set; }
         internal Single Health { get => health; set => health = value > 0 ? value : 0; }
         internal Single FromLastHit { get; set; }

@@ -29,6 +29,7 @@ namespace ExplainingEveryString.Core.Interface
         {
             return new PlayerInterfaceInfo
             {
+                LevelPosition = player.Position,
                 Health = player.HitPoints > 0 ? player.HitPoints : 0,
                 MaxHealth = player.MaxHitPoints,
                 FromLastHit = player.FromLastHit,
@@ -58,6 +59,7 @@ namespace ExplainingEveryString.Core.Interface
         {
             return new EnemyInterfaceInfo
             {
+                LevelPosition = interfaceAccessable.Position,
                 Health = interfaceAccessable.HitPoints > 0 ? interfaceAccessable.HitPoints : 0,
                 MaxHealth = interfaceAccessable.MaxHitPoints,
                 FromLastHit = interfaceAccessable.FromLastHit,
