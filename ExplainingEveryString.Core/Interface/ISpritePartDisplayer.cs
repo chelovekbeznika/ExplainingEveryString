@@ -53,6 +53,50 @@ namespace ExplainingEveryString.Core.Interface
         }
     }
 
+    internal class TopPartDisplayer : ISpritePartDisplayer
+    {
+        public Rectangle GetDrawPart(SpriteData spriteData, float coeff)
+        {
+            return new Rectangle(0, 0, spriteData.Width, PixelsToDraw(spriteData.Height, coeff));
+        }
+
+        public Vector2 GetDrawPosition(SpriteData spriteData, float coeff, Vector2 wholeSpritePosition)
+        {
+            return wholeSpritePosition;
+        }
+
+        private Int32 PixelsToDraw(Int32 height, Single coeff)
+        {
+            return (Int32)System.Math.Floor(coeff * height);
+        }
+    }
+
+    internal class BottomPartDisplayer : ISpritePartDisplayer
+    {
+        public Rectangle GetDrawPart(SpriteData spriteData, float coeff)
+        {
+            var pixelsToDraw = PixelsToDraw(spriteData.Height, coeff);
+            var bottomMargin = BottomMargin(spriteData, coeff);
+            return new Rectangle(0, bottomMargin, spriteData.Width, pixelsToDraw);
+        }
+
+        public Vector2 GetDrawPosition(SpriteData spriteData, float coeff, Vector2 wholeSpritePosition)
+        {
+            return wholeSpritePosition + new Vector2(0, BottomMargin(spriteData, coeff));
+        }
+
+        private Int32 BottomMargin(SpriteData spriteData, Single coeff)
+        {
+            var pixelsToDraw = PixelsToDraw(spriteData.Height, coeff);
+            return spriteData.Height - pixelsToDraw;
+        }
+
+        private Int32 PixelsToDraw(Int32 height, Single coeff)
+        {
+            return (Int32)System.Math.Ceiling(coeff * height);
+        }
+    }
+
     internal class CenterPartDisplayer : ISpritePartDisplayer
     {
         public Rectangle GetDrawPart(SpriteData spriteData, Single coeff)

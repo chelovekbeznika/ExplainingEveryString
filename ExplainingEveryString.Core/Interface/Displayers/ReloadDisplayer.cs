@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Displaying;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +10,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const String MagazineBackgroundTexture = "MagazineTopPart";
         private const String MagazineTexture = "Magazine";
         private const String AmmoTexture = "AmmoClip";
-        private const Int32 pixelsFromRight = 8;
+        private const Int32 pixelsFromRight = 8 + Constants.MinimapSize;
         private const Int32 pixelsFromBottom = 40;
         private const Int32 ammoDroppingWayLength = 128;
 

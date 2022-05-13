@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Displaying;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     internal class ShotgunDisplayer : IWeaponDisplayer
     {
         private const Int32 betweenShellsPixels = 4;
-        private const Int32 pixelsFromRight = 12;
+        private const Int32 pixelsFromRight = 12 + Constants.MinimapSize;
         private const Int32 pixelsFromBottom = 16;
 
         private SpriteData shell;

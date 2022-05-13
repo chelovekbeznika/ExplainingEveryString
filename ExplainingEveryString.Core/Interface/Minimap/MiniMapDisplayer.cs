@@ -15,31 +15,40 @@ namespace ExplainingEveryString.Core.Interface.Minimap
     {
         private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
         private readonly MinimapCoordinatesMaster minimapCoordinatesMaster;
-        private readonly TiledMapRenderer renderer;
+        private readonly TiledMapRenderer minimapRenderer;
         private readonly GraphicsDevice graphicsDevice;
-        private readonly TiledMap tiledMap;
         private SpriteData playerDot;
         private SpriteData enemyDot;
         private SpriteData bossDot;
+        private SpriteData background;
 
         internal MiniMapDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, TileWrapper map, Game gameApp)
         {
             this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
             this.graphicsDevice = gameApp.GraphicsDevice;
-            this.renderer = new TiledMapRenderer(graphicsDevice, map.TiledMap);
-            this.tiledMap = map.TiledMap;
+            this.minimapRenderer = new TiledMapRenderer(graphicsDevice, map.TiledMap);
             this.minimapCoordinatesMaster = new MinimapCoordinatesMaster(map);
         }
 
         internal void Update(GameTime gameTime)
         {
-            renderer.Update(gameTime);
+            minimapRenderer.Update(gameTime);
         }
 
         internal void Draw(InterfaceInfo info)
         {
-            DrawMap();
+            DrawBackground();
+            minimapRenderer.Draw(minimapCoordinatesMaster.PositioningMatrix);
             DrawDots(info);
+        }
+
+        private void DrawBackground()
+        {
+            //We draw only parts which do not overlap minimap. TiledMap messes with drawing order, unfortunately.
+            var backgroundPosition = new Vector2(Constants.TargetWidth - Constants.MinimapSize, Constants.TargetHeight - Constants.MinimapSize);
+            var (firstHalf, secondHalf, coeff) = minimapCoordinatesMaster.BackgroundPartsToDraw;
+            interfaceSpriteDisplayer.Draw(background, backgroundPosition, firstHalf, coeff, true);
+            interfaceSpriteDisplayer.Draw(background, backgroundPosition, secondHalf, coeff, true);
         }
 
         private void DrawDots(InterfaceInfo info)
@@ -54,31 +63,17 @@ namespace ExplainingEveryString.Core.Interface.Minimap
         private void DrawDot(Vector2 fighterPosition, SpriteData dot)
         {
             var position = minimapCoordinatesMaster.ToScreenMinimap(fighterPosition);
-            interfaceSpriteDisplayer.Draw(dot, position - new Vector2(dot.Width / 2, dot.Height / 2));
+            interfaceSpriteDisplayer.Draw(dot, position - new Vector2(dot.Width / 2, dot.Height / 2), true);
         }
 
-        private void DrawMap()
-        {
-            var savedOpacity = new Dictionary<String, Single>();
-            foreach (var layer in tiledMap.Layers)
-            {
-                savedOpacity.Add(layer.Name, layer.Opacity);
-                layer.Opacity = 0.5F;
-            }
-
-            renderer.Draw(minimapCoordinatesMaster.PositioningMatrix);
-
-            foreach (var layer in tiledMap.Layers)
-                layer.Opacity = savedOpacity[layer.Name];
-        }
-
-        public String[] GetSpritesNames() => new[] { "MinimapPlayer", "MinimapEnemy", "MinimapBoss" };
+        public String[] GetSpritesNames() => new[] { "MinimapPlayer", "MinimapEnemy", "MinimapBoss", "MinimapBackground" };
 
         public void InitSprites(Dictionary<String, SpriteData> sprites)
         {
             this.playerDot = TextureLoadingHelper.GetSprite(sprites, "MinimapPlayer");
             this.enemyDot = TextureLoadingHelper.GetSprite(sprites, "MinimapEnemy");
             this.bossDot = TextureLoadingHelper.GetSprite(sprites, "MinimapBoss");
+            this.background = TextureLoadingHelper.GetSprite(sprites, "MinimapBackground");
         }
     }
 }

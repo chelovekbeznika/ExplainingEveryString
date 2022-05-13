@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Displaying;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     {
         private const String FullTexture = @"Weaponry/Cone";
         private const String EmptyTexture = @"Weaponry/ConeEmpty";
-        private const Int32 pixelsFromRight = 16;
+        private const Int32 pixelsFromRight = 16 + Constants.MinimapSize;
         private const Int32 pixelsFromBottom = 16;
 
         private readonly InterfaceSpriteDisplayer displayer;

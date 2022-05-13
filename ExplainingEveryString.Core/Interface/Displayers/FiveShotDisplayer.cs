@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Displaying;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 {
     internal class FiveShotDisplayer : IWeaponDisplayer
     {
-        private const Int32 pixelsFromRight = 16;
+        private const Int32 pixelsFromRight = 16 + Constants.MinimapSize;
         private const Int32 pixelsFromBottom = 16;
         private const Int32 heightAmplitudePixels = 1;
 

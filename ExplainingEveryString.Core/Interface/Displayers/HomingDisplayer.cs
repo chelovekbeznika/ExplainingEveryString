@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Displaying;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private SpriteData homingAmmo;
         private InterfaceSpriteDisplayer displayer;
 
-        private const Int32 pixelsFromRight = 32;
+        private const Int32 pixelsFromRight = 32 + Constants.MinimapSize;
         private const Int32 pixelsFromBottom = 32;
 
         public HomingDisplayer(InterfaceSpriteDisplayer displayer)

@@ -26,12 +26,12 @@ namespace ExplainingEveryString.Core.Interface
             elapsedTime += elapsedSeconds;
         }
 
-        internal void Draw(SpriteData spriteData, Vector2 position)
+        internal void Draw(SpriteData spriteData, Vector2 position, Boolean opaque = false)
         {
-            Draw(spriteData, position, new WholeSpriteDisplayer(), 1);
+            Draw(spriteData, position, new WholeSpriteDisplayer(), 1, opaque);
         }
 
-        internal void Draw(SpriteData spriteData, Vector2 position, ISpritePartDisplayer partDisplayer, Single coeff)
+        internal void Draw(SpriteData spriteData, Vector2 position, ISpritePartDisplayer partDisplayer, Single coeff, Boolean opaque = false)
         {
             var animationFrame = AnimationHelper.GetDrawPart(spriteData, elapsedTime);
             var drawPart = partDisplayer.GetDrawPart(spriteData, coeff);
@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.Interface
                     Height = drawPart.Height
                 };
             var positionOfSpritePart = partDisplayer.GetDrawPosition(spriteData, coeff, position);
-            spriteBatch.Draw(spriteData.Sprite, positionOfSpritePart, drawPart, colorMask);
+            spriteBatch.Draw(spriteData.Sprite, positionOfSpritePart, drawPart, opaque ? Color.White : colorMask);
         }
     }
 }

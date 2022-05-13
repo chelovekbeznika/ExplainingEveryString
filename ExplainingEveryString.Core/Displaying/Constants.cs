@@ -11,5 +11,7 @@ namespace ExplainingEveryString.Core.Displaying
         internal const Int32 BaseHeight = 224;
         internal const Int32 TargetWidth = BaseWidth * 4;
         internal const Int32 TargetHeight = BaseHeight * 4;
+
+        internal const Int32 MinimapSize = 192;
     }
 }

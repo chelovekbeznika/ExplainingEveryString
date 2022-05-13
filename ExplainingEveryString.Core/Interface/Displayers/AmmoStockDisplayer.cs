@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿
+using ExplainingEveryString.Core.Displaying;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     {
         private Dictionary<Int32, SpriteData> digits;
         private const Int32 pixelsFromBottom = 64;
-        private const Int32 pixelsFromRight = 32;
+        private const Int32 pixelsFromRight = 32 + Constants.MinimapSize;
         private InterfaceSpriteDisplayer displayer;
 
         internal AmmoStockDisplayer(InterfaceSpriteDisplayer displayer)
