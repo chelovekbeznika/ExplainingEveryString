@@ -11,6 +11,8 @@ namespace ExplainingEveryString.Core.Interface
         internal List<Vector2> HiddenEnemies { get; set; }
         internal List<EnemyInterfaceInfo> Bosses { get; set; }
         internal PlayerInterfaceInfo Player { get; set; }
+        internal List<Vector2> EnemiesLevelPositions { get; set; }
+        internal List<Vector2> BossesLevelPositions { get; set; }
     }
 
     internal class EnemyInterfaceInfo

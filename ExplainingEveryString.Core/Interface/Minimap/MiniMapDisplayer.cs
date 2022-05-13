@@ -44,20 +44,17 @@ namespace ExplainingEveryString.Core.Interface.Minimap
 
         private void DrawDots(InterfaceInfo info)
         {
-            var playerPosition = minimapCoordinatesMaster.ToScreenMinimap(info.Player.LevelPosition);
-            interfaceSpriteDisplayer.Draw(playerDot, playerPosition - new Vector2(playerDot.Width / 2, playerDot.Height / 2));
+            DrawDot(info.Player.LevelPosition, playerDot);
+            foreach (var enemy in info.EnemiesLevelPositions)
+                DrawDot(enemy, enemyDot);
+            foreach (var boss in info.BossesLevelPositions ?? Enumerable.Empty<Vector2>())
+                DrawDot(boss, bossDot);
+        }
 
-            foreach (var enemy in info.Enemies)
-            {
-                var enemyPosition = minimapCoordinatesMaster.ToScreenMinimap(enemy.LevelPosition);
-                interfaceSpriteDisplayer.Draw(enemyDot, enemyPosition - new Vector2(enemyDot.Width / 2, enemyDot.Height / 2));
-            }
-
-            foreach (var boss in info.Bosses ?? Enumerable.Empty<EnemyInterfaceInfo>())
-            {
-                var bossPosition = minimapCoordinatesMaster.ToScreenMinimap(boss.LevelPosition);
-                interfaceSpriteDisplayer.Draw(bossDot, bossPosition - new Vector2(bossDot.Width / 2, bossDot.Height / 2));
-            }
+        private void DrawDot(Vector2 fighterPosition, SpriteData dot)
+        {
+            var position = minimapCoordinatesMaster.ToScreenMinimap(fighterPosition);
+            interfaceSpriteDisplayer.Draw(dot, position - new Vector2(dot.Width / 2, dot.Height / 2));
         }
 
         private void DrawMap()

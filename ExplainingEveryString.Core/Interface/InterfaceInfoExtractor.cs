@@ -21,7 +21,12 @@ namespace ExplainingEveryString.Core.Interface
                 HiddenEnemies = activeActors.Enemies
                             .Where(e => e.IsVisible && !camera.IsVisibleOnScreen(e))
                             .Select(e => camera.GetScreenBorderDangerDirection(e)).ToList(),
-                Bosses = activeActors.ShowAsBossesInInterface?.Select(boss => GetInterfaceInfo(boss,  camera)).ToList()
+                Bosses = activeActors.ShowAsBossesInInterface?.Select(boss => GetInterfaceInfo(boss,  camera)).ToList(),
+                EnemiesLevelPositions = activeActors.Enemies
+                            .Where(e => e.ShowInterfaceInfo && !(activeActors.ShowAsBossesInInterface?.Contains(e) ?? false))
+                            .Select(e => (e as ICollidable).Position).ToList(),
+                BossesLevelPositions = activeActors.ShowAsBossesInInterface?
+                            .Select(b => (b as ICollidable).Position).ToList()
             };
         }
 
@@ -59,7 +64,6 @@ namespace ExplainingEveryString.Core.Interface
         {
             return new EnemyInterfaceInfo
             {
-                LevelPosition = interfaceAccessable.Position,
                 Health = interfaceAccessable.HitPoints > 0 ? interfaceAccessable.HitPoints : 0,
                 MaxHealth = interfaceAccessable.MaxHitPoints,
                 FromLastHit = interfaceAccessable.FromLastHit,
