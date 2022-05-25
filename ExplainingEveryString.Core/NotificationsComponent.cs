@@ -67,9 +67,16 @@ namespace ExplainingEveryString.Core
             if (ConfigurationAccess.GetCurrentConfig().Input.PreferredControlDevice != ControlDevice.GamePad)
                 return;
 
-            if (wasGamePadConnected && !GamePad.GetCapabilities(PlayerIndex.One).IsConnected)
-                processor.ReceiveNotification(NotificationType.GamepadDisconnected);
-            wasGamePadConnected = GamePad.GetCapabilities(PlayerIndex.One).IsConnected;
+            var gamepadConnectedNow = GamePad.GetCapabilities(PlayerIndex.One).IsConnected;
+            if (wasGamePadConnected && !gamepadConnectedNow)
+                ProcessGamepadDisconnect();
+            wasGamePadConnected = gamepadConnectedNow;
+        }
+
+        private void ProcessGamepadDisconnect()
+        {
+            processor.ReceiveNotification(NotificationType.GamepadDisconnected);
+            game.GameState.TryPause();
         }
     }
 }

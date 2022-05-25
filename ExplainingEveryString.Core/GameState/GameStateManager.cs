@@ -126,17 +126,21 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void TryPauseSwitch()
         {
+            switch (currentState)
+            {
+                case GameState.InGame:
+                    SwitchToPausedState();
+                    break;
+                case GameState.Paused:
+                    SwitchToInGameState();
+                    break;
+            }
+        }
+
+        internal void TryPause()
+        {
             if (currentState == GameState.InGame)
-            {
                 SwitchToPausedState();
-                componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
-                return;
-            }
-            if (currentState == GameState.Paused)
-            {
-                SwitchToInGameState();
-                return;
-            }
         }
 
         internal void ConfigChanged(Configuration newConfig)
@@ -186,6 +190,7 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
+            componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
             currentState = GameState.Paused;
         }
 
