@@ -1,9 +1,6 @@
-﻿using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Data.Blueprints;
+﻿using ExplainingEveryString.Data.Blueprints;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {

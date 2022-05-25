@@ -2,7 +2,6 @@
 using ExplainingEveryString.Data.Blueprints;
 using System;
 using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Math;
 using System.Collections.Generic;
 using System.Linq;
 

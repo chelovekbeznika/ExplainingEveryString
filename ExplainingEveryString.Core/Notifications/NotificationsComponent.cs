@@ -1,55 +1,54 @@
-﻿using ExplainingEveryString.Core.Notifications;
+﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Notifications;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Notifications
 {
     internal class NotificationsComponent : DrawableGameComponent
     {
         private NotificationsProcessor processor;
         private SpriteBatch spriteBatch;
         private EesGame game;
-        private Dictionary<String, NotificationSpecification> specs;
-        private Boolean wasGamePadConnected;
+        private Dictionary<string, NotificationSpecification> specs;
+        private bool wasGamePadConnected;
 
         internal NotificationsComponent(EesGame game) : base(game)
         {
-            this.DrawOrder = ComponentsOrder.Notifications;
-            this.UpdateOrder = ComponentsOrder.Notifications;
+            DrawOrder = ComponentsOrder.Notifications;
+            UpdateOrder = ComponentsOrder.Notifications;
             this.game = game;
-            this.specs = NotificationsSpecificationsAccess.Load()
+            specs = NotificationsSpecificationsAccess.Load()
                 .ToDictionary(n => n.Type, n => n);
-            this.processor = new NotificationsProcessor(specs);
-            this.wasGamePadConnected = GamePad.GetCapabilities(PlayerIndex.One).IsConnected;
+            processor = new NotificationsProcessor(specs);
+            wasGamePadConnected = GamePad.GetCapabilities(PlayerIndex.One).IsConnected;
         }
 
         protected override void LoadContent()
         {
             base.LoadContent();
-            this.spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             var spriteDataBuilder = new SpriteDataBuilder(game.Content, AssetsMetadataAccess.GetLoader());
             var assetsStorage = new NotificationsAssetsStorage();
             assetsStorage.FillStorage(specs, spriteDataBuilder, game.Content);
-            this.processor.Initialize(assetsStorage);
+            processor.Initialize(assetsStorage);
         }
 
-        public void SendNotification(String type)
+        public void SendNotification(string type)
         {
             processor.ReceiveNotification(type);
         }
 
         public override void Update(GameTime gameTime)
         {
-            processor.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
+            processor.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             CheckGamePadConnection();
             base.Update(gameTime);
         }

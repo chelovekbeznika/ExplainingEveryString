@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Math;
+﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Core.Math;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

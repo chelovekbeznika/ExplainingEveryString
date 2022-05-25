@@ -5,7 +5,6 @@ using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Tiled;
 using System;
 
 namespace ExplainingEveryString.Editor

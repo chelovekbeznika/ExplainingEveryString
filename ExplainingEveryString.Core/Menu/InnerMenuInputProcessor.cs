@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Data.Configuration;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace ExplainingEveryString.Core.Menu

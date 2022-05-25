@@ -1,10 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;
-using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {

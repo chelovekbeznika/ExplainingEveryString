@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Level;
+﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ExplainingEveryString.Core.Displaying.FogOfWar

@@ -1,7 +1,5 @@
-﻿using ExplainingEveryString.Core.GameModel.Enemies;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel
 {

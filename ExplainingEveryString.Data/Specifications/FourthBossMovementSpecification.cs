@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Data.RandomVariables;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Data.Specifications
 {

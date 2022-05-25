@@ -5,6 +5,7 @@ using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
+using ExplainingEveryString.Core.Timers;
 using ExplainingEveryString.Data.Level;
 using System;
 using System.Collections.Generic;

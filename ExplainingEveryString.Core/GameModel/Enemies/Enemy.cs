@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
 using System;
 using System.Collections.Generic;

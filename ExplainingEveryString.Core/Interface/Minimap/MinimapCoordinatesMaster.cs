@@ -2,8 +2,6 @@
 using ExplainingEveryString.Core.Tiles;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Interface.Minimap
 {

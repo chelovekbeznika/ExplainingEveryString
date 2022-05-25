@@ -1,10 +1,11 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.GameState;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Timers
 {
     internal class TimersComponent : GameComponent
     {
@@ -24,17 +25,17 @@ namespace ExplainingEveryString.Core
             UpdateOrder = ComponentsOrder.Timers;
         }
 
-        public Timer ScheduleEvent(Single seconds, Action atTimerElapsed, IActor eventProducer)
+        public Timer ScheduleEvent(float seconds, Action atTimerElapsed, IActor eventProducer)
         {
             return ScheduleEvent(seconds, atTimerElapsed, () => eventProducer.IsAlive());
         }
 
-        public Timer ScheduleEvent(Single seconds, Action atTimerElapsed)
+        public Timer ScheduleEvent(float seconds, Action atTimerElapsed)
         {
             return ScheduleEvent(seconds, atTimerElapsed, () => true);
         }
 
-        private Timer ScheduleEvent(Single seconds, Action atTimerElapsed, Func<Boolean> isActive)
+        private Timer ScheduleEvent(float seconds, Action atTimerElapsed, Func<bool> isActive)
         {
             var timer = new Timer(seconds, atTimerElapsed, isActive);
             scheduledTimers.Add(timer);
@@ -43,7 +44,7 @@ namespace ExplainingEveryString.Core
 
         public override void Update(GameTime gameTime)
         {
-            var elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            var elapsedSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timers.AddRange(scheduledTimers);
             scheduledTimers.Clear();
             foreach (var timer in timers)

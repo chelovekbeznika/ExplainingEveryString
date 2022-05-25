@@ -2,6 +2,7 @@
 using ExplainingEveryString.Music;
 using System;
 using ExplainingEveryString.Data.Configuration;
+using ExplainingEveryString.Core.GameState;
 
 namespace ExplainingEveryString.Core
 {

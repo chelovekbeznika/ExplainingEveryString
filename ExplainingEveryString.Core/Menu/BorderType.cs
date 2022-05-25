@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ExplainingEveryString.Core.Menu
+﻿namespace ExplainingEveryString.Core.Menu
 {
     internal enum BorderType
     {

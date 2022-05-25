@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.Extensions;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
-using System;
 using System.Linq;
 
 namespace ExplainingEveryString.Core
@@ -13,7 +12,7 @@ namespace ExplainingEveryString.Core
         protected void PreInit()
         {
             Content.RootDirectory = "Content";
-            this.IsMouseVisible = true;
+            IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
         }
 
@@ -40,7 +39,7 @@ namespace ExplainingEveryString.Core
             graphics.ApplyChanges();
         }
 
-        private Boolean ResolutionSupported(Int32 width, Int32 height, Boolean fullscreen)
+        private bool ResolutionSupported(int width, int height, bool fullscreen)
         {
             return graphics.GraphicsDevice.Adapter.AllowedResolutions(fullscreen)
                 .Any(r => r.Width == width && r.Height == height);

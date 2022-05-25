@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Data;
-using ExplainingEveryString.Data.RandomVariables;
+﻿using ExplainingEveryString.Data.RandomVariables;
 using System;
 using System.Collections.Generic;
 using System.Linq;

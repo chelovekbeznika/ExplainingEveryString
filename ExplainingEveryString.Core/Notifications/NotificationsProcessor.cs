@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Core;
-using ExplainingEveryString.Core.GameModel;
+﻿using ExplainingEveryString.Core.Assets;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Notifications;
@@ -8,7 +7,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Notifications
 {

@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel.Weaponry;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {

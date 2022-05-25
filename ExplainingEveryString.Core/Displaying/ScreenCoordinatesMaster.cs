@@ -1,6 +1,5 @@
-﻿using ExplainingEveryString.Data.Configuration;
+﻿using ExplainingEveryString.Core.Assets;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace ExplainingEveryString.Core.Displaying

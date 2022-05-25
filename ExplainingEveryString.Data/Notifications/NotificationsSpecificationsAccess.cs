@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ExplainingEveryString.Data.Notifications
+﻿namespace ExplainingEveryString.Data.Notifications
 {
     public static class NotificationsSpecificationsAccess
     {

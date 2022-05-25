@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace ExplainingEveryString.Core.Displaying

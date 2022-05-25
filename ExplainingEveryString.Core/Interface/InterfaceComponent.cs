@@ -1,15 +1,16 @@
-﻿using ExplainingEveryString.Core.Interface;
+﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Interface.Displayers;
 using ExplainingEveryString.Core.Interface.Minimap;
 using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceComponent : DrawableGameComponent
     {
@@ -36,7 +37,7 @@ namespace ExplainingEveryString.Core
         private AmmoStockDisplayer ammoStockDisplayer;
         private ReloadDisplayer reloadDisplayer;
         private CheckpointDisplayer checkpointDisplayer;
-        private Dictionary<String, IWeaponDisplayer> playerWeaponDisplayers;
+        private Dictionary<string, IWeaponDisplayer> playerWeaponDisplayers;
 
         private MiniMapDisplayer minimapDisplayer = null;
 
@@ -44,10 +45,10 @@ namespace ExplainingEveryString.Core
         {
             var config = ConfigurationAccess.GetCurrentConfig();
             this.eesGame = eesGame;
-            this.alphaMask = new Color(Color.White, config.InterfaceAlpha);
-            this.SetGameplayComponentToDraw(null);
-            this.DrawOrder = ComponentsOrder.Interface;
-            this.UpdateOrder = ComponentsOrder.Interface;
+            alphaMask = new Color(Color.White, config.InterfaceAlpha);
+            SetGameplayComponentToDraw(null);
+            DrawOrder = ComponentsOrder.Interface;
+            UpdateOrder = ComponentsOrder.Interface;
         }
 
         internal void SetGameplayComponentToDraw(GameplayComponent gameplayComponent)
@@ -55,16 +56,16 @@ namespace ExplainingEveryString.Core
             this.gameplayComponent = gameplayComponent;
             if (gameplayComponent == null)
             {
-                this.Enabled = false;
-                this.Visible = false;
+                Enabled = false;
+                Visible = false;
             }
             else
             {
                 gameplayComponent.ContentLoaded += (sender, e) =>
                 {
-                    this.minimapDisplayer = new MiniMapDisplayer(interfaceSpritesDisplayer, gameplayComponent.Map, Game);
+                    minimapDisplayer = new MiniMapDisplayer(interfaceSpritesDisplayer, gameplayComponent.Map, Game);
                     InitDisplayers(new[] { minimapDisplayer });
-                };  
+                };
             }
         }
 
@@ -107,9 +108,9 @@ namespace ExplainingEveryString.Core
 
             return new IDisplayer[]
             {
-                healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer, 
+                healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer,
                 ammoStockDisplayer, reloadDisplayer, checkpointDisplayer,
-                enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer, 
+                enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer,
                 rightBossInfoDisplayer, enemiesBehindScreenDisplayer, homingTargetDisplayer,
                 leftOfThreeBossInfoDisplayer, rightOfThreeBossInfoDisplayer, centerOfThreeBossInfoDisplayer
             }
@@ -131,8 +132,8 @@ namespace ExplainingEveryString.Core
         public override void Update(GameTime gameTime)
         {
             interfaceInfo = gameplayComponent.GetInterfaceInfo();
-            this.interfaceSpritesDisplayer.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
-            this.minimapDisplayer.Update(gameTime);
+            interfaceSpritesDisplayer.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            minimapDisplayer.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -155,7 +156,7 @@ namespace ExplainingEveryString.Core
             healthBarDisplayer.Draw(interfaceInfo.Player);
             dashStateDisplayer.Draw(interfaceInfo.Player);
             var weaponName = interfaceInfo.Player.Weapon.SelectedWeapon;
-            if (weaponName != GameModel.Constants.DefaultPlayerWeapon && playerWeaponDisplayers.ContainsKey(weaponName))
+            if (weaponName != Constants.DefaultPlayerWeapon && playerWeaponDisplayers.ContainsKey(weaponName))
                 playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
             remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);
             if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)

@@ -7,7 +7,6 @@ using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace ExplainingEveryString.Core
 {
@@ -31,12 +30,12 @@ namespace ExplainingEveryString.Core
             var levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
             var musicTestSpecification = MusicTestSpecificationAccess.Load();
 
-            var componentsManager =  new ComponentsManager(this, levelSequenceSpecification, 
+            var componentsManager = new ComponentsManager(this, levelSequenceSpecification,
                 musicTestSpecification);
 
-            this.FontsStorage = new FontsStorage();
-            this.GameState = new GameStateManager(levelSequenceSpecification, componentsManager);
-            this.menuInputProcessor = new OuterMenuInputProcessor();
+            FontsStorage = new FontsStorage();
+            GameState = new GameStateManager(levelSequenceSpecification, componentsManager);
+            menuInputProcessor = new OuterMenuInputProcessor();
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
             base.Initialize();
         }
@@ -92,7 +91,7 @@ namespace ExplainingEveryString.Core
         /// <returns></returns>
         private Rectangle FitWithNesAspectRatio(ScreenConfiguration screenConfiguration)
         {
-            var widthWithoutVerticalStripes = (Int32)System.Math.Round((Double)(screenConfiguration.ScreenHeight * 8.0 / 7.0));
+            var widthWithoutVerticalStripes = (int)System.Math.Round((double)(screenConfiguration.ScreenHeight * 8.0 / 7.0));
             var stripWidth = (screenConfiguration.ScreenWidth - widthWithoutVerticalStripes) / 2;
             return new Rectangle(stripWidth, 0, widthWithoutVerticalStripes, screenConfiguration.ScreenHeight);
         }

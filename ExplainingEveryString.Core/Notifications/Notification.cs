@@ -1,10 +1,8 @@
-﻿using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data.Notifications;
-using Microsoft.Xna.Framework.Audio;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Notifications
 {

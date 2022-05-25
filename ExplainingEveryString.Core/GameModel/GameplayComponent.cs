@@ -1,9 +1,10 @@
-﻿using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Core.Displaying;
 #if DEBUG
 using ExplainingEveryString.Core.Displaying.Debug;
 #endif
 using ExplainingEveryString.Core.Displaying.FogOfWar;
-using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Core.Input;
 using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Tiles;
@@ -15,13 +16,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.GameModel
 {
     internal class GameplayComponent : DrawableGameComponent
     {
         private IBlueprintsLoader blueprintsLoader;
         private Level level;
-        private readonly String levelFileName;
+        private readonly string levelFileName;
         private readonly LevelProgress levelStart;
         private LevelData levelData;
         private SpriteEmitter spriteEmitter;
@@ -37,25 +38,25 @@ namespace ExplainingEveryString.Core
         internal TileWrapper Map { get; private set; }
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
-        internal Boolean Lost => level.Lost;
-        internal Boolean Won => level.Won;
+        internal bool Lost => level.Lost;
+        internal bool Won => level.Won;
 
-        internal GameplayComponent(EesGame game, String levelFileName, LevelProgress levelStart) 
+        internal GameplayComponent(EesGame game, string levelFileName, LevelProgress levelStart)
             : base(game)
         {
-            this.eesGame = game;
+            eesGame = game;
             this.levelFileName = levelFileName;
             this.levelStart = levelStart;
 
-            this.DrawOrder = ComponentsOrder.Gameplay;
-            this.UpdateOrder = ComponentsOrder.Gameplay;
+            DrawOrder = ComponentsOrder.Gameplay;
+            UpdateOrder = ComponentsOrder.Gameplay;
         }
 
         public override void Initialize()
         {
             var levelLoader = LevelDataAccess.GetLevelLoader();
-            this.levelData = levelLoader.Load(levelFileName);
-            this.blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
+            levelData = levelLoader.Load(levelFileName);
+            blueprintsLoader = BlueprintsAccess.GetLoader(levelData.Blueprints);
             blueprintsLoader.Load();
             var factory = new ActorsFactory(blueprintsLoader);
             Map = new TileWrapper(levelData.TileMap, eesGame.Content);
@@ -68,19 +69,19 @@ namespace ExplainingEveryString.Core
 
         protected override void LoadContent()
         {
-            this.spriteBatch = new SpriteBatch(Game.GraphicsDevice);
+            spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             var config = ConfigurationAccess.GetCurrentConfig();
             var levelCoordinatesMaster = new CameraObjectGlass(new PlayerInfoForCameraExtractor(level), config.Camera);
             var screenCoordinatesMaster = new ScreenCoordinatesMaster(levelCoordinatesMaster);
             var assetsStorage = CreateFilledAssetsStorage();
             Camera = new Camera(assetsStorage, screenCoordinatesMaster);
             Map.LoadContent(Game.Content);
-            this.mapDisplayer = new TiledMapDisplayer(Map, eesGame, screenCoordinatesMaster);
+            mapDisplayer = new TiledMapDisplayer(Map, eesGame, screenCoordinatesMaster);
             EpicEventsProcessor = new EpicEventsProcessor(assetsStorage, level, config);
-            this.fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);
+            fogOfWarRuler = ConstructFogOfWarRuler(levelCoordinatesMaster, screenCoordinatesMaster);
             eesGame.GameState.StartMusicInGame(levelData.MusicName);
 #if DEBUG
-            this.debugInfoDisplayer = new DebugInfoDisplayer(screenCoordinatesMaster, Game.Content);
+            debugInfoDisplayer = new DebugInfoDisplayer(screenCoordinatesMaster, Game.Content);
 #endif
             ContentLoaded?.Invoke(this, EventArgs.Empty);
             base.LoadContent();
@@ -110,7 +111,7 @@ namespace ExplainingEveryString.Core
 
         public override void Update(GameTime gameTime)
         {
-            var elapsedSeconds = (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            var elapsedSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
             level.Update(elapsedSeconds);
             Camera.Update(elapsedSeconds);
             spriteEmitter?.Update(elapsedSeconds);

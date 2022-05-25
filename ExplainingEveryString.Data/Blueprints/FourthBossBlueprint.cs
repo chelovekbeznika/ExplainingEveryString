@@ -1,7 +1,5 @@
 ﻿using ExplainingEveryString.Data.Specifications;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Data.Blueprints
 {

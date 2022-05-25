@@ -1,4 +1,8 @@
-﻿using ExplainingEveryString.Core.Menu;
+﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Interface;
+using ExplainingEveryString.Core.Menu;
+using ExplainingEveryString.Core.Notifications;
+using ExplainingEveryString.Core.Timers;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
 using System;

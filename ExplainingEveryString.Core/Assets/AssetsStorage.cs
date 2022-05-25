@@ -3,22 +3,21 @@ using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Assets
 {
     internal interface IAssetsStorage
     {
-        SpriteData GetSprite(String name);
-        SoundEffect GetSound(String name);
+        SpriteData GetSprite(string name);
+        SoundEffect GetSound(string name);
     }
 
     internal class AssetsStorage : IAssetsStorage
     {
-        private Dictionary<String, SpriteData> spritesStorage = new Dictionary<String, SpriteData>();
-        private Dictionary<String, SoundEffect> soundsStorage = new Dictionary<String, SoundEffect>();
+        private Dictionary<string, SpriteData> spritesStorage = new Dictionary<string, SpriteData>();
+        private Dictionary<string, SoundEffect> soundsStorage = new Dictionary<string, SoundEffect>();
 
         internal void FillAssetsStorages(IBlueprintsLoader blueprintsLoader, SpriteEmitterData spriteEmitterData,
             IAssetsMetadataLoader metadataLoader, ContentManager contentManager)
@@ -38,12 +37,12 @@ namespace ExplainingEveryString.Core
             }
         }
 
-        public SpriteData GetSprite(String name)
+        public SpriteData GetSprite(string name)
         {
             return spritesStorage[name];
         }
 
-        public SoundEffect GetSound(String name)
+        public SoundEffect GetSound(string name)
         {
             return soundsStorage[name];
         }

@@ -1,11 +1,10 @@
-﻿using ExplainingEveryString.Data;
+﻿using ExplainingEveryString.Core.Assets;
 using ExplainingEveryString.Data.Notifications;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Notifications
 {

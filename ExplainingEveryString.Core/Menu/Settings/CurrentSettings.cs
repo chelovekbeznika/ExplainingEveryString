@@ -1,7 +1,5 @@
 ﻿using ExplainingEveryString.Data.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Menu.Settings
 {

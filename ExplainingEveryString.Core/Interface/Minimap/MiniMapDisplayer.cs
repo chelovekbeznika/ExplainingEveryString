@@ -1,9 +1,9 @@
-﻿using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.Interface.Displayers;
 using ExplainingEveryString.Core.Tiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using System;
 using System.Collections.Generic;

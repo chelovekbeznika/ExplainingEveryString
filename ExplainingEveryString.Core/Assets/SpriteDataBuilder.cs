@@ -1,11 +1,10 @@
 ﻿using ExplainingEveryString.Data.AssetsMetadata;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Assets
 {
     internal class SpriteDataBuilder
     {
@@ -18,9 +17,9 @@ namespace ExplainingEveryString.Core
             this.metadataLoader = metadataLoader;
         }
 
-        internal Dictionary<String, SpriteData> Build(IEnumerable<String> sprites)
+        internal Dictionary<string, SpriteData> Build(IEnumerable<string> sprites)
         {
-            var spritesData = new Dictionary<String, SpriteData>();
+            var spritesData = new Dictionary<string, SpriteData>();
             foreach (var spriteName in sprites)
             {
                 spritesData[spriteName] = new SpriteData
@@ -33,7 +32,7 @@ namespace ExplainingEveryString.Core
             return spritesData;
         }
 
-        private void AddMetadata(Dictionary<String, SpriteData> spritesData, IAssetsMetadataLoader metadataLoader)
+        private void AddMetadata(Dictionary<string, SpriteData> spritesData, IAssetsMetadataLoader metadataLoader)
         {
             var assetsMetadata = metadataLoader.Load();
             foreach (var spriteMetadata in assetsMetadata.SpritesMetadata.Where(m => spritesData.ContainsKey(m.Name)))

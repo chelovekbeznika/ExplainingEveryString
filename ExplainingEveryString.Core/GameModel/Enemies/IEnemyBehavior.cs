@@ -3,7 +3,6 @@ using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Data.Specifications;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {

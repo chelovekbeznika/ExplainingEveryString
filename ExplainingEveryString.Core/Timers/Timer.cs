@@ -1,23 +1,23 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using System;
 
-namespace ExplainingEveryString.Core
+namespace ExplainingEveryString.Core.Timers
 {
     internal class Timer : IUpdateable
     {
         private readonly Action atTimerElapsed;
-        internal Boolean Happened { get; private set; } = false;
-        internal Single SecondsTillEvent { get; private set; }
-        private Func<Boolean> isActive;
+        internal bool Happened { get; private set; } = false;
+        internal float SecondsTillEvent { get; private set; }
+        private Func<bool> isActive;
 
-        internal Timer(Single secondsTillEvent, Action atTimerElapsed, Func<Boolean> isActive)
+        internal Timer(float secondsTillEvent, Action atTimerElapsed, Func<bool> isActive)
         {
-            this.SecondsTillEvent = secondsTillEvent;
+            SecondsTillEvent = secondsTillEvent;
             this.atTimerElapsed = atTimerElapsed;
             this.isActive = isActive;
         }
 
-        public void Update(Single elapsedSeconds)
+        public void Update(float elapsedSeconds)
         {
             if (!isActive())
                 Cancel();

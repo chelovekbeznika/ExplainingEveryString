@@ -1,9 +1,6 @@
 ﻿using ExplainingEveryString.Core.Menu.Settings;
-using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Menu
 {

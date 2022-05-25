@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplainingEveryString.Core.Assets;
+using System;
 using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.Interface.Displayers
