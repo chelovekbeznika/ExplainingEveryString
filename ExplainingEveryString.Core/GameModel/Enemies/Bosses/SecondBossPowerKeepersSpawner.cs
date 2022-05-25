@@ -65,5 +65,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             alreadySpawned = 0;
             tillNextSpawn = 0;
         }
+
+        public void DespawnRoutine()
+        {
+        }
     }
 }

@@ -582,6 +582,7 @@
       "MoveTargetSelectType": "RandomTargets",
       "Spawner": {
         "MaxSpawned": 9,
+        "DespawnAfterDeath": true,
         "Reloader": {
           "FireRate": 6.0,
           "Ammo": 3,
@@ -717,6 +718,7 @@
         "Reloader": {
           "FireRate": 0.2
         },
+        "DespawnAfterDeath": true,
         "SpawnPositionRelativeToCurrentPosition": false,
         "PositionSelector": {
           "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
@@ -1085,6 +1087,7 @@
         "Reloader": {
           "FireRate": 0.1
         },
+        "DespawnAfterDeath": true,
         "SpawnPositionRelativeToCurrentPosition": false,
         "PositionSelector": {
           "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",

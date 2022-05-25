@@ -55,5 +55,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             foreach (var controller in controllers)
                 controller.Update(elapsedSeconds);
         }
+
+        public void DespawnRoutine()
+        {
+            foreach (var controller in controllers)
+                controller.DespawnRoutine();
+        }
     }
 }

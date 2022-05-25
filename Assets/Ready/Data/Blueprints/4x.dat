@@ -544,6 +544,7 @@
       "MoveTargetSelectType": "RandomTargets",
       "Spawner": {
         "MaxSpawned": 9,
+        "DespawnAfterDeath": true,
         "Reloader": {
           "FireRate": 6.0,
           "Ammo": 3,

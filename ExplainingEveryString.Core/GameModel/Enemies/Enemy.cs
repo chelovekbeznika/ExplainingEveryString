@@ -91,6 +91,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             Behavior.PostMortemSurprise?.TryTrigger();
             if (!diedInvoked)
             {
+                SpawnedActorsController?.DespawnRoutine();
                 Died?.Invoke(this, EventArgs.Empty);
                 diedInvoked = true;
             }
@@ -138,6 +139,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
         }
 
         public void Crash()
+        {
+            Behavior.PostMortemSurprise?.Cancel();
+            Destroy();
+        }
+
+        public void Despawn()
         {
             Behavior.PostMortemSurprise?.Cancel();
             Destroy();

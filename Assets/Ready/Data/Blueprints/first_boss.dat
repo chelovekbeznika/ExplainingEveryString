@@ -173,6 +173,7 @@
             "Reloader": {
               "FireRate": 0.5
             },
+            "DespawnAfterDeath": true,
             "BlueprintType": "Tank_mk1",
             "AppearancePhase": 0.01,
             "PositionSelector": {
@@ -215,6 +216,7 @@
             "Reloader": {
               "FireRate": 0.3333
             },
+            "DespawnAfterDeath": true,
             "BlueprintType": "TripleCannon_mk1",
             "AppearancePhase": 0.01,
             "PositionSelector": {
@@ -963,6 +965,7 @@
             "Reloader": {
               "FireRate": 0.5
             },
+            "DespawnAfterDeath": true,
             "BlueprintType": "Hunter_mk1",
             "AppearancePhase": 0.01,
             "PositionSelector": {
@@ -1028,6 +1031,7 @@
             "Reloader": {
               "FireRate": 0.5
             },
+            "DespawnAfterDeath": true,
             "BlueprintType": "SimpleCannon_mk1",
             "PositionSelector": {
               "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",

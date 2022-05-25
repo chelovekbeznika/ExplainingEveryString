@@ -10,6 +10,8 @@ namespace ExplainingEveryString.Data.Specifications
         public String BlueprintType { get; set; }
         [DefaultValue(0.0)]
         public Single AppearancePhase { get; set; }
+        [DefaultValue(false)]
+        public Boolean DespawnAfterDeath { get; set; }
         [DefaultValue(true)]
         public Boolean SpawnPositionRelativeToCurrentPosition { get; set; }
         public SpawnPositionSelectorSpecification PositionSelector { get; set; }

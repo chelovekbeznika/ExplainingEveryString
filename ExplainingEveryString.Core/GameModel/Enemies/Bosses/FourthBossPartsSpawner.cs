@@ -42,5 +42,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         public void Update(Single elapsedSeconds)
         {
         }
+
+        public void DespawnRoutine()
+        {
+        }
     }
 }

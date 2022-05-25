@@ -52,7 +52,14 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             };
             var tillFirstPhaseSwitch = betweenPhasesDuration + blueprint.DefaultAppearancePhaseDuration;
             TimersComponent.Instance.ScheduleEvent(betweenPhasesDuration, () => TurningOnPhase(), this);
+            this.Died += DespawnRoutine;
             SwitchToNextPhase();
+        }
+
+        private void DespawnRoutine(object sender, EventArgs e)
+        {
+            foreach (var phase in phases.SelectMany(phases => phases.Value))
+                phase.Behavior.SpawnedActors?.DespawnRoutine();
         }
 
         private FirstBossPhase ConstructPhase(FirstBossPhaseSpecification phase, Level level, ActorsFactory factory)

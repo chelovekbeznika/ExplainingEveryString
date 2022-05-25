@@ -65,5 +65,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             }
             bullet.BulletHit -= ProcessSphereHit;
         }
+
+        public void DespawnRoutine()
+        {
+            foreach (var enemy in SpawnedEnemies)
+                enemy.Despawn();
+        }
     }
 }

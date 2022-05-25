@@ -14,10 +14,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private IActor spawner;
         private Vector2 spawnerStartPosition;
         private Boolean active = false;
+        private Boolean despawnAfterDeath;
 
         public List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
 
         public Int32 MaxSpawned => Specification.MaxSpawned;
+
 
         internal SpawnedActorsController(SpawnerSpecification specification, IActor spawner, 
             BehaviorParameters spawnerBehaviorParameters, ActorsFactory factory)
@@ -29,6 +31,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             this.factory = factory;
             this.spawnPositionSelector = SpawnPositionSelectorsFactory.Get(
                 specification.PositionSelector, spawnerBehaviorParameters.CustomSpawns);
+            this.despawnAfterDeath = specification.DespawnAfterDeath;
         }
 
         public void Update(Single elapsedSeconds)
@@ -50,6 +53,13 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public void TurnOff()
         {
             active = false;
+        }
+
+        public void DespawnRoutine()
+        {
+            if (despawnAfterDeath)
+                foreach (var enemy in SpawnedEnemies)
+                    enemy.Despawn();
         }
 
         private void SpawnEnemy(Single firstUpdateTime)

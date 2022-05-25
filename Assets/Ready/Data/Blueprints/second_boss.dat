@@ -45,6 +45,7 @@
         "Reloader": {
           "FireRate": 0.2
         },
+        "DespawnAfterDeath": true,
         "PositionSelector" : {
           "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
           "SpawnPositions": [

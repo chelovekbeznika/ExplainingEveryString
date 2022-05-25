@@ -446,6 +446,7 @@
       "MoveTargetSelectType": "RandomTargets",
       "Spawner": {
         "MaxSpawned": 9,
+        "DespawnAfterDeath": true,
         "Reloader": {
           "FireRate": 6.0,
           "Ammo": 3,
@@ -632,6 +633,7 @@
           "FireRate": 0.1
         },
         "BlueprintType": "TripleCannon_mk3",
+        "DespawnAfterDeath": true,
         "SpawnPositionRelativeToCurrentPosition": false,
         "PositionSelector": {
           "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
@@ -718,6 +720,7 @@
           "FireRate": 0.2
         },
         "BlueprintType": "Hunter_mk3",
+        "DespawnAfterDeath": true,
         "SpawnPositionRelativeToCurrentPosition": true,
         "PositionSelector": {
           "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
@@ -802,6 +805,7 @@
         "Reloader": {
           "FireRate": 0.15
         },
+        "DespawnAfterDeath": true,
         "BlueprintType": "Mine_mk3",
         "SpawnPositionRelativeToCurrentPosition": true,
         "PositionSelector": {
