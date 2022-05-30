@@ -1235,6 +1235,38 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Walls/Level5X/bubble01",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Walls/Level5X/bubble02",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Walls/Level5X/bubble03",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Walls/Level5X/bubble04",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Walls/Level5X/bubble05",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Walls/Level5X/bubble06",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Walls/Level5X/bubble07",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Walls/Level5X/bubble08",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
