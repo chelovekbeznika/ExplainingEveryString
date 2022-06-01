@@ -1235,6 +1235,70 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level5X/CannonRocket",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/CannonRocketBlast",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/FixedCannonTeleport",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/HunterFire",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/TankBase",
+      "AnimationFrames": 3
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/TripleCannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/TripleCannonRocketVersion",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Appearance/MineSpawner",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/Cannon",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/FixedCannon",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/Hunter",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/Mine",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/MineSpawner",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/Tank",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/TripleCannon",
+      "AnimationFrames": 7
+    },
+    {
       "Name": "Sprites/Walls/Level5X/bubble01",
       "AnimationFrames": 6
     },
