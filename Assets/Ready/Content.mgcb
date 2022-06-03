@@ -465,6 +465,30 @@
 /processorParam:Quality=Best
 /build:Sounds/Enemy/Explosion_02.wav
 
+#begin Sounds/Enemy/FireFishAppears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/FireFishAppears.wav
+
+#begin Sounds/Enemy/FireFishDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/FireFishDeath.wav
+
+#begin Sounds/Enemy/FireFishDive.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/FireFishDive.wav
+
+#begin Sounds/Enemy/FireFishShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/FireFishShot.wav
+
 #begin Sounds/Enemy/FixedCannonShoot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -4695,6 +4719,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level4X/WallCannon.png
 
+#begin Sprites/Enemies/Level5X/Appearance/FireFish.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Appearance/FireFish.png
+
 #begin Sprites/Enemies/Level5X/Appearance/MineSpawner.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4754,6 +4790,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Death/Cannon.png
+
+#begin Sprites/Enemies/Level5X/Death/FireFish.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Death/FireFish.png
 
 #begin Sprites/Enemies/Level5X/Death/FixedCannon.png
 /importer:TextureImporter
@@ -4826,6 +4874,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Death/TripleCannon.png
+
+#begin Sprites/Enemies/Level5X/FireFish.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/FireFish.png
+
+#begin Sprites/Enemies/Level5X/FireFishShift.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/FireFishShift.png
+
+#begin Sprites/Enemies/Level5X/FireFishUnderwater.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/FireFishUnderwater.png
 
 #begin Sprites/Enemies/Level5X/FixedCannon.png
 /importer:TextureImporter

@@ -1267,8 +1267,24 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level5X/FireFish",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/FireFishShift",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/FireFishUnderwater",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/Appearance/MineSpawner",
       "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Appearance/FireFish",
+      "AnimationFrames": 6
     },
     {
       "Name": "Sprites/Enemies/Level5X/Death/Cannon",
@@ -1297,6 +1313,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Death/TripleCannon",
       "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/FireFish",
+      "AnimationFrames": 10
     },
     {
       "Name": "Sprites/Walls/Level5X/bubble01",
