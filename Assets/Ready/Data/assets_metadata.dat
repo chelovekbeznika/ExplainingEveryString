@@ -1275,6 +1275,14 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Level5X/TankSpawner",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/TankSpawnerCannon",
+      "AnimationFrames": 5
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/FireFishUnderwater",
       "AnimationFrames": 2
     },
