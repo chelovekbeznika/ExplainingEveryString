@@ -48,13 +48,13 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             Func<Vector2> findOutWhereIAm, Func<IActor> targetSelector, Level level, Boolean fullAmmoAtStart = false)
         {
             this.aimer = aimer;
+            this.findOutWhereIAm = () => findOutWhereIAm() + specification.Offset;
             barrels = specification.Barrels
-                .Select(bs => new Barrel(level, aimer, findOutWhereIAm, targetSelector, bs)).ToArray();
+                .Select(bs => new Barrel(level, aimer, this.findOutWhereIAm, targetSelector, bs)).ToArray();
             Name = specification.Name;
             Reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot, fullAmmoAtStart);
             Reloader.ReloadStarted += (sender, e) => reloadStarted.TryHandle();
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
-            this.findOutWhereIAm = findOutWhereIAm;
             this.weaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
             this.reloadStarted = new EpicEvent(level, specification.Reloader.ReloadStartedEffect, false, this, true);
         }
