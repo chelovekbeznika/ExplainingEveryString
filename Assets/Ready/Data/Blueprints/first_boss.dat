@@ -262,7 +262,7 @@
             },
             "Barrels": [
               {
-                "BaseOffset": "-40.0, 0.0",
+                "MuzzleOffset": "-40.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -278,7 +278,7 @@
                 }
               },
               {
-                "BaseOffset": "-32.0, 0.0",
+                "MuzzleOffset": "-32.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -294,7 +294,7 @@
                 }
               },
               {
-                "BaseOffset": "-24.0, 0.0",
+                "MuzzleOffset": "-24.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -310,7 +310,7 @@
                 }
               },
               {
-                "BaseOffset": "-16.0, 0.0",
+                "MuzzleOffset": "-16.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -326,7 +326,7 @@
                 }
               },
               {
-                "BaseOffset": "-8.0, 0.0",
+                "MuzzleOffset": "-8.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -342,7 +342,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 0.0",
+                "MuzzleOffset": "0.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -358,7 +358,7 @@
                 }
               },
               {
-                "BaseOffset": "8.0, 0.0",
+                "MuzzleOffset": "8.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -374,7 +374,7 @@
                 }
               },
               {
-                "BaseOffset": "16.0, 0.0",
+                "MuzzleOffset": "16.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -390,7 +390,7 @@
                 }
               },
               {
-                "BaseOffset": "24.0, 0.0",
+                "MuzzleOffset": "24.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -406,7 +406,7 @@
                 }
               },
               {
-                "BaseOffset": "32.0, 0.0",
+                "MuzzleOffset": "32.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -422,7 +422,7 @@
                 }
               },
               {
-                "BaseOffset": "40.0, 0.0",
+                "MuzzleOffset": "40.0, 0.0",
                 "AngleCorrection": -90.0,
                 "Accuracy": 15.0,
                 "Bullet": {
@@ -478,7 +478,7 @@
             },
             "Barrels": [
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 90.0,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -492,7 +492,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 80.72739,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -506,7 +506,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 70.82099,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -520,7 +520,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 60.94539,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -534,7 +534,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 49.39870,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -548,7 +548,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 43.45184,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -562,7 +562,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 39.80557,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -576,7 +576,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, 6.0",
+                "MuzzleOffset": "0.0, 6.0",
                 "AngleCorrection": 41.98721,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -590,7 +590,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": 0.0,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -604,7 +604,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": -9.27261,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -618,7 +618,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": -19.17901,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -632,7 +632,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": -29.05461,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -646,7 +646,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": -40.6013,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -660,7 +660,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": -46.54816,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -674,7 +674,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": -50.19443,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -688,7 +688,7 @@
                 }
               },
               {
-                "BaseOffset": "6.0, 0.0",
+                "MuzzleOffset": "6.0, 0.0",
                 "AngleCorrection": -48.01279,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -702,7 +702,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 270.0,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -716,7 +716,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 260.72739,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -730,7 +730,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 250.82099,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -744,7 +744,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 240.94539,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -758,7 +758,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 229.39870,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -772,7 +772,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 223.45184,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -786,7 +786,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 219.80557,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -800,7 +800,7 @@
                 }
               },
               {
-                "BaseOffset": "0.0, -6.0",
+                "MuzzleOffset": "0.0, -6.0",
                 "AngleCorrection": 221.98721,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -814,7 +814,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 180.0,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -828,7 +828,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 170.72739,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -842,7 +842,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 160.82099,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -856,7 +856,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 150.94539,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -870,7 +870,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 139.39870,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -884,7 +884,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 133.45184,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -898,7 +898,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 129.80557,
                 "Bullet": {
                   "TrajectoryParameters": {
@@ -912,7 +912,7 @@
                 }
               },
               {
-                "BaseOffset": "-6.0, 0.0",
+                "MuzzleOffset": "-6.0, 0.0",
                 "AngleCorrection": 131.98721,
                 "Bullet": {
                   "TrajectoryParameters": {

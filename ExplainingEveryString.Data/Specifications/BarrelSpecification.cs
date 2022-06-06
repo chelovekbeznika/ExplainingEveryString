@@ -7,8 +7,6 @@ namespace ExplainingEveryString.Data.Specifications
     public class BarrelSpecification
     {
         [DefaultValue("0.0, 0.0")]
-        public Vector2 BaseOffset { get; set; }
-        [DefaultValue("0.0, 0.0")]
         public Vector2 MuzzleOffset { get; set; }
         [DefaultValue(0.0)]
         public Single Length { get; set; }

@@ -667,7 +667,7 @@
         "Barrels": [
           {
             "AngleCorrection": 45.0,
-            "BaseOffset": "4.0, 4.0",
+            "MuzzleOffset": "4.0, 4.0",
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
@@ -681,7 +681,7 @@
           },
           {
             "AngleCorrection": 135.0,
-            "BaseOffset": "-4.0, 4.0",
+            "MuzzleOffset": "-4.0, 4.0",
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
@@ -695,7 +695,7 @@
           },
           {
             "AngleCorrection": -135.0,
-            "BaseOffset": "-4.0, -4.0",
+            "MuzzleOffset": "-4.0, -4.0",
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
@@ -709,7 +709,7 @@
           },
           {
             "AngleCorrection": -45.0,
-            "BaseOffset": "-4.0, -4.0",
+            "MuzzleOffset": "-4.0, -4.0",
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 180.0
