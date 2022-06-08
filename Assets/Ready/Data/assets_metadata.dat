@@ -1291,6 +1291,10 @@
       "AnimationFrames": 8
     },
     {
+      "Name": "Sprites/Enemies/Level5X/Appearance/TankSpawner",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/Appearance/FireFish",
       "AnimationFrames": 6
     },
@@ -1325,6 +1329,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Death/FireFish",
       "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/TankSpawner",
+      "AnimationFrames": 4
     },
     {
       "Name": "Sprites/Walls/Level5X/bubble01",
