@@ -543,12 +543,6 @@
 /processorParam:Quality=Best
 /build:Sounds/Enemy/TankSpawnerDeath.wav
 
-#begin Sounds/Enemy/TankSpawnerDeath.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/Enemy/TankSpawnerDeath.wav
-
 #begin Sounds/Enemy/TankSpawnerShoot.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -8050,6 +8044,11 @@
 /processor:TiledMapProcessor
 /build:TileMaps/Level_44.tmx
 
+#begin TileMaps/Level_51.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_51.tmx
+
 #begin TileSets/1x.tsx
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
@@ -8117,6 +8116,23 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileSets/4x_tiles.png
+
+#begin TileSets/5x.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:TileSets/5x.tsx
+
+#begin TileSets/5x_tiles.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileSets/5x_tiles.png
 
 #begin TileSets/5x_tiles.png
 /importer:TextureImporter
