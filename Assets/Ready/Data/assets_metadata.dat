@@ -1335,6 +1335,22 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Doors/Level5X/Vertical10Tiles",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Doors/Level5X/Horizontal10Tiles",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Doors/Level5X/Vertical4Tiles",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Doors/Level5X/Horizontal4Tiles",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Walls/Level5X/bubble01",
       "AnimationFrames": 6
     },
