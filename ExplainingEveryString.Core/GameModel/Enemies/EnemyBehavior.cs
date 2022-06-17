@@ -86,7 +86,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
             if (specification != null)
             {
                 var aimer = AimersFactory.Get(
-                    specification.AimType, parameters.Angle, enemy, playerLocator);
+                    specification.AimType, parameters.Angle, enemy, playerLocator, this);
                 Weapon = new Weapon(specification, aimer, CurrentPositionLocator, () => player, level, false);
                 Weapon.Shoot += level.EnemyShoot;
             }

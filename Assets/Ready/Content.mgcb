@@ -33,6 +33,9 @@
 #begin Data/Blueprints/4x.dat
 /copy:Data/Blueprints/4x.dat
 
+#begin Data/Blueprints/5x.dat
+/copy:Data/Blueprints/5x.dat
+
 #begin Data/Blueprints/blueprints.dat
 /copy:Data/Blueprints/blueprints.dat
 
@@ -512,6 +515,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Enemy/FunnySound.wav
+
+#begin Sounds/Enemy/HunterFire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Enemy/HunterFire.wav
 
 #begin Sounds/Enemy/MineDiggingUp.wav
 /importer:WavImporter

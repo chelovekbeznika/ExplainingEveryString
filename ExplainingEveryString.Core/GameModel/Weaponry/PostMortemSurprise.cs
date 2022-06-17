@@ -41,7 +41,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private void InitializeWeapon(PostMortemWeaponSpecification specification, Level level)
         {
-            var aimer = AimersFactory.Get(specification.AimType, 0, shooter, () => player.Position);
+            var aimer = AimersFactory.Get(specification.AimType, 0, shooter, () => player.Position, null);
             barrels = specification.Barrels
                 .Select(bs => new Barrel(level, aimer, () => shooter.Position, () => player, bs)).ToArray();
             foreach (var barrel in barrels)
