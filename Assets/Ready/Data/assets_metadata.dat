@@ -1295,6 +1295,10 @@
       "AnimationFrames": 2
     },
     {
+      "Name": "Sprites/Enemies/Level5X/Appearance/TripleCannon",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/Appearance/FireFish",
       "AnimationFrames": 6
     },
@@ -1380,6 +1384,38 @@
     },
     {
       "Name": "Sprites/Walls/Level5X/bubble08",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble01",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble02",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble03",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble04",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble05",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble06",
+      "AnimationFrames": 5
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble07",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/FogOfWar/Level5X/bubble08",
       "AnimationFrames": 6
     },
     {

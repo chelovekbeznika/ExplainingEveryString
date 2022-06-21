@@ -15,6 +15,10 @@
     {
       "Id": "AirFarm",
       "ButtonSprite": "Sprites/Menu/LevelSelect/4X"
+    },
+    {
+      "Id": "LavaLake",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/5X"
     }
   ],
   "Levels": [
@@ -97,6 +101,11 @@
       "LevelData": "level_44",
       "ButtonSprite": "Sprites/Menu/LevelSelect/44",
       "LevelsBlockId": "AirFarm"
+    },
+    {
+      "LevelData": "level_51",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/51",
+      "LevelsBlockId": "LavaLake"
     }
   ]
 }

@@ -546,7 +546,7 @@
         "Name": "Sounds/Enemy/MineDiggingUp",
         "Volume": 1.0
       }
-    }
+    },
     "DeathEffect": {
       "Sprite": {
         "Name": "Sprites/Enemies/Level5X/Death/Mine",
@@ -621,7 +621,7 @@
       "Name": "Sprites/Doors/Level5X/Vertical4Tiles",
       "AnimationCycle": 1.5
     },
-    "StartOpeningEffect": {
+    "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/Level5XOpening",
         "Volume": 0.4
@@ -640,7 +640,7 @@
       "Name": "Sprites/Doors/Level5X/Horizontal4Tiles",
       "AnimationCycle": 1.5
     },
-    "StartOpeningEffect": {
+    "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/Level5XOpening",
         "Volume": 0.4
@@ -659,7 +659,7 @@
       "Name": "Sprites/Doors/Level5X/Vertical10Tiles",
       "AnimationCycle": 1.5
     },
-    "StartOpeningEffect": {
+    "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/Level5XOpening",
         "Volume": 0.4
@@ -678,7 +678,7 @@
       "Name": "Sprites/Doors/Level5X/Horizontal10Tiles",
       "AnimationCycle": 1.5
     },
-    "StartOpeningEffect": {
+    "OpeningStartedEffect": {
       "Sound": {
         "Name": "Sounds/Doors/Level5XOpening",
         "Volume": 0.4

@@ -1,0 +1,70 @@
+{
+  "Blueprints": [
+    "player",
+    "5x"
+  ],
+  "MusicName": "rv363",
+  "TitleSpriteName": "Sprites/LevelTitles/51",
+  "TileMap": "TileMaps/Level_51",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 14,
+      "Y": 64,
+      "Offset": "-8, 8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "RocketLauncher": 80
+      }
+    }
+  },
+  "EnemyWaves": [
+    
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level5X/0",
+      "Sprites/FogOfWar/Level5X/1",
+      "Sprites/FogOfWar/Level5X/2",
+      "Sprites/FogOfWar/Level5X/3",
+      "Sprites/FogOfWar/Level5X/4",
+      "Sprites/FogOfWar/Level5X/5",
+      "Sprites/FogOfWar/Level5X/6",
+      "Sprites/FogOfWar/Level5X/7",
+      "Sprites/FogOfWar/Level5X/8",
+      "Sprites/FogOfWar/Level5X/9",
+      "Sprites/FogOfWar/Level5X/bubble01",
+      "Sprites/FogOfWar/Level5X/bubble02",
+      "Sprites/FogOfWar/Level5X/bubble03",
+      "Sprites/FogOfWar/Level5X/bubble04",
+      "Sprites/FogOfWar/Level5X/bubble05",
+      "Sprites/FogOfWar/Level5X/bubble06",
+      "Sprites/FogOfWar/Level5X/bubble07",
+      "Sprites/FogOfWar/Level5X/bubble08"
+    ],
+    "Weights": [
+      66,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "ObstaclesTilePositions": {
+  }
+}
