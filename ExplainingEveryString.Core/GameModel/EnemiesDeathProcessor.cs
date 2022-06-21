@@ -12,9 +12,9 @@ namespace ExplainingEveryString.Core.GameModel
             var newAvengers = new List<IEnemy>();
             foreach (var dead in enemies.Where(e => !e.IsAlive()))
             {
+                dead.ProcessDeath();
                 if (dead.Avengers != null)
                     newAvengers.AddRange(dead.Avengers);
-                dead.ProcessDeath();
             }
             avengers.AddRange(newAvengers);
             return enemies.Where(e => e.IsAlive()).ToList();

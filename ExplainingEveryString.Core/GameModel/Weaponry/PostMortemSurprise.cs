@@ -86,6 +86,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 {
                     BlueprintType = avengerTypes.Peek(),
                     Position = spawnSpecification.SpawnPoint + shooter.Position,
+                    AppearancePhaseDuration = 1f / 60,
                     BehaviorParameters = new BehaviorParameters
                     {
                         TrajectoryParameters = spawnSpecification.TrajectoryParameters?.ToArray(),

@@ -19,7 +19,29 @@
     }
   },
   "EnemyWaves": [
-    
+    {
+      "StartRegion": {
+        "X": 20,
+        "Y": 60,
+        "Width": 10,
+        "Height": 10
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "MineSpawner_mk5",
+          "TilePosition": {
+            "X": 31,
+            "Y": 56
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-24, 24",
+            "296, -296"
+          ]
+        }
+      ],
+      "Bosses": []
+    }
   ],
   "FogOfWar": {
     "ParticleWidth": 16,
@@ -65,6 +87,6 @@
       2
     ]
   },
-  "ObstaclesTilePositions": {
-  }
+  "ObstaclesTilePositions": {},
+  "Waypoints": {}
 }

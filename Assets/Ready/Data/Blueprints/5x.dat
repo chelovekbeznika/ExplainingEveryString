@@ -25,8 +25,11 @@
             "AngleCorrection": 180.0,
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 150.0
+                "sideSpeed": 0.0,
+                "startFlySpeed": 75.0,
+                "fallAcceleration": 150
               },
+              "TrajectoryType": "Gravitational",
               "Damage": 15.0,
               "TimeToLive": 10.0,
               "Sprite": {
@@ -39,10 +42,10 @@
         "ShootingEffect": {
           "Sound": {
             "Name": "Sounds/Enemy/HunterFire",
-            "Volume": 0.3
+            "Volume": 0.5
           }
         },
-        "AimType": "ByMovement"
+        "AimType": "AimAtPlayer"
       }
     },
     "DefaultSprite": {
@@ -87,7 +90,7 @@
         "Volume": 0.6
       },
       "Sprite": {
-        "Name": "Sprites/Enemies/Level4X/Death/Tank",
+        "Name": "Sprites/Enemies/Level5X/Death/Tank",
         "AnimationCycle": 0.5
       }
     },
@@ -147,11 +150,12 @@
         "AimType": "AimAtPlayer"
       },
       "Spawner": {
-        "MaxSpawned": 2,
+        "MaxSpawned": 1,
         "DespawnAfterDeath": false,
         "Reloader": {
-          "FireRate": 0.25
+          "FireRate": 0.1666667
         },
+        "AppearancePhase": 0.0166667,
         "PositionSelector" : {
           "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
           "SpawnPositions": [
@@ -203,12 +207,12 @@
             "AngleCorrection": 0.0,
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 400.0,
+                "speed": 600.0,
               },
-              "HomingSpeed": 30.0,
+              "HomingSpeed": 60.0,
               "BlastWaveRadius": 128.0,
               "Damage": 50.0,
-              "TimeToLive": 5.0,
+              "TimeToLive": 2.0,
               "ConsiderAngle": true,
               "Sprite": {
                 "Name": "Sprites/Enemies/Level5X/CannonRocket"
@@ -280,8 +284,8 @@
       "Mover": {
         "Type": "Teleportation",
         "Parameters": {
-          "min": 0.5,
-          "max": 2.0
+          "min": 1.5,
+          "max": 2.5
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -359,7 +363,7 @@
               "TrajectoryType": "Sinus",
               "TrajectoryParameters": {
                 "speed": 150.0,
-                "amplitude": 24.0,
+                "amplitude": 6.0,
                 "angularVelocity": 25.132
               },
               "Damage": 25.0,
@@ -436,7 +440,7 @@
               "TrajectoryType": "Sinus",
               "TrajectoryParameters": {
                 "speed": 250.0,
-                "amplitude": 36.0,
+                "amplitude": 6.0,
                 "angularVelocity": 50.264
               },
               "Damage": 25.0,
@@ -592,11 +596,11 @@
       },
       "MoveTargetSelectType": "RandomTargets",
       "Spawner": {
-        "MaxSpawned": 6,
+        "MaxSpawned": 4,
         "DespawnAfterDeath": true,
         "Reloader": {
           "FireRate": 3.0,
-          "Ammo": 3,
+          "Ammo": 2,
           "ReloadTime": 3.0
         },
         "PositionSelector" : {
