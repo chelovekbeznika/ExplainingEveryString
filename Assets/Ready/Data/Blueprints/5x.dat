@@ -697,7 +697,7 @@
     "CollisionDamage": 100.0,
     "Height": 64.0,
     "Width": 96.0,
-    "Hitpoints": 250.0,
+    "Hitpoints": 200.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level5X/TankSpawner",
       "AnimationCycle": 0.25
@@ -721,7 +721,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 150.0
+          "speed": 100.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",

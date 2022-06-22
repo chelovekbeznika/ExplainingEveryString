@@ -16,6 +16,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private Boolean active = false;
         private Boolean despawnAfterDeath;
 
+        public event EventHandler<EnemySpawnedEventArgs> EnemySpawned;
+
         public List<IEnemy> SpawnedEnemies { get; private set; } = new List<IEnemy>();
 
         public Int32 MaxSpawned => Specification.MaxSpawned;
@@ -81,6 +83,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             var enemy = factory.ConstructEnemy(asi);
             enemy.Update(firstUpdateTime);
             SpawnedEnemies.Add(enemy);
+            EnemySpawned?.Invoke(this, new EnemySpawnedEventArgs { Enemy = enemy });
         }
 
         private Boolean CanSpawnEnemy() => active && spawner.IsAlive() && SpawnedEnemies.Count < Specification.MaxSpawned;

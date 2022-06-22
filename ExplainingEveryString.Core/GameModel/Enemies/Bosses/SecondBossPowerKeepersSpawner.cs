@@ -14,6 +14,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private Single tillNextSpawn = 0;
         private Int32 alreadySpawned = 0;
 
+        public event EventHandler<EnemySpawnedEventArgs> EnemySpawned;
+
         public List<IEnemy> SpawnedEnemies { get; private set; }
 
         public Int32 MaxSpawned { get => Specification.MaxSpawned; set => Specification.MaxSpawned = value; }
@@ -57,6 +59,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 });
                 enemy.Died += powerKeeperDeath;
                 SpawnedEnemies.Add(enemy);
+                EnemySpawned?.Invoke(this, new EnemySpawnedEventArgs { Enemy = enemy });
             }
         }
 

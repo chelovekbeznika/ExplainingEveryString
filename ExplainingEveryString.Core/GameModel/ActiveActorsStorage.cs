@@ -28,6 +28,7 @@ namespace ExplainingEveryString.Core.GameModel
         private List<IEnemy> currentWaveEnemies = new List<IEnemy>();
         private List<IEnemy> avengers = new List<IEnemy>();
         private List<ISpawnedActorsController> enemySpawners = new List<ISpawnedActorsController>();
+        private List<ISpawnedActorsController> freshEnemySpawners = new List<ISpawnedActorsController>();
         private Int32 maxEnemiesAtOnce;
         private Queue<IEnemy> enemiesQueue = new Queue<IEnemy>();
 
@@ -66,15 +67,25 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void Update()
         {
+            enemySpawners.AddRange(freshEnemySpawners);
+            freshEnemySpawners.Clear();
             SendDeadToHeaven();
             while (enemiesQueue.Count > 0 && currentWaveEnemies.Count < maxEnemiesAtOnce)
             {
                 var enemy = enemiesQueue.Dequeue();
                 currentWaveEnemies.Add(enemy);
-                enemy.EnemyBehaviorChanged += EnemyBehaviorChanged;
-                if (enemy.SpawnedActorsController != null)
-                    enemySpawners.Add(enemy.SpawnedActorsController);
+                ProcessEnemyArrival(enemy);
             }
+        }
+
+        private void ProcessEnemyArrival(IEnemy enemy)
+        {
+            enemy.EnemyBehaviorChanged += EnemyBehaviorChanged;
+            if (enemy.SpawnedActorsController != null)
+            {
+                freshEnemySpawners.Add(enemy.SpawnedActorsController);
+                enemy.SpawnedActorsController.EnemySpawned += (sender, args) => ProcessEnemyArrival(args.Enemy);
+            } 
         }
 
         private void EnemyBehaviorChanged(Object sender, EnemyBehaviorChangedEventArgs args)

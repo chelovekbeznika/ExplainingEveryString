@@ -9,6 +9,20 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private List<ISpawnedActorsController> controllers = new List<ISpawnedActorsController>();
         private Boolean active = false;
 
+        public event EventHandler<EnemySpawnedEventArgs> EnemySpawned
+        {
+            add
+            {
+                foreach (var controller in controllers)
+                    controller.EnemySpawned += value;
+            }
+            remove
+            {
+                foreach (var controllers in controllers)
+                    controllers.EnemySpawned -= value;
+            }
+        }
+
         public List<IEnemy> SpawnedEnemies => controllers.SelectMany(controller => controller.SpawnedEnemies).ToList();
 
         public Int32 MaxSpawned => controllers.Select(controller => controller.MaxSpawned).Sum();

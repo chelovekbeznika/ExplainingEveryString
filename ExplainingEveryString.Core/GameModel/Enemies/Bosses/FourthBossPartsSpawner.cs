@@ -10,6 +10,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public int MaxSpawned { get; private set; }
 
+        private Boolean eventInitiated = false;
+
         public FourthBossPartsSpawner(IFourthBossBrain bossBrain, ActorsFactory factory, String[] partsList)
         {
             foreach (var partName in partsList)
@@ -26,6 +28,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             MaxSpawned = partsList.Length;
         }
 
+        public event EventHandler<EnemySpawnedEventArgs> EnemySpawned;
+
         public void DivideAliveAndDead(List<IEnemy> avengers)
         {
             SpawnedEnemies = EnemiesDeathProcessor.DivideAliveAndDead(SpawnedEnemies, avengers);
@@ -41,6 +45,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public void Update(Single elapsedSeconds)
         {
+            if (!eventInitiated)
+            {
+                foreach (var part in SpawnedEnemies)
+                    EnemySpawned?.Invoke(this, new EnemySpawnedEventArgs { Enemy = part });
+                eventInitiated = true;
+            }
         }
 
         public void DespawnRoutine()

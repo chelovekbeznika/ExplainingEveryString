@@ -12,6 +12,8 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private String blueprintType;
         private Boolean active = true;
 
+        public event EventHandler<EnemySpawnedEventArgs> EnemySpawned;
+
         public List<IEnemy> SpawnedEnemies { get; private set; }
 
         public Int32 MaxSpawned { get; private set; }
@@ -61,7 +63,9 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                     BehaviorParameters = new BehaviorParameters { },
                     Position = bullet.Position
                 };
-                SpawnedEnemies.Add(factory.ConstructEnemy(asi));
+                var enemy = factory.ConstructEnemy(asi);
+                SpawnedEnemies.Add(enemy);
+                EnemySpawned?.Invoke(this, new EnemySpawnedEventArgs { Enemy = enemy });
             }
             bullet.BulletHit -= ProcessSphereHit;
         }
