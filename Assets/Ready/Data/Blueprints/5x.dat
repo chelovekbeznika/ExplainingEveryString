@@ -613,6 +613,169 @@
       }
     }
   },
+  "FireFish": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ShadowEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "ShadowEnemy",
+    "CollisionDamage": 50.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 50.0,
+    "ActiveTime": 5.0,
+    "ShadowTime": 2.5,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level5X/FireFish",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/FireFishDeath",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level5X/Death/FireFish",
+        "AnimationCycle": 0.33
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level5X/Appearance/FireFish",
+      "AnimationCycle": 0.5
+    },
+    "DefaultAppearancePhaseDuration": 0.5,
+    "ShadowSprite": {
+      "Name": "Sprites/Enemies/Level5X/FireFishUnderwater",
+      "AnimationCycle": 0.33
+    },
+    "PhaseChangeEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/FireFishDive",
+        "Volume": 0.5
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level5X/FireFishShift",
+        "AnimationCycle": 0.25
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 200.0
+        }
+      },
+      "MoveTargetSelectType": "RandomTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 2.0
+        },
+        "Barrels": [
+          {
+            "MuzzleOffset": "7.0, 5.0",
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 600.0
+              },
+              "Damage": 15.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/HunterFire"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/FireFishShot",
+            "Volume": 0.5
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    }
+  },
+  "TankSpawner": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 64.0,
+    "Width": 96.0,
+    "Hitpoints": 250.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level5X/TankSpawner",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Enemy/TankSpawnerDeath",
+        "Volume": 0.7
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level5X/Death/TankSpawner",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level5X/Appearance/TankSpawner",
+      "AnimationCycle": 0.02
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 150.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 2.5,
+          "Ammo": 7,
+          "ReloadTime": 3.0
+        },
+        "Offset": "32.0, -16.0",
+        "Barrels": [
+          {
+            "Length": 16.0,
+            "Accuracy": 30.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 500.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level5X/TankSpawnerCannon",
+          "AnimationCycle": 0.333333,
+        },
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/TankSpawnerShoot",
+            "Volume": 0.4
+          }
+        },
+        "AimType": "AimAtPlayer"
+      },
+      "Spawner": {
+        "MaxSpawned": 3,
+        "DespawnAfterDeath": true,
+        "Reloader": {
+          "FireRate": 0.1666667
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "0.0, 0.0"
+          ]
+        },
+        "BlueprintType": "Tank_mk5"
+      }
+    }
+  },
   "Vertical4": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 160,
