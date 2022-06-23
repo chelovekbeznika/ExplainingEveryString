@@ -329,13 +329,9 @@
       "Name": "Sprites/Enemies/Level5X/TripleCannon"
     },
     "DeathEffect": {
-      "Sound": {
-        "Name": "Sounds/StandardEnemy/MediumExplosion",
-        "Volume": 0.6
-      },
       "Sprite": {
-        "Name": "Sprites/Enemies/Level5X/Death/TripleCannon",
-        "AnimationCycle": 0.5
+        "Name": "Sprites/Enemies/Level5X/Death/TripleCannonAscension",
+        "AnimationCycle": 1.0
       }
     },
     "AppearancePhaseSprite": {

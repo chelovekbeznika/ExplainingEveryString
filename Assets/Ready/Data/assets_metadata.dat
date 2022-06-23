@@ -1331,6 +1331,10 @@
       "AnimationFrames": 7
     },
     {
+      "Name": "Sprites/Enemies/Level5X/Death/TripleCannonAscension",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/Death/FireFish",
       "AnimationFrames": 10
     },
