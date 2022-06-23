@@ -1271,6 +1271,10 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Level5X/FireFishEyes",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/FireFishShift",
       "AnimationFrames": 4
     },

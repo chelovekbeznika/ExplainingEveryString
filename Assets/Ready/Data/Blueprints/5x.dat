@@ -663,9 +663,9 @@
         "Reloader": {
           "FireRate": 2.0
         },
+        "Offset": "7.0, 5.0",
         "Barrels": [
           {
-            "MuzzleOffset": "7.0, 5.0",
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 600.0
@@ -683,6 +683,10 @@
             "Name": "Sounds/Enemy/FireFishShot",
             "Volume": 0.5
           }
+        },
+        "Sprite": {
+          "Name": "Sprites/Enemies/Level5X/FireFishEyes",
+          "AnimationCycle": 0.5
         },
         "AimType": "AimAtPlayer"
       }
