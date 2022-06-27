@@ -10,7 +10,7 @@
     "PlayerPosition": {
       "X": 14,
       "Y": 64,
-      "Offset": "-8, 8"
+      "Offset": "8, -8"
     },
     "Arsenal": {
       "AvailableWeapons": {
@@ -418,6 +418,975 @@
         }
       ],
       "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 3,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 100,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 129,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "First",
+        "PlayerPosition": {
+          "X": 102,
+          "Y": 64,
+          "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 120,
+            "RocketLauncher": 80,
+            "Homing": 200
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 118,
+        "Y": 60,
+        "Width": 12,
+        "Height": 10
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 103,
+            "Y": 50,
+            "Offset": "-8, -8"
+          },
+          "Angle": 270.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, -448",
+            "64, 0",
+            "64, -448"
+          ]
+        },
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 113,
+            "Y": 50,
+            "Offset": "-8, -8"
+          },
+          "Angle": 270.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, -448",
+            "64, -448",
+            "64, 0"
+          ]
+        },
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 123,
+            "Y": 50,
+            "Offset": "-8, -8"
+          },
+          "Angle": 270.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, -448",
+            "64, 0",
+            "64, -448"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 145,
+            "Y": 50,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 129,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 140,
+        "Y": 51,
+        "Width": 20,
+        "Height": 29
+      },
+      "MaxEnemiesAtOnce": 2,
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 158,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 162,
+            "Y": 50,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-32, 16",
+            "128, -464"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 162,
+            "Y": 59,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-32, 160",
+            "128, -320"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 162,
+            "Y": 69,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-32, 320",
+            "128, -160"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 162,
+            "Y": 78,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-32, 464",
+            "128, -16"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 145,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 205,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 195,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 155,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 165,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 175,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 185,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 5,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 145,
+            "Y": 50,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 130,
+        "Y": 20,
+        "Width": 30,
+        "Height": 20
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 140,
+            "Y": 22,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 149,
+            "Y": 22,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 133,
+            "Y": 41
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, 32",
+            "0, 80",
+            "0, 128",
+            "0, 176",
+            "0, 208"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 156,
+            "Y": 41
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, 32",
+            "0, 80",
+            "0, 128",
+            "0, 176",
+            "0, 208"
+          ]
+        }
+      ],
+      "Bosses": [],
+      "RoomName": "Alpha"
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 145,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 155,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 165,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 175,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 185,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 195,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 6,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 205,
+            "Y": 19,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 210,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 210,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 210,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Second",
+        "PlayerPosition": {
+          "X": 200,
+          "Y": 16,
+          "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "RocketLauncher": 120,
+            "Shotgun": 120,
+            "Cone": 960
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 190,
+        "Y": 37,
+        "Width": 20,
+        "Height": 43
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "TankSpawner",
+          "TilePosition": {
+            "X": 194,
+            "Y": 22,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-48, 32",
+            "240, -176"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 191,
+            "Y": 37
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "16, 16",
+            "32, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 195,
+            "Y": 37
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "16, 16",
+            "32, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 199,
+            "Y": 37
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "16, 16",
+            "32, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 203,
+            "Y": 37
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "16, 16",
+            "32, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 207,
+            "Y": 37
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "16, 16",
+            "32, 0"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 210,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 210,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 210,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 230,
+        "Y": 50,
+        "Width": 29,
+        "Height": 30
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 225,
+            "Y": 64,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 245,
+            "Y": 64,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 230,
+            "Y": 64,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "80, 0",
+            "160, 0"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 211,
+            "Y": 51
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "16, -16",
+            "32, -32",
+            "48, -48",
+            "64, -64",
+            "80, -80",
+            "96, -96",
+            "112, -112",
+            "128, -128"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 211,
+            "Y": 78
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "16, 16",
+            "32, 32",
+            "48, 48",
+            "64, 64",
+            "80, 80",
+            "96, 96",
+            "112, 112",
+            "128, 128"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 258,
+            "Y": 78
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "-16, 16",
+            "-32, 32",
+            "-48, 48",
+            "-64, 64",
+            "-80, 80",
+            "-96, 96",
+            "-112, 112",
+            "-128, 128"
+          ]
+        },
+        {
+          "BlueprintType": "Mine_mk5",
+          "TilePosition": {
+            "X": 258,
+            "Y": 51
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "-16, -16",
+            "-32, -32",
+            "-48, -48",
+            "-64, -64",
+            "-80, -80",
+            "-96, -96",
+            "-112, -112",
+            "-128, -128"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 280,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 280,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 280,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 8,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 8,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 8,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 270,
+        "Y": 40,
+        "Width": 10,
+        "Height": 50
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "MineSpawner_mk5",
+          "TilePosition": {
+            "X": 262,
+            "Y": 42
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-24, 24",
+            "264, -248"
+          ]
+        },
+        {
+          "BlueprintType": "MineSpawner_mk5",
+          "TilePosition": {
+            "X": 277,
+            "Y": 87
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-264, 248",
+            "24, -24"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 309,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 309,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 309,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 280,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 280,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 9,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 280,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 290,
+        "Y": 50,
+        "Width": 19,
+        "Height": 30
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 307,
+            "Y": 52,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 307,
+            "Y": 76,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 307,
+            "Y": 72,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 307,
+            "Y": 56,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 309,
+            "Y": 54,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 309,
+            "Y": 64,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 10,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 309,
+            "Y": 74,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "Boss",
+        "PlayerPosition": {
+          "X": 307,
+          "Y": 64,
+          "Offset": "-8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 15
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 317,
+        "Y": 40,
+        "Width": 43,
+        "Height": 50
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Hunter_mk5",
+          "TilePosition": {
+            "X": 335,
+            "Y": 64,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
     }
   ],
   "FogOfWar": {
@@ -465,5 +1434,30 @@
     ]
   },
   "ObstaclesTilePositions": {},
-  "Waypoints": {}
+  "Waypoints": {
+    "Alpha": {
+      "Waypoints": [
+        {
+          "X": 139,
+          "Y": 28,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 139,
+          "Y": 40,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 151,
+          "Y": 40,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 151,
+          "Y": 28,
+          "Offset": "-8, -8"
+        }
+      ]
+    }
+  }
 }

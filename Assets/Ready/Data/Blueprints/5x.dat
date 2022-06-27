@@ -661,14 +661,14 @@
       "MoveTargetSelectType": "RandomTargets",
       "Weapon": {
         "Reloader": {
-          "FireRate": 2.0
+          "FireRate": 1.5
         },
         "Offset": "7.0, 5.0",
         "Barrels": [
           {
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 600.0
+                "speed": 500.0
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
@@ -724,7 +724,7 @@
           "speed": 100.0
         }
       },
-      "MoveTargetSelectType": "RandomFromListTargets",
+      "MoveTargetSelectType": "RandomTargets",
       "Weapon": {
         "Reloader": {
           "FireRate": 2.5,
@@ -735,7 +735,6 @@
         "Barrels": [
           {
             "Length": 16.0,
-            "Accuracy": 30.0,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 500.0
@@ -778,7 +777,7 @@
   },
   "Vertical4": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
-    "Height": 160,
+    "Height": 64,
     "Width": 16,
     "DefaultSprite": {
       "Name": "Sprites/Doors/Level5X/Vertical4Tiles",
@@ -797,8 +796,8 @@
   },
   "Horizontal4": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
-    "Height": 160,
-    "Width": 16,
+    "Height": 16,
+    "Width": 64,
     "DefaultSprite": {
       "Name": "Sprites/Doors/Level5X/Horizontal4Tiles",
       "AnimationCycle": 0.5
@@ -835,8 +834,8 @@
   },
   "Horizontal10": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
-    "Height": 160,
-    "Width": 16,
+    "Height": 16,
+    "Width": 160,
     "DefaultSprite": {
       "Name": "Sprites/Doors/Level5X/Horizontal10Tiles",
       "AnimationCycle": 0.5
