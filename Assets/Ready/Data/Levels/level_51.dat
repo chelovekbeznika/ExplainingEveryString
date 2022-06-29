@@ -1011,6 +1011,7 @@
         "Width": 29,
         "Height": 30
       },
+      "MaxEnemiesAtOnce": 3,
       "Enemies": [
         {
           "BlueprintType": "SimpleCannon_mk5",
@@ -1045,79 +1046,16 @@
           ]
         },
         {
-          "BlueprintType": "Mine_mk5",
+          "BlueprintType": "FireFish",
           "TilePosition": {
-            "X": 211,
-            "Y": 51
+            "X": 224,
+            "Y": 81,
+            "Offset": "-8, -8"
           },
           "Angle": 0.0,
           "TrajectoryParameters": [
-            "0, 0",
-            "16, -16",
-            "32, -32",
-            "48, -48",
-            "64, -64",
-            "80, -80",
-            "96, -96",
-            "112, -112",
-            "128, -128"
-          ]
-        },
-        {
-          "BlueprintType": "Mine_mk5",
-          "TilePosition": {
-            "X": 211,
-            "Y": 78
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "0, 0",
-            "16, 16",
-            "32, 32",
-            "48, 48",
-            "64, 64",
-            "80, 80",
-            "96, 96",
-            "112, 112",
-            "128, 128"
-          ]
-        },
-        {
-          "BlueprintType": "Mine_mk5",
-          "TilePosition": {
-            "X": 258,
-            "Y": 78
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "0, 0",
-            "-16, 16",
-            "-32, 32",
-            "-48, 48",
-            "-64, 64",
-            "-80, 80",
-            "-96, 96",
-            "-112, 112",
-            "-128, 128"
-          ]
-        },
-        {
-          "BlueprintType": "Mine_mk5",
-          "TilePosition": {
-            "X": 258,
-            "Y": 51
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "0, 0",
-            "-16, -16",
-            "-32, -32",
-            "-48, -48",
-            "-64, -64",
-            "-80, -80",
-            "-96, -96",
-            "-112, -112",
-            "-128, -128"
+            "-208, 16",
+            "400, -112"
           ]
         }
       ],
@@ -1193,25 +1131,14 @@
         {
           "BlueprintType": "MineSpawner_mk5",
           "TilePosition": {
-            "X": 262,
-            "Y": 42
+            "X": 270,
+            "Y": 42,
+            "Offset": "-8, 0"
           },
           "Angle": 0.0,
           "TrajectoryParameters": [
-            "-24, 24",
-            "264, -248"
-          ]
-        },
-        {
-          "BlueprintType": "MineSpawner_mk5",
-          "TilePosition": {
-            "X": 277,
-            "Y": 87
-          },
-          "Angle": 0.0,
-          "TrajectoryParameters": [
-            "-264, 248",
-            "24, -24"
+            "-144, 24",
+            "144, -168"
           ]
         }
       ],
@@ -1300,25 +1227,59 @@
             "Y": 76,
             "Offset": "-8, -8"
           },
-          "Angle": 0.0
+          "Angle": 180.0
         },
         {
-          "BlueprintType": "Tank_mk5",
+          "BlueprintType": "FixedCannon_mk5",
           "TilePosition": {
-            "X": 307,
-            "Y": 72,
-            "Offset": "-8, -8"
+            "X": 305,
+            "Y": 50,
+            "Offset": "0, -8"
           },
-          "Angle": 0.0
+          "Angle": 180.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, -32",
+            "0, -64",
+            "0, -96",
+            "0, -128",
+            "0, -160",
+            "0, -192",
+            "0, -224",
+            "0, -256",
+            "0, -288",
+            "0, -320",
+            "0, -352",
+            "0, -384",
+            "0, -416",
+            "0, -448"
+          ]
         },
         {
-          "BlueprintType": "Tank_mk5",
+          "BlueprintType": "FixedCannon_mk5",
           "TilePosition": {
             "X": 307,
-            "Y": 56,
+            "Y": 78,
             "Offset": "-8, -8"
           },
-          "Angle": 0.0
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, 32",
+            "0, 64",
+            "0, 96",
+            "0, 128",
+            "0, 160",
+            "0, 192",
+            "0, 224",
+            "0, 256",
+            "0, 288",
+            "0, 320",
+            "0, 352",
+            "0, 384",
+            "0, 416",
+            "0, 448"
+          ]
         }
       ],
       "Bosses": []
