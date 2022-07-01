@@ -1291,6 +1291,14 @@
       "AnimationFrames": 2
     },
     {
+      "Name": "Sprites/Enemies/Level5X/FryingPan",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Fire",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/Appearance/MineSpawner",
       "AnimationFrames": 8
     },
@@ -1305,6 +1313,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Appearance/FireFish",
       "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Appearance/FryingPan",
+      "AnimationFrames": 10
     },
     {
       "Name": "Sprites/Enemies/Level5X/Death/Cannon",
@@ -1345,6 +1357,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Death/TankSpawner",
       "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/FryingPan",
+      "AnimationFrames": 10
     },
     {
       "Name": "Sprites/Doors/Level5X/Vertical10Tiles",

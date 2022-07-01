@@ -285,6 +285,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/BrickTankDeath.wav
 
+#begin Sounds/Bosses/FryingPan.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/FryingPan.wav
+
+#begin Sounds/Bosses/FryingPanFire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/FryingPanFire.wav
+
 #begin Sounds/Bosses/HelicopterExplosion.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -4809,6 +4821,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Appearance/FireFish.png
 
+#begin Sprites/Enemies/Level5X/Appearance/FryingPan.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Appearance/FryingPan.png
+
 #begin Sprites/Enemies/Level5X/Appearance/MineSpawner.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4917,6 +4941,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Death/FixedCannon.png
 
+#begin Sprites/Enemies/Level5X/Death/FryingPan.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Death/FryingPan.png
+
 #begin Sprites/Enemies/Level5X/Death/Hunter.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5001,6 +5037,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Death/TripleCannonAscension.png
 
+#begin Sprites/Enemies/Level5X/Fire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Fire.png
+
 #begin Sprites/Enemies/Level5X/FireFish.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5072,6 +5120,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/FixedCannonTeleport.png
+
+#begin Sprites/Enemies/Level5X/FryingPan.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/FryingPan.png
 
 #begin Sprites/Enemies/Level5X/Hunter.png
 /importer:TextureImporter
