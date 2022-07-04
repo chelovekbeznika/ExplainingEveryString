@@ -24,6 +24,6 @@ namespace ExplainingEveryString.Data.Specifications
     [JsonConverter(typeof(StringEnumConverter))]
     public enum AimType
     {
-        FixedFireDirection, RecalibratableFireDirection, SpinningAim, AimAtPlayer, ByMovement, ControlledByPlayer
+        FixedFireDirection, RecalibratableFireDirection, SpinningAim, AimAtPlayer, ByMovement, ControlledByPlayer, Rotating
     }
 }

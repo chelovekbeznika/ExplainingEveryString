@@ -22,6 +22,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
                     return new SpinningAimer(angle);
                 case AimType.RecalibratableFireDirection:
                     return new FixedPostTeleportCorrectionAimer(angle, playerLocator, () => shooter.Position, behavior);
+                case AimType.Rotating:
+                    return new RotatingAimer(angle);
                 default:
                     throw new ArgumentException("Wrong aimtype in blueprint");
             }

@@ -775,6 +775,97 @@
       }
     }
   },
+  "miniboss_mk51": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "Height": 48,
+    "Width": 48,
+    "Hitpoints": 350.0,
+    "DefaultSprite": { 
+      "Name": "Sprites/Enemies/Level5X/FryingPan",
+      "AnimationCycle": 0.25
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level5X/Appearance/FryingPan",
+      "AnimationCycle": 1.0
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/FryingPan",
+        "Volume": 0.6
+      }
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/FryingPan",
+        "Volume": 0.6
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level5X/Death/FryingPan",
+        "AnimationCycle": 1.0
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 250.0,
+          "maxSpeed": 250.0,
+          "acceleration": 500.0
+        },
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "Weapon": {
+        "Reloader": {
+          "Ammo": 30,
+          "FireRate": 15,
+          "ReloadTime": 0.5
+        },
+        "Barrels": [
+          {
+            "Accuracy": 7.5,
+            "Length": 24.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 500.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "ConsiderAngle": true,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/Fire",
+                "AnimationCycle": 0.166667
+              }
+            }
+          },
+          {
+            "AngleCorrection": 180.0,
+            "Accuracy": 7.5,
+            "Length": 24.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 500.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "ConsiderAngle": true,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/Fire",
+                "AnimationCycle": 0.166667
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/FryingPanFire",
+            "Volume": 0.4
+          }
+        },
+        "AimType": "Rotating",
+      }
+    }
+  },
   "Vertical4": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 64,

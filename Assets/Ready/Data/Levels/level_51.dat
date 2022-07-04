@@ -1326,7 +1326,10 @@
         },
         "Arsenal": {
           "AvailableWeapons": {
-            "Shotgun": 15
+            "Shotgun": 240,
+            "Cone": 980,
+            "Homing": 240,
+            "RocketLauncher": 100
           }
         }
       },
@@ -1337,17 +1340,18 @@
         "Height": 50
       },
       "Enemies": [
+      ],
+      "Bosses": [
         {
-          "BlueprintType": "Hunter_mk5",
+          "BlueprintType": "miniboss_mk51",
           "TilePosition": {
             "X": 335,
             "Y": 64,
             "Offset": "-8, -8"
           },
-          "Angle": 0.0
+          "Angle": 540.0
         }
-      ],
-      "Bosses": []
+      ]
     }
   ],
   "FogOfWar": {
