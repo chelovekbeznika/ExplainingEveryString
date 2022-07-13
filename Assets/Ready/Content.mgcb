@@ -120,6 +120,9 @@
 #begin Data/Music/deltasamples.dat
 /copy:Data/Music/deltasamples.dat
 
+#begin Data/Music/diesirae.dat
+/copy:Data/Music/diesirae.dat
+
 #begin Data/Music/gamma.dat
 /copy:Data/Music/gamma.dat
 
@@ -7724,6 +7727,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Songs/Desert.png
+
+#begin Sprites/Menu/Songs/Fire.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Songs/Fire.png
 
 #begin Sprites/Menu/Songs/Moon.png
 /importer:TextureImporter
