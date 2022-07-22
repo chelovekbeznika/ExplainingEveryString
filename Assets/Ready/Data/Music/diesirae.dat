@@ -3769,8 +3769,1232 @@
           "Accidental": "Natural",
           "Length": "Eigth",
           "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 16.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 16.5,
+          "Note": { "Octave": "Small", "Type": "F" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 16.75,
+          "Note": { "Octave": "Small", "Type": "A" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 17.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
           "Decaying": false,
           "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 17.25,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 17.5,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 17.75,
+          "Note": { "Octave": "TwoLine", "Type": "D" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 18.0,
+          "Note": { "Octave": "TwoLine", "Type": "F" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 19.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 20.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 20.5,
+          "Note": { "Octave": "Small", "Type": "F" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 20.75,
+          "Note": { "Octave": "Small", "Type": "A" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 21.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 21.25,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 21.5,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 21.75,
+          "Note": { "Octave": "TwoLine", "Type": "D" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 22.0,
+          "Note": { "Octave": "TwoLine", "Type": "F" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 23.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 24.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 25.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 26.0,
+          "Note": { "Octave": "Small", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 27.0,
+          "Note": { "Octave": "Small", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 28.0,
+          "Note": { "Octave": "Small", "Type": "A" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 28.5,
+          "Note": { "Octave": "Small", "Type": "A" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 28.625,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 28.75,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Accidental": "Sharp",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 28.875,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 29.0,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Eigth, Triplet",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 12
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 29.5,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 29.75,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Accidental": "Sharp",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 29.875,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Accidental": "Sharp",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 30.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Length": "Eigth, Triplet",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 14
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 30.5,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 30.625,
+          "Note": { "Octave": "OneLine", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 30.75,
+          "Note": { "Octave": "TwoLine", "Type": "C" },
+          "Accidental": "Sharp",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 30.875,
+          "Note": { "Octave": "TwoLine", "Type": "D" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 31.0,
+          "Note": { "Octave": "TwoLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 32.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Whole",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 36.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Whole",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 40.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 40.5,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 41.5,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 42.5,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 43.5,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 44.0,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 45.5,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 45.625,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 45.75,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 45.875,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 46.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 48.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 48.5,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 49.5,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 50.5,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 51.5,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 52.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Accidental": "Flat",
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 53.5,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 53.625,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 53.75,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Accidental": "Flat",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 53.875,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 54.0,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 56.0,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 56.5,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 57.5,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 58.5,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 59.5,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 60.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Accidental": "Flat",
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 61.5,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 61.625,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Accidental": "Flat",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 61.75,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Accidental": "Flat",
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 61.875,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Length": "ThirtySecond",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 62.0,
+          "Note": { "Octave": "Small", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 64.0,
+          "Note": { "Octave": "Small", "Type": "G" },
+          "Accidental": "Sharp",
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 64.5,
+          "Note": { "Octave": "Small", "Type": "G" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 64.75,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 65.0,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 65.25,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 65.5,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 65.75,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 66.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 66.25,
+          "Note": { "Octave": "OneLine", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 66.5,
+          "Note": { "Octave": "OneLine", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 66.75,
+          "Note": { "Octave": "TwoLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 67.0,
+          "Note": { "Octave": "TwoLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 67.25,
+          "Note": { "Octave": "TwoLine", "Type": "G" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 67.5,
+          "Note": { "Octave": "TwoLine", "Type": "G" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 67.75,
+          "Note": { "Octave": "TwoLine", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 68.0,
+          "Note": { "Octave": "ThreeLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 69.0,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Half",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 71.0,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 11
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 72.0,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 74.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 75.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 76.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 77.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 78.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 79.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 80.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 81.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 82.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 83.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 84.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 85.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 86.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 87.0,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 88.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 89.0,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 90.0,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 91.0,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 92.0,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Accidental": "Flat",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 93.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 94.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 95.0,
+          "Note": { "Octave": "Small", "Type": "F" },
+          "Accidental": "Sharp",
+          "Length": "Quarter",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 96.0,
+          "Note": { "Octave": "Small", "Type": "G" },
+          "Length": "Eigth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 96.5,
+          "Note": { "Octave": "Small", "Type": "A" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 15
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 96.75,
+          "Note": { "Octave": "Small", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 14
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 97.0,
+          "Note": { "Octave": "OneLine", "Type": "C" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 13
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 97.25,
+          "Note": { "Octave": "OneLine", "Type": "D" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 12
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 97.5,
+          "Note": { "Octave": "OneLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 11
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 97.75,
+          "Note": { "Octave": "OneLine", "Type": "F" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 10
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 98.0,
+          "Note": { "Octave": "OneLine", "Type": "G" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 9
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 98.25,
+          "Note": { "Octave": "OneLine", "Type": "A" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 8
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 98.5,
+          "Note": { "Octave": "OneLine", "Type": "H" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 7
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 98.75,
+          "Note": { "Octave": "TwoLine", "Type": "C" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 6
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 99.0,
+          "Note": { "Octave": "TwoLine", "Type": "D" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 5
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 99.25,
+          "Note": { "Octave": "TwoLine", "Type": "E" },
+          "Accidental": "Natural",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 4
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 99.5,
+          "Note": { "Octave": "TwoLine", "Type": "F" },
+          "Accidental": "Sharp",
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": false,
+          "Volume": 3
+        },
+        {
+          "$type": "ExplainingEveryString.Music.Model.PulseNote, ExplainingEveryString.Music",
+          "BeatNumber": 99.75,
+          "Note": { "Octave": "TwoLine", "Type": "G" },
+          "Length": "Sixteenth",
+          "FirstChannel": false,
+          "Decaying": true,
+          "Volume": 2
         },
       ]
     }
