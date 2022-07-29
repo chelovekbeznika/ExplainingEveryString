@@ -1,0 +1,338 @@
+{
+  "Blueprints": [
+    "player",
+    "5x"
+  ],
+  "MusicName": "diesirae",
+  "TitleSpriteName": "Sprites/LevelTitles/51",
+  "TileMap": "TileMaps/Level_52",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 288,
+      "Y": 174,
+      "Offset": "-8, -8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 120,
+        "RocketLauncher": 80,
+        "Homing": 200
+      }
+    }
+  },
+  "EnemyWaves": [
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 174,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 250,
+            "Y": 174,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 260,
+        "Y": 160,
+        "Width": 15,
+        "Height": 30
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 288,
+            "Y": 174,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 288,
+            "Y": 161,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 288,
+            "Y": 187,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [],
+      "StartRegion": {
+        "X": 200,
+        "Y": 160,
+        "Width": 35,
+        "Height": 30
+      },
+      "MaxEnemiesAtOnce": 3,
+      "Enemies": [
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 227,
+            "Y": 176,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "112, -192",
+            "-176, -192",
+            "0, -192",
+            "0, -96"
+          ]
+        },
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 227,
+            "Y": 172,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "-176, 192",
+            "112, 192",
+            "0, 96",
+            "0, 192"
+          ]
+        },
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 216,
+            "Y": 178,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 216,
+            "Y": 170,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 223,
+            "Y": 172,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 223,
+            "Y": 176,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": [],
+      "RoomName": "Alpha"
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 250,
+            "Y": 174,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 259,
+            "Y": 174,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 190,
+            "Y": 174,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 199,
+            "Y": 174,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 200,
+        "Y": 160,
+        "Width": 14,
+        "Height": 30
+      },
+      "MaxEnemiesAtOnce": 5,
+      "Enemies": [
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 248,
+            "Y": 166,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 248,
+            "Y": 182,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 227,
+            "Y": 172,
+            "Offset": "-8, -8"
+          },
+          "Angle": 180.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "-64, 0",
+            "-64, -64",
+            "0, -64"
+          ]
+        },
+        {
+          "BlueprintType": "Hunter_mk5",
+          "TilePosition": {
+            "X": 236,
+            "Y": 158
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Hunter_mk5",
+          "TilePosition": {
+            "X": 236,
+            "Y": 191
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": [],
+      "RoomName": "Alpha"
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level5X/0",
+      "Sprites/FogOfWar/Level5X/1",
+      "Sprites/FogOfWar/Level5X/2",
+      "Sprites/FogOfWar/Level5X/3",
+      "Sprites/FogOfWar/Level5X/4",
+      "Sprites/FogOfWar/Level5X/5",
+      "Sprites/FogOfWar/Level5X/6",
+      "Sprites/FogOfWar/Level5X/7",
+      "Sprites/FogOfWar/Level5X/8",
+      "Sprites/FogOfWar/Level5X/9",
+      "Sprites/FogOfWar/Level5X/bubble01",
+      "Sprites/FogOfWar/Level5X/bubble02",
+      "Sprites/FogOfWar/Level5X/bubble03",
+      "Sprites/FogOfWar/Level5X/bubble04",
+      "Sprites/FogOfWar/Level5X/bubble05",
+      "Sprites/FogOfWar/Level5X/bubble06",
+      "Sprites/FogOfWar/Level5X/bubble07",
+      "Sprites/FogOfWar/Level5X/bubble08"
+    ],
+    "Weights": [
+      66,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "ObstaclesTilePositions": {},
+  "Waypoints": {
+    "Alpha": {
+      "Waypoints": [
+        {
+          "X": 218,
+          "Y": 167,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 232,
+          "Y": 167,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 232,
+          "Y": 181,
+          "Offset": "-8, -8"
+        },
+        {
+          "X": 218,
+          "Y": 181,
+          "Offset": "-8, -8"
+        }
+      ]
+    }
+  }
+}
