@@ -209,7 +209,7 @@
               "TrajectoryParameters": {
                 "speed": 600.0,
               },
-              "HomingSpeed": 60.0,
+              "HomingSpeed": 30.0,
               "BlastWaveRadius": 128.0,
               "Damage": 50.0,
               "TimeToLive": 2.0,
@@ -668,7 +668,7 @@
           {
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 500.0
+                "speed": 400.0
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
