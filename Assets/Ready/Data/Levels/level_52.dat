@@ -315,7 +315,8 @@
           "AvailableWeapons": {
             "Shotgun": 120,
             "RocketLauncher": 80,
-            "Homing": 200
+            "Homing": 200,
+            "FiveShot": 150
           }
         }
       },
@@ -727,7 +728,8 @@
           "AvailableWeapons": {
             "Shotgun": 120,
             "RocketLauncher": 80,
-            "Homing": 200
+            "Homing": 200,
+            "FiveShot": 150
           }
         }
       },
