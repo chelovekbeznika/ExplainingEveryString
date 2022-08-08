@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ExplainingEveryString.Data": {
+      "commandName": "Project",
+      "commandLineArgs": "-e level_52"
+    }
+  }
+}

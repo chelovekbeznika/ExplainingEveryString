@@ -1299,6 +1299,10 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+      "AnimationFrames": 2
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/Appearance/MineSpawner",
       "AnimationFrames": 8
     },
@@ -1317,6 +1321,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Appearance/FryingPan",
       "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Appearance/SnowFlake",
+      "AnimationFrames": 9
     },
     {
       "Name": "Sprites/Enemies/Level5X/Death/Cannon",
@@ -1361,6 +1369,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Death/FryingPan",
       "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/SnowFlake",
+      "AnimationFrames": 8
     },
     {
       "Name": "Sprites/Doors/Level5X/Vertical10Tiles",

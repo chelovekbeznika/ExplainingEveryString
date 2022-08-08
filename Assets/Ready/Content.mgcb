@@ -339,6 +339,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/SmallBrother.wav
 
+#begin Sounds/Bosses/SnowFlake.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/SnowFlake.wav
+
+#begin Sounds/Bosses/SnowFlakeBlip.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/SnowFlakeBlip.wav
+
 #begin Sounds/Bosses/StationaryTurtleIn.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -4851,6 +4863,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Appearance/MineSpawner.png
 
+#begin Sprites/Enemies/Level5X/Appearance/SnowFlake.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Appearance/SnowFlake.png
+
 #begin Sprites/Enemies/Level5X/Appearance/TankSpawner.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4994,6 +5018,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Death/MineSpawner.png
+
+#begin Sprites/Enemies/Level5X/Death/SnowFlake.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Death/SnowFlake.png
 
 #begin Sprites/Enemies/Level5X/Death/Tank.png
 /importer:TextureImporter
@@ -5186,6 +5222,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/MineSpawner.png
+
+#begin Sprites/Enemies/Level5X/SnowFlake.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/SnowFlake.png
+
+#begin Sprites/Enemies/Level5X/SnowFlakeProjectile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/SnowFlakeProjectile.png
 
 #begin Sprites/Enemies/Level5X/TankBase.png
 /importer:TextureImporter
