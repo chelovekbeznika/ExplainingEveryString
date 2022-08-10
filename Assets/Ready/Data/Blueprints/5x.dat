@@ -866,6 +866,293 @@
       }
     }
   },
+  "miniboss_mk52": {
+    "$type": "ExplainingEveryString.Data.Blueprints.ChangeableEnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "Changeable",
+    "CollisionDamage": 100.0,
+    "Height": 160.0,
+    "Width": 160.0,
+    "Hitpoints": 500.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level5X/SnowFlake"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/SnowFlake",
+        "Volume": 0.5
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level5X/Death/SnowFlake",
+        "AnimationCycle": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level5X/Appearance/SnowFlake",
+      "AnimationCycle": 1.0
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 400.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.75
+        },
+        "Barrels": [
+          {
+            "Length": 80.0,
+            "MuzzleOffset": "0.0, 0.0",
+            "AngleCorrection": 0.0,
+            "Accuracy": 0.0,
+            "Bullet": {
+              "TrajectoryType": "Linear",
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Length": 80.0,
+            "MuzzleOffset": "0.0, 0.0",
+            "AngleCorrection": 60.0,
+            "Accuracy": 0.0,
+            "Bullet": {
+              "TrajectoryType": "Linear",
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 80.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Length": 80.0,
+            "MuzzleOffset": "0.0, 0.0",
+            "AngleCorrection": 120.0,
+            "Accuracy": 0.0,
+            "Bullet": {
+              "TrajectoryType": "Linear",
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Length": 80.0,
+            "MuzzleOffset": "0.0, 0.0",
+            "AngleCorrection": 180.0,
+            "Accuracy": 0.0,
+            "Bullet": {
+              "TrajectoryType": "Linear",
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Length": 80.0,
+            "MuzzleOffset": "0.0, 0.0",
+            "AngleCorrection": 240.0,
+            "Accuracy": 0.0,
+            "Bullet": {
+              "TrajectoryType": "Linear",
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "Length": 80.0,
+            "MuzzleOffset": "0.0, 0.0",
+            "AngleCorrection": 300.0,
+            "Accuracy": 0.0,
+            "Bullet": {
+              "TrajectoryType": "Linear",
+              "TrajectoryParameters": {
+                "speed": 400.0
+              },
+              "Damage": 20.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/SnowFlakeBlip",
+            "Volume": 0.5
+          }
+        },
+        "AimType": "SpinningAim"
+      }
+    },
+    "ChangingEventAtDeath": {
+      "Type": "Melted"
+    },
+    "Modifications": {
+      "Melted:1": [
+        {
+          "$type": "ExplainingEveryString.Data.Specifications.WeaponSpecification, ExplainingEveryString.Data",
+          "Reloader": {
+            "FireRate": 2
+          },
+          "Barrels": [
+            {
+              "Length": 80.0,
+              "MuzzleOffset": "0.0, 0.0",
+              "AngleCorrection": 0.0,
+              "Accuracy": 0.0,
+              "Bullet": {
+                "TrajectoryType": "Linear",
+                "TrajectoryParameters": {
+                  "speed": 400.0
+                },
+                "Damage": 20.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                  "AnimationCycle": 0.25
+                }
+              }
+            },
+            {
+              "Length": 80.0,
+              "MuzzleOffset": "0.0, 0.0",
+              "AngleCorrection": 60.0,
+              "Accuracy": 0.0,
+              "Bullet": {
+                "TrajectoryType": "Linear",
+                "TrajectoryParameters": {
+                  "speed": 400.0
+                },
+                "Damage": 80.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                  "AnimationCycle": 0.25
+                }
+              }
+            },
+            {
+              "Length": 80.0,
+              "MuzzleOffset": "0.0, 0.0",
+              "AngleCorrection": 120.0,
+              "Accuracy": 0.0,
+              "Bullet": {
+                "TrajectoryType": "Linear",
+                "TrajectoryParameters": {
+                  "speed": 400.0
+                },
+                "Damage": 20.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                  "AnimationCycle": 0.25
+                }
+              }
+            },
+            {
+              "Length": 80.0,
+              "MuzzleOffset": "0.0, 0.0",
+              "AngleCorrection": 180.0,
+              "Accuracy": 0.0,
+              "Bullet": {
+                "TrajectoryType": "Linear",
+                "TrajectoryParameters": {
+                  "speed": 400.0
+                },
+                "Damage": 20.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                  "AnimationCycle": 0.25
+                }
+              }
+            },
+            {
+              "Length": 80.0,
+              "MuzzleOffset": "0.0, 0.0",
+              "AngleCorrection": 240.0,
+              "Accuracy": 0.0,
+              "Bullet": {
+                "TrajectoryType": "Linear",
+                "TrajectoryParameters": {
+                  "speed": 400.0
+                },
+                "Damage": 20.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                  "AnimationCycle": 0.25
+                }
+              }
+            },
+            {
+              "Length": 80.0,
+              "MuzzleOffset": "0.0, 0.0",
+              "AngleCorrection": 300.0,
+              "Accuracy": 0.0,
+              "Bullet": {
+                "TrajectoryType": "Linear",
+                "TrajectoryParameters": {
+                  "speed": 400.0
+                },
+                "Damage": 20.0,
+                "TimeToLive": 5.0,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level5X/SnowFlakeProjectile",
+                  "AnimationCycle": 0.25
+                }
+              }
+            }
+          ],
+          "ShootingEffect": {
+            "Sound": {
+              "Name": "Sounds/Bosses/SnowFlakeBlip",
+              "Volume": 0.5
+            }
+          },
+          "AimType": "SpinningAim"
+        }
+      ]
+    }
+  },
   "Vertical4": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 64,

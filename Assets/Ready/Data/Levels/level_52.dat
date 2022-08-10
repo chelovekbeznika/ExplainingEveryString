@@ -1473,18 +1473,35 @@
         "Width": 12,
         "Height": 12
       },
-      "Enemies": [
+      "Bosses": [
         {
-          "BlueprintType": "Hunter_mk5",
+          "BlueprintType": "miniboss_mk52",
           "TilePosition": {
-            "X": 75,
-            "Y": 180,
-            "Offset": "-8, 0"
+            "X": 95,
+            "Y": 164,
+            "Offset": "-8, -8"
           },
-          "Angle": 0.0
+          "Angle": 120.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "-640, 0"
+          ]
+        },
+        {
+          "BlueprintType": "miniboss_mk52",
+          "TilePosition": {
+            "X": 55,
+            "Y": 184,
+            "Offset": "-8, -8"
+          },
+          "Angle": 120.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "640, 0"
+          ]
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {

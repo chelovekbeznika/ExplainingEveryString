@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies
 {
-    internal class EnemyBehavior : IEnemyBehavior
+    internal class EnemyBehavior : IEnemyBehavior, IChangeableEnemyBehavior
     {
         private const Int32 MaxMoveTargetsPerFrame = 32;
 
@@ -79,20 +79,20 @@ namespace ExplainingEveryString.Core.GameModel.Enemies
                 return Enumerable.Empty<IDisplayble>();
         }
 
-        internal void ChangeWeapon(WeaponSpecification specification, Level level)
+        public void ChangeWeapon(WeaponSpecification specification, Level level)
         {
             if (Weapon != null)
                 Weapon.Shoot -= level.EnemyShoot;
             if (specification != null)
             {
                 var aimer = AimersFactory.Get(
-                    specification.AimType, parameters.Angle, enemy, playerLocator, this);
+                    specification.AimType, parameters.Angle, enemy, playerLocator, this as IEnemyBehavior);
                 Weapon = new Weapon(specification, aimer, CurrentPositionLocator, () => player, level, false);
                 Weapon.Shoot += level.EnemyShoot;
             }
         }
 
-        internal void ChangeMover(MoverSpecification specification)
+        public void ChangeMover(MoverSpecification specification)
         {
             this.mover = MoverFactory.Get(specification);
         }
