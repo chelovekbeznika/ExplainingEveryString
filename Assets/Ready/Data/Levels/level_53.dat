@@ -502,6 +502,104 @@
         }
       ],
       "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 7,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 35,
+            "Y": 190,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 35,
+            "Y": 149,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 45,
+            "Y": 149,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Checkpoint": {
+        "Name": "First",
+        "PlayerPosition": {
+          "X": 34,
+          "Y": 183,
+          "Offset": "8, -8"
+        },
+        "Arsenal": {
+          "AvailableWeapons": {
+            "Shotgun": 60,
+            "RocketLauncher": 50,
+            "Homing": 150,
+            "Cone": 1200,
+            "FiveShot": 600
+          }
+        }
+      },
+      "StartRegion": {
+        "X": 29,
+        "Y": 159,
+        "Width": 31,
+        "Height": 22
+      },
+      "MaxEnemiesAtOnce": 2,
+      "Enemies": [
+        {
+          "BlueprintType": "TankSpawner",
+          "TilePosition": {
+            "X": 24,
+            "Y": 169,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-64, 312",
+            "64, -312"
+          ]
+        },
+        {
+          "BlueprintType": "TankSpawner",
+          "TilePosition": {
+            "X": 44,
+            "Y": 153,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-232, 72",
+            "248, -56"
+          ]
+        },
+        {
+          "BlueprintType": "TankSpawner",
+          "TilePosition": {
+            "X": 44,
+            "Y": 185,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-232, 72",
+            "248, -56"
+          ]
+        }
+      ],
+      "Bosses": []
     }
   ],
   "FogOfWar": {
