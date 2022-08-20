@@ -117,6 +117,9 @@
 #begin Data/Levels/level_52.dat
 /copy:Data/Levels/level_52.dat
 
+#begin Data/Levels/level_53.dat
+/copy:Data/Levels/level_53.dat
+
 #begin Data/Music/christmas_tree_was_born_in_forest.dat
 /copy:Data/Music/christmas_tree_was_born_in_forest.dat
 

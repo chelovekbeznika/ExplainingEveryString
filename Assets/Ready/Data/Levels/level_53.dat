@@ -1,0 +1,553 @@
+{
+  "Blueprints": [
+    "player",
+    "5x"
+  ],
+  "MusicName": "diesirae",
+  "TitleSpriteName": "Sprites/LevelTitles/52",
+  "TileMap": "TileMaps/Level_53",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 39,
+      "Y": 287,
+      "Offset": "8, -8"
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 60,
+        "RocketLauncher": 50,
+        "Homing": 150,
+        "Cone": 1200,
+        "FiveShot": 600
+      }
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 30,
+        "Y": 249,
+        "Width": 20,
+        "Height": 21
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 32,
+            "Y": 251,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Tank_mk5",
+          "TilePosition": {
+            "X": 48,
+            "Y": 251,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 250,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "TripleCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 250,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 255,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, -80",
+            "0, -160"
+          ]
+        },
+        {
+          "BlueprintType": "FixedCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 255,
+            "Offset": "-8, -8"
+          },
+          "Angle": 180.0,
+          "TrajectoryParameters": [
+            "0, 0",
+            "0, -80",
+            "0, -160"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [],
+      "StartRegion": {
+        "X": 30,
+        "Y": 249,
+        "Width": 20,
+        "Height": 21
+      },
+      "MaxEnemiesAtOnce": 2,
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 250,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 255,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 260,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 265,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [],
+      "StartRegion": {
+        "X": 25,
+        "Y": 249,
+        "Width": 30,
+        "Height": 32
+      },
+      "MaxEnemiesAtOnce": 2,
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 250,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 255,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 260,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 265,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 25,
+            "Y": 274,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Vertical10",
+          "TilePosition": {
+            "X": 54,
+            "Y": 274,
+            "Offset": "0, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 30,
+            "Y": 280,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 40,
+            "Y": 280,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 1,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 50,
+            "Y": 280,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 35,
+            "Y": 249,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 45,
+            "Y": 249,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 25,
+        "Y": 249,
+        "Width": 30,
+        "Height": 32
+      },
+      "MaxEnemiesAtOnce": 2,
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 250,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 250,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 26,
+            "Y": 255,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 54,
+            "Y": 255,
+            "Offset": "-8, -8"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 45,
+            "Y": 224,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 35,
+            "Y": 249,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "ClosesAt": 4,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 45,
+            "Y": 249,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 15,
+        "Y": 225,
+        "Width": 50,
+        "Height": 7
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 24,
+            "Y": 232
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-16, 48",
+            "80, -48"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 55,
+            "Y": 232
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-80, 48",
+            "16, -48"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "StartRegion": {
+        "X": 30,
+        "Y": 190,
+        "Width": 20,
+        "Height": 14
+      },
+      "MaxEnemiesAtOnce": 1,
+      "Enemies": [
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 44,
+            "Y": 212,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-56, 32",
+            "64, -32"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 36,
+            "Y": 202,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-64, 32",
+            "56, -32"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 36,
+            "Y": 222,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-64, 32",
+            "56, -32"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 44,
+            "Y": 192,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-56, 32",
+            "64, -32"
+          ]
+        }
+      ],
+      "Bosses": []
+    },
+    {
+      "Doors": [
+        {
+          "ClosesAt": 5,
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 45,
+            "Y": 224,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        },
+        {
+          "BlueprintType": "Horizontal10",
+          "TilePosition": {
+            "X": 35,
+            "Y": 190,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0
+        }
+      ],
+      "StartRegion": {
+        "X": 30,
+        "Y": 190,
+        "Width": 20,
+        "Height": 35
+      },
+      "MaxEnemiesAtOnce": 2,
+      "Enemies": [
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 44,
+            "Y": 192,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-56, 32",
+            "64, -32"
+          ]
+        },
+        {
+          "BlueprintType": "FireFish",
+          "TilePosition": {
+            "X": 36,
+            "Y": 222,
+            "Offset": "-8, 0"
+          },
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-64, 32",
+            "56, -32"
+          ]
+        }
+      ],
+      "Bosses": []
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level5X/0",
+      "Sprites/FogOfWar/Level5X/1",
+      "Sprites/FogOfWar/Level5X/2",
+      "Sprites/FogOfWar/Level5X/3",
+      "Sprites/FogOfWar/Level5X/4",
+      "Sprites/FogOfWar/Level5X/5",
+      "Sprites/FogOfWar/Level5X/6",
+      "Sprites/FogOfWar/Level5X/7",
+      "Sprites/FogOfWar/Level5X/8",
+      "Sprites/FogOfWar/Level5X/9",
+      "Sprites/FogOfWar/Level5X/bubble01",
+      "Sprites/FogOfWar/Level5X/bubble02",
+      "Sprites/FogOfWar/Level5X/bubble03",
+      "Sprites/FogOfWar/Level5X/bubble04",
+      "Sprites/FogOfWar/Level5X/bubble05",
+      "Sprites/FogOfWar/Level5X/bubble06",
+      "Sprites/FogOfWar/Level5X/bubble07",
+      "Sprites/FogOfWar/Level5X/bubble08"
+    ],
+    "Weights": [
+      66,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "ObstaclesTilePositions": {},
+  "Waypoints": {}
+}

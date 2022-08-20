@@ -111,6 +111,11 @@
       "LevelData": "level_52",
       "ButtonSprite": "Sprites/Menu/LevelSelect/52",
       "LevelsBlockId": "LavaLake"
+    },
+    {
+      "LevelData": "level_53",
+      "ButtonSprite": "Sprites/Menu/LevelSelect/53",
+      "LevelsBlockId": "LavaLake"
     }
   ]
 }
