@@ -672,8 +672,10 @@
               },
               "Damage": 15.0,
               "TimeToLive": 5.0,
+              "ConsiderAngle": true,
               "Sprite": {
-                "Name": "Sprites/Enemies/Level5X/HunterFire"
+                "Name": "Sprites/Enemies/Level5X/Fire",
+                "AnimationCycle": 0.25
               }
             }
           }
