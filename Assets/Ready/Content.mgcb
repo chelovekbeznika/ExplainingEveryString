@@ -336,6 +336,30 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/MudBrickBlast.wav
 
+#begin Sounds/Bosses/RocketGhostAppears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/RocketGhostAppears.wav
+
+#begin Sounds/Bosses/RocketGhostBlast.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/RocketGhostBlast.wav
+
+#begin Sounds/Bosses/RocketGhostDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/RocketGhostDeath.wav
+
+#begin Sounds/Bosses/RocketGhostShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/RocketGhostShot.wav
+
 #begin Sounds/Bosses/SmallBrother.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -4866,6 +4890,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Appearance/MineSpawner.png
 
+#begin Sprites/Enemies/Level5X/Appearance/RocketGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Appearance/RocketGhost.png
+
 #begin Sprites/Enemies/Level5X/Appearance/SnowFlake.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5021,6 +5057,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/Death/MineSpawner.png
+
+#begin Sprites/Enemies/Level5X/Death/RocketGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/Death/RocketGhost.png
 
 #begin Sprites/Enemies/Level5X/Death/SnowFlake.png
 /importer:TextureImporter
@@ -5178,6 +5226,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/FryingPan.png
 
+#begin Sprites/Enemies/Level5X/GhostRocket.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/GhostRocket.png
+
+#begin Sprites/Enemies/Level5X/GhostRocketBlast.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/GhostRocketBlast.png
+
 #begin Sprites/Enemies/Level5X/Hunter.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5225,6 +5297,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Level5X/MineSpawner.png
+
+#begin Sprites/Enemies/Level5X/RocketGhost.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Level5X/RocketGhost.png
 
 #begin Sprites/Enemies/Level5X/SnowFlake.png
 /importer:TextureImporter

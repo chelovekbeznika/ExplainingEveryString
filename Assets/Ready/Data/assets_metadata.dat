@@ -1303,6 +1303,18 @@
       "AnimationFrames": 2
     },
     {
+      "Name": "Sprites/Enemies/Level5X/RocketGhost",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/GhostRocket",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/GhostRocketBlast",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Enemies/Level5X/Appearance/MineSpawner",
       "AnimationFrames": 8
     },
@@ -1325,6 +1337,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Appearance/SnowFlake",
       "AnimationFrames": 9
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Appearance/RocketGhost",
+      "AnimationFrames": 8
     },
     {
       "Name": "Sprites/Enemies/Level5X/Death/Cannon",
@@ -1373,6 +1389,10 @@
     {
       "Name": "Sprites/Enemies/Level5X/Death/SnowFlake",
       "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/Level5X/Death/RocketGhost",
+      "AnimationFrames": 5
     },
     {
       "Name": "Sprites/Doors/Level5X/Vertical10Tiles",
