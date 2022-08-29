@@ -1155,6 +1155,90 @@
       ]
     }
   },
+  "miniboss_mk53": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 100.0,
+    "Height": 36.0,
+    "Width": 36.0,
+    "Hitpoints": 500.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Level5X/RocketGhost",
+      "AnimationCycle": 0.5
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/RocketGhostDeath",
+        "Volume": 0.9
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level5X/Death/RocketGhost",
+        "AnimationCycle": 1.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Level5X/Appearance/RocketGhost",
+      "AnimationCycle": 1.0
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/RocketGhostAppears",
+        "Volume": 0.6
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 200.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 1.0
+        },
+        "Barrels": [
+          {
+            "Length": 22.62741,
+            "AngleCorrection": 45,
+            "BulletsAtOnce": 4,
+            "AngleStep": 90,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 300.0,
+              },
+              "HomingSpeed": 60.0,
+              "BlastWaveRadius": 128.0,
+              "Damage": 50.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Level5X/GhostRocket",
+                "AnimationCycle": 0.5,
+              },
+              "HitEffect": {
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Level5X/GhostRocketBlast",
+                  "AnimationCycle": 0.25
+                },
+                "Sound": {
+                  "Name": "Sounds/Bosses/RocketGhostBlast",
+                  "Volume": 0.8
+                }
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/RocketGhostShot",
+            "Volume": 0.8
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    }
+  },
   "Vertical4": {
     "$type": "ExplainingEveryString.Data.Blueprints.DoorBlueprint, ExplainingEveryString.Data",
     "Height": 64,

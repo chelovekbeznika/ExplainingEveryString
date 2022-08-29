@@ -1249,9 +1249,9 @@
       "Checkpoint": {
         "Name": "Boss",
         "PlayerPosition": {
-          "X": 34,
-          "Y": 183,
-          "Offset": "8, -8"
+          "X": 40,
+          "Y": 91,
+          "Offset": "-8, -8"
         },
         "Arsenal": {
           "AvailableWeapons": {
@@ -1269,18 +1269,24 @@
         "Width": 40,
         "Height": 40
       },
-      "Enemies": [
+      "Bosses": [
         {
-          "BlueprintType": "Hunter_mk5",
+          "BlueprintType": "miniboss_mk53",
           "TilePosition": {
             "X": 40,
-            "Y": 69,
+            "Y": 54,
             "Offset": "-8, -8"
           },
-          "Angle": 0.0
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "240, 0",
+            "240, -480",
+            "-240, -480",
+            "-240, 0"
+          ]
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {
