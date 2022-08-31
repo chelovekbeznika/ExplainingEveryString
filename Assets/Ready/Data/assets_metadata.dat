@@ -1475,6 +1475,22 @@
       "AnimationFrames": 6
     },
     {
+      "Name": "Sprites/Enemies/Boss5/FsmEye",
+      "AnimationFrames": 9
+    },
+    {
+      "Name": "Sprites/Enemies/Boss5/FsmTentacle",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss5/MeatballBlast",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/Boss5/MeatballGrain",
+      "AnimationFrames": 4
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
