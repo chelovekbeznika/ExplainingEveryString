@@ -1491,6 +1491,18 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Boss5/PirateShip",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/Boss5/GodLightBig",
+      "AnimationFrames": 4
+    },
+    {
+      "Name": "Sprites/Enemies/Boss5/GodLightSmall",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
