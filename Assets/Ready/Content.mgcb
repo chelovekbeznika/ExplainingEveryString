@@ -252,6 +252,36 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/4/PhoenixOut.wav
 
+#begin Sounds/Bosses/5/Cannon.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/5/Cannon.wav
+
+#begin Sounds/Bosses/5/EyeShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/5/EyeShot.wav
+
+#begin Sounds/Bosses/5/God.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/5/God.wav
+
+#begin Sounds/Bosses/5/Meatball.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/5/Meatball.wav
+
+#begin Sounds/Bosses/5/MeatballBlast.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/5/MeatballBlast.wav
+
 #begin Sounds/Bosses/BigBrother.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
