@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core.Interface
 
         private Int32 PixelsToDraw(Int32 width, Single coeff)
         {
-            return (Int32)System.Math.Floor(coeff * width);
+            return (Int32)System.Math.Round(coeff * width);
         }
     }
 
@@ -50,7 +50,7 @@ namespace ExplainingEveryString.Core.Interface
 
         private Int32 PixelsToDraw(Int32 width, Single coeff)
         {
-            return (Int32)System.Math.Ceiling(coeff * width);
+            return (Int32)System.Math.Round(coeff * width);
         }
     }
 

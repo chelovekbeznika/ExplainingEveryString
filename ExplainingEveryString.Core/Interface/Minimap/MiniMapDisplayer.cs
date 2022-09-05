@@ -45,10 +45,13 @@ namespace ExplainingEveryString.Core.Interface.Minimap
         private void DrawBackground()
         {
             //We draw only parts which do not overlap minimap. TiledMap messes with drawing order, unfortunately.
-            var backgroundPosition = new Vector2(Constants.TargetWidth - Constants.MinimapSize, Constants.TargetHeight - Constants.MinimapSize);
-            var (firstHalf, secondHalf, coeff) = minimapCoordinatesMaster.BackgroundPartsToDraw;
-            interfaceSpriteDisplayer.Draw(background, backgroundPosition, firstHalf, coeff, true);
-            interfaceSpriteDisplayer.Draw(background, backgroundPosition, secondHalf, coeff, true);
+            var backgroundPosition = new Vector2(
+                x: Constants.TargetWidth - Constants.MinimapSize - Constants.MinimapFrameThickness * 2, 
+                y: Constants.TargetHeight - Constants.MinimapSize - Constants.MinimapFrameThickness * 2);
+            foreach (var (part, coeff) in minimapCoordinatesMaster.BackgroundPartsToDraw)
+            {
+                interfaceSpriteDisplayer.Draw(background, backgroundPosition, part, coeff, true);
+            }
         }
 
         private void DrawDots(InterfaceInfo info)
