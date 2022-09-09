@@ -1,6 +1,7 @@
 {
   "Blueprints": [
     "player",
+    "fifth_boss",
     "5x"
   ],
   "MusicName": "liberty_bell",
@@ -32,13 +33,27 @@
       },
       "Enemies": [
         {
-          "BlueprintType": "Hunter_mk5",
+          "BlueprintType": "Boss_mk5",
           "TilePosition": {
             "X": 50,
-            "Y": 31,
-            "Offset": "-8, 0"
+            "Y": 29,
+            "Offset": "-8, -8"
           },
-          "Angle": 0.0
+          "Angle": 0.0,
+          "TrajectoryParameters": [
+            "-320, 64",
+            "-192, 64",
+            "-64, 64",
+            "64, 64",
+            "192, 64",
+            "320, 64",
+            "320, -64",
+            "192, -64",
+            "64, -64",
+            "-64, -64",
+            "-192, -64",
+            "-320, -64"
+          ]
         }
       ],
       "Bosses": []

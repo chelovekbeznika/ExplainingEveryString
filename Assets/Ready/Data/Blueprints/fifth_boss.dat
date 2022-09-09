@@ -1,0 +1,203 @@
+{
+  "Boss_mk5": {
+    "$type": "ExplainingEveryString.Data.Blueprints.FifthBossBlueprint, ExplainingEveryString.Data",
+    "Type": "FifthBoss",
+    "CollisionDamage": 100.0,
+    "Width": 160.0,
+    "Height": 80.0,
+    "Hitpoints": 1500.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss5/FsmBody"
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss5/GodLightBig",
+        "AnimationCycle": 1.0
+      },
+      "Sound": {
+        "Name": "Sounds/Bosses/5/God",
+        "Volume": 1
+      }
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/5/God",
+        "Volume": 0.8
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss5/GodLightBig",
+      "AnimationCycle": 1.0
+    },
+    "DefaultAppearancePhaseDuration": 2.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 250.0,
+          "maxSpeed": 300.0,
+          "acceleration": 600.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets",
+    },
+    "EyeSprite": {
+      "Name": "Sprites/Enemies/Boss5/FsmEye"
+    },
+    "LeftEyeOffset": "-32.0, 80.0",
+    "RightEyeOffset": "32.0, 80.0",
+    "LeftWeaponMovementCycle": [
+      { "Item1": 0.05, "Item2": "-48, 120" },
+      { "Item1": 0.05, "Item2": "-40, 120" },
+      { "Item1": 0.05, "Item2": "-32, 120" },
+      { "Item1": 0.05, "Item2": "-24, 120" },
+      { "Item1": 0.05, "Item2": "-16, 120" },
+      { "Item1": 0.05, "Item2": "-24, 120" },
+      { "Item1": 0.05, "Item2": "-32, 120" },
+      { "Item1": 0.05, "Item2": "-40, 120" },
+    ],
+    "RightWeaponMovementCycle": [
+      { "Item1": 0.05, "Item2": "16, 120" },
+      { "Item1": 0.05, "Item2": "24, 120" },
+      { "Item1": 0.05, "Item2": "32, 120" },
+      { "Item1": 0.05, "Item2": "40, 120" },
+      { "Item1": 0.05, "Item2": "48, 120" },
+      { "Item1": 0.05, "Item2": "40, 120" },
+      { "Item1": 0.05, "Item2": "32, 120" },
+      { "Item1": 0.05, "Item2": "24, 120" },
+    ],
+    "LeftWeapon": {
+      "Reloader": {
+        "FireRate": 3.0,
+        "Ammo": 10,
+        "ReloadTime": 2.0
+      },
+      "Barrels": [
+        {
+          "Bullet": {
+            "TrajectoryType": "Acceleration",
+            "TrajectoryParameters": {
+              "speed": 200.0,
+              "acceleration": 600.0
+            },
+            "Damage": 25.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/EnemyBullet"
+            }
+          }
+        }
+      ],
+      "Sprite": {
+        "Name": "Sprites/Enemies/Level5X/TankSpawnerCannon",
+        "AnimationCycle": 0.333333,
+      },
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/Enemy/TankSpawnerShoot",
+          "Volume": 0.4
+        }
+      },
+      "AimType": "AimAtPlayer"
+    },
+    "RightWeapon": {
+      "Reloader": {
+        "FireRate": 1.0
+      },
+      "Barrels": [
+        {
+          "Length": 12.0,
+          "AngleCorrection": 0.0,
+          "Bullet": {
+            "TrajectoryParameters": {
+              "speed": 600.0,
+            },
+            "HomingSpeed": 60.0,
+            "Damage": 25.0,
+            "TimeToLive": 5.0,
+            "Sprite": {
+              "Name": "Sprites/Enemies/HomingBullet"
+            }
+          }
+        }
+      ],
+      "ShootingEffect": {
+        "Sound": {
+          "Name": "Sounds/StandardEnemy/LongShot",
+          "Volume": 0.4
+        }
+      },
+      "AimType": "AimAtPlayer"
+    },
+    "HealthThresholdToSpawnHelper": 1000.0,
+    "HelperType": "PirateShip"
+  },
+  "Meatball": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "CollisionDamage": 50.0,
+    "Height": 32.0,
+    "Width": 32.0,
+    "Hitpoints": 30.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Acceleration",
+        "Parameters": {
+          "startSpeed": 250.0,
+          "maxSpeed": 450.0,
+          "acceleration": 850.0
+        }
+      },
+      "MoveTargetSelectType": "MoveTowardPlayer",
+      "PostMortemSurprise": {
+        "Weapon": {
+          "Barrels": [
+            {
+              "Length": 0.0,
+              "AngleCorrection": 0.0,
+              "Accuracy": 15.0,
+              "BulletsAtOnce": 24,
+              "AngleStep": 15.0,
+              "KeepAngleStep": true,
+              "Bullet": {
+                "TrajectoryParameters": {
+                  "speed": 300.0
+                },
+                "Damage": 25.0,
+                "TimeToLive": 5.0,
+                "ConsiderAngle": true,
+                "Sprite": {
+                  "Name": "Sprites/Enemies/Boss5/MeatGrain"
+                }
+              }
+            }
+          ],
+          "AimType": "FixedFireDirection"
+        }
+      }
+    },
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss5/Meatball"
+    },
+    "DeathEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/5/MeatballBlast",
+        "Volume": 0.7
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss5/MeatballBlast",
+        "AnimationCycle": 0.25
+      }
+    },
+    "AfterAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/5/Meatball",
+        "Volume": 0.5
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss5/Meatball",
+      "AnimationCycle": 0.15
+    },
+    "DefaultAppearancePhaseDuration": 0.1
+  },
+}

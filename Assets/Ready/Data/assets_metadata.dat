@@ -1476,7 +1476,7 @@
     },
     {
       "Name": "Sprites/Enemies/Boss5/FsmEye",
-      "AnimationFrames": 9
+      "AnimationFrames": 8
     },
     {
       "Name": "Sprites/Enemies/Boss5/FsmTentacle",

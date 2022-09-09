@@ -6,7 +6,7 @@ namespace ExplainingEveryString.Core.Displaying
     internal class SpriteState
     {
         internal String Name { get; private set; }
-        internal Single AnimationCycle { get; private set; }
+        internal Single AnimationCycle { get; set; }
         internal Single Angle { get; set; }
         internal Boolean Looping { get; set; } = true;
 

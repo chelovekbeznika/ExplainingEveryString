@@ -39,6 +39,9 @@
 #begin Data/Blueprints/blueprints.dat
 /copy:Data/Blueprints/blueprints.dat
 
+#begin Data/Blueprints/fifth_boss.dat
+/copy:Data/Blueprints/fifth_boss.dat
+
 #begin Data/Blueprints/first_boss.dat
 /copy:Data/Blueprints/first_boss.dat
 

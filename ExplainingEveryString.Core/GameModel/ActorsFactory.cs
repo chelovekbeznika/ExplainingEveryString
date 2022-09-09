@@ -27,7 +27,8 @@ namespace ExplainingEveryString.Core.GameModel
                 { "SecondBoss", (pos) => Construct<SecondBoss, SecondBossBlueprint>(pos) },
                 { "ThirdBoss", (pos) => Construct<ThirdBoss, ThirdBossBlueprint>(pos) },
                 { "FourthBoss", (pos) => Construct<FourthBossBrain, FourthBossBlueprint>(pos) },
-                { "FourthBossPart", (pos) => Construct<FourthBossPart, FourthBossPartBlueprint>(pos) }
+                { "FourthBossPart", (pos) => Construct<FourthBossPart, FourthBossPartBlueprint>(pos) },
+                { "FifthBoss", (pos) => Construct<FifthBoss, FifthBossBlueprint>(pos) },
             };
         }
 

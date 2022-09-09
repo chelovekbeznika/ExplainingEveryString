@@ -23,7 +23,8 @@ namespace ExplainingEveryString.Data.Blueprints
             { typeof(SecondBossBlueprint), new SecondBossAssetsExtractor() },
             { typeof(ThirdBossBlueprint), new ThirdBossAssetsExtractor() },
             { typeof(FourthBossBlueprint), new FourthBossAssetsExtractor() },
-            { typeof(FourthBossPartBlueprint), new FourthBossPartAssetsExtractor() }
+            { typeof(FourthBossPartBlueprint), new FourthBossPartAssetsExtractor() },
+            { typeof(FifthBossBlueprint), new FifthBossAssetsExtractor() }
         };
 
         public static List<String> GetNeccessarySprites(IBlueprintsLoader loader)
