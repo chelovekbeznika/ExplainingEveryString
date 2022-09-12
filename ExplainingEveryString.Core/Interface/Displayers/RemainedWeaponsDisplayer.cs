@@ -35,13 +35,12 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         {
             var weapons = playerWeapons.AvailableWeapons;
             
-            var iconPlace = 0;
             var iconWidth = iconsSprites[GameModel.Constants.DefaultPlayerWeapon].Width;
             var iconHeight = iconsSprites[GameModel.Constants.DefaultPlayerWeapon].Height;
-            var placeFirstIconAt = spriteDisplayer.ScreenWidth - pixelsFromRight - (iconWidth + betweenIcons) * weapons.Count + betweenIcons;
-            foreach (var weaponName in weapons)
+            var placeFirstIconAt = spriteDisplayer.ScreenWidth - pixelsFromRight - iconWidth;
+            foreach (var (iconPlace, weaponName) in weapons.Select((weapon, index) => (index, weapon)))
             {
-                var iconPosition = new Vector2(x: placeFirstIconAt + (iconWidth + betweenIcons) * iconPlace, y: pixelsFromTop);
+                var iconPosition = new Vector2(x: placeFirstIconAt, y: pixelsFromTop + (iconHeight + betweenIcons) * iconPlace);
                 var weaponIcon = iconsSprites[weaponName];
                 spriteDisplayer.Draw(weaponIcon, iconPosition);
 
@@ -52,7 +51,6 @@ namespace ExplainingEveryString.Core.Interface.Displayers
                     var borderPosition = new Vector2(x: iconPosition.X - widthDiff, y: iconPosition.Y - heightDiff);
                     spriteDisplayer.Draw(border, borderPosition);
                 }
-                iconPlace += 1;
             }
         }
     }
