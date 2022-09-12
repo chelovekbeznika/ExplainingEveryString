@@ -1483,11 +1483,15 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Boss5/Meatball",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/Boss5/MeatballBlast",
       "AnimationFrames": 7
     },
     {
-      "Name": "Sprites/Enemies/Boss5/MeatballGrain",
+      "Name": "Sprites/Enemies/Boss5/MeatGrain",
       "AnimationFrames": 4
     },
     {

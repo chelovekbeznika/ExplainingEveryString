@@ -15,11 +15,11 @@
     },
     "Arsenal": {
       "AvailableWeapons": {
-        "Shotgun": 60,
-        "RocketLauncher": 50,
-        "Homing": 150,
-        "Cone": 1200,
-        "FiveShot": 600
+        "Shotgun": 120,
+        "RocketLauncher": 1000,
+        "Homing": 400,
+        "Cone": 1800,
+        "FiveShot": 1200
       }
     }
   },
@@ -31,7 +31,7 @@
         "Width": 40,
         "Height": 20
       },
-      "Enemies": [
+      "Bosses": [
         {
           "BlueprintType": "Boss_mk5",
           "TilePosition": {
@@ -56,7 +56,7 @@
           ]
         }
       ],
-      "Bosses": []
+      "Enemies": []
     }
   ],
   "FogOfWar": {

@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
-    internal class FifthBossEye : IDisplayble
+    internal class FifthBossEye : IDisplayble, IUpdateable
     {
         private FifthBoss boss;
         private Vector2 offset;
@@ -24,11 +24,16 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 
         public Vector2 Position => boss.Position + offset;
 
-        public bool IsVisible => boss.IsVisible;
+        public bool IsVisible => boss.IsVisible && !boss.IsInAppearancePhase;
 
         public IEnumerable<IDisplayble> GetParts()
         {
             return Enumerable.Empty<IDisplayble>();
+        }
+
+        public void Update(Single elapsedSeconds)
+        {
+            SpriteState.Update(elapsedSeconds);
         }
     }
 }

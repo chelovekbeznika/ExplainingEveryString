@@ -47,10 +47,8 @@ namespace ExplainingEveryString.Core.GameModel.Movement.Movers
             }
             else
             {
-                var positionChange = currentSpeed * timeRemained;
-                timeRemained = 0;
                 ResetCounters();
-                return positionChange;
+                return Vector2.Zero;
             }
         }
 

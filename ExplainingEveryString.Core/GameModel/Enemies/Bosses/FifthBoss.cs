@@ -41,10 +41,15 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         public override void Update(Single elapsedSeconds)
         {
             base.Update(elapsedSeconds);
-            leftWeaponMovement.Update(elapsedSeconds);
-            rightWeaponMovement.Update(elapsedSeconds);
-            leftWeapon.Update(elapsedSeconds);
-            rightWeapon.Update(elapsedSeconds);
+            if (!IsInAppearancePhase)
+            {
+                leftWeaponMovement.Update(elapsedSeconds);
+                rightWeaponMovement.Update(elapsedSeconds);
+                leftWeapon.Update(elapsedSeconds);
+                rightWeapon.Update(elapsedSeconds);
+                leftEye.Update(elapsedSeconds);
+                rightEye.Update(elapsedSeconds);
+            }
         }
 
         public override IEnumerable<IDisplayble> GetParts()

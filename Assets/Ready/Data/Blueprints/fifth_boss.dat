@@ -36,39 +36,54 @@
         "Parameters": {
           "startSpeed": 250.0,
           "maxSpeed": 300.0,
-          "acceleration": 600.0
+          "acceleration": 900.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
+      "Spawner": {
+        "MaxSpawned": 2,
+        "DespawnAfterDeath": true,
+        "Reloader": {
+          "FireRate": 0.2
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "-48.0, 8.0",
+            "48.0, 8.0"
+          ]
+        },
+        "BlueprintType": "Meatball"
+      }
     },
     "EyeSprite": {
       "Name": "Sprites/Enemies/Boss5/FsmEye"
     },
-    "LeftEyeOffset": "-32.0, 80.0",
-    "RightEyeOffset": "32.0, 80.0",
+    "LeftEyeOffset": "-32.0, 72.0",
+    "RightEyeOffset": "32.0, 72.0",
     "LeftWeaponMovementCycle": [
-      { "Item1": 0.05, "Item2": "-48, 120" },
-      { "Item1": 0.05, "Item2": "-40, 120" },
-      { "Item1": 0.05, "Item2": "-32, 120" },
-      { "Item1": 0.05, "Item2": "-24, 120" },
-      { "Item1": 0.05, "Item2": "-16, 120" },
-      { "Item1": 0.05, "Item2": "-24, 120" },
-      { "Item1": 0.05, "Item2": "-32, 120" },
-      { "Item1": 0.05, "Item2": "-40, 120" },
+      { "Item1": 0.05, "Item2": "-48, 112" },
+      { "Item1": 0.05, "Item2": "-40, 112" },
+      { "Item1": 0.05, "Item2": "-32, 112" },
+      { "Item1": 0.05, "Item2": "-24, 112" },
+      { "Item1": 0.05, "Item2": "-16, 112" },
+      { "Item1": 0.05, "Item2": "-24, 112" },
+      { "Item1": 0.05, "Item2": "-32, 112" },
+      { "Item1": 0.05, "Item2": "-40, 112" },
     ],
     "RightWeaponMovementCycle": [
-      { "Item1": 0.05, "Item2": "16, 120" },
-      { "Item1": 0.05, "Item2": "24, 120" },
-      { "Item1": 0.05, "Item2": "32, 120" },
-      { "Item1": 0.05, "Item2": "40, 120" },
-      { "Item1": 0.05, "Item2": "48, 120" },
-      { "Item1": 0.05, "Item2": "40, 120" },
-      { "Item1": 0.05, "Item2": "32, 120" },
-      { "Item1": 0.05, "Item2": "24, 120" },
+      { "Item1": 0.05, "Item2": "16, 112" },
+      { "Item1": 0.05, "Item2": "24, 112" },
+      { "Item1": 0.05, "Item2": "32, 112" },
+      { "Item1": 0.05, "Item2": "40, 112" },
+      { "Item1": 0.05, "Item2": "48, 112" },
+      { "Item1": 0.05, "Item2": "40, 112" },
+      { "Item1": 0.05, "Item2": "32, 112" },
+      { "Item1": 0.05, "Item2": "24, 112" },
     ],
     "LeftWeapon": {
       "Reloader": {
-        "FireRate": 3.0,
+        "FireRate": 20.0,
         "Ammo": 10,
         "ReloadTime": 2.0
       },
@@ -77,7 +92,7 @@
           "Bullet": {
             "TrajectoryType": "Acceleration",
             "TrajectoryParameters": {
-              "speed": 200.0,
+              "speed": 100.0,
               "acceleration": 600.0
             },
             "Damage": 25.0,
@@ -88,21 +103,17 @@
           }
         }
       ],
-      "Sprite": {
-        "Name": "Sprites/Enemies/Level5X/TankSpawnerCannon",
-        "AnimationCycle": 0.333333,
-      },
       "ShootingEffect": {
         "Sound": {
           "Name": "Sounds/Enemy/TankSpawnerShoot",
-          "Volume": 0.4
+          "Volume": 0.5
         }
       },
       "AimType": "AimAtPlayer"
     },
     "RightWeapon": {
       "Reloader": {
-        "FireRate": 1.0
+        "FireRate": 0.5
       },
       "Barrels": [
         {
@@ -124,7 +135,7 @@
       "ShootingEffect": {
         "Sound": {
           "Name": "Sounds/StandardEnemy/LongShot",
-          "Volume": 0.4
+          "Volume": 1.0
         }
       },
       "AimType": "AimAtPlayer"
@@ -138,6 +149,7 @@
     "Height": 32.0,
     "Width": 32.0,
     "Hitpoints": 30.0,
+    "CollideTag": "Meat",
     "Behavior": {
       "Mover": {
         "Type": "Acceleration",
@@ -154,9 +166,9 @@
             {
               "Length": 0.0,
               "AngleCorrection": 0.0,
-              "Accuracy": 15.0,
-              "BulletsAtOnce": 24,
-              "AngleStep": 15.0,
+              "Accuracy": 24.0,
+              "BulletsAtOnce": 15,
+              "AngleStep": 24.0,
               "KeepAngleStep": true,
               "Bullet": {
                 "TrajectoryParameters": {
@@ -176,7 +188,8 @@
       }
     },
     "DefaultSprite": {
-      "Name": "Sprites/Enemies/Boss5/Meatball"
+      "Name": "Sprites/Enemies/Boss5/Meatball",
+      "AnimationCycle": 1.5
     },
     "DeathEffect": {
       "Sound": {
@@ -185,7 +198,7 @@
       },
       "Sprite": {
         "Name": "Sprites/Enemies/Boss5/MeatballBlast",
-        "AnimationCycle": 0.25
+        "AnimationCycle": 0.5
       }
     },
     "AfterAppearanceEffect": {
