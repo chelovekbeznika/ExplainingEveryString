@@ -8,12 +8,12 @@ using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
-    internal class FifthBossEye : IDisplayble, IUpdateable
+    internal class FifthBossLimbDisplayble : IDisplayble, IUpdateable
     {
         private FifthBoss boss;
         private Vector2 offset;
 
-        public FifthBossEye(FifthBoss boss, Vector2 offset, SpriteSpecification spriteSpecification, FifthBossWeaponMovement weaponMovement)
+        public FifthBossLimbDisplayble(FifthBoss boss, Vector2 offset, SpriteSpecification spriteSpecification, FifthBossWeaponMovement weaponMovement)
         {
             this.boss = boss;
             this.offset = offset;

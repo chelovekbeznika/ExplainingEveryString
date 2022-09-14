@@ -56,90 +56,139 @@
         "BlueprintType": "Meatball"
       }
     },
-    "EyeSprite": {
-      "Name": "Sprites/Enemies/Boss5/FsmEye"
-    },
-    "LeftEyeOffset": "-32.0, 72.0",
-    "RightEyeOffset": "32.0, 72.0",
-    "LeftWeaponMovementCycle": [
-      { "Item1": 0.05, "Item2": "-48, 112" },
-      { "Item1": 0.05, "Item2": "-40, 112" },
-      { "Item1": 0.05, "Item2": "-32, 112" },
-      { "Item1": 0.05, "Item2": "-24, 112" },
-      { "Item1": 0.05, "Item2": "-16, 112" },
-      { "Item1": 0.05, "Item2": "-24, 112" },
-      { "Item1": 0.05, "Item2": "-32, 112" },
-      { "Item1": 0.05, "Item2": "-40, 112" },
-    ],
-    "RightWeaponMovementCycle": [
-      { "Item1": 0.05, "Item2": "16, 112" },
-      { "Item1": 0.05, "Item2": "24, 112" },
-      { "Item1": 0.05, "Item2": "32, 112" },
-      { "Item1": 0.05, "Item2": "40, 112" },
-      { "Item1": 0.05, "Item2": "48, 112" },
-      { "Item1": 0.05, "Item2": "40, 112" },
-      { "Item1": 0.05, "Item2": "32, 112" },
-      { "Item1": 0.05, "Item2": "24, 112" },
-    ],
-    "LeftWeapon": {
-      "Reloader": {
-        "FireRate": 20.0,
-        "Ammo": 10,
-        "ReloadTime": 2.0
+    "LeftEye": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss5/FsmEye"
       },
-      "Barrels": [
-        {
-          "Bullet": {
-            "TrajectoryType": "Acceleration",
-            "TrajectoryParameters": {
-              "speed": 100.0,
-              "acceleration": 600.0
-            },
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/EnemyBullet"
+      "Offset": "-32.0, 72.0",
+      "WeaponMovementCycle": [
+        { "Item1": 0.05, "Item2": "-48, 112" },
+        { "Item1": 0.05, "Item2": "-40, 112" },
+        { "Item1": 0.05, "Item2": "-32, 112" },
+        { "Item1": 0.05, "Item2": "-24, 112" },
+        { "Item1": 0.05, "Item2": "-16, 112" },
+        { "Item1": 0.05, "Item2": "-24, 112" },
+        { "Item1": 0.05, "Item2": "-32, 112" },
+        { "Item1": 0.05, "Item2": "-40, 112" },
+      ],
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 20.0,
+          "Ammo": 10,
+          "ReloadTime": 2.0
+        },
+        "Barrels": [
+          {
+            "Bullet": {
+              "TrajectoryType": "Acceleration",
+              "TrajectoryParameters": {
+                "speed": 100.0,
+                "acceleration": 600.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
             }
           }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/Enemy/TankSpawnerShoot",
-          "Volume": 0.5
-        }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Enemy/TankSpawnerShoot",
+            "Volume": 0.5
+          }
+        },
+        "AimType": "AimAtPlayer"
       },
-      "AimType": "AimAtPlayer"
     },
-    "RightWeapon": {
-      "Reloader": {
-        "FireRate": 0.5
+    "RightEye": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss5/FsmEye"
       },
-      "Barrels": [
-        {
-          "Length": 12.0,
-          "AngleCorrection": 0.0,
-          "Bullet": {
-            "TrajectoryParameters": {
-              "speed": 600.0,
-            },
-            "HomingSpeed": 60.0,
-            "Damage": 25.0,
-            "TimeToLive": 5.0,
-            "Sprite": {
-              "Name": "Sprites/Enemies/HomingBullet"
+      "Offset": "32.0, 72.0",
+      "WeaponMovementCycle": [
+        { "Item1": 0.05, "Item2": "16, 112" },
+        { "Item1": 0.05, "Item2": "24, 112" },
+        { "Item1": 0.05, "Item2": "32, 112" },
+        { "Item1": 0.05, "Item2": "40, 112" },
+        { "Item1": 0.05, "Item2": "48, 112" },
+        { "Item1": 0.05, "Item2": "40, 112" },
+        { "Item1": 0.05, "Item2": "32, 112" },
+        { "Item1": 0.05, "Item2": "24, 112" },
+      ],
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "Length": 12.0,
+            "AngleCorrection": 0.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 600.0,
+              },
+              "HomingSpeed": 60.0,
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HomingBullet"
+              }
             }
           }
-        }
-      ],
-      "ShootingEffect": {
-        "Sound": {
-          "Name": "Sounds/StandardEnemy/LongShot",
-          "Volume": 1.0
-        }
-      },
-      "AimType": "AimAtPlayer"
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/LongShot",
+            "Volume": 1.0
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
     },
+    "Tentacle": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss5/FsmTentacle"
+      },
+      "Offset": "0.0, -48.0",
+      "Angle": 270.0,
+      "WeaponMovementCycle": [
+        { "Item1": 0.25, "Item2": "-8, -72" },
+        { "Item1": 0.25, "Item2": "0, -72" },
+        { "Item1": 0.25, "Item2": "8, -72" },
+        { "Item1": 0.25, "Item2": "0, -72" },
+      ],
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.75,
+        },
+        "Barrels": [
+          {
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 250.0
+              },
+              "Damage": 10,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/HelicopterBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.5
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    "HealthThresholdToUseTentacles": 1400.0,
+    "TentaclesOffsets": [ "-32.0, 0.0", "-16.0, 0.0,", "0.0, 0.0", "16.0, 0.0", "32.0, 0.0" ],
+    "AngleOffsets": [ -10.0, -5.0, 0.0, 5.0, 10.0 ],
     "HealthThresholdToSpawnHelper": 1000.0,
     "HelperType": "PirateShip"
   },

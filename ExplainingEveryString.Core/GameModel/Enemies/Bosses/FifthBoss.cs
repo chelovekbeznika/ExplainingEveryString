@@ -3,6 +3,7 @@ using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 using ExplainingEveryString.Data.Blueprints;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -13,29 +14,32 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {
     internal class FifthBoss : Enemy<FifthBossBlueprint>
     {
-        private Weapon leftWeapon;
-        private Weapon rightWeapon;
-        private FifthBossEye leftEye;
-        private FifthBossEye rightEye;
-        private FifthBossWeaponMovement leftWeaponMovement;
-        private FifthBossWeaponMovement rightWeaponMovement;
+        private FifthBossLimb leftEye;
+        private FifthBossLimb rightEye;
+        private FifthBossLimb[] tentacles;
+        private Single healthTentaclesThreshold;
 
         protected override void Construct(FifthBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
             base.Construct(blueprint, startInfo, level, factory);
-            this.leftWeaponMovement = new FifthBossWeaponMovement(blueprint.LeftWeaponMovementCycle);
-            this.rightWeaponMovement = new FifthBossWeaponMovement(blueprint.RightWeaponMovementCycle);
-            Vector2 playerLocator() => level.Player.Position;
-            Vector2 leftWeaponLocator() => Position + leftWeaponMovement.CurrentOffset;
-            Vector2 rightWeaponLocator() => Position + rightWeaponMovement.CurrentOffset;
-            var leftAimer = new PlayerAimer(playerLocator, leftWeaponLocator);
-            var rightAimer = new PlayerAimer(playerLocator, rightWeaponLocator);
-            this.leftWeapon = new Weapon(blueprint.LeftWeapon, leftAimer, leftWeaponLocator, () => level.Player, level);
-            leftWeapon.Shoot += level.EnemyShoot;
-            this.rightWeapon = new Weapon(blueprint.RightWeapon, rightAimer, rightWeaponLocator, () => level.Player, level);
-            rightWeapon.Shoot += level.EnemyShoot;
-            this.leftEye = new FifthBossEye(this, blueprint.LeftEyeOffset, blueprint.EyeSprite, leftWeaponMovement);
-            this.rightEye = new FifthBossEye(this, blueprint.RightEyeOffset, blueprint.EyeSprite, rightWeaponMovement);
+            this.leftEye = new FifthBossLimb(blueprint.LeftEye, this, level);
+            this.rightEye = new FifthBossLimb(blueprint.RightEye, this, level);
+
+            this.healthTentaclesThreshold = blueprint.HealthThresholdToUseTentacles;
+            tentacles = Enumerable.Range(0, blueprint.TentaclesOffsets.Length).Select((index) =>
+            {
+                var specification = new FifthBossLimbSpecification
+                {
+                    Angle = blueprint.Tentacle.Angle + blueprint.AngleOffsets[index],
+                    Offset = blueprint.Tentacle.Offset + blueprint.TentaclesOffsets[index],
+                    Sprite = blueprint.Tentacle.Sprite,
+                    Weapon = blueprint.Tentacle.Weapon,
+                    WeaponMovementCycle = blueprint.Tentacle.WeaponMovementCycle
+                        .Select(pair => new Tuple<Single, Vector2>(pair.Item1, pair.Item2 + blueprint.TentaclesOffsets[index]))
+                        .ToList()
+                };
+                return new FifthBossLimb(specification, this, level);
+            }).ToArray();
         }
 
         public override void Update(Single elapsedSeconds)
@@ -43,18 +47,17 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             base.Update(elapsedSeconds);
             if (!IsInAppearancePhase)
             {
-                leftWeaponMovement.Update(elapsedSeconds);
-                rightWeaponMovement.Update(elapsedSeconds);
-                leftWeapon.Update(elapsedSeconds);
-                rightWeapon.Update(elapsedSeconds);
                 leftEye.Update(elapsedSeconds);
                 rightEye.Update(elapsedSeconds);
+                if (HitPoints <= healthTentaclesThreshold)
+                    foreach (var tentacle in tentacles)
+                        tentacle.Update(elapsedSeconds);
             }
         }
 
         public override IEnumerable<IDisplayble> GetParts()
         {
-            return base.GetParts().Concat(new[] { leftEye, rightEye });
+            return base.GetParts().Concat(tentacles).Concat(new[] { leftEye, rightEye });
         }
     }
 }
