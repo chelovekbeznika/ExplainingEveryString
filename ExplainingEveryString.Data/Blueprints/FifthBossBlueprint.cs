@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single HealthThresholdToUseTentacles { get; set; }
         public Vector2[] TentaclesOffsets { get; set; }
         public Single[] AngleOffsets { get; set; }
-        public Single HealthThresholdToSpawnHelper { get; set; }
-        public String HelperType { get; set; }
+        public Single[] HealthThresholdToSpawnHelper { get; set; }
+        public SpawnerSpecification HelperSpawn { get; set; }
     }
 }

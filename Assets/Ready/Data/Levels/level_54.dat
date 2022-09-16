@@ -31,6 +31,7 @@
         "Width": 40,
         "Height": 20
       },
+      "Enemies": [],
       "Bosses": [
         {
           "BlueprintType": "Boss_mk5",
@@ -53,10 +54,35 @@
             "-64, -64",
             "-192, -64",
             "-320, -64"
+          ],
+          "CustomSpawns": [
+            {
+              "SpawnPoint": "0, -608",
+              "Angle": 0.0,
+              "TrajectoryParameters": [
+                "-320.0, 0.0",
+                "320.0, 0.0"
+              ]
+            },
+            {
+              "SpawnPoint": "448, -320",
+              "Angle": 90.0,
+              "TrajectoryParameters": [
+                "0.0, -160.0",
+                "0.0, 160.0"
+              ]
+            },
+            {
+              "SpawnPoint": "-448, -320",
+              "Angle": 270.0,
+              "TrajectoryParameters": [
+                "0.0, -160.0",
+                "0.0, 160.0"
+              ]
+            }
           ]
         }
-      ],
-      "Enemies": []
+      ]
     }
   ],
   "FogOfWar": {

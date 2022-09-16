@@ -28,6 +28,8 @@ namespace ExplainingEveryString.Data.Specifications
         public override SpawnPositionSelectionType PositionSelectionType => SpawnPositionSelectionType.Custom;
         [DefaultValue(0)]
         public Int32 BetweenRepeats { get; set; }
+        [DefaultValue(true)]
+        public Boolean RandomOrder { get; set; }
     }
 
     public enum SpawnPositionSelectionType { RandomInCircle, RelativeToSpawner, Custom };

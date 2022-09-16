@@ -36,7 +36,7 @@
         "Parameters": {
           "startSpeed": 250.0,
           "maxSpeed": 300.0,
-          "acceleration": 900.0
+          "acceleration": 1500.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -82,13 +82,13 @@
             "Bullet": {
               "TrajectoryType": "Acceleration",
               "TrajectoryParameters": {
-                "speed": 100.0,
-                "acceleration": 600.0
+                "speed": 200.0,
+                "acceleration": 400.0
               },
-              "Damage": 25.0,
+              "Damage": 10.0,
               "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/EnemyBullet"
+                "Name": "Sprites/Enemies/HelicopterBullet"
               }
             }
           }
@@ -108,14 +108,14 @@
       },
       "Offset": "32.0, 72.0",
       "WeaponMovementCycle": [
-        { "Item1": 0.05, "Item2": "16, 112" },
-        { "Item1": 0.05, "Item2": "24, 112" },
-        { "Item1": 0.05, "Item2": "32, 112" },
-        { "Item1": 0.05, "Item2": "40, 112" },
-        { "Item1": 0.05, "Item2": "48, 112" },
-        { "Item1": 0.05, "Item2": "40, 112" },
-        { "Item1": 0.05, "Item2": "32, 112" },
-        { "Item1": 0.05, "Item2": "24, 112" },
+        { "Item1": 0.25, "Item2": "16, 112" },
+        { "Item1": 0.25, "Item2": "24, 112" },
+        { "Item1": 0.25, "Item2": "32, 112" },
+        { "Item1": 0.25, "Item2": "40, 112" },
+        { "Item1": 0.25, "Item2": "48, 112" },
+        { "Item1": 0.25, "Item2": "40, 112" },
+        { "Item1": 0.25, "Item2": "32, 112" },
+        { "Item1": 0.25, "Item2": "24, 112" },
       ],
       "Weapon": {
         "Reloader": {
@@ -127,9 +127,9 @@
             "AngleCorrection": 0.0,
             "Bullet": {
               "TrajectoryParameters": {
-                "speed": 600.0,
+                "speed": 400.0,
               },
-              "HomingSpeed": 60.0,
+              "HomingSpeed": 30.0,
               "Damage": 25.0,
               "TimeToLive": 5.0,
               "Sprite": {
@@ -154,10 +154,10 @@
       "Offset": "0.0, -48.0",
       "Angle": 270.0,
       "WeaponMovementCycle": [
-        { "Item1": 0.25, "Item2": "-8, -72" },
-        { "Item1": 0.25, "Item2": "0, -72" },
-        { "Item1": 0.25, "Item2": "8, -72" },
-        { "Item1": 0.25, "Item2": "0, -72" },
+        { "Item1": 0.15, "Item2": "-8, -72" },
+        { "Item1": 0.15, "Item2": "0, -72" },
+        { "Item1": 0.15, "Item2": "8, -72" },
+        { "Item1": 0.15, "Item2": "0, -72" },
       ],
       "Weapon": {
         "Reloader": {
@@ -169,10 +169,10 @@
               "TrajectoryParameters": {
                 "speed": 250.0
               },
-              "Damage": 10,
+              "Damage": 25,
               "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/HelicopterBullet"
+                "Name": "Sprites/Enemies/EnemyBullet"
               }
             }
           }
@@ -186,26 +186,178 @@
         "AimType": "FixedFireDirection"
       }
     },
-    "HealthThresholdToUseTentacles": 1400.0,
+    "HealthThresholdToUseTentacles": 1000.0,
     "TentaclesOffsets": [ "-32.0, 0.0", "-16.0, 0.0,", "0.0, 0.0", "16.0, 0.0", "32.0, 0.0" ],
     "AngleOffsets": [ -10.0, -5.0, 0.0, 5.0, 10.0 ],
-    "HealthThresholdToSpawnHelper": 1000.0,
-    "HelperType": "PirateShip"
+    "HealthThresholdToSpawnHelper": [ 750.0, 500.0, 250.0 ],
+    "HelperSpawn": {
+      "Reloader": {
+        "FireRate": 1.0
+      },
+      "MaxSpawned": 0,
+      "BlueprintType": "PirateShip",
+      "DespawnAfterDeath": true,
+      "SpawnPositionRelativeToCurrentPosition": false,
+      "PositionSelector": {
+        "$type": "ExplainingEveryString.Data.Specifications.CustomSpawnPositionSelectorSpecification, ExplainingEveryString.Data",
+        "RandomOrder": false
+      }
+    }
+  },
+  "PirateShip": {
+    "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
+    "Type": "FifthBossHelper",
+    "CollisionDamage": 100.0,
+    "Height": 96.0,
+    "Width": 64.0,
+    "Hitpoints": 1500.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/Boss5/PirateShip",
+      "AnimationCycle": 0.5
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/Boss5/GodLightSmall",
+        "AnimationCycle": 1.0
+      },
+      "Sound": {
+        "Name": "Sounds/Bosses/5/God",
+        "Volume": 1.0
+      }
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/5/God",
+        "Volume": 0.6
+      }
+    },
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/Boss5/GodLightSmall",
+      "AnimationCycle": 1.0
+    },
+    "DefaultAppearancePhaseDuration": 1.0,
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 150.0
+        }
+      },
+      "MoveTargetSelectType": "TargetsList",
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.333333
+        },
+        "Barrels": [
+          {
+            "MuzzleOffset": "-40.0, 27.5",
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 40,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss5/ShipShot"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "-24.0, 35.5",
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 40,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss5/ShipShot"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "-8.0, 38.5",
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 40,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss5/ShipShot"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "8.0, 37.5",
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 40,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss5/ShipShot"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "24.0, 32.5",
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 40,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss5/ShipShot"
+              }
+            }
+          },
+          {
+            "MuzzleOffset": "40.0, 27.5",
+            "AngleCorrection": 90.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 200.0
+              },
+              "Damage": 40,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/Boss5/ShipShot"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/5/Cannon",
+            "Volume": 0.8
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    }
   },
   "Meatball": {
     "$type": "ExplainingEveryString.Data.Blueprints.EnemyBlueprint, ExplainingEveryString.Data",
     "CollisionDamage": 50.0,
     "Height": 32.0,
     "Width": 32.0,
-    "Hitpoints": 30.0,
+    "Hitpoints": 10.0,
     "CollideTag": "Meat",
     "Behavior": {
       "Mover": {
         "Type": "Acceleration",
         "Parameters": {
           "startSpeed": 250.0,
-          "maxSpeed": 450.0,
-          "acceleration": 850.0
+          "maxSpeed": 400.0,
+          "acceleration": 500.0
         }
       },
       "MoveTargetSelectType": "MoveTowardPlayer",
@@ -215,9 +367,9 @@
             {
               "Length": 0.0,
               "AngleCorrection": 0.0,
-              "Accuracy": 24.0,
-              "BulletsAtOnce": 15,
-              "AngleStep": 24.0,
+              "Accuracy": 60.0,
+              "BulletsAtOnce": 6,
+              "AngleStep": 60.0,
               "KeepAngleStep": true,
               "Bullet": {
                 "TrajectoryParameters": {

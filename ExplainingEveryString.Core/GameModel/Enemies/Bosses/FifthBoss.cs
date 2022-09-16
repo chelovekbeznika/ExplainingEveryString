@@ -18,6 +18,11 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private FifthBossLimb rightEye;
         private FifthBossLimb[] tentacles;
         private Single healthTentaclesThreshold;
+        private SpawnedActorsController helpers;
+        private Queue<Single> helpersHealthThreshold;
+        private CompositeSpawnedActorsController commonController;
+
+        public override ISpawnedActorsController SpawnedActorsController => commonController;
 
         protected override void Construct(FifthBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -40,6 +45,17 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 };
                 return new FifthBossLimb(specification, this, level);
             }).ToArray();
+
+            this.helpersHealthThreshold = new Queue<float>(blueprint.HealthThresholdToSpawnHelper);
+            this.helpers = new SpawnedActorsController(blueprint.HelperSpawn, this, startInfo.BehaviorParameters, factory);
+            helpers.EnemySpawned += Helpers_EnemySpawned;
+            this.commonController = new CompositeSpawnedActorsController(Behavior.SpawnedActors, helpers);
+        }
+
+        private void Helpers_EnemySpawned(Object sender, EnemySpawnedEventArgs e)
+        {
+            var enemy = e.Enemy as FifthBossHelper;
+            enemy.Boss = this;
         }
 
         public override void Update(Single elapsedSeconds)
@@ -52,6 +68,12 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 if (HitPoints <= healthTentaclesThreshold)
                     foreach (var tentacle in tentacles)
                         tentacle.Update(elapsedSeconds);
+
+                while (helpersHealthThreshold.Any() && HitPoints <= helpersHealthThreshold.Peek())
+                {
+                    helpers.Specification.MaxSpawned += 1;
+                    helpersHealthThreshold.Dequeue();
+                }
             }
         }
 

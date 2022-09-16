@@ -19,7 +19,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     return new RelativeSpawnPositionSelector(spawnPositions);
                 case SpawnPositionSelectionType.Custom:
                     var betweenRepeats = (specification as CustomSpawnPositionSelectorSpecification).BetweenRepeats;
-                    return new CustomSpawnPositionSelector(spawnSpecifications, betweenRepeats);
+                    var randomOrder = (specification as CustomSpawnPositionSelectorSpecification).RandomOrder;
+                    return new CustomSpawnPositionSelector(spawnSpecifications, betweenRepeats, randomOrder);
                 default:
                     throw new ArgumentException("Unknown SpawnPositionSelectionType");
             }

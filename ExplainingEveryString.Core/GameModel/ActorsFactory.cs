@@ -29,6 +29,7 @@ namespace ExplainingEveryString.Core.GameModel
                 { "FourthBoss", (pos) => Construct<FourthBossBrain, FourthBossBlueprint>(pos) },
                 { "FourthBossPart", (pos) => Construct<FourthBossPart, FourthBossPartBlueprint>(pos) },
                 { "FifthBoss", (pos) => Construct<FifthBoss, FifthBossBlueprint>(pos) },
+                { "FifthBossHelper", (pos) => Construct<FifthBossHelper, EnemyBlueprint>(pos) },
             };
         }
 

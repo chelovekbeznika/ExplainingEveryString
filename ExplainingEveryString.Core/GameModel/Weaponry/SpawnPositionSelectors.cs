@@ -3,6 +3,7 @@ using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
@@ -52,23 +53,35 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private List<SpawnSpecification> availableSpawns;
         private Queue<SpawnSpecification> recentlyTaken;
         private Int32 betweenRepeats;
+        private Boolean randomOrder;
 
-        internal CustomSpawnPositionSelector(SpawnSpecification[] customSpawns, Int32 betweenRepeats)
+        internal CustomSpawnPositionSelector(SpawnSpecification[] customSpawns, Int32 betweenRepeats, Boolean randomOrder)
         {
             this.availableSpawns = new List<SpawnSpecification>(customSpawns);
             this.betweenRepeats = betweenRepeats;
             this.recentlyTaken = new Queue<SpawnSpecification>(betweenRepeats);
+            this.randomOrder = randomOrder;
         }
 
         public SpawnSpecification GetNextSpawnSpecification()
         {
-            if (recentlyTaken.Count > betweenRepeats)
-                availableSpawns.Add(recentlyTaken.Dequeue());
-            var nextSpawn = availableSpawns[RandomUtility.NextInt(availableSpawns.Count)];
-            if (recentlyTaken.Count < betweenRepeats)
+            SpawnSpecification nextSpawn;
+            if (randomOrder)
             {
-                availableSpawns.Remove(nextSpawn);
-                recentlyTaken.Enqueue(nextSpawn);
+                while (recentlyTaken.Count > betweenRepeats && recentlyTaken.Any())
+                    availableSpawns.Add(recentlyTaken.Dequeue());
+                nextSpawn = availableSpawns[RandomUtility.NextInt(availableSpawns.Count)];
+                if (recentlyTaken.Count <= betweenRepeats)
+                {
+                    availableSpawns.Remove(nextSpawn);
+                    recentlyTaken.Enqueue(nextSpawn);
+                }
+            }
+            else
+            {
+                nextSpawn = availableSpawns[0];
+                availableSpawns.RemoveAt(0);
+                availableSpawns.Add(nextSpawn);
             }
             return nextSpawn;
         }

@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Data.Specifications;
+﻿using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         public Int32 MaxSpawned => Specification.MaxSpawned;
 
-
         internal SpawnedActorsController(SpawnerSpecification specification, IActor spawner, 
             BehaviorParameters spawnerBehaviorParameters, ActorsFactory factory)
         {
@@ -39,7 +39,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public void Update(Single elapsedSeconds)
         {
             if (active)
-                reloader.Update(elapsedSeconds, out Boolean enemySpawned);
+                reloader.Update(elapsedSeconds, out _);
         }
 
         public void DivideAliveAndDead(List<IEnemy> avengers)
@@ -76,7 +76,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 BehaviorParameters = new BehaviorParameters
                 {
                     TrajectoryParameters = spawnSpecification.TrajectoryParameters?.ToArray(),
-                    Angle = spawnSpecification.Angle
+                    Angle = AngleConverter.ToRadians(spawnSpecification.Angle)
                 },
                 AppearancePhaseDuration = Specification.AppearancePhase
             };
