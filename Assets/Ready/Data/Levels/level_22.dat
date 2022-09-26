@@ -4,7 +4,6 @@
     "2x"
   ],
   "MusicName": "rondo_alla_turca",
-  "TitleSpriteName": "Sprites/LevelTitles/22",
   "TileMap": "TileMaps/Level_22",
   "StartCheckpoint": {
     "PlayerPosition": {

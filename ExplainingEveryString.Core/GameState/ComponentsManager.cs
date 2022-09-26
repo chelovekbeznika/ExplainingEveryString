@@ -17,6 +17,7 @@ namespace ExplainingEveryString.Core.GameState
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
         internal LevelTitleComponent CurrentLevelTitle { get; private set; }
+        internal LevelEndingComponent CurrentLevelEnding { get; private set; }
         internal MusicComponent MenuMusic { get; private set; }
         internal MusicComponent GameMusic { get; private set; }
         internal NotificationsComponent Notifications { get; private set; }
@@ -32,18 +33,19 @@ namespace ExplainingEveryString.Core.GameState
             Notifications = new NotificationsComponent(game);
         }
 
-        internal void InitNewGameplayRelatedComponents(GameProgress gameProgress)
+        internal void InitNewLevelRelatedComponents(GameProgress gameProgress, LevelSequence levelSequence)
         {
             CurrentGameplay = new GameplayComponent(
                 game, gameProgress.CurrentLevelFileName, gameProgress.LevelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
-            CurrentLevelTitle = new LevelTitleComponent(
-                game, gameProgress.CurrentLevelFileName);
+            CurrentLevelTitle = new LevelTitleComponent(game, levelSequence);
+            CurrentLevelEnding = new LevelEndingComponent(game, levelSequence);
             game.Components.Add(CurrentLevelTitle);
             game.Components.Add(CurrentGameplay);
+            game.Components.Add(CurrentLevelEnding);
         }
 
-        internal void DeleteCurrentGameplayRelatedComponents()
+        internal void DeleteCurrentLevelRelatedComponents()
         {
             if (CurrentGameplay != null)
             {
@@ -55,6 +57,11 @@ namespace ExplainingEveryString.Core.GameState
             {
                 game.Components.Remove(CurrentLevelTitle);
                 CurrentLevelTitle = null;
+            }
+            if (CurrentLevelEnding != null)
+            {
+                game.Components.Remove(CurrentLevelEnding);
+                CurrentLevelEnding = null;
             }
         }
 
@@ -93,6 +100,15 @@ namespace ExplainingEveryString.Core.GameState
             {
                 CurrentLevelTitle.Enabled = active;
                 CurrentLevelTitle.Visible = active;
+            }
+        }
+
+        internal void SwitchLevelEndingRelatedComponents(Boolean active)
+        {
+            if (CurrentLevelEnding != null)
+            {
+                CurrentLevelEnding.Enabled = active;
+                CurrentLevelEnding.Visible = active;
             }
         }
     }

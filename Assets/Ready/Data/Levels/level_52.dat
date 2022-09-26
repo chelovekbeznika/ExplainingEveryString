@@ -4,7 +4,6 @@
     "5x"
   ],
   "MusicName": "diesirae",
-  "TitleSpriteName": "Sprites/LevelTitles/52",
   "TileMap": "TileMaps/Level_52",
   "StartCheckpoint": {
     "PlayerPosition": {

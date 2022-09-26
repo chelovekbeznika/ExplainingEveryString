@@ -4,7 +4,6 @@
     "3x"
   ],
   "MusicName": "moonlight",
-  "TitleSpriteName": "Sprites/LevelTitles/33",
   "TileMap": "TileMaps/Level_33",
   "StartCheckpoint": {
     "PlayerPosition": {

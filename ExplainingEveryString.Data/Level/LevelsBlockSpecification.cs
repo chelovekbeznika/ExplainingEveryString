@@ -6,5 +6,6 @@ namespace ExplainingEveryString.Data.Level
     {
         public String Id { get; set; }
         public String ButtonSprite { get; set; }
+        public String LevelEndingLayerSprite { get; set; }
     }
 }

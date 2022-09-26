@@ -4,7 +4,6 @@
     "1x"
   ],
   "MusicName": "christmas_tree_was_born_in_forest",
-  "TitleSpriteName": "Sprites/LevelTitles/11",
   "TileMap": "TileMaps/Level_11",
   "StartCheckpoint": {
     "PlayerPosition": {

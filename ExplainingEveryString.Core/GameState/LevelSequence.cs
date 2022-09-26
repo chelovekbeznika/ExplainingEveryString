@@ -25,6 +25,12 @@ namespace ExplainingEveryString.Core.GameState
 
         internal Boolean GameCompleted => levelsCompleted >= Specification.Levels.Length;
         internal String GetCurrentLevelFile() => Specification.Levels[currentLevel].LevelData;
+        internal String GetCurrentLevelTitle() => Specification.Levels[currentLevel].TitleSprite;
+        internal List<String> GetCurrentLevelEndingLayers() => Specification.Levels
+            .Take(currentLevel + 1)
+            .Select(level => level.LevelsBlockId).Distinct()
+            .Select(blockId => Specification.LevelsBlocks.Single(block => block.Id == blockId))
+            .Select(block => block.LevelEndingLayerSprite).ToList();
         internal String GetMaxAchievedLevelFile() => !GameCompleted 
             ? Specification.Levels[levelsCompleted].LevelData
             : Specification.Levels[Specification.Levels.Length - 1].LevelData;

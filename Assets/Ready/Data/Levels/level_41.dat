@@ -4,7 +4,6 @@
     "4x"
   ],
   "MusicName": "rv363",
-  "TitleSpriteName": "Sprites/LevelTitles/41",
   "TileMap": "TileMaps/Level_41",
   "StartCheckpoint": {
     "PlayerPosition": {
