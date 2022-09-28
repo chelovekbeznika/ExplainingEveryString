@@ -19,10 +19,10 @@ namespace ExplainingEveryString.Core.Menu
         private MenuItemsContainer CurrentButtonsContainer => visiblePart.CurrentButtonsContainer;
         private EesGame game;
         private InnerMenuInputProcessor menuInputProcessor;
-        private LevelSequnceSpecification levelSequenceSpecification;
+        private LevelSequenceSpecification levelSequenceSpecification;
         private MusicTestButtonSpecification[] musicTestSpecification;
 
-        internal MenuComponent(EesGame game, LevelSequnceSpecification levelSequenceSpecification, 
+        internal MenuComponent(EesGame game, LevelSequenceSpecification levelSequenceSpecification, 
             MusicTestButtonSpecification[] musicTestSpecification) : base(game)
         {
             var config = ConfigurationAccess.GetCurrentConfig();

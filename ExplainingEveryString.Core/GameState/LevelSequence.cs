@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Data.Level;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace ExplainingEveryString.Core.GameState
     {
         private Int32 levelsCompleted = 0;
         private Int32 currentLevel = 0;
-        internal LevelSequnceSpecification Specification { get; private set; }
+        internal LevelSequenceSpecification Specification { get; private set; }
         private Dictionary<String, Int32> fileNameToNumberMapping = new Dictionary<String, Int32>();
 
-        internal LevelSequence(LevelSequnceSpecification specification, String startLevelName, String maxLevelName)
+        internal LevelSequence(LevelSequenceSpecification specification, String startLevelName, String maxLevelName)
         {
             this.Specification = specification;
             this.fileNameToNumberMapping = specification.Levels.Select((level, index) => new { level.LevelData, index })
@@ -27,10 +28,13 @@ namespace ExplainingEveryString.Core.GameState
         internal String GetCurrentLevelFile() => Specification.Levels[currentLevel].LevelData;
         internal String GetCurrentLevelTitle() => Specification.Levels[currentLevel].TitleSprite;
         internal List<String> GetCurrentLevelEndingLayers() => Specification.Levels
-            .Take(currentLevel + 1)
+            .Take(currentLevel + 1 + 1) //All passed levels and next one
             .Select(level => level.LevelsBlockId).Distinct()
             .Select(blockId => Specification.LevelsBlocks.Single(block => block.Id == blockId))
             .Select(block => block.LevelEndingLayerSprite).ToList();
+        internal Vector2? GetNextLevelMapMark() => currentLevel < Specification.Levels.Length - 1
+            ? Specification.Levels[currentLevel + 1].MapMark : null as Vector2?;
+        internal List<Vector2> GetPath() => Specification.Levels.Take(currentLevel + 1).Select(l => l.MapMark).ToList();
         internal String GetMaxAchievedLevelFile() => !GameCompleted 
             ? Specification.Levels[levelsCompleted].LevelData
             : Specification.Levels[Specification.Levels.Length - 1].LevelData;

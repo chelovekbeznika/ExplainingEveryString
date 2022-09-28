@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.GameState
 
         internal Boolean IsPaused => currentState == GameState.Paused;
 
-        internal GameStateManager(LevelSequnceSpecification levelSequenceSpecification, 
+        internal GameStateManager(LevelSequenceSpecification levelSequenceSpecification, 
             ComponentsManager componentsManager)
         {
             this.componentsManager = componentsManager;

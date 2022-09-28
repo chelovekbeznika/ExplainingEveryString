@@ -2,9 +2,9 @@
 {
     public static class LevelSequenceAccess
     {
-        public static LevelSequnceSpecification LoadLevelSequence()
+        public static LevelSequenceSpecification LoadLevelSequence()
         {
-            return JsonDataAccessor.Instance.Load<LevelSequnceSpecification>(FileNames.LevelSequence);
+            return JsonDataAccessor.Instance.Load<LevelSequenceSpecification>(FileNames.LevelSequence);
         }
     }
 }

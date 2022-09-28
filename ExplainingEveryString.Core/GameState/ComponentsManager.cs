@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.GameState
         internal MusicComponent GameMusic { get; private set; }
         internal NotificationsComponent Notifications { get; private set; }
 
-        internal ComponentsManager(EesGame game, LevelSequnceSpecification levelSequenceSpecification,
+        internal ComponentsManager(EesGame game, LevelSequenceSpecification levelSequenceSpecification,
             MusicTestButtonSpecification[] musicTestSpecification)
         {
             this.game = game;

@@ -10,9 +10,9 @@ namespace ExplainingEveryString.Core.Menu
     {
         private EesGame game;
         private ContentManager Content => game.Content;
-        private LevelSequnceSpecification levelSequenceSpecification;
+        private LevelSequenceSpecification levelSequenceSpecification;
 
-        internal LevelSelectMenuBuilder(EesGame game, LevelSequnceSpecification levelSequenceSpecification)
+        internal LevelSelectMenuBuilder(EesGame game, LevelSequenceSpecification levelSequenceSpecification)
         {
             this.game = game;
             this.levelSequenceSpecification = levelSequenceSpecification;
