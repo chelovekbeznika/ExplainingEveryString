@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Assets;
+using ExplainingEveryString.Core.GameModel;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,14 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const Int32 betweenIcons = 8;
         private const Int32 pixelsFromRight = 32;
         private const Int32 pixelsFromTop = 32;
-        private readonly IReadOnlyList<String> ExistingWeapons = new[] { "Default", "Shotgun", "RocketLauncher", "Cone", "Homing", "FiveShot" };
         private const string Border = @"WeaponIcons/Border";
 
         private Dictionary<String, SpriteData> iconsSprites;
         private SpriteData border;
         private InterfaceSpriteDisplayer spriteDisplayer;
 
-        public String[] GetSpritesNames() => ExistingWeapons.Select(name => $@"WeaponIcons/{name}").Concat(new[] { Border }).ToArray();
+        public String[] GetSpritesNames() => WeaponNames.AllExisting
+            .Select(name => $@"WeaponIcons/{name}").Concat(new[] { Border }).ToArray();
 
         internal RemainedWeaponsDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
         {
@@ -27,7 +28,8 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         public void InitSprites(Dictionary<String, SpriteData> sprites)
         {
-            iconsSprites = ExistingWeapons.ToDictionary(name => name, name => TextureLoadingHelper.GetSprite(sprites, $@"WeaponIcons/{name}"));
+            iconsSprites = WeaponNames.AllExisting
+                .ToDictionary(name => name, name => TextureLoadingHelper.GetSprite(sprites, $@"WeaponIcons/{name}"));
             border = TextureLoadingHelper.GetSprite(sprites, Border);
         }
 
@@ -35,8 +37,8 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         {
             var weapons = playerWeapons.AvailableWeapons;
             
-            var iconWidth = iconsSprites[GameModel.Constants.DefaultPlayerWeapon].Width;
-            var iconHeight = iconsSprites[GameModel.Constants.DefaultPlayerWeapon].Height;
+            var iconWidth = iconsSprites[GameModel.WeaponNames.Default].Width;
+            var iconHeight = iconsSprites[GameModel.WeaponNames.Default].Height;
             var placeFirstIconAt = spriteDisplayer.ScreenWidth - pixelsFromRight - iconWidth;
             foreach (var (iconPlace, weaponName) in weapons.Select((weapon, index) => (index, weapon)))
             {

@@ -33,6 +33,8 @@ namespace ExplainingEveryString.Core.Input
 
         public Int32 WeaponSwitchMeasure() => current.WeaponSwitchMeasure();
 
+        public string DirectlySelectedWeapon() => current.DirectlySelectedWeapon();
+
         public void Update(Single elapsedSeconds)
         {
             var preferredDevice = ConfigurationAccess.GetCurrentConfig().Input.PreferredControlDevice;

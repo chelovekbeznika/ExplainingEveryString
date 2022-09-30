@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Core.Input
         Boolean IsTryingToDash();
         Boolean IsTryingToReload();
         Int32 WeaponSwitchMeasure();
+        String DirectlySelectedWeapon();
         Single Focus { get; }
     }
 
@@ -39,9 +40,11 @@ namespace ExplainingEveryString.Core.Input
         public abstract Boolean IsTryingToDash();
         public abstract Boolean IsTryingToReload();
         public abstract Int32 WeaponSwitchMeasure();
+        public abstract String DirectlySelectedWeapon();
 
         public virtual void Update(Single elapsedSeconds)
         {
         }
+
     }
 }

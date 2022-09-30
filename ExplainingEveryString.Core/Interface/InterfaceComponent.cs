@@ -156,7 +156,7 @@ namespace ExplainingEveryString.Core.Interface
             healthBarDisplayer.Draw(interfaceInfo.Player);
             dashStateDisplayer.Draw(interfaceInfo.Player);
             var weaponName = interfaceInfo.Player.Weapon.SelectedWeapon;
-            if (weaponName != Constants.DefaultPlayerWeapon && playerWeaponDisplayers.ContainsKey(weaponName))
+            if (weaponName != WeaponNames.Default && playerWeaponDisplayers.ContainsKey(weaponName))
                 playerWeaponDisplayers[weaponName].Draw(interfaceInfo.Player.Weapon);
             remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);
             if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)

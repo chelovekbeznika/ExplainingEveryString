@@ -1,8 +1,11 @@
 ﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Collections;
 using System;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.Input
 {
@@ -93,6 +96,19 @@ namespace ExplainingEveryString.Core.Input
             return scrollDifference / 120 + keyboardResult;
         }
 
-
+        public override String DirectlySelectedWeapon()
+        {
+            var keys = Keyboard.GetState().GetPressedKeys();
+            return keys switch
+            {
+                _ when keys.Contains(Keys.D1) => WeaponNames.Default,
+                _ when keys.Contains(Keys.D2) => WeaponNames.Shotgun,
+                _ when keys.Contains(Keys.D3) => WeaponNames.RocketLauncher,
+                _ when keys.Contains(Keys.D4) => WeaponNames.Cone,
+                _ when keys.Contains(Keys.D5) => WeaponNames.Homing,
+                _ when keys.Contains(Keys.D6) => WeaponNames.FiveShot,
+                _ => null
+            };
+        }
     }
 }

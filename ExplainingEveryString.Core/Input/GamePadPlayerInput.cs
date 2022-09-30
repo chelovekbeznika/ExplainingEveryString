@@ -69,5 +69,7 @@ namespace ExplainingEveryString.Core.Input
         }
 
         private GamePadState GetState() => GamePad.GetState(PlayerIndex.One);
+
+        public override String DirectlySelectedWeapon() => null;
     }
 }

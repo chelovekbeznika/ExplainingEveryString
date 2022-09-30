@@ -136,7 +136,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal void SupplyWeapons(ArsenalSpecification playerArsenal)
         {
-            foreach (var weapon in weapons.Where(weapon => weapon.Name != Constants.DefaultPlayerWeapon))
+            foreach (var weapon in weapons.Where(weapon => weapon.Name != WeaponNames.Default))
             {
                 if (playerArsenal?.AvailableWeapons.ContainsKey(weapon.Name) ?? false)
                     weapon.Reloader.SupplyLimitedAmmoStock(playerArsenal.AvailableWeapons[weapon.Name]);
@@ -147,27 +147,46 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void WeaponSelect()
         {
-            var switchMeasure = Input.WeaponSwitchMeasure();
             var oldSelectedWeapon = selectedWeapon;
-            if (switchMeasure == 0 && !Weapon.Reloader.HasAmmo)
-                switchMeasure = -1;
-            foreach (var _ in Enumerable.Range(0, System.Math.Abs(switchMeasure)))
+            var directlySelectedWeapon = Input.DirectlySelectedWeapon();
+            if (directlySelectedWeapon == null)
             {
-                do
+                var switchMeasure = Input.WeaponSwitchMeasure();
+                if (switchMeasure == 0 && !Weapon.Reloader.HasAmmo)
+                    switchMeasure = -1;
+                foreach (var _ in Enumerable.Range(0, System.Math.Abs(switchMeasure)))
                 {
-                    if (switchMeasure < 0)
-                        selectedWeapon -= 1;
-                    else
-                        selectedWeapon += 1;
-                    if (selectedWeapon < 0)
-                        selectedWeapon = weapons.Length - 1;
-                    if (selectedWeapon >= weapons.Length)
-                        selectedWeapon = 0;
+                    do
+                    {
+                        if (switchMeasure < 0)
+                            selectedWeapon -= 1;
+                        else
+                            selectedWeapon += 1;
+                        if (selectedWeapon < 0)
+                            selectedWeapon = weapons.Length - 1;
+                        if (selectedWeapon >= weapons.Length)
+                            selectedWeapon = 0;
+                    }
+                    while (!Weapon.Reloader.HasAmmo);
                 }
-                while (!Weapon.Reloader.HasAmmo);
+            }
+            else
+            {
+                var newWeaponIndex = WeaponIndexByName(directlySelectedWeapon);
+                if (weapons[newWeaponIndex].Reloader.HasAmmo)
+                    selectedWeapon = newWeaponIndex;
             }
             if (oldSelectedWeapon != selectedWeapon)
                 weaponSwitched.TryHandle();
+        }
+
+        private Int32 WeaponIndexByName(String name)
+        {
+            return weapons
+                .Select((weapon, index) => (weapon, index))
+                .Where(pair => pair.weapon.Name == name)
+                .Select(pair => pair.index)
+                .Single();
         }
 
         private void Move(Single elapsedSeconds)
