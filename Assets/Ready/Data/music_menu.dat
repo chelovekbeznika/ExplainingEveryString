@@ -22,5 +22,9 @@
   {
     "Sprite": "Sprites/Menu/Songs/Fire",
     "SongName": "diesirae"
-  }
+  },
+  {
+    "Sprite": "Sprites/Menu/Songs/BossFight",
+    "SongName": "caprice5"
+  },
 ]

@@ -126,6 +126,9 @@
 #begin Data/Levels/level_54.dat
 /copy:Data/Levels/level_54.dat
 
+#begin Data/Music/caprice5.dat
+/copy:Data/Music/caprice5.dat
+
 #begin Data/Music/christmas_tree_was_born_in_forest.dat
 /copy:Data/Music/christmas_tree_was_born_in_forest.dat
 
