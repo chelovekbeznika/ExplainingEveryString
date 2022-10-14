@@ -23,7 +23,10 @@ namespace ExplainingEveryString.Music.Model
     public enum Octave { SubContra, Contra, Great, Small, OneLine, TwoLine, ThreeLine, FourLine, FiveLine }
 
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum Articulation { Legato, NonLegato, Stacatto }
+    public enum Articulation { Legato, NonLegato, Stacatto, Portato }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum FourForFourBeats { Weak, Middle, Strong }
 
     public struct Note
     {
