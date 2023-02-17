@@ -1,0 +1,66 @@
+{
+  "Blueprints": [
+    "player",
+    "5x"
+  ],
+  "MusicName": "caprice5",
+  "TileMap": "TileMaps/Level_61",
+  "StartCheckpoint": {
+    "PlayerPosition": {
+      "X": 41,
+      "Y": 42
+    },
+    "Arsenal": {
+      "AvailableWeapons": {
+        "Shotgun": 120,
+        "RocketLauncher": 1000,
+        "Homing": 400,
+        "Cone": 1800,
+        "FiveShot": 1200
+      }
+    }
+  },
+  "EnemyWaves": [
+    {
+      "StartRegion": {
+        "X": 10,
+        "Y": 15,
+        "Width": 63,
+        "Height": 35
+      },
+      "Enemies": [
+        {
+          "BlueprintType": "SimpleCannon_mk5",
+          "TilePosition": {
+            "X": 41,
+            "Y": 32
+          },
+          "Angle": 0.0
+        }
+      ],
+      "Bosses": []
+    }
+  ],
+  "FogOfWar": {
+    "ParticleWidth": 16,
+    "ParticleHeight": 16,
+    "Sprites": [
+      "Sprites/FogOfWar/Level3X/0",
+      "Sprites/FogOfWar/Level3X/1",
+      "Sprites/FogOfWar/Level3X/2",
+      "Sprites/FogOfWar/Level3X/3",
+      "Sprites/FogOfWar/Level3X/4",
+      "Sprites/FogOfWar/Level3X/5"
+    ],
+    "Weights": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "ObstaclesTilePositions": {},
+  "Waypoints": {}
+}

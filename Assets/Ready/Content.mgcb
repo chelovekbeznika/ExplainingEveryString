@@ -126,6 +126,9 @@
 #begin Data/Levels/level_54.dat
 /copy:Data/Levels/level_54.dat
 
+#begin Data/Levels/level_61.dat
+/copy:Data/Levels/level_61.dat
+
 #begin Data/Music/caprice5.dat
 /copy:Data/Music/caprice5.dat
 
@@ -7341,6 +7344,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/LevelEndings/Level5.png
 
+#begin Sprites/LevelEndings/Level6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/LevelEndings/Level6.png
+
 #begin Sprites/LevelEndings/Map.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -7616,6 +7631,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/LevelTitles/54.png
+
+#begin Sprites/LevelTitles/61.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/LevelTitles/61.png
 
 #begin Sprites/Menu/Background.png
 /importer:TextureImporter
@@ -7965,6 +7992,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/LevelSelect/5X.png
 
+#begin Sprites/Menu/LevelSelect/6X.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/LevelSelect/6X.png
+
 #begin Sprites/Menu/MusicTest.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -8156,6 +8195,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Songs/BossFight.png
+
+#begin Sprites/Menu/Songs/Caprice5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Songs/Caprice5.png
 
 #begin Sprites/Menu/Songs/Desert.png
 /importer:TextureImporter
@@ -8970,6 +9021,11 @@
 /processor:TiledMapProcessor
 /build:TileMaps/Level_54.tmx
 
+#begin TileMaps/Level_61.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:TileMaps/Level_61.tmx
+
 #begin TileSets/1x.tsx
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
@@ -9054,6 +9110,23 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileSets/5x_tiles.png
+
+#begin TileSets/6x.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:TileSets/6x.tsx
+
+#begin TileSets/6x_tiles.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TileSets/6x_tiles.png
 
 #begin TileSets/level_01.png
 /importer:TextureImporter
