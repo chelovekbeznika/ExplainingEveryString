@@ -1507,6 +1507,90 @@
       "AnimationFrames": 6
     },
     {
+      "Name": "Sprites/Enemies/LastBoss/Phase_3",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Bolt",
+      "AnimationFrames": 2
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/WhiteNoise",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_9_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_8_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_7_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_6_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_5_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_4_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_3_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_2_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_1_in",
+      "AnimationFrames": 8
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_9_out",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_8_out",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_7_out",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_6_out",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_5_out",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_4_out",
+      "AnimationFrames": 14
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_3_out",
+      "AnimationFrames": 7
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_2_out",
+      "AnimationFrames": 10
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Phase_1_out",
+      "AnimationFrames": 17
+    },
+    {
       "Name": "Sprites/Notifications/SettingsApplied",
       "AnimationFrames": 9,
       "DefaultAnimationCycle": 1.5
