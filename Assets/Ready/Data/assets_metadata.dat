@@ -1519,6 +1519,26 @@
       "AnimationFrames": 6
     },
     {
+      "Name": "Sprites/Enemies/LastBoss/TankBase",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/TankCannon",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/Cannon",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/TripleCannon",
+      "AnimationFrames": 6
+    },
+    {
+      "Name": "Sprites/Enemies/LastBoss/WhiteNoise",
+      "AnimationFrames": 6
+    },
+    {
       "Name": "Sprites/Enemies/LastBoss/Phase_9_in",
       "AnimationFrames": 8
     },
