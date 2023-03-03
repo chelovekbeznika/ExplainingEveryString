@@ -24,7 +24,8 @@ namespace ExplainingEveryString.Data.Blueprints
             { typeof(ThirdBossBlueprint), new ThirdBossAssetsExtractor() },
             { typeof(FourthBossBlueprint), new FourthBossAssetsExtractor() },
             { typeof(FourthBossPartBlueprint), new FourthBossPartAssetsExtractor() },
-            { typeof(FifthBossBlueprint), new FifthBossAssetsExtractor() }
+            { typeof(FifthBossBlueprint), new FifthBossAssetsExtractor() },
+            { typeof(LastBossBlueprint), new LastBossPhaseAssetsExtractor() }
         };
 
         public static List<String> GetNeccessarySprites(IBlueprintsLoader loader)

@@ -1,7 +1,7 @@
 {
   "Blueprints": [
-    "player",
-    "5x"
+    "last_boss",
+    "player"
   ],
   "MusicName": "caprice5",
   "TileMap": "TileMaps/Level_61",
@@ -30,7 +30,7 @@
       },
       "Enemies": [
         {
-          "BlueprintType": "SimpleCannon_mk5",
+          "BlueprintType": "LastBoss_Phase9",
           "TilePosition": {
             "X": 41,
             "Y": 32

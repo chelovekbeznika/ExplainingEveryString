@@ -48,6 +48,9 @@
 #begin Data/Blueprints/fourth_boss.dat
 /copy:Data/Blueprints/fourth_boss.dat
 
+#begin Data/Blueprints/last_boss.dat
+/copy:Data/Blueprints/last_boss.dat
+
 #begin Data/Blueprints/player.dat
 /copy:Data/Blueprints/player.dat
 
