@@ -11,8 +11,6 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 {
     internal class Bullet : IDisplayble, IUpdateable
     {
-        private static TrajectoryFactory trajectoryFactory = new TrajectoryFactory();
-
         private readonly Single timeToLive;
         private Single homingSpeed;
         private readonly IActor target;
@@ -41,16 +39,18 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         internal Bullet(Level level, Vector2 position, Vector2 fireDirection, 
             BulletSpecification specification, IActor target)
         {
+            var center = specification.TargetCentric ? (target as ICollidable).Position : position;
+            this.trajectory = TrajectoryFactory.GetTrajectory(specification.TrajectoryType,
+                center, fireDirection, specification.TrajectoryParameters);
+            var startPosition = trajectory.GetBulletPosition(0);
             this.SpriteState = new SpriteState(specification.Sprite);
-            this.Position = position;
-            this.OldPosition = position;
+            this.Position = startPosition;
+            this.OldPosition = startPosition;
             this.Damage = specification.Damage;
             this.BlastWaveRadius = specification.BlastWaveRadius;
             this.prematureBlastInterval = specification.PrematureBlastInterval;
             this.timeToLive = specification.TimeToLive;
             this.considerAngle = specification.ConsiderAngle;
-            this.trajectory = trajectoryFactory.GetTrajectory(specification.TrajectoryType,
-                position, fireDirection, specification.TrajectoryParameters);
             this.target = target;
             this.homingSpeed = AngleConverter.ToRadians(specification.HomingSpeed);
             this.hit = new EpicEvent(level, specification.HitEffect, true, this, true);
@@ -63,7 +63,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                 if (target.IsAlive())
                 {
                     trajectory.FireDirection = CorrectFireDirection(trajectory.FireDirection, elapsedSeconds);
-                    trajectory.StartPosition = Position;
+                    trajectory.Center = Position;
                 }
                 else
                     homingSpeed = 0;

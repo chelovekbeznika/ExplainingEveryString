@@ -68,7 +68,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 if (specification.AimType == AimType.FixedFireDirection)
                     aimer = new FourthBossFixedDirectionAimer(bossPart);
                 if (specification.AimType == AimType.AimAtPlayer)
-                    aimer = new PlayerAimer(() => level.Player.Position, () => bossPart.Position);
+                    aimer = new PlayerAimer(() => level.Player.Position);
                 Weapon = new Weapon(specification, aimer, () => bossPart.Position, () => level.Player, level, false);
                 Weapon.Shoot += level.EnemyShoot;
             }

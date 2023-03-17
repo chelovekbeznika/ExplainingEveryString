@@ -21,5 +21,7 @@ namespace ExplainingEveryString.Data.Specifications
         public BulletSpecification Bullet { get; set; }
         [DefaultValue(false)]
         public Boolean KeepAngleStep { get; set; }
+        [DefaultValue("0.0, 0.0")]
+        public Vector2 BaseOffset { get; set; }
     }
 }

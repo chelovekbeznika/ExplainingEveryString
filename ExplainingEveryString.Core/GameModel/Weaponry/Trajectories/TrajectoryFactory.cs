@@ -5,18 +5,18 @@ using System.Reflection;
 
 namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
 {
-    internal class TrajectoryFactory
+    internal static class TrajectoryFactory
     {
-        private readonly Dictionary<String, ConstructorInfo> constructorsCache = new Dictionary<String, ConstructorInfo>();
+        private static readonly Dictionary<String, ConstructorInfo> constructorsCache = new Dictionary<String, ConstructorInfo>();
 
-        internal BulletTrajectory GetTrajectory
-            (String type, Vector2 startPosition, Vector2 fireDirection, Dictionary<String, Single> parameters)
+        internal static BulletTrajectory GetTrajectory
+            (String type, Vector2 center, Vector2 fireDirection, Dictionary<String, Single> parameters)
         {
             var constructor = GetTrajectoryConstructor(type);
-            return constructor.Invoke(new Object[] { startPosition, fireDirection, parameters }) as BulletTrajectory;
+            return constructor.Invoke(new Object[] { center, fireDirection, parameters }) as BulletTrajectory;
         }
 
-        private ConstructorInfo GetTrajectoryConstructor(String type)
+        private static ConstructorInfo GetTrajectoryConstructor(String type)
         {
             if (!constructorsCache.ContainsKey(type))
             {

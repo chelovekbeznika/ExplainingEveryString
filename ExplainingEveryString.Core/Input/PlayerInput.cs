@@ -36,7 +36,7 @@ namespace ExplainingEveryString.Core.Input
 
         public abstract Boolean IsFiring();
         public abstract Vector2 GetMoveDirection();
-        public abstract Vector2 GetFireDirection();
+        public abstract Vector2 GetFireDirection(Vector2 currentMuzzlePosition);
         public abstract Boolean IsTryingToDash();
         public abstract Boolean IsTryingToReload();
         public abstract Int32 WeaponSwitchMeasure();

@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Core.Tests
             isFiring = false;
         }
 
-        public Vector2 GetFireDirection()
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
             return new Vector2(1, 0);
         }

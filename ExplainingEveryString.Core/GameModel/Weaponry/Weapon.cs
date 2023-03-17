@@ -42,7 +42,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         public Boolean IsVisible => SpriteState != null;
         internal Boolean IsFiring() => aimer.IsFiring();
         internal Boolean IsHoming => barrels.Any(barrel => barrel.IsHoming);
-        internal Vector2 GetFireDirection() => aimer.GetFireDirection();
+        internal Vector2 GetFireDirection() => aimer.GetFireDirection(findOutWhereIAm());
 
         internal Weapon(WeaponSpecification specification, IAimer aimer, 
             Func<Vector2> findOutWhereIAm, Func<IActor> targetSelector, Level level, Boolean fullAmmoAtStart = false)
@@ -74,7 +74,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             if (IsVisible)
             {
                 SpriteState.Update(elapsedSeconds);
-                SpriteState.Angle = AngleConverter.ToRadians(aimer.GetFireDirection());
+                SpriteState.Angle = AngleConverter.ToRadians(aimer.GetFireDirection(findOutWhereIAm()));
             }
         }
     }

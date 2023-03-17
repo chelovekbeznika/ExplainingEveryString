@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
             enemyBehavior.MoveGoalReached += RecalibrateAim;
         }
 
-        public Vector2 GetFireDirection()
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
             return fireDirection;
         }

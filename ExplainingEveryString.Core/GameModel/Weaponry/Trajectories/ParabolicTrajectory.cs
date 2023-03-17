@@ -22,13 +22,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
                 this.innerCoefficient = parameters["innerCoefficient"];
         }
 
-        protected override Vector2 GetTrajectoryOffset(Single time)
+        protected override Vector2 GetTrajectoryOffset(Single time) => new Vector2
         {
-            return new Vector2
-            {
-                X = time * speed,
-                Y = outerCoefficient * (Single)System.Math.Sqrt(time * speed * innerCoefficient)
-            };
-        }
+            X = time * speed,
+            Y = outerCoefficient * (Single)System.Math.Sqrt(time * speed * innerCoefficient)
+        };
     }
 }

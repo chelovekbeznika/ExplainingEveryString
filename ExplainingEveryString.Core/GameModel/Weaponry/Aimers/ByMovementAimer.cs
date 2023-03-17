@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
             this.shooter = shooter;
         }
 
-        public Vector2 GetFireDirection()
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
             if (shooter.Position != shooter.OldPosition)
                 lastFireDirection = (shooter.Position - shooter.OldPosition).NormalizedCopy();

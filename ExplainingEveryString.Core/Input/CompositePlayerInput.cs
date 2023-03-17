@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Core.Input
 
         public Single Focus => current.Focus;
 
-        public Vector2 GetFireDirection() => current.GetFireDirection();
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition) => current.GetFireDirection(currentMuzzlePosition);
 
         public Vector2 GetMoveDirection() => current.GetMoveDirection();
 

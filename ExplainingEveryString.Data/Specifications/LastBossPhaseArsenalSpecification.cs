@@ -8,6 +8,6 @@ namespace ExplainingEveryString.Data.Specifications
     {
         public WeaponSpecification Weapon { get; set; }
         [DefaultValue(0)]
-        public Int32 Angle { get; set; }
+        public Single Angle { get; set; }
     }
 }

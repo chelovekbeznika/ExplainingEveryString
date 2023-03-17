@@ -6,17 +6,15 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
     internal class PlayerAimer : IAimer
     {
         private Func<Vector2> playerLocator;
-        private Func<Vector2> findOutWhereAmI;
 
-        internal PlayerAimer(Func<Vector2> playerLocator, Func<Vector2> findOutWhereAmI)
+        internal PlayerAimer(Func<Vector2> playerLocator)
         {
             this.playerLocator = playerLocator;
-            this.findOutWhereAmI = findOutWhereAmI;
         }
 
-        public Vector2 GetFireDirection()
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
-            Vector2 rawDirection = playerLocator() - findOutWhereAmI();
+            Vector2 rawDirection = playerLocator() - currentMuzzlePosition;
             if (rawDirection.Length() > 0)
                 return rawDirection / rawDirection.Length();
             else

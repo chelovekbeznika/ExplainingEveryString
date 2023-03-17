@@ -18,13 +18,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
             fallAcceleration = parameters["fallAcceleration"];
         }
 
-        protected override Vector2 GetTrajectoryOffset(Single time)
+        protected override Vector2 GetTrajectoryOffset(Single time) => new Vector2
         {
-            return new Vector2
-            {
-                X = (startSpeed.X - fallAcceleration * time) * time,
-                Y = startSpeed.Y * time
-            };
-        }
+            X = (startSpeed.X - fallAcceleration * time) * time,
+            Y = startSpeed.Y * time
+        };
     }
 }

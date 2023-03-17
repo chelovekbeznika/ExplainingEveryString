@@ -22,15 +22,15 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             base.Construct(blueprint, startInfo, level, factory);
             weapons = blueprint.Weapons.Select(ws =>
             {
-                var aimer = AimersFactory.Get(ws.Weapon.AimType, ws.Angle, this, () => level.Player.Position, null);
+                var angle = AngleConverter.ToRadians(ws.Angle);
+                var aimer = AimersFactory.Get(ws.Weapon.AimType, angle, this, () => level.Player.Position, null);
                 var weapon = new Weapon(ws.Weapon, aimer, () => Position, () => level.Player, level);
                 weapon.Shoot += level.EnemyShoot;
                 return weapon;
             }).ToArray();
             betweenChanges = blueprint.WeaponsChangeInterval;
-            tillNextChange = RandomUtility.NextGauss(betweenChanges);
+            tillNextChange = 0;
             simultaneuosly = blueprint.SimultaneouslyInUse;
-            ChangeWeapons();
         }
 
         public override void Update(Single elapsedSeconds)

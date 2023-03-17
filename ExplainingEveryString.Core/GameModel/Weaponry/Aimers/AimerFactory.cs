@@ -15,7 +15,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
                 case AimType.FixedFireDirection:
                     return new FixedAimer(angle);
                 case AimType.AimAtPlayer:
-                    return new PlayerAimer(playerLocator, () => shooter.Position);
+                    return new PlayerAimer(playerLocator);
                 case AimType.ByMovement:
                     return new ByMovementAimer(shooter);
                 case AimType.SpinningAim:

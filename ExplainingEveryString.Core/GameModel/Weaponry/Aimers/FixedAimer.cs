@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
             fireDirection = AngleConverter.ToVector(angle);
         }
 
-        public Vector2 GetFireDirection()
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
             return fireDirection;
         }
@@ -24,6 +24,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
         }
 
         public void Update(Single elapsedSeconds)
+        {
+        }
+
+        public void UpdatePosition(Vector2 position)
         {
         }
     }

@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
     {
         internal Boolean FireSwitch { get; set; }
 
-        internal ThirdBossAimer(Func<Vector2> playerLocator, Func<Vector2> findOutWhereAmI) : base(playerLocator, findOutWhereAmI) { }
+        internal ThirdBossAimer(Func<Vector2> playerLocator) : base(playerLocator) { }
 
         public override Boolean IsFiring()
         {

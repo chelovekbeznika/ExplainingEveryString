@@ -39,7 +39,7 @@ namespace ExplainingEveryString.Core.Input
 
         public override Boolean IsFiring() => GetState().ThumbSticks.Right.Length() > 0;
 
-        public override Vector2 GetFireDirection()
+        public override Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
             if (IsFiring())
             {

@@ -21,7 +21,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             this.weaponMovement = new FifthBossWeaponMovement(specification.WeaponMovementCycle);
             Vector2 weaponLocator() => boss.Position + weaponMovement.CurrentOffset;
             var aimer = specification.Angle is null 
-                ? new PlayerAimer(() => level.Player.Position, weaponLocator)
+                ? new PlayerAimer(() => level.Player.Position)
                 : new FixedAimer(AngleConverter.ToRadians(specification.Angle.Value)) as IAimer;
             this.weapon = new Weapon(specification.Weapon, aimer, weaponLocator, () => level.Player, level);
             weapon.Shoot += level.EnemyShoot;

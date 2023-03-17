@@ -14,6 +14,8 @@ namespace ExplainingEveryString.Data.Specifications
         public Single BlastWaveRadius { get; set; }
         [DefaultValue(0F)]
         public Single PrematureBlastInterval { get; set; }
+        [DefaultValue(false)]
+        public Boolean TargetCentric { get; set; }
         public Single TimeToLive { get; set; }
         /// <summary>
         /// Degrees per second

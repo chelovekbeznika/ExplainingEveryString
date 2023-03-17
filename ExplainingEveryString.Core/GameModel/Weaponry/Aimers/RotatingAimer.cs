@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Aimers
             this.angleSpeed = angleSpeed;
         }
 
-        public Vector2 GetFireDirection() => AngleConverter.ToVector(angle);
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition) => AngleConverter.ToVector(angle);
 
         public bool IsFiring() => true;
 

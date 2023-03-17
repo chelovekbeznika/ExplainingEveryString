@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             foreach (var weaponOffset in blueprint.SmallWeaponOffsets)
             {
                 Vector2 weaponPositionLocator() => Position + weaponOffset;
-                var aimer = new ThirdBossAimer(() => level.Player.Position, weaponPositionLocator);
+                var aimer = new ThirdBossAimer(() => level.Player.Position);
                 aimers.Add(aimer);
                 var weapon = new Weapon(blueprint.SmallWeapon, aimer, weaponPositionLocator, () => level.Player, level);
                 weapon.Shoot += level.EnemyShoot;

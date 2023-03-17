@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.Displaying
         }
 
         public Vector2 Position => player.Position;
-        public Vector2 FireDirection => player.Input.GetFireDirection();
+        public Vector2 FireDirection => player.Input.GetFireDirection(Position);
         public Single Focused => player.Input.Focus;
     }
 }

@@ -14,7 +14,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             this.bossPart = bossPart;
         }
 
-        public Vector2 GetFireDirection() => AngleConverter.ToVector(bossPart.BossBrain.Angle);
+        public Vector2 GetFireDirection(Vector2 currentMuzzlePosition) => AngleConverter.ToVector(bossPart.BossBrain.Angle);
 
         public bool IsFiring() => true;
 

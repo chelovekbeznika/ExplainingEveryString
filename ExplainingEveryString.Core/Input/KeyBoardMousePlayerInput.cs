@@ -51,7 +51,7 @@ namespace ExplainingEveryString.Core.Input
             return Mouse.GetState().LeftButton == ButtonState.Pressed;
         }
 
-        public override Vector2 GetFireDirection()
+        public override Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
             var mousePoint = Mouse.GetState().Position;
             var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;

@@ -41,8 +41,8 @@ namespace ExplainingEveryString.Core.Displaying
             var angle = -spriteState.Angle;
             var spriteCenter = new Vector2
             {
-                X = spriteData.Width / 2,
-                Y = spriteData.Height / 2
+                X = spriteData.Width / 2.0f,
+                Y = spriteData.Height / 2.0f
             };
 
             spriteBatch.Draw(spriteData.Sprite, drawPosition, drawPart, Color.White, angle, 

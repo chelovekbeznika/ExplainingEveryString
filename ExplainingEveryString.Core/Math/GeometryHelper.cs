@@ -44,9 +44,9 @@ namespace ExplainingEveryString.Core.Math
             };
         }
 
-        internal static Vector2 RotateVector(Vector2 rawPosition, Single angle)
+        internal static Vector2 RotateVector(Vector2 rawPosition, Single radians)
         {
-            return RotateVector(rawPosition, (Single)System.Math.Sin(angle), (Single)System.Math.Cos(angle));
+            return RotateVector(rawPosition, (Single)System.Math.Sin(radians), (Single)System.Math.Cos(radians));
         }
     }
 }

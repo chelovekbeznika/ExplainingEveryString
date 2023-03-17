@@ -18,9 +18,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
             this.acceleration = parameters[nameof(acceleration)];
         }
 
-        protected override Vector2 GetTrajectoryOffset(Single time)
-        {
-            return new Vector2(speed * time + acceleration * time * time / 2, 0);
-        }
+        protected override Vector2 GetTrajectoryOffset(Single time) => 
+            new Vector2(speed * time + acceleration * time * time / 2, 0);
     }
 }

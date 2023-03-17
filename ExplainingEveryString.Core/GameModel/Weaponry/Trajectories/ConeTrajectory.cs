@@ -24,9 +24,10 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry.Trajectories
             this.phaseShift = parameters.ContainsKey(nameof(phaseShift)) ? parameters[nameof(phaseShift)] : 0;
         }
 
-        protected override Vector2 GetTrajectoryOffset(Single time)
-        {
-            return new Vector2(time * speed, (Single)System.Math.Sin(phaseShift + time * angularVelocity) * time * coneExtension);
-        }
+        protected override Vector2 GetTrajectoryOffset(Single time) => new Vector2 
+        { 
+            X = time * speed, 
+            Y = (Single)System.Math.Sin(phaseShift + time * angularVelocity) * time * coneExtension 
+        };
     }
 }
