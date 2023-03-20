@@ -369,6 +369,60 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/LaserRocketBlast.wav
 
+#begin Sounds/Bosses/Last/EyeShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/EyeShot.wav
+
+#begin Sounds/Bosses/Last/EyeSpiral.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/EyeSpiral.wav
+
+#begin Sounds/Bosses/Last/HeadSpiral.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/HeadSpiral.wav
+
+#begin Sounds/Bosses/Last/Jaws.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/Jaws.wav
+
+#begin Sounds/Bosses/Last/SpiralTrap.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/SpiralTrap.wav
+
+#begin Sounds/Bosses/Last/StripesShot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/StripesShot.wav
+
+#begin Sounds/Bosses/Last/TailSwap.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/TailSwap.wav
+
+#begin Sounds/Bosses/Last/WeaponsChange.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/WeaponsChange.wav
+
+#begin Sounds/Bosses/Last/WeaponsChange.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/WeaponsChange.wav
+
 #begin Sounds/Bosses/LittleTurtleDeath.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -3554,6 +3608,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/LastBoss/TripleCannon.png
+
+#begin Sprites/Enemies/LastBoss/WeaponsChange.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/LastBoss/WeaponsChange.png
 
 #begin Sprites/Enemies/LastBoss/WhiteNoise.png
 /importer:TextureImporter

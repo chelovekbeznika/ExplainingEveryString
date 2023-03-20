@@ -5,7 +5,7 @@
     "CollisionDamage": 100.0,
     "Width": 112.0,
     "Height": 80.0,
-    "Hitpoints": 1500.0,
+    "Hitpoints": 500.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/LastBoss/Phase_9"
     },
@@ -30,11 +30,21 @@
       "Name": "Sprites/Enemies/LastBoss/Phase_9_in",
       "AnimationCycle": 0.25
     },
+    "WeaponsChangeEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/Last/WeaponsChange",
+        "Volume": 1.0
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/LastBoss/WeaponsChange",
+        "AnimationCycle": 0.33333
+      }
+    },
     "Behavior": {
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 250.0
+          "speed": 200.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -139,8 +149,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.7
+            "Name": "Sounds/Bosses/Last/TailSwap",
+            "Volume": 1.0
           }
         },
         "AimType": "FixedFireDirection"
@@ -240,8 +250,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.7
+            "Name": "Sounds/Bosses/Last/TailSwap",
+            "Volume": 1.0
           }
         },
         "AimType": "FixedFireDirection"
@@ -481,8 +491,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.3
+            "Name": "Sounds/Bosses/Last/Jaws",
+            "Volume": 1.0
           }
         },
         "AimType": "FixedFireDirection"
@@ -507,7 +517,8 @@
               "Damage": 25.0,
               "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/LastBoss/EyeShot"
+                "Name": "Sprites/Enemies/LastBoss/EyeShot",
+                "AnimationCycle": 0.25
               }
             }
           },
@@ -523,15 +534,16 @@
               "Damage": 25.0,
               "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/LastBoss/EyeShot"
+                "Name": "Sprites/Enemies/LastBoss/EyeShot",
+                "AnimationCycle": 0.25
               }
             }
           }
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.4
+            "Name": "Sounds/Bosses/Last/EyeShot",
+            "Volume": 1.0
           }
         },
         "AimType": "AimAtPlayer"
@@ -699,8 +711,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.8
+            "Name": "Sounds/Bosses/Last/HeadSpiral",
+            "Volume": 1.0
           }
         },
         "AimType": "AimAtPlayer"
@@ -751,8 +763,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.8
+            "Name": "Sounds/Bosses/Last/EyeSpiral",
+            "Volume": 1.0
           }
         },
         "AimType": "FixedFireDirection"
@@ -847,8 +859,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.8
+            "Name": "Sounds/Bosses/Last/StripesShot",
+            "Volume": 1.0
           }
         },
         "AimType": "FixedFireDirection"
@@ -875,15 +887,16 @@
               "Damage": 25.0,
               "TimeToLive": 5.0,
               "Sprite": {
-                "Name": "Sprites/Enemies/LastBoss/EyeShot"
+                "Name": "Sprites/Enemies/LastBoss/EyeShot",
+                "AnimationCycle": 0.5
               }
             }
           }
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/LongShot",
-            "Volume": 0.8
+            "Name": "Sounds/Bosses/Last/SpiralTrap",
+            "Volume": 1.0
           }
         },
         "AimType": "FixedFireDirection"

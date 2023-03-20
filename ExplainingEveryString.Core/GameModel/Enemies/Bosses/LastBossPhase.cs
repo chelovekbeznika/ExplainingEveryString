@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Blueprints;
@@ -16,6 +17,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         private GaussRandomVariable betweenChanges;
         private Int32 simultaneuosly;
         private List<Int32> activeWeapons;
+        private EpicEvent weaponsChanged;
 
         protected override void Construct(LastBossBlueprint blueprint, ActorStartInfo startInfo, Level level, ActorsFactory factory)
         {
@@ -28,6 +30,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 weapon.Shoot += level.EnemyShoot;
                 return weapon;
             }).ToArray();
+            weaponsChanged = new EpicEvent(level, blueprint.WeaponsChangeEffect, false, this, false, true);
             betweenChanges = blueprint.WeaponsChangeInterval;
             tillNextChange = 0;
             simultaneuosly = blueprint.SimultaneouslyInUse;
@@ -52,6 +55,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             }
         }
 
-        private void ChangeWeapons() => activeWeapons = RandomUtility.IntsFromRange(simultaneuosly, weapons.Length);
+        private void ChangeWeapons()
+        {
+            activeWeapons = RandomUtility.IntsFromRange(simultaneuosly, weapons.Length);
+            weaponsChanged?.TryHandle();
+        }
     }
 }

@@ -10,7 +10,9 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
     {
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(LastBossBlueprint blueprint)
         {
-            return blueprint.Weapons.SelectMany(w => GetSpecEffectsFromWeapon(w.Weapon)).Concat(base.GetSpecEffects(blueprint));
+            return blueprint.Weapons.SelectMany(w => GetSpecEffectsFromWeapon(w.Weapon))
+                .Append(blueprint.WeaponsChangeEffect)
+                .Concat(base.GetSpecEffects(blueprint));
         }
 
         public IEnumerable<SpriteSpecification> GetSprites(LastBossBlueprint blueprint)

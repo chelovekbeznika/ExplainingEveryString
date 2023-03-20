@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core.Displaying
                 if (specEffect != null)
                     Event?.Invoke(eventSource, new EpicEventArgs
                     {
-                        Position = () => follow ? eventSource.Position : startPosition,
+                        PositionLocator = () => follow ? eventSource.Position : startPosition,
                         Angle = inheritAngle  && sprite != null ? sprite.Angle : 0,
                         SpecEffectSpecification = specEffect
                     });

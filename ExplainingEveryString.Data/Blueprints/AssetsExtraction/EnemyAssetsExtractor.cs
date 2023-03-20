@@ -9,7 +9,7 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
         public IEnumerable<SpriteSpecification> GetSprites(EnemyBlueprint blueprint)
         {
             IEnumerable<SpriteSpecification> sprites = 
-                base.GetSprites(blueprint).Concat( new SpriteSpecification[] { blueprint.AppearancePhaseSprite});
+                base.GetSprites(blueprint).Append(blueprint.AppearancePhaseSprite);
             if (blueprint.Behavior.PostMortemSurprise?.Weapon != null)
                 sprites = sprites.Concat(GetSpritesFromWeapon(blueprint.Behavior.PostMortemSurprise.Weapon));
             if (blueprint.Behavior.Weapon != null)

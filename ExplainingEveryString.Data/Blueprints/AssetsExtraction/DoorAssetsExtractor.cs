@@ -8,13 +8,13 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
     {
         public IEnumerable<SpriteSpecification> GetSprites(DoorBlueprint blueprint)
         {
-            return base.GetSprites(blueprint).Concat(new SpriteSpecification[] { blueprint.OpeningSprite });
+            return base.GetSprites(blueprint).Append(blueprint.OpeningSprite);
         }
 
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(DoorBlueprint blueprint)
         {
             return base.GetSpecEffects(blueprint)
-                .Concat(new SpecEffectSpecification[] { blueprint.OpeningStartedEffect, blueprint.CompletelyOpenedEffect });
+                .Concat(new[] { blueprint.OpeningStartedEffect, blueprint.CompletelyOpenedEffect });
         }
     }
 }

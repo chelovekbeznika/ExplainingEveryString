@@ -8,12 +8,12 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
     {
         public IEnumerable<SpriteSpecification> GetSprites(ShadowEnemyBlueprint blueprint)
         {
-            return base.GetSprites(blueprint).Concat(new SpriteSpecification[] { blueprint.ShadowSprite });
+            return base.GetSprites(blueprint).Append(blueprint.ShadowSprite);
         }
 
         public IEnumerable<SpecEffectSpecification> GetSpecEffects(ShadowEnemyBlueprint blueprint)
         {
-            return base.GetSpecEffects(blueprint).Concat(new SpecEffectSpecification[] { blueprint.PhaseChangeEffect });
+            return base.GetSpecEffects(blueprint).Append(blueprint.PhaseChangeEffect);
         }
     }
 }

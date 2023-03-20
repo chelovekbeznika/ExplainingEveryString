@@ -77,7 +77,7 @@ namespace ExplainingEveryString.Core.Displaying
             SoundSpecification sound = epicEvent.SpecEffectSpecification.Sound;
             if (sound != null)
             {
-                Single distance = (level.Player.Position - epicEvent.Position()).Length();
+                Single distance = (level.Player.Position - epicEvent.PositionLocator()).Length();
                 Single currentFadingOutDistance = fadingOutDistance * sound.FadingCoeff;
                 if (distance <= currentFadingOutDistance)
                 {
@@ -103,7 +103,7 @@ namespace ExplainingEveryString.Core.Displaying
             SpriteSpecification sprite = epicEvent.SpecEffectSpecification.Sprite;
             if (sprite != null)
             {
-                SpecEffect specEffect = new SpecEffect(epicEvent.Position, epicEvent.Angle, sprite);
+                SpecEffect specEffect = new SpecEffect(epicEvent.PositionLocator, epicEvent.Angle, sprite);
                 activeSpecEffects.Add(specEffect);
             }
         }

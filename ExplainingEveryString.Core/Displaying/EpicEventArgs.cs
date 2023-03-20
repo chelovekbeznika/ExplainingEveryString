@@ -6,7 +6,7 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class EpicEventArgs : EventArgs
     {
-        internal Func<Vector2> Position { get; set; }
+        internal Func<Vector2> PositionLocator { get; set; }
         internal SpecEffectSpecification SpecEffectSpecification { get; set; }
         internal Single Angle { get; set; }
     }

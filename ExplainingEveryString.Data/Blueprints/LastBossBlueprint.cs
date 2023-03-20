@@ -11,6 +11,7 @@ namespace ExplainingEveryString.Data.Blueprints
 
         public Int32 SimultaneouslyInUse { get; set; }
         public GaussRandomVariable WeaponsChangeInterval { get; set; }
+        public SpecEffectSpecification WeaponsChangeEffect { get; set; }
         public LastBossPhaseWeaponSpecification[] Weapons { get; set; }
     }
 }
