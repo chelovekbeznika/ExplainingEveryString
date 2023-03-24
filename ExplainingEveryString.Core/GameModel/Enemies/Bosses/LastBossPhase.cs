@@ -39,6 +39,10 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         public override void Update(Single elapsedSeconds)
         {
             base.Update(elapsedSeconds);
+
+            // Simple way to fix cat alignment during phase #4
+            SpriteState.Angle = 0;
+
             if (!IsInAppearancePhase)
             {
                 tillNextChange -= elapsedSeconds;

@@ -411,11 +411,17 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/Last/TailSwap.wav
 
-#begin Sounds/Bosses/Last/WeaponsChange.wav
+#begin Sounds/Bosses/Last/Thunder.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Sounds/Bosses/Last/WeaponsChange.wav
+/build:Sounds/Bosses/Last/Thunder.wav
+
+#begin Sounds/Bosses/Last/Thunder.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/Thunder.wav
 
 #begin Sounds/Bosses/Last/WeaponsChange.wav
 /importer:WavImporter
