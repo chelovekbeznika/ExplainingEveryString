@@ -67,9 +67,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
         private void SpawnEnemy(Single firstUpdateTime)
         {
             var spawnSpecification = spawnPositionSelector.GetNextSpawnSpecification();
+            var blueprintTypes = Specification.BlueprintType.Split(',');
+            var blueprintType = blueprintTypes[RandomUtility.NextInt(blueprintTypes.Length)];
             var asi = new ActorStartInfo
             {
-                BlueprintType = Specification.BlueprintType,
+                BlueprintType = blueprintType,
                 Position = Specification.SpawnPositionRelativeToCurrentPosition
                     ? spawnSpecification.SpawnPoint + (spawner as ICollidable).Position
                     : spawnSpecification.SpawnPoint + spawnerStartPosition,
