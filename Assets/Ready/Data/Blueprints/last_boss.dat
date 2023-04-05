@@ -4569,7 +4569,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 250.0
+          "speed": 200.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -5410,17 +5410,16 @@
         "Reloader": {
           "FireRate": 30,
           "Ammo": 10,
-          "ReloadTime": 1.0
+          "ReloadTime": 1.5
         },
         "Barrels": [
           {
             "Length": 13.0,
-            "Accuracy": 15.0,
             "Bullet": {
               "TrajectoryType": "Cone",
               "TrajectoryParameters": {
-                "speed": 400.0,
-                "coneExtension": 40.0,
+                "speed": 300.0,
+                "coneExtension": 30.0,
                 "angularVelocity": 150.79644
               },
               "Damage": 20.0,
@@ -5480,13 +5479,13 @@
       "Weapon": {
         "Reloader": {
           "FireRate": 3.0,
-          "Ammo": 20,
-          "ReloadTime": 1.0
+          "Ammo": 7,
+          "ReloadTime": 3.0
         },
         "Barrels": [
           {
             "Length": 12.0,
-            "Accuracy": 30.0,
+            "Accuracy": 15.0,
             "Bullet": {
               "TrajectoryParameters": {
                 "speed": 540.0
@@ -5557,7 +5556,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 300.0
+          "speed": 250.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -6382,7 +6381,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 350.0
+          "speed": 250.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -6397,7 +6396,7 @@
               "TrajectoryParameters": {
                 "speed": 400,
               },
-              "HomingSpeed": 20.0,
+              "HomingSpeed": 25.0,
               "Damage": 15.0,
               "TimeToLive": 5.0,
               "ConsiderAngle": true,
@@ -7175,4 +7174,679 @@
     }
     ]
   },
+  "LastBoss_Phase1": {
+    "$type": "ExplainingEveryString.Data.Blueprints.LastBossBlueprint, ExplainingEveryString.Data",
+    "Type": "LastBossPhase",
+    "CollisionDamage": 100.0,
+    "Width": 24.0,
+    "Height": 24.0,
+    "Hitpoints": 300.0,
+    "DefaultSprite": {
+      "Name": "Sprites/Enemies/LastBoss/Phase_1",
+      "AnimationCycle": 0.25
+    },
+    "DeathEffect": {
+      "Sprite": {
+        "Name": "Sprites/Enemies/LastBoss/Phase_1_out",
+        "AnimationCycle": 2.0
+      },
+      "Sound": {
+        "Name": "Sounds/Bosses/5/God",
+        "Volume": 1
+      }
+    },
+    "BeforeAppearanceEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/5/God",
+        "Volume": 0.8
+      }
+    },
+    "DefaultAppearancePhaseDuration": 2.0,
+    "AppearancePhaseSprite": {
+      "Name": "Sprites/Enemies/LastBoss/Phase_1_in",
+      "AnimationCycle": 0.25
+    },
+    "WeaponsChangeEffect": {
+      "Sound": {
+        "Name": "Sounds/Bosses/Last/WeaponsChange",
+        "Volume": 1.0
+      },
+      "Sprite": {
+        "Name": "Sprites/Enemies/LastBoss/WeaponsChangeLastPhase",
+        "AnimationCycle": 0.33333
+      }
+    },
+    "Behavior": {
+      "Mover": {
+        "Type": "Linear",
+        "Parameters": {
+          "speed": 150.0
+        }
+      },
+      "MoveTargetSelectType": "RandomFromListTargets"
+    },
+    "SimultaneouslyInUse": 3,
+    "WeaponsChangeInterval": {
+      "ExpectedValue": 5,
+      "Sigma": 0.75
+    },
+    "Weapons": [
+    {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 30,
+          "Ammo": 10,
+          "ReloadTime": 1.5
+        },
+        "Barrels": [
+          {
+            "Bullet": {
+              "TrajectoryType": "Cone",
+              "TrajectoryParameters": {
+                "speed": 300.0,
+                "coneExtension": 30.0,
+                "angularVelocity": 150.79644
+              },
+              "Damage": 20.0,
+              "ConsiderAngle": true,
+              "TimeToLive": 10.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/WhiteNoise",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.3
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 3.0,
+          "Ammo": 7,
+          "ReloadTime": 3.0
+        },
+        "Barrels": [
+          {
+            "Accuracy": 30.0,
+            "Bullet": {
+              "TrajectoryParameters": {
+                "speed": 540.0
+              },
+              "Damage": 20.0,
+              "ConsiderAngle": true,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/WhiteNoise",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/StandardEnemy/Shot",
+            "Volume": 0.6
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.25
+        },
+        "Barrels": [
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": -64.0,
+                "0_y": 96.0,
+                "1_time": 1.0,
+                "1_x": -64.0,
+                "1_y": 96.0,
+                "2_time": 1.25,
+                "2_x": -64.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": -64.0,
+                "3_y": -8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethUpper"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": -32.0,
+                "0_y": 96.0,
+                "1_time": 1.0,
+                "1_x": -32.0,
+                "1_y": 96.0,
+                "2_time": 1.25,
+                "2_x": -32.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": -32.0,
+                "3_y": -8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethUpper"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": 0.0,
+                "0_y": 96.0,
+                "1_time": 1.0,
+                "1_x": 0.0,
+                "1_y": 96.0,
+                "2_time": 1.25,
+                "2_x": 0.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": 0.0,
+                "3_y": -8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethUpper"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": 32.0,
+                "0_y": 96.0,
+                "1_time": 1.0,
+                "1_x": 32.0,
+                "1_y": 96.0,
+                "2_time": 1.25,
+                "2_x": 32.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": 32.0,
+                "3_y": -8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethUpper"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": 64.0,
+                "0_y": 96.0,
+                "1_time": 1.0,
+                "1_x": 64.0,
+                "1_y": 96.0,
+                "2_time": 1.25,
+                "2_x": 64.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": 64.0,
+                "3_y": -8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethUpper"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": -48.0,
+                "0_y": -96.0,
+                "1_time": 1.0,
+                "1_x": -48.0,
+                "1_y": -96.0,
+                "2_time": 1.25,
+                "2_x": -48.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": -48.0,
+                "3_y": 8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethLower"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": -16.0,
+                "0_y": -96.0,
+                "1_time": 1.0,
+                "1_x": -16.0,
+                "1_y": -96.0,
+                "2_time": 1.25,
+                "2_x": -16.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": -16.0,
+                "3_y": 8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethLower"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": 16.0,
+                "0_y": -96.0,
+                "1_time": 1.0,
+                "1_x": 16.0,
+                "1_y": -96.0,
+                "2_time": 1.25,
+                "2_x": 16.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": 16.0,
+                "3_y": 8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethLower"
+              }
+            }
+          },
+          {
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "KeyPoints",
+              "TrajectoryParameters": {
+                "0_time": 0.0,
+                "0_x": 48.0,
+                "0_y": -96.0,
+                "1_time": 1.0,
+                "1_x": 48.0,
+                "1_y": -96.0,
+                "2_time": 1.25,
+                "2_x": 48.0,
+                "2_y": 0.0,
+                "3_time": 2.0,
+                "3_x": 48.0,
+                "3_y": 8.0
+              },
+              "Damage": 10.0,
+              "TimeToLive": 2.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/TeethLower"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/Last/Jaws",
+            "Volume": 1.0
+          }
+        },
+        "AimType": "FixedFireDirection"
+      },
+      "Angle": 0.0
+    },
+    {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.5
+        },
+        "Barrels": [
+          {
+            "BaseOffset": "-7.5, 7.5",
+            "Bullet": {
+              "TrajectoryType": "Delay",
+              "TrajectoryParameters": {
+                "speed": 800.0,
+                "delay": 0.5,
+                "type_Linear": 1.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/EyeShot",
+                "AnimationCycle": 0.25
+              }
+            }
+          },
+          {
+            "BaseOffset": "8.5, 7.5",
+            "Bullet": {
+              "TrajectoryType": "Delay",
+              "TrajectoryParameters": {
+                "speed": 800.0,
+                "delay": 0.5,
+                "type_Linear": 1.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/EyeShot",
+                "AnimationCycle": 0.25
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/Last/EyeShot",
+            "Volume": 1.0
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.66667
+        },
+        "Barrels": [
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 0.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 45.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 90.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 0.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 135.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 180.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 225.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 270.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "0.0, -6.0",
+            "Bullet": {
+              "TrajectoryType": "MovingSpiral",
+              "TrajectoryParameters": {
+                "linearSpeed": 350.0,
+                "expansionSpeed": 50.0,
+                "angularSpeed": 360.0,
+                "startingAngle": 315.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/Last/HeadSpiral",
+            "Volume": 1.0
+          }
+        },
+        "AimType": "AimAtPlayer"
+      }
+    },
+    {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.3333
+        },
+        "Barrels": [
+          {
+            "BaseOffset": "-7.5, 7.5",
+            "AngleCorrection": 0.0,
+            "BulletsAtOnce": 8,
+            "AngleStep": 45.0,
+            "Bullet": {
+              "TrajectoryType": "Spiral",
+              "TrajectoryParameters": {
+                "speed": 480.0,
+                "angularVelocity": 22.5
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          },
+          {
+            "BaseOffset": "8.5, 7.5",
+            "AngleCorrection": 0.0,
+            "BulletsAtOnce": 8,
+            "AngleStep": 45.0,
+            "Bullet": {
+              "TrajectoryType": "Spiral",
+              "TrajectoryParameters": {
+                "speed": 320.0,
+                "angularVelocity": -45.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/EnemyBullet"
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/Last/EyeSpiral",
+            "Volume": 1.0
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    },
+    {
+      "Weapon": {
+        "Reloader": {
+          "FireRate": 0.25
+        },
+        "Barrels": [
+          {
+            "BulletsAtOnce": 12,
+            "AngleStep": 30.0,
+            "Bullet": {
+              "TargetCentric": true,
+              "TrajectoryType": "ClosingSpiral",
+              "TrajectoryParameters": {
+                "startRadius": 500.0,
+                "lockingSpeed": 100.0,
+                "angularSpeed": 45.0
+              },
+              "Damage": 25.0,
+              "TimeToLive": 5.0,
+              "Sprite": {
+                "Name": "Sprites/Enemies/LastBoss/EyeShot",
+                "AnimationCycle": 0.5
+              }
+            }
+          }
+        ],
+        "ShootingEffect": {
+          "Sound": {
+            "Name": "Sounds/Bosses/Last/SpiralTrap",
+            "Volume": 1.0
+          }
+        },
+        "AimType": "FixedFireDirection"
+      }
+    }
+    ]
+  }
 }

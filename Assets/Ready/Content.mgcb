@@ -3627,6 +3627,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/LastBoss/WeaponsChange.png
 
+#begin Sprites/Enemies/LastBoss/WeaponsChangeLastPhase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/LastBoss/WeaponsChangeLastPhase.png
+
 #begin Sprites/Enemies/LastBoss/WhiteNoise.png
 /importer:TextureImporter
 /processor:TextureProcessor

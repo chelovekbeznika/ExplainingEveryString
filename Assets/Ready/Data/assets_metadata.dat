@@ -1615,6 +1615,10 @@
       "AnimationFrames": 5
     },
     {
+      "Name": "Sprites/Enemies/LastBoss/WeaponsChangeLastPhase",
+      "AnimationFrames": 5
+    },
+    {
       "Name": "Sprites/Enemies/LastBoss/EyeShot",
       "AnimationFrames": 4
     },
