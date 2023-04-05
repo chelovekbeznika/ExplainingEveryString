@@ -44,7 +44,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 200.0
+          "speed": 150.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -949,7 +949,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 233.33333
+          "speed": 200.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -1854,7 +1854,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 266.66667
+          "speed": 250.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
@@ -3664,7 +3664,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 400.0
+          "speed": 350.0
         }
       },
       "MoveTargetSelectType": "RandomFromListTargets",
