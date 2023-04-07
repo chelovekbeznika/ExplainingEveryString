@@ -429,6 +429,18 @@
 /processorParam:Quality=Best
 /build:Sounds/Bosses/Last/WeaponsChange.wav
 
+#begin Sounds/Bosses/Last/WhiteNoiseCannon.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/WhiteNoiseCannon.wav
+
+#begin Sounds/Bosses/Last/WhiteNoiseTank.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Bosses/Last/WhiteNoiseTank.wav
+
 #begin Sounds/Bosses/LittleTurtleDeath.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

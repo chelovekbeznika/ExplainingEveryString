@@ -5,7 +5,7 @@
     "CollisionDamage": 100.0,
     "Width": 112.0,
     "Height": 64.0,
-    "Hitpoints": 300.0,
+    "Hitpoints": 400.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/LastBoss/Phase_9"
     },
@@ -910,7 +910,7 @@
     "CollisionDamage": 100.0,
     "Width": 112.0,
     "Height": 64.0,
-    "Hitpoints": 300.0,
+    "Hitpoints": 400.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/LastBoss/Phase_8"
     },
@@ -1815,7 +1815,7 @@
     "CollisionDamage": 100.0,
     "Width": 112.0,
     "Height": 64.0,
-    "Hitpoints": 300.0,
+    "Hitpoints": 400.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/LastBoss/Phase_7"
     },
@@ -5437,8 +5437,8 @@
         },
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.3
+            "Name": "Sounds/Bosses/Last/WhiteNoiseTank",
+            "Volume": 1.0
           }
         },
         "AimType": "AimAtPlayer"
@@ -5502,8 +5502,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.6
+            "Name": "Sounds/Bosses/Last/WhiteNoiseCannon",
+            "Volume": 1.0
           }
         },
         "AimType": "AimAtPlayer"
@@ -7259,8 +7259,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.3
+            "Name": "Sounds/Bosses/Last/WhiteNoiseTank",
+            "Volume": 1.0
           }
         },
         "AimType": "AimAtPlayer"
@@ -7292,8 +7292,8 @@
         ],
         "ShootingEffect": {
           "Sound": {
-            "Name": "Sounds/StandardEnemy/Shot",
-            "Volume": 0.6
+            "Name": "Sounds/Bosses/Last/WhiteNoiseCannon",
+            "Volume": 1.0
           }
         },
         "AimType": "AimAtPlayer"

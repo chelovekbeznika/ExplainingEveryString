@@ -1612,11 +1612,11 @@
     },
     {
       "Name": "Sprites/Enemies/LastBoss/WeaponsChange",
-      "AnimationFrames": 5
+      "AnimationFrames": 8
     },
     {
       "Name": "Sprites/Enemies/LastBoss/WeaponsChangeLastPhase",
-      "AnimationFrames": 5
+      "AnimationFrames": 8
     },
     {
       "Name": "Sprites/Enemies/LastBoss/EyeShot",
