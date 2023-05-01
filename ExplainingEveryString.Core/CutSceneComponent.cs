@@ -1,29 +1,35 @@
-﻿using ExplainingEveryString.Core.GameState;
+﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core
 {
     internal abstract class CutSceneComponent : DrawableGameComponent
     {
-        private readonly Single maxLifeTime = 5f;
-        private readonly Single minLifeTime = 0.333333f;
-        private Single lifeTime = 0;
-        private Boolean somethingPressed = false;
+        private Texture2D cutSceneSkipTip;
+        private Texture2D frameSkipTip;
+        private readonly Single maxFrameTime = 5f;
+        private readonly Single minFrameTime = 0.333333f;
+        private readonly Int32 frames;
+        private Single frameTime = 0;
+        private Int32 frameNumber = 0;
+        private Boolean frameSkipped = false;
+        private Boolean sceneSkipped = false;
         private Color background;
         private SpriteBatch spriteBatch;
 
-        internal Boolean Closed => lifeTime >= maxLifeTime || somethingPressed;
+        internal Boolean Closed => frameNumber >= frames || sceneSkipped;
+        private Boolean FrameCanBeSkipped => frameTime >= minFrameTime;
+        private Boolean SceneCanBeSkipped => frameTime >= minFrameTime || frameNumber > 0;
 
-        public CutSceneComponent(Game game, Single minLifeTime, Single maxLifeTime) : base(game)
+        public CutSceneComponent(Game game, Single minFrameTime, Single maxFrameTime, Int32 frames) : base(game)
         {
-            this.minLifeTime = minLifeTime;
-            this.maxLifeTime = maxLifeTime;
+            this.minFrameTime = minFrameTime;
+            this.maxFrameTime = maxFrameTime;
+            this.frames = frames;
         }
 
         public override void Initialize()
@@ -38,18 +44,29 @@ namespace ExplainingEveryString.Core
         {
             base.LoadContent();
             this.spriteBatch = new SpriteBatch(GraphicsDevice);
+            this.cutSceneSkipTip = Game.Content.Load<Texture2D>(@"Sprites/Interface/CutSceneSkip");
+            this.frameSkipTip = Game.Content.Load<Texture2D>(@"Sprites/Interface/FrameSkip");
         }
 
         public override void Update(GameTime gameTime)
         {
-            lifeTime += (Single)gameTime.ElapsedGameTime.TotalSeconds;
-            if (lifeTime >= minLifeTime)
+            frameTime += (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            if (FrameCanBeSkipped)
             {
-                somethingPressed |= GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)
-                    || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)
-                    || Keyboard.GetState().IsKeyDown(Keys.Space)
+                frameSkipped |= GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)
+                    || Keyboard.GetState().IsKeyDown(Keys.Space);
+            }
+            if (SceneCanBeSkipped)
+            {
+                sceneSkipped |= GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)
                     || Keyboard.GetState().IsKeyDown(Keys.Enter)
                     || Keyboard.GetState().IsKeyDown(Keys.Escape);
+            }
+            if (frameTime >= maxFrameTime || frameSkipped)
+            {
+                frameNumber += 1;
+                frameTime = 0;
+                frameSkipped = false;
             }
             base.Update(gameTime);
         }
@@ -58,11 +75,15 @@ namespace ExplainingEveryString.Core
         {
             GraphicsDevice.Clear(background);
             spriteBatch.Begin();
-            DrawCutScene(spriteBatch);
+            DrawCutScene(spriteBatch, frameNumber);
+            if (SceneCanBeSkipped)
+                spriteBatch.Draw(cutSceneSkipTip, new Vector2(Constants.TargetWidth - 64, Constants.TargetHeight - 64), Color.White);
+            if (FrameCanBeSkipped)
+                spriteBatch.Draw(frameSkipTip, new Vector2(Constants.TargetWidth - 128, Constants.TargetHeight - 64), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
 
-        protected abstract void DrawCutScene(SpriteBatch spriteBatch);
+        protected abstract void DrawCutScene(SpriteBatch spriteBatch, Int32 frameNumber);
     }
 }

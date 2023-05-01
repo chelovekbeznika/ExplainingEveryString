@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core
         private readonly Vector2 screenCenter = new Vector2(Displaying.Constants.TargetWidth / 2, Displaying.Constants.TargetHeight / 2);
 
         internal LevelTitleComponent(EesGame eesGame, LevelSequence levelSequence) : 
-            base(eesGame, minLifeTime: 1f / 3, maxLifeTime: 5)
+            base(eesGame, minFrameTime: 1f / 3, maxFrameTime: 5, frames: 1)
         {
             this.UpdateOrder = ComponentsOrder.Title;
             this.DrawOrder = ComponentsOrder.Title;
@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core
             this.levelTitle = Game.Content.Load<Texture2D>(levelTitleName);
         }
 
-        protected override void DrawCutScene(SpriteBatch spriteBatch)
+        protected override void DrawCutScene(SpriteBatch spriteBatch, Int32 frameNumber)
         {
             var spriteCenter = new Vector2(levelTitle.Width / 2, levelTitle.Height / 2);
             spriteBatch.Draw(levelTitle, screenCenter, null, Color.White, 0, spriteCenter, 1, SpriteEffects.None, 0);

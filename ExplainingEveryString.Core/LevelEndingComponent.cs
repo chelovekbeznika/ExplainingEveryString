@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core
         private LevelSequence levelSequence;
 
         public LevelEndingComponent(Game game, LevelSequence levelSequence) : 
-            base(game, minLifeTime: 3, maxLifeTime: 10)
+            base(game, minFrameTime: 3, maxFrameTime: 10, frames: 1)
         {
             this.UpdateOrder = ComponentsOrder.Ending;
             this.DrawOrder = ComponentsOrder.Ending;
@@ -52,11 +52,11 @@ namespace ExplainingEveryString.Core
             while (inPhase >= phaseLayout[blinkPhase])
             {
                 inPhase -= phaseLayout[blinkPhase];
-                blinkPhase = (int)blinkPhase < 3 ? blinkPhase + 1 : (BlinkPhase)0;
+                blinkPhase = (int)blinkPhase < 3 ? blinkPhase + 1 : 0;
             }
         }
 
-        protected override void DrawCutScene(SpriteBatch spriteBatch)
+        protected override void DrawCutScene(SpriteBatch spriteBatch, Int32 frameNumber)
         {
             spriteBatch.Draw(map, Vector2.Zero, Color.White);
             foreach (var layer in layers)

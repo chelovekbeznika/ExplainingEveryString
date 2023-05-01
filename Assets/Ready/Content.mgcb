@@ -7215,6 +7215,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/Checkpoint.png
 
+#begin Sprites/Interface/CutSceneSkip.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/CutSceneSkip.png
+
 #begin Sprites/Interface/EmptyBossHealthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -7334,6 +7346,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/EnemyHealthBar.png
+
+#begin Sprites/Interface/FrameSkip.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/FrameSkip.png
 
 #begin Sprites/Interface/FullDash.png
 /importer:TextureImporter
