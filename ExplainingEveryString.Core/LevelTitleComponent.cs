@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core
         private readonly Vector2 screenCenter = new Vector2(Displaying.Constants.TargetWidth / 2, Displaying.Constants.TargetHeight / 2);
 
         internal LevelTitleComponent(EesGame eesGame, LevelSequence levelSequence) : 
-            base(eesGame, minFrameTime: 1f / 3, maxFrameTime: 5, frames: 1)
+            base(eesGame, minFrameTime: 1f / 3, maxFrameTime: 5, framesCount: 1)
         {
             this.UpdateOrder = ComponentsOrder.Title;
             this.DrawOrder = ComponentsOrder.Title;

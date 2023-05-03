@@ -7,7 +7,7 @@ namespace ExplainingEveryString.Core.GameState
 {
     internal class GameStateManager
     {
-        private enum GameState { BetweenLevels, LevelTitle, InGame, Paused, LevelEnding }
+        private enum GameState { BetweenLevels, CutsceneBefore, LevelTitle, InGame, Paused, LevelEnding, CutsceneAfter }
 
         private GameState currentState = GameState.BetweenLevels;
         private ComponentsManager componentsManager;
@@ -49,12 +49,25 @@ namespace ExplainingEveryString.Core.GameState
                     if (componentsManager.CurrentGameplay.Won)
                         SwitchToEndingState();
                     break;
+                case GameState.CutsceneBefore:
+                    if (componentsManager.CutsceneBeforeLevel.Closed)
+                        SwitchToTitleState();
+                    break;
                 case GameState.LevelTitle:
                     if (componentsManager.CurrentLevelTitle.Closed)
                         SwitchToInGameState();
                     break;
                 case GameState.LevelEnding:
                     if (componentsManager.CurrentLevelEnding.Closed)
+                    {
+                        if (componentsManager.CutsceneAfterLevel != null)
+                            SwitchToCutsceneAfterState();
+                        else
+                            SwitchToNextLevel();
+                    }
+                    break;
+                case GameState.CutsceneAfter:
+                    if (componentsManager.CutsceneAfterLevel.Closed)
                         SwitchToNextLevel();
                     break;
             }
@@ -106,7 +119,12 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.DeleteCurrentLevelRelatedComponents();
             componentsManager.InitNewLevelRelatedComponents(gameProgress, levelSequence);
             if (showTitle)
-                SwitchToTitleState();
+            {
+                if (componentsManager.CutsceneBeforeLevel != null)
+                    SwitchToCutsceneBeforeState();
+                else
+                    SwitchToTitleState();
+            }
             else
                 SwitchToInGameState();
         }
@@ -176,6 +194,8 @@ namespace ExplainingEveryString.Core.GameState
         {
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchMenuRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(false);
+            componentsManager.SwitchCutsceneBeforeLevel(false);
             componentsManager.SwitchLevelTitleRelatedComponents(true);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
             currentState = GameState.LevelTitle;
@@ -185,6 +205,8 @@ namespace ExplainingEveryString.Core.GameState
         {
             componentsManager.SwitchGameplayRelatedComponents(true);
             componentsManager.SwitchMenuRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(false);
+            componentsManager.SwitchCutsceneBeforeLevel(false);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
             currentState = GameState.InGame;
@@ -196,6 +218,8 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(false);
+            componentsManager.SwitchCutsceneBeforeLevel(false);
             componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
             currentState = GameState.Paused;
         }
@@ -205,6 +229,8 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchMenuRelatedComponents(false);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(false);
+            componentsManager.SwitchCutsceneBeforeLevel(false);
             componentsManager.SwitchLevelEndingRelatedComponents(true);
             currentState = GameState.LevelEnding;
         }
@@ -214,8 +240,33 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(false);
+            componentsManager.SwitchCutsceneBeforeLevel(false);
+            componentsManager.SwitchLevelEndingRelatedComponents(false);
             componentsManager.DeleteCurrentLevelRelatedComponents();
             currentState = GameState.BetweenLevels;
+        }
+
+        private void SwitchToCutsceneBeforeState()
+        {
+            componentsManager.SwitchMenuRelatedComponents(false);
+            componentsManager.SwitchGameplayRelatedComponents(false);
+            componentsManager.SwitchLevelTitleRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(false);
+            componentsManager.SwitchCutsceneBeforeLevel(true);
+            componentsManager.SwitchLevelEndingRelatedComponents(false);
+            currentState = GameState.CutsceneBefore;
+        }
+
+        private void SwitchToCutsceneAfterState()
+        {
+            componentsManager.SwitchMenuRelatedComponents(false);
+            componentsManager.SwitchGameplayRelatedComponents(false);
+            componentsManager.SwitchLevelTitleRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(true);
+            componentsManager.SwitchCutsceneBeforeLevel(false);
+            componentsManager.SwitchLevelEndingRelatedComponents(false);
+            currentState = GameState.CutsceneAfter;
         }
 
         private void ProgressToLevelStart()

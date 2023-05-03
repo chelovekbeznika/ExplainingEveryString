@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core
         private LevelSequence levelSequence;
 
         public LevelEndingComponent(Game game, LevelSequence levelSequence) : 
-            base(game, minFrameTime: 3, maxFrameTime: 10, frames: 1)
+            base(game, minFrameTime: 3, maxFrameTime: 10, framesCount: 1)
         {
             this.UpdateOrder = ComponentsOrder.Ending;
             this.DrawOrder = ComponentsOrder.Ending;

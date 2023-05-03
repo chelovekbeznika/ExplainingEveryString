@@ -28,10 +28,11 @@ namespace ExplainingEveryString.Core
         {
             GraphicsPreInit();
             var levelSequenceSpecification = LevelSequenceAccess.LoadLevelSequence();
+            var cutscenesMetadata = CutscenesMetadataAccess.LoadCutscenesMetadata();
             var musicTestSpecification = MusicTestSpecificationAccess.Load();
 
             var componentsManager = new ComponentsManager(this, levelSequenceSpecification,
-                musicTestSpecification);
+                cutscenesMetadata, musicTestSpecification);
 
             FontsStorage = new FontsStorage();
             GameState = new GameStateManager(levelSequenceSpecification, componentsManager);

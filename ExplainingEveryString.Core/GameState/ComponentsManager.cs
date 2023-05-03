@@ -6,26 +6,31 @@ using ExplainingEveryString.Core.Timers;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
 using System;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameState
 {
     internal class ComponentsManager
     {
         private readonly EesGame game;
+        private readonly Dictionary<String, CutsceneSpecification> cutscenesMetadata;
 
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
+        internal MultiFrameCutsceneComponent CutsceneBeforeLevel { get; private set; }
         internal LevelTitleComponent CurrentLevelTitle { get; private set; }
         internal LevelEndingComponent CurrentLevelEnding { get; private set; }
+        internal MultiFrameCutsceneComponent CutsceneAfterLevel { get; private set; }
         internal MusicComponent MenuMusic { get; private set; }
         internal MusicComponent GameMusic { get; private set; }
         internal NotificationsComponent Notifications { get; private set; }
 
-        internal ComponentsManager(EesGame game, LevelSequenceSpecification levelSequenceSpecification,
-            MusicTestButtonSpecification[] musicTestSpecification)
+        internal ComponentsManager(EesGame game, LevelSequenceSpecification levelSequenceSpecification, 
+            Dictionary<String, CutsceneSpecification> cutscenesMetadata, MusicTestButtonSpecification[] musicTestSpecification)
         {
             this.game = game;
+            this.cutscenesMetadata = cutscenesMetadata;
             Interface = new InterfaceComponent(game);
             Menu = new MenuComponent(game, levelSequenceSpecification, musicTestSpecification);
             MenuMusic = new MusicComponent(game);
@@ -43,6 +48,24 @@ namespace ExplainingEveryString.Core.GameState
             game.Components.Add(CurrentLevelTitle);
             game.Components.Add(CurrentGameplay);
             game.Components.Add(CurrentLevelEnding);
+            InitCutscenes(levelSequence);
+        }
+
+        private void InitCutscenes(LevelSequence levelSequence)
+        {
+            var (cutsceneBefore, cutsceneAfter) = levelSequence.GetCurrentLevelCutscens();
+            if (cutsceneBefore != null)
+            {
+                var metadata = cutscenesMetadata[cutsceneBefore];
+                CutsceneBeforeLevel = new MultiFrameCutsceneComponent(game, cutsceneBefore, metadata.FramesCount);
+                game.Components.Add(CutsceneBeforeLevel);
+            }
+            if (cutsceneAfter != null)
+            {
+                var metadata = cutscenesMetadata[cutsceneAfter];
+                CutsceneAfterLevel = new MultiFrameCutsceneComponent(game, cutsceneAfter, metadata.FramesCount);
+                game.Components.Add(CutsceneAfterLevel);
+            }
         }
 
         internal void DeleteCurrentLevelRelatedComponents()
@@ -62,6 +85,16 @@ namespace ExplainingEveryString.Core.GameState
             {
                 game.Components.Remove(CurrentLevelEnding);
                 CurrentLevelEnding = null;
+            }
+            if (CutsceneBeforeLevel != null)
+            {
+                game.Components.Remove(CutsceneBeforeLevel);
+                CutsceneBeforeLevel = null;
+            }
+            if (CutsceneAfterLevel != null)
+            {
+                game.Components.Remove(CutsceneAfterLevel);
+                CutsceneAfterLevel = null;
             }
         }
 
@@ -85,6 +118,24 @@ namespace ExplainingEveryString.Core.GameState
             CurrentGameplay.Visible = active;
             GameMusic.Enabled = active;
             TimersComponent.Instance.Enabled = active;
+        }
+
+        internal void SwitchCutsceneBeforeLevel(Boolean active)
+        {
+            if (CutsceneBeforeLevel != null)
+            {
+                CutsceneBeforeLevel.Enabled = active;
+                CutsceneBeforeLevel.Visible = active;
+            }
+        }
+
+        internal void SwitchCutsceneAfterLevel(Boolean active)
+        {
+            if (CutsceneAfterLevel != null)
+            {
+                CutsceneAfterLevel.Enabled = active;
+                CutsceneAfterLevel.Visible = active;
+            }
         }
 
         internal void SwitchMenuRelatedComponents(Boolean active)

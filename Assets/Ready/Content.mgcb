@@ -63,6 +63,9 @@
 #begin Data/config.dat
 /copy:Data/config.dat
 
+#begin Data/cutscenes_metadata.dat
+/copy:Data/cutscenes_metadata.dat
+
 #begin Data/level_sequence.dat
 /copy:Data/level_sequence.dat
 
@@ -1130,6 +1133,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Clouds/14.png
+
+#begin Sprites/Cutscenes/Test/0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Cutscenes/Test/0.png
+
+#begin Sprites/Cutscenes/Test/1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Cutscenes/Test/1.png
+
+#begin Sprites/Cutscenes/Test/2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Cutscenes/Test/2.png
 
 #begin Sprites/Doors/DefaultVertical.png
 /importer:TextureImporter

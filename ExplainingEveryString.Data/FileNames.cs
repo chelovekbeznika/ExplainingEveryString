@@ -11,6 +11,7 @@ namespace ExplainingEveryString.Data
         internal static String GameProgress => GetJsonDataPath("game_progress");
         internal static String MusicTestMenu => GetJsonDataPath("music_menu");
         internal static String Notifications => GetJsonDataPath("notifications");
+        internal static String CutscenesMetadata => GetJsonDataPath("cutscenes_metadata");
 
         private static String GetJsonDataPath(String fileName) => Path.Combine("Content", "Data", $"{fileName}.dat");
 

@@ -1,14 +1,17 @@
-﻿namespace ExplainingEveryString.Core.GameState
+﻿using System;
+
+namespace ExplainingEveryString.Core.GameState
 {
     internal static class ComponentsOrder
     {
-        internal const int Timers = 0;
-        internal const int Gameplay = 1;
-        internal const int Interface = 2;
-        internal const int Menu = 3;
-        internal const int Title = 4;
-        internal const int Ending = 5;
-        internal const int Music = 6;
-        internal const int Notifications = 7;
+        internal const Int32 Timers = 0;
+        internal const Int32 Gameplay = 1;
+        internal const Int32 Interface = 2;
+        internal const Int32 Menu = 3;
+        internal const Int32 Title = 4;
+        internal const Int32 Cutscene = 5;
+        internal const Int32 Ending = 6;
+        internal const Int32 Music = 7;
+        internal const Int32 Notifications = 8;
     }
 }

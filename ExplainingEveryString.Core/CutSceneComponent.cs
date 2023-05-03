@@ -13,7 +13,6 @@ namespace ExplainingEveryString.Core
         private Texture2D frameSkipTip;
         private readonly Single maxFrameTime = 5f;
         private readonly Single minFrameTime = 0.333333f;
-        private readonly Int32 frames;
         private Single frameTime = 0;
         private Int32 frameNumber = 0;
         private Boolean frameSkipped = false;
@@ -21,15 +20,16 @@ namespace ExplainingEveryString.Core
         private Color background;
         private SpriteBatch spriteBatch;
 
-        internal Boolean Closed => frameNumber >= frames || sceneSkipped;
+        protected Int32 FramesCount { get; private set; }
+        internal Boolean Closed => frameNumber >= FramesCount || sceneSkipped;
         private Boolean FrameCanBeSkipped => frameTime >= minFrameTime;
         private Boolean SceneCanBeSkipped => frameTime >= minFrameTime || frameNumber > 0;
 
-        public CutSceneComponent(Game game, Single minFrameTime, Single maxFrameTime, Int32 frames) : base(game)
+        public CutSceneComponent(Game game, Single minFrameTime, Single maxFrameTime, Int32 framesCount) : base(game)
         {
             this.minFrameTime = minFrameTime;
             this.maxFrameTime = maxFrameTime;
-            this.frames = frames;
+            this.FramesCount = framesCount;
         }
 
         public override void Initialize()
