@@ -12,6 +12,7 @@ namespace ExplainingEveryString.Core.GameState
 {
     internal class ComponentsManager
     {
+        private const String CutsceneSong = "liberty_bell";
         private readonly EesGame game;
         private readonly Dictionary<String, CutsceneSpecification> cutscenesMetadata;
 
@@ -24,6 +25,7 @@ namespace ExplainingEveryString.Core.GameState
         internal MultiFrameCutsceneComponent CutsceneAfterLevel { get; private set; }
         internal MusicComponent MenuMusic { get; private set; }
         internal MusicComponent GameMusic { get; private set; }
+        internal MusicComponent CutsceneMusic { get; private set; }
         internal NotificationsComponent Notifications { get; private set; }
 
         internal ComponentsManager(EesGame game, LevelSequenceSpecification levelSequenceSpecification, 
@@ -35,6 +37,7 @@ namespace ExplainingEveryString.Core.GameState
             Menu = new MenuComponent(game, levelSequenceSpecification, musicTestSpecification);
             MenuMusic = new MusicComponent(game);
             GameMusic = new MusicComponent(game);
+            CutsceneMusic = new MusicComponent(game);
             Notifications = new NotificationsComponent(game);
         }
 
@@ -106,6 +109,7 @@ namespace ExplainingEveryString.Core.GameState
             components.Add(Menu);
             components.Add(MenuMusic);
             components.Add(GameMusic);
+            components.Add(CutsceneMusic);
             components.Add(Notifications);
             SwitchMenuRelatedComponents(true);
         }
@@ -126,7 +130,12 @@ namespace ExplainingEveryString.Core.GameState
             {
                 CutsceneBeforeLevel.Enabled = active;
                 CutsceneBeforeLevel.Visible = active;
+                CutsceneMusic.Enabled = active;
+                if (active)
+                    CutsceneMusic.PlaySong(CutsceneSong);
             }
+            else
+                CutsceneMusic.Enabled = false;
         }
 
         internal void SwitchCutsceneAfterLevel(Boolean active)
@@ -135,7 +144,12 @@ namespace ExplainingEveryString.Core.GameState
             {
                 CutsceneAfterLevel.Enabled = active;
                 CutsceneAfterLevel.Visible = active;
+                CutsceneMusic.Enabled = active;
+                if (active)
+                    CutsceneMusic.PlaySong(CutsceneSong);
             }
+            else
+                CutsceneMusic.Enabled = false;
         }
 
         internal void SwitchMenuRelatedComponents(Boolean active)

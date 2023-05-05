@@ -168,6 +168,7 @@ namespace ExplainingEveryString.Core.GameState
         {
             componentsManager.MenuMusic.Volume = newConfig.MusicVolume;
             componentsManager.GameMusic.Volume = newConfig.MusicVolume;
+            componentsManager.CutsceneMusic.Volume = newConfig.MusicVolume;
         }
 
         internal void StartMusicInGame(String songName)
@@ -196,30 +197,30 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchMenuRelatedComponents(false);
             componentsManager.SwitchCutsceneAfterLevel(false);
             componentsManager.SwitchCutsceneBeforeLevel(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(true);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
+            componentsManager.SwitchLevelTitleRelatedComponents(true);
             currentState = GameState.LevelTitle;
         }
 
         private void SwitchToInGameState()
         {
-            componentsManager.SwitchGameplayRelatedComponents(true);
             componentsManager.SwitchMenuRelatedComponents(false);
             componentsManager.SwitchCutsceneAfterLevel(false);
             componentsManager.SwitchCutsceneBeforeLevel(false);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
+            componentsManager.SwitchGameplayRelatedComponents(true);
             currentState = GameState.InGame;
         }
 
         private void SwitchToPausedState()
         {
             componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
             componentsManager.SwitchCutsceneAfterLevel(false);
             componentsManager.SwitchCutsceneBeforeLevel(false);
+            componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
             currentState = GameState.Paused;
         }
@@ -237,12 +238,12 @@ namespace ExplainingEveryString.Core.GameState
 
         private void SwitchToBetweenLevelsState()
         {
-            componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
             componentsManager.SwitchCutsceneAfterLevel(false);
             componentsManager.SwitchCutsceneBeforeLevel(false);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
+            componentsManager.SwitchMenuRelatedComponents(true);
             componentsManager.DeleteCurrentLevelRelatedComponents();
             currentState = GameState.BetweenLevels;
         }
@@ -253,8 +254,8 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
             componentsManager.SwitchCutsceneAfterLevel(false);
-            componentsManager.SwitchCutsceneBeforeLevel(true);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
+            componentsManager.SwitchCutsceneBeforeLevel(true);
             currentState = GameState.CutsceneBefore;
         }
 
@@ -263,9 +264,9 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.SwitchMenuRelatedComponents(false);
             componentsManager.SwitchGameplayRelatedComponents(false);
             componentsManager.SwitchLevelTitleRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(true);
             componentsManager.SwitchCutsceneBeforeLevel(false);
             componentsManager.SwitchLevelEndingRelatedComponents(false);
+            componentsManager.SwitchCutsceneAfterLevel(true);
             currentState = GameState.CutsceneAfter;
         }
 
