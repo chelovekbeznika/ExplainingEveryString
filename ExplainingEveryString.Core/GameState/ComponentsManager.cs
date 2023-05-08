@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.GameState
 {
     internal class ComponentsManager
     {
-        private const String CutsceneSong = "liberty_bell";
+        private const String CutsceneSong = "cutscenes";
         private readonly EesGame game;
         private readonly Dictionary<String, CutsceneSpecification> cutscenesMetadata;
 

@@ -27,4 +27,8 @@
     "Sprite": "Sprites/Menu/Songs/Caprice5",
     "SongName": "caprice5"
   },
+  {
+	"Sprite": "Sprites/Menu/Songs/Cutscenes",
+	"SongName": "cutscenes"
+  }
 ]

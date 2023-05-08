@@ -141,6 +141,9 @@
 #begin Data/Music/christmas_tree_was_born_in_forest.dat
 /copy:Data/Music/christmas_tree_was_born_in_forest.dat
 
+#begin Data/Music/cutscenes.dat
+/copy:Data/Music/cutscenes.dat
+
 #begin Data/Music/deltasamples.dat
 /copy:Data/Music/deltasamples.dat
 
@@ -8813,6 +8816,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Songs/Caprice5.png
+
+#begin Sprites/Menu/Songs/Cutscenes.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/Songs/Cutscenes.png
 
 #begin Sprites/Menu/Songs/Desert.png
 /importer:TextureImporter
