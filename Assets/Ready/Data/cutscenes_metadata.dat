@@ -1,5 +1,8 @@
 {
   "Test": {
     "FramesCount": 3
+  },
+  "Tutorial": {
+	"FramesCount": 5
   }
 }
