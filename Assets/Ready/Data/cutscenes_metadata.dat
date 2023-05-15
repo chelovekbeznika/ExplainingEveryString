@@ -1,8 +1,7 @@
 {
-  "Test": {
-    "FramesCount": 3
-  },
   "Tutorial": {
-	"FramesCount": 5
+	"FramesCount": 5,
+	"MinFrameTime": 1.5,
+	"MaxFrameTime": 15.0
   }
 }

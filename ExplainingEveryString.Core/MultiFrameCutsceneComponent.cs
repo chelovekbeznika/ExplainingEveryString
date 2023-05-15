@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameState;
+using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -14,7 +15,8 @@ namespace ExplainingEveryString.Core
         private Texture2D[] frames;
         private String name;
 
-        public MultiFrameCutsceneComponent(Game game, String name, Int32 framesCount) : base(game, 0.5F, 5F, framesCount)
+        public MultiFrameCutsceneComponent(Game game, String name, CutsceneSpecification specification) 
+            : base(game, specification.MinFrameTime, specification.MaxFrameTime, specification.FramesCount)
         {
             this.name = name;
             this.DrawOrder = ComponentsOrder.Cutscene;

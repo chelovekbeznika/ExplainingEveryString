@@ -60,13 +60,13 @@ namespace ExplainingEveryString.Core.GameState
             if (cutsceneBefore != null)
             {
                 var metadata = cutscenesMetadata[cutsceneBefore];
-                CutsceneBeforeLevel = new MultiFrameCutsceneComponent(game, cutsceneBefore, metadata.FramesCount);
+                CutsceneBeforeLevel = new MultiFrameCutsceneComponent(game, cutsceneBefore, metadata);
                 game.Components.Add(CutsceneBeforeLevel);
             }
             if (cutsceneAfter != null)
             {
                 var metadata = cutscenesMetadata[cutsceneAfter];
-                CutsceneAfterLevel = new MultiFrameCutsceneComponent(game, cutsceneAfter, metadata.FramesCount);
+                CutsceneAfterLevel = new MultiFrameCutsceneComponent(game, cutsceneAfter, metadata);
                 game.Components.Add(CutsceneAfterLevel);
             }
         }
