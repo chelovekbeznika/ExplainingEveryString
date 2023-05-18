@@ -45,7 +45,8 @@
       "ButtonSprite": "Sprites/Menu/LevelSelect/12",
       "TitleSprite": "Sprites/LevelTitles/12",
       "MapMark": "518.0, 861.0",
-      "LevelsBlockId": "Ice"
+      "LevelsBlockId": "Ice",
+	  "CutsceneBefore": "Before12"
     },
     {
       "LevelData": "level_13",
