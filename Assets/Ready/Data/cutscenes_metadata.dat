@@ -8,5 +8,10 @@
 	"FramesCount": 3,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 4.0
+  },
+  "Before13": {
+	"FramesCount": 3,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 4.0
   }
 }
