@@ -13,5 +13,10 @@
 	"FramesCount": 3,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 4.0
+  },
+  "Before14": {
+    "FramesCount": 7,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 4.0
   }
 }
