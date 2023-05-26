@@ -85,7 +85,8 @@
       "ButtonSprite": "Sprites/Menu/LevelSelect/23",
       "TitleSprite": "Sprites/LevelTitles/23",
       "MapMark": "871.0, 523.0",
-      "LevelsBlockId": "Desert"
+      "LevelsBlockId": "Desert",
+	  "CutsceneBefore": "Before23"
     },
     {
       "LevelData": "level_24",
