@@ -53,5 +53,10 @@
     "FramesCount": 7,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 3.0
+  },
+  "Before33": {
+    "FramesCount": 8,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 2.0
   }
 }
