@@ -58,5 +58,15 @@
     "FramesCount": 8,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 2.0
+  },
+  "Before34": {
+    "FramesCount": 10,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 3.0
+  },
+  "After34": {
+    "FramesCount": 11,
+	"MinFrameTime": 0.33333,
+	"MaxFrameTime": 1.5
   }
 }

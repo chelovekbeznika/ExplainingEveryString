@@ -126,7 +126,9 @@
       "ButtonSprite": "Sprites/Menu/LevelSelect/34",
       "TitleSprite": "Sprites/LevelTitles/34",
       "MapMark": "864.0, 69.0",
-      "LevelsBlockId": "Moon"
+      "LevelsBlockId": "Moon",
+	  "CutsceneBefore": "Before34",
+	  "CutsceneAfter": "After34"
     },
     {
       "LevelData": "level_41",
