@@ -151,7 +151,8 @@
       "ButtonSprite": "Sprites/Menu/LevelSelect/43",
       "TitleSprite": "Sprites/LevelTitles/43",
       "MapMark": "403.0, 388.0",
-      "LevelsBlockId": "AirFarm"
+      "LevelsBlockId": "AirFarm",
+	  "CutsceneBefore": "Before43"
     },
     {
       "LevelData": "level_44",

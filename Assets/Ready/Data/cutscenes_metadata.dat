@@ -78,5 +78,10 @@
     "FramesCount": 6,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 3.0
+  },
+  "Before43": {
+    "FramesCount": 12,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 2.5
   }
 }
