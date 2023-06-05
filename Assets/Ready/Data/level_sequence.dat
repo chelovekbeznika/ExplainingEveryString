@@ -176,7 +176,8 @@
       "ButtonSprite": "Sprites/Menu/LevelSelect/52",
       "TitleSprite": "Sprites/LevelTitles/52",
       "MapMark": "135.0, 455.0",
-      "LevelsBlockId": "LavaLake"
+      "LevelsBlockId": "LavaLake",
+	  "CutsceneBefore": "Before52"
     },
     {
       "LevelData": "level_53",
