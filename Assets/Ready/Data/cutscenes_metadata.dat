@@ -108,5 +108,10 @@
     "FramesCount": 9,
 	"MinFrameTime": 0.33333,
 	"MaxFrameTime": 2.0
+  },
+  "Before54": {
+    "FramesCount": 11,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 3.0
   }
 }
