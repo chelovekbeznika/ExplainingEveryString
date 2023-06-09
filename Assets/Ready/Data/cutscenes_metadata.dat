@@ -118,5 +118,10 @@
     "FramesCount": 5,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 4.0
+  },
+  "Final": {
+    "FramesCount": 12,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 5.0
   }
 }

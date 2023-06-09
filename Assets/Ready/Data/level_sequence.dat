@@ -201,7 +201,8 @@
       "ButtonSprite": "Sprites/Menu/LevelSelect/6X",
       "TitleSprite": "Sprites/LevelTitles/61",
       "MapMark": "96.0, 114.0",
-      "LevelsBlockId": "FinalFight"
+      "LevelsBlockId": "FinalFight",
+	  "CutsceneAfter": "Final"
     }
   ]
 }
