@@ -113,5 +113,10 @@
     "FramesCount": 11,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 3.0
+  },
+  "After54": {
+    "FramesCount": 5,
+	"MinFrameTime": 0.5,
+	"MaxFrameTime": 4.0
   }
 }
