@@ -11,7 +11,12 @@
       "X": 59,
       "Y": 69,
       "Offset": "8, -8"
-    }
+    },
+	"Arsenal": {
+	  "AvailableWeapons": {
+	    "RocketLauncher": 60
+	  }
+	}
   },
   "EnemyWaves": [
     {
