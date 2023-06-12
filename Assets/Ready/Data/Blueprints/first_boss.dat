@@ -13,7 +13,7 @@
       "Mover": {
         "Type": "Linear",
         "Parameters": {
-          "speed": 350.0
+          "speed": 250.0
         }
       },
       "MoveTargetSelectType": "TargetsList"
