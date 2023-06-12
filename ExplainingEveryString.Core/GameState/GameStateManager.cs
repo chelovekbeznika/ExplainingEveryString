@@ -51,7 +51,12 @@ namespace ExplainingEveryString.Core.GameState
                         if (componentsManager.CutsceneAfterLevel != null)
                             SwitchToCutsceneAfterState();
                         else
-                            SwitchToLevelEndingState();
+                        {
+                            if (levelSequence.ShowEndingTitle)
+                                SwitchToLevelEndingState();
+                            else
+                                SwitchToNextLevel();
+                        }
                     }
                     break;
                 case GameState.CutsceneBefore:
@@ -68,7 +73,12 @@ namespace ExplainingEveryString.Core.GameState
                     break;
                 case GameState.CutsceneAfter:
                     if (componentsManager.CutsceneAfterLevel.Closed)
-                        SwitchToLevelEndingState();
+                    {
+                        if (levelSequence.ShowEndingTitle)
+                            SwitchToLevelEndingState();
+                        else
+                            SwitchToNextLevel();
+                    }
                     break;
             }
         }

@@ -15,5 +15,7 @@ namespace ExplainingEveryString.Data.Level
         public String TitleSprite { get; set; }
         public Vector2 MapMark { get; set; }
         public String LevelsBlockId { get; set; }
+        [DefaultValue(true)]
+        public Boolean ShowEndingTitle { get; set; }
     }
 }

@@ -202,7 +202,8 @@
       "TitleSprite": "Sprites/LevelTitles/61",
       "MapMark": "96.0, 114.0",
       "LevelsBlockId": "FinalFight",
-	  "CutsceneAfter": "Final"
+	  "CutsceneAfter": "Final",
+	  "ShowEndingTitle": false
     }
   ]
 }

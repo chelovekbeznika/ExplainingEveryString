@@ -25,6 +25,7 @@ namespace ExplainingEveryString.Core.GameState
         }
 
         internal Boolean GameCompleted => levelsCompleted >= Specification.Levels.Length;
+        internal Boolean ShowEndingTitle => Specification.Levels[currentLevel].ShowEndingTitle;
         internal String GetCurrentLevelFile() => Specification.Levels[currentLevel].LevelData;
         internal String GetCurrentLevelTitle() => Specification.Levels[currentLevel].TitleSprite;
         internal (String, String) GetCurrentLevelCutscens() => 
@@ -39,7 +40,7 @@ namespace ExplainingEveryString.Core.GameState
         internal List<Vector2> GetPath() => Specification.Levels.Take(currentLevel + 1).Select(l => l.MapMark).ToList();
         internal String GetMaxAchievedLevelFile() => !GameCompleted 
             ? Specification.Levels[levelsCompleted].LevelData
-            : Specification.Levels[Specification.Levels.Length - 1].LevelData;
+            : Specification.Levels[^1].LevelData;
 
         internal Boolean LevelIsAvailable(String levelName)
         {
