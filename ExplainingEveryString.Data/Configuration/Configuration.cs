@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Configuration
 {
@@ -8,6 +9,7 @@ namespace ExplainingEveryString.Data.Configuration
         public InputConfiguration Input { get; set; }
         public CameraConfiguration Camera { get; set; }
         public ScreenConfiguration Screen { get; set; }
+        public Int32 SaveProfile { get; set; }
         public Single InterfaceAlpha { get; set; }
         public Single SoundFadingOut { get; set; }
         public Single MusicVolume { get; set; }

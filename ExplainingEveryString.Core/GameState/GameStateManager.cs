@@ -9,27 +9,23 @@ namespace ExplainingEveryString.Core.GameState
     {
         private enum GameState { BetweenLevels, CutsceneBefore, LevelTitle, InGame, Paused, LevelEnding, CutsceneAfter }
 
-        private GameState currentState = GameState.BetweenLevels;
         private ComponentsManager componentsManager;
+        private LevelSequenceSpecification levelSequenceSpecification;
         private LevelSequence levelSequence;
         private GameProgress gameProgress;
+
+        private GameState currentState = GameState.BetweenLevels;
+        private Int32? saveProfileNumber = null;
 
         internal Boolean IsPaused => currentState == GameState.Paused;
 
         internal GameStateManager(LevelSequenceSpecification levelSequenceSpecification, 
-            ComponentsManager componentsManager)
+            ComponentsManager componentsManager, Int32 currentProfile)
         {
             this.componentsManager = componentsManager;
-            this.gameProgress = GameProgressAccess.Load();
-            
-            if (gameProgress != null)
-                this.levelSequence = new LevelSequence(levelSequenceSpecification, 
-                    gameProgress.CurrentLevelFileName, gameProgress.MaxAchievedLevelName);
-            else
-            {
-                this.levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
-                ProgressToLevelStart();
-            }
+            this.levelSequenceSpecification = levelSequenceSpecification;
+
+            SwitchSaveProfile(currentProfile);
         }
 
         internal void InitComponents()
@@ -83,11 +79,30 @@ namespace ExplainingEveryString.Core.GameState
             }
         }
 
+        internal void SwitchSaveProfile(Int32 newProfile)
+        {
+            if (saveProfileNumber != null)
+                GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
+            if (currentState != GameState.BetweenLevels)
+                SwitchToBetweenLevelsState();
+
+            this.gameProgress = GameProgressAccess.Load(newProfile);
+            if (gameProgress != null)
+                this.levelSequence = new LevelSequence(levelSequenceSpecification,
+                    gameProgress.CurrentLevelFileName, gameProgress.MaxAchievedLevelName);
+            else
+            {
+                this.levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
+                ProgressToLevelStart();
+            }
+            saveProfileNumber = newProfile;
+        }
+
         internal void StartNewGame()
         {
             levelSequence.Reset();
             ProgressToLevelStart();
-            GameProgressAccess.Save(gameProgress);
+            GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
             StartCurrentLevel(true);
         }
 
@@ -108,7 +123,7 @@ namespace ExplainingEveryString.Core.GameState
                     GameTime = 0
                 }
             };
-            GameProgressAccess.Save(gameProgress);
+            GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
             StartCurrentLevel(true);
         }
 
@@ -120,7 +135,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void NotableProgressMaid(Object sender, CheckpointReachedEventArgs eventArgs)
         {
             gameProgress.LevelProgress = eventArgs.LevelProgress;
-            GameProgressAccess.Save(gameProgress);
+            GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
         }
 
         private void StartCurrentLevel(Boolean showTitle)
@@ -146,7 +161,7 @@ namespace ExplainingEveryString.Core.GameState
             {
                 ProgressToLevelStart();
                 StartCurrentLevel(true);
-                GameProgressAccess.Save(gameProgress);
+                GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
             }
             else
             {

@@ -7,6 +7,7 @@ using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace ExplainingEveryString.Core
 {
@@ -35,10 +36,22 @@ namespace ExplainingEveryString.Core
                 cutscenesMetadata, musicTestSpecification);
 
             FontsStorage = new FontsStorage();
-            GameState = new GameStateManager(levelSequenceSpecification, componentsManager);
+            var config = ConfigurationAccess.GetCurrentConfig();
+            GameState = new GameStateManager(levelSequenceSpecification, componentsManager, config.SaveProfile);
             menuInputProcessor = new OuterMenuInputProcessor();
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
+            menuInputProcessor.FirstProfile.ButtonPressed += (sender, e) => SwitchProfile(0);
+            menuInputProcessor.SecondProfile.ButtonPressed += (sender, e) => SwitchProfile(1);
+            menuInputProcessor.ThirdProfile.ButtonPressed += (sender, e) => SwitchProfile(2);
             base.Initialize();
+        }
+
+        private void SwitchProfile(Int32 profileNumber)
+        {
+            GameState.SwitchSaveProfile(profileNumber);
+            var config = ConfigurationAccess.GetCurrentConfig();
+            config.SaveProfile = profileNumber;
+            ConfigurationAccess.SaveCurrentConfig();
         }
 
         protected override void LoadContent()

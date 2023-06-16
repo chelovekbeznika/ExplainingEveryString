@@ -8,7 +8,7 @@ namespace ExplainingEveryString.Data
         internal static String Configuration => GetJsonDataPath("config");
         internal static String AssetsMetadata => GetJsonDataPath("assets_metadata");
         internal static String LevelSequence => GetJsonDataPath("level_sequence");
-        internal static String GameProgress => GetJsonDataPath("game_progress");
+        internal static String GameProgress(int profileNumber) => GetJsonDataPath($"game_progress_{profileNumber}");
         internal static String MusicTestMenu => GetJsonDataPath("music_menu");
         internal static String Notifications => GetJsonDataPath("notifications");
         internal static String CutscenesMetadata => GetJsonDataPath("cutscenes_metadata");
