@@ -40,18 +40,7 @@ namespace ExplainingEveryString.Core
             GameState = new GameStateManager(levelSequenceSpecification, componentsManager, config.SaveProfile);
             menuInputProcessor = new OuterMenuInputProcessor();
             menuInputProcessor.Pause.ButtonPressed += (sender, e) => GameState.TryPauseSwitch();
-            menuInputProcessor.FirstProfile.ButtonPressed += (sender, e) => SwitchProfile(0);
-            menuInputProcessor.SecondProfile.ButtonPressed += (sender, e) => SwitchProfile(1);
-            menuInputProcessor.ThirdProfile.ButtonPressed += (sender, e) => SwitchProfile(2);
             base.Initialize();
-        }
-
-        private void SwitchProfile(Int32 profileNumber)
-        {
-            GameState.SwitchSaveProfile(profileNumber);
-            var config = ConfigurationAccess.GetCurrentConfig();
-            config.SaveProfile = profileNumber;
-            ConfigurationAccess.SaveCurrentConfig();
         }
 
         protected override void LoadContent()
