@@ -32,10 +32,10 @@ namespace ExplainingEveryString.Core.Menu
                 new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/NewGame")),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect"),
                     levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
-                new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu"),
-                    settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles"),
                     saveProfilesMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
+                new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu"),
+                    settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest"),
                     musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Exit"))
@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.Menu
             items[0].ItemCommandExecuteRequested += (sender, e) => game.GameState.TryPauseSwitch();
             items[1].ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueCurrentGame();
             items[2].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
-            items[4].ItemCommandExecuteRequested += (sender, e) => SettingsAccess.InitSettingsFromConfiguration(ConfigurationAccess.GetCurrentConfig());
+            items[5].ItemCommandExecuteRequested += (sender, e) => SettingsAccess.InitSettingsFromConfiguration(ConfigurationAccess.GetCurrentConfig());
 
             items[^1].ItemCommandExecuteRequested += (sender, e) => game.Exit();
 
