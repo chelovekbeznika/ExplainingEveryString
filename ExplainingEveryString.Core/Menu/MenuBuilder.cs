@@ -10,13 +10,16 @@ namespace ExplainingEveryString.Core.Menu
         private IMenuBuilder levelSelectBuilder;
         private IMenuBuilder musicTestBuilder;
         private IMenuBuilder settingsMenuBuilder;
+        private IMenuBuilder saveProfilesMenuBuilder;
 
-        internal MenuBuilder(EesGame game, IMenuBuilder levelSelectBuilder, IMenuBuilder musicTestBuilder, IMenuBuilder settingsMenuBuilder)
+        internal MenuBuilder(EesGame game, IMenuBuilder levelSelectBuilder, IMenuBuilder musicTestBuilder, 
+            IMenuBuilder settingsMenuBuilder, IMenuBuilder saveProfilesMenuBuilder)
         {
             this.game = game;
             this.levelSelectBuilder = levelSelectBuilder;
             this.musicTestBuilder = musicTestBuilder;
             this.settingsMenuBuilder = settingsMenuBuilder;
+            this.saveProfilesMenuBuilder = saveProfilesMenuBuilder;
         }
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
@@ -31,6 +34,8 @@ namespace ExplainingEveryString.Core.Menu
                     levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu"),
                     settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
+                new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles"),
+                    saveProfilesMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest"),
                     musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Exit"))
@@ -41,7 +46,7 @@ namespace ExplainingEveryString.Core.Menu
             items[2].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
             items[4].ItemCommandExecuteRequested += (sender, e) => SettingsAccess.InitSettingsFromConfiguration(ConfigurationAccess.GetCurrentConfig());
 
-            items[6].ItemCommandExecuteRequested += (sender, e) => game.Exit();
+            items[^1].ItemCommandExecuteRequested += (sender, e) => game.Exit();
 
             items[0].IsVisible = () => game.GameState.IsPaused;
             return new MenuItemsContainer(items);

@@ -6,7 +6,7 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuItemButton : MenuItem
     {
-        private Texture2D sprite;
+        protected Texture2D Sprite { get; private set; }
 
         internal override BorderType BorderType => BorderType.Button;
 
@@ -14,17 +14,17 @@ namespace ExplainingEveryString.Core.Menu
 
         internal MenuItemButton(Texture2D sprite)
         {
-            this.sprite = sprite;
+            this.Sprite = sprite;
         }
 
         internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            spriteBatch.Draw(sprite, position, Color.White);
+            spriteBatch.Draw(Sprite, position, Color.White);
         }
 
         internal override Point GetSize()
         {
-            return new Point(sprite.Width, sprite.Height);
+            return new Point(Sprite.Width, Sprite.Height);
         }
 
         internal override void RequestCommandExecution()

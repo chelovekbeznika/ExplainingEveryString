@@ -56,7 +56,8 @@ namespace ExplainingEveryString.Core.Menu
             var menuBuild = new MenuBuilder(game, 
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
                 new MusicTestMenuBuilder(game, musicTestSpecification),
-                new SettingsMenuBuilder(game, SaveSettingsHandler));
+                new SettingsMenuBuilder(game, SaveSettingsHandler),
+                new SaveProfilesMenuBuilder(game, levelSequenceSpecification));
             Point screenSizeAccessor() => new Point(Displaying.Constants.TargetWidth, Displaying.Constants.TargetHeight);
             var positionsMapper = new MenuItemPositionsMapper(screenSizeAccessor, 16);
             var menuItemDisplayer = new MenuItemDisplayer(spriteBatch, 

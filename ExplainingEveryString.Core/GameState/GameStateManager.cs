@@ -15,7 +15,15 @@ namespace ExplainingEveryString.Core.GameState
         private GameProgress gameProgress;
 
         private GameState currentState = GameState.BetweenLevels;
-        private Int32? saveProfileNumber = null;
+        private Int32 SaveProfileNumber
+        {
+            get => ConfigurationAccess.GetCurrentConfig().SaveProfile;
+            set
+            {
+                ConfigurationAccess.GetCurrentConfig().SaveProfile = value;
+                ConfigurationAccess.SaveCurrentConfig();
+            }
+        }
 
         internal Boolean IsPaused => currentState == GameState.Paused;
 
@@ -81,8 +89,8 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void SwitchSaveProfile(Int32 newProfile)
         {
-            if (saveProfileNumber != null)
-                GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
+            if (newProfile == SaveProfileNumber && gameProgress != null)
+                return;
             if (currentState != GameState.BetweenLevels)
                 SwitchToBetweenLevelsState();
 
@@ -95,14 +103,14 @@ namespace ExplainingEveryString.Core.GameState
                 this.levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
                 ProgressToLevelStart();
             }
-            saveProfileNumber = newProfile;
+            SaveProfileNumber = newProfile;
         }
 
         internal void StartNewGame()
         {
             levelSequence.Reset();
             ProgressToLevelStart();
-            GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
+            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
             StartCurrentLevel(true);
         }
 
@@ -123,7 +131,7 @@ namespace ExplainingEveryString.Core.GameState
                     GameTime = 0
                 }
             };
-            GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
+            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
             StartCurrentLevel(true);
         }
 
@@ -135,7 +143,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void NotableProgressMaid(Object sender, CheckpointReachedEventArgs eventArgs)
         {
             gameProgress.LevelProgress = eventArgs.LevelProgress;
-            GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
+            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
         }
 
         private void StartCurrentLevel(Boolean showTitle)
@@ -161,7 +169,7 @@ namespace ExplainingEveryString.Core.GameState
             {
                 ProgressToLevelStart();
                 StartCurrentLevel(true);
-                GameProgressAccess.Save(gameProgress, saveProfileNumber.Value);
+                GameProgressAccess.Save(gameProgress, SaveProfileNumber);
             }
             else
             {
