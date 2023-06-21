@@ -27,24 +27,23 @@ namespace ExplainingEveryString.Core.Menu
             var content = game.Content;
             var items = new MenuItemButton[]
             {
-                new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Unpause")),
-                new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Continue")),
-                new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/NewGame")),
-                new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect"),
+                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Unpause"))),
+                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Continue"))),
+                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/NewGame"))),
+                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/LevelSelect")),
                     levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
-                new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles"),
+                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles")),
                     saveProfilesMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
-                new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu"),
+                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu")),
                     settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
-                new MenuItemWithContainer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest"),
+                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest")),
                     musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
-                new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Exit"))
+                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Exit")))
             };
 
             items[0].ItemCommandExecuteRequested += (sender, e) => game.GameState.TryPauseSwitch();
             items[1].ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueCurrentGame();
             items[2].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
-            items[5].ItemCommandExecuteRequested += (sender, e) => SettingsAccess.InitSettingsFromConfiguration(ConfigurationAccess.GetCurrentConfig());
 
             items[^1].ItemCommandExecuteRequested += (sender, e) => game.Exit();
 

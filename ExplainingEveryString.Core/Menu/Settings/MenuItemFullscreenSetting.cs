@@ -1,18 +1,19 @@
-﻿using ExplainingEveryString.Core.Menu.Settings;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Menu
+namespace ExplainingEveryString.Core.Menu.Settings
 {
-    internal class MenuItemFullscreenSetting : MenuItem
+    internal class MenuItemFullscreenSetting : MenuItem, IMenuItemDisplayble
     {
-        private Dictionary<Boolean, Texture2D> sprites;
+        private Dictionary<bool, Texture2D> sprites;
 
         internal override BorderType BorderType => BorderType.Setting;
 
-        private Boolean Fullscreen
+        internal override IMenuItemDisplayble Displayble => this;
+
+        private bool Fullscreen
         {
             get => SettingsAccess.GetCurrentSettings().Fullscreen;
             set => SettingsAccess.GetCurrentSettings().Fullscreen = value;
@@ -20,19 +21,19 @@ namespace ExplainingEveryString.Core.Menu
 
         internal MenuItemFullscreenSetting(Texture2D window, Texture2D fullscreen)
         {
-            this.sprites = new Dictionary<Boolean, Texture2D>
+            sprites = new Dictionary<bool, Texture2D>
             {
                 { false, window },
                 { true, fullscreen }
             };
         }
 
-        internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             spriteBatch.Draw(sprites[Fullscreen], position, Color.White);
         }
 
-        internal override Point GetSize() => new Point(sprites[Fullscreen].Width, sprites[Fullscreen].Height);
+        public Point GetSize() => new Point(sprites[Fullscreen].Width, sprites[Fullscreen].Height);
 
         internal override void RequestCommandExecution()
         {

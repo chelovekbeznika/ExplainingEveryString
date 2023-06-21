@@ -5,8 +5,8 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuItemWithContainer : MenuItemButton
     {
-        private MenuItemsContainer container;
-        private MenuVisiblePart menuVisiblePart;
+        private readonly MenuItemsContainer container;
+        private readonly MenuVisiblePart menuVisiblePart;
 
         internal override MenuItemsContainer ParentContainer
         {
@@ -18,8 +18,8 @@ namespace ExplainingEveryString.Core.Menu
             }
         }
 
-        internal MenuItemWithContainer(Texture2D sprite, MenuItemsContainer container, MenuVisiblePart menuVisiblePart)
-            : base(sprite)
+        internal MenuItemWithContainer(IMenuItemDisplayble displayble, MenuItemsContainer container, MenuVisiblePart menuVisiblePart)
+            : base(displayble)
         {
             this.container = container;
             this.menuVisiblePart = menuVisiblePart;

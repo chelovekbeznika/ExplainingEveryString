@@ -11,8 +11,7 @@ namespace ExplainingEveryString.Core.Menu
         internal virtual MenuItemsContainer ParentContainer { get; set; }
 
         internal abstract BorderType BorderType { get; }
-        internal abstract void Draw(SpriteBatch spriteBatch, Vector2 position);
-        internal abstract Point GetSize();
+        internal abstract IMenuItemDisplayble Displayble { get; }
         internal abstract void RequestCommandExecution();
         internal virtual void Decrement() { }
         internal virtual void Increment() { }

@@ -3,9 +3,7 @@ using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Menu
 {
@@ -27,23 +25,36 @@ namespace ExplainingEveryString.Core.Menu
             var config = ConfigurationAccess.GetCurrentConfig();
             var items = Enumerable.Range(0, ProfilesAmount)
                 .Select(number => BuildSaveProfileButton(number, menuVisiblePart)).ToArray();
-            return new MenuItemsContainer(items, config.SaveProfile);
+            var itemsContainer = new MenuItemsContainer(items, config.SaveProfile);
+            itemsContainer.ContainerAppearedOnScreen += (sender, e) =>
+            {
+                var currentProfile = config.SaveProfile;
+                var newLevelButton = GetMaxLevelButton(currentProfile);
+                (items[currentProfile].Displayble as TwoSpritesDisplayer).ChangeableSprite = newLevelButton;
+            };
+            return itemsContainer;
         }
 
-        private DoubleSpriteMenuItemButton BuildSaveProfileButton(Int32 profileNumber, MenuVisiblePart visiblePart)
+        private MenuItem BuildSaveProfileButton(Int32 profileNumber, MenuVisiblePart visiblePart)
         {
-            var saveProfile = GameProgressAccess.Load(profileNumber);
-            var level = levelSequenceSpecification.Levels.FirstOrDefault(l => l.LevelData == saveProfile?.MaxAchievedLevelName)
-                ?? levelSequenceSpecification.Levels.First();
-            var levelButton = game.Content.Load<Texture2D>(level.ButtonSprite);
+            var levelButton = GetMaxLevelButton(profileNumber);
             var borderButton = game.Content.Load<Texture2D>($@"Sprites\Menu\Saves\{profileNumber}");
-            var itemButton = new DoubleSpriteMenuItemButton(levelButton, new Vector2(24, 8), borderButton);
+            var displayer = new TwoSpritesDisplayer(borderButton, new Vector2(24, 8), levelButton);
+            var itemButton = new MenuItemButton(displayer);
             itemButton.ItemCommandExecuteRequested += (sender, e) =>
             {
                 game.GameState.SwitchSaveProfile(profileNumber);
                 visiblePart.TryToGetBack();
             };
             return itemButton;
+        }
+
+        private Texture2D GetMaxLevelButton(Int32 profileNumber)
+        {
+            var saveProfile = GameProgressAccess.Load(profileNumber);
+            var level = levelSequenceSpecification.Levels.FirstOrDefault(l => l.LevelData == saveProfile?.MaxAchievedLevelName)
+                ?? levelSequenceSpecification.Levels.First();
+            return game.Content.Load<Texture2D>(level.ButtonSprite);
         }
     }
 }

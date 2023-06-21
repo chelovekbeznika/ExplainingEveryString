@@ -3,31 +3,33 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Linq;
 
-namespace ExplainingEveryString.Core.Menu
+namespace ExplainingEveryString.Core.Menu.Settings
 {
-    internal class MenuItemVolumeSetting : MenuItem
+    internal class MenuItemVolumeSetting : MenuItem, IMenuItemDisplayble
     {
-        private const Int32 pixelsBetween = 4;
+        private const int pixelsBetween = 4;
 
-        private Texture2D empty;
-        private Texture2D full;
-        private Int32 maxBars;
+        private readonly Texture2D empty;
+        private readonly Texture2D full;
+        private readonly int maxBars;
 
-        private Func<Int32> getBarsSelected;
-        private Action<Int32> setBarsSelected;
+        private readonly Func<int> getBarsSelected;
+        private readonly Action<int> setBarsSelected;
 
         internal override BorderType BorderType => BorderType.Setting;
 
-        internal MenuItemVolumeSetting(Texture2D empty, Texture2D full, Int32 maxBars, Func<Int32> getItem, Action<Int32> setItem)
+        internal override IMenuItemDisplayble Displayble => this;
+
+        internal MenuItemVolumeSetting(Texture2D empty, Texture2D full, int maxBars, Func<int> getItem, Action<int> setItem)
         {
             this.empty = empty;
             this.full = full;
             this.maxBars = maxBars;
-            this.getBarsSelected = getItem;
-            this.setBarsSelected = setItem;
+            getBarsSelected = getItem;
+            setBarsSelected = setItem;
         }
 
-        internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             var x = position.X;
             foreach (var index in Enumerable.Range(0, maxBars))
@@ -39,7 +41,7 @@ namespace ExplainingEveryString.Core.Menu
             }
         }
 
-        internal override Point GetSize() => new Point
+        public Point GetSize() => new Point
         (
             x: getBarsSelected() * full.Width + (maxBars - getBarsSelected()) * empty.Width + pixelsBetween * (maxBars - 1),
             y: System.Math.Max(empty.Height, full.Height)

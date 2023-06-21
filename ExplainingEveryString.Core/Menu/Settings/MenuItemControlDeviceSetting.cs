@@ -1,21 +1,22 @@
-﻿using ExplainingEveryString.Core.Menu.Settings;
-using ExplainingEveryString.Data.Configuration;
+﻿using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Menu
+namespace ExplainingEveryString.Core.Menu.Settings
 {
-    internal class MenuItemControlDeviceSetting : MenuItem
+    internal class MenuItemControlDeviceSetting : MenuItem, IMenuItemDisplayble
     {
         private Dictionary<ControlDevice, Texture2D> sprites;
-        private ControlDevice SelectedDevice 
-        { 
+        private ControlDevice SelectedDevice
+        {
             get => SettingsAccess.GetCurrentSettings().PreferrableControlDevice;
             set => SettingsAccess.GetCurrentSettings().PreferrableControlDevice = value;
         }
 
         internal override BorderType BorderType => BorderType.Setting;
+
+        internal override IMenuItemDisplayble Displayble => this;
 
         internal MenuItemControlDeviceSetting(Texture2D gamePad, Texture2D keyboard)
         {
@@ -26,15 +27,15 @@ namespace ExplainingEveryString.Core.Menu
             };
         }
 
-        internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             spriteBatch.Draw(sprites[SelectedDevice], position, Color.White);
         }
 
-        internal override Point GetSize()
+        public Point GetSize()
         {
             var sprite = sprites[SelectedDevice];
-            return new Point(sprite.Width, sprite.Height); 
+            return new Point(sprite.Width, sprite.Height);
         }
 
         internal override void RequestCommandExecution()

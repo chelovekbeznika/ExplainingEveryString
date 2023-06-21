@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.Menu.Settings;
+using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -18,7 +19,7 @@ namespace ExplainingEveryString.Core.Menu
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
         {
             var content = game.Content;
-            var saveSettings = new MenuItemButton(content.Load<Texture2D>(@"Sprites/Menu/Settings/Save"));
+            var saveSettings = new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Save")));
             var container = new MenuItemsContainer(
                 new MenuItem[]
                 {
@@ -46,6 +47,8 @@ namespace ExplainingEveryString.Core.Menu
                     saveSettings
                 });
             saveSettings.ItemCommandExecuteRequested += saveSettingsHandler;
+            container.ContainerAppearedOnScreen += 
+                (sender, e) => SettingsAccess.InitSettingsFromConfiguration(ConfigurationAccess.GetCurrentConfig());
             return container;
         }
     }

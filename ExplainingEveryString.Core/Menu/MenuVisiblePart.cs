@@ -5,8 +5,9 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuVisiblePart
     {
-        private MenuItemPositionsMapper positionsMapper;
-        private MenuItemDisplayer itemDisplayer;
+        private readonly MenuItemPositionsMapper positionsMapper;
+        private readonly MenuItemDisplayer itemDisplayer;
+        private MenuItemsContainer containerAppearedOnPreviousFrame = null;
 
         internal MenuItemsContainer CurrentButtonsContainer { get; set; }
 
@@ -20,10 +21,19 @@ namespace ExplainingEveryString.Core.Menu
         internal void Draw()
         {
             var items = CurrentButtonsContainer.Items.Where(item => item.IsVisible());
-            var positions = positionsMapper.GetItemsPositions(items.Select(item => item.GetSize()).ToArray());
+            var positions = positionsMapper.GetItemsPositions(items.Select(item => item.Displayble.GetSize()).ToArray());
             foreach (var pair in items.Zip(positions, (Item, Position) => new { Item, Position }))
             {
                 itemDisplayer.Draw(pair.Item, pair.Position);
+            }
+        }
+
+        internal void Update()
+        {
+            if (CurrentButtonsContainer != containerAppearedOnPreviousFrame)
+            {
+                CurrentButtonsContainer?.ProcessScreenAppearance();
+                containerAppearedOnPreviousFrame = CurrentButtonsContainer;
             }
         }
 
@@ -32,6 +42,7 @@ namespace ExplainingEveryString.Core.Menu
             var parentContainer = CurrentButtonsContainer.ParentContainer;
             if (parentContainer != null)
                 CurrentButtonsContainer = parentContainer;
+
         }
 
         internal void ReturnToRoot()

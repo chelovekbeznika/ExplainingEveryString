@@ -1,22 +1,21 @@
 ﻿using ExplainingEveryString.Core.Extensions;
-using ExplainingEveryString.Core.Menu.Settings;
 using ExplainingEveryString.Core.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace ExplainingEveryString.Core.Menu
+namespace ExplainingEveryString.Core.Menu.Settings
 {
-    internal class MenuItemResolutionSetting : MenuItem
+    internal class MenuItemResolutionSetting : MenuItem, IMenuItemDisplayble
     {
-        private CustomFont font;
-        private List<Resolution> fullScreenResolutions;
-        private List<Resolution> windowResolutions;
-        private Int32 selectedFullscreenIndex = 0;
-        private Int32 selectedWindowIndex = 0;
+        private readonly CustomFont font;
+        private readonly List<Resolution> fullScreenResolutions;
+        private readonly List<Resolution> windowResolutions;
+        private int selectedFullscreenIndex = 0;
+        private int selectedWindowIndex = 0;
 
-        private Boolean Fullscreen => SettingsAccess.GetCurrentSettings().Fullscreen;
+        private bool Fullscreen => SettingsAccess.GetCurrentSettings().Fullscreen;
 
         private Resolution SelectedResolution => Fullscreen
             ? fullScreenResolutions[selectedFullscreenIndex]
@@ -24,32 +23,34 @@ namespace ExplainingEveryString.Core.Menu
 
         internal override BorderType BorderType => BorderType.Setting;
 
+        internal override IMenuItemDisplayble Displayble => this;
+
         internal MenuItemResolutionSetting(FontsStorage fontsStorage, GraphicsAdapter adapter)
         {
-            this.font = fontsStorage.ScreenResolution;
-            this.fullScreenResolutions = adapter.AllowedResolutions(true);
-            this.windowResolutions = adapter.AllowedResolutions(false);
+            font = fontsStorage.ScreenResolution;
+            fullScreenResolutions = adapter.AllowedResolutions(true);
+            windowResolutions = adapter.AllowedResolutions(false);
             var resolutionSet = SettingsAccess.GetCurrentSettings().Resolution;
             if (Fullscreen)
             {
-                this.selectedFullscreenIndex = fullScreenResolutions
+                selectedFullscreenIndex = fullScreenResolutions
                     .FindIndex(r => r.Width == resolutionSet.Width && r.Height == resolutionSet.Height);
-                this.selectedWindowIndex = windowResolutions.Count - 1;
+                selectedWindowIndex = windowResolutions.Count - 1;
             }
             else
             {
-                this.selectedWindowIndex = windowResolutions
+                selectedWindowIndex = windowResolutions
                     .FindIndex(r => r.Width == resolutionSet.Width && r.Height == resolutionSet.Height);
-                this.selectedFullscreenIndex = fullScreenResolutions.Count - 1;
+                selectedFullscreenIndex = fullScreenResolutions.Count - 1;
             }
         }
 
-        internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
             font.Draw(spriteBatch, position, SelectedResolution.ToString());
         }
 
-        internal override Point GetSize() => font.GetSize(SelectedResolution.ToString());
+        public Point GetSize() => font.GetSize(SelectedResolution.ToString());
 
         internal override void RequestCommandExecution()
         {

@@ -6,25 +6,14 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuItemButton : MenuItem
     {
-        protected Texture2D Sprite { get; private set; }
-
+        internal override IMenuItemDisplayble Displayble { get; }
         internal override BorderType BorderType => BorderType.Button;
 
         internal event EventHandler<EventArgs> ItemCommandExecuteRequested;
 
-        internal MenuItemButton(Texture2D sprite)
+        internal MenuItemButton(IMenuItemDisplayble displayble)
         {
-            this.Sprite = sprite;
-        }
-
-        internal override void Draw(SpriteBatch spriteBatch, Vector2 position)
-        {
-            spriteBatch.Draw(Sprite, position, Color.White);
-        }
-
-        internal override Point GetSize()
-        {
-            return new Point(Sprite.Width, Sprite.Height);
+            Displayble = displayble;
         }
 
         internal override void RequestCommandExecution()

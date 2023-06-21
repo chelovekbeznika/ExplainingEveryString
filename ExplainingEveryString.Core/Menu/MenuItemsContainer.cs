@@ -4,11 +4,12 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuItemsContainer
     {
-        private Int32 defaultButton;
+        private readonly Int32 defaultButton;
 
         internal MenuItem[] Items { get; private set; }
         internal Int32 SelectedIndex { get; private set; }
         internal MenuItemsContainer ParentContainer { get; set; }
+        internal event EventHandler ContainerAppearedOnScreen;
 
         internal MenuItemsContainer(MenuItem[] items, Int32 defaultButton = 0)
         {
@@ -27,6 +28,11 @@ namespace ExplainingEveryString.Core.Menu
             this.SelectedIndex = FindVisibleButton(+1);
             if (IsValidButtonIndex(SelectedIndex))
                 this.Items[SelectedIndex].Selected = true;
+        }
+
+        internal void ProcessScreenAppearance()
+        {
+            ContainerAppearedOnScreen?.Invoke(this, EventArgs.Empty);
         }
 
         internal void SelectNextButton()

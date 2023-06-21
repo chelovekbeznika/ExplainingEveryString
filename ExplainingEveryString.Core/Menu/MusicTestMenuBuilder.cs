@@ -19,11 +19,11 @@ namespace ExplainingEveryString.Core.Menu
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
         {
-            var stopMusicButton = new MenuItemButton(Content.Load<Texture2D>(@"Sprites/Menu/StopMusic"));
+            var stopMusicButton = new MenuItemButton(new OneSpriteDisplayer(Content.Load<Texture2D>(@"Sprites/Menu/StopMusic")));
             stopMusicButton.ItemCommandExecuteRequested += (sender, e) => game.GameState.StopMusicInMenu();
             return new MenuItemsContainer(new MenuItemButton[] { stopMusicButton }.Concat(buttonsSpecification.Select(buttonSpecification =>
             {
-                var button = new MenuItemButton(Content.Load<Texture2D>(buttonSpecification.Sprite));
+                var button = new MenuItemButton(new OneSpriteDisplayer(Content.Load<Texture2D>(buttonSpecification.Sprite)));
                 button.ItemCommandExecuteRequested += (sender, e) => game.GameState.SongInMenuSelected(buttonSpecification.SongName);
                 return button;
             })).ToArray());

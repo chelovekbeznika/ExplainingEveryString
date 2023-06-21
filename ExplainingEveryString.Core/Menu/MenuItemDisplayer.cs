@@ -7,10 +7,10 @@ namespace ExplainingEveryString.Core.Menu
     internal class MenuItemDisplayer
     {
         private const Int32 betweenPixels = 2;
-        private Texture2D borderPart;
-        private Texture2D left;
-        private Texture2D right;
-        private SpriteBatch spriteBatch;
+        private readonly Texture2D borderPart;
+        private readonly Texture2D left;
+        private readonly Texture2D right;
+        private readonly SpriteBatch spriteBatch;
 
         internal MenuItemDisplayer(SpriteBatch spriteBatch, Texture2D borderPart, Texture2D left, Texture2D right)
         {
@@ -23,10 +23,10 @@ namespace ExplainingEveryString.Core.Menu
         internal void Draw(MenuItem item, Point pointPosition)
         {
             var position = new Vector2(pointPosition.X, pointPosition.Y);
-            item.Draw(spriteBatch, position);
+            item.Displayble.Draw(spriteBatch, position);
             if (item.Selected)
             {
-                var size = item.GetSize();
+                var size = item.Displayble.GetSize();
                 switch (item.BorderType)
                 {
                     case BorderType.Button:

@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.Menu
             var items = new List<MenuItemButton>();
             foreach (var levelsBlock in levelSequenceSpecification.LevelsBlocks)
             {
-                var item = new MenuItemWithContainer(Content.Load<Texture2D>(levelsBlock.ButtonSprite),
+                var item = new MenuItemWithContainer(new OneSpriteDisplayer(Content.Load<Texture2D>(levelsBlock.ButtonSprite)),
                     GetMenuContainerForBlock(levelsBlock), menuVisiblePart);
                 items.Add(item);
             }
@@ -37,7 +37,8 @@ namespace ExplainingEveryString.Core.Menu
                 .Where(l => l.LevelsBlockId == levelsBlock.Id);
             foreach (var level in levels)
             {
-                var item = new MenuItemButton(Content.Load<Texture2D>(level.ButtonSprite));
+                var displayer = new OneSpriteDisplayer(Content.Load<Texture2D>(level.ButtonSprite));
+                var item = new MenuItemButton(displayer);
                 item.ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueFrom(level.LevelData);
                 item.IsVisible = () => game.GameState.LevelAvailable(level.LevelData);
                 items.Add(item);

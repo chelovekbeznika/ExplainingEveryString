@@ -46,6 +46,7 @@ namespace ExplainingEveryString.Core.Menu
 
         public override void Update(GameTime gameTime)
         {
+            visiblePart.Update();
             menuInputProcessor.Update(gameTime);
             base.Update(gameTime);
         }
