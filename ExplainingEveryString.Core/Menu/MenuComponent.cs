@@ -54,7 +54,7 @@ namespace ExplainingEveryString.Core.Menu
         private MenuVisiblePart InitializeVisiblePart()
         {
             var content = game.Content;
-            var menuBuild = new MenuBuilder(game, 
+            var menuBuild = new MenuBuilder(game, levelSequenceSpecification,
                 new LevelSelectMenuBuilder(game, levelSequenceSpecification),
                 new MusicTestMenuBuilder(game, musicTestSpecification),
                 new SettingsMenuBuilder(game, SaveSettingsHandler),
@@ -80,6 +80,7 @@ namespace ExplainingEveryString.Core.Menu
         internal void ReturnMenuToDefaultStateAtPause()
         {
             visiblePart.ReturnToRoot();
+            CurrentButtonsContainer.ProcessScreenAppearance();
             CurrentButtonsContainer.SelectDefaultButton();
         }
 
