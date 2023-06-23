@@ -9,13 +9,13 @@ namespace ExplainingEveryString.Core.Menu
     internal class TwoSpritesDisplayer : IMenuItemDisplayble
     {
         private readonly Texture2D baseSprite;
-        private readonly Vector2 offset;
+        internal Vector2 Offset { get; set; }
         internal Texture2D ChangeableSprite { get; set; }
 
         internal TwoSpritesDisplayer(Texture2D baseSprite, Vector2 offset, Texture2D changeableSprite)
         {
             this.baseSprite = baseSprite;
-            this.offset = offset;
+            this.Offset = offset;
             this.ChangeableSprite = changeableSprite;
         }
 
@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core.Menu
         {
             spriteBatch.Draw(baseSprite, position, Color.White);
             if (ChangeableSprite != null )
-                spriteBatch.Draw(ChangeableSprite, position + offset, Color.White);
+                spriteBatch.Draw(ChangeableSprite, position + Offset, Color.White);
         }
 
         public Point GetSize()

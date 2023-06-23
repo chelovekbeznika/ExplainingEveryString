@@ -11,6 +11,9 @@ namespace ExplainingEveryString.Core.Menu
 {
     internal class MenuBuilder : IMenuBuilder
     {
+        private const Int32 BetweenSaveIconsPixels = 3;
+        private const Int32 FirstIconOffset = 37;
+
         private EesGame game;
         private LevelSequenceSpecification levelSequenceSpecification;
         private IMenuBuilder levelSelectBuilder;
@@ -35,6 +38,7 @@ namespace ExplainingEveryString.Core.Menu
             var content = game.Content;
             var saveProfileNumber = ConfigurationAccess.GetCurrentConfig().SaveProfile;
             var saveProfile = GameProgressAccess.Load(saveProfileNumber);
+            var saveFileIcon = content.Load<Texture2D>(@"Sprites/Menu/CurrentSaveIcon");
 
             var newGameButtonDisplayer = new TwoSpritesDisplayer(
                 content.Load<Texture2D>(@"Sprites/Menu/NewGame"),
@@ -49,6 +53,11 @@ namespace ExplainingEveryString.Core.Menu
                 new Vector2(16, 21),
                 GetMaxLevelButton(saveProfile));
 
+            var saveProfilesButtonDisplayer = new TwoSpritesDisplayer(
+                content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles"),
+                CalculateCurrentSaveIconOffset(saveProfileNumber, saveFileIcon.Width),
+                saveFileIcon);
+
             var items = new MenuItemButton[]
             {
                 new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Unpause"))),
@@ -56,7 +65,7 @@ namespace ExplainingEveryString.Core.Menu
                 new MenuItemButton(newGameButtonDisplayer),
                 new MenuItemWithContainer(levelSelectButtonDisplayer,
                     levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
-                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles")),
+                new MenuItemWithContainer(saveProfilesButtonDisplayer,
                     saveProfilesMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
                 new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu")),
                     settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
@@ -80,6 +89,7 @@ namespace ExplainingEveryString.Core.Menu
 
                 continueButtonDisplayer.ChangeableSprite = GetCurrentLevelButton(gameProgress);
                 levelSelectButtonDisplayer.ChangeableSprite = GetMaxLevelButton(gameProgress);
+                saveProfilesButtonDisplayer.Offset = CalculateCurrentSaveIconOffset(saveProfile, saveFileIcon.Width);
             };
             return container;
         }
@@ -96,6 +106,12 @@ namespace ExplainingEveryString.Core.Menu
             var level = levelSequenceSpecification.Levels.FirstOrDefault(l => l.LevelData == saveProfile?.CurrentLevelFileName)
                 ?? levelSequenceSpecification.Levels.First();
             return game.Content.Load<Texture2D>(level.ButtonSprite);
+        }
+
+        private Vector2 CalculateCurrentSaveIconOffset(Int32 profileNumber, Int32 width)
+        {
+            var xOffset = FirstIconOffset + (width + BetweenSaveIconsPixels) * profileNumber;
+            return new Vector2(xOffset, 3);
         }
     }
 }
