@@ -61,7 +61,7 @@ namespace ExplainingEveryString.Core.Menu
                 new SaveProfilesMenuBuilder(game, levelSequenceSpecification));
             Point screenSizeAccessor() => new Point(Displaying.Constants.TargetWidth, Displaying.Constants.TargetHeight);
             var positionsMapper = new MenuItemPositionsMapper(screenSizeAccessor, 16);
-            var menuItemDisplayer = new MenuItemDisplayer(spriteBatch, 
+            var menuItemDisplayer = new MenuItemDisplayer(spriteBatch, game.FontsStorage,
                 borderPart: content.Load<Texture2D>(@"Sprites/Menu/SelectedButtonBorder"),
                 left: content.Load<Texture2D>(@"Sprites/Menu/Settings/Left"),
                 right: content.Load<Texture2D>(@"Sprites/Menu/Settings/Right"));

@@ -6,6 +6,7 @@ namespace ExplainingEveryString.Core.Text
     {
         internal CustomFont ScreenResolution { get; private set; }
         internal CustomFont LevelTime { get; private set; }
+        internal CustomFont MainMenu { get; private set; }
 
         internal void LoadContent(ContentManager content)
         {
@@ -13,6 +14,8 @@ namespace ExplainingEveryString.Core.Text
             ScreenResolution.Load(content);
             LevelTime = new LevelTimeFont();
             LevelTime.Load(content);
+            MainMenu = new MainMenuFont();
+            MainMenu.Load(content);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.Text;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -7,14 +9,17 @@ namespace ExplainingEveryString.Core.Menu
     internal class MenuItemDisplayer
     {
         private const Int32 betweenPixels = 2;
+        private readonly FontsStorage fontsStorage;
         private readonly Texture2D borderPart;
         private readonly Texture2D left;
         private readonly Texture2D right;
         private readonly SpriteBatch spriteBatch;
 
-        internal MenuItemDisplayer(SpriteBatch spriteBatch, Texture2D borderPart, Texture2D left, Texture2D right)
+        internal MenuItemDisplayer(SpriteBatch spriteBatch, FontsStorage fontsStorage, 
+            Texture2D borderPart, Texture2D left, Texture2D right)
         {
             this.borderPart = borderPart;
+            this.fontsStorage = fontsStorage;
             this.spriteBatch = spriteBatch;
             this.left = left;
             this.right = right;
@@ -35,6 +40,12 @@ namespace ExplainingEveryString.Core.Menu
                     case BorderType.Setting:
                         DrawSettingBorder(pointPosition, size);
                         break;
+                }
+                if (item.Text != null)
+                {
+                    var textSize = fontsStorage.MainMenu.GetSize(item.Text);
+                    var textPosition = new Vector2(8, Constants.TargetHeight - 8 - textSize.Y);
+                    fontsStorage.MainMenu.Draw(spriteBatch, textPosition, item.Text);
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Core.Text
         {
             Texture2D loadCharTexture(String name) => content.Load<Texture2D>($@"Sprites/Fonts/LevelTime/{name}");
 
-            chars = new Dictionary<char, Texture2D>
+            Chars = new Dictionary<char, Texture2D>
             {
                 { '1', loadCharTexture("One") },
                 { '2', loadCharTexture("Two") },

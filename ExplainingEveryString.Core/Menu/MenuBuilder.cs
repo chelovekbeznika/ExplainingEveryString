@@ -60,18 +60,18 @@ namespace ExplainingEveryString.Core.Menu
 
             var items = new MenuItemButton[]
             {
-                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Unpause"))),
-                new MenuItemButton(continueButtonDisplayer),
-                new MenuItemButton(newGameButtonDisplayer),
+                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Unpause"))) { Text = "CONTINUE" },
+                new MenuItemButton(continueButtonDisplayer) { Text = "LOAD LAST" },
+                new MenuItemButton(newGameButtonDisplayer) { Text = "NEW GAME" },
                 new MenuItemWithContainer(levelSelectButtonDisplayer,
-                    levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
+                    levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT LEVEL" },
                 new MenuItemWithContainer(saveProfilesButtonDisplayer,
-                    saveProfilesMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
+                    saveProfilesMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT SAVE" },
                 new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu")),
-                    settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
+                    settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SETTINGS" },
                 new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest")),
-                    musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart),
-                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Exit")))
+                    musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "MUSIC TEST" },
+                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Exit"))) { Text = "EXIT" }
             };
 
             items[0].ItemCommandExecuteRequested += (sender, e) => game.GameState.TryPauseSwitch();
