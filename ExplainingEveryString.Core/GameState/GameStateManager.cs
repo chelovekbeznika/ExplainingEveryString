@@ -48,7 +48,8 @@ namespace ExplainingEveryString.Core.GameState
                 case GameState.InGame:
                     if (componentsManager.CurrentGameplay.Lost)
                     {
-                        StartCurrentLevel(false);
+                        var gameTime = componentsManager.CurrentGameplay.GameTime;
+                        StartCurrentLevel(false, gameTime);
                     }
                     if (componentsManager.CurrentGameplay.Won)
                     {
@@ -94,13 +95,13 @@ namespace ExplainingEveryString.Core.GameState
             if (currentState != GameState.BetweenLevels)
                 SwitchToBetweenLevelsState();
 
-            this.gameProgress = GameProgressAccess.Load(newProfile);
+            gameProgress = GameProgressAccess.Load(newProfile);
             if (gameProgress != null)
-                this.levelSequence = new LevelSequence(levelSequenceSpecification,
+                levelSequence = new LevelSequence(levelSequenceSpecification,
                     gameProgress.CurrentLevelFileName, gameProgress.MaxAchievedLevelName);
             else
             {
-                this.levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
+                levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
                 ProgressToLevelStart();
             }
             SaveProfileNumber = newProfile;
@@ -121,15 +122,11 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void ContinueFrom(String levelName)
         {
-            gameProgress = new GameProgress
+            gameProgress.CurrentLevelFileName = levelName;
+            gameProgress.MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile();
+            gameProgress.LevelProgress = new LevelProgress
             {
-                CurrentLevelFileName = levelName,
-                MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile(),
-                LevelProgress = new LevelProgress
-                {
-                    CurrentCheckPoint = CheckpointSpecification.StartCheckpointName,
-                    GameTime = 0
-                }
+                CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
             };
             GameProgressAccess.Save(gameProgress, SaveProfileNumber);
             StartCurrentLevel(true);
@@ -146,11 +143,11 @@ namespace ExplainingEveryString.Core.GameState
             GameProgressAccess.Save(gameProgress, SaveProfileNumber);
         }
 
-        private void StartCurrentLevel(Boolean showTitle)
+        private void StartCurrentLevel(Boolean showTitle, Single gameTime = 0)
         {
             levelSequence.MarkLevelAsCurrentContinuePoint(gameProgress.CurrentLevelFileName);
             componentsManager.DeleteCurrentLevelRelatedComponents();
-            componentsManager.InitNewLevelRelatedComponents(gameProgress, levelSequence);
+            componentsManager.InitNewLevelRelatedComponents(gameProgress, levelSequence, gameTime);
             if (showTitle)
             {
                 if (componentsManager.CutsceneBeforeLevel != null)
@@ -164,6 +161,18 @@ namespace ExplainingEveryString.Core.GameState
 
         private void SwitchToNextLevel()
         {
+            var level = gameProgress.CurrentLevelFileName;
+            var gameTime = componentsManager.CurrentGameplay.GameTime;
+            if (gameProgress.LevelRecords.ContainsKey(level)) 
+            {
+                if (gameProgress.LevelRecords[level] > gameTime)
+                    gameProgress.LevelRecords[level] = gameTime;
+            }
+            else
+            {
+                gameProgress.LevelRecords.Add(level, gameTime);
+            }
+
             levelSequence.MarkLevelComplete();
             if (!levelSequence.GameCompleted)
             {
@@ -305,15 +314,11 @@ namespace ExplainingEveryString.Core.GameState
 
         private void ProgressToLevelStart()
         {
-            this.gameProgress = new GameProgress
+            gameProgress.CurrentLevelFileName = levelSequence.GetCurrentLevelFile();
+            gameProgress.MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile();
+            gameProgress.LevelProgress = new LevelProgress
             {
-                CurrentLevelFileName = this.levelSequence.GetCurrentLevelFile(),
-                MaxAchievedLevelName = this.levelSequence.GetMaxAchievedLevelFile(),
-                LevelProgress = new LevelProgress
-                {
-                    CurrentCheckPoint = CheckpointSpecification.StartCheckpointName,
-                    GameTime = 0
-                }
+                CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
             };
         }
     }

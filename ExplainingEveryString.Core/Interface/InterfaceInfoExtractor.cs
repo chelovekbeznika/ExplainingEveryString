@@ -1,19 +1,19 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
-using ExplainingEveryString.Data.Level;
+using System;
 using System.Linq;
 
 namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceInfoExtractor
     {
-        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, LevelProgress levelProgress)
+        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, Single gameTime)
         {
             var homingTarget = activeActors.Player.CurrentTarget;
             return new InterfaceInfo
             {
                 Player = GetInterfaceInfo(activeActors.Player, camera),
-                GameTime = levelProgress.GameTime,
+                GameTime = gameTime,
                 Enemies = activeActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
                             .Where(e => e.ShowInterfaceInfo && !(activeActors.ShowAsBossesInInterface?.Contains(e) ?? false))

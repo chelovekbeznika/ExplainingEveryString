@@ -21,12 +21,14 @@ namespace ExplainingEveryString.Core.GameModel
     internal class GameplayComponent : DrawableGameComponent
     {
         private IBlueprintsLoader blueprintsLoader;
-        private Level level;
-        private readonly string levelFileName;
+        private readonly EesGame eesGame;
+        private readonly String levelFileName;
         private readonly LevelProgress levelStart;
+        private readonly Single initialGameTime;
+
+        private Level level;
         private LevelData levelData;
         private SpriteEmitter spriteEmitter;
-        private EesGame eesGame;
         private TiledMapDisplayer mapDisplayer;
         private FogOfWarRuler fogOfWarRuler;
         private SpriteBatch spriteBatch;
@@ -38,15 +40,17 @@ namespace ExplainingEveryString.Core.GameModel
         internal TileWrapper Map { get; private set; }
         internal Camera Camera { get; private set; }
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
-        internal bool Lost => level.Lost;
-        internal bool Won => level.Won;
+        internal Boolean Lost => level.Lost;
+        internal Boolean Won => level.Won;
+        internal Single GameTime => level.GameTime;
 
-        internal GameplayComponent(EesGame game, string levelFileName, LevelProgress levelStart)
+        internal GameplayComponent(EesGame game, string levelFileName, LevelProgress levelStart, Single gameTime)
             : base(game)
         {
             eesGame = game;
             this.levelFileName = levelFileName;
             this.levelStart = levelStart;
+            this.initialGameTime = gameTime;
 
             DrawOrder = ComponentsOrder.Gameplay;
             UpdateOrder = ComponentsOrder.Gameplay;
@@ -60,7 +64,7 @@ namespace ExplainingEveryString.Core.GameModel
             blueprintsLoader.Load();
             var factory = new ActorsFactory(blueprintsLoader);
             Map = new TileWrapper(levelData.TileMap, eesGame.Content);
-            level = new Level(factory, Map, new PlayerInputFactory(this), levelData, levelStart);
+            level = new Level(factory, Map, new PlayerInputFactory(this), levelData, levelStart, initialGameTime);
             level.CheckpointReached += eesGame.GameState.NotableProgressMaid;
             if (levelData.SpriteEmitter != null)
                 spriteEmitter = new SpriteEmitter(levelData.SpriteEmitter, Map);
