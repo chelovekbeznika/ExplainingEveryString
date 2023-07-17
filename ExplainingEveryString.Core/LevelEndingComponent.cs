@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ExplainingEveryString.Core
 {
-    internal class LevelEndingComponent : CutSceneComponent
+    internal class LevelEndingComponent : StaticImagesSequenceComponent
     {
         private enum BlinkPhase { Shown = 0, Rotated = 1, NotShown = 2, RotatedAgain = 3 }
 
@@ -56,7 +56,7 @@ namespace ExplainingEveryString.Core
             }
         }
 
-        protected override void DrawCutScene(SpriteBatch spriteBatch, Int32 frameNumber)
+        protected override void DrawImage(SpriteBatch spriteBatch, Int32 frameNumber)
         {
             spriteBatch.Draw(map, Vector2.Zero, Color.White);
             foreach (var layer in layers)

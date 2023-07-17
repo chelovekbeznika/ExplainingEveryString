@@ -7,7 +7,7 @@ using System;
 
 namespace ExplainingEveryString.Core
 {
-    internal abstract class CutSceneComponent : DrawableGameComponent
+    internal abstract class StaticImagesSequenceComponent : DrawableGameComponent
     {
         private Texture2D cutSceneSkipTip;
         private Texture2D frameSkipTip;
@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core
         private Boolean FrameCanBeSkipped => frameTime >= minFrameTime;
         private Boolean SceneCanBeSkipped => frameTime >= minFrameTime || frameNumber > 0;
 
-        public CutSceneComponent(Game game, Single minFrameTime, Single maxFrameTime, Int32 framesCount) : base(game)
+        public StaticImagesSequenceComponent(Game game, Single minFrameTime, Single maxFrameTime, Int32 framesCount) : base(game)
         {
             this.minFrameTime = minFrameTime;
             this.maxFrameTime = maxFrameTime;
@@ -75,7 +75,7 @@ namespace ExplainingEveryString.Core
         {
             GraphicsDevice.Clear(background);
             spriteBatch.Begin();
-            DrawCutScene(spriteBatch, frameNumber);
+            DrawImage(spriteBatch, frameNumber);
             if (SceneCanBeSkipped)
                 spriteBatch.Draw(cutSceneSkipTip, new Vector2(Constants.TargetWidth - 64, Constants.TargetHeight - 64), Color.White);
             if (FrameCanBeSkipped)
@@ -84,6 +84,6 @@ namespace ExplainingEveryString.Core
             base.Draw(gameTime);
         }
 
-        protected abstract void DrawCutScene(SpriteBatch spriteBatch, Int32 frameNumber);
+        protected abstract void DrawImage(SpriteBatch spriteBatch, Int32 frameNumber);
     }
 }

@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace ExplainingEveryString.Core
 {
-    internal class MultiFrameCutsceneComponent : CutSceneComponent
+    internal class MultiFrameCutsceneComponent : StaticImagesSequenceComponent
     {
         private Texture2D[] frames;
         private String name;
@@ -33,7 +33,7 @@ namespace ExplainingEveryString.Core
             }).ToArray();
         }
 
-        protected override void DrawCutScene(SpriteBatch spriteBatch, Int32 frameNumber)
+        protected override void DrawImage(SpriteBatch spriteBatch, Int32 frameNumber)
         {
             spriteBatch.Draw(frames[frameNumber], Vector2.Zero, Color.White);
         }

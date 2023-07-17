@@ -19,10 +19,13 @@ namespace ExplainingEveryString.Core.GameState
         internal InterfaceComponent Interface { get; private set; }
         internal MenuComponent Menu { get; private set; }
         internal GameplayComponent CurrentGameplay { get; private set; }
+
         internal MultiFrameCutsceneComponent CutsceneBeforeLevel { get; private set; }
         internal LevelTitleComponent CurrentLevelTitle { get; private set; }
         internal LevelEndingComponent CurrentLevelEnding { get; private set; }
         internal MultiFrameCutsceneComponent CutsceneAfterLevel { get; private set; }
+        internal TimeAttackResultsComponent TimeAttackResultsComponent { get; private set; }
+
         internal MusicComponent MenuMusic { get; private set; }
         internal MusicComponent GameMusic { get; private set; }
         internal MusicComponent CutsceneMusic { get; private set; }
@@ -39,6 +42,7 @@ namespace ExplainingEveryString.Core.GameState
             GameMusic = new MusicComponent(game);
             CutsceneMusic = new MusicComponent(game);
             Notifications = new NotificationsComponent(game);
+            TimeAttackResultsComponent = new TimeAttackResultsComponent(game, levelSequenceSpecification);
         }
 
         internal void InitNewLevelRelatedComponents(GameProgress gameProgress, LevelSequence levelSequence, Single gameTime)
@@ -111,6 +115,7 @@ namespace ExplainingEveryString.Core.GameState
             components.Add(GameMusic);
             components.Add(CutsceneMusic);
             components.Add(Notifications);
+            components.Add(TimeAttackResultsComponent);
             SwitchMenuRelatedComponents(true);
         }
 
@@ -175,6 +180,12 @@ namespace ExplainingEveryString.Core.GameState
                 CurrentLevelEnding.Enabled = active;
                 CurrentLevelEnding.Visible = active;
             }
+        }
+
+        internal void SwitchTimeAttackResultsComponents(Boolean active)
+        {
+            TimeAttackResultsComponent.Enabled = active;
+            TimeAttackResultsComponent.Visible = active;
         }
     }
 }

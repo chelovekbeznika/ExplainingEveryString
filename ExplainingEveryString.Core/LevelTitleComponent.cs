@@ -8,7 +8,7 @@ using System;
 
 namespace ExplainingEveryString.Core
 {
-    internal class LevelTitleComponent : CutSceneComponent
+    internal class LevelTitleComponent : StaticImagesSequenceComponent
     {
         private Texture2D levelTitle;
         private LevelSequence levelSequence;
@@ -35,7 +35,7 @@ namespace ExplainingEveryString.Core
             this.levelTitle = Game.Content.Load<Texture2D>(levelTitleName);
         }
 
-        protected override void DrawCutScene(SpriteBatch spriteBatch, Int32 frameNumber)
+        protected override void DrawImage(SpriteBatch spriteBatch, Int32 frameNumber)
         {
             var spriteCenter = new Vector2(levelTitle.Width / 2, levelTitle.Height / 2);
             spriteBatch.Draw(levelTitle, screenCenter, null, Color.White, 0, spriteCenter, 1, SpriteEffects.None, 0);

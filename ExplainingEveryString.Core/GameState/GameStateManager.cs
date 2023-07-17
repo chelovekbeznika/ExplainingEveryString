@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
+using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace ExplainingEveryString.Core.GameState
@@ -86,6 +87,10 @@ namespace ExplainingEveryString.Core.GameState
                     }
                     break;
             }
+
+            //Test code
+            var yPressed = GamePad.GetState(Microsoft.Xna.Framework.PlayerIndex.One).IsButtonDown(Buttons.Y);
+            componentsManager.SwitchTimeAttackResultsComponents(yPressed);
         }
 
         internal void SwitchSaveProfile(Int32 newProfile)
