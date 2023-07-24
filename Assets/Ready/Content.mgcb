@@ -9033,6 +9033,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Fonts/MainMenu/I.png
 
+#begin Sprites/Fonts/MainMenu/K.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Fonts/MainMenu/K.png
+
 #begin Sprites/Fonts/MainMenu/L.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -10869,6 +10881,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/NewGame.png
 
+#begin Sprites/Menu/OneLevelTimeAttack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/OneLevelTimeAttack.png
+
+#begin Sprites/Menu/RecordsTable.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/RecordsTable.png
+
 #begin Sprites/Menu/SaveProfiles.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11193,6 +11229,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/StopMusic.png
 
+#begin Sprites/Menu/TimeAttack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/TimeAttack.png
+
 #begin Sprites/Menu/Unpause.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11204,6 +11252,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/Unpause.png
+
+#begin Sprites/Menu/WholeGameTimeAttack.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/WholeGameTimeAttack.png
 
 #begin Sprites/Notifications/GamepadDisconnected.png
 /importer:TextureImporter

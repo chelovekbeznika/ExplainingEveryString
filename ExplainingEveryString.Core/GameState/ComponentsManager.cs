@@ -42,19 +42,20 @@ namespace ExplainingEveryString.Core.GameState
             GameMusic = new MusicComponent(game);
             CutsceneMusic = new MusicComponent(game);
             Notifications = new NotificationsComponent(game);
-            TimeAttackResultsComponent = new TimeAttackResultsComponent(game, levelSequenceSpecification);
         }
 
-        internal void InitNewLevelRelatedComponents(GameProgress gameProgress, LevelSequence levelSequence, Single gameTime)
+        internal void InitNewLevelRelatedComponents(GameProgress gameProgress, LevelSequence levelSequence, Single? gameTime)
         {
-            CurrentGameplay = new GameplayComponent( game, gameProgress.CurrentLevelFileName, 
+            CurrentGameplay = new GameplayComponent(game, gameProgress.CurrentLevelFileName, 
                 gameProgress.LevelProgress, gameTime);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
             CurrentLevelTitle = new LevelTitleComponent(game, levelSequence);
             CurrentLevelEnding = new LevelEndingComponent(game, levelSequence);
+            TimeAttackResultsComponent = new TimeAttackResultsComponent(game, levelSequence.Specification);
             game.Components.Add(CurrentLevelTitle);
             game.Components.Add(CurrentGameplay);
             game.Components.Add(CurrentLevelEnding);
+            game.Components.Add(TimeAttackResultsComponent);
             InitCutscenes(levelSequence);
         }
 
@@ -103,6 +104,11 @@ namespace ExplainingEveryString.Core.GameState
                 game.Components.Remove(CutsceneAfterLevel);
                 CutsceneAfterLevel = null;
             }
+            if (TimeAttackResultsComponent != null)
+            {
+                game.Components.Remove(TimeAttackResultsComponent);
+                TimeAttackResultsComponent = null;
+            }
         }
 
         internal void InitComponents()
@@ -115,7 +121,6 @@ namespace ExplainingEveryString.Core.GameState
             components.Add(GameMusic);
             components.Add(CutsceneMusic);
             components.Add(Notifications);
-            components.Add(TimeAttackResultsComponent);
             SwitchMenuRelatedComponents(true);
         }
 
@@ -184,8 +189,11 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void SwitchTimeAttackResultsComponents(Boolean active)
         {
-            TimeAttackResultsComponent.Enabled = active;
-            TimeAttackResultsComponent.Visible = active;
+            if (TimeAttackResultsComponent != null)
+            {
+                TimeAttackResultsComponent.Enabled = active;
+                TimeAttackResultsComponent.Visible = active;
+            }
         }
     }
 }

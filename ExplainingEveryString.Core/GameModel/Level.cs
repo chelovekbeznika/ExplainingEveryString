@@ -28,14 +28,14 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal MoveTargetSelectorFactory MoveTargetSelectorFactory { get; private set; }
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
-        internal Single GameTime { get; private set; } = 0;
+        internal Single? GameTime { get; private set; } = null;
         internal Player Player => levelState.ActiveActors.Player;
         internal Boolean Lost => levelState.Lost && levelEndDelayPassed;
         internal Boolean Won => levelState.Won && levelEndDelayPassed;
 
 
         internal Level(ActorsFactory factory, TileWrapper map, PlayerInputFactory playerInputFactory, 
-            LevelData levelData, LevelProgress levelProgress, Single gameTime)
+            LevelData levelData, LevelProgress levelProgress, Single? gameTime)
         {
             this.levelProgress = levelProgress;
             this.GameTime = gameTime;
@@ -67,7 +67,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void UpdateLevelProgress(Single elapsedSeconds)
         {
-            if (!levelState.LevelIsEnded)
+            if (!levelState.LevelIsEnded && GameTime.HasValue)
                 GameTime += elapsedSeconds;
             var checkpointReached = levelProgress.CurrentCheckPoint != levelState.CurrentCheckpoint;
             levelProgress.CurrentCheckPoint = levelState.CurrentCheckpoint;

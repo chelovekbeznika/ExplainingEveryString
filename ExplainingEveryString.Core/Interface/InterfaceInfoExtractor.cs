@@ -7,7 +7,7 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceInfoExtractor
     {
-        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, Single gameTime)
+        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, Single? gameTime)
         {
             var homingTarget = activeActors.Player.CurrentTarget;
             return new InterfaceInfo

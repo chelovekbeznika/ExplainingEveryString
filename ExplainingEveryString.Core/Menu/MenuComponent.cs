@@ -55,7 +55,8 @@ namespace ExplainingEveryString.Core.Menu
         {
             var content = game.Content;
             var menuBuild = new MenuBuilder(game, levelSequenceSpecification,
-                new LevelSelectMenuBuilder(game, levelSequenceSpecification),
+                LevelSelectMenuBuilder.ContinueStory(game, levelSequenceSpecification),
+                new TimeAttackMenuBuilder(game, LevelSelectMenuBuilder.OneLevelRun(game, levelSequenceSpecification)),
                 new MusicTestMenuBuilder(game, musicTestSpecification),
                 new SettingsMenuBuilder(game, SaveSettingsHandler),
                 new SaveProfilesMenuBuilder(game, levelSequenceSpecification));

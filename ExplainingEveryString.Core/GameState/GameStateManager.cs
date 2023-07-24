@@ -3,12 +3,18 @@ using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameState
 {
     internal class GameStateManager
     {
-        private enum GameState { BetweenLevels, CutsceneBefore, LevelTitle, InGame, Paused, LevelEnding, CutsceneAfter }
+        private delegate void ComponentsSwitch(Boolean active);
+        private readonly Dictionary<GameState, ComponentsSwitch> componentSwitches;
+
+        private enum GameMode { Story, OneLevelRun, WholeGameRun }
+        private enum GameState { BetweenLevels, CutsceneBefore, LevelTitle, InGame, Paused, TimeRecordsTable, LevelEnding, CutsceneAfter }
 
         private ComponentsManager componentsManager;
         private LevelSequenceSpecification levelSequenceSpecification;
@@ -16,6 +22,7 @@ namespace ExplainingEveryString.Core.GameState
         private GameProgress gameProgress;
 
         private GameState currentState = GameState.BetweenLevels;
+        private GameMode currentMode = GameMode.Story;
         private Int32 SaveProfileNumber
         {
             get => ConfigurationAccess.GetCurrentConfig().SaveProfile;
@@ -33,6 +40,17 @@ namespace ExplainingEveryString.Core.GameState
         {
             this.componentsManager = componentsManager;
             this.levelSequenceSpecification = levelSequenceSpecification;
+            this.componentSwitches = new Dictionary<GameState, ComponentsSwitch>
+            {
+                { GameState.BetweenLevels, componentsManager.SwitchMenuRelatedComponents },
+                { GameState.Paused, componentsManager.SwitchMenuRelatedComponents },
+                { GameState.CutsceneBefore, componentsManager.SwitchCutsceneBeforeLevel },
+                { GameState.LevelTitle, componentsManager.SwitchLevelTitleRelatedComponents },
+                { GameState.InGame, componentsManager.SwitchGameplayRelatedComponents },
+                { GameState.CutsceneAfter, componentsManager.SwitchCutsceneAfterLevel },
+                { GameState.LevelEnding, componentsManager.SwitchLevelEndingRelatedComponents },
+                { GameState.TimeRecordsTable, componentsManager.SwitchTimeAttackResultsComponents },
+            };
 
             SwitchSaveProfile(currentProfile);
         }
@@ -54,24 +72,32 @@ namespace ExplainingEveryString.Core.GameState
                     }
                     if (componentsManager.CurrentGameplay.Won)
                     {
-                        if (componentsManager.CutsceneAfterLevel != null)
-                            SwitchToCutsceneAfterState();
+                        if (currentMode == GameMode.Story)
+                        {
+                            if (componentsManager.CutsceneAfterLevel != null)
+                                SwitchToNewState(GameState.CutsceneAfter);
+                            else
+                            {
+                                if (levelSequence.ShowEndingTitle)
+                                    SwitchToNewState(GameState.LevelEnding);
+                                else
+                                    SwitchToNextLevel();
+                            }
+                        }
                         else
                         {
-                            if (levelSequence.ShowEndingTitle)
-                                SwitchToLevelEndingState();
-                            else
-                                SwitchToNextLevel();
+                            CheckLevelRecord();
+                            SwitchToNewState(GameState.TimeRecordsTable);
                         }
                     }
                     break;
                 case GameState.CutsceneBefore:
                     if (componentsManager.CutsceneBeforeLevel.Closed)
-                        SwitchToTitleState();
+                        SwitchToNewState(GameState.LevelTitle);
                     break;
                 case GameState.LevelTitle:
                     if (componentsManager.CurrentLevelTitle.Closed)
-                        SwitchToInGameState();
+                        SwitchToNewState(GameState.InGame);
                     break;
                 case GameState.LevelEnding:
                     if (componentsManager.CurrentLevelEnding.Closed)
@@ -81,16 +107,16 @@ namespace ExplainingEveryString.Core.GameState
                     if (componentsManager.CutsceneAfterLevel.Closed)
                     {
                         if (levelSequence.ShowEndingTitle)
-                            SwitchToLevelEndingState();
+                            SwitchToNewState(GameState.LevelEnding);
                         else
                             SwitchToNextLevel();
                     }
                     break;
+                case GameState.TimeRecordsTable:
+                    if (componentsManager.TimeAttackResultsComponent.Closed)
+                        SwitchToNewState(GameState.BetweenLevels);
+                    break;
             }
-
-            //Test code
-            var yPressed = GamePad.GetState(Microsoft.Xna.Framework.PlayerIndex.One).IsButtonDown(Buttons.Y);
-            componentsManager.SwitchTimeAttackResultsComponents(yPressed);
         }
 
         internal void SwitchSaveProfile(Int32 newProfile)
@@ -98,7 +124,7 @@ namespace ExplainingEveryString.Core.GameState
             if (newProfile == SaveProfileNumber && gameProgress != null)
                 return;
             if (currentState != GameState.BetweenLevels)
-                SwitchToBetweenLevelsState();
+                SwitchToNewState(GameState.BetweenLevels);
 
             gameProgress = GameProgressAccess.Load(newProfile);
             if (gameProgress != null)
@@ -114,6 +140,7 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void StartNewGame()
         {
+            currentMode = GameMode.Story;
             levelSequence.Reset();
             ProgressToLevelStart();
             GameProgressAccess.Save(gameProgress, SaveProfileNumber);
@@ -122,11 +149,13 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void ContinueCurrentGame()
         {
+            currentMode = GameMode.Story;
             StartCurrentLevel(true);
         }
 
         internal void ContinueFrom(String levelName)
         {
+            currentMode = GameMode.Story;
             gameProgress.CurrentLevelFileName = levelName;
             gameProgress.MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile();
             gameProgress.LevelProgress = new LevelProgress
@@ -137,6 +166,18 @@ namespace ExplainingEveryString.Core.GameState
             StartCurrentLevel(true);
         }
 
+        internal void StartOneLevelRun(String levelName)
+        {
+            currentMode = GameMode.OneLevelRun;
+            gameProgress.CurrentLevelFileName = levelName;
+            gameProgress.MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile();
+            gameProgress.LevelProgress = new LevelProgress
+            {
+                CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
+            };
+            StartCurrentLevel(false, 0);
+        }
+
         internal Boolean LevelAvailable(String levelFileName)
         {
             return levelSequence.LevelIsAvailable(levelFileName);
@@ -144,40 +185,46 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void NotableProgressMaid(Object sender, CheckpointReachedEventArgs eventArgs)
         {
-            gameProgress.LevelProgress = eventArgs.LevelProgress;
-            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
+            if (currentMode == GameMode.Story)
+            {
+                gameProgress.LevelProgress = eventArgs.LevelProgress;
+                GameProgressAccess.Save(gameProgress, SaveProfileNumber);
+            }
         }
 
-        private void StartCurrentLevel(Boolean showTitle, Single gameTime = 0)
+        private void StartCurrentLevel(Boolean showTitle, Single? gameTime = null)
         {
             levelSequence.MarkLevelAsCurrentContinuePoint(gameProgress.CurrentLevelFileName);
             componentsManager.DeleteCurrentLevelRelatedComponents();
             componentsManager.InitNewLevelRelatedComponents(gameProgress, levelSequence, gameTime);
             if (showTitle)
             {
-                if (componentsManager.CutsceneBeforeLevel != null)
-                    SwitchToCutsceneBeforeState();
+                if (currentMode == GameMode.Story && componentsManager.CutsceneBeforeLevel != null)
+                    SwitchToNewState(GameState.CutsceneBefore);
                 else
-                    SwitchToTitleState();
+                    SwitchToNewState(GameState.LevelTitle);
             }
             else
-                SwitchToInGameState();
+                SwitchToNewState(GameState.InGame);
+        }
+
+        private void CheckLevelRecord()
+        {
+            var level = gameProgress.CurrentLevelFileName;
+            var gameTime = componentsManager.CurrentGameplay.GameTime;
+            if (gameProgress.LevelRecords.ContainsKey(level))
+            {
+                if (gameProgress.LevelRecords[level] > gameTime)
+                    gameProgress.LevelRecords[level] = gameTime.Value;
+            }
+            else
+            {
+                gameProgress.LevelRecords.Add(level, gameTime.Value);
+            }
         }
 
         private void SwitchToNextLevel()
         {
-            var level = gameProgress.CurrentLevelFileName;
-            var gameTime = componentsManager.CurrentGameplay.GameTime;
-            if (gameProgress.LevelRecords.ContainsKey(level)) 
-            {
-                if (gameProgress.LevelRecords[level] > gameTime)
-                    gameProgress.LevelRecords[level] = gameTime;
-            }
-            else
-            {
-                gameProgress.LevelRecords.Add(level, gameTime);
-            }
-
             levelSequence.MarkLevelComplete();
             if (!levelSequence.GameCompleted)
             {
@@ -187,7 +234,7 @@ namespace ExplainingEveryString.Core.GameState
             }
             else
             {
-                SwitchToBetweenLevelsState();
+                SwitchToNewState(GameState.BetweenLevels);
                 componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
             }
         }
@@ -197,10 +244,10 @@ namespace ExplainingEveryString.Core.GameState
             switch (currentState)
             {
                 case GameState.InGame:
-                    SwitchToPausedState();
+                    SwitchToNewState(GameState.Paused);
                     break;
                 case GameState.Paused:
-                    SwitchToInGameState();
+                    SwitchToNewState(GameState.InGame);
                     break;
             }
         }
@@ -208,7 +255,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void TryPause()
         {
             if (currentState == GameState.InGame)
-                SwitchToPausedState();
+                SwitchToNewState(GameState.Paused);
         }
 
         internal void ConfigChanged(Configuration newConfig)
@@ -238,83 +285,17 @@ namespace ExplainingEveryString.Core.GameState
             componentsManager.Notifications.SendNotification(type);
         }
 
-        private void SwitchToTitleState()
+        private void SwitchToNewState(GameState newState)
         {
-            componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.SwitchMenuRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(false);
-            componentsManager.SwitchCutsceneBeforeLevel(false);
-            componentsManager.SwitchLevelEndingRelatedComponents(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(true);
-            currentState = GameState.LevelTitle;
-        }
-
-        private void SwitchToInGameState()
-        {
-            componentsManager.SwitchMenuRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(false);
-            componentsManager.SwitchCutsceneBeforeLevel(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(false);
-            componentsManager.SwitchLevelEndingRelatedComponents(false);
-            componentsManager.SwitchGameplayRelatedComponents(true);
-            currentState = GameState.InGame;
-        }
-
-        private void SwitchToPausedState()
-        {
-            componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(false);
-            componentsManager.SwitchLevelEndingRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(false);
-            componentsManager.SwitchCutsceneBeforeLevel(false);
-            componentsManager.SwitchMenuRelatedComponents(true);
-            componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
-            currentState = GameState.Paused;
-        }
-
-        private void SwitchToLevelEndingState()
-        {
-            componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.SwitchMenuRelatedComponents(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(false);
-            componentsManager.SwitchCutsceneBeforeLevel(false);
-            componentsManager.SwitchLevelEndingRelatedComponents(true);
-            currentState = GameState.LevelEnding;
-        }
-
-        private void SwitchToBetweenLevelsState()
-        {
-            componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(false);
-            componentsManager.SwitchCutsceneBeforeLevel(false);
-            componentsManager.SwitchLevelEndingRelatedComponents(false);
-            componentsManager.SwitchMenuRelatedComponents(true);
-            componentsManager.DeleteCurrentLevelRelatedComponents();
-            currentState = GameState.BetweenLevels;
-        }
-
-        private void SwitchToCutsceneBeforeState()
-        {
-            componentsManager.SwitchMenuRelatedComponents(false);
-            componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(false);
-            componentsManager.SwitchLevelEndingRelatedComponents(false);
-            componentsManager.SwitchCutsceneBeforeLevel(true);
-            currentState = GameState.CutsceneBefore;
-        }
-
-        private void SwitchToCutsceneAfterState()
-        {
-            componentsManager.SwitchMenuRelatedComponents(false);
-            componentsManager.SwitchGameplayRelatedComponents(false);
-            componentsManager.SwitchLevelTitleRelatedComponents(false);
-            componentsManager.SwitchCutsceneBeforeLevel(false);
-            componentsManager.SwitchLevelEndingRelatedComponents(false);
-            componentsManager.SwitchCutsceneAfterLevel(true);
-            currentState = GameState.CutsceneAfter;
+            var otherGameStates = Enum.GetValues(typeof(GameState)).OfType<GameState>().Where(state => state != newState);
+            foreach (var state in otherGameStates)
+                componentSwitches[state](false);
+            if (newState == GameState.BetweenLevels)
+                componentsManager.DeleteCurrentLevelRelatedComponents();
+            if (newState == GameState.Paused)
+                componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
+            componentSwitches[newState](true);
+            currentState = newState;
         }
 
         private void ProgressToLevelStart()

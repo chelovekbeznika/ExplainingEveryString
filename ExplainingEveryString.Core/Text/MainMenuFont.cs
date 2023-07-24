@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Text
             {
                 { ' ', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Space") }
             };
-            foreach (var c in "CONTIUELADSWGMVX")
+            foreach (var c in "CONTIUELADSWGMVXK")
             {
                 Chars.Add(c, content.Load<Texture2D>($@"Sprites/Fonts/MainMenu/{c}"));
             }

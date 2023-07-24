@@ -16,21 +16,24 @@ namespace ExplainingEveryString.Core.Menu
 
         private EesGame game;
         private LevelSequenceSpecification levelSequenceSpecification;
-        private IMenuBuilder levelSelectBuilder;
+        private IMenuBuilder storyLevelSelectBuilder;
+        private IMenuBuilder timeAttackBuilder;
         private IMenuBuilder musicTestBuilder;
-        private IMenuBuilder settingsMenuBuilder;
-        private IMenuBuilder saveProfilesMenuBuilder;
+        private IMenuBuilder settingsBuilder;
+        private IMenuBuilder saveProfilesBuilder;
 
         internal MenuBuilder(EesGame game, LevelSequenceSpecification levelSequenceSpecification, 
-            IMenuBuilder levelSelectBuilder, IMenuBuilder musicTestBuilder, 
-            IMenuBuilder settingsMenuBuilder, IMenuBuilder saveProfilesMenuBuilder)
+            IMenuBuilder storyLevelSelectBuilder,
+            IMenuBuilder timeAttackBuilder, IMenuBuilder musicTestBuilder, 
+            IMenuBuilder settingsBuilder, IMenuBuilder saveProfilesMenuBuilder)
         {
             this.game = game;
             this.levelSequenceSpecification = levelSequenceSpecification;
-            this.levelSelectBuilder = levelSelectBuilder;
+            this.storyLevelSelectBuilder = storyLevelSelectBuilder;
+            this.timeAttackBuilder = timeAttackBuilder;
             this.musicTestBuilder = musicTestBuilder;
-            this.settingsMenuBuilder = settingsMenuBuilder;
-            this.saveProfilesMenuBuilder = saveProfilesMenuBuilder;
+            this.settingsBuilder = settingsBuilder;
+            this.saveProfilesBuilder = saveProfilesMenuBuilder;
         }
 
         public MenuItemsContainer BuildMenu(MenuVisiblePart menuVisiblePart)
@@ -64,11 +67,13 @@ namespace ExplainingEveryString.Core.Menu
                 new MenuItemButton(continueButtonDisplayer) { Text = "LOAD LAST" },
                 new MenuItemButton(newGameButtonDisplayer) { Text = "NEW GAME" },
                 new MenuItemWithContainer(levelSelectButtonDisplayer,
-                    levelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT LEVEL" },
+                    storyLevelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT LEVEL" },
                 new MenuItemWithContainer(saveProfilesButtonDisplayer,
-                    saveProfilesMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT SAVE" },
+                    saveProfilesBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT SAVE" },
+                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/TimeAttack")),
+                    timeAttackBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "TIME ATTACK" },
                 new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu")),
-                    settingsMenuBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SETTINGS" },
+                    settingsBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SETTINGS" },
                 new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest")),
                     musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "MUSIC TEST" },
                 new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Exit"))) { Text = "EXIT" }

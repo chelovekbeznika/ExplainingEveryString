@@ -23,7 +23,7 @@ namespace ExplainingEveryString.Core
         private CustomFont timeFont => (Game as EesGame).FontsStorage.LevelTime;
 
         public TimeAttackResultsComponent(EesGame game, LevelSequenceSpecification levelSequenceSpecification) : 
-            base(game, 1.0F, 86400F, 1)
+            base(game, 1.0F, 60F, 1)
         {
             this.levelSequenceSpecification = levelSequenceSpecification;
 

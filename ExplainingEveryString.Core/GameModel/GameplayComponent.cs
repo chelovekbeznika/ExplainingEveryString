@@ -24,7 +24,7 @@ namespace ExplainingEveryString.Core.GameModel
         private readonly EesGame eesGame;
         private readonly String levelFileName;
         private readonly LevelProgress levelStart;
-        private readonly Single initialGameTime;
+        private readonly Single? initialGameTime;
 
         private Level level;
         private LevelData levelData;
@@ -42,9 +42,9 @@ namespace ExplainingEveryString.Core.GameModel
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
-        internal Single GameTime => level.GameTime;
+        internal Single? GameTime => level.GameTime;
 
-        internal GameplayComponent(EesGame game, string levelFileName, LevelProgress levelStart, Single gameTime)
+        internal GameplayComponent(EesGame game, string levelFileName, LevelProgress levelStart, Single? gameTime)
             : base(game)
         {
             eesGame = game;
