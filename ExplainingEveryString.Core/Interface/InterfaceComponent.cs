@@ -145,8 +145,8 @@ namespace ExplainingEveryString.Core.Interface
                 DrawPlayerElements();
                 DrawEnemiesElements();
                 minimapDisplayer?.Draw(interfaceInfo);
-                if (interfaceInfo.GameTime.HasValue)
-                    gameTimeDisplayer.Draw(interfaceInfo.GameTime.Value, spriteBatch, alphaMask);
+                if (interfaceInfo.GameTime != null)
+                    gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
             }
             spriteBatch.End();
             base.Draw(gameTime);

@@ -6,13 +6,19 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceInfo
     {
-        internal Single? GameTime { get; set; }
+        internal GameTimeInfo GameTime { get; set; }
         internal List<EnemyInterfaceInfo> Enemies { get; set; }
         internal List<Vector2> HiddenEnemies { get; set; }
         internal List<EnemyInterfaceInfo> Bosses { get; set; }
         internal PlayerInterfaceInfo Player { get; set; }
         internal List<Vector2> EnemiesLevelPositions { get; set; }
         internal List<Vector2> BossesLevelPositions { get; set; }
+    }
+
+    internal class GameTimeInfo
+    {
+        internal Single CurrentTime { get; set; }
+        internal Single? CurrentLevelRecord { get; set; }
     }
 
     internal class EnemyInterfaceInfo

@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.Text;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -10,23 +11,49 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private CustomFont timeFont;
         private readonly Int32 pixelsFromLeft = 32;
         private readonly Int32 pixelsFromTop = 32;
+        private readonly Int32 pixelsBetween = 16;
 
         internal GameTimeDisplayer(CustomFont timeFont)
         {
             this.timeFont = timeFont;
         }
 
-        internal void Draw(Single time, SpriteBatch spriteBatch, Color colorMask)
+        internal void Draw(GameTimeInfo gameTimeInfo, SpriteBatch spriteBatch, Color colorMask)
         {
-            var timeSpan = TimeSpan.FromSeconds(time);
-            var timeString = $"{timeSpan:h\\:mm\\:ss\\.ff}";
-            var positionOnScreen = CalculatePositionOnScreen(timeString);
-            timeFont.Draw(spriteBatch, positionOnScreen, timeString, colorMask);
+            if (gameTimeInfo.CurrentLevelRecord != null)
+            {
+                var record = gameTimeInfo.CurrentLevelRecord.Value;
+                var recordString = ToTimeString(record);
+                var recordPosition = FirstTimePositionOnScreen();
+                timeFont.Draw(spriteBatch, recordPosition, recordString, new Color(Constants.NintendoGold, colorMask.A));
+
+                var timeString = ToTimeString(gameTimeInfo.CurrentTime);
+                var timePosition = SecondTimePositionOnScreen(recordString);
+                timeFont.Draw(spriteBatch, timePosition, timeString, colorMask);
+            }
+            else
+            {
+                var timeString = ToTimeString(gameTimeInfo.CurrentTime);
+                var timePosition = FirstTimePositionOnScreen();
+                timeFont.Draw(spriteBatch, timePosition, timeString, colorMask);
+            }
         }
 
-        private Vector2 CalculatePositionOnScreen(String timeString)
+        private String ToTimeString(Single time)
+        {
+            var timeSpan = TimeSpan.FromSeconds(time);
+            return $"{timeSpan:h\\:mm\\:ss\\.ff}";
+        }
+
+        private Vector2 FirstTimePositionOnScreen()
         {
             return new Vector2 { X = pixelsFromLeft, Y = pixelsFromTop };
+        }
+
+        private Vector2 SecondTimePositionOnScreen(String firstString)
+        {
+            var firstTimeSize = timeFont.GetSize(firstString);
+            return new Vector2 { X = pixelsFromLeft + firstTimeSize.X + pixelsBetween, Y = pixelsFromTop };
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Data.Configuration;
+using ExplainingEveryString.Data.Level;
 using System;
 using System.Linq;
 
@@ -7,13 +9,13 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceInfoExtractor
     {
-        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, Single? gameTime)
+        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, Level level)
         {
             var homingTarget = activeActors.Player.CurrentTarget;
             return new InterfaceInfo
             {
                 Player = GetInterfaceInfo(activeActors.Player, camera),
-                GameTime = gameTime,
+                GameTime = GetGameTimeInfo(level),
                 Enemies = activeActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
                             .Where(e => e.ShowInterfaceInfo && !(activeActors.ShowAsBossesInInterface?.Contains(e) ?? false))
@@ -28,6 +30,27 @@ namespace ExplainingEveryString.Core.Interface
                 BossesLevelPositions = activeActors.ShowAsBossesInInterface?
                             .Select(b => (b as ICollidable).Position).ToList()
             };
+        }
+
+        private GameTimeInfo GetGameTimeInfo(Level level)
+        {
+            var currentTime = level.GameTime;
+            if (currentTime != null)
+            {
+                var currentProfile = ConfigurationAccess.GetCurrentConfig().SaveProfile;
+                var currentRecords = GameProgressAccess.Load(currentProfile).LevelRecords;
+                return new GameTimeInfo
+                {
+                    CurrentTime = currentTime.Value,
+                    CurrentLevelRecord = currentRecords.ContainsKey(level.Name) 
+                        ? currentRecords[level.Name] 
+                        : null as Single?
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private PlayerInterfaceInfo GetInterfaceInfo(Player player, Camera camera)

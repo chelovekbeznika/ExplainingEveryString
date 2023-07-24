@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace ExplainingEveryString.Data.Level
 {
     public class LevelData
     {
+        [JsonIgnore]
+        public String Name { get; set; }
         public String[] Blueprints { get; set; }
         public String MusicName { get; set; }
         public String TileMap { get; set; }

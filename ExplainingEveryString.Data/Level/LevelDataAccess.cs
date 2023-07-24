@@ -20,7 +20,9 @@ namespace ExplainingEveryString.Data.Level
     {
         public LevelData Load(String fileName)
         {
-            return JsonDataAccessor.Instance.Load<LevelData>(FileNames.GetJsonLevelsPath(fileName));
+            var result = JsonDataAccessor.Instance.Load<LevelData>(FileNames.GetJsonLevelsPath(fileName));
+            result.Name = fileName;
+            return result;
         }
 
         public void Save(String fileName, LevelData updatedLevel)
