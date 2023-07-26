@@ -13,17 +13,18 @@ namespace ExplainingEveryString.Core
         private Texture2D frameSkipTip;
         private readonly Single maxFrameTime = 5f;
         private readonly Single minFrameTime = 0.333333f;
-        private Single frameTime = 0;
-        private Int32 frameNumber = 0;
+        
         private Boolean frameSkipped = false;
         private Boolean sceneSkipped = false;
         private Color background;
         private SpriteBatch spriteBatch;
 
+        protected Int32 FrameNumber { get; private set; } = 0;
+        protected Single FrameTime { get; private set; } = 0;
         protected Int32 FramesCount { get; private set; }
-        internal Boolean Closed => frameNumber >= FramesCount || sceneSkipped;
-        private Boolean FrameCanBeSkipped => frameTime >= minFrameTime;
-        private Boolean SceneCanBeSkipped => frameTime >= minFrameTime || frameNumber > 0;
+        internal Boolean Closed => FrameNumber >= FramesCount || sceneSkipped;
+        private Boolean FrameCanBeSkipped => FrameTime >= minFrameTime;
+        private Boolean SceneCanBeSkipped => FrameTime >= minFrameTime || FrameNumber > 0;
 
         public StaticImagesSequenceComponent(Game game, Single minFrameTime, Single maxFrameTime, Int32 framesCount) : base(game)
         {
@@ -50,7 +51,7 @@ namespace ExplainingEveryString.Core
 
         public override void Update(GameTime gameTime)
         {
-            frameTime += (Single)gameTime.ElapsedGameTime.TotalSeconds;
+            FrameTime += (Single)gameTime.ElapsedGameTime.TotalSeconds;
             if (FrameCanBeSkipped)
             {
                 frameSkipped |= GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)
@@ -62,10 +63,10 @@ namespace ExplainingEveryString.Core
                     || Keyboard.GetState().IsKeyDown(Keys.Enter)
                     || Keyboard.GetState().IsKeyDown(Keys.Escape);
             }
-            if (frameTime >= maxFrameTime || frameSkipped)
+            if (FrameTime >= maxFrameTime || frameSkipped)
             {
-                frameNumber += 1;
-                frameTime = 0;
+                FrameNumber += 1;
+                FrameTime = 0;
                 frameSkipped = false;
             }
             base.Update(gameTime);
@@ -75,7 +76,7 @@ namespace ExplainingEveryString.Core
         {
             GraphicsDevice.Clear(background);
             spriteBatch.Begin();
-            DrawImage(spriteBatch, frameNumber);
+            DrawImage(spriteBatch, FrameNumber);
             if (SceneCanBeSkipped)
                 spriteBatch.Draw(cutSceneSkipTip, new Vector2(Constants.TargetWidth - 64, Constants.TargetHeight - 64), Color.White);
             if (FrameCanBeSkipped)

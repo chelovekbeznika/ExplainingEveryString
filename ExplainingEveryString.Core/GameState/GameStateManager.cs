@@ -215,11 +215,15 @@ namespace ExplainingEveryString.Core.GameState
             if (gameProgress.LevelRecords.ContainsKey(level))
             {
                 if (gameProgress.LevelRecords[level] > gameTime)
+                {
                     gameProgress.LevelRecords[level] = gameTime.Value;
+                    componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(level);
+                }
             }
             else
             {
                 gameProgress.LevelRecords.Add(level, gameTime.Value);
+                componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(level);
             }
         }
 
