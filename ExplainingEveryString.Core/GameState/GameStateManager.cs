@@ -34,6 +34,7 @@ namespace ExplainingEveryString.Core.GameState
         }
 
         internal Boolean IsPaused => currentState == GameState.Paused;
+        internal GameTimeStateManager GameTimeState { get; private set; } = new GameTimeStateManager();
 
         internal GameStateManager(LevelSequenceSpecification levelSequenceSpecification, 
             ComponentsManager componentsManager, Int32 currentProfile)
@@ -62,6 +63,7 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void Update()
         {
+            GameTimeState.Update();
             switch (currentState)
             {
                 case GameState.InGame:

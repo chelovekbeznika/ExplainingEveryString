@@ -2,9 +2,11 @@
 {
     public static class AssetsMetadataAccess
     {
+        private static readonly IAssetsMetadataLoader _instance = new JsonAssetsMetadataLoader();
+
         public static IAssetsMetadataLoader GetLoader()
         {
-            return new JsonAssetsMetadataLoader();
+            return _instance;
         }
     }
 
@@ -15,9 +17,11 @@
 
     internal class JsonAssetsMetadataLoader : IAssetsMetadataLoader
     {
+        private AssetsMetadata _onceCached = null;
         public AssetsMetadata Load()
         {
-            return JsonDataAccessor.Instance.Load<AssetsMetadata>(FileNames.AssetsMetadata);
+            _onceCached ??= JsonDataAccessor.Instance.Load<AssetsMetadata>(FileNames.AssetsMetadata);
+            return _onceCached;
         }
     }
 }

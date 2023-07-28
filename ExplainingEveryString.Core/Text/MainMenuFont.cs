@@ -14,9 +14,12 @@ namespace ExplainingEveryString.Core.Text
         {
             Chars = new Dictionary<Char, Texture2D>
             {
-                { ' ', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Space") }
+                { ' ', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Space") },
+                { '.', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Dot") },
+                { ',', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Dot") },
+                { ':', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Colon") }
             };
-            foreach (var c in "CONTIUELADSWGMVXK")
+            foreach (var c in "CONTIUELADSWGMVXK0123456789")
             {
                 Chars.Add(c, content.Load<Texture2D>($@"Sprites/Fonts/MainMenu/{c}"));
             }

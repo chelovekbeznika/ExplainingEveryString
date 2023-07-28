@@ -23,11 +23,10 @@ namespace ExplainingEveryString.Core
         private readonly LevelSequenceSpecification levelSequenceSpecification;
         private Texture2D background;
         private SpriteData newRecordNotice;
-        private Single elapsedTime = 0;
         private Dictionary<String, Texture2D> levelButtons;
         private String newRecordLevel = null;
 
-        private CustomFont timeFont => (Game as EesGame).FontsStorage.LevelTime;
+        private CustomFont TimeFont => (Game as EesGame).FontsStorage.LevelTime;
 
         public TimeAttackResultsComponent(EesGame game, LevelSequenceSpecification levelSequenceSpecification) : 
             base(game, 1.0F, 60F, 1)
@@ -79,9 +78,8 @@ namespace ExplainingEveryString.Core
             Single levelResult, ref Vector2 nextButtonPlaceholder)
         {
             var isNewRecord = levelName == newRecordLevel;
-            var timeSpan = TimeSpan.FromSeconds(levelResult);
-            var timeString = $"{timeSpan:h\\:mm\\:ss\\.ff}";
-            var textSize = timeFont.GetSize(timeString);
+            var timeString = GameTimeHelper.ToTimeString(levelResult);
+            var textSize = TimeFont.GetSize(timeString);
                     
             var currentButton = levelButtons[levelName];
             var wholeWidth = textSize.X + BetweenElements + currentButton.Width;
@@ -91,7 +89,7 @@ namespace ExplainingEveryString.Core
                 y: currentButtonPosition.Y + currentButton.Height / 2 - textSize.Y / 2);
 
             spriteBatch.Draw(currentButton, currentButtonPosition, Color.White);
-            timeFont.Draw(spriteBatch, currentTextPosition, timeString);
+            TimeFont.Draw(spriteBatch, currentTextPosition, timeString);
 
             if (isNewRecord)
             {

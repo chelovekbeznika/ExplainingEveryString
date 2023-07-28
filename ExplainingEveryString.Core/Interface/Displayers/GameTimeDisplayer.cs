@@ -23,26 +23,20 @@ namespace ExplainingEveryString.Core.Interface.Displayers
             if (gameTimeInfo.CurrentLevelRecord != null)
             {
                 var record = gameTimeInfo.CurrentLevelRecord.Value;
-                var recordString = ToTimeString(record);
+                var recordString = GameTimeHelper.ToTimeString(record);
                 var recordPosition = FirstTimePositionOnScreen();
                 timeFont.Draw(spriteBatch, recordPosition, recordString, new Color(Constants.NintendoGold, colorMask.A));
 
-                var timeString = ToTimeString(gameTimeInfo.CurrentTime);
+                var timeString = GameTimeHelper.ToTimeString(gameTimeInfo.CurrentTime);
                 var timePosition = SecondTimePositionOnScreen(recordString);
                 timeFont.Draw(spriteBatch, timePosition, timeString, colorMask);
             }
             else
             {
-                var timeString = ToTimeString(gameTimeInfo.CurrentTime);
+                var timeString = GameTimeHelper.ToTimeString(gameTimeInfo.CurrentTime);
                 var timePosition = FirstTimePositionOnScreen();
                 timeFont.Draw(spriteBatch, timePosition, timeString, colorMask);
             }
-        }
-
-        private String ToTimeString(Single time)
-        {
-            var timeSpan = TimeSpan.FromSeconds(time);
-            return $"{timeSpan:h\\:mm\\:ss\\.ff}";
         }
 
         private Vector2 FirstTimePositionOnScreen()
