@@ -8,14 +8,68 @@ using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core.GameState
 {
-    internal class GameTimeStateManager
+    internal class GameTimeStateManager : IUpdateable
     {
         private readonly Dictionary<String, MenuItem> levelTimeAttackButtons = new Dictionary<String, MenuItem>();
+        private readonly ComponentsManager componentsManager;
+        private Func<GameProgress> gameProfileGetter;
+        internal Single? LevelTime { get; private set; } = null;
+        internal String LevelName { get; private set; }
+        internal Single? CurrentLevelRecord => (gameProfileGetter()?.LevelRecords?.ContainsKey(LevelName) ?? false)
+            ? gameProfileGetter().LevelRecords[LevelName] : null as Single?;
 
-        public void Update()
+        internal GameTimeStateManager(ComponentsManager componentsManager, Func<GameProgress> gameProfileGetter)
         {
-            var profile = ConfigurationAccess.GetCurrentConfig().SaveProfile;
-            var currentLevelResults = GameProgressAccess.Load(profile).LevelRecords;
+            this.componentsManager = componentsManager;
+            this.gameProfileGetter = gameProfileGetter;
+        }
+
+        public void Update(Single elapsedSeconds)
+        {
+            KeepInSyncLevelRecordsInMainMenu();
+            if (componentsManager.CurrentGameplay?.TimerIsOn ?? false && LevelTime.HasValue)
+                LevelTime += elapsedSeconds;
+        }
+
+        internal void StartOneLevelRun(String levelName, Single startTime)
+        {
+            LevelName = levelName;
+            LevelTime = startTime;
+        }
+
+        internal void StartStoryGame()
+        {
+            LevelName = null;
+            LevelTime = null;
+        }
+
+        internal void UpdateLevelRecord()
+        {
+            var gameProgress = gameProfileGetter();
+            var level = gameProgress.CurrentLevelFileName;
+            if (gameProgress.LevelRecords.ContainsKey(level))
+            {
+                if (gameProgress.LevelRecords[level] > LevelTime)
+                {
+                    gameProgress.LevelRecords[level] = LevelTime.Value;
+                    componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(level);
+                }
+            }
+            else
+            {
+                gameProgress.LevelRecords.Add(level, LevelTime.Value);
+                componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(level);
+            }
+        }
+
+        internal void RegisterLevelTimeButton(String levelName, MenuItem levelButton)
+        {
+            levelTimeAttackButtons.Add(levelName, levelButton);
+        }
+
+        private void KeepInSyncLevelRecordsInMainMenu()
+        {
+            var currentLevelResults = gameProfileGetter().LevelRecords;
             foreach (var (level, button) in levelTimeAttackButtons)
             {
                 if (currentLevelResults.ContainsKey(level))
@@ -23,11 +77,6 @@ namespace ExplainingEveryString.Core.GameState
                 else
                     button.Text = null;
             }
-        }
-
-        internal void RegisterLevelTimeButton(String levelName, MenuItem levelButton)
-        {
-            levelTimeAttackButtons.Add(levelName, levelButton);
         }
     }
 }

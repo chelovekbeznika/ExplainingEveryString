@@ -28,19 +28,16 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal MoveTargetSelectorFactory MoveTargetSelectorFactory { get; private set; }
         internal PlayerInputFactory PlayerInputFactory { get; private set; }
-        internal Single? GameTime { get; private set; } = null;
-        internal String Name { get; private set; }
         internal Player Player => levelState.ActiveActors.Player;
         internal Boolean Lost => levelState.Lost && levelEndDelayPassed;
         internal Boolean Won => levelState.Won && levelEndDelayPassed;
+        internal Boolean TimerIsOn => !levelState.LevelIsEnded;
 
 
         internal Level(ActorsFactory factory, TileWrapper map, PlayerInputFactory playerInputFactory, 
-            LevelData levelData, LevelProgress levelProgress, Single? gameTime)
+            LevelData levelData, LevelProgress levelProgress)
         {
             this.levelProgress = levelProgress;
-            this.Name = levelData.Name;
-            this.GameTime = gameTime;
             this.PlayerInputFactory = playerInputFactory;
             factory.Level = this;
 
@@ -69,8 +66,6 @@ namespace ExplainingEveryString.Core.GameModel
 
         private void UpdateLevelProgress(Single elapsedSeconds)
         {
-            if (!levelState.LevelIsEnded && GameTime.HasValue)
-                GameTime += elapsedSeconds;
             var checkpointReached = levelProgress.CurrentCheckPoint != levelState.CurrentCheckpoint;
             levelProgress.CurrentCheckPoint = levelState.CurrentCheckpoint;
             if (checkpointReached)
@@ -110,7 +105,7 @@ namespace ExplainingEveryString.Core.GameModel
 
         internal InterfaceInfo GetInterfaceInfo(Camera camera)
         {
-            return new InterfaceInfoExtractor().GetInterfaceInfo(camera, levelState.ActiveActors, this);
+            return new InterfaceInfoExtractor().GetInterfaceInfo(camera, levelState.ActiveActors);
         }
 
         private void PlanLevelEndDelay()

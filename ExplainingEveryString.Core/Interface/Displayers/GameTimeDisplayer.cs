@@ -18,7 +18,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
             this.timeFont = timeFont;
         }
 
-        internal void Draw(GameTimeInfo gameTimeInfo, SpriteBatch spriteBatch, Color colorMask)
+        internal void Draw(InterfaceGameTimeInfo gameTimeInfo, SpriteBatch spriteBatch, Color colorMask)
         {
             if (gameTimeInfo.CurrentLevelRecord != null)
             {

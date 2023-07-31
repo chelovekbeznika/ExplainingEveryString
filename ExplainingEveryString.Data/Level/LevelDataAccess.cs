@@ -21,7 +21,6 @@ namespace ExplainingEveryString.Data.Level
         public LevelData Load(String fileName)
         {
             var result = JsonDataAccessor.Instance.Load<LevelData>(FileNames.GetJsonLevelsPath(fileName));
-            result.Name = fileName;
             return result;
         }
 

@@ -24,7 +24,6 @@ namespace ExplainingEveryString.Core.GameModel
         private readonly EesGame eesGame;
         private readonly String levelFileName;
         private readonly LevelProgress levelStart;
-        private readonly Single? initialGameTime;
 
         private Level level;
         private LevelData levelData;
@@ -42,15 +41,14 @@ namespace ExplainingEveryString.Core.GameModel
         internal EpicEventsProcessor EpicEventsProcessor { get; private set; }
         internal Boolean Lost => level.Lost;
         internal Boolean Won => level.Won;
-        internal Single? GameTime => level.GameTime;
+        internal Boolean TimerIsOn => level.TimerIsOn;
 
-        internal GameplayComponent(EesGame game, string levelFileName, LevelProgress levelStart, Single? gameTime)
+        internal GameplayComponent(EesGame game, string levelFileName, LevelProgress levelStart)
             : base(game)
         {
             eesGame = game;
             this.levelFileName = levelFileName;
             this.levelStart = levelStart;
-            this.initialGameTime = gameTime;
 
             DrawOrder = ComponentsOrder.Gameplay;
             UpdateOrder = ComponentsOrder.Gameplay;
@@ -64,7 +62,7 @@ namespace ExplainingEveryString.Core.GameModel
             blueprintsLoader.Load();
             var factory = new ActorsFactory(blueprintsLoader);
             Map = new TileWrapper(levelData.TileMap, eesGame.Content);
-            level = new Level(factory, Map, new PlayerInputFactory(this), levelData, levelStart, initialGameTime);
+            level = new Level(factory, Map, new PlayerInputFactory(this), levelData, levelStart);
             level.CheckpointReached += eesGame.GameState.NotableProgressMaid;
             if (levelData.SpriteEmitter != null)
                 spriteEmitter = new SpriteEmitter(levelData.SpriteEmitter, Map);

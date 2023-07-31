@@ -63,7 +63,7 @@ namespace ExplainingEveryString.Core
             }
             base.Update(gameTime);
             menuInputProcessor.Update(gameTime);
-            GameState.Update();
+            GameState.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
         }
 
         protected override void Draw(GameTime gameTime)

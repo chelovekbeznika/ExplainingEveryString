@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.GameState;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using System;
@@ -9,13 +10,12 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceInfoExtractor
     {
-        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors, Level level)
+        internal InterfaceInfo GetInterfaceInfo(Camera camera, ActiveActorsStorage activeActors)
         {
             var homingTarget = activeActors.Player.CurrentTarget;
             return new InterfaceInfo
             {
                 Player = GetInterfaceInfo(activeActors.Player, camera),
-                GameTime = GetGameTimeInfo(level),
                 Enemies = activeActors.Enemies
                             .Where(e => camera.IsVisibleOnScreen(e)).OfType<IInterfaceAccessable>()
                             .Where(e => e.ShowInterfaceInfo && !(activeActors.ShowAsBossesInInterface?.Contains(e) ?? false))
@@ -32,19 +32,14 @@ namespace ExplainingEveryString.Core.Interface
             };
         }
 
-        private GameTimeInfo GetGameTimeInfo(Level level)
+        internal InterfaceGameTimeInfo GetInterfaceGameTimeInfo(GameTimeStateManager gameTimeState)
         {
-            var currentTime = level.GameTime;
-            if (currentTime != null)
+            if (gameTimeState.LevelTime != null)
             {
-                var currentProfile = ConfigurationAccess.GetCurrentConfig().SaveProfile;
-                var currentRecords = GameProgressAccess.Load(currentProfile).LevelRecords;
-                return new GameTimeInfo
+                return new InterfaceGameTimeInfo
                 {
-                    CurrentTime = currentTime.Value,
-                    CurrentLevelRecord = currentRecords.ContainsKey(level.Name) 
-                        ? currentRecords[level.Name] 
-                        : null as Single?
+                    CurrentTime = gameTimeState.LevelTime.Value,
+                    CurrentLevelRecord = gameTimeState.CurrentLevelRecord
                 };
             }
             else

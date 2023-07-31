@@ -6,7 +6,6 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceInfo
     {
-        internal GameTimeInfo GameTime { get; set; }
         internal List<EnemyInterfaceInfo> Enemies { get; set; }
         internal List<Vector2> HiddenEnemies { get; set; }
         internal List<EnemyInterfaceInfo> Bosses { get; set; }
@@ -15,7 +14,7 @@ namespace ExplainingEveryString.Core.Interface
         internal List<Vector2> BossesLevelPositions { get; set; }
     }
 
-    internal class GameTimeInfo
+    internal class InterfaceGameTimeInfo
     {
         internal Single CurrentTime { get; set; }
         internal Single? CurrentLevelRecord { get; set; }

@@ -17,6 +17,7 @@ namespace ExplainingEveryString.Core.Interface
         private GameplayComponent gameplayComponent;
         private InterfaceSpriteDisplayer interfaceSpritesDisplayer;
         private InterfaceInfo interfaceInfo;
+        private InterfaceGameTimeInfo gameTimeInfo;
         private EesGame eesGame;
         private SpriteBatch spriteBatch;
         private Color alphaMask;
@@ -132,6 +133,7 @@ namespace ExplainingEveryString.Core.Interface
         public override void Update(GameTime gameTime)
         {
             interfaceInfo = gameplayComponent.GetInterfaceInfo();
+            gameTimeInfo = new InterfaceInfoExtractor().GetInterfaceGameTimeInfo(eesGame.GameState.GameTimeState);
             interfaceSpritesDisplayer.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             minimapDisplayer.Update(gameTime);
             base.Update(gameTime);
@@ -145,8 +147,8 @@ namespace ExplainingEveryString.Core.Interface
                 DrawPlayerElements();
                 DrawEnemiesElements();
                 minimapDisplayer?.Draw(interfaceInfo);
-                if (interfaceInfo.GameTime != null)
-                    gameTimeDisplayer.Draw(interfaceInfo.GameTime, spriteBatch, alphaMask);
+                if (gameTimeInfo != null)
+                    gameTimeDisplayer.Draw(gameTimeInfo, spriteBatch, alphaMask);
             }
             spriteBatch.End();
             base.Draw(gameTime);
