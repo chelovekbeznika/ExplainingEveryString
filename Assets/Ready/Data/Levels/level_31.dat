@@ -2024,8 +2024,7 @@
           "BlueprintType": "TripleCannon_mk3",
           "TilePosition": {
             "X": 89,
-            "Y": 65,
-            "Offset": "0, -8"
+            "Y": 65
           },
           "Angle": 0.0
         },
@@ -2499,5 +2498,6 @@
         1
       ]
     }
-  }
+  },
+  "Waypoints": {}
 }
