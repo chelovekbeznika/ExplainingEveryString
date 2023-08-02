@@ -15,6 +15,7 @@ namespace ExplainingEveryString.Core.GameState
         private Func<GameProgress> gameProfileGetter;
         internal Single? LevelTime { get; private set; } = null;
         internal String LevelName { get; private set; }
+        internal LevelProgress LevelProgress { get; set; }
         internal Single? CurrentLevelRecord => (gameProfileGetter()?.LevelRecords?.ContainsKey(LevelName) ?? false)
             ? gameProfileGetter().LevelRecords[LevelName] : null as Single?;
 
@@ -35,6 +36,10 @@ namespace ExplainingEveryString.Core.GameState
         {
             LevelName = levelName;
             LevelTime = startTime;
+            LevelProgress = new LevelProgress()
+            {
+                CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
+            };
         }
 
         internal void StartStoryGame()

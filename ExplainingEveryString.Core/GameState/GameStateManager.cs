@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core.GameState
 
         private GameState currentState = GameState.BetweenLevels;
         private GameMode currentMode = GameMode.Story;
+
         private Int32 SaveProfileNumber
         {
             get => ConfigurationAccess.GetCurrentConfig().SaveProfile;
@@ -69,8 +70,10 @@ namespace ExplainingEveryString.Core.GameState
                 case GameState.InGame:
                     if (componentsManager.CurrentGameplay.Lost)
                     {
-                        var currentGameTime = GameTimeState.LevelTime;
-                        StartCurrentLevel(false, currentGameTime);
+                        if (currentMode == GameMode.Story)
+                            StartCurrentStoryLevel(false);
+                        else
+                            StartLevel(GameTimeState.LevelName, GameTimeState.LevelProgress, true);
                     }
                     if (componentsManager.CurrentGameplay.Won)
                     {
@@ -83,7 +86,7 @@ namespace ExplainingEveryString.Core.GameState
                                 if (levelSequence.ShowEndingTitle)
                                     SwitchToNewState(GameState.LevelEnding);
                                 else
-                                    SwitchToNextLevel();
+                                    SwitchToNextStoryLevel();
                             }
                         }
                         else
@@ -104,7 +107,7 @@ namespace ExplainingEveryString.Core.GameState
                     break;
                 case GameState.LevelEnding:
                     if (componentsManager.CurrentLevelEnding.Closed)
-                        SwitchToNextLevel();
+                        SwitchToNextStoryLevel();
                     break;
                 case GameState.CutsceneAfter:
                     if (componentsManager.CutsceneAfterLevel.Closed)
@@ -112,7 +115,7 @@ namespace ExplainingEveryString.Core.GameState
                         if (levelSequence.ShowEndingTitle)
                             SwitchToNewState(GameState.LevelEnding);
                         else
-                            SwitchToNextLevel();
+                            SwitchToNextStoryLevel();
                     }
                     break;
                 case GameState.TimeRecordsTable:
@@ -147,13 +150,13 @@ namespace ExplainingEveryString.Core.GameState
             levelSequence.Reset();
             ProgressToLevelStart();
             GameProgressAccess.Save(gameProgress, SaveProfileNumber);
-            StartCurrentLevel(true);
+            StartCurrentStoryLevel();
         }
 
         internal void ContinueCurrentGame()
         {
             currentMode = GameMode.Story;
-            StartCurrentLevel(true);
+            StartCurrentStoryLevel();
         }
 
         internal void ContinueFrom(String levelName)
@@ -166,19 +169,14 @@ namespace ExplainingEveryString.Core.GameState
                 CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
             };
             GameProgressAccess.Save(gameProgress, SaveProfileNumber);
-            StartCurrentLevel(true);
+            StartCurrentStoryLevel();
         }
 
         internal void StartOneLevelRun(String levelName)
         {
             currentMode = GameMode.OneLevelRun;
-            gameProgress.CurrentLevelFileName = levelName;
-            gameProgress.MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile();
-            gameProgress.LevelProgress = new LevelProgress
-            {
-                CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
-            };
-            StartCurrentLevel(false, 0);
+            GameTimeState.StartOneLevelRun(levelName, 0);
+            StartLevel(GameTimeState.LevelName, GameTimeState.LevelProgress, true);
         }
 
         internal Boolean LevelAvailable(String levelFileName)
@@ -193,37 +191,42 @@ namespace ExplainingEveryString.Core.GameState
                 gameProgress.LevelProgress = eventArgs.LevelProgress;
                 GameProgressAccess.Save(gameProgress, SaveProfileNumber);
             }
+            else
+            {
+                GameTimeState.LevelProgress = eventArgs.LevelProgress;
+            }
         }
 
-        private void StartCurrentLevel(Boolean showTitle, Single? gameTime = null)
+        private void StartCurrentStoryLevel(Boolean showTitle = true)
         {
             levelSequence.MarkLevelAsCurrentContinuePoint(gameProgress.CurrentLevelFileName);
+            GameTimeState.StartStoryGame();
+            StartLevel(gameProgress.CurrentLevelFileName, gameProgress.LevelProgress, !showTitle);
+        }
+
+        private void StartLevel(String levelName, LevelProgress levelProgress, Boolean startWithGameplay)
+        {
             componentsManager.DeleteCurrentLevelRelatedComponents();
-            componentsManager.InitNewLevelRelatedComponents(gameProgress, levelSequence);
+            componentsManager.InitNewLevelRelatedComponents(levelName, levelProgress, levelSequence);
 
-            if (gameTime is null)
-                GameTimeState.StartStoryGame();
+            if (startWithGameplay)
+                SwitchToNewState(GameState.InGame);
             else
-                GameTimeState.StartOneLevelRun(gameProgress.CurrentLevelFileName, gameTime.Value);
-
-            if (showTitle)
             {
-                if (currentMode == GameMode.Story && componentsManager.CutsceneBeforeLevel != null)
+                if (componentsManager.CutsceneBeforeLevel != null)
                     SwitchToNewState(GameState.CutsceneBefore);
                 else
                     SwitchToNewState(GameState.LevelTitle);
             }
-            else
-                SwitchToNewState(GameState.InGame);
         }
 
-        private void SwitchToNextLevel()
+        private void SwitchToNextStoryLevel()
         {
             levelSequence.MarkLevelComplete();
             if (!levelSequence.GameCompleted)
             {
                 ProgressToLevelStart();
-                StartCurrentLevel(true);
+                StartCurrentStoryLevel();
                 GameProgressAccess.Save(gameProgress, SaveProfileNumber);
             }
             else

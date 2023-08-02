@@ -44,9 +44,9 @@ namespace ExplainingEveryString.Core.GameState
             Notifications = new NotificationsComponent(game);
         }
 
-        internal void InitNewLevelRelatedComponents(GameProgress gameProgress, LevelSequence levelSequence)
+        internal void InitNewLevelRelatedComponents(String levelName, LevelProgress levelProgress, LevelSequence levelSequence)
         {
-            CurrentGameplay = new GameplayComponent(game, gameProgress.CurrentLevelFileName, gameProgress.LevelProgress);
+            CurrentGameplay = new GameplayComponent(game, levelName, levelProgress);
             Interface.SetGameplayComponentToDraw(CurrentGameplay);
             CurrentLevelTitle = new LevelTitleComponent(game, levelSequence);
             CurrentLevelEnding = new LevelEndingComponent(game, levelSequence);
