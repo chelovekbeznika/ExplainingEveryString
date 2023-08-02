@@ -51,19 +51,18 @@ namespace ExplainingEveryString.Core.GameState
         internal void UpdateLevelRecord()
         {
             var gameProgress = gameProfileGetter();
-            var level = gameProgress.CurrentLevelFileName;
-            if (gameProgress.LevelRecords.ContainsKey(level))
+            if (gameProgress.LevelRecords.ContainsKey(LevelName))
             {
-                if (gameProgress.LevelRecords[level] > LevelTime)
+                if (gameProgress.LevelRecords[LevelName] > LevelTime)
                 {
-                    gameProgress.LevelRecords[level] = LevelTime.Value;
-                    componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(level);
+                    gameProgress.LevelRecords[LevelName] = LevelTime.Value;
+                    componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(LevelName);
                 }
             }
             else
             {
-                gameProgress.LevelRecords.Add(level, LevelTime.Value);
-                componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(level);
+                gameProgress.LevelRecords.Add(LevelName, LevelTime.Value);
+                componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(LevelName);
             }
         }
 
