@@ -16,10 +16,10 @@ namespace ExplainingEveryString.Core.Interface
 
     internal class InterfaceGameTimeInfo
     {
-        internal Single CurrentLevelTime { get; set; }
-        internal Single? CurrentLevelRecord { get; set; }
-        internal Single? CurrenRunTime { get; set; }
-        internal Single? CurrentGameRecord { get; set; }
+        internal Single LevelTime { get; set; }
+        internal Single? LevelRecord { get; set; }
+        internal Single? RunTime { get; set; }
+        internal Single? PersonalBest { get; set; }
     }
 
     internal class EnemyInterfaceInfo

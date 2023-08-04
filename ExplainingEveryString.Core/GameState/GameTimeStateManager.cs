@@ -29,11 +29,13 @@ namespace ExplainingEveryString.Core.GameState
         internal Single? RunTime => currentRun != null ? currentRun.SplitsSum + LevelTime : null;
         internal String LevelName { get; private set; }
         internal LevelProgress LevelProgress { get; set; }
-        internal Single? CurrentLevelRecord => (gameProfileGetter()?.LevelRecords?.ContainsKey(LevelName) ?? false)
+        internal Single? LevelRecord => (gameProfileGetter()?.LevelRecords?.ContainsKey(LevelName) ?? false)
             ? gameProfileGetter().LevelRecords[LevelName] : null as Single?;
         internal Single? PersonalBest => gameProfileGetter()?.PersonalBest;
+        internal Boolean RunFinished => currentRun?.LevelsPassed >= levelSequenceSpecification.Levels.Length;
 
-        internal GameTimeStateManager(ComponentsManager componentsManager, Func<GameProgress> gameProfileGetter, LevelSequenceSpecification levelSequenceSpecification)
+        internal GameTimeStateManager(ComponentsManager componentsManager, Func<GameProgress> gameProfileGetter, 
+            LevelSequenceSpecification levelSequenceSpecification)
         {
             this.componentsManager = componentsManager;
             this.gameProfileGetter = gameProfileGetter;
@@ -76,22 +78,20 @@ namespace ExplainingEveryString.Core.GameState
             currentRun = new RunInfo();
         }
 
-        internal void ToNextLevel(out Boolean runFinished)
+        internal void ToNextLevel()
         {
             currentRun.LevelsPassed += 1;
             currentRun.SplitsSum += LevelTime.Value;
-            if (currentRun.LevelsPassed >= levelSequenceSpecification.Levels.Length)
+            currentRun.Splits.Add(LevelName, LevelTime.Value);
+            if (RunFinished)
             {
                 LevelTime = null;
                 LevelName = null;
                 LevelProgress = null;
-                runFinished = true;
                 return;
             }
             else
             {
-                runFinished = false;
-                currentRun.Splits.Add(LevelName, LevelTime.Value);
                 LevelName = levelSequenceSpecification.Levels[currentRun.LevelsPassed].LevelData;
                 LevelProgress = new LevelProgress()
                 {

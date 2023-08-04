@@ -21,12 +21,12 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         internal void Draw(InterfaceGameTimeInfo gameTimeInfo, SpriteBatch spriteBatch, Color colorMask)
         {
-            DrawLine(spriteBatch, gameTimeInfo.CurrentLevelRecord, gameTimeInfo.CurrentLevelTime, pixelsFromTop, colorMask);
+            DrawLine(spriteBatch, gameTimeInfo.LevelRecord, gameTimeInfo.LevelTime, pixelsFromTop, colorMask);
 
-            if (gameTimeInfo.CurrenRunTime.HasValue)
+            if (gameTimeInfo.RunTime.HasValue)
             {
-                var gameRecord = gameTimeInfo.CurrentGameRecord;
-                var runTime = gameTimeInfo.CurrenRunTime.Value;
+                var gameRecord = gameTimeInfo.PersonalBest;
+                var runTime = gameTimeInfo.RunTime.Value;
                 DrawLine(spriteBatch, gameRecord, runTime, pixelsFromTopSecondLine, colorMask);
             }
         }

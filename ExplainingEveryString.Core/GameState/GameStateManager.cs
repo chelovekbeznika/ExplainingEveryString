@@ -92,6 +92,9 @@ namespace ExplainingEveryString.Core.GameState
                         else
                         {
                             GameTimeState.UpdateLevelRecord();
+                            GameTimeState.ToNextLevel();
+                            if (GameTimeState.RunFinished)
+                                GameTimeState.UpdateGameRecord();
                             SaveGame();
                             SwitchToNewState(GameState.TimeRecordsTable);
                         }
@@ -124,17 +127,10 @@ namespace ExplainingEveryString.Core.GameState
                             SwitchToNewState(GameState.BetweenLevels);
                         else if (currentMode == GameMode.WholeGameRun)
                         {
-                            GameTimeState.ToNextLevel(out var runFinished);
-                            if (runFinished)
-                            {
-                                GameTimeState.UpdateGameRecord();
-                                SaveGame();
+                            if (GameTimeState.RunFinished)
                                 SwitchToNewState(GameState.BetweenLevels);
-                            }
                             else
-                            {
                                 StartCurrentTimeAttackLevel();
-                            }
                         }
                     break;
             }

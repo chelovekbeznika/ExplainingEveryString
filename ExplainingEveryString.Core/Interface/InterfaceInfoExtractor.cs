@@ -1,8 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.GameState;
-using ExplainingEveryString.Data.Configuration;
-using ExplainingEveryString.Data.Level;
 using System;
 using System.Linq;
 
@@ -38,10 +36,10 @@ namespace ExplainingEveryString.Core.Interface
             {
                 return new InterfaceGameTimeInfo
                 {
-                    CurrentLevelTime = gameTimeState.LevelTime.Value,
-                    CurrentLevelRecord = gameTimeState.CurrentLevelRecord,
-                    CurrenRunTime = gameTimeState.RunTime,
-                    CurrentGameRecord = gameTimeState.PersonalBest
+                    LevelTime = gameTimeState.LevelTime.Value,
+                    LevelRecord = gameTimeState.LevelRecord,
+                    RunTime = gameTimeState.RunTime,
+                    PersonalBest = gameTimeState.PersonalBest
                 };
             }
             else
