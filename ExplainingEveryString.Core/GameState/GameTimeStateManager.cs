@@ -5,24 +5,39 @@ using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExplainingEveryString.Core.GameState
 {
     internal class GameTimeStateManager : IUpdateable
     {
+        private class RunInfo
+        {
+            internal Dictionary<String, Single> Splits = new Dictionary<String, Single>();
+            internal Single SplitsSum = 0;
+            internal Int32 LevelsPassed = 0;
+        }
+
         private readonly Dictionary<String, MenuItem> levelTimeAttackButtons = new Dictionary<String, MenuItem>();
         private readonly ComponentsManager componentsManager;
-        private Func<GameProgress> gameProfileGetter;
+        private readonly LevelSequenceSpecification levelSequenceSpecification;
+        private readonly Func<GameProgress> gameProfileGetter;
+
+        private RunInfo currentRun = null;
+
         internal Single? LevelTime { get; private set; } = null;
+        internal Single? RunTime => currentRun != null ? currentRun.SplitsSum + LevelTime : null;
         internal String LevelName { get; private set; }
         internal LevelProgress LevelProgress { get; set; }
         internal Single? CurrentLevelRecord => (gameProfileGetter()?.LevelRecords?.ContainsKey(LevelName) ?? false)
             ? gameProfileGetter().LevelRecords[LevelName] : null as Single?;
+        internal Single? PersonalBest => gameProfileGetter()?.PersonalBest;
 
-        internal GameTimeStateManager(ComponentsManager componentsManager, Func<GameProgress> gameProfileGetter)
+        internal GameTimeStateManager(ComponentsManager componentsManager, Func<GameProgress> gameProfileGetter, LevelSequenceSpecification levelSequenceSpecification)
         {
             this.componentsManager = componentsManager;
             this.gameProfileGetter = gameProfileGetter;
+            this.levelSequenceSpecification = levelSequenceSpecification;
         }
 
         public void Update(Single elapsedSeconds)
@@ -32,20 +47,58 @@ namespace ExplainingEveryString.Core.GameState
                 LevelTime += elapsedSeconds;
         }
 
-        internal void StartOneLevelRun(String levelName, Single startTime)
+        internal void StartStoryGame()
         {
+            currentRun = null;
+            LevelName = null;
+            LevelTime = null;
+        }
+
+        internal void StartOneLevelRun(String levelName)
+        {
+            currentRun = null;
             LevelName = levelName;
-            LevelTime = startTime;
+            LevelTime = 0;
             LevelProgress = new LevelProgress()
             {
                 CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
             };
         }
 
-        internal void StartStoryGame()
+        internal void StartWholeGameRun()
         {
-            LevelName = null;
-            LevelTime = null;
+            LevelName = levelSequenceSpecification.Levels.First().LevelData;
+            LevelTime = 0;
+            LevelProgress = new LevelProgress()
+            {
+                CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
+            };
+            currentRun = new RunInfo();
+        }
+
+        internal void ToNextLevel(out Boolean runFinished)
+        {
+            currentRun.LevelsPassed += 1;
+            currentRun.SplitsSum += LevelTime.Value;
+            if (currentRun.LevelsPassed >= levelSequenceSpecification.Levels.Length)
+            {
+                LevelTime = null;
+                LevelName = null;
+                LevelProgress = null;
+                runFinished = true;
+                return;
+            }
+            else
+            {
+                runFinished = false;
+                currentRun.Splits.Add(LevelName, LevelTime.Value);
+                LevelName = levelSequenceSpecification.Levels[currentRun.LevelsPassed].LevelData;
+                LevelProgress = new LevelProgress()
+                {
+                    CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
+                };
+                LevelTime = 0;
+            }
         }
 
         internal void UpdateLevelRecord()
@@ -56,13 +109,24 @@ namespace ExplainingEveryString.Core.GameState
                 if (gameProgress.LevelRecords[LevelName] > LevelTime)
                 {
                     gameProgress.LevelRecords[LevelName] = LevelTime.Value;
-                    componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(LevelName);
+                    componentsManager.TimeAttackResultsComponent?.NotifyNewLevelRecord(LevelName);
                 }
             }
             else
             {
                 gameProgress.LevelRecords.Add(LevelName, LevelTime.Value);
-                componentsManager.TimeAttackResultsComponent?.NotifyNewRecord(LevelName);
+                componentsManager.TimeAttackResultsComponent?.NotifyNewLevelRecord(LevelName);
+            }
+        }
+
+        internal void UpdateGameRecord()
+        {
+            var gameProgress = gameProfileGetter();
+            if (gameProgress.PersonalBest == null || RunTime < gameProgress.PersonalBest)
+            {
+                gameProgress.PersonalBest = RunTime;
+                gameProgress.PersonalBestSplits = currentRun.Splits;
+                componentsManager.TimeAttackResultsComponent?.NotifyNewGameRecord();
             }
         }
 

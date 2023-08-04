@@ -40,7 +40,7 @@ namespace ExplainingEveryString.Core.GameState
             ComponentsManager componentsManager, Int32 currentProfile)
         {
             this.componentsManager = componentsManager;
-            GameTimeState = new GameTimeStateManager(componentsManager, () => gameProgress);
+            GameTimeState = new GameTimeStateManager(componentsManager, () => gameProgress, levelSequenceSpecification);
             this.levelSequenceSpecification = levelSequenceSpecification;
             this.componentSwitches = new Dictionary<GameState, ComponentsSwitch>
             {
@@ -73,7 +73,7 @@ namespace ExplainingEveryString.Core.GameState
                         if (currentMode == GameMode.Story)
                             StartCurrentStoryLevel(false);
                         else
-                            StartLevel(GameTimeState.LevelName, GameTimeState.LevelProgress, true);
+                            StartCurrentTimeAttackLevel();
                     }
                     if (componentsManager.CurrentGameplay.Won)
                     {
@@ -92,7 +92,7 @@ namespace ExplainingEveryString.Core.GameState
                         else
                         {
                             GameTimeState.UpdateLevelRecord();
-                            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
+                            SaveGame();
                             SwitchToNewState(GameState.TimeRecordsTable);
                         }
                     }
@@ -120,7 +120,22 @@ namespace ExplainingEveryString.Core.GameState
                     break;
                 case GameState.TimeRecordsTable:
                     if (componentsManager.TimeAttackResultsComponent.Closed)
-                        SwitchToNewState(GameState.BetweenLevels);
+                        if (currentMode == GameMode.OneLevelRun)
+                            SwitchToNewState(GameState.BetweenLevels);
+                        else if (currentMode == GameMode.WholeGameRun)
+                        {
+                            GameTimeState.ToNextLevel(out var runFinished);
+                            if (runFinished)
+                            {
+                                GameTimeState.UpdateGameRecord();
+                                SaveGame();
+                                SwitchToNewState(GameState.BetweenLevels);
+                            }
+                            else
+                            {
+                                StartCurrentTimeAttackLevel();
+                            }
+                        }
                     break;
             }
         }
@@ -149,7 +164,7 @@ namespace ExplainingEveryString.Core.GameState
             currentMode = GameMode.Story;
             levelSequence.Reset();
             ProgressToLevelStart();
-            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
+            SaveGame();
             StartCurrentStoryLevel();
         }
 
@@ -168,15 +183,22 @@ namespace ExplainingEveryString.Core.GameState
             {
                 CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
             };
-            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
+            SaveGame();
             StartCurrentStoryLevel();
+        }
+
+        internal void StartWholeGameRun()
+        {
+            currentMode = GameMode.WholeGameRun;
+            GameTimeState.StartWholeGameRun();
+            StartCurrentTimeAttackLevel();
         }
 
         internal void StartOneLevelRun(String levelName)
         {
             currentMode = GameMode.OneLevelRun;
-            GameTimeState.StartOneLevelRun(levelName, 0);
-            StartLevel(GameTimeState.LevelName, GameTimeState.LevelProgress, true);
+            GameTimeState.StartOneLevelRun(levelName);
+            StartCurrentTimeAttackLevel();
         }
 
         internal Boolean LevelAvailable(String levelFileName)
@@ -189,7 +211,7 @@ namespace ExplainingEveryString.Core.GameState
             if (currentMode == GameMode.Story)
             {
                 gameProgress.LevelProgress = eventArgs.LevelProgress;
-                GameProgressAccess.Save(gameProgress, SaveProfileNumber);
+                SaveGame();
             }
             else
             {
@@ -202,6 +224,11 @@ namespace ExplainingEveryString.Core.GameState
             levelSequence.MarkLevelAsCurrentContinuePoint(gameProgress.CurrentLevelFileName);
             GameTimeState.StartStoryGame();
             StartLevel(gameProgress.CurrentLevelFileName, gameProgress.LevelProgress, !showTitle);
+        }
+
+        private void StartCurrentTimeAttackLevel()
+        {
+            StartLevel(GameTimeState.LevelName, GameTimeState.LevelProgress, true);
         }
 
         private void StartLevel(String levelName, LevelProgress levelProgress, Boolean startWithGameplay)
@@ -227,7 +254,7 @@ namespace ExplainingEveryString.Core.GameState
             {
                 ProgressToLevelStart();
                 StartCurrentStoryLevel();
-                GameProgressAccess.Save(gameProgress, SaveProfileNumber);
+                SaveGame();
             }
             else
             {
@@ -303,6 +330,11 @@ namespace ExplainingEveryString.Core.GameState
             {
                 CurrentCheckPoint = CheckpointSpecification.StartCheckpointName
             };
+        }
+
+        private void SaveGame()
+        {
+            GameProgressAccess.Save(gameProgress, SaveProfileNumber);
         }
     }
 }

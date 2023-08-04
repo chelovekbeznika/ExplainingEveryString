@@ -22,6 +22,7 @@ namespace ExplainingEveryString.Core
 
         private readonly LevelSequenceSpecification levelSequenceSpecification;
         private Texture2D background;
+        private Texture2D wholeGameRoute;
         private SpriteData newRecordNotice;
         private Dictionary<String, Texture2D> levelButtons;
         private String newRecordLevel = null;
@@ -37,15 +38,21 @@ namespace ExplainingEveryString.Core
             this.UpdateOrder = ComponentsOrder.Cutscene;
         }
 
-        internal void NotifyNewRecord(String levelName)
+        internal void NotifyNewLevelRecord(String levelName)
         {
             newRecordLevel = levelName;
+        }
+
+        internal void NotifyNewGameRecord()
+        {
+            //TBD!!!
         }
 
         protected override void LoadContent()
         {
             base.LoadContent();
             background = Game.Content.Load<Texture2D>(@"Sprites/Menu/Background");
+            wholeGameRoute = Game.Content.Load<Texture2D>(@"Sprites/Menu/WholeGameRouteInTimeTable");
 
             levelButtons = levelSequenceSpecification.Levels.ToDictionary(
                 keySelector: l => l.LevelData, 
@@ -61,7 +68,12 @@ namespace ExplainingEveryString.Core
         protected override void DrawImage(SpriteBatch spriteBatch, Int32 frameNumber)
         {
             spriteBatch.Draw(background, Vector2.Zero, Color.White);
-            var currentResult = GetCurrentProgress().LevelRecords;
+            var gameProgress = GetCurrentProgress();
+
+            if (gameProgress.PersonalBest.HasValue)
+                DrawWholeGameResult(spriteBatch, gameProgress.PersonalBest.Value);
+
+            var currentResult = gameProgress.LevelRecords;
             var nextButtonPlaceholder = new Vector2(Displaying.Constants.TargetWidth / 2, UpperPartHeight);
             foreach (var level in levelSequenceSpecification.Levels)
             {
@@ -72,6 +84,27 @@ namespace ExplainingEveryString.Core
                     DrawLevelResults(spriteBatch, levelName, levelResult, ref nextButtonPlaceholder);
                 }
             }
+        }
+
+        private void DrawWholeGameResult(SpriteBatch spriteBatch, Single wholeGameRecord)
+        {
+            var timeString = GameTimeHelper.ToTimeString(wholeGameRecord);
+            var timeSize = TimeFont.GetSize(timeString);
+            var upperPartSize = new Vector2(
+                x: wholeGameRoute.Width + BetweenElements + timeSize.X,
+                y: System.Math.Max(wholeGameRoute.Height, timeSize.Y));
+            var upperPartPosition = new Vector2(
+                x: Displaying.Constants.TargetWidth / 2 - upperPartSize.X / 2,
+                y: UpperPartHeight / 2 - upperPartSize.Y / 2);
+            var picturePosition = new Vector2(
+                x: upperPartPosition.X,
+                y: upperPartPosition.Y + upperPartSize.Y / 2 - wholeGameRoute.Height / 2);
+            var textPosition = new Vector2(
+                x: upperPartPosition.X + wholeGameRoute.Width + BetweenElements,
+                y: upperPartPosition.Y + upperPartSize.Y / 2 - timeSize.Y / 2);
+
+            spriteBatch.Draw(wholeGameRoute, picturePosition, Color.White);
+            TimeFont.Draw(spriteBatch, textPosition, timeString);
         }
 
         private void DrawLevelResults(SpriteBatch spriteBatch, String levelName, 

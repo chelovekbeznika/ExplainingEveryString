@@ -8,10 +8,11 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 {
     internal class GameTimeDisplayer
     {
-        private CustomFont timeFont;
-        private readonly Int32 pixelsFromLeft = 32;
-        private readonly Int32 pixelsFromTop = 32;
-        private readonly Int32 pixelsBetween = 16;
+        private readonly CustomFont timeFont;
+        private const Int32 pixelsFromLeft = 32;
+        private const Int32 pixelsFromTop = 32;
+        private const Int32 pixelsFromTopSecondLine = 64;
+        private const Int32 pixelsBetween = 16;
 
         internal GameTimeDisplayer(CustomFont timeFont)
         {
@@ -20,34 +21,45 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         internal void Draw(InterfaceGameTimeInfo gameTimeInfo, SpriteBatch spriteBatch, Color colorMask)
         {
-            if (gameTimeInfo.CurrentLevelRecord != null)
+            DrawLine(spriteBatch, gameTimeInfo.CurrentLevelRecord, gameTimeInfo.CurrentLevelTime, pixelsFromTop, colorMask);
+
+            if (gameTimeInfo.CurrenRunTime.HasValue)
             {
-                var record = gameTimeInfo.CurrentLevelRecord.Value;
-                var recordString = GameTimeHelper.ToTimeString(record);
-                var recordPosition = FirstTimePositionOnScreen();
+                var gameRecord = gameTimeInfo.CurrentGameRecord;
+                var runTime = gameTimeInfo.CurrenRunTime.Value;
+                DrawLine(spriteBatch, gameRecord, runTime, pixelsFromTopSecondLine, colorMask);
+            }
+        }
+
+        private void DrawLine(SpriteBatch spriteBatch, Single? record, Single currentTime, Int32 fromTop, Color colorMask)
+        {
+            if (record != null)
+            {
+                var recordString = GameTimeHelper.ToTimeString(record.Value);
+                var recordPosition = CurrentTimePositionOnScreen(fromTop);
                 timeFont.Draw(spriteBatch, recordPosition, recordString, new Color(Constants.NintendoGold, colorMask.A));
 
-                var timeString = GameTimeHelper.ToTimeString(gameTimeInfo.CurrentTime);
-                var timePosition = SecondTimePositionOnScreen(recordString);
+                var timeString = GameTimeHelper.ToTimeString(currentTime);
+                var timePosition = RecordTimePositionOnScreen(fromTop, recordString);
                 timeFont.Draw(spriteBatch, timePosition, timeString, colorMask);
             }
             else
             {
-                var timeString = GameTimeHelper.ToTimeString(gameTimeInfo.CurrentTime);
-                var timePosition = FirstTimePositionOnScreen();
+                var timeString = GameTimeHelper.ToTimeString(currentTime);
+                var timePosition = CurrentTimePositionOnScreen(fromTop);
                 timeFont.Draw(spriteBatch, timePosition, timeString, colorMask);
             }
         }
 
-        private Vector2 FirstTimePositionOnScreen()
+        private Vector2 CurrentTimePositionOnScreen(Int32 fromTop)
         {
-            return new Vector2 { X = pixelsFromLeft, Y = pixelsFromTop };
+            return new Vector2 { X = pixelsFromLeft, Y = fromTop };
         }
 
-        private Vector2 SecondTimePositionOnScreen(String firstString)
+        private Vector2 RecordTimePositionOnScreen(Int32 fromTop, String firstString)
         {
             var firstTimeSize = timeFont.GetSize(firstString);
-            return new Vector2 { X = pixelsFromLeft + firstTimeSize.X + pixelsBetween, Y = pixelsFromTop };
+            return new Vector2 { X = pixelsFromLeft + firstTimeSize.X + pixelsBetween, Y = fromTop };
         }
     }
 }

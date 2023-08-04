@@ -38,8 +38,10 @@ namespace ExplainingEveryString.Core.Interface
             {
                 return new InterfaceGameTimeInfo
                 {
-                    CurrentTime = gameTimeState.LevelTime.Value,
-                    CurrentLevelRecord = gameTimeState.CurrentLevelRecord
+                    CurrentLevelTime = gameTimeState.LevelTime.Value,
+                    CurrentLevelRecord = gameTimeState.CurrentLevelRecord,
+                    CurrenRunTime = gameTimeState.RunTime,
+                    CurrentGameRecord = gameTimeState.PersonalBest
                 };
             }
             else
