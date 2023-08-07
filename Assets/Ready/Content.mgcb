@@ -9237,6 +9237,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Fonts/MainMenu/O.png
 
+#begin Sprites/Fonts/MainMenu/R.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Fonts/MainMenu/R.png
+
 #begin Sprites/Fonts/MainMenu/S.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -9320,6 +9332,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Fonts/MainMenu/X.png
+
+#begin Sprites/Fonts/MainMenu/Y.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Fonts/MainMenu/Y.png
 
 #begin Sprites/Fonts/Resolution/Eight.png
 /importer:TextureImporter

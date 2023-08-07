@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Menu;
-using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using System;
 using System.Collections.Generic;
@@ -19,6 +18,7 @@ namespace ExplainingEveryString.Core.GameState
         }
 
         private readonly Dictionary<String, MenuItem> levelTimeAttackButtons = new Dictionary<String, MenuItem>();
+        private MenuItem wholeGameTimeAttackButton = null;
         private readonly ComponentsManager componentsManager;
         private readonly LevelSequenceSpecification levelSequenceSpecification;
         private readonly Func<GameProgress> gameProfileGetter;
@@ -44,7 +44,7 @@ namespace ExplainingEveryString.Core.GameState
 
         public void Update(Single elapsedSeconds)
         {
-            KeepInSyncLevelRecordsInMainMenu();
+            KeepInSyncRecordsInMainMenu();
             if (componentsManager.CurrentGameplay?.TimerIsOn ?? false && LevelTime.HasValue)
                 LevelTime += elapsedSeconds;
         }
@@ -135,13 +135,27 @@ namespace ExplainingEveryString.Core.GameState
             levelTimeAttackButtons.Add(levelName, levelButton);
         }
 
-        private void KeepInSyncLevelRecordsInMainMenu()
+        internal void RegisterWholeGameTimeButton(MenuItem wholeGameButton)
         {
-            var currentLevelResults = gameProfileGetter().LevelRecords;
+            wholeGameTimeAttackButton = wholeGameButton;
+        }
+
+        private void KeepInSyncRecordsInMainMenu()
+        {
+            if (wholeGameTimeAttackButton != null)
+            {
+                var personalBest = gameProfileGetter().PersonalBest;
+                if (personalBest != null)
+                    wholeGameTimeAttackButton.Text = "DONE IN " + GameTimeHelper.ToTimeString(personalBest.Value);
+                else
+                    wholeGameTimeAttackButton.Text = "ALL LEVELS. TRY IT.";
+            }
+
+            var levelsPersonalBests = gameProfileGetter().LevelRecords;
             foreach (var (level, button) in levelTimeAttackButtons)
             {
-                if (currentLevelResults.ContainsKey(level))
-                    button.Text = GameTimeHelper.ToTimeString(currentLevelResults[level]);
+                if (levelsPersonalBests.ContainsKey(level))
+                    button.Text = "DONE IN " + GameTimeHelper.ToTimeString(levelsPersonalBests[level]);
                 else
                     button.Text = null;
             }

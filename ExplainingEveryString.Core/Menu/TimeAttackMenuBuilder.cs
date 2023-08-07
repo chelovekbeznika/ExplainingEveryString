@@ -24,11 +24,15 @@ namespace ExplainingEveryString.Core.Menu
         {
             var oneLevelDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/OneLevelTimeAttack"));
             var levelButtonsContainer = levelSelectMenuBuilder.BuildMenu(menuVisiblePart);
-            var oneLevelButton = new MenuItemWithContainer(oneLevelDisplayer, levelButtonsContainer, menuVisiblePart);
+            var oneLevelButton = new MenuItemWithContainer(oneLevelDisplayer, levelButtonsContainer, menuVisiblePart)
+            {
+                Text = "ONE LEVEL"
+            };
 
             var wholeGameDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/WholeGameTimeAttack"));
             var wholeGameButton = new MenuItemButton(wholeGameDisplayer);
             wholeGameButton.ItemCommandExecuteRequested += (sender, args) => gameState.StartWholeGameRun();
+            gameState.GameTimeState.RegisterWholeGameTimeButton(wholeGameButton);
             return new MenuItemsContainer(new MenuItem[] { oneLevelButton, wholeGameButton });
         }
     }

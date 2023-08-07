@@ -19,7 +19,7 @@ namespace ExplainingEveryString.Core.Text
                 { ',', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Dot") },
                 { ':', content.Load<Texture2D>(@"Sprites/Fonts/MainMenu/Colon") }
             };
-            foreach (var c in "CONTIUELADSWGMVXK0123456789")
+            foreach (var c in "CONTIUELADSWGMVXKYR0123456789")
             {
                 Chars.Add(c, content.Load<Texture2D>($@"Sprites/Fonts/MainMenu/{c}"));
             }
