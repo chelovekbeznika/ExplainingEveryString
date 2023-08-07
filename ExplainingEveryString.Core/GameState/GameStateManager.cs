@@ -89,7 +89,13 @@ namespace ExplainingEveryString.Core.GameState
                                     SwitchToNextStoryLevel();
                             }
                         }
-                        else
+                        else if (currentMode == GameMode.OneLevelRun)
+                        {
+                            GameTimeState.UpdateLevelRecord();
+                            SaveGame();
+                            SwitchToNewState(GameState.TimeRecordsTable);
+                        }
+                        else if (currentMode == GameMode.WholeGameRun)
                         {
                             GameTimeState.UpdateLevelRecord();
                             GameTimeState.ToNextLevel();
