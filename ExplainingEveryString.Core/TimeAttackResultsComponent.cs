@@ -23,8 +23,11 @@ namespace ExplainingEveryString.Core
         private readonly LevelSequenceSpecification levelSequenceSpecification;
         private Texture2D background;
         private Texture2D wholeGameRoute;
+        private Texture2D splitsCompare;
         private SpriteData newRecordNotice;
         private Dictionary<String, Texture2D> levelButtons;
+        private GameProgress gameProgress;
+        private Dictionary<String, Single> currentSplits;
         private String newRecordLevel = null;
 
         private CustomFont TimeFont => (Game as EesGame).FontsStorage.LevelTime;
@@ -36,6 +39,12 @@ namespace ExplainingEveryString.Core
 
             this.DrawOrder = ComponentsOrder.Cutscene;
             this.UpdateOrder = ComponentsOrder.Cutscene;
+        }
+
+        internal void UpdateGameProgress(GameProgress gameProgress, Dictionary<String, Single> currentSplits)
+        {
+            this.gameProgress = gameProgress;
+            this.currentSplits = currentSplits;
         }
 
         internal void NotifyNewLevelRecord(String levelName)
@@ -51,8 +60,9 @@ namespace ExplainingEveryString.Core
         protected override void LoadContent()
         {
             base.LoadContent();
-            background = Game.Content.Load<Texture2D>(@"Sprites/Menu/Background");
+            background = Game.Content.Load<Texture2D>(@"Sprites/Menu/TimeAttackBackground");
             wholeGameRoute = Game.Content.Load<Texture2D>(@"Sprites/Menu/WholeGameRouteInTimeTable");
+            splitsCompare = Game.Content.Load<Texture2D>(@"Sprites/Menu/SplitsCompare");
 
             levelButtons = levelSequenceSpecification.Levels.ToDictionary(
                 keySelector: l => l.LevelData, 
@@ -68,7 +78,6 @@ namespace ExplainingEveryString.Core
         protected override void DrawImage(SpriteBatch spriteBatch, Int32 frameNumber)
         {
             spriteBatch.Draw(background, Vector2.Zero, Color.White);
-            var gameProgress = GetCurrentProgress();
 
             if (gameProgress.PersonalBest.HasValue)
                 DrawWholeGameResult(spriteBatch, gameProgress.PersonalBest.Value);
@@ -127,19 +136,35 @@ namespace ExplainingEveryString.Core
             if (isNewRecord)
             {
                 var recordNoticePosition = new Vector2(
-                    x: currentTextPosition.X + textSize.X + BetweenElements, 
+                    x: currentTextPosition.X + BetweenElements + textSize.X + BetweenElements, 
                     y: nextButtonPlaceholder.Y);
                 var partToDraw = AnimationHelper.GetDrawPart(newRecordNotice, FrameTime);
                 spriteBatch.Draw(newRecordNotice.Sprite, recordNoticePosition, partToDraw, Color.White);
             }
 
-            nextButtonPlaceholder += new Vector2(0, BetweenRows + currentButton.Height);
-        }
+            if (currentSplits?.ContainsKey(levelName) ?? false)
+            {
+                var currentSplit = currentSplits[levelName];
+                var splitText = GameTimeHelper.ToTimeString(currentSplit);
+                var splitTextSize = TimeFont.GetSize(splitText);
+                var splitTextPosition = new Vector2(
+                    x: BetweenElements, 
+                    y: currentButtonPosition.Y + currentButton.Height / 2 - splitTextSize.Y / 2);
+                TimeFont.Draw(spriteBatch, splitTextPosition, splitText);
 
-        private GameProgress GetCurrentProgress()
-        {
-            var profileNumber = ConfigurationAccess.GetCurrentConfig().SaveProfile;
-            return GameProgressAccess.Load(profileNumber);
+                if (gameProgress.PersonalBestSplits?.ContainsKey(levelName) ?? false)
+                {
+                    var recordSplit = gameProgress.PersonalBestSplits[levelName];
+                    var recordText = GameTimeHelper.ToTimeString(recordSplit);
+                    var recordTextSize = TimeFont.GetSize(recordText);
+                    var recordTextPosition = new Vector2(
+                        x: Displaying.Constants.TargetWidth - BetweenElements - recordTextSize.X,
+                        y: currentButtonPosition.Y + currentButton.Height / 2 - recordTextSize.Y / 2);
+                    TimeFont.Draw(spriteBatch, recordTextPosition, recordText);
+                }
+            }
+
+            nextButtonPlaceholder += new Vector2(0, BetweenRows + currentButton.Height);
         }
     }
 }

@@ -156,6 +156,7 @@ namespace ExplainingEveryString.Core.GameState
             else
             {
                 levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
+                gameProgress = new GameProgress() { LevelRecords = new Dictionary<String, Single>() };
                 ProgressToLevelStart();
             }
             SaveProfileNumber = newProfile;
@@ -320,6 +321,8 @@ namespace ExplainingEveryString.Core.GameState
                 componentsManager.DeleteCurrentLevelRelatedComponents();
             if (newState == GameState.Paused)
                 componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
+            if (newState == GameState.TimeRecordsTable)
+                componentsManager.TimeAttackResultsComponent?.UpdateGameProgress(gameProgress, GameTimeState.Splits);
             componentSwitches[newState](true);
             currentState = newState;
         }

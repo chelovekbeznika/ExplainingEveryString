@@ -26,6 +26,7 @@ namespace ExplainingEveryString.Core.GameState
         private RunInfo currentRun = null;
 
         internal Single? LevelTime { get; private set; } = null;
+        internal Dictionary<String, Single> Splits => currentRun?.Splits;
         internal Single? RunTime => currentRun != null ? currentRun.SplitsSum + LevelTime : null;
         internal String LevelName { get; private set; }
         internal LevelProgress LevelProgress { get; set; }
@@ -82,7 +83,7 @@ namespace ExplainingEveryString.Core.GameState
         {
             currentRun.LevelsPassed += 1;
             currentRun.SplitsSum += LevelTime.Value;
-            currentRun.Splits.Add(LevelName, LevelTime.Value);
+            currentRun.Splits.Add(LevelName, currentRun.SplitsSum);
             if (RunFinished)
             {
                 LevelTime = null;
@@ -154,7 +155,7 @@ namespace ExplainingEveryString.Core.GameState
             var levelsPersonalBests = gameProfileGetter().LevelRecords;
             foreach (var (level, button) in levelTimeAttackButtons)
             {
-                if (levelsPersonalBests.ContainsKey(level))
+                if (levelsPersonalBests?.ContainsKey(level) ?? false)
                     button.Text = "DONE IN " + GameTimeHelper.ToTimeString(levelsPersonalBests[level]);
                 else
                     button.Text = null;
