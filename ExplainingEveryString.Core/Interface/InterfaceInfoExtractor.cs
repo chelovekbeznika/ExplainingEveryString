@@ -39,6 +39,7 @@ namespace ExplainingEveryString.Core.Interface
                     LevelTime = gameTimeState.LevelTime.Value,
                     LevelRecord = gameTimeState.LevelRecord,
                     RunTime = gameTimeState.RunTime,
+                    PersonalBestTillCurrentSplit = gameTimeState.PersonalBestTillCurrentSplit,
                     PersonalBest = gameTimeState.PersonalBest
                 };
             }

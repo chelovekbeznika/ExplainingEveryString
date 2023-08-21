@@ -25,7 +25,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
             if (gameTimeInfo.RunTime.HasValue)
             {
-                var gameRecord = gameTimeInfo.PersonalBest;
+                var gameRecord = gameTimeInfo.PersonalBestTillCurrentSplit;
                 var runTime = gameTimeInfo.RunTime.Value;
                 DrawLine(spriteBatch, gameRecord, runTime, pixelsFromTopSecondLine, colorMask);
             }

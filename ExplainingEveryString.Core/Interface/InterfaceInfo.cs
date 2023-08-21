@@ -20,6 +20,7 @@ namespace ExplainingEveryString.Core.Interface
         internal Single? LevelRecord { get; set; }
         internal Single? RunTime { get; set; }
         internal Single? PersonalBest { get; set; }
+        internal Single? PersonalBestTillCurrentSplit { get; set; }
     }
 
     internal class EnemyInterfaceInfo

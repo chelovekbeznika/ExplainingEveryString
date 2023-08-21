@@ -33,6 +33,7 @@ namespace ExplainingEveryString.Core.GameState
         internal Single? LevelRecord => (gameProfileGetter()?.LevelRecords?.ContainsKey(LevelName) ?? false)
             ? gameProfileGetter().LevelRecords[LevelName] : null as Single?;
         internal Single? PersonalBest => gameProfileGetter()?.PersonalBest;
+        internal Single? PersonalBestTillCurrentSplit => gameProfileGetter()?.PersonalBestSplits.GetValueOrDefault(LevelName);
         internal Boolean RunFinished => currentRun?.LevelsPassed >= levelSequenceSpecification.Levels.Length;
 
         internal GameTimeStateManager(ComponentsManager componentsManager, Func<GameProgress> gameProfileGetter, 
