@@ -27,13 +27,13 @@ namespace ExplainingEveryString.Core.GameState
 
         internal Single? LevelTime { get; private set; } = null;
         internal Dictionary<String, Single> Splits => currentRun?.Splits;
-        internal Single? RunTime => currentRun != null ? currentRun.SplitsSum + LevelTime : null;
+        internal Single? RunTime => currentRun != null ? currentRun.SplitsSum + (LevelTime ?? 0) : (null as Single?);
         internal String LevelName { get; private set; }
         internal LevelProgress LevelProgress { get; set; }
         internal Single? LevelRecord => (gameProfileGetter()?.LevelRecords?.ContainsKey(LevelName) ?? false)
             ? gameProfileGetter().LevelRecords[LevelName] : null as Single?;
         internal Single? PersonalBest => gameProfileGetter()?.PersonalBest;
-        internal Single? PersonalBestTillCurrentSplit => gameProfileGetter()?.PersonalBestSplits.GetValueOrDefault(LevelName);
+        internal Single? PersonalBestTillCurrentSplit => gameProfileGetter()?.PersonalBestSplits?.GetValueOrDefault(LevelName);
         internal Boolean RunFinished => currentRun?.LevelsPassed >= levelSequenceSpecification.Levels.Length;
 
         internal GameTimeStateManager(ComponentsManager componentsManager, Func<GameProgress> gameProfileGetter, 

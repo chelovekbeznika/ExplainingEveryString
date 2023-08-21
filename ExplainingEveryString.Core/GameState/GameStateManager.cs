@@ -73,7 +73,7 @@ namespace ExplainingEveryString.Core.GameState
                         if (currentMode == GameMode.Story)
                             StartCurrentStoryLevel(false);
                         else
-                            StartCurrentTimeAttackLevel();
+                            StartCurrentLevelTimeAttack();
                     }
                     if (componentsManager.CurrentGameplay.Won)
                     {
@@ -136,7 +136,7 @@ namespace ExplainingEveryString.Core.GameState
                             if (GameTimeState.RunFinished)
                                 SwitchToNewState(GameState.BetweenLevels);
                             else
-                                StartCurrentTimeAttackLevel();
+                                StartCurrentLevelTimeAttack();
                         }
                     break;
             }
@@ -194,14 +194,14 @@ namespace ExplainingEveryString.Core.GameState
         {
             currentMode = GameMode.WholeGameRun;
             GameTimeState.StartWholeGameRun();
-            StartCurrentTimeAttackLevel();
+            StartCurrentLevelTimeAttack();
         }
 
         internal void StartOneLevelRun(String levelName)
         {
             currentMode = GameMode.OneLevelRun;
             GameTimeState.StartOneLevelRun(levelName);
-            StartCurrentTimeAttackLevel();
+            StartCurrentLevelTimeAttack();
         }
 
         internal Boolean LevelAvailable(String levelFileName)
@@ -229,7 +229,7 @@ namespace ExplainingEveryString.Core.GameState
             StartLevel(gameProgress.CurrentLevelFileName, gameProgress.LevelProgress, !showTitle);
         }
 
-        private void StartCurrentTimeAttackLevel()
+        private void StartCurrentLevelTimeAttack()
         {
             StartLevel(GameTimeState.LevelName, GameTimeState.LevelProgress, true);
         }
