@@ -151,17 +151,17 @@ namespace ExplainingEveryString.Core
                     x: BetweenElements, 
                     y: currentButtonPosition.Y + currentButton.Height / 2 - splitTextSize.Y / 2);
                 TimeFont.Draw(spriteBatch, splitTextPosition, splitText);
+            }
 
-                if (gameProgress.PersonalBestSplits?.ContainsKey(levelName) ?? false)
-                {
-                    var recordSplit = gameProgress.PersonalBestSplits[levelName];
-                    var recordText = GameTimeHelper.ToTimeString(recordSplit);
-                    var recordTextSize = TimeFont.GetSize(recordText);
-                    var recordTextPosition = new Vector2(
-                        x: Displaying.Constants.TargetWidth - BetweenElements - recordTextSize.X,
-                        y: currentButtonPosition.Y + currentButton.Height / 2 - recordTextSize.Y / 2);
-                    TimeFont.Draw(spriteBatch, recordTextPosition, recordText);
-                }
+            if (gameProgress.PersonalBestSplits?.ContainsKey(levelName) ?? false)
+            {
+                var recordSplit = gameProgress.PersonalBestSplits[levelName];
+                var recordText = GameTimeHelper.ToTimeString(recordSplit);
+                var recordTextSize = TimeFont.GetSize(recordText);
+                var recordTextPosition = new Vector2(
+                    x: Displaying.Constants.TargetWidth - BetweenElements - recordTextSize.X,
+                    y: currentButtonPosition.Y + currentButton.Height / 2 - recordTextSize.Y / 2);
+                TimeFont.Draw(spriteBatch, recordTextPosition, recordText);
             }
 
             nextButtonPlaceholder += new Vector2(0, BetweenRows + currentButton.Height);
