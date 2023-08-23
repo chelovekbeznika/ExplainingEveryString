@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Data.Configuration
         public InputConfiguration Input { get; set; }
         public CameraConfiguration Camera { get; set; }
         public ScreenConfiguration Screen { get; set; }
+        public RecordFireworkConfiguration PersonalBestCelebration { get; set; }
         public Int32 SaveProfile { get; set; }
         public Single InterfaceAlpha { get; set; }
         public Single SoundFadingOut { get; set; }

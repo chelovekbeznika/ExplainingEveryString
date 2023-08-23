@@ -348,11 +348,16 @@
       "AnimationFrames": 5,
       "DefaultAnimationCycle": 0.5
     },
-	{
-	  "Name": "Sprites/Menu/NewRecordNotice",
-	  "AnimationFrames": 6,
-	  "DefaultAnimationCycle": 0.33333
-	},
+    {
+      "Name": "Sprites/Menu/NewRecordNotice",
+      "AnimationFrames": 6,
+      "DefaultAnimationCycle": 0.33333
+    },
+    {
+      "Name": "Sprites/Menu/RecordFireworks",
+      "AnimationFrames": 7,
+      "DefaultAnimationCycle": 12
+    },
     {
       "Name": "Sprites/FogOfWar/Test/1",
       "AnimationFrames": 7,

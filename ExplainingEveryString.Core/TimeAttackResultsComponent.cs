@@ -7,6 +7,7 @@ using ExplainingEveryString.Data.AssetsMetadata;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,14 @@ namespace ExplainingEveryString.Core
         private readonly LevelSequenceSpecification levelSequenceSpecification;
         private Texture2D background;
         private Texture2D wholeGameRoute;
-        private Texture2D splitsCompare;
-        private SpriteData newRecordNotice;
+        private SoundEffect recordFireworkSound;
+        private SpriteData newLevelRecordNotice;
+        private SpriteData recordFirework;
         private Dictionary<String, Texture2D> levelButtons;
         private GameProgress gameProgress;
         private Dictionary<String, Single> currentSplits;
         private String newRecordLevel = null;
+        private RecordCelebrationGenerator recordCelebrationGenerator = null;
 
         private CustomFont TimeFont => (Game as EesGame).FontsStorage.LevelTime;
 
@@ -39,6 +42,12 @@ namespace ExplainingEveryString.Core
 
             this.DrawOrder = ComponentsOrder.Cutscene;
             this.UpdateOrder = ComponentsOrder.Cutscene;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            recordCelebrationGenerator?.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
+            base.Update(gameTime);
         }
 
         internal void UpdateGameProgress(GameProgress gameProgress, Dictionary<String, Single> currentSplits)
@@ -54,7 +63,8 @@ namespace ExplainingEveryString.Core
 
         internal void NotifyNewGameRecord()
         {
-            //TBD!!!
+            var config = ConfigurationAccess.GetCurrentConfig();
+            recordCelebrationGenerator = new RecordCelebrationGenerator(recordFirework, recordFireworkSound, config.PersonalBestCelebration);
         }
 
         protected override void LoadContent()
@@ -62,7 +72,7 @@ namespace ExplainingEveryString.Core
             base.LoadContent();
             background = Game.Content.Load<Texture2D>(@"Sprites/Menu/TimeAttackBackground");
             wholeGameRoute = Game.Content.Load<Texture2D>(@"Sprites/Menu/WholeGameRouteInTimeTable");
-            splitsCompare = Game.Content.Load<Texture2D>(@"Sprites/Menu/SplitsCompare");
+            recordFireworkSound = Game.Content.Load<SoundEffect>(@"Sounds/Record");
 
             levelButtons = levelSequenceSpecification.Levels.ToDictionary(
                 keySelector: l => l.LevelData, 
@@ -71,8 +81,10 @@ namespace ExplainingEveryString.Core
             var metadataLoader = AssetsMetadataAccess.GetLoader();
             var spriteDataBuilder = new SpriteDataBuilder(Game.Content, metadataLoader);
             var recordSpriteName = @"Sprites/Menu/NewRecordNotice";
-            var sprites = spriteDataBuilder.Build(new[] { recordSpriteName });
-            newRecordNotice = sprites[recordSpriteName];
+            var recordFireworksSpriteName = @"Sprites/Menu/RecordFireworks";
+            var sprites = spriteDataBuilder.Build(new[] { recordSpriteName, recordFireworksSpriteName });
+            newLevelRecordNotice = sprites[recordSpriteName];
+            recordFirework = sprites[recordFireworksSpriteName];
         }
 
         protected override void DrawImage(SpriteBatch spriteBatch, Int32 frameNumber)
@@ -93,6 +105,8 @@ namespace ExplainingEveryString.Core
                     DrawLevelResults(spriteBatch, levelName, levelResult, ref nextButtonPlaceholder);
                 }
             }
+
+            recordCelebrationGenerator?.Draw(spriteBatch);
         }
 
         private void DrawWholeGameResult(SpriteBatch spriteBatch, Single wholeGameRecord)
@@ -138,8 +152,8 @@ namespace ExplainingEveryString.Core
                 var recordNoticePosition = new Vector2(
                     x: currentTextPosition.X + BetweenElements + textSize.X + BetweenElements, 
                     y: nextButtonPlaceholder.Y);
-                var partToDraw = AnimationHelper.GetDrawPart(newRecordNotice, FrameTime);
-                spriteBatch.Draw(newRecordNotice.Sprite, recordNoticePosition, partToDraw, Color.White);
+                var partToDraw = AnimationHelper.GetDrawPart(newLevelRecordNotice, FrameTime);
+                spriteBatch.Draw(newLevelRecordNotice.Sprite, recordNoticePosition, partToDraw, Color.White);
             }
 
             if (currentSplits?.ContainsKey(levelName) ?? false)

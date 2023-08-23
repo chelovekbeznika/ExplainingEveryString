@@ -59,6 +59,25 @@ namespace ExplainingEveryString.Data.Configuration
                     ScreenWidth = 1024,
                     ScreenHeight = 768
                 },
+                PersonalBestCelebration = new RecordFireworkConfiguration
+                {
+                    Volume = 0.25f,
+                    SoundCooldown = new RandomVariables.GaussRandomVariable
+                    {
+                        ExpectedValue = 0.5f,
+                        Sigma = 0.1f
+                    },
+                    BetweenSpawns = new RandomVariables.GaussRandomVariable
+                    {
+                        ExpectedValue = 0.066667f,
+                        Sigma = 0.05f
+                    },
+                    LifeTime = new RandomVariables.GaussRandomVariable
+                    {
+                        ExpectedValue = 0.5f,
+                        Sigma = 0.1f
+                    }
+                },
                 InterfaceAlpha = 0.75F,
                 SoundFadingOut = 1000,
                 SaveProfile = 0,

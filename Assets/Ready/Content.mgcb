@@ -855,6 +855,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/WeaponSwitch.wav
 
+#begin Sounds/Record.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Record.wav
+
 #begin Sounds/StandardEnemy/Appearance.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -11072,6 +11078,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Menu/OneLevelTimeAttack.png
+
+#begin Sprites/Menu/RecordFireworks.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Menu/RecordFireworks.png
 
 #begin Sprites/Menu/RecordsTable.png
 /importer:TextureImporter
