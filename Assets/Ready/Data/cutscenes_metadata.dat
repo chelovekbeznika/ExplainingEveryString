@@ -120,7 +120,7 @@
 	"MaxFrameTime": 4.0
   },
   "Final": {
-    "FramesCount": 12,
+    "FramesCount": 13,
 	"MinFrameTime": 0.5,
 	"MaxFrameTime": 5.0
   }
