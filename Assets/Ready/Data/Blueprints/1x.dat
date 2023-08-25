@@ -731,7 +731,7 @@
   "Miniboss_mk12": {
     "$type": "ExplainingEveryString.Data.Blueprints.ShadowEnemyBlueprint, ExplainingEveryString.Data",
     "Width": 112,
-    "Height": 80,
+    "Height": 48,
     "Hitpoints": 200.0,
     "DefaultSprite": {
       "Name": "Sprites/Enemies/Level1X/Swan",
