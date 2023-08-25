@@ -43,49 +43,93 @@ namespace ExplainingEveryString.Core.Menu
             var saveProfile = GameProgressAccess.Load(saveProfileNumber);
             var saveFileIcon = content.Load<Texture2D>(@"Sprites/Menu/CurrentSaveIcon");
 
-            var newGameButtonDisplayer = new TwoSpritesDisplayer(
-                content.Load<Texture2D>(@"Sprites/Menu/NewGame"),
-                new Vector2(16, 20),
-                content.Load<Texture2D>(levelSequenceSpecification.Levels.First().ButtonSprite));
+            var unpauseButtonDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Unpause"));
+            var unpause = new MenuItemButton(unpauseButtonDisplayer)
+            {
+                Text = "CONTINUE",
+                IsVisible = () => game.GameState.IsPaused
+            };
+            unpause.ItemCommandExecuteRequested += (sender, e) => game.GameState.TryPauseSwitch();
+
             var continueButtonDisplayer = new TwoSpritesDisplayer(
-                content.Load<Texture2D>(@"Sprites/Menu/Continue"),
-                new Vector2(16, 20),
-                GetCurrentLevelButton(saveProfile));
+                baseSprite: content.Load<Texture2D>(@"Sprites/Menu/Continue"),
+                offset: new Vector2(16, 20),
+                changeableSprite: GetCurrentLevelButton(saveProfile));
+            var continueStory = new MenuItemButton(continueButtonDisplayer) 
+            { 
+                Text = "LOAD LAST" 
+            };
+            continueStory.ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueCurrentGame();
+
+            var newGameButtonDisplayer = new TwoSpritesDisplayer(
+                baseSprite: content.Load<Texture2D>(@"Sprites/Menu/NewGame"),
+                offset: new Vector2(16, 20),
+                changeableSprite: content.Load<Texture2D>(levelSequenceSpecification.Levels.First().ButtonSprite));
+            var newGame = new MenuItemButton(newGameButtonDisplayer) 
+            { 
+                Text = "NEW GAME" 
+            };
+            newGame.ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
+
             var levelSelectButtonDisplayer = new TwoSpritesDisplayer(
-                content.Load<Texture2D>(@"Sprites/Menu/LevelSelect"),
-                new Vector2(16, 21),
-                GetMaxLevelButton(saveProfile));
+                baseSprite: content.Load<Texture2D>(@"Sprites/Menu/LevelSelect"),
+                offset: new Vector2(16, 21),
+                changeableSprite: GetMaxLevelButton(saveProfile));
+            var levelSelect = new MenuItemWithContainer(levelSelectButtonDisplayer,
+                storyLevelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart)
+            { 
+                Text = "SELECT LEVEL" 
+            };
 
             var saveProfilesButtonDisplayer = new TwoSpritesDisplayer(
-                content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles"),
-                CalculateCurrentSaveIconOffset(saveProfileNumber, saveFileIcon.Width),
-                saveFileIcon);
+                baseSprite: content.Load<Texture2D>(@"Sprites/Menu/SaveProfiles"),
+                offset: CalculateCurrentSaveIconOffset(saveProfileNumber, saveFileIcon.Width),
+                changeableSprite: saveFileIcon);
+            var selectSave = new MenuItemWithContainer(saveProfilesButtonDisplayer,
+                saveProfilesBuilder.BuildMenu(menuVisiblePart), menuVisiblePart)
+            { 
+                Text = "SELECT SAVE" 
+            };
+
+            var timeAttackButtonDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/TimeAttack"));
+            var timeAttack = new MenuItemWithContainer(timeAttackButtonDisplayer,
+                timeAttackBuilder.BuildMenu(menuVisiblePart), menuVisiblePart)
+            {
+                Text = "TIME ATTACK",
+                IsVisible = () =>
+                {
+                    var saveProfile = ConfigurationAccess.GetCurrentConfig().SaveProfile;
+                    var gameProgress = GameProgressAccess.Load(saveProfile);
+                    return gameProgress.TimeAttackModeOpened;
+                }
+            };
+
+            var settingsButtonDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu"));
+            var settings = new MenuItemWithContainer(settingsButtonDisplayer,
+                settingsBuilder.BuildMenu(menuVisiblePart), menuVisiblePart)
+            {
+                Text = "SETTINGS"
+            };
+
+            var musicTestButtonDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest"));
+            var musicTest = new MenuItemWithContainer(musicTestButtonDisplayer,
+                musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart)
+            { 
+                Text = "MUSIC TEST" 
+            };
+
+            var exitButtonDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Exit"));
+            var exit = new MenuItemButton(exitButtonDisplayer) 
+            { 
+                Text = "EXIT" 
+            };
+            exit.ItemCommandExecuteRequested += (sender, e) => game.Exit();
 
             var items = new MenuItemButton[]
             {
-                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Unpause"))) { Text = "CONTINUE" },
-                new MenuItemButton(continueButtonDisplayer) { Text = "LOAD LAST" },
-                new MenuItemButton(newGameButtonDisplayer) { Text = "NEW GAME" },
-                new MenuItemWithContainer(levelSelectButtonDisplayer,
-                    storyLevelSelectBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT LEVEL" },
-                new MenuItemWithContainer(saveProfilesButtonDisplayer,
-                    saveProfilesBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SELECT SAVE" },
-                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/TimeAttack")),
-                    timeAttackBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "TIME ATTACK" },
-                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Settings/Submenu")),
-                    settingsBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "SETTINGS" },
-                new MenuItemWithContainer(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/MusicTest")),
-                    musicTestBuilder.BuildMenu(menuVisiblePart), menuVisiblePart) { Text = "MUSIC TEST" },
-                new MenuItemButton(new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Exit"))) { Text = "EXIT" }
+                unpause, continueStory, newGame, levelSelect, selectSave, timeAttack, settings, musicTest, exit
             };
 
-            items[0].ItemCommandExecuteRequested += (sender, e) => game.GameState.TryPauseSwitch();
-            items[1].ItemCommandExecuteRequested += (sender, e) => game.GameState.ContinueCurrentGame();
-            items[2].ItemCommandExecuteRequested += (sender, e) => game.GameState.StartNewGame();
-
-            items[^1].ItemCommandExecuteRequested += (sender, e) => game.Exit();
-
-            items[0].IsVisible = () => game.GameState.IsPaused;
             var container = new MenuItemsContainer(items);
             container.ContainerAppearedOnScreen += (sender, e) =>
             {

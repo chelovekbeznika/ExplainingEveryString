@@ -156,7 +156,11 @@ namespace ExplainingEveryString.Core.GameState
             else
             {
                 levelSequence = new LevelSequence(levelSequenceSpecification, null, null);
-                gameProgress = new GameProgress() { LevelRecords = new Dictionary<String, Single>() };
+                gameProgress = new GameProgress() 
+                { 
+                    LevelRecords = new Dictionary<String, Single>(),
+                    TimeAttackModeOpened = false
+                };
                 ProgressToLevelStart();
             }
             SaveProfileNumber = newProfile;
@@ -261,6 +265,8 @@ namespace ExplainingEveryString.Core.GameState
             }
             else
             {
+                gameProgress.TimeAttackModeOpened = true;
+                SaveGame();
                 SwitchToNewState(GameState.BetweenLevels);
                 componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
             }

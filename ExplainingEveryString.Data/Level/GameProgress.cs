@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Data.Level
         public LevelProgress LevelProgress { get; set; }
         public String CurrentLevelFileName { get; set; }
         public String MaxAchievedLevelName { get; set; }
+        public Boolean TimeAttackModeOpened { get; set; }
         public Dictionary<String, Single> LevelRecords { get; set; }
         [DefaultValue(null)]
         public Single? PersonalBest { get; set; }
