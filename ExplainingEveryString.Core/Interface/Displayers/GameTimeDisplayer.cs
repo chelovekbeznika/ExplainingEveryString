@@ -10,8 +10,8 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     {
         private readonly CustomFont timeFont;
         private const Int32 pixelsFromLeft = 32;
-        private const Int32 pixelsFromTop = 32;
-        private const Int32 pixelsFromTopSecondLine = 64;
+        private const Int32 pixelsFromTop = 64;
+        private const Int32 pixelsFromTopSecondLine = 96;
         private const Int32 pixelsBetween = 16;
 
         internal GameTimeDisplayer(CustomFont timeFont)
