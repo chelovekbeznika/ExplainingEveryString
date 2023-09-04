@@ -100,7 +100,7 @@ namespace ExplainingEveryString.Core.Menu
                 {
                     var saveProfile = ConfigurationAccess.GetCurrentConfig().SaveProfile;
                     var gameProgress = GameProgressAccess.Load(saveProfile);
-                    return gameProgress.TimeAttackModeOpened;
+                    return gameProgress?.TimeAttackModeOpened ?? false;
                 }
             };
 
