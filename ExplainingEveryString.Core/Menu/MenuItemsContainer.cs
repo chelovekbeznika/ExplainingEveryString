@@ -37,9 +37,12 @@ namespace ExplainingEveryString.Core.Menu
 
         internal void SelectNextButton()
         {
-            Items[SelectedIndex].Selected = false;
-            SelectedIndex = FindVisibleButton(+1);
-            Items[SelectedIndex].Selected = true;
+            if (SelectedIndex < Items.Length - 1)
+            {
+                Items[SelectedIndex].Selected = false;
+                SelectedIndex = FindVisibleButton(+1);
+                Items[SelectedIndex].Selected = true;
+            }
         }
 
         internal void SelectPreviousButton()

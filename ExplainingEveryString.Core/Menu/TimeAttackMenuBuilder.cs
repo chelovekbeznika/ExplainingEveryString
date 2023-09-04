@@ -32,6 +32,7 @@ namespace ExplainingEveryString.Core.Menu
             var wholeGameDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/WholeGameTimeAttack"));
             var wholeGameButton = new MenuItemButton(wholeGameDisplayer);
             wholeGameButton.ItemCommandExecuteRequested += (sender, args) => gameState.StartWholeGameRun();
+
             gameState.GameTimeState.RegisterWholeGameTimeButton(wholeGameButton);
             return new MenuItemsContainer(new MenuItem[] { oneLevelButton, wholeGameButton });
         }
