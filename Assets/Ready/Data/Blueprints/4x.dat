@@ -959,7 +959,7 @@
           "speed": 128.0
         }
       },
-      "MoveTargetSelectType": "RandomTargets",
+      "MoveTargetSelectType": "RandomFromListTargets",
       "Weapon": {
         "Reloader": {
           "FireRate": 0.5

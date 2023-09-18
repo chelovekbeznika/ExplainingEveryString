@@ -49,7 +49,6 @@
           "Angle": 0.0
         }
       ],
-      "RoomName": "Alpha",
       "StartRegion": {
         "X": 51,
         "Y": 30,
@@ -101,7 +100,8 @@
           "Angle": 0.0
         }
       ],
-      "Bosses": []
+      "Bosses": [],
+      "RoomName": "Alpha"
     },
     {
       "StartRegion": {
@@ -322,7 +322,6 @@
         "Height": 30
       },
       "MaxEnemiesAtOnce": 4,
-      "RoomName": "Alpha",
       "Enemies": [
         {
           "BlueprintType": "WallCannon",
@@ -392,7 +391,8 @@
           "Angle": 0.0
         }
       ],
-      "Bosses": []
+      "Bosses": [],
+      "RoomName": "Alpha"
     },
     {
       "Checkpoint": {
@@ -680,7 +680,6 @@
         "Width": 28,
         "Height": 40
       },
-      "RoomName": "Beta",
       "Enemies": [
         {
           "BlueprintType": "WallCannon",
@@ -736,7 +735,8 @@
           "Angle": 0.0
         }
       ],
-      "Bosses": []
+      "Bosses": [],
+      "RoomName": "Beta"
     },
     {
       "Doors": [
@@ -808,7 +808,6 @@
         "Width": 47,
         "Height": 15
       },
-      "RoomName": "Gamma",
       "MaxEnemiesAtOnce": 4,
       "Enemies": [
         {
@@ -900,7 +899,8 @@
           "Angle": 0.0
         }
       ],
-      "Bosses": []
+      "Bosses": [],
+      "RoomName": "Gamma"
     },
     {
       "Doors": [
@@ -1351,14 +1351,14 @@
           },
           "Angle": 270.0,
           "TrajectoryParameters": [
-            "-80, 32",
-            "80, 32",
-            "-80, -128",
-            "80, -128",
-            "-48, -80",
-            "48, -80",
-            "-48, -16",
-            "48, -16"
+            "-120, 72",
+            "120, 72",
+            "-120, -88",
+            "120, -88",
+            "-48, -32",
+            "48, -32",
+            "-48, 24",
+            "48, 24"
           ]
         }
       ]
