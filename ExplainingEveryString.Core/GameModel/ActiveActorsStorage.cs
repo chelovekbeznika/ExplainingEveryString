@@ -17,7 +17,8 @@ namespace ExplainingEveryString.Core.GameModel
         internal Hitbox CurrentWaveStartRegion { get; private set; }
         internal List<IEnemy> Enemies => currentWaveEnemies
             .Concat(avengers)
-            .Concat(enemySpawners.SelectMany(aes => aes.SpawnedEnemies)).ToList();
+            .Concat(enemySpawners.SelectMany(aes => aes.SpawnedEnemies))
+            .Distinct().ToList();
         internal List<IEnemy> ShowAsBossesInInterface { get; private set; } = null;
         internal List<IChangeableActor> ChangeableActors => Enemies.OfType<IChangeableActor>().ToList();
       
