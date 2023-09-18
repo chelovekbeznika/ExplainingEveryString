@@ -85,7 +85,6 @@
           "Angle": 0.0
         }
       ],
-      "RoomName": "Alpha",
       "StartRegion": {
         "X": 30,
         "Y": 54,
@@ -157,7 +156,8 @@
           },
           "Angle": 0.0
         }
-      ]
+      ],
+      "RoomName": "Alpha"
     },
     {
       "Doors": [],
@@ -167,7 +167,6 @@
         "Width": 46,
         "Height": 46
       },
-      "RoomName": "Beta",
       "MaxEnemiesAtOnce": 10,
       "Enemies": [
         {
@@ -300,7 +299,8 @@
           },
           "Angle": -160.0
         }
-      ]
+      ],
+      "RoomName": "Beta"
     },
     {
       "Doors": [
@@ -436,198 +436,63 @@
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 17,
-            "Y": 54,
-            "Offset": "8, -8"
+            "X": 18,
+            "Y": 56,
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 17,
-            "Y": 54,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 17,
-            "Y": 54,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 17,
-            "Y": 59,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 17,
+            "X": 18,
             "Y": 64,
-            "Offset": "8, -8"
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 19,
+            "X": 21,
             "Y": 67,
-            "Offset": "8, -8"
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 24,
-            "Y": 67,
-            "Offset": "8, -8"
+            "X": 33,
+            "Y": 81,
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 29,
-            "Y": 67,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 32,
-            "Y": 69,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 32,
-            "Y": 74,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 32,
-            "Y": 79,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 32,
+            "X": 36,
             "Y": 84,
-            "Offset": "8, -8"
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 37,
+            "X": 59,
             "Y": 84,
-            "Offset": "8, -8"
+            "Offset": "0, -8"
           },
           "Angle": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 42,
-            "Y": 84,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 47,
-            "Y": 84,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 52,
-            "Y": 84,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 57,
-            "Y": 84,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 62,
-            "Y": 84,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 62,
-            "Y": 79,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 62,
-            "Y": 74,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 62,
-            "Y": 69,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 67,
-            "Y": 69,
-            "Offset": "8, -8"
+            "X": 63,
+            "Y": 81,
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         },
@@ -643,31 +508,23 @@
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 75,
+            "X": 76,
             "Y": 67,
-            "Offset": "8, -8"
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         },
         {
           "BlueprintType": "Mine_mk1",
           "TilePosition": {
-            "X": 75,
-            "Y": 62,
-            "Offset": "8, -8"
-          },
-          "Angle": 0.0
-        },
-        {
-          "BlueprintType": "Mine_mk1",
-          "TilePosition": {
-            "X": 75,
-            "Y": 57,
-            "Offset": "8, -8"
+            "X": 76,
+            "Y": 56,
+            "Offset": "-8, 0"
           },
           "Angle": 0.0
         }
-      ]
+      ],
+      "Bosses": []
     },
     {
       "Doors": [
@@ -1384,7 +1241,6 @@
         "Width": 96,
         "Height": 40
       },
-      "RoomName": "Gamma",
       "MaxEnemiesAtOnce": 10,
       "Enemies": [
         {
@@ -1520,7 +1376,8 @@
           },
           "Angle": 0.0
         }
-      ]
+      ],
+      "RoomName": "Gamma"
     },
     {
       "Doors": [
