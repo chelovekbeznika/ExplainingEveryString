@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Core.Collisions
         private readonly String[] stoppedByPitsCollidableTags = new[] { "Tank" };
         private ActiveActorsStorage activeObjects;
         private CollisionsChecker collisionsChecker = new CollisionsChecker();
-        private Dictionary<ITouchableByBullets, Single> blastWaveVictims = new Dictionary<ITouchableByBullets, Single>();
+        private Dictionary<ITouchableByBullets, Single> futureBlastWaveVictims = new Dictionary<ITouchableByBullets, Single>();
 
         internal CollisionsController(ActiveActorsStorage activeObjects)
         {
@@ -162,7 +162,7 @@ namespace ExplainingEveryString.Core.Collisions
         private void CheckBulletForCollisions(Bullet bullet, IEnumerable<ICollidable> collidables)
         {
             var bulletCollisionHappened = false;
-            blastWaveVictims.Clear();
+            futureBlastWaveVictims.Clear();
             foreach (var collidable in collidables.Where(c => c.CollidableMode == CollidableMode.Solid || c.CollidableMode == CollidableMode.Teleporter))
             {
                 var hitbox = collidable is ITouchableByBullets
@@ -188,14 +188,14 @@ namespace ExplainingEveryString.Core.Collisions
                 }
             }
             if (bulletCollisionHappened && bullet.BlastWaveRadius > 0)
-                foreach (var victimDamagePair in blastWaveVictims)
-                    victimDamagePair.Key.TakeDamage(victimDamagePair.Value);
+                foreach (var (victim, damage) in futureBlastWaveVictims)
+                    victim.TakeDamage(damage);
         }
 
         private void RegisterBlastVictim(ITouchableByBullets blastVictim, Bullet bullet)
         {
             var damageCoeff = 1 - (blastVictim.Position - bullet.Position).Length() / bullet.BlastWaveRadius;
-            blastWaveVictims.Add(blastVictim, damageCoeff * bullet.Damage);
+            futureBlastWaveVictims.Add(blastVictim, damageCoeff * bullet.Damage);
         }
     }
 }
