@@ -10143,6 +10143,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/RightTripleBossHealthBar.png
 
+#begin Sprites/Interface/Target.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/Target.png
+
 #begin Sprites/Interface/WeaponIcons/Border.png
 /importer:TextureImporter
 /processor:TextureProcessor

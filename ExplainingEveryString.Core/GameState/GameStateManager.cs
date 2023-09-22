@@ -1,6 +1,7 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,6 +141,18 @@ namespace ExplainingEveryString.Core.GameState
                         }
                     break;
             }
+        }
+
+        internal Boolean IsMouseVisible()
+        {
+            if (currentState == GameState.InGame)
+            {
+                var wePreferKeyboardMouse = ConfigurationAccess.GetCurrentConfig().Input.PreferredControlDevice == ControlDevice.Keyboard;
+                var weCantUseGamepad = !GamePad.GetCapabilities(Microsoft.Xna.Framework.PlayerIndex.One).IsConnected;
+                return wePreferKeyboardMouse || weCantUseGamepad;
+            }
+            else
+                return false;
         }
 
         internal void SwitchSaveProfile(Int32 newProfile)

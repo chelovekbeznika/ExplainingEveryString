@@ -37,16 +37,15 @@ namespace ExplainingEveryString.Core.Input
 
         public void Update(Single elapsedSeconds)
         {
-            var preferredDevice = ConfigurationAccess.GetCurrentConfig().Input.PreferredControlDevice;
-            if (preferredDevice == ControlDevice.GamePad && !GamepadAccessible)
-                preferredDevice = ControlDevice.Keyboard;
-            switch (preferredDevice)
+            var inputDevice = ConfigurationAccess.GetCurrentConfig().Input.PreferredControlDevice;
+            if (inputDevice == ControlDevice.GamePad && !GamepadAccessible)
+                inputDevice = ControlDevice.Keyboard;
+            current = inputDevice switch
             {
-                case ControlDevice.GamePad: current = gamePad; break;
-                case ControlDevice.Keyboard: current = keyboard; break;
-                default: throw new Exception("Badly configured input");
-            }
-
+                ControlDevice.GamePad => gamePad,
+                ControlDevice.Keyboard => keyboard,
+                _ => throw new Exception("Badly configured input"),
+            };
             current.Update(elapsedSeconds);
         }
 
