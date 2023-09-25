@@ -40,9 +40,9 @@ namespace ExplainingEveryString.Core.GameState
             this.cutscenesMetadata = cutscenesMetadata;
             Interface = new InterfaceComponent(game);
             Menu = new MenuComponent(game, levelSequenceSpecification, musicTestSpecification);
-            MenuMusic = new MusicComponent(game);
-            GameMusic = new MusicComponent(game);
-            CutsceneMusic = new MusicComponent(game);
+            MenuMusic = new MusicComponent(game) { Enabled = false };
+            GameMusic = new MusicComponent(game) { Enabled = false };
+            CutsceneMusic = new MusicComponent(game) { Enabled = false };
             Notifications = new NotificationsComponent(game);
         }
 
