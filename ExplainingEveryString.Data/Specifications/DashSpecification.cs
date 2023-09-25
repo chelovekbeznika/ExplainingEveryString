@@ -11,7 +11,8 @@ namespace ExplainingEveryString.Data.Specifications
         public Single RechargeTime { get; set; }
         public Single Duration { get; set; }
         public String[] CollideTagsDefense { get; set; }
-        public SpecEffectSpecification SpecEffect { get; set; }
+        public SpecEffectSpecification ActiveSpecEffect { get; set; }
+        public SpecEffectSpecification ReadySpecEffect { get; set; }
         public SpriteSpecification Sprite { get; set; }
     }
 }

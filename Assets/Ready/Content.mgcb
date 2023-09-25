@@ -783,6 +783,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/Dash.wav
 
+#begin Sounds/Player/DashReady.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/DashReady.wav
+
 #begin Sounds/Player/Death.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

@@ -20,8 +20,9 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
                 .Concat(new SpecEffectSpecification[]
             {
                 blueprint.BaseDestructionEffect, blueprint.WeaponSwitchEffect,
-                blueprint.CannonDestructionEffect, blueprint.Dash.SpecEffect,
-                blueprint.DamageEffect, blueprint.SoftDamageEffect, blueprint.RefreshEffect
+                blueprint.CannonDestructionEffect, blueprint.Dash.ActiveSpecEffect, 
+                blueprint.Dash.ReadySpecEffect, blueprint.DamageEffect, 
+                blueprint.SoftDamageEffect, blueprint.RefreshEffect
             });
         }
     }

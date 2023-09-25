@@ -11,7 +11,7 @@
       "RechargeTime": 3.0,
       "Duration": 0.5,
       "CollideTagsDefense": [ "Hunter" ],
-      "SpecEffect": {
+      "ActiveSpecEffect": {
         "Sound": {
           "Name": "Sounds/Player/Dash",
           "Volume": 0.6
@@ -19,6 +19,12 @@
         "Sprite": {
           "Name": "Sprites/Player/Dash",
           "AnimationCycle": 0.25
+        }
+      },
+      "ReadySpecEffect": {
+        "Sound": {
+          "Name": "Sounds/Player/DashReady",
+          "Volume": 0.6
         }
       },
       "Sprite": {
