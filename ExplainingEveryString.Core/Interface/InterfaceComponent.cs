@@ -94,7 +94,7 @@ namespace ExplainingEveryString.Core.Interface
             centerOfThreeBossInfoDisplayer = new BossInfoDisplayer(interfaceSpritesDisplayer, BossInfoDisplayer.CenterOfThreeBossPrefix, 0, DrainType.Center);
             enemiesBehindScreenDisplayer = new EnemiesBehindScreenDisplayer(interfaceSpritesDisplayer);
             homingTargetDisplayer = new HomingTargetDisplayer(interfaceSpritesDisplayer);
-            remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer);
+            remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer, eesGame.FontsStorage.LevelTime);
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
             reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
             checkpointDisplayer = new CheckpointDisplayer(interfaceSpritesDisplayer);

@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Assets;
 using ExplainingEveryString.Core.Math;
+using ExplainingEveryString.Core.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -24,6 +25,11 @@ namespace ExplainingEveryString.Core.Interface
         internal void Update(Single elapsedSeconds)
         {
             elapsedTime += elapsedSeconds;
+        }
+
+        internal void DrawText(String text, Vector2 position, CustomFont customFont)
+        {
+            customFont.Draw(spriteBatch, position, text);
         }
 
         internal void Draw(SpriteData spriteData, Vector2 position, Boolean opaque = false)

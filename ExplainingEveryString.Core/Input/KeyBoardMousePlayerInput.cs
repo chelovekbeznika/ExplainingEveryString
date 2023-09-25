@@ -101,12 +101,12 @@ namespace ExplainingEveryString.Core.Input
             var keys = Keyboard.GetState().GetPressedKeys();
             return keys switch
             {
-                _ when keys.Contains(Keys.D1) => WeaponNames.Default,
-                _ when keys.Contains(Keys.D2) => WeaponNames.Shotgun,
-                _ when keys.Contains(Keys.D3) => WeaponNames.RocketLauncher,
-                _ when keys.Contains(Keys.D4) => WeaponNames.Cone,
-                _ when keys.Contains(Keys.D5) => WeaponNames.Homing,
-                _ when keys.Contains(Keys.D6) => WeaponNames.FiveShot,
+                _ when keys.Contains(Keys.D1) => WeaponNames.AllExisting[0],
+                _ when keys.Contains(Keys.D2) => WeaponNames.AllExisting[1],
+                _ when keys.Contains(Keys.D3) => WeaponNames.AllExisting[2],
+                _ when keys.Contains(Keys.D4) => WeaponNames.AllExisting[3],
+                _ when keys.Contains(Keys.D5) => WeaponNames.AllExisting[4],
+                _ when keys.Contains(Keys.D6) => WeaponNames.AllExisting[5],
                 _ => null
             };
         }
