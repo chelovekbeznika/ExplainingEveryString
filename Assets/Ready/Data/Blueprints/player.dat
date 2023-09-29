@@ -91,6 +91,10 @@
           "Name": "Sprites/Player/Shotgun",
           "AnimationCycle": 0.5
         },
+        "CooldownSprite": {
+          "Name": "Sprites/Player/ShotgunCooldown",
+          "AnimationCycle": 0.5
+        },
         "Barrels": [
           {
             "Length": 15.0,
@@ -201,6 +205,9 @@
         "Sprite": {
           "Name": "Sprites/Player/Cone"
         },
+        "CooldownSprite": {
+          "Name": "Sprites/Player/ConeCooldown"
+        },
         "Barrels": [
           {
             "Length": 13.0,
@@ -257,6 +264,10 @@
           "Name": "Sprites/Player/HomingCannon",
           "AnimationCycle": 1.5
         },
+        "CooldownSprite": {
+          "Name": "Sprites/Player/HomingCannonCooldown",
+          "AnimationCycle": 1.5
+        },
         "Barrels": [
           {
             "Length": 10.0,
@@ -304,6 +315,10 @@
         },
         "Sprite": {
           "Name": "Sprites/Player/FiveShot",
+          "AnimationCycle": 0.5
+        },
+        "CooldownSprite": {
+          "Name": "Sprites/Player/FiveShotCooldown",
           "AnimationCycle": 0.5
         },
         "Barrels": [

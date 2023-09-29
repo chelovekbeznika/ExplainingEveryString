@@ -36,7 +36,21 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         private readonly Func<Vector2> findOutWhereIAm;
 
-        public SpriteState SpriteState { get; private set; }
+        private readonly SpriteState spriteState;
+        private readonly SpriteState cooldownSprite;
+        public SpriteState SpriteState
+        {
+            get
+            {
+                if (spriteState != null)
+                    if (cooldownSprite == null)
+                        return spriteState;
+                    else
+                        return Reloader.ReloadingNow ? cooldownSprite : spriteState;
+                else
+                    return null;
+            }
+        }
         public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
 
         public Vector2 Position => findOutWhereIAm();
@@ -56,7 +70,8 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             Reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot, fullAmmoAtStart);
             Reloader.ReloadStarted += (sender, e) => reloadStarted.TryHandle();
             Reloader.ReloadFinished += (sender, e) => reloadFinished.TryHandle();
-            SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
+            spriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
+            cooldownSprite = specification.CooldownSprite != null ? new SpriteState(specification.CooldownSprite) : null;
             weaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
             reloadStarted = new EpicEvent(level, specification.Reloader.ReloadStartedEffect, false, this, true);
             reloadFinished = new EpicEvent(level, specification.Reloader.ReloadFinishedEffect, false, this, true);

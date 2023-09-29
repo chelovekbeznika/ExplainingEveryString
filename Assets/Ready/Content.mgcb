@@ -11643,6 +11643,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/ConeBullet.png
 
+#begin Sprites/Player/ConeCooldown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/ConeCooldown.png
+
 #begin Sprites/Player/ConeSparkle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11715,6 +11727,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/FiveShotBullet.png
 
+#begin Sprites/Player/FiveShotCooldown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/FiveShotCooldown.png
+
 #begin Sprites/Player/Grain.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11750,6 +11774,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/HomingCannon.png
+
+#begin Sprites/Player/HomingCannonCooldown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/HomingCannonCooldown.png
 
 #begin Sprites/Player/PlayerBullet.png
 /importer:TextureImporter
@@ -11822,6 +11858,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Player/Shotgun.png
+
+#begin Sprites/Player/ShotgunCooldown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Player/ShotgunCooldown.png
 
 #begin Sprites/Player/SoftDamage.png
 /importer:TextureImporter

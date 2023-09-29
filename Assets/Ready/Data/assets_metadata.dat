@@ -76,8 +76,16 @@
       "Name": "Sprites/Player/HomingCannon",
       "AnimationFrames": 4
     },
+	{
+      "Name": "Sprites/Player/HomingCannonCooldown",
+      "AnimationFrames": 4
+    },
     {
       "Name": "Sprites/Player/FiveShot",
+      "AnimationFrames": 4
+    },
+	{
+      "Name": "Sprites/Player/FiveShotCooldown",
       "AnimationFrames": 4
     },
     {

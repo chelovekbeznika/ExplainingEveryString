@@ -15,6 +15,7 @@ namespace ExplainingEveryString.Data.Specifications
         public ReloaderSpecification Reloader { get; set; }
         public BarrelSpecification[] Barrels { get; set; }
         public SpriteSpecification Sprite { get; set; }
+        public SpriteSpecification CooldownSprite { get; set; }
         public SpecEffectSpecification ShootingEffect { get; set; }
         public AimType AimType { get; set; }
         [DefaultValue("Weapon")]
