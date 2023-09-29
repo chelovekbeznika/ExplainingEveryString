@@ -777,6 +777,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/ConeReload.wav
 
+#begin Sounds/Player/ConeReloadFinished.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/ConeReloadFinished.wav
+
 #begin Sounds/Player/Dash.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -807,6 +813,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/FiveShotReload.wav
 
+#begin Sounds/Player/FiveShotReloadFinished.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/FiveShotReloadFinished.wav
+
 #begin Sounds/Player/Hit.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -818,6 +830,18 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Player/Homing.wav
+
+#begin Sounds/Player/HomingReload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/HomingReload.wav
+
+#begin Sounds/Player/HomingReloadFinished.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/HomingReloadFinished.wav
 
 #begin Sounds/Player/Refresh.wav
 /importer:WavImporter
@@ -854,6 +878,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Sounds/Player/ShotgunReload.wav
+
+#begin Sounds/Player/ShotgunReloadFinished.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/ShotgunReloadFinished.wav
 
 #begin Sounds/Player/WeaponSwitch.wav
 /importer:WavImporter

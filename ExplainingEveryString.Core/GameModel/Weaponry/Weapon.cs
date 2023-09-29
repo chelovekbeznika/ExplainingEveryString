@@ -27,11 +27,12 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
 
         internal String Name { get; private set; }
         internal Reloader Reloader { get; private set; }
-        private IAimer aimer;
-        private Barrel[] barrels;
+        private readonly IAimer aimer;
+        private readonly Barrel[] barrels;
 
         private readonly EpicEvent weaponFired;
         private readonly EpicEvent reloadStarted;
+        private readonly EpicEvent reloadFinished;
 
         private readonly Func<Vector2> findOutWhereIAm;
 
@@ -54,9 +55,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             Name = specification.Name;
             Reloader = new Reloader(specification.Reloader, () => aimer.IsFiring(), OnShoot, fullAmmoAtStart);
             Reloader.ReloadStarted += (sender, e) => reloadStarted.TryHandle();
+            Reloader.ReloadFinished += (sender, e) => reloadFinished.TryHandle();
             SpriteState = specification.Sprite != null ? new SpriteState(specification.Sprite) : null;
-            this.weaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
-            this.reloadStarted = new EpicEvent(level, specification.Reloader.ReloadStartedEffect, false, this, true);
+            weaponFired = new EpicEvent(level, specification.ShootingEffect, false, this, true);
+            reloadStarted = new EpicEvent(level, specification.Reloader.ReloadStartedEffect, false, this, true);
+            reloadFinished = new EpicEvent(level, specification.Reloader.ReloadFinishedEffect, false, this, true);
         }
 
         private void OnShoot(Single seconds)

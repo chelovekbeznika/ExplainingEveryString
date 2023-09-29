@@ -6,26 +6,29 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
     internal class Reloader
     {
         internal event EventHandler ReloadStarted;
+        internal event EventHandler ReloadFinished;
 
-        private Single shootCooldown;
-        private Single reloadTime;
+        private readonly Single shootCooldown;
+        private readonly Single reloadTime;
         private Single timeTillNextShoot;
         private Single nextBulletFirstUpdateTime = 0;
         internal Int32? AmmoStock { get; private set; }
         internal Int32 MaxAmmo { get; private set; }
         internal Int32 CurrentAmmo { get; private set; }
         internal Single? ReloadRemained => reloadingNow ? timeTillNextShoot / reloadTime : null as Single?;
+
         private Boolean reloadingNow;
-        private Func<Boolean> isOn;
-        private Action<Single> onReloadEnd;
+
+        private readonly Func<Boolean> isOn;
+        private readonly Action<Single> onShoot;
 
         internal Boolean AmmoLimited => MaxAmmo > 1;
         internal Boolean HasAmmo => AmmoStock is null || AmmoStock > 0;
 
-        internal Reloader(ReloaderSpecification specification, Func<Boolean> isOn, Action<Single> onReloadEnd, Boolean fullAmmoAtStart = false, Int32? ammoStock = null)
-        { 
+        internal Reloader(ReloaderSpecification specification, Func<Boolean> isOn, Action<Single> onShoot, Boolean fullAmmoAtStart = false)
+        {
             this.isOn = isOn;
-            this.onReloadEnd = onReloadEnd;
+            this.onShoot = onShoot;
             this.MaxAmmo = specification.Ammo;
             this.shootCooldown = 1 / specification.FireRate;
             this.reloadTime = specification.ReloadTime;
@@ -47,7 +50,11 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             else
             {
                 if (CurrentAmmo == 0)
+                {
                     LoadAmmo();
+                    if (AmmoLimited)
+                        ReloadFinished?.Invoke(this, EventArgs.Empty);
+                }
                 reloadingNow = false;
             }
             if (isOn() && HasAmmo)
@@ -68,7 +75,7 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
                     nextBulletFirstUpdateTime -= betweenShoots;
                     if (nextBulletFirstUpdateTime < -Math.Constants.Epsilon)
                         nextBulletFirstUpdateTime = 0;
-                    onReloadEnd(nextBulletFirstUpdateTime);
+                    onShoot(nextBulletFirstUpdateTime);
                     weaponFired = true;
                 }
             }
@@ -100,11 +107,14 @@ namespace ExplainingEveryString.Core.GameModel.Weaponry
             if (CurrentAmmo == 1)
                 reloadAfterThisBullet = true;
             if (CurrentAmmo == 0)
+            {
                 LoadAmmo();
+                ReloadFinished?.Invoke(this, EventArgs.Empty);
+            }
             CurrentAmmo -= 1;
             if (reloadAfterThisBullet)
             {
-                reloadingNow = AmmoStock is null || AmmoStock > 1;
+                reloadingNow = AmmoStock is null || AmmoStock > 0;
                 betweenShoots = reloadTime;
                 if (reloadingNow)
                     ReloadStarted?.Invoke(this, EventArgs.Empty);

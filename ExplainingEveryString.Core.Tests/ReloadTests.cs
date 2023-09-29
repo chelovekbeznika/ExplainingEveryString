@@ -16,6 +16,7 @@ namespace ExplainingEveryString.Core.Tests
             ReloadTime = 0
         };
         protected Int32 shots = 0;
+        protected Int32 reloadsFinished = 0;
         protected List<Single> bulletUpdateTimes = new List<Single>();
         private protected Reloader reloader;
 
@@ -23,12 +24,14 @@ namespace ExplainingEveryString.Core.Tests
         public virtual void SetUp()
         {
             shots = 0;
+            reloadsFinished = 0;
             bulletUpdateTimes = new List<Single>();
             reloader = new Reloader(specification, () => aimer.IsFiring(), (fut) =>
             {
                 shots += 1;
                 bulletUpdateTimes.Add(fut);
             });
+            reloader.ReloadFinished += (sender, e) => reloadsFinished += 1;
         }
     }
 }

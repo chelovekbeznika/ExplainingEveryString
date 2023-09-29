@@ -24,8 +24,12 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
 
         public IEnumerable<SpecEffectSpecification> GetSpecEffectsFromWeapon(WeaponSpecification specification)
         {
-            return new[] { specification.ShootingEffect, specification.Reloader.ReloadStartedEffect }
-                .Concat(specification.Barrels.Select(barrel => barrel.Bullet.HitEffect));
+            return new[] 
+            { 
+                specification.ShootingEffect, 
+                specification.Reloader.ReloadStartedEffect, 
+                specification.Reloader.ReloadFinishedEffect 
+            }.Concat(specification.Barrels.Select(barrel => barrel.Bullet.HitEffect));
         }
 
         public IEnumerable<SpriteSpecification> GetSpritesFromWeapon(PostMortemWeaponSpecification specification)

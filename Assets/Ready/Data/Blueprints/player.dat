@@ -79,6 +79,12 @@
               "Name": "Sounds/Player/ShotgunReload",
               "Volume": 0.5
             }
+          },
+          "ReloadFinishedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/ShotgunReloadFinished",
+              "Volume": 0.5
+            }
           }
         },
         "Sprite": {
@@ -184,6 +190,12 @@
               "Name": "Sounds/Player/ConeReload",
               "Volume": 0.5
             }
+          },
+          "ReloadFinishedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/ConeReloadFinished",
+              "Volume": 0.75
+            }
           }
         },
         "Sprite": {
@@ -227,7 +239,19 @@
         "Reloader": {
           "FireRate": 3.0,
           "Ammo": 30,
-          "ReloadTime": 2.5
+          "ReloadTime": 2.5,
+          "ReloadStartedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/HomingReload",
+              "Volume": 0.5
+            }
+          },
+          "ReloadFinishedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/HomingReloadFinished",
+              "Volume": 0.5
+            }
+          }
         },
         "Sprite": {
           "Name": "Sprites/Player/HomingCannon",
@@ -268,6 +292,12 @@
           "ReloadStartedEffect": {
             "Sound": {
               "Name": "Sounds/Player/FiveShotReload",
+              "Volume": 0.5
+            }
+          },
+          "ReloadFinishedEffect": {
+            "Sound": {
+              "Name": "Sounds/Player/FiveShotReloadFinished",
               "Volume": 0.5
             }
           }

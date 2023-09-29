@@ -12,5 +12,7 @@ namespace ExplainingEveryString.Data.Specifications
         public Single ReloadTime { get; set; }
         [DefaultValue(null)]
         public SpecEffectSpecification ReloadStartedEffect { get; set; }
+        [DefaultValue(null)]
+        public SpecEffectSpecification ReloadFinishedEffect { get; set; }
     }
 }
