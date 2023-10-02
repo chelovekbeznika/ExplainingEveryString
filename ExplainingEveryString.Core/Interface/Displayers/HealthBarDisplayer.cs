@@ -17,14 +17,14 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const Single ShakeAmplitudeHorizontal = 8;
         private const Single ShakeAmplitudeVertical = 4;
 
-        private readonly InterfaceSpriteDisplayer spriteDisplayer;
+        private readonly InterfaceDrawController spriteDisplayer;
         private SpriteData healthBar;
         private SpriteData emptyHealthBar;
 
         internal Int32 MarginOfLeftEdge => pixelsFromLeft;
         internal Int32 HeightOfTopEdge => pixelsFromBottom + healthBar.Height;
 
-        internal HealthBarDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
+        internal HealthBarDisplayer(InterfaceDrawController spriteDisplayer)
         {
             this.spriteDisplayer = spriteDisplayer;
         }

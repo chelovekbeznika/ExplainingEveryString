@@ -16,12 +16,12 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private SpriteData nonAvailable;
         private SpriteData cooldown;
         private SpriteData active;
-        private readonly InterfaceSpriteDisplayer spriteDisplayer;
+        private readonly InterfaceDrawController spriteDisplayer;
         private readonly HealthBarDisplayer healthBarDisplayer;
         private Int32 PixelsFromLeft => healthBarDisplayer.MarginOfLeftEdge - 16;
         private Int32 PixelsFromBottom => healthBarDisplayer.HeightOfTopEdge;
 
-        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, InterfaceSpriteDisplayer spriteDisplayer)
+        internal DashStateDisplayer(HealthBarDisplayer healthBarDisplayer, InterfaceDrawController spriteDisplayer)
         {
             this.healthBarDisplayer = healthBarDisplayer;
             this.spriteDisplayer = spriteDisplayer;

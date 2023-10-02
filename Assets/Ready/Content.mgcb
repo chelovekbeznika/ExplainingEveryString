@@ -10155,6 +10155,30 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Interface/RecentlyHitRightTripleBossHealthBar.png
 
+#begin Sprites/Interface/ReloadCursorBase.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/ReloadCursorBase.png
+
+#begin Sprites/Interface/ReloadCursorIndicator.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Interface/ReloadCursorIndicator.png
+
 #begin Sprites/Interface/RightDoubleBossHealthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor

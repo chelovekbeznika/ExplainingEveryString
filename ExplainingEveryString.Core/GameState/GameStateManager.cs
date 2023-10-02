@@ -143,7 +143,7 @@ namespace ExplainingEveryString.Core.GameState
             }
         }
 
-        internal Boolean IsMouseVisible()
+        internal Boolean IsCursorVisible()
         {
             if (currentState == GameState.InGame)
             {

@@ -14,11 +14,11 @@ namespace ExplainingEveryString.Core.Interface
 {
     internal class InterfaceComponent : DrawableGameComponent
     {
+        private readonly EesGame eesGame;
         private GameplayComponent gameplayComponent;
-        private InterfaceSpriteDisplayer interfaceSpritesDisplayer;
+        private InterfaceDrawController interfaceSpritesDisplayer;
         private InterfaceInfo interfaceInfo;
         private InterfaceGameTimeInfo gameTimeInfo;
-        private EesGame eesGame;
         private SpriteBatch spriteBatch;
         private Color alphaMask;
 
@@ -36,6 +36,7 @@ namespace ExplainingEveryString.Core.Interface
         private EnemiesBehindScreenDisplayer enemiesBehindScreenDisplayer;
         private RemainedWeaponsDisplayer remainedWeaponsDisplayer;
         private AmmoStockDisplayer ammoStockDisplayer;
+        private CursorDisplayer cursorDisplayer;
         private ReloadDisplayer reloadDisplayer;
         private CheckpointDisplayer checkpointDisplayer;
         private Dictionary<string, IWeaponDisplayer> playerWeaponDisplayers;
@@ -73,7 +74,7 @@ namespace ExplainingEveryString.Core.Interface
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(eesGame.GraphicsDevice);
-            interfaceSpritesDisplayer = new InterfaceSpriteDisplayer(spriteBatch, alphaMask);
+            interfaceSpritesDisplayer = new InterfaceDrawController(spriteBatch, alphaMask);
 
             var displayers = CreateDisplayers();
             InitDisplayers(displayers);
@@ -96,7 +97,8 @@ namespace ExplainingEveryString.Core.Interface
             homingTargetDisplayer = new HomingTargetDisplayer(interfaceSpritesDisplayer);
             remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer, eesGame.FontsStorage.LevelTime);
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
-            reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
+            cursorDisplayer = new CursorDisplayer(interfaceSpritesDisplayer);
+            reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer, eesGame.GameState.IsCursorVisible);
             checkpointDisplayer = new CheckpointDisplayer(interfaceSpritesDisplayer);
             gameTimeDisplayer = new GameTimeDisplayer(eesGame.FontsStorage.LevelTime);
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
@@ -110,7 +112,7 @@ namespace ExplainingEveryString.Core.Interface
             return new IDisplayer[]
             {
                 healthBarDisplayer, dashStateDisplayer, remainedWeaponsDisplayer,
-                ammoStockDisplayer, reloadDisplayer, checkpointDisplayer,
+                ammoStockDisplayer, cursorDisplayer, reloadDisplayer, checkpointDisplayer,
                 enemiesInfoDisplayer, bossInfoDisplayer, leftBossInfoDisplayer,
                 rightBossInfoDisplayer, enemiesBehindScreenDisplayer, homingTargetDisplayer,
                 leftOfThreeBossInfoDisplayer, rightOfThreeBossInfoDisplayer, centerOfThreeBossInfoDisplayer
@@ -164,11 +166,13 @@ namespace ExplainingEveryString.Core.Interface
             remainedWeaponsDisplayer.Draw(interfaceInfo.Player.Weapon);
             if (interfaceInfo.Player.Weapon.AmmoStock.HasValue)
                 ammoStockDisplayer.Draw(interfaceInfo.Player.Weapon.AmmoStock.Value);
-            if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue)
-                reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
             checkpointDisplayer.Draw(interfaceInfo.Player);
             if (interfaceInfo.Player.HomingTarget != null)
                 homingTargetDisplayer.Draw(interfaceInfo.Player.HomingTarget);
+            if (eesGame.GameState.IsCursorVisible())
+                cursorDisplayer.Draw();
+            if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue)
+                reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
         }
 
         private void DrawEnemiesElements()

@@ -10,11 +10,11 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const Single ShowCheckpointFlag = 5.0F;
         private const Int32 PixelsFromRight = 16;
         private SpriteData checkpoint;
-        private InterfaceSpriteDisplayer spriteDisplayer;
+        private InterfaceDrawController spriteDisplayer;
 
         public String[] GetSpritesNames() => new[] { "Checkpoint" };
 
-        internal CheckpointDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
+        internal CheckpointDisplayer(InterfaceDrawController spriteDisplayer)
         {
             this.spriteDisplayer = spriteDisplayer;
         }

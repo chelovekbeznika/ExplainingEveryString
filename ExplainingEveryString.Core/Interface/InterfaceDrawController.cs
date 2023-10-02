@@ -7,7 +7,7 @@ using System;
 
 namespace ExplainingEveryString.Core.Interface
 {
-    internal class InterfaceSpriteDisplayer
+    internal class InterfaceDrawController
     {
         private readonly SpriteBatch spriteBatch;
         private readonly Color colorMask;
@@ -16,7 +16,7 @@ namespace ExplainingEveryString.Core.Interface
         internal Int32 ScreenWidth => Displaying.Constants.TargetWidth;
         internal Int32 ScreenHeight => Displaying.Constants.TargetHeight;
 
-        internal InterfaceSpriteDisplayer(SpriteBatch spriteBatch, Color colorMask)
+        internal InterfaceDrawController(SpriteBatch spriteBatch, Color colorMask)
         {
             this.spriteBatch = spriteBatch;
             this.colorMask = colorMask;

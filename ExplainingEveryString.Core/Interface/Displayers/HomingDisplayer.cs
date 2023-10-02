@@ -10,12 +10,12 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     internal class HomingDisplayer : IWeaponDisplayer
     {
         private SpriteData homingAmmo;
-        private InterfaceSpriteDisplayer displayer;
+        private InterfaceDrawController displayer;
 
         private const Int32 pixelsFromRight = 32 + Constants.MinimapSize;
         private const Int32 pixelsFromBottom = 32;
 
-        public HomingDisplayer(InterfaceSpriteDisplayer displayer)
+        public HomingDisplayer(InterfaceDrawController displayer)
         {
             this.displayer = displayer;
         }

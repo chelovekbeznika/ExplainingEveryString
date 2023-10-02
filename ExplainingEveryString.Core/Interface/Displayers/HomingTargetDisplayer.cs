@@ -8,9 +8,9 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     internal class HomingTargetDisplayer : IDisplayer
     {
         private SpriteData target;
-        private InterfaceSpriteDisplayer displayer;
+        private InterfaceDrawController displayer;
 
-        internal HomingTargetDisplayer(InterfaceSpriteDisplayer displayer)
+        internal HomingTargetDisplayer(InterfaceDrawController displayer)
         {
             this.displayer = displayer;
         }

@@ -13,9 +13,9 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private Dictionary<Int32, SpriteData> digits;
         private const Int32 pixelsFromBottom = 64;
         private const Int32 pixelsFromRight = 32 + Constants.MinimapSize;
-        private InterfaceSpriteDisplayer displayer;
+        private InterfaceDrawController displayer;
 
-        internal AmmoStockDisplayer(InterfaceSpriteDisplayer displayer)
+        internal AmmoStockDisplayer(InterfaceDrawController displayer)
         {
             this.displayer = displayer;
         }

@@ -9,10 +9,10 @@ namespace ExplainingEveryString.Core.Interface.Displayers
     {
         private const String DangerSign = "EnemyBehindScreen";
 
-        private readonly InterfaceSpriteDisplayer spriteDisplayer;
+        private readonly InterfaceDrawController spriteDisplayer;
         private SpriteData dangerSign;
 
-        internal EnemiesBehindScreenDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
+        internal EnemiesBehindScreenDisplayer(InterfaceDrawController spriteDisplayer)
         {
             this.spriteDisplayer = spriteDisplayer;
             

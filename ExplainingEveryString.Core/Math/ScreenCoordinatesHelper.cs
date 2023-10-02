@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExplainingEveryString.Data.Configuration;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,16 @@ namespace ExplainingEveryString.Core.Math
 {
     internal static class ScreenCoordinatesHelper
     {
+        public static Vector2 ConvertToInnerScreenCoordinates(Single x, Single y)
+        {
+            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
+            var widthWithoutVerticalStripes = (Int32)System.Math.Round((Double)(screenConfig.ScreenHeight * 8.0 / 7.0));
+            var stripWidth = (screenConfig.ScreenWidth - widthWithoutVerticalStripes) / 2;
+            return new Vector2(
+                x: (x - stripWidth) / widthWithoutVerticalStripes * Displaying.Constants.TargetWidth,
+                y: y / screenConfig.ScreenHeight * Displaying.Constants.TargetHeight);
+        }
+
         public static Vector2 GetScreenBorderDangerDirection(Rectangle screenBorders, Vector2 playerPosition, Vector2 enemyPosition)
         {
             var candidates = new List<Vector2>(2);

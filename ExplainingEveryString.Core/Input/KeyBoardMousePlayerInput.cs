@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -53,13 +54,7 @@ namespace ExplainingEveryString.Core.Input
 
         public override Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
-            var mousePoint = Mouse.GetState().Position;
-            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
-            var widthWithoutVerticalStripes = (Int32)System.Math.Round((Double)(screenConfig.ScreenHeight * 8.0 / 7.0));
-            var stripWidth = (screenConfig.ScreenWidth - widthWithoutVerticalStripes) / 2;
-            var mousePosition = new Vector2(
-                x: ((Single)mousePoint.X - stripWidth) / widthWithoutVerticalStripes  * Constants.TargetWidth, 
-                y: (Single)mousePoint.Y / screenConfig.ScreenHeight * Constants.TargetHeight);
+            var mousePosition = ScreenCoordinatesHelper.ConvertToInnerScreenCoordinates(Mouse.GetState().X, Mouse.GetState().Y);
             var fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
             var fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
             return NormalizeDirectionVector(fireDirectionOnLevel);

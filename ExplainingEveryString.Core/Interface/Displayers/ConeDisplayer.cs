@@ -13,11 +13,11 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const Int32 pixelsFromRight = 16 + Constants.MinimapSize;
         private const Int32 pixelsFromBottom = 16;
 
-        private readonly InterfaceSpriteDisplayer displayer;
+        private readonly InterfaceDrawController displayer;
         private SpriteData full;
         private SpriteData empty;
 
-        internal ConeDisplayer(InterfaceSpriteDisplayer displayer)
+        internal ConeDisplayer(InterfaceDrawController displayer)
         {
             this.displayer = displayer;
         }

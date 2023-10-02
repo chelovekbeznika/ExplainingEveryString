@@ -1,5 +1,6 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameState;
+using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Core.Text;
 using ExplainingEveryString.Data.Configuration;
@@ -9,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core
 {
@@ -48,8 +50,6 @@ namespace ExplainingEveryString.Core
         {
             targetBatch = new SpriteBatch(GraphicsDevice);
             unscaledRenderTarget = new RenderTarget2D(GraphicsDevice, Constants.TargetWidth, Constants.TargetHeight);
-            var cursorSprite = Content.Load<Texture2D>(@"Sprites/Interface/Target");
-            Mouse.SetCursor(MouseCursor.FromTexture2D(cursorSprite, cursorSprite.Width / 2, cursorSprite.Height / 2));
             IsMouseVisible = false;
             base.LoadContent();
             FontsStorage.LoadContent(Content);
@@ -68,7 +68,6 @@ namespace ExplainingEveryString.Core
             base.Update(gameTime);
             menuInputProcessor.Update(gameTime);
             GameState.Update((Single)gameTime.ElapsedGameTime.TotalSeconds);
-            IsMouseVisible = GameState.IsMouseVisible();
         }
 
         protected override void Draw(GameTime gameTime)

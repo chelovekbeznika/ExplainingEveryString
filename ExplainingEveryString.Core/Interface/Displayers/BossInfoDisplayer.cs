@@ -20,7 +20,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const String RecentlyHitEmptyHealthBarTexture = "RecentlyHitEmpty{0}BossHealthBar";
 
         private const Single RecentHitThreshold = 0.33333F;
-        private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
+        private readonly InterfaceDrawController interfaceSpriteDisplayer;
         private SpriteData healthBar;
         private SpriteData emptyHealthBar;
         private SpriteData recentlyHitHealthBar;
@@ -31,7 +31,7 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private readonly String spritesPrefix;
         private readonly DrainType drainType;
 
-        internal BossInfoDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, String spritesPrefix, Int32 offset, DrainType drainType)
+        internal BossInfoDisplayer(InterfaceDrawController interfaceSpriteDisplayer, String spritesPrefix, Int32 offset, DrainType drainType)
         {
             this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
             this.drainType = drainType;

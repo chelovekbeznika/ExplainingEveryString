@@ -13,7 +13,7 @@ namespace ExplainingEveryString.Core.Interface.Minimap
 {
     internal class MiniMapDisplayer : IDisplayer
     {
-        private readonly InterfaceSpriteDisplayer interfaceSpriteDisplayer;
+        private readonly InterfaceDrawController interfaceSpriteDisplayer;
         private readonly MinimapCoordinatesMaster minimapCoordinatesMaster;
         private readonly TiledMapRenderer minimapRenderer;
         private readonly GraphicsDevice graphicsDevice;
@@ -22,7 +22,7 @@ namespace ExplainingEveryString.Core.Interface.Minimap
         private SpriteData bossDot;
         private SpriteData background;
 
-        internal MiniMapDisplayer(InterfaceSpriteDisplayer interfaceSpriteDisplayer, TileWrapper map, Game gameApp)
+        internal MiniMapDisplayer(InterfaceDrawController interfaceSpriteDisplayer, TileWrapper map, Game gameApp)
         {
             this.interfaceSpriteDisplayer = interfaceSpriteDisplayer;
             this.graphicsDevice = gameApp.GraphicsDevice;

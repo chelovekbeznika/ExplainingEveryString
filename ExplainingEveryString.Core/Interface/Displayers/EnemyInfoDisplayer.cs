@@ -14,9 +14,9 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private SpriteData healthBar;
         private SpriteData recentlyHitHealthBar;
         private readonly Int32 pixelsBetweenEnemyAndHealthBar = 8;
-        private readonly InterfaceSpriteDisplayer spriteDisplayer;
+        private readonly InterfaceDrawController spriteDisplayer;
 
-        internal EnemyInfoDisplayer(InterfaceSpriteDisplayer spriteDisplayer)
+        internal EnemyInfoDisplayer(InterfaceDrawController spriteDisplayer)
         {
             this.spriteDisplayer = spriteDisplayer;
         }

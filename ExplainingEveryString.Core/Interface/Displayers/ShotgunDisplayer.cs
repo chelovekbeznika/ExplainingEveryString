@@ -15,9 +15,9 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 
         private SpriteData shell;
         private SpriteData emptyShell;
-        private InterfaceSpriteDisplayer displayer;
+        private InterfaceDrawController displayer;
 
-        internal ShotgunDisplayer(InterfaceSpriteDisplayer displayer)
+        internal ShotgunDisplayer(InterfaceDrawController displayer)
         {
             this.displayer = displayer;
         }

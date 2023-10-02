@@ -12,7 +12,6 @@ namespace ExplainingEveryString.Core
         protected void PreInit()
         {
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
         }
 

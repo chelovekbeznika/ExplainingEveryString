@@ -21,12 +21,12 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private Dictionary<String, SpriteData> iconsSprites;
         private Dictionary<String, Int32> weaponNumbers;
         private SpriteData border;
-        private InterfaceSpriteDisplayer spriteDisplayer;
+        private InterfaceDrawController spriteDisplayer;
 
         public String[] GetSpritesNames() => WeaponNames.AllExisting
             .Select(name => $@"WeaponIcons/{name}").Concat(new[] { Border }).ToArray();
 
-        internal RemainedWeaponsDisplayer(InterfaceSpriteDisplayer spriteDisplayer, CustomFont numbersFont)
+        internal RemainedWeaponsDisplayer(InterfaceDrawController spriteDisplayer, CustomFont numbersFont)
         {
             this.spriteDisplayer = spriteDisplayer;
             this.numbersFont = numbersFont;
