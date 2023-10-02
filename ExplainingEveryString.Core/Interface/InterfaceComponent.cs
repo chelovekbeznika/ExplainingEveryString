@@ -170,7 +170,7 @@ namespace ExplainingEveryString.Core.Interface
             if (interfaceInfo.Player.HomingTarget != null)
                 homingTargetDisplayer.Draw(interfaceInfo.Player.HomingTarget);
             if (eesGame.GameState.IsCursorVisible())
-                cursorDisplayer.Draw();
+                cursorDisplayer.Draw(interfaceInfo.Player.Weapon);
             if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue)
                 reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
         }

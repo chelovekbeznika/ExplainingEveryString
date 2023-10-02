@@ -37,6 +37,14 @@ namespace ExplainingEveryString.Core.Interface
             Draw(spriteData, position, new WholeSpriteDisplayer(), 1, opaque);
         }
 
+        internal void DrawArrow(SpriteData arrowSpriteData, Vector2 center, Single angle, Boolean opaque = false)
+        {
+            var animationFrame = AnimationHelper.GetDrawPart(arrowSpriteData, elapsedTime);
+            var arrowBase = new Vector2(0, arrowSpriteData.Height / 2);
+            spriteBatch.Draw(arrowSpriteData.Sprite, center, animationFrame, opaque ? Color.White : colorMask, angle, arrowBase, 
+                1, SpriteEffects.None, 0);
+        }
+
         internal void Draw(SpriteData spriteData, Vector2 position, ISpritePartDisplayer partDisplayer, Single coeff, Boolean opaque = false)
         {
             var animationFrame = AnimationHelper.GetDrawPart(spriteData, elapsedTime);

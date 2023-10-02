@@ -10,14 +10,14 @@ namespace ExplainingEveryString.Core.Interface.Displayers
 {
     internal class AmmoStockDisplayer : IDisplayer
     {
-        private Dictionary<Int32, SpriteData> digits;
         private const Int32 pixelsFromBottom = 64;
         private const Int32 pixelsFromRight = 32 + Constants.MinimapSize;
-        private InterfaceDrawController displayer;
+        private readonly InterfaceDrawController drawController;
+        private Dictionary<Int32, SpriteData> digits;
 
-        internal AmmoStockDisplayer(InterfaceDrawController displayer)
+        internal AmmoStockDisplayer(InterfaceDrawController drawController)
         {
-            this.displayer = displayer;
+            this.drawController = drawController;
         }
 
         public String[] GetSpritesNames()
@@ -35,17 +35,17 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         internal void Draw(Int32 ammoInStock)
         {
             var position = new Vector2(
-                x: displayer.ScreenWidth - 32 - pixelsFromRight,
-                y: displayer.ScreenHeight - pixelsFromBottom - digits[0].Height);
+                x: drawController.ScreenWidth - 32 - pixelsFromRight,
+                y: drawController.ScreenHeight - pixelsFromBottom - digits[0].Height);
             if (ammoInStock != 0)
                 while (ammoInStock > 0)
                 {
-                    displayer.Draw(digits[ammoInStock % 10], position);
+                    drawController.Draw(digits[ammoInStock % 10], position);
                     ammoInStock /= 10;
                     position = new Vector2(position.X - 32, position.Y);
                 }
             else
-                displayer.Draw(digits[0], position);
+                drawController.Draw(digits[0], position);
         }
     }
 }
