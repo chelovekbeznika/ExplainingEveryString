@@ -81,7 +81,36 @@
           }
         },
         "AimType": "AimAtPlayer"
-      }
+      },
+      "Spawner": {
+        "MaxSpawned": 5,
+        "Reloader": {
+          "FireRate": 0.1
+        },
+        "PositionSelector" : {
+          "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
+          "SpawnPositions": [
+            "-50.0,50.0",
+            "-25.0,46.0",
+            "0.0,42.0",
+            "25.0,46.0",
+            "50.0,50.0",
+            "46.0,25.0",
+            "42.0,0.0",
+            "46.0,-25.0",
+            "50.0,-50.0",
+            "25.0,-46.0",
+            "0.0,-42.0",
+            "-25.0,-46.0",
+            "-50.0,-50.0",
+            "-46.0,-25.0",
+            "-42.0,0.0",
+            "-46.0,25.0"
+          ]
+        },
+        "BlueprintType": "Mine_mk3",
+        "DespawnAfterDeath": true
+      },
     },
     "SmallWeapon": {
       "Reloader": {
