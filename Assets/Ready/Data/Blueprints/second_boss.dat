@@ -37,7 +37,7 @@
         "Parameters": {
           "startSpeed": 0.0,
           "maxSpeed": 200.0,
-          "acceleration": 300.0
+          "acceleration": 250.0
         }
       },
       "Spawner": {
@@ -62,9 +62,9 @@
     "DeathZoneDamage": 20.0,
     "DeathZonePatrolCycleTime": 15.0,
     "DeathZoneBorderSpawner": {
-      "MaxSpawned": 6,
+      "MaxSpawned": 12,
       "Reloader": {
-        "FireRate": 0.5
+        "FireRate": 1.0
       },
       "PositionSelector" : {
         "$type": "ExplainingEveryString.Data.Specifications.RelativeSpawnPositionSelectorSpecificaton, ExplainingEveryString.Data",
@@ -192,7 +192,7 @@
     "Behavior": {
       "Weapon": {
         "Reloader": {
-          "FireRate": 0.1,
+          "FireRate": 0.05,
         },
         "Barrels": [
           {
