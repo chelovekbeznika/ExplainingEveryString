@@ -1,4 +1,5 @@
 ﻿using ExplainingEveryString.Core.GameModel;
+using ExplainingEveryString.Core.Timers;
 using ExplainingEveryString.Data.Specifications;
 using System;
 
@@ -13,6 +14,7 @@ namespace ExplainingEveryString.Core.Displaying
         private IDisplayble eventSource;
         private Boolean inheritAngle;
         private Boolean follow;
+        private Boolean onCooldown = false;
 
         internal EpicEvent(Level level, SpecEffectSpecification specEffect, Boolean handleOneTime,
             IDisplayble eventSource, Boolean inheritAngle, Boolean follow = false)
@@ -27,18 +29,25 @@ namespace ExplainingEveryString.Core.Displaying
 
         internal void TryHandle()
         {
-            if (!Handled || !oneTimeEvent)
+            if ((!Handled || !oneTimeEvent) && !onCooldown)
             {
                 var sprite = eventSource.SpriteState;
                 var startPosition = eventSource.Position;
                 Handled = true;
                 if (specEffect != null)
+                {
                     Event?.Invoke(eventSource, new EpicEventArgs
                     {
                         PositionLocator = () => follow ? eventSource.Position : startPosition,
-                        Angle = inheritAngle  && sprite != null ? sprite.Angle : 0,
+                        Angle = inheritAngle && sprite != null ? sprite.Angle : 0,
                         SpecEffectSpecification = specEffect
                     });
+                    if (specEffect.Cooldown != null)
+                    {
+                        onCooldown = true;
+                        TimersComponent.Instance.ScheduleEvent(specEffect.Cooldown.Value, () => onCooldown = false);
+                    }
+                }
             }
         }
     }

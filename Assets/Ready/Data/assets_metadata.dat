@@ -109,6 +109,10 @@
       "AnimationFrames": 9
     },
     {
+      "Name": "Sprites/Player/SoftDamage",
+      "AnimationFrames": 7
+    },
+    {
       "Name": "Sprites/Player/Death",
       "AnimationFrames": 13
     },

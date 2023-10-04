@@ -74,7 +74,7 @@ namespace ExplainingEveryString.Core.GameModel
                 weapon.Shoot += level.PlayerShoot;
 
             damageTaken = new EpicEvent(level, blueprint.DamageEffect, false, this, true);
-            softDamageTaken = new EpicEvent(level, blueprint.SoftDamageEffect, false, this, true);
+            softDamageTaken = new EpicEvent(level, blueprint.SoftDamageEffect, false, this, true, true);
             baseDestroyed = new EpicEvent(level, blueprint.BaseDestructionEffect, true, this, false);
             cannonDestroyed = new EpicEvent(level, blueprint.CannonDestructionEffect, true, this.Weapon, true);
             weaponSwitched = new EpicEvent(level, blueprint.WeaponSwitchEffect, false, this, true);

@@ -438,8 +438,13 @@
     "SoftDamageEffect": {
       "Sprite": {
         "Name": "Sprites/Player/SoftDamage",
-        "AnimationCycle": 0.1,
-      }
+        "AnimationCycle": 0.16667,
+      },
+      "Sound": {
+        "Name": "Sounds/Player/SoftDamage",
+        "Volume": 0.5
+      },
+      "Cooldown": 0.16667
     },
     "BaseDestructionEffect": {
       "Sound": {

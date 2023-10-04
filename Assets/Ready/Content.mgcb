@@ -885,6 +885,12 @@
 /processorParam:Quality=Best
 /build:Sounds/Player/ShotgunReloadFinished.wav
 
+#begin Sounds/Player/SoftDamage.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Player/SoftDamage.wav
+
 #begin Sounds/Player/WeaponSwitch.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
