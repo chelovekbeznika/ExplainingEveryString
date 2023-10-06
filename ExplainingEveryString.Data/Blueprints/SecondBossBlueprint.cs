@@ -10,6 +10,7 @@ namespace ExplainingEveryString.Data.Blueprints
         public Single DeathZoneDamage { get; set; }
         public SpawnerSpecification DeathZoneBorderSpawner { get; set; }
         public Single DeathZonePatrolCycleTime { get; set; }
+        public SpriteSpecification DeathZoneBorderSprite { get; set; }
         public OneTimeSpawnerSpecification PowerKeepersSpawner { get; set; }
         public SecondBossPowerKeepersSpecification PowerKeepersMovement { get; set; }
         public SecondBossPhaseSpecification[] Phases { get; set; }

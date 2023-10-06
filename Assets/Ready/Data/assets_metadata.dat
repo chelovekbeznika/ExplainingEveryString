@@ -607,6 +607,10 @@
       "AnimationFrames": 4
     },
     {
+      "Name": "Sprites/Enemies/Boss2/DeathZoneBorder",
+      "AnimationFrames": 8
+    },
+    {
       "Name": "Sprites/Walls/Level3X/Teapot",
       "AnimationFrames": 5
     },

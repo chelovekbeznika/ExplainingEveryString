@@ -13,7 +13,9 @@ namespace ExplainingEveryString.Data.Blueprints.AssetsExtraction
 
         public IEnumerable<SpriteSpecification> GetSprites(SecondBossBlueprint blueprint)
         {
-            return base.GetSprites(blueprint).Concat(blueprint.Phases.Select(phase => phase.Sprite));
+            return base.GetSprites(blueprint)
+                .Concat(blueprint.Phases.Select(phase => phase.Sprite))
+                .Concat(new[] { blueprint.DeathZoneBorderSprite });
         }
     }
 }

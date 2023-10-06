@@ -1,4 +1,5 @@
-﻿using ExplainingEveryString.Core.GameModel.Weaponry;
+﻿using ExplainingEveryString.Core.Displaying;
+using ExplainingEveryString.Core.GameModel.Weaponry;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
@@ -12,6 +13,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
     {
         private Player player;
         private DeathZoneParameters deathZone;
+        private DeathZoneBorder deathZoneBorder;
         private SecondBossPowerKeepersSpecification powerKeepersMovementSpec;
         private CompositeSpawnedActorsController actorsController;
         private SpawnedActorsController deathZoneBorderActors;
@@ -46,6 +48,7 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
                 Damage = blueprint.DeathZoneDamage,
                 TimeSpent = 0
             };
+            this.deathZoneBorder = new DeathZoneBorder(this, new SpriteState(blueprint.DeathZoneBorderSprite));
             this.deathZoneBorderActors = new SpawnedActorsController(blueprint.DeathZoneBorderSpawner, this, startInfo.BehaviorParameters, factory);
             this.deathZoneMovement = new EllipticMovementControl(this, deathZoneBorderActors, blueprint.DeathZonePatrolCycleTime, a, b);
 
@@ -62,12 +65,18 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
         public override void Update(Single elapsedSeconds)
         {
             timePassed += elapsedSeconds;
+            deathZoneBorder.SpriteState.Update(elapsedSeconds);
             DamagingPlayerInDeathZone(elapsedSeconds);
             deathZoneMovement.MoveEnemiesInEllipse(elapsedSeconds, 1, 1);
             PowerKeepersMovement(elapsedSeconds);
             base.Update(elapsedSeconds);
             if (!IsInAppearancePhase && phasesPassed == 0)
                 Behavior.SpawnedActors.TurnOff();
+        }
+
+        public override IEnumerable<IDisplayble> GetParts()
+        {
+            return base.GetParts().Concat(new[] { deathZoneBorder });
         }
 
         private void DamagingPlayerInDeathZone(Single elapsedSeconds)
@@ -189,6 +198,25 @@ namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
             {
                 placeInElliplse.Remove(sender as IEnemy);
             }
+        }
+
+        private class DeathZoneBorder : IDisplayble
+        {
+            private readonly SecondBoss boss;
+
+            public SpriteState SpriteState { get; private set; }
+
+            public Vector2 Position => boss.Position;
+
+            public bool IsVisible => true;
+
+            public DeathZoneBorder(SecondBoss boss, SpriteState spriteState)
+            {
+                this.boss = boss;
+                SpriteState = spriteState;
+            }
+
+            public IEnumerable<IDisplayble> GetParts() => Enumerable.Empty<IDisplayble>();
         }
     }
 }

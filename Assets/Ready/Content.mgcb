@@ -4401,6 +4401,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemies/Boss2/Death.png
 
+#begin Sprites/Enemies/Boss2/DeathZoneBorder.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemies/Boss2/DeathZoneBorder.png
+
 #begin Sprites/Enemies/Boss2/SupportGhost1.png
 /importer:TextureImporter
 /processor:TextureProcessor

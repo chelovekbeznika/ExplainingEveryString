@@ -74,6 +74,10 @@
       },
       "BlueprintType": "DeathZoneBorder"
     },
+    "DeathZoneBorderSprite": {
+      "Name": "Sprites/Enemies/Boss2/DeathZoneBorder",
+      "AnimationCycle": 0.2
+    },
     
     "PowerKeepersSpawner": {
       "MaxSpawned": 6,
