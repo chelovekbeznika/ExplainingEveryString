@@ -2,7 +2,8 @@
   "Input": {
     "PreferredControlDevice": "Gamepad",
     "TimeToFocusOnKeyboard": 0.25,
-    "TimeToFocusOnGamepad": 0.375
+    "TimeToFocusOnGamepad": 0.375,
+	"BetweenPlayerAndCursor": 80
   },
   "Camera": {
     "PlayerFramePercentageWidth": 80,

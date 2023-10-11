@@ -143,18 +143,6 @@ namespace ExplainingEveryString.Core.GameState
             }
         }
 
-        internal Boolean IsCursorVisible()
-        {
-            if (currentState == GameState.InGame)
-            {
-                var wePreferKeyboardMouse = ConfigurationAccess.GetCurrentConfig().Input.PreferredControlDevice == ControlDevice.Keyboard;
-                var weCantUseGamepad = !GamePad.GetCapabilities(Microsoft.Xna.Framework.PlayerIndex.One).IsConnected;
-                return wePreferKeyboardMouse || weCantUseGamepad;
-            }
-            else
-                return false;
-        }
-
         internal void SwitchSaveProfile(Int32 newProfile)
         {
             if (newProfile == SaveProfileNumber && gameProgress != null)

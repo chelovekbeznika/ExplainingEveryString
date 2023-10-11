@@ -54,6 +54,7 @@ namespace ExplainingEveryString.Core.Interface
             return new PlayerInterfaceInfo
             {
                 LevelPosition = player.Position,
+                CursorPosition = player.Input.GetCursorPosition(),
                 Health = player.HitPoints > 0 ? player.HitPoints : 0,
                 MaxHealth = player.MaxHitPoints,
                 FromLastHit = player.FromLastHit,

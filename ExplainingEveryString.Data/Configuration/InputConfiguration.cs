@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Configuration
 {
@@ -7,5 +8,6 @@ namespace ExplainingEveryString.Data.Configuration
         public ControlDevice PreferredControlDevice { get; set; }
         public Single TimeToFocusOnKeyboard { get; set; }
         public Single TimeToFocusOnGamepad { get; set; }
+        public Single BetweenPlayerAndCursor { get; set; }
     }
 }

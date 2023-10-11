@@ -25,6 +25,8 @@ namespace ExplainingEveryString.Core.Input
 
         public Vector2 GetMoveDirection() => current.GetMoveDirection();
 
+        public Vector2 GetCursorPosition() => current.GetCursorPosition();
+
         public Boolean IsFiring() => current.IsFiring();
 
         public Boolean IsTryingToDash() => current.IsTryingToDash();

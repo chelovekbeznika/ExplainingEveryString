@@ -45,7 +45,8 @@ namespace ExplainingEveryString.Data.Configuration
                 {
                     PreferredControlDevice = ControlDevice.Keyboard,
                     TimeToFocusOnKeyboard = 0.25F,
-                    TimeToFocusOnGamepad = 0.25F
+                    TimeToFocusOnGamepad = 0.25F,
+                    BetweenPlayerAndCursor = 80
                 },
                 Camera = new CameraConfiguration
                 {

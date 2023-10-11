@@ -7,6 +7,7 @@ namespace ExplainingEveryString.Core.Input
     internal interface IPlayerInput : IAimer, GameModel.IUpdateable
     {
         Vector2 GetMoveDirection();
+        Vector2 GetCursorPosition();
         Boolean IsTryingToDash();
         Boolean IsTryingToReload();
         Int32 WeaponSwitchMeasure();
@@ -16,7 +17,16 @@ namespace ExplainingEveryString.Core.Input
 
     internal abstract class PlayerInput : IPlayerInput
     {
+        private Func<Vector2> playerPositionOnScreen;
+
+        protected Vector2 PlayerPositionOnScreen => playerPositionOnScreen();
+
         public abstract Single Focus { get; }
+
+        protected PlayerInput(Func<Vector2> playerPositionOnScreen)
+        {
+            this.playerPositionOnScreen = playerPositionOnScreen;
+        }
 
         protected Vector2 CutDirectionVector(Vector2 direction)
         {
@@ -36,6 +46,7 @@ namespace ExplainingEveryString.Core.Input
 
         public abstract Boolean IsFiring();
         public abstract Vector2 GetMoveDirection();
+        public abstract Vector2 GetCursorPosition();
         public abstract Vector2 GetFireDirection(Vector2 currentMuzzlePosition);
         public abstract Boolean IsTryingToDash();
         public abstract Boolean IsTryingToReload();

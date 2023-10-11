@@ -37,6 +37,7 @@ namespace ExplainingEveryString.Core.Interface
     {
         private Single health;
         internal Vector2 LevelPosition { get; set; }
+        internal Vector2 CursorPosition { get; set; }
         internal Single MaxHealth { get; set; }
         internal Single Health { get => health; set => health = value > 0 ? value : 0; }
         internal Single FromLastHit { get; set; }

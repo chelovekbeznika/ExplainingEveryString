@@ -35,16 +35,15 @@ namespace ExplainingEveryString.Core.Interface.Displayers
             ammoArrow = TextureLoadingHelper.GetSprite(sprites, AmmoName);
         }
 
-        internal void Draw(PlayerWeaponInterfaceInfo playerWeapon)
+        internal void Draw(PlayerInterfaceInfo player)
         {
-            var mousePoint = Mouse.GetState().Position;
-            var position = ScreenCoordinatesHelper.ConvertToInnerScreenCoordinates(mousePoint.X, mousePoint.Y);
+            var position = player.CursorPosition;
             var leftTopCursorCorner = position - new Vector2(cursor.Width / 2, cursor.Height / 2);
             drawController.Draw(cursor, leftTopCursorCorner, true);
 
-            if (playerWeapon.MaxAmmo != 1)
+            if (player.Weapon.MaxAmmo != 1)
             {
-                var degrees = 270 - playerWeapon.CurrentAmmo / (Single)playerWeapon.MaxAmmo * 360;
+                var degrees = 270 - player.Weapon.CurrentAmmo / (Single)player.Weapon.MaxAmmo * 360;
                 drawController.DrawArrow(ammoArrow, position, AngleConverter.ToRadians(degrees), true);
             }
         }

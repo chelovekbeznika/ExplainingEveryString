@@ -98,7 +98,7 @@ namespace ExplainingEveryString.Core.Interface
             remainedWeaponsDisplayer = new RemainedWeaponsDisplayer(interfaceSpritesDisplayer, eesGame.FontsStorage.LevelTime);
             ammoStockDisplayer = new AmmoStockDisplayer(interfaceSpritesDisplayer);
             cursorDisplayer = new CursorDisplayer(interfaceSpritesDisplayer);
-            reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer, eesGame.GameState.IsCursorVisible);
+            reloadDisplayer = new ReloadDisplayer(interfaceSpritesDisplayer);
             checkpointDisplayer = new CheckpointDisplayer(interfaceSpritesDisplayer);
             gameTimeDisplayer = new GameTimeDisplayer(eesGame.FontsStorage.LevelTime);
             playerWeaponDisplayers = new Dictionary<string, IWeaponDisplayer>
@@ -169,10 +169,9 @@ namespace ExplainingEveryString.Core.Interface
             checkpointDisplayer.Draw(interfaceInfo.Player);
             if (interfaceInfo.Player.HomingTarget != null)
                 homingTargetDisplayer.Draw(interfaceInfo.Player.HomingTarget);
-            if (eesGame.GameState.IsCursorVisible())
-                cursorDisplayer.Draw(interfaceInfo.Player.Weapon);
+            cursorDisplayer.Draw(interfaceInfo.Player);
             if (interfaceInfo.Player.Weapon.ReloadRemained.HasValue)
-                reloadDisplayer.Draw(interfaceInfo.Player.Weapon.ReloadRemained.Value);
+                reloadDisplayer.Draw(interfaceInfo.Player);
         }
 
         private void DrawEnemiesElements()

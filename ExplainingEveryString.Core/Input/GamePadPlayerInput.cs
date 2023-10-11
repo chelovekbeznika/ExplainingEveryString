@@ -7,16 +7,19 @@ namespace ExplainingEveryString.Core.Input
     internal class GamePadPlayerInput : PlayerInput
     {
         private Vector2 lastDirection = new Vector2(0, 1);
+        private Single betweenPlayerAndCursor;
 
         private readonly Single timeToFocus;
         public override Single Focus => focus;
         private Single focus = 0;
         private GamePadState afterLastWeaponCheck;
 
-        public GamePadPlayerInput(Single timeToFocus)
+        public GamePadPlayerInput(Func<Vector2> playerPositionOnScreen, Single timeToFocus, Single betweenPlayerAndCursor) 
+            : base(playerPositionOnScreen)
         {
             this.timeToFocus = timeToFocus;
             this.afterLastWeaponCheck = GetState();
+            this.betweenPlayerAndCursor = betweenPlayerAndCursor;
         }
 
         public override void Update(Single elapsedSeconds)
@@ -37,9 +40,9 @@ namespace ExplainingEveryString.Core.Input
             return CutDirectionVector(direction);
         }
 
-        public override Boolean IsFiring() => GetState().ThumbSticks.Right.Length() > 0;
+        public override Boolean IsFiring() => GetState().ThumbSticks.Right.Length() > 0.25;
 
-        public override Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
+        public override Vector2 GetFireDirection(Vector2 _)
         {
             if (IsFiring())
             {
@@ -50,6 +53,13 @@ namespace ExplainingEveryString.Core.Input
             }
             else
                 return lastDirection;
+        }
+
+        public override Vector2 GetCursorPosition()
+        {
+            var direction = GetFireDirection(Vector2.Zero);
+            direction.Y *= -1;
+            return PlayerPositionOnScreen + direction * betweenPlayerAndCursor;
         }
 
         public override Boolean IsTryingToDash() => GetState().Triggers.Left >= 0.5;

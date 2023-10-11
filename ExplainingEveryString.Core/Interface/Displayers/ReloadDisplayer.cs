@@ -20,17 +20,15 @@ namespace ExplainingEveryString.Core.Interface.Displayers
         private const Int32 ammoDroppingWayLength = 128;
 
         private readonly InterfaceDrawController displayer;
-        private readonly Func<Boolean> isCursorVisible;
         private SpriteData magazineBackground;
         private SpriteData magazine;
         private SpriteData ammo;
         private SpriteData cursorBase;
         private SpriteData cursorIndicator;
 
-        public ReloadDisplayer(InterfaceDrawController interfaceSpritesDisplayer, Func<bool> isCursorVisible)
+        public ReloadDisplayer(InterfaceDrawController interfaceSpritesDisplayer)
         {
             this.displayer = interfaceSpritesDisplayer;
-            this.isCursorVisible = isCursorVisible;
         }
 
         public String[] GetSpritesNames() => new[] 
@@ -48,10 +46,19 @@ namespace ExplainingEveryString.Core.Interface.Displayers
             cursorIndicator = sprites[TextureLoadingHelper.GetFullName(CursorIndicator)];
         }
 
-        public void Draw(Single reloadRemained)
+        public void Draw(PlayerInterfaceInfo player)
+        {
+            var reloadRemained = player.Weapon.ReloadRemained.Value;
+            var cursorPosition = player.CursorPosition;
+
+            DrawCornerIndicator(reloadRemained);
+            DrawCursorIndicator(cursorPosition, reloadRemained);
+        }
+
+        private void DrawCornerIndicator(Single reloadRemained)
         {
             var magazinePosition = new Vector2(
-                x: displayer.ScreenWidth - pixelsFromRight - magazine.Width, 
+                x: displayer.ScreenWidth - pixelsFromRight - magazine.Width,
                 y: displayer.ScreenHeight - pixelsFromBottom - magazine.Height);
             var ammoPosition = new Vector2(
                 x: magazinePosition.X, y: magazinePosition.Y - reloadRemained * ammoDroppingWayLength);
@@ -59,17 +66,16 @@ namespace ExplainingEveryString.Core.Interface.Displayers
             displayer.Draw(magazineBackground, magazinePosition);
             displayer.Draw(ammo, ammoPosition);
             displayer.Draw(magazine, magazinePosition);
+        }
 
-            if (isCursorVisible())
-            {
-                var mouseCoordinates = ScreenCoordinatesHelper.ConvertToInnerScreenCoordinates(Mouse.GetState().X, Mouse.GetState().Y);
-                var basePosition = mouseCoordinates - new Vector2(cursorBase.Width / 2, cursorBase.Height / 2);
-                var indicatorOffset = new Vector2(cursorBase.Width * reloadRemained - cursorBase.Width / 2, 0);
-                var indicatorPosition = mouseCoordinates + indicatorOffset 
-                    - new Vector2(cursorIndicator.Width / 2, cursorIndicator.Height / 2);
-                displayer.Draw(cursorBase, basePosition);
-                displayer.Draw(cursorIndicator, indicatorPosition);
-            }
+        private void DrawCursorIndicator(Vector2 cursorPosition, Single reloadRemained)
+        {
+            var basePosition = cursorPosition - new Vector2(cursorBase.Width / 2, cursorBase.Height / 2);
+            var indicatorOffset = new Vector2(cursorBase.Width * reloadRemained - cursorBase.Width / 2, 0);
+            var indicatorPosition = cursorPosition + indicatorOffset
+                - new Vector2(cursorIndicator.Width / 2, cursorIndicator.Height / 2);
+            displayer.Draw(cursorBase, basePosition);
+            displayer.Draw(cursorIndicator, indicatorPosition);
         }
     }
 }

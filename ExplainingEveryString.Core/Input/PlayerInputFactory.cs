@@ -17,8 +17,8 @@ namespace ExplainingEveryString.Core.Input
         internal IPlayerInput Create()
         {
             var config = ConfigurationAccess.GetCurrentConfig().Input;
-            var gamePad = new GamePadPlayerInput(config.TimeToFocusOnGamepad);
-            Func<Vector2> playerScreenPosition = () => gameplayComponent.Camera.PlayerPositionOnScreen;
+            Vector2 playerScreenPosition() => gameplayComponent.Camera.PlayerPositionOnScreen;
+            var gamePad = new GamePadPlayerInput(playerScreenPosition, config.TimeToFocusOnGamepad, config.BetweenPlayerAndCursor);
             var keyboard = new KeyBoardMousePlayerInput(playerScreenPosition, config.TimeToFocusOnKeyboard);
             return new CompositePlayerInput(keyboard, gamePad);
         }

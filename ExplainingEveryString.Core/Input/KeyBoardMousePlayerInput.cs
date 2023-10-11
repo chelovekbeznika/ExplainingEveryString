@@ -16,7 +16,6 @@ namespace ExplainingEveryString.Core.Input
         private static readonly Vector2 up = new Vector2(0, 1);
         private static readonly Vector2 left = new Vector2(-1, 0);
         private static readonly Vector2 right = new Vector2(1, 0);
-        private readonly Func<Vector2> playerPositionOnScreen;
         private Int32 afterLastWeaponCheckScroll;
         private KeyboardState afterLastWeaponCheckKeyboard;
 
@@ -24,9 +23,9 @@ namespace ExplainingEveryString.Core.Input
         private Single timeToFocus = 0.25F;
         public override Single Focus => focused * focused;
 
-        internal KeyBoardMousePlayerInput(Func<Vector2> playerPositionOnScreen, Single timeToFocus)
+        internal KeyBoardMousePlayerInput(Func<Vector2> playerPositionOnScreen, Single timeToFocus) 
+            : base(playerPositionOnScreen)
         {
-            this.playerPositionOnScreen = playerPositionOnScreen;
             this.timeToFocus = timeToFocus;
             this.afterLastWeaponCheckScroll = Mouse.GetState().ScrollWheelValue;
             this.afterLastWeaponCheckKeyboard = Keyboard.GetState();
@@ -55,9 +54,15 @@ namespace ExplainingEveryString.Core.Input
         public override Vector2 GetFireDirection(Vector2 currentMuzzlePosition)
         {
             var mousePosition = ScreenCoordinatesHelper.ConvertToInnerScreenCoordinates(Mouse.GetState().X, Mouse.GetState().Y);
-            var fireDirectionOnScreen = mousePosition - playerPositionOnScreen();
+            var fireDirectionOnScreen = mousePosition - PlayerPositionOnScreen;
             var fireDirectionOnLevel = new Vector2(fireDirectionOnScreen.X, -fireDirectionOnScreen.Y);
             return NormalizeDirectionVector(fireDirectionOnLevel);
+        }
+
+        public override Vector2 GetCursorPosition()
+        {
+            var mousePoint = Mouse.GetState().Position;
+            return ScreenCoordinatesHelper.ConvertToInnerScreenCoordinates(mousePoint.X, mousePoint.Y);
         }
 
         public override Boolean IsTryingToDash() => Keyboard.GetState().IsKeyDown(Keys.Space);
