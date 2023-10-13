@@ -33,8 +33,15 @@ namespace ExplainingEveryString.Core.Menu
             var wholeGameButton = new MenuItemButton(wholeGameDisplayer);
             wholeGameButton.ItemCommandExecuteRequested += (sender, args) => gameState.StartWholeGameRun();
 
+            var recordsTableDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/RecordsTable"));
+            var recordsTableButton = new MenuItemButton(recordsTableDisplayer)
+            { 
+                Text = "RECORDS" 
+            };
+            recordsTableButton.ItemCommandExecuteRequested += (sender, args) => gameState.ShowTimeTableFromMenu();
+
             gameState.GameTimeState.RegisterWholeGameTimeButton(wholeGameButton);
-            return new MenuItemsContainer(new MenuItem[] { oneLevelButton, wholeGameButton });
+            return new MenuItemsContainer(new MenuItem[] { oneLevelButton, wholeGameButton, recordsTableButton });
         }
     }
 }

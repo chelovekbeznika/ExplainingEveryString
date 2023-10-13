@@ -118,6 +118,13 @@ namespace ExplainingEveryString.Core.Menu
                 Text = "MUSIC TEST" 
             };
 
+            var tutorialButtonDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Tutorial"));
+            var tutorial = new MenuItemButton(tutorialButtonDisplayer)
+            {
+                Text = "TUTORIAL"
+            };
+            tutorial.ItemCommandExecuteRequested += (sender, args) => game.GameState.ShowTutorial();
+
             var exitButtonDisplayer = new OneSpriteDisplayer(content.Load<Texture2D>(@"Sprites/Menu/Exit"));
             var exit = new MenuItemButton(exitButtonDisplayer) 
             { 
@@ -127,7 +134,7 @@ namespace ExplainingEveryString.Core.Menu
 
             var items = new MenuItemButton[]
             {
-                unpause, continueStory, newGame, levelSelect, selectSave, timeAttack, settings, musicTest, exit
+                unpause, continueStory, newGame, levelSelect, selectSave, timeAttack, settings, musicTest, tutorial, exit
             };
 
             var container = new MenuItemsContainer(items);

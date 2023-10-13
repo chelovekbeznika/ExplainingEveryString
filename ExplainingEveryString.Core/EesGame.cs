@@ -8,9 +8,7 @@ using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
-using System.Collections.Generic;
 
 namespace ExplainingEveryString.Core
 {
@@ -94,7 +92,6 @@ namespace ExplainingEveryString.Core
         /// <summary>
         /// Which is 8:7
         /// </summary>
-        /// <param name="screenConfiguration"></param>
         /// <returns></returns>
         private Rectangle FitWithNesAspectRatio(ScreenConfiguration screenConfiguration)
         {

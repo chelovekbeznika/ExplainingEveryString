@@ -28,7 +28,7 @@ namespace ExplainingEveryString.Core.GameState
         internal Boolean ShowEndingTitle => Specification.Levels[currentLevel].ShowEndingTitle;
         internal String GetCurrentLevelFile() => Specification.Levels[currentLevel].LevelData;
         internal String GetCurrentLevelTitle() => Specification.Levels[currentLevel].TitleSprite;
-        internal (String, String) GetCurrentLevelCutscens() => 
+        internal (String, String) GetCurrentLevelCutscenes() => 
             (Specification.Levels[currentLevel].CutsceneBefore, Specification.Levels[currentLevel].CutsceneAfter);
         internal List<String> GetCurrentLevelEndingLayers() => Specification.Levels
             .Take(currentLevel + 1 + 1) //All passed levels and next one

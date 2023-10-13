@@ -27,6 +27,7 @@ namespace ExplainingEveryString.Core.GameState
         internal LevelEndingComponent CurrentLevelEnding { get; private set; }
         internal MultiFrameCutsceneComponent CutsceneAfterLevel { get; private set; }
         internal TimeAttackResultsComponent TimeAttackResultsComponent { get; private set; }
+        internal StaticImagesSequenceComponent MenuCutscene { get; private set; }
 
         internal MusicComponent MenuMusic { get; private set; }
         internal MusicComponent GameMusic { get; private set; }
@@ -62,7 +63,7 @@ namespace ExplainingEveryString.Core.GameState
 
         private void InitCutscenes(LevelSequence levelSequence)
         {
-            var (cutsceneBefore, cutsceneAfter) = levelSequence.GetCurrentLevelCutscens();
+            var (cutsceneBefore, cutsceneAfter) = levelSequence.GetCurrentLevelCutscenes();
             if (cutsceneBefore != null)
             {
                 var metadata = cutscenesMetadata[cutsceneBefore];
@@ -75,6 +76,25 @@ namespace ExplainingEveryString.Core.GameState
                 CutsceneAfterLevel = new MultiFrameCutsceneComponent(game, cutsceneAfter, metadata);
                 game.Components.Add(CutsceneAfterLevel);
             }
+        }
+
+        internal void InitTutorialInMenu(String tutorialCutsceneName)
+        {
+            var metadata = cutscenesMetadata[tutorialCutsceneName];
+            MenuCutscene = new MultiFrameCutsceneComponent(game, tutorialCutsceneName, metadata);
+            game.Components.Add(MenuCutscene);
+        }
+
+        internal void InitTimeTableInMenu(LevelSequenceSpecification levelSequenceSpecification)
+        {
+            MenuCutscene = new TimeAttackResultsComponent(game, levelSequenceSpecification);
+            game.Components.Add(MenuCutscene);
+        }
+
+        internal void DeleteMenuCutscene()
+        {
+            if (MenuCutscene != null)
+                game.Components.Remove(MenuCutscene);
         }
 
         internal void DeleteCurrentLevelRelatedComponents()
@@ -129,8 +149,11 @@ namespace ExplainingEveryString.Core.GameState
         {     
             Interface.Enabled = active; 
             Interface.Visible = active;
-            CurrentGameplay.Enabled = active;
-            CurrentGameplay.Visible = active;
+            if (CurrentGameplay != null)
+            {
+                CurrentGameplay.Enabled = active;
+                CurrentGameplay.Visible = active;
+            }
             GameMusic.Enabled = active;
             TimersComponent.Instance.Enabled = active;
         }
@@ -194,6 +217,15 @@ namespace ExplainingEveryString.Core.GameState
             {
                 TimeAttackResultsComponent.Enabled = active;
                 TimeAttackResultsComponent.Visible = active;
+            }
+        }
+
+        internal void SwitchMenuCutsceneRelatedComponents(Boolean active)
+        {
+            if (MenuCutscene != null)
+            {
+                MenuCutscene.Enabled = active;
+                MenuCutscene.Visible = active;
             }
         }
     }

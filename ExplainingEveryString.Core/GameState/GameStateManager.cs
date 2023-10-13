@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +12,12 @@ namespace ExplainingEveryString.Core.GameState
         private delegate void ComponentsSwitch(Boolean active);
         private readonly Dictionary<GameState, ComponentsSwitch> componentSwitches;
 
-        private enum GameMode { Story, OneLevelRun, WholeGameRun }
-        private enum GameState { BetweenLevels, CutsceneBefore, LevelTitle, InGame, Paused, TimeRecordsTable, LevelEnding, CutsceneAfter }
+        private enum GameMode { GameNotStarted, Story, OneLevelRun, WholeGameRun }
+        private enum GameState 
+        { 
+            BetweenLevels, CutsceneBefore, LevelTitle, InGame, Paused, 
+            TimeRecordsTable, LevelEnding, CutsceneAfter, MenuCutscene 
+        }
 
         private readonly ComponentsManager componentsManager;
         private readonly LevelSequenceSpecification levelSequenceSpecification;
@@ -22,7 +25,7 @@ namespace ExplainingEveryString.Core.GameState
         private GameProgress gameProgress;
 
         private GameState currentState = GameState.BetweenLevels;
-        private GameMode currentMode = GameMode.Story;
+        private GameMode currentMode = GameMode.GameNotStarted;
 
         private Int32 SaveProfileNumber
         {
@@ -53,6 +56,7 @@ namespace ExplainingEveryString.Core.GameState
                 { GameState.CutsceneAfter, componentsManager.SwitchCutsceneAfterLevel },
                 { GameState.LevelEnding, componentsManager.SwitchLevelEndingRelatedComponents },
                 { GameState.TimeRecordsTable, componentsManager.SwitchTimeAttackResultsComponents },
+                { GameState.MenuCutscene, componentsManager.SwitchMenuCutsceneRelatedComponents }
             };
 
             SwitchSaveProfile(currentProfile);
@@ -140,6 +144,13 @@ namespace ExplainingEveryString.Core.GameState
                                 StartCurrentLevelTimeAttack();
                         }
                     break;
+                case GameState.MenuCutscene:
+                    if (componentsManager.MenuCutscene.Closed)
+                        if (currentMode == GameMode.GameNotStarted)
+                            SwitchToNewState(GameState.BetweenLevels);
+                        else
+                            SwitchToNewState(GameState.Paused);
+                    break;
             }
         }
 
@@ -193,6 +204,20 @@ namespace ExplainingEveryString.Core.GameState
             };
             SaveGame();
             StartCurrentStoryLevel();
+        }
+
+        internal void ShowTutorial()
+        {
+            componentsManager.DeleteMenuCutscene();
+            componentsManager.InitTutorialInMenu("Tutorial");
+            SwitchToNewState(GameState.MenuCutscene);
+        }
+
+        internal void ShowTimeTableFromMenu()
+        {
+            componentsManager.DeleteMenuCutscene();
+            componentsManager.InitTimeTableInMenu(levelSequenceSpecification);
+            SwitchToNewState(GameState.MenuCutscene);
         }
 
         internal void StartWholeGameRun()
@@ -325,11 +350,16 @@ namespace ExplainingEveryString.Core.GameState
             foreach (var state in otherGameStates)
                 componentSwitches[state](false);
             if (newState == GameState.BetweenLevels)
+            {
                 componentsManager.DeleteCurrentLevelRelatedComponents();
+                currentMode = GameMode.GameNotStarted;
+            }
             if (newState == GameState.Paused)
                 componentsManager.Menu.ReturnMenuToDefaultStateAtPause();
             if (newState == GameState.TimeRecordsTable)
                 componentsManager.TimeAttackResultsComponent?.UpdateGameProgress(gameProgress, GameTimeState.Splits);
+            if (newState == GameState.MenuCutscene)
+                (componentsManager.MenuCutscene as TimeAttackResultsComponent)?.UpdateGameProgress(gameProgress, GameTimeState.Splits);
             componentSwitches[newState](true);
             currentState = newState;
         }
