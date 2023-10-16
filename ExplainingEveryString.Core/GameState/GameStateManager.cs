@@ -23,6 +23,7 @@ namespace ExplainingEveryString.Core.GameState
         private readonly LevelSequenceSpecification levelSequenceSpecification;
         private LevelSequence levelSequence;
         private GameProgress gameProgress;
+        private Boolean needToRestartGameMusic = true;
 
         private GameState currentState = GameState.BetweenLevels;
         private GameMode currentMode = GameMode.GameNotStarted;
@@ -75,6 +76,7 @@ namespace ExplainingEveryString.Core.GameState
                 case GameState.InGame:
                     if (componentsManager.CurrentGameplay.Lost)
                     {
+                        needToRestartGameMusic = false;
                         if (currentMode == GameMode.Story)
                             StartCurrentStoryLevel(false);
                         else
@@ -82,6 +84,7 @@ namespace ExplainingEveryString.Core.GameState
                     }
                     if (componentsManager.CurrentGameplay.Won)
                     {
+                        needToRestartGameMusic = true;
                         if (currentMode == GameMode.Story)
                         {
                             if (componentsManager.CutsceneAfterLevel != null)
@@ -181,6 +184,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void StartNewGame()
         {
             currentMode = GameMode.Story;
+            needToRestartGameMusic = true;
             levelSequence.Reset();
             ProgressToLevelStart();
             SaveGame();
@@ -190,12 +194,14 @@ namespace ExplainingEveryString.Core.GameState
         internal void ContinueCurrentGame()
         {
             currentMode = GameMode.Story;
+            needToRestartGameMusic = true;
             StartCurrentStoryLevel();
         }
 
         internal void ContinueFrom(String levelName)
         {
             currentMode = GameMode.Story;
+            needToRestartGameMusic = true;
             gameProgress.CurrentLevelFileName = levelName;
             gameProgress.MaxAchievedLevelName = levelSequence.GetMaxAchievedLevelFile();
             gameProgress.LevelProgress = new LevelProgress
@@ -223,6 +229,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void StartWholeGameRun()
         {
             currentMode = GameMode.WholeGameRun;
+            needToRestartGameMusic = true;
             GameTimeState.StartWholeGameRun();
             StartCurrentLevelTimeAttack();
         }
@@ -230,6 +237,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void StartOneLevelRun(String levelName)
         {
             currentMode = GameMode.OneLevelRun;
+            needToRestartGameMusic = true;
             GameTimeState.StartOneLevelRun(levelName);
             StartCurrentLevelTimeAttack();
         }
@@ -326,12 +334,12 @@ namespace ExplainingEveryString.Core.GameState
 
         internal void StartMusicInGame(String songName)
         {
-            componentsManager.GameMusic.PlaySong(songName);
+            componentsManager.GameMusic.PlaySong(songName, needToRestartGameMusic);
         }
 
         internal void SongInMenuSelected(String songName)
         {
-            componentsManager.MenuMusic.PlaySong(songName);
+            componentsManager.MenuMusic.PlaySong(songName, true);
         }
 
         internal void StopMusicInMenu()

@@ -164,7 +164,7 @@ namespace ExplainingEveryString.Core.GameState
                 CutsceneBeforeLevel.Visible = active;
                 CutsceneMusic.Enabled = active;
                 if (active)
-                    CutsceneMusic.PlaySong(CutsceneSong);
+                    CutsceneMusic.PlaySong(CutsceneSong, true);
             }
             else
                 CutsceneMusic.Enabled = false;
@@ -178,7 +178,7 @@ namespace ExplainingEveryString.Core.GameState
                 CutsceneAfterLevel.Visible = active;
                 CutsceneMusic.Enabled = active;
                 if (active)
-                    CutsceneMusic.PlaySong(CutsceneSong);
+                    CutsceneMusic.PlaySong(CutsceneSong, true);
             }
             else
                 CutsceneMusic.Enabled = false;

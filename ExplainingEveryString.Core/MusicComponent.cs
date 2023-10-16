@@ -31,9 +31,9 @@ namespace ExplainingEveryString.Core
             base.Initialize();
         }
 
-        public void PlaySong(String songName)
+        public void PlaySong(String songName, Boolean forceRestart)
         {
-            musicPlayer.Start(songName);
+            musicPlayer.Play(songName, forceRestart);
             if (!Enabled)
                 musicPlayer.TryPause();
         }

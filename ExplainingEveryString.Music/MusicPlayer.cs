@@ -16,7 +16,19 @@ namespace ExplainingEveryString.Music
         private Int32 songPartsPlaying;
         private String nowPlaying = null;
 
-        public Single Volume { get { return volume; } set { volume = value; if (sound != null) sound.Volume = value; } }
+        public Single Volume 
+        { 
+            get 
+            { 
+                return volume; 
+            } 
+            set 
+            { 
+                volume = value; 
+                if (sound != null) 
+                    sound.Volume = value; 
+            } 
+        }
 
         public MusicPlayer()
         {
@@ -53,18 +65,18 @@ namespace ExplainingEveryString.Music
             }
         }
 
-        public void Start(String songName)
+        public void Play(String songName, Boolean forceRestart)
         {
-            Stop();
-            songParts = new List<Byte[]>
+            if (forceRestart || songName != nowPlaying)
             {
-                Load(songName)
-            };
-            sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono) { Volume = Volume };
-            sound.SubmitBuffer(songParts[0]);
-            songPartsPlaying = 1;
-            sound.Play();
-            nowPlaying = songName;
+                Stop();
+                songParts = new List<Byte[]> { Load(songName) };
+                sound = new DynamicSoundEffectInstance(Constants.SampleRate, AudioChannels.Mono) { Volume = Volume };
+                sound.SubmitBuffer(songParts[0]);
+                songPartsPlaying = 1;
+                sound.Play();
+                nowPlaying = songName;
+            }
         }
 
         public void TryPause()
