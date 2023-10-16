@@ -38,7 +38,7 @@
       "TitleSprite": "Sprites/LevelTitles/11",
       "MapMark": "416.0, 860.0",
       "LevelsBlockId": "Ice",
-	  "CutsceneBefore": "Tutorial"
+	  "CutsceneBefore": "Before11"
     },
     {
       "LevelData": "level_12",
