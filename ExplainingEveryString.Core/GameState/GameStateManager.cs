@@ -209,7 +209,7 @@ namespace ExplainingEveryString.Core.GameState
         internal void ShowTutorial()
         {
             componentsManager.DeleteMenuCutscene();
-            componentsManager.InitTutorialInMenu("Tutorial");
+            componentsManager.InitTutorialInMenu(levelSequenceSpecification.TutorialCutsceneName);
             SwitchToNewState(GameState.MenuCutscene);
         }
 
