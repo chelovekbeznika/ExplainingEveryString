@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.Assets;
 using ExplainingEveryString.Core.Math;
 using ExplainingEveryString.Data.Configuration;
-using ExplainingEveryString.Data.RandomVariables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;

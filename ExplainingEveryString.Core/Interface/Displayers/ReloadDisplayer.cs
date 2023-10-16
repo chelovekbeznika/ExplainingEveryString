@@ -1,8 +1,5 @@
 ﻿using ExplainingEveryString.Core.Assets;
-using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.Math;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 

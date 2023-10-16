@@ -1,10 +1,7 @@
-﻿using ExplainingEveryString.Core.Displaying;
-using ExplainingEveryString.Core.GameModel;
+﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Core.Math;
-using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended.Collections;
 using System;
 using System.Linq;
 

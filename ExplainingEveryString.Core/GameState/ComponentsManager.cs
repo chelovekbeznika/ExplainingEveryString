@@ -3,10 +3,8 @@ using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Core.Notifications;
 using ExplainingEveryString.Core.Timers;
-using ExplainingEveryString.Data.Configuration;
 using ExplainingEveryString.Data.Level;
 using ExplainingEveryString.Data.Menu;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 

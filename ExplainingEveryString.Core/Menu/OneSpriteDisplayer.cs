@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ExplainingEveryString.Core.Menu
 {

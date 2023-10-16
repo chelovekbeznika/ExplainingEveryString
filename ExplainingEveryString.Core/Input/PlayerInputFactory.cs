@@ -1,7 +1,6 @@
 ﻿using ExplainingEveryString.Core.GameModel;
 using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
-using System;
 
 namespace ExplainingEveryString.Core.Input
 {

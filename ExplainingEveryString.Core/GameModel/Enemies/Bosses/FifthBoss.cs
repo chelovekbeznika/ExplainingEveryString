@@ -1,14 +1,11 @@
-﻿using ExplainingEveryString.Core.Assets;
-using ExplainingEveryString.Core.Displaying;
+﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameModel.Weaponry;
-using ExplainingEveryString.Core.GameModel.Weaponry.Aimers;
 using ExplainingEveryString.Data.Blueprints;
 using ExplainingEveryString.Data.Specifications;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ExplainingEveryString.Core.GameModel.Enemies.Bosses
 {

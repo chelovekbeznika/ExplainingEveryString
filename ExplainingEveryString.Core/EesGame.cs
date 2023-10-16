@@ -1,6 +1,5 @@
 ﻿using ExplainingEveryString.Core.Displaying;
 using ExplainingEveryString.Core.GameState;
-using ExplainingEveryString.Core.Interface;
 using ExplainingEveryString.Core.Menu;
 using ExplainingEveryString.Core.Text;
 using ExplainingEveryString.Data.Configuration;

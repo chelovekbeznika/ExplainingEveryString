@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Data.RandomVariables;
-using System;
+﻿using System;
 using System.ComponentModel;
 
 namespace ExplainingEveryString.Data.Specifications

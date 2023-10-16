@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Linq;
+﻿using System.Linq;
 
 namespace ExplainingEveryString.Core.Menu
 {
