@@ -7,16 +7,12 @@ namespace ExplainingEveryString.Core.Displaying
 {
     internal class CameraObjectGlass : ILevelCoordinatesMaster
     {
-        private readonly Vector2 playerWindowEllips;
-
-        private IMainCharacterInfoForCameraExtractor playerInfo;
-        private Vector2 ScreenHalf => new Vector2 { X = Constants.TargetWidth / 2, Y = Constants.TargetHeight / 2 };
+        private readonly IMainCharacterInfoForCameraExtractor playerInfo;
+        private readonly Vector2 screenHalf = new Vector2 { X = Constants.TargetWidth / 2, Y = Constants.TargetHeight / 2 };
         private Vector2 cameraCenter;
-        private Single focusAngle;
-        private Single desiredFocusAngle;
-        private Single timeToReverseFocus;
 
-        public Vector2 CameraOffset => cameraCenter - ScreenHalf;
+        public Vector2 CameraOffset => cameraCenter - screenHalf;
+
         public Rectangle ScreenCovers => new Rectangle
         {
             X = (Int32)CameraOffset.X,
@@ -30,39 +26,22 @@ namespace ExplainingEveryString.Core.Displaying
         {
             this.playerInfo = playerInfo;
             this.cameraCenter = playerInfo.Position;
-            this.playerWindowEllips = new Vector2()
-            {
-                X = ScreenHalf.X * config.PlayerFramePercentageWidth / 100,
-                Y = ScreenHalf.Y * config.PlayerFramePercentageHeight / 100
-            };
-            this.timeToReverseFocus = config.TimeToReverseFocusDirection;
         }
 
         public void Update(Single elapsedSeconds)
         {
-            UpdateFocusAngle(elapsedSeconds);
-            UpdateCameraCenter(elapsedSeconds);
-        }
-
-        private void UpdateCameraCenter(Single elapsedSeconds)
-        {
-            var focusOffset = AngleConverter.ToVector(focusAngle);
-            focusOffset.X *= playerWindowEllips.X * playerInfo.Focused;
-            focusOffset.Y *= playerWindowEllips.Y * playerInfo.Focused;
-            cameraCenter = playerInfo.Position + focusOffset;
-        }
-
-        private void UpdateFocusAngle(Single elapsedSeconds)
-        {
-            desiredFocusAngle = AngleConverter.ToRadians(playerInfo.FireDirection);
-            var maxAngleChange = (Single)System.Math.PI / timeToReverseFocus * elapsedSeconds;
-            var arcToTarget = AngleConverter.ClosestArc(focusAngle, desiredFocusAngle);
-            if (System.Math.Abs(arcToTarget) < maxAngleChange)
-                focusAngle = desiredFocusAngle;
-            else if (arcToTarget > 0)
-                focusAngle += maxAngleChange;
-            else
-                focusAngle -= maxAngleChange;
+            var cursorPosition = playerInfo.CursorPosition;
+            if (cursorPosition.Y < 0)
+                cursorPosition.Y = 0;
+            if (cursorPosition.Y > Constants.TargetHeight)
+                cursorPosition.Y = Constants.TargetHeight;
+            if (cursorPosition.X < 0)
+                cursorPosition.X = 0;
+            if (cursorPosition.X > Constants.TargetWidth)
+                cursorPosition.X = Constants.TargetWidth;
+            var cursorOffset = cursorPosition - screenHalf;
+            cursorOffset.Y *= -1;
+            cameraCenter = playerInfo.Position + cursorOffset * playerInfo.Focused;
         }
     }
 }

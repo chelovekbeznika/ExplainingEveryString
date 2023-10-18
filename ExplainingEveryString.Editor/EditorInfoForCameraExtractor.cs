@@ -12,7 +12,7 @@ namespace ExplainingEveryString.Editor
 
         public Vector2 Position => position;
 
-        public Vector2 FireDirection => Vector2.UnitX;
+        public Vector2 CursorPosition => Vector2.Zero;
 
         public Single Focused => 0;
 
