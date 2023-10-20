@@ -46,12 +46,13 @@ namespace ExplainingEveryString.Data.Configuration
                     PreferredControlDevice = ControlDevice.Keyboard,
                     TimeToFocusOnKeyboard = 0.25F,
                     TimeToFocusOnGamepad = 0.25F,
-                    BetweenPlayerAndCursor = 80
+                    BetweenPlayerAndCursor = 80,
+                    GamepadCameraSpeed = 384
                 },
                 Camera = new CameraConfiguration
                 {
-                    PlayerFramePercentageWidth = 60,
-                    PlayerFramePercentageHeight = 60,
+                    PlayerFramePercentageWidth = 80,
+                    PlayerFramePercentageHeight = 80,
                     TimeToReverseFocusDirection = 0.5F
                 },
                 Screen = new ScreenConfiguration

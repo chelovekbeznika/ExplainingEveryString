@@ -1,5 +1,4 @@
-﻿using ExplainingEveryString.Core.Math;
-using ExplainingEveryString.Data.Configuration;
+﻿using ExplainingEveryString.Data.Configuration;
 using Microsoft.Xna.Framework;
 using System;
 
@@ -9,6 +8,7 @@ namespace ExplainingEveryString.Core.Displaying
     {
         private readonly IMainCharacterInfoForCameraExtractor playerInfo;
         private readonly Vector2 screenHalf = new Vector2 { X = Constants.TargetWidth / 2, Y = Constants.TargetHeight / 2 };
+        private Rectangle playerFrame;
         private Vector2 cameraCenter;
 
         public Vector2 CameraOffset => cameraCenter - screenHalf;
@@ -26,19 +26,24 @@ namespace ExplainingEveryString.Core.Displaying
         {
             this.playerInfo = playerInfo;
             this.cameraCenter = playerInfo.Position;
+            playerFrame = new Rectangle(
+                x: Constants.TargetWidth * (100 - config.PlayerFramePercentageWidth) / 2 / 100, 
+                y: Constants.TargetHeight * (100 - config.PlayerFramePercentageHeight) / 2 / 100, 
+                width: Constants.TargetWidth * config.PlayerFramePercentageWidth / 100, 
+                height: Constants.TargetHeight * config.PlayerFramePercentageHeight / 100);
         }
 
         public void Update(Single elapsedSeconds)
         {
             var cursorPosition = playerInfo.CursorPosition;
-            if (cursorPosition.Y < 0)
-                cursorPosition.Y = 0;
-            if (cursorPosition.Y > Constants.TargetHeight)
-                cursorPosition.Y = Constants.TargetHeight;
-            if (cursorPosition.X < 0)
-                cursorPosition.X = 0;
-            if (cursorPosition.X > Constants.TargetWidth)
-                cursorPosition.X = Constants.TargetWidth;
+            if (cursorPosition.Y < playerFrame.Top)
+                cursorPosition.Y = playerFrame.Top;
+            if (cursorPosition.Y > playerFrame.Bottom)
+                cursorPosition.Y = playerFrame.Bottom;
+            if (cursorPosition.X < playerFrame.Left)
+                cursorPosition.X = playerFrame.Left;
+            if (cursorPosition.X > playerFrame.Right)
+                cursorPosition.X = playerFrame.Right;
             var cursorOffset = cursorPosition - screenHalf;
             cursorOffset.Y *= -1;
             cameraCenter = playerInfo.Position + cursorOffset * playerInfo.Focused;

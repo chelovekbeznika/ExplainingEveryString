@@ -8,5 +8,6 @@ namespace ExplainingEveryString.Data.Configuration
         public Single TimeToFocusOnKeyboard { get; set; }
         public Single TimeToFocusOnGamepad { get; set; }
         public Single BetweenPlayerAndCursor { get; set; }
+        public Single GamepadCameraSpeed { get; set; }
     }
 }
