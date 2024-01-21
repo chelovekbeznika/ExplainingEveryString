@@ -11,11 +11,7 @@
     "PlayerFramePercentageHeight": 80,
     "TimeToReverseFocusDirection": 1.5
   },
-  "Screen": {
-    "ScreenWidth": 1024,
-    "ScreenHeight": 896,
-    "FullScreen": false
-  },
+  "Screen": null,
   "SoundFadingOut": 1000.0,
   "InterfaceAlpha": 0.75,
   "MusicVolume": 0.3,

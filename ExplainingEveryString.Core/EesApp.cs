@@ -19,8 +19,16 @@ namespace ExplainingEveryString.Core
         protected void GraphicsPreInit()
         {
             ConfigurationAccess.InitializeConfig();
-            var screenConfig = ConfigurationAccess.GetCurrentConfig().Screen;
-            ChangeScreenResolution(screenConfig);
+            if (ConfigurationAccess.GetCurrentConfig().Screen == null)
+            {
+                ConfigurationAccess.GetCurrentConfig().Screen = new ScreenConfiguration
+                {
+                    ScreenWidth = graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Width,
+                    ScreenHeight = graphics.GraphicsDevice.Adapter.CurrentDisplayMode.Height,
+                    FullScreen = true
+                };
+            }
+            ChangeScreenResolution(ConfigurationAccess.GetCurrentConfig().Screen);
         }
 
         protected void ChangeScreenResolution(ScreenConfiguration screenConfig)

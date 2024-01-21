@@ -55,12 +55,7 @@ namespace ExplainingEveryString.Data.Configuration
                     PlayerFramePercentageHeight = 80,
                     TimeToReverseFocusDirection = 0.5F
                 },
-                Screen = new ScreenConfiguration
-                {
-                    FullScreen = false,
-                    ScreenWidth = 1024,
-                    ScreenHeight = 768
-                },
+                Screen = null,
                 PersonalBestCelebration = new RecordFireworkConfiguration
                 {
                     Volume = 0.25f,
