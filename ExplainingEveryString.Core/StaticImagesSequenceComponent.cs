@@ -9,6 +9,7 @@ namespace ExplainingEveryString.Core
 {
     internal abstract class StaticImagesSequenceComponent : DrawableGameComponent
     {
+        private const Int32 betweenTips = 8;
         private Texture2D cutSceneSkipTip;
         private Texture2D frameSkipTip;
         private readonly Single maxFrameTime = 5f;
@@ -77,10 +78,23 @@ namespace ExplainingEveryString.Core
             GraphicsDevice.Clear(background);
             spriteBatch.Begin();
             DrawImage(spriteBatch, FrameNumber);
+
             if (SceneCanBeSkipped)
-                spriteBatch.Draw(cutSceneSkipTip, new Vector2(Constants.TargetWidth - 64, Constants.TargetHeight - 64), Color.White);
+            {
+                var position = new Vector2(
+                    x: Constants.TargetWidth - betweenTips - cutSceneSkipTip.Width, 
+                    y: Constants.TargetHeight - cutSceneSkipTip.Height);
+                spriteBatch.Draw(cutSceneSkipTip, position, Color.White);
+            }
+                
             if (FrameCanBeSkipped)
-                spriteBatch.Draw(frameSkipTip, new Vector2(Constants.TargetWidth - 128, Constants.TargetHeight - 64), Color.White);
+            {
+                var position = new Vector2(
+                    x: Constants.TargetWidth - betweenTips - cutSceneSkipTip.Width - betweenTips - frameSkipTip.Width, 
+                    y: Constants.TargetHeight - frameSkipTip.Height);
+                spriteBatch.Draw(frameSkipTip, position, Color.White);
+            }
+                
             spriteBatch.End();
             base.Draw(gameTime);
         }
